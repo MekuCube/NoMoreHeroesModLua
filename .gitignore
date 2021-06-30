@@ -1,0 +1,14 @@
+# Visual Studio user specific files
+.vs/
+
+# Releases
+Release/
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+*.cpp.rej
+*.tlog/
+*.pdb
