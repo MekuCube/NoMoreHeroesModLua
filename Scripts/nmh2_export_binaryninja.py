@@ -285,6 +285,17 @@ def GetTypesInNameSpace(NameSpaceRoot, AllTypes):
 
 GetTypesInNameSpace.cache = {}
 
+def FunctionIsStatic(InType):
+	IsObjectInstance = False
+	ParentNameSpaceStr = GetParentNameSpaceFromType(InType)
+	i = 0
+	for VarIt in InType.parameter_vars:
+		VariableName = str(VarIt.name)
+		if ParentNameSpaceStr != None and VariableName == "this" and i == 0:
+			IsObjectInstance = True
+		i = i + 1
+	return ParentNameSpaceStr != None and not IsObjectInstance
+
 def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings, file, indent = 0, bFowardDeclare = False):
 	if IsInListPure(InType, ExportedTypes):
 		return
@@ -542,6 +553,8 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 							NotSupportedReason = "delegates are not supported in LuaBridge"
 						if MemberTypeStr.endswith(" const"):
 							NotSupportedReason = "const not supported in LuaBridge and needs a getter"
+						if MemberTypeStr.endswith(" const*"):
+							NotSupportedReason = "pointer to const not supported in LuaBridge and needs a getter"
 						if MemberTypeStr.endswith(" volatile"):
 							NotSupportedReason = "volatile not supported in LuaBridge and needs a getter"
 						print("", file=file)
@@ -565,15 +578,20 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 								HasError = "Function overloading not supported in LuaBridge."
 							else:
 								ExportedFunctions.append(FunctionName)
-							for VarIt in TypeIt.parameter_vars:
-								if VarIt.type != None and (str(VarIt.type).endswith("*") or str(VarIt.type).endswith("&")) and VarIt.type.type_class == TypeClass.PointerTypeClass and VarIt.type.element_type != None and VarIt.type.element_type.type_class != TypeClass.StructureTypeClass:
-									HasError = "Functions with parameters pointing to native types ("+str(VarIt.type)+" " + str(VarIt.name) + ") not supported in LuaBridge."
-							if TypeIt.return_type != None and (str(TypeIt.return_type).endswith("*") or str(TypeIt.return_type).endswith("&")) and TypeIt.return_type.type_class == TypeClass.PointerTypeClass and TypeIt.return_type.element_type != None and TypeIt.return_type.element_type.type_class != TypeClass.StructureTypeClass:
-									HasError = "Functions with return values pointing to native types ('"+str(TypeIt.return_type)+"' ["+str(TypeIt.return_type.type_class)+"]) not supported in LuaBridge."
+							if HasError == None:
+								for VarIt in TypeIt.parameter_vars:
+									if VarIt.type != None and (str(VarIt.type).endswith("*") or str(VarIt.type).endswith("&")) and str(VarIt.type) and VarIt.type.type_class == TypeClass.PointerTypeClass and VarIt.type.element_type != None and VarIt.type.element_type.type_class != TypeClass.StructureTypeClass:
+										HasError = "Functions with parameters pointing to native types ("+str(VarIt.type)+" " + str(VarIt.name) + ") not supported in LuaBridge."
+								if TypeIt.return_type != None and (str(TypeIt.return_type).endswith("*") or str(TypeIt.return_type).endswith("&")) and TypeIt.return_type.type_class == TypeClass.PointerTypeClass and TypeIt.return_type.element_type != None and TypeIt.return_type.element_type.type_class != TypeClass.StructureTypeClass:
+										HasError = "Functions with return values pointing to native types ('"+str(TypeIt.return_type)+"' ["+str(TypeIt.return_type.type_class)+"]) not supported in LuaBridge."
 							if HasError != None:
 								print("// "+HasError, file=file)
 								print("	"*indent + "//", end="", file=file)
-							print(".addFunction(\"" + str(FunctionName) + "\", &"+TypeStrNoPrefix+"::"+str(FunctionName) + ")", file=file)
+							if FunctionIsStatic(TypeIt):
+								print(".addStaticFunction", end="", file=file)
+							else:
+								print(".addFunction", end="", file=file)
+							print("(\"" + str(FunctionName) + "\", &"+TypeStrNoPrefix+"::"+str(FunctionName) + ")", file=file)
 					# Lua end func
 					indent = indent-1
 					print("	"*indent + ".endClass();", file=file)
@@ -676,7 +694,7 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 		OuterParameters = ""
 		InnerTypeParameters = ""
 		i = 0
-		IsInstance = False
+		IsObjectInstance = False
 		for VarIt in InType.parameter_vars:
 			VariableName = str(VarIt.name)
 			VariableTypeStr = str(VarIt.type)
@@ -695,7 +713,7 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 			
 			# Skip if class' "this" pointer
 			if ParentNameSpaceStr != None and VariableName == "this" and i == 0:
-				IsInstance = True
+				IsObjectInstance = True
 			else:
 				if OuterParameters != "":
 					OuterParameters = OuterParameters + ", "
@@ -705,7 +723,7 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 			InnerTypeParameters = InnerTypeParameters + VariableTypeStr + " " + AdjVariableName
 			if Inputs != "":
 				Inputs = Inputs + ", "
-			if IsInstance:
+			if IsObjectInstance:
 				Inputs = Inputs + VariableName
 			else:
 				Inputs = Inputs + AdjVariableName
@@ -716,14 +734,17 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 		#if not bFowardDeclare:
 		#	DebugPrintDependencies(InType, AllTypes, "	"*indent + "// ", file)
 		# Function
-		print("	"*indent + str(InType.return_type) + " " + FunctionName + "("+OuterParameters+")", end="", file=file)
+		print("	"*indent, end="", file=file)
+		if ParentNameSpaceStr != None and not IsObjectInstance:
+			print("static ", end="", file=file)
+		print(str(InType.return_type) + " " + FunctionName + "("+OuterParameters+")", end="", file=file)
 		if InType.function_type.const:
 			print(" const", end="", file=file)
 		print("", file=file)
 		print("	"*indent +"{", file=file)
 		indent = indent + 1
 		print("	"*indent +"typedef " + str(InType.return_type) + "(__"+str(InType.calling_convention)+"* _Func)" + "(", end="", file=file)
-		#if IsConst and IsInstance:
+		#if IsConst and IsObjectInstance:
 		#	print("const ", end="", file=file)
 		print(InnerTypeParameters+");", file=file)
 		print("	"*indent +"_Func mFunc = (_Func)(GameModule + " + str(hex(InType.start)) + ");", file=file)
@@ -905,8 +926,8 @@ def GetFlattenedStructMembers(InType, InSuperClass = None):
 	return out
 
 # Export
-def DoExport(AllRootTypes, AllRelevantTypes):
-	with open("E:/C++/NoMoreHeroesModLua/Games/NMH2/exported_data_types_new.h", "w") as text_file:
+def DoExport(OutPath, AllRootTypes, AllRelevantTypes):
+	with open(OutPath, "w") as text_file:
 		print("// Exporter by @MekuCube", file=text_file)
 		print("", file=text_file)
 		print("#pragma once", file=text_file)
@@ -978,7 +999,7 @@ def DoExport(AllRootTypes, AllRelevantTypes):
 				print("Failed to export: '" + str(TypeIt) + "'")
 
 AllRelevantTypes = []
-CollectTypes(AllRelevantTypes, ["mHRChara", "mHRBattle", "mHRPc"])
+CollectTypes(AllRelevantTypes, ["mHRChara", "mHRBattle", "mHRPc", "HrMessage"])
 #CollectTypes(AllRelevantTypes, ["mHRBattle::mSetSlowMotionTick"])
 #CollectTypes(AllRelevantTypes, ["EffectCutMark::Create"])
 #CollectTypes(AllRelevantTypes, ["GLBDeathState"])
@@ -1008,4 +1029,4 @@ print("Root types: " + str(len(AllRootTypes)))
 
 #print("")
 
-DoExport(AllRootTypes, AllRelevantTypes)
+DoExport("E:/C++/NoMoreHeroesModLua/Games/NMH2/exported_data_types_new.h", AllRootTypes, AllRelevantTypes)

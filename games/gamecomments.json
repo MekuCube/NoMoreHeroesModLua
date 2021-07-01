@@ -1,0 +1,6 @@
+{
+	"?mCreatePiyori@mHRChara@@UAE_NXZ": "Creates a stun star effect above the character's head."
+	"?mStartChangeWeapon@mHRPc@@QAEXXZ": "Makes Travis put away his weapon... and then immediately pull it out again."
+	"?CreateGuardBreakEffect@mHRPc@@QAEXXZ": "Creates a spark effect at character torso / head."
+	"?CreateFootSmokeEffect@mHRChara@@QAEXXZ": "Creates a dust effect at character feet."
+}

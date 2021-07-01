@@ -204,6 +204,13 @@ class mHRLockOnList;
 class EffectEnemyDamage;
 class HrMap;
 struct stThrowInfo;
+class HrMessage;
+class ghmGcFont;
+class WGdl;
+struct GdlHeader;
+struct GdlDialog;
+struct GdlLines;
+struct GdlSentence;
 class ACameraModeBase;
 class CCameraModeLockOn;
 struct HRSAVEDATA_SHOP;
@@ -1157,14 +1164,14 @@ public:
 		return mFunc(this);
 	}
 	// [Function] uint8_t mHRBattle::ChkToiletStage() [?ChkToiletStage@mHRBattle@@SA_NXZ]
-	uint8_t ChkToiletStage()
+	static uint8_t ChkToiletStage()
 	{
 		typedef uint8_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x3f3e30);
 		return mFunc();
 	}
 	// [Function] uint8_t mHRBattle::ChkBikeStage() [?ChkBikeStage@mHRBattle@@SA_NXZ]
-	uint8_t ChkBikeStage()
+	static uint8_t ChkBikeStage()
 	{
 		typedef uint8_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x3f3e40);
@@ -2029,8 +2036,8 @@ public:
 			//.addFunction("GetNpc", &mHRBattle::GetNpc)
 			.addFunction("mCheckPcLoaded4WepaponChange", &mHRBattle::mCheckPcLoaded4WepaponChange)
 			.addFunction("mCheckBattleInit", &mHRBattle::mCheckBattleInit)
-			.addFunction("ChkToiletStage", &mHRBattle::ChkToiletStage)
-			.addFunction("ChkBikeStage", &mHRBattle::ChkBikeStage)
+			.addStaticFunction("ChkToiletStage", &mHRBattle::ChkToiletStage)
+			.addStaticFunction("ChkBikeStage", &mHRBattle::ChkBikeStage)
 			.addFunction("GetPickUpGomiSubMissionResult", &mHRBattle::GetPickUpGomiSubMissionResult)
 			.addFunction("mAddKillNum", &mHRBattle::mAddKillNum)
 			.addFunction("mSetNpcAppear", &mHRBattle::mSetNpcAppear)
@@ -4990,7 +4997,7 @@ public:
 		return mFunc(this);
 	}
 	// [Function] uint8_t mHRChara::isCharacterTypeZako(enum enCharaType arg1) [?isCharacterTypeZako@mHRChara@@SA_NW4enCharaType@@@Z]
-	uint8_t isCharacterTypeZako(enum enCharaType arg1)
+	static uint8_t isCharacterTypeZako(enum enCharaType arg1)
 	{
 		typedef uint8_t(__cdecl* _Func)(enum enCharaType arg1);
 		_Func mFunc = (_Func)(GameModule + 0xa2c60);
@@ -5004,7 +5011,7 @@ public:
 		return mFunc(this);
 	}
 	// [Function] uint8_t mHRChara::isCharacterTypeBoss(enum enCharaType arg1) [?isCharacterTypeBoss@mHRChara@@SA_NW4enCharaType@@@Z]
-	uint8_t isCharacterTypeBoss(enum enCharaType arg1)
+	static uint8_t isCharacterTypeBoss(enum enCharaType arg1)
 	{
 		typedef uint8_t(__cdecl* _Func)(enum enCharaType arg1);
 		_Func mFunc = (_Func)(GameModule + 0xa2c80);
@@ -5130,7 +5137,7 @@ public:
 		return mFunc(this, arg2);
 	}
 	// [Function] class mHRChara* mHRChara::mGetTop() [?mGetTop@mHRChara@@SAPAV1@XZ]
-	class mHRChara* mGetTop()
+	static class mHRChara* mGetTop()
 	{
 		typedef class mHRChara*(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0xa3020);
@@ -6418,35 +6425,35 @@ public:
 		return mFunc(this);
 	}
 	// [Function] class mHRChara* mHRChara::mGetCharaPtr(int32_t arg1) [?mGetCharaPtr@mHRChara@@SAPAV1@H@Z]
-	class mHRChara* mGetCharaPtr(int32_t arg1)
+	static class mHRChara* mGetCharaPtr(int32_t arg1)
 	{
 		typedef class mHRChara*(__cdecl* _Func)(int32_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0x46e100);
 		return mFunc(arg1);
 	}
 	// [Function] void mHRChara::mRenderGmf(void* arg1) [?mRenderGmf@mHRChara@@SAXPAX@Z]
-	void mRenderGmf(void* arg1)
+	static void mRenderGmf(void* arg1)
 	{
 		typedef void(__cdecl* _Func)(void* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x46e120);
 		return mFunc(arg1);
 	}
 	// [Function] int32_t mHRChara::debugDispCharaInfo() [?debugDispCharaInfo@mHRChara@@SAXXZ]
-	int32_t debugDispCharaInfo()
+	static int32_t debugDispCharaInfo()
 	{
 		typedef int32_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x46e140);
 		return mFunc();
 	}
 	// [Function] uint8_t mHRChara::mTermAllZakoMotion() [?mTermAllZakoMotion@mHRChara@@SA_NXZ]
-	uint8_t mTermAllZakoMotion()
+	static uint8_t mTermAllZakoMotion()
 	{
 		typedef uint8_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x46e150);
 		return mFunc();
 	}
 	// [Function] uint8_t mHRChara::mInitAllNpc() [?mInitAllNpc@mHRChara@@SA_NXZ]
-	uint8_t mInitAllNpc()
+	static uint8_t mInitAllNpc()
 	{
 		typedef uint8_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x46e3a0);
@@ -6530,14 +6537,14 @@ public:
 		return mFunc(this);
 	}
 	// [Function] uint8_t mHRChara::mCheckAtkAllNpc() [?mCheckAtkAllNpc@mHRChara@@SA_NXZ]
-	uint8_t mCheckAtkAllNpc()
+	static uint8_t mCheckAtkAllNpc()
 	{
 		typedef uint8_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x46e840);
 		return mFunc();
 	}
 	// [Function] uint8_t mHRChara::mCheckCanAtk() [?mCheckCanAtk@mHRChara@@SA_NXZ]
-	uint8_t mCheckCanAtk()
+	static uint8_t mCheckCanAtk()
 	{
 		typedef uint8_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x46e870);
@@ -6747,7 +6754,7 @@ public:
 		return mFunc(this, arg2);
 	}
 	// [Function] class mHRChara* mHRChara::getCharaByGM2FileName(char const* arg1) [?getCharaByGM2FileName@mHRChara@@SAPAV1@PBD@Z]
-	class mHRChara* getCharaByGM2FileName(char const* arg1)
+	static class mHRChara* getCharaByGM2FileName(char const* arg1)
 	{
 		typedef class mHRChara*(__cdecl* _Func)(char const* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x470040);
@@ -6775,7 +6782,7 @@ public:
 		return mFunc(this);
 	}
 	// [Function] class mHRChara* mHRChara::mGetAliveResourceCharaPtr(enum enCharaType arg1, uint32_t arg2) [?mGetAliveResourceCharaPtr@mHRChara@@SAPAV1@W4enCharaType@@I@Z]
-	class mHRChara* mGetAliveResourceCharaPtr(enum enCharaType arg1, uint32_t arg2)
+	static class mHRChara* mGetAliveResourceCharaPtr(enum enCharaType arg1, uint32_t arg2)
 	{
 		typedef class mHRChara*(__cdecl* _Func)(enum enCharaType arg1, uint32_t arg2);
 		_Func mFunc = (_Func)(GameModule + 0x470150);
@@ -6943,21 +6950,21 @@ public:
 		return mFunc(this);
 	}
 	// [Function] uint8_t mHRChara::isThisCharaExist(class mHRChara* arg1) [?isThisCharaExist@mHRChara@@SA_NPBV1@@Z]
-	uint8_t isThisCharaExist(class mHRChara* arg1)
+	static uint8_t isThisCharaExist(class mHRChara* arg1)
 	{
 		typedef uint8_t(__cdecl* _Func)(class mHRChara* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x4725d0);
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t mHRChara::mTermAllNpc() [?mTermAllNpc@mHRChara@@SA_NXZ]
-	uint8_t mTermAllNpc()
+	static uint8_t mTermAllNpc()
 	{
 		typedef uint8_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x472600);
 		return mFunc();
 	}
 	// [Function] int32_t mHRChara::mGetPopZakoNum() [?mGetPopZakoNum@mHRChara@@SAHXZ]
-	int32_t mGetPopZakoNum()
+	static int32_t mGetPopZakoNum()
 	{
 		typedef int32_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x472670);
@@ -6985,42 +6992,42 @@ public:
 		return mFunc(this, arg2);
 	}
 	// [Function] uint8_t mHRChara::mFrameProcAll() [?mFrameProcAll@mHRChara@@SA_NXZ]
-	uint8_t mFrameProcAll()
+	static uint8_t mFrameProcAll()
 	{
 		typedef uint8_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x472810);
 		return mFunc();
 	}
 	// [Function] uint8_t mHRChara::mRenderProcAll(uint8_t arg1) [?mRenderProcAll@mHRChara@@SA_N_N@Z]
-	uint8_t mRenderProcAll(uint8_t arg1)
+	static uint8_t mRenderProcAll(uint8_t arg1)
 	{
 		typedef uint8_t(__cdecl* _Func)(uint8_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0x472a40);
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t mHRChara::mPostRenderProcAll() [?mPostRenderProcAll@mHRChara@@SA_NXZ]
-	uint8_t mPostRenderProcAll()
+	static uint8_t mPostRenderProcAll()
 	{
 		typedef uint8_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x472ba0);
 		return mFunc();
 	}
 	// [Function] uint8_t mHRChara::mTermAllNpcWithoutCmnObj() [?mTermAllNpcWithoutCmnObj@mHRChara@@SA_NXZ]
-	uint8_t mTermAllNpcWithoutCmnObj()
+	static uint8_t mTermAllNpcWithoutCmnObj()
 	{
 		typedef uint8_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x472c10);
 		return mFunc();
 	}
 	// [Function] uint8_t mHRChara::mTermAllEnemyNpc() [?mTermAllEnemyNpc@mHRChara@@SA_NXZ]
-	uint8_t mTermAllEnemyNpc()
+	static uint8_t mTermAllEnemyNpc()
 	{
 		typedef uint8_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x472c80);
 		return mFunc();
 	}
 	// [Function] class mHRChara* mHRChara::mGetNpcTop() [?mGetNpcTop@mHRChara@@SAPAV1@XZ]
-	class mHRChara* mGetNpcTop()
+	static class mHRChara* mGetNpcTop()
 	{
 		typedef class mHRChara*(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x472cf0);
@@ -7433,7 +7440,7 @@ public:
 		return mFunc(this);
 	}
 	// [Function] uint8_t mHRChara::mRenderShadowProcAll() [?mRenderShadowProcAll@mHRChara@@SA_NXZ]
-	uint8_t mRenderShadowProcAll()
+	static uint8_t mRenderShadowProcAll()
 	{
 		typedef uint8_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x477e60);
@@ -7461,14 +7468,14 @@ public:
 		return mFunc(this);
 	}
 	// [Function] class mHRChara* mHRChara::mAllSearchPiyoZako() [?mAllSearchPiyoZako@mHRChara@@SAPAV1@XZ]
-	class mHRChara* mAllSearchPiyoZako()
+	static class mHRChara* mAllSearchPiyoZako()
 	{
 		typedef class mHRChara*(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x4783a0);
 		return mFunc();
 	}
 	// [Function] void mHRChara::OnStageUnloadAll() [?OnStageUnloadAll@mHRChara@@SAXXZ]
-	void OnStageUnloadAll()
+	static void OnStageUnloadAll()
 	{
 		typedef void(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x4783e0);
@@ -7524,9 +7531,9 @@ public:
 			.addProperty("motionInvincibilityFrames", &mHRChara::motionInvincibilityFrames)
 			.addProperty("invincibileMotion", &mHRChara::invincibileMotion)
 			.addFunction("mGetCharaType", &mHRChara::mGetCharaType)
-			.addFunction("isCharacterTypeZako", &mHRChara::isCharacterTypeZako)
+			.addStaticFunction("isCharacterTypeZako", &mHRChara::isCharacterTypeZako)
 			.addFunction("mTestZako", &mHRChara::mTestZako)
-			.addFunction("isCharacterTypeBoss", &mHRChara::isCharacterTypeBoss)
+			.addStaticFunction("isCharacterTypeBoss", &mHRChara::isCharacterTypeBoss)
 			.addFunction("mTestBoss", &mHRChara::mTestBoss)
 			.addFunction("mTestEnemy", &mHRChara::mTestEnemy)
 			.addFunction("mSetItemNo", &mHRChara::mSetItemNo)
@@ -7546,7 +7553,7 @@ public:
 			//.addFunction("mGetNext", &mHRChara::mGetNext)
 			.addFunction("mSetHp", &mHRChara::mSetHp)
 			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetTop", &mHRChara::mGetTop)
+			//.addStaticFunction("mGetTop", &mHRChara::mGetTop)
 			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetRot", &mHRChara::mGetRot)
 			.addFunction("mSetCharaPause", &mHRChara::mSetCharaPause)
@@ -7778,12 +7785,12 @@ public:
 			.addFunction("mTestPiyoRequest", &mHRChara::mTestPiyoRequest)
 			.addFunction("mGetPiyoriHeight", &mHRChara::mGetPiyoriHeight)
 			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetCharaPtr", &mHRChara::mGetCharaPtr)
+			//.addStaticFunction("mGetCharaPtr", &mHRChara::mGetCharaPtr)
 			// Functions with parameters pointing to native types (void* arg1) not supported in LuaBridge.
-			//.addFunction("mRenderGmf", &mHRChara::mRenderGmf)
-			.addFunction("debugDispCharaInfo", &mHRChara::debugDispCharaInfo)
-			.addFunction("mTermAllZakoMotion", &mHRChara::mTermAllZakoMotion)
-			.addFunction("mInitAllNpc", &mHRChara::mInitAllNpc)
+			//.addStaticFunction("mRenderGmf", &mHRChara::mRenderGmf)
+			.addStaticFunction("debugDispCharaInfo", &mHRChara::debugDispCharaInfo)
+			.addStaticFunction("mTermAllZakoMotion", &mHRChara::mTermAllZakoMotion)
+			.addStaticFunction("mInitAllNpc", &mHRChara::mInitAllNpc)
 			// Functions with parameters pointing to native types (struct tagHRTASKCHECK* arg4) not supported in LuaBridge.
 			//.addFunction("mCreateBloodSplash", &mHRChara::mCreateBloodSplash)
 			.addFunction("mBloodSplashProc", &mHRChara::mBloodSplashProc)
@@ -7800,8 +7807,8 @@ public:
 			//.addFunction("DeleteCutmarkFromList", &mHRChara::DeleteCutmarkFromList)
 			.addFunction("SetPowerFlash", &mHRChara::SetPowerFlash)
 			.addFunction("SetNoGuardEffect", &mHRChara::SetNoGuardEffect)
-			.addFunction("mCheckAtkAllNpc", &mHRChara::mCheckAtkAllNpc)
-			.addFunction("mCheckCanAtk", &mHRChara::mCheckCanAtk)
+			.addStaticFunction("mCheckAtkAllNpc", &mHRChara::mCheckAtkAllNpc)
+			.addStaticFunction("mCheckCanAtk", &mHRChara::mCheckCanAtk)
 			.addFunction("mCallBeforeRenderProc", &mHRChara::mCallBeforeRenderProc)
 			.addFunction("mCheckCanHit", &mHRChara::mCheckCanHit)
 			.addFunction("CreateFootSmokeEffect", &mHRChara::CreateFootSmokeEffect)
@@ -7835,12 +7842,12 @@ public:
 			.addFunction("mTestMotion", &mHRChara::mTestMotion)
 			.addFunction("mSetDifficultyMotionSpeed", &mHRChara::mSetDifficultyMotionSpeed)
 			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("getCharaByGM2FileName", &mHRChara::getCharaByGM2FileName)
+			//.addStaticFunction("getCharaByGM2FileName", &mHRChara::getCharaByGM2FileName)
 			.addFunction("mSetDeath", &mHRChara::mSetDeath)
 			.addFunction("mDamageCallBackForScript", &mHRChara::mDamageCallBackForScript)
 			.addFunction("mGetMotionPlay", &mHRChara::mGetMotionPlay)
 			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetAliveResourceCharaPtr", &mHRChara::mGetAliveResourceCharaPtr)
+			//.addStaticFunction("mGetAliveResourceCharaPtr", &mHRChara::mGetAliveResourceCharaPtr)
 			.addFunction("ReleaseCutmark", &mHRChara::ReleaseCutmark)
 			.addFunction("mTestPiyori", &mHRChara::mTestPiyori)
 			.addFunction("mGetMotionTotalTick", &mHRChara::mGetMotionTotalTick)
@@ -7872,19 +7879,19 @@ public:
 			.addFunction("mDetouchMotionBrend", &mHRChara::mDetouchMotionBrend)
 			.addFunction("mReleaseDemoBtleIcn", &mHRChara::mReleaseDemoBtleIcn)
 			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
-			//.addFunction("isThisCharaExist", &mHRChara::isThisCharaExist)
-			.addFunction("mTermAllNpc", &mHRChara::mTermAllNpc)
-			.addFunction("mGetPopZakoNum", &mHRChara::mGetPopZakoNum)
+			//.addStaticFunction("isThisCharaExist", &mHRChara::isThisCharaExist)
+			.addStaticFunction("mTermAllNpc", &mHRChara::mTermAllNpc)
+			.addStaticFunction("mGetPopZakoNum", &mHRChara::mGetPopZakoNum)
 			.addFunction("mDeleteDispChara", &mHRChara::mDeleteDispChara)
 			.addFunction("mSetAiDef", &mHRChara::mSetAiDef)
 			.addFunction("setFootShadowDrawFlag", &mHRChara::setFootShadowDrawFlag)
-			.addFunction("mFrameProcAll", &mHRChara::mFrameProcAll)
-			.addFunction("mRenderProcAll", &mHRChara::mRenderProcAll)
-			.addFunction("mPostRenderProcAll", &mHRChara::mPostRenderProcAll)
-			.addFunction("mTermAllNpcWithoutCmnObj", &mHRChara::mTermAllNpcWithoutCmnObj)
-			.addFunction("mTermAllEnemyNpc", &mHRChara::mTermAllEnemyNpc)
+			.addStaticFunction("mFrameProcAll", &mHRChara::mFrameProcAll)
+			.addStaticFunction("mRenderProcAll", &mHRChara::mRenderProcAll)
+			.addStaticFunction("mPostRenderProcAll", &mHRChara::mPostRenderProcAll)
+			.addStaticFunction("mTermAllNpcWithoutCmnObj", &mHRChara::mTermAllNpcWithoutCmnObj)
+			.addStaticFunction("mTermAllEnemyNpc", &mHRChara::mTermAllEnemyNpc)
 			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetNpcTop", &mHRChara::mGetNpcTop)
+			//.addStaticFunction("mGetNpcTop", &mHRChara::mGetNpcTop)
 			// Functions with parameters pointing to native types (char const* arg2) not supported in LuaBridge.
 			//.addFunction("SetFileName", &mHRChara::SetFileName)
 			.addFunction("mSetMaxHp", &mHRChara::mSetMaxHp)
@@ -7966,16 +7973,16 @@ public:
 			// Functions with parameters pointing to native types (float* arg6) not supported in LuaBridge.
 			//.addFunction("mPlayCamMot", &mHRChara::mPlayCamMot)
 			.addFunction("mStopCamMotFromCharMot", &mHRChara::mStopCamMotFromCharMot)
-			.addFunction("mRenderShadowProcAll", &mHRChara::mRenderShadowProcAll)
+			.addStaticFunction("mRenderShadowProcAll", &mHRChara::mRenderShadowProcAll)
 			.addFunction("mSetRotY", &mHRChara::mSetRotY)
 			// Functions with parameters pointing to native types (struct Vec* arg7) not supported in LuaBridge.
 			//.addFunction("mCheckSegmentHitStage", &mHRChara::mCheckSegmentHitStage)
 			.addFunction("mEraseDispChara", &mHRChara::mEraseDispChara)
 			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetCharaPtr", &mHRChara::mGetCharaPtr)
+			//.addStaticFunction("mGetCharaPtr", &mHRChara::mGetCharaPtr)
 			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mAllSearchPiyoZako", &mHRChara::mAllSearchPiyoZako)
-			.addFunction("OnStageUnloadAll", &mHRChara::OnStageUnloadAll)
+			//.addStaticFunction("mAllSearchPiyoZako", &mHRChara::mAllSearchPiyoZako)
+			.addStaticFunction("OnStageUnloadAll", &mHRChara::OnStageUnloadAll)
 		.endClass();
 	}
 #endif
@@ -8952,42 +8959,42 @@ public:
 		return mFunc(this);
 	}
 	// [Function] void mHRPc::mSetDisplayMiniMapFlag(uint8_t arg1) [?mSetDisplayMiniMapFlag@mHRPc@@SAX_N@Z]
-	void mSetDisplayMiniMapFlag(uint8_t arg1)
+	static void mSetDisplayMiniMapFlag(uint8_t arg1)
 	{
 		typedef void(__cdecl* _Func)(uint8_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0xa3330);
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t mHRPc::mGetDisplayMiniMapFlag() [?mGetDisplayMiniMapFlag@mHRPc@@SA_NXZ]
-	uint8_t mGetDisplayMiniMapFlag()
+	static uint8_t mGetDisplayMiniMapFlag()
 	{
 		typedef uint8_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0xa3340);
 		return mFunc();
 	}
 	// [Function] void mHRPc::mSetCameraXReverseControlFlag(uint8_t arg1) [?mSetCameraXReverseControlFlag@mHRPc@@SAX_N@Z]
-	void mSetCameraXReverseControlFlag(uint8_t arg1)
+	static void mSetCameraXReverseControlFlag(uint8_t arg1)
 	{
 		typedef void(__cdecl* _Func)(uint8_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0xa3350);
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t mHRPc::mGetCameraXReverseControlFlag() [?mGetCameraXReverseControlFlag@mHRPc@@SA_NXZ]
-	uint8_t mGetCameraXReverseControlFlag()
+	static uint8_t mGetCameraXReverseControlFlag()
 	{
 		typedef uint8_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0xa3360);
 		return mFunc();
 	}
 	// [Function] void mHRPc::mSetCameraYReverseControlFlag(uint8_t arg1) [?mSetCameraYReverseControlFlag@mHRPc@@SAX_N@Z]
-	void mSetCameraYReverseControlFlag(uint8_t arg1)
+	static void mSetCameraYReverseControlFlag(uint8_t arg1)
 	{
 		typedef void(__cdecl* _Func)(uint8_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0xa3370);
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t mHRPc::mGetCameraYReverseControlFlag() [?mGetCameraYReverseControlFlag@mHRPc@@SA_NXZ]
-	uint8_t mGetCameraYReverseControlFlag()
+	static uint8_t mGetCameraYReverseControlFlag()
 	{
 		typedef uint8_t(__cdecl* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0xa3380);
@@ -12739,7 +12746,7 @@ public:
 		return mFunc(this, arg2);
 	}
 	// [Function] void mHRPc::mRenderFpsCursor(void* arg1) [?mRenderFpsCursor@mHRPc@@SAXPAX@Z]
-	void mRenderFpsCursor(void* arg1)
+	static void mRenderFpsCursor(void* arg1)
 	{
 		typedef void(__cdecl* _Func)(void* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x43cc10);
@@ -13978,12 +13985,12 @@ public:
 			.addFunction("mSetRestartBGM", &mHRPc::mSetRestartBGM)
 			// Functions with return values pointing to native types ('union uniSMflag*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetSubMissionflag", &mHRPc::mGetSubMissionflag)
-			.addFunction("mSetDisplayMiniMapFlag", &mHRPc::mSetDisplayMiniMapFlag)
-			.addFunction("mGetDisplayMiniMapFlag", &mHRPc::mGetDisplayMiniMapFlag)
-			.addFunction("mSetCameraXReverseControlFlag", &mHRPc::mSetCameraXReverseControlFlag)
-			.addFunction("mGetCameraXReverseControlFlag", &mHRPc::mGetCameraXReverseControlFlag)
-			.addFunction("mSetCameraYReverseControlFlag", &mHRPc::mSetCameraYReverseControlFlag)
-			.addFunction("mGetCameraYReverseControlFlag", &mHRPc::mGetCameraYReverseControlFlag)
+			.addStaticFunction("mSetDisplayMiniMapFlag", &mHRPc::mSetDisplayMiniMapFlag)
+			.addStaticFunction("mGetDisplayMiniMapFlag", &mHRPc::mGetDisplayMiniMapFlag)
+			.addStaticFunction("mSetCameraXReverseControlFlag", &mHRPc::mSetCameraXReverseControlFlag)
+			.addStaticFunction("mGetCameraXReverseControlFlag", &mHRPc::mGetCameraXReverseControlFlag)
+			.addStaticFunction("mSetCameraYReverseControlFlag", &mHRPc::mSetCameraYReverseControlFlag)
+			.addStaticFunction("mGetCameraYReverseControlFlag", &mHRPc::mGetCameraYReverseControlFlag)
 			.addFunction("mAddClearNum", &mHRPc::mAddClearNum)
 			.addFunction("mGetDeadSubmission", &mHRPc::mGetDeadSubmission)
 			.addFunction("mCheckStatusMenuDisp", &mHRPc::mCheckStatusMenuDisp)
@@ -14596,7 +14603,7 @@ public:
 			.addFunction("mDetachWeapon", &mHRPc::mDetachWeapon)
 			.addFunction("mAttachWeapon", &mHRPc::mAttachWeapon)
 			// Functions with parameters pointing to native types (void* arg1) not supported in LuaBridge.
-			//.addFunction("mRenderFpsCursor", &mHRPc::mRenderFpsCursor)
+			//.addStaticFunction("mRenderFpsCursor", &mHRPc::mRenderFpsCursor)
 			.addFunction("mAddTension", &mHRPc::mAddTension)
 			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
 			//.addFunction("mSetWarpPos", &mHRPc::mSetWarpPos)
@@ -17754,7 +17761,7 @@ class CCameraVibTiming
 {
 public:
 	// [Function] class CCameraVibTiming* CCameraVibTiming::getTable(int32_t* arg1, class mHRChara& arg2) [?getTable@CCameraVibTiming@@SAPBV1@PAHABVmHRChara@@@Z]
-	class CCameraVibTiming* getTable(int32_t* arg1, class mHRChara& arg2)
+	static class CCameraVibTiming* getTable(int32_t* arg1, class mHRChara& arg2)
 	{
 		typedef class CCameraVibTiming*(__cdecl* _Func)(int32_t* arg1, class mHRChara& arg2);
 		_Func mFunc = (_Func)(GameModule + 0x567740);
@@ -17783,7 +17790,7 @@ public:
 			.addProperty("m_eAnimeType", &CCameraVibTiming::m_eAnimeType)
 			.addProperty("m_fAnimeScale", &CCameraVibTiming::m_fAnimeScale)
 			// Functions with return values pointing to native types ('class CCameraVibTiming*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("getTable", &CCameraVibTiming::getTable)
+			//.addStaticFunction("getTable", &CCameraVibTiming::getTable)
 		.endClass();
 	}
 #endif
@@ -19698,28 +19705,28 @@ class FkPjLib
 {
 public:
 	// [Function] float FkPjLib::GetCharaNowPlayMotionTick(class mHRChara* arg1) [?GetCharaNowPlayMotionTick@FkPjLib@@SAMPAVmHRChara@@@Z]
-	float GetCharaNowPlayMotionTick(class mHRChara* arg1)
+	static float GetCharaNowPlayMotionTick(class mHRChara* arg1)
 	{
 		typedef float(__cdecl* _Func)(class mHRChara* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x4bca80);
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t FkPjLib::CheckValidCharaPtr(class mHRChara* arg1) [?CheckValidCharaPtr@FkPjLib@@SA_NPAVmHRChara@@@Z]
-	uint8_t CheckValidCharaPtr(class mHRChara* arg1)
+	static uint8_t CheckValidCharaPtr(class mHRChara* arg1)
 	{
 		typedef uint8_t(__cdecl* _Func)(class mHRChara* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x4bd1a0);
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t FkPjLib::CheckCharSurroundStageCollisionAndAdjustSafetyPos(class mHRChara* arg1, float arg2, float arg3) [?CheckCharSurroundStageCollisionAndAdjustSafetyPos@FkPjLib@@SA_NPAVmHRChara@@MM@Z]
-	uint8_t CheckCharSurroundStageCollisionAndAdjustSafetyPos(class mHRChara* arg1, float arg2, float arg3)
+	static uint8_t CheckCharSurroundStageCollisionAndAdjustSafetyPos(class mHRChara* arg1, float arg2, float arg3)
 	{
 		typedef uint8_t(__cdecl* _Func)(class mHRChara* arg1, float arg2, float arg3);
 		_Func mFunc = (_Func)(GameModule + 0x4bd530);
 		return mFunc(arg1, arg2, arg3);
 	}
 	// [Function] class mHRChara* FkPjLib::GetCharaPtrByNpcID(int32_t const arg1, uint8_t const arg2) [?GetCharaPtrByNpcID@FkPjLib@@SAPAVmHRChara@@H_N@Z]
-	class mHRChara* GetCharaPtrByNpcID(int32_t const arg1, uint8_t const arg2)
+	static class mHRChara* GetCharaPtrByNpcID(int32_t const arg1, uint8_t const arg2)
 	{
 		typedef class mHRChara*(__cdecl* _Func)(int32_t const arg1, uint8_t const arg2);
 		_Func mFunc = (_Func)(GameModule + 0x4bdf20);
@@ -19732,13 +19739,13 @@ public:
 	{
 		NS = NS.beginClass<FkPjLib>("FkPjLib")
 			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
-			//.addFunction("GetCharaNowPlayMotionTick", &FkPjLib::GetCharaNowPlayMotionTick)
+			//.addStaticFunction("GetCharaNowPlayMotionTick", &FkPjLib::GetCharaNowPlayMotionTick)
 			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
-			//.addFunction("CheckValidCharaPtr", &FkPjLib::CheckValidCharaPtr)
+			//.addStaticFunction("CheckValidCharaPtr", &FkPjLib::CheckValidCharaPtr)
 			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
-			//.addFunction("CheckCharSurroundStageCollisionAndAdjustSafetyPos", &FkPjLib::CheckCharSurroundStageCollisionAndAdjustSafetyPos)
+			//.addStaticFunction("CheckCharSurroundStageCollisionAndAdjustSafetyPos", &FkPjLib::CheckCharSurroundStageCollisionAndAdjustSafetyPos)
 			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("GetCharaPtrByNpcID", &FkPjLib::GetCharaPtrByNpcID)
+			//.addStaticFunction("GetCharaPtrByNpcID", &FkPjLib::GetCharaPtrByNpcID)
 		.endClass();
 	}
 #endif
@@ -22378,28 +22385,28 @@ public:
 		return mFunc(this);
 	}
 	// [Function] uint8_t mHRLockOnList::mCheckEntry(class mHRChara* arg1) [?mCheckEntry@mHRLockOnList@@SA_NPAVmHRChara@@@Z]
-	uint8_t mCheckEntry(class mHRChara* arg1)
+	static uint8_t mCheckEntry(class mHRChara* arg1)
 	{
 		typedef uint8_t(__cdecl* _Func)(class mHRChara* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x567850);
 		return mFunc(arg1);
 	}
 	// [Function] void mHRLockOnList::mAddList(class mHRChara* arg1) [?mAddList@mHRLockOnList@@SAXPAVmHRChara@@@Z]
-	void mAddList(class mHRChara* arg1)
+	static void mAddList(class mHRChara* arg1)
 	{
 		typedef void(__cdecl* _Func)(class mHRChara* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x567880);
 		return mFunc(arg1);
 	}
 	// [Function] void mHRLockOnList::mDelList(class mHRChara* arg1) [?mDelList@mHRLockOnList@@SAXPAVmHRChara@@@Z]
-	void mDelList(class mHRChara* arg1)
+	static void mDelList(class mHRChara* arg1)
 	{
 		typedef void(__cdecl* _Func)(class mHRChara* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x567910);
 		return mFunc(arg1);
 	}
 	// [Function] class mHRLockOnList* mHRLockOnList::mGetNextTatget(class mHRChara* arg1) [?mGetNextTatget@mHRLockOnList@@SAPAV1@PAVmHRChara@@@Z]
-	class mHRLockOnList* mGetNextTatget(class mHRChara* arg1)
+	static class mHRLockOnList* mGetNextTatget(class mHRChara* arg1)
 	{
 		typedef class mHRLockOnList*(__cdecl* _Func)(class mHRChara* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x567940);
@@ -22421,13 +22428,13 @@ public:
 			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetCharaPtr", &mHRLockOnList::mGetCharaPtr)
 			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
-			//.addFunction("mCheckEntry", &mHRLockOnList::mCheckEntry)
+			//.addStaticFunction("mCheckEntry", &mHRLockOnList::mCheckEntry)
 			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
-			//.addFunction("mAddList", &mHRLockOnList::mAddList)
+			//.addStaticFunction("mAddList", &mHRLockOnList::mAddList)
 			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
-			//.addFunction("mDelList", &mHRLockOnList::mDelList)
+			//.addStaticFunction("mDelList", &mHRLockOnList::mDelList)
 			// Functions with return values pointing to native types ('class mHRLockOnList*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetNextTatget", &mHRLockOnList::mGetNextTatget)
+			//.addStaticFunction("mGetNextTatget", &mHRLockOnList::mGetNextTatget)
 		.endClass();
 	}
 #endif
@@ -22440,7 +22447,7 @@ class EffectEnemyDamage : public HrTask
 {
 public:
 	// [Function] class EffectEnemyDamage* EffectEnemyDamage::Create(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4) [?Create@EffectEnemyDamage@@SAPAV1@PAVmHRChara@@PAVTGmf@@HI@Z]
-	class EffectEnemyDamage* Create(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4)
+	static class EffectEnemyDamage* Create(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4)
 	{
 		typedef class EffectEnemyDamage*(__cdecl* _Func)(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4);
 		_Func mFunc = (_Func)(GameModule + 0x585710);
@@ -22476,7 +22483,7 @@ public:
 			.addProperty("m_nColorMin", &EffectEnemyDamage::m_nColorMin)
 			.addProperty("m_nBright", &EffectEnemyDamage::m_nBright)
 			// Functions with return values pointing to native types ('class EffectEnemyDamage*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("Create", &EffectEnemyDamage::Create)
+			//.addStaticFunction("Create", &EffectEnemyDamage::Create)
 		.endClass();
 	}
 #endif
@@ -22578,6 +22585,897 @@ static_assert(sizeof(stThrowInfo::slowMotionNo) == 4, "expected slowMotionNo to 
 static_assert(sizeof(stThrowInfo::slowTick) == 4, "expected slowTick to be size 4");
 static_assert(sizeof(stThrowInfo::setThrowDamage) == 1, "expected setThrowDamage to be size 1");
 static_assert(sizeof(stThrowInfo) == 64, "expected struct stThrowInfo to be size 64");
+
+// [Structure] class HrMessage
+class HrMessage : public ghmListObj
+{
+public:
+	// enum HrMessage::MESS_STATUS_ID
+	enum MESS_STATUS_ID : uint32_t
+	{
+		// Enum values
+
+		// <MESS_STS_IDLE = 0x0>
+		MESS_STS_IDLE = 0,
+
+		// <MESS_STS_DISP = 0x1>
+		MESS_STS_DISP = 1,
+
+		// <MESS_STS_PAUSE = 0x2>
+		MESS_STS_PAUSE = 2,
+
+		// <MESS_STS_END = 0x3>
+		MESS_STS_END = 3,
+
+		// <MESS_STS_MAX = 0x4>
+		MESS_STS_MAX = 4
+
+	};
+
+	// [Function] class ghmGcFont* __convention("thiscall") HrMessage::_GetFont(class HrMessage* const this) [?_GetFont@HrMessage@@IAEPAVghmGcFont@@XZ]
+	class ghmGcFont* _GetFont()
+	{
+		typedef class ghmGcFont*(__thiscall* _Func)(class HrMessage* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xb36a0);
+		return mFunc(this);
+	}
+	// [Function] enum HrMessage::MESS_STATUS_ID __convention("thiscall") HrMessage::_GetStatus(class HrMessage* const this) [?_GetStatus@HrMessage@@IAE?AW4MESS_STATUS_ID@1@XZ]
+	enum HrMessage::MESS_STATUS_ID _GetStatus()
+	{
+		typedef enum HrMessage::MESS_STATUS_ID(__thiscall* _Func)(class HrMessage* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xb3710);
+		return mFunc(this);
+	}
+	// [Function] class HrMessage* __convention("thiscall") HrMessage::GetNext(class HrMessage* const this) [?GetNext@HrMessage@@QAEPAV1@XZ]
+	class HrMessage* GetNext()
+	{
+		typedef class HrMessage*(__thiscall* _Func)(class HrMessage* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xb3720);
+		return mFunc(this);
+	}
+	// [Function] class WGdl* __convention("thiscall") HrMessage::_GetGdl(class HrMessage* const this) [?_GetGdl@HrMessage@@IAEPAVWGdl@@XZ]
+	class WGdl* _GetGdl()
+	{
+		typedef class WGdl*(__thiscall* _Func)(class HrMessage* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xb3730);
+		return mFunc(this);
+	}
+	// [Function] uint32_t __convention("thiscall") HrMessage::GetHandle(class HrMessage* const this) [?GetHandle@HrMessage@@QAEIXZ]
+	uint32_t GetHandle()
+	{
+		typedef uint32_t(__thiscall* _Func)(class HrMessage* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xb3740);
+		return mFunc(this);
+	}
+	// [Function] void HrMessage::StartMessage(uint32_t arg1, int32_t arg2, uint32_t arg3, uint8_t arg4) [?StartMessage@HrMessage@@SAXIHI_N@Z]
+	static void StartMessage(uint32_t arg1, int32_t arg2, uint32_t arg3, uint8_t arg4)
+	{
+		typedef void(__cdecl* _Func)(uint32_t arg1, int32_t arg2, uint32_t arg3, uint8_t arg4);
+		_Func mFunc = (_Func)(GameModule + 0x4896f0);
+		return mFunc(arg1, arg2, arg3, arg4);
+	}
+	// [Function] void HrMessage::RenderProcess(void* arg1) [?RenderProcess@HrMessage@@SAXPAX@Z]
+	static void RenderProcess(void* arg1)
+	{
+		typedef void(__cdecl* _Func)(void* arg1);
+		_Func mFunc = (_Func)(GameModule + 0x489810);
+		return mFunc(arg1);
+	}
+	// [Function] void __convention("thiscall") HrMessage::Render(class HrMessage* const this) [?Render@HrMessage@@IAEXXZ]
+	void Render()
+	{
+		typedef void(__thiscall* _Func)(class HrMessage* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x489860);
+		return mFunc(this);
+	}
+	// [Function] struct GdlDialog* __convention("thiscall") HrMessage::GetDialog(class HrMessage* const this) [?GetDialog@HrMessage@@QAEPAUGdlDialog@@XZ]
+	struct GdlDialog* GetDialog()
+	{
+		typedef struct GdlDialog*(__thiscall* _Func)(class HrMessage* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x489890);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") HrMessage::Frame(class HrMessage* const this) [?Frame@HrMessage@@IAEXXZ]
+	void Frame()
+	{
+		typedef void(__thiscall* _Func)(class HrMessage* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x4898a0);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") HrMessage::DispLine_RenderProcess(class HrMessage* const this) [?DispLine_RenderProcess@HrMessage@@IAEXXZ]
+	void DispLine_RenderProcess()
+	{
+		typedef void(__thiscall* _Func)(class HrMessage* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x4899c0);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") HrMessage::DispLine_FrameProcess(class HrMessage* const this) [?DispLine_FrameProcess@HrMessage@@IAE_NXZ]
+	uint8_t DispLine_FrameProcess()
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrMessage* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x4899e0);
+		return mFunc(this);
+	}
+	// [Function] void HrMessage::GetStrLengthW(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6) [?GetStrLengthW@HrMessage@@SAXIPBDHHAAM1@Z]
+	static void GetStrLengthW(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6)
+	{
+		typedef void(__cdecl* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6);
+		_Func mFunc = (_Func)(GameModule + 0x489a60);
+		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6);
+	}
+	// [Function] void HrMessage::GetStrLength(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6) [?GetStrLength@HrMessage@@SAXIPBDHHAAM1@Z]
+	static void GetStrLength(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6)
+	{
+		typedef void(__cdecl* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6);
+		_Func mFunc = (_Func)(GameModule + 0x489c60);
+		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6);
+	}
+	// [Function] void HrMessage::GetTick(uint32_t arg1, char const* arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5) [?GetTick@HrMessage@@SAXIPBDHAAI1@Z]
+	static void GetTick(uint32_t arg1, char const* arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5)
+	{
+		typedef void(__cdecl* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5);
+		_Func mFunc = (_Func)(GameModule + 0x489e90);
+		return mFunc(arg1, arg2, arg3, arg4, arg5);
+	}
+	// [Function] void __convention("thiscall") HrMessage::_GetTick(class HrMessage* const this, int32_t arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5) [?_GetTick@HrMessage@@IAEXHHAAI0@Z]
+	void _GetTick(int32_t arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5)
+	{
+		typedef void(__thiscall* _Func)(class HrMessage* const thisPtr, int32_t arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5);
+		_Func mFunc = (_Func)(GameModule + 0x489f50);
+		return mFunc(this, arg2, arg3, arg4, arg5);
+	}
+	// [Function] void HrMessage::SetFontFuti(uint32_t arg1, int32_t arg2, struct GXColor arg3) [?SetFontFuti@HrMessage@@SAXIHUGXColor@@@Z]
+	static void SetFontFuti(uint32_t arg1, int32_t arg2, struct GXColor arg3)
+	{
+		typedef void(__cdecl* _Func)(uint32_t arg1, int32_t arg2, struct GXColor arg3);
+		_Func mFunc = (_Func)(GameModule + 0x489fd0);
+		return mFunc(arg1, arg2, arg3);
+	}
+	// [Function] void __convention("thiscall") HrMessage::_SetFontFuti(class HrMessage* const this, int32_t arg2, struct GXColor arg3) [?_SetFontFuti@HrMessage@@IAEXHUGXColor@@@Z]
+	void _SetFontFuti(int32_t arg2, struct GXColor arg3)
+	{
+		typedef void(__thiscall* _Func)(class HrMessage* const thisPtr, int32_t arg2, struct GXColor arg3);
+		_Func mFunc = (_Func)(GameModule + 0x48a020);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] void HrMessage::SetFontEx(uint32_t arg1, float arg2) [?SetFontEx@HrMessage@@SAXIM@Z]
+	static void SetFontEx(uint32_t arg1, float arg2)
+	{
+		typedef void(__cdecl* _Func)(uint32_t arg1, float arg2);
+		_Func mFunc = (_Func)(GameModule + 0x48a040);
+		return mFunc(arg1, arg2);
+	}
+	// [Function] void __convention("thiscall") HrMessage::_SetFontEx(class HrMessage* const this, float arg2) [?_SetFontEx@HrMessage@@IAEXM@Z]
+	void _SetFontEx(float arg2)
+	{
+		typedef void(__thiscall* _Func)(class HrMessage* const thisPtr, float arg2);
+		_Func mFunc = (_Func)(GameModule + 0x48a080);
+		return mFunc(this, arg2);
+	}
+	// [Function] int16_t const* HrMessage::GetStringsW(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4) [?GetStringsW@HrMessage@@SAPB_SIPBDHH@Z]
+	static int16_t const* GetStringsW(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4)
+	{
+		typedef int16_t const*(__cdecl* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4);
+		_Func mFunc = (_Func)(GameModule + 0x48a0a0);
+		return mFunc(arg1, arg2, arg3, arg4);
+	}
+	// [Function] char const* HrMessage::GetStrings(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4) [?GetStrings@HrMessage@@SAPBDIPBDHH@Z]
+	static char const* GetStrings(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4)
+	{
+		typedef char const*(__cdecl* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4);
+		_Func mFunc = (_Func)(GameModule + 0x48a120);
+		return mFunc(arg1, arg2, arg3, arg4);
+	}
+	// [Function] int16_t const* __convention("thiscall") HrMessage::_GetStringsW(class HrMessage* const this, int32_t arg2, int32_t arg3, int32_t arg4) [?_GetStringsW@HrMessage@@IAEPB_SHHH@Z]
+	int16_t const* _GetStringsW(int32_t arg2, int32_t arg3, int32_t arg4)
+	{
+		typedef int16_t const*(__thiscall* _Func)(class HrMessage* const thisPtr, int32_t arg2, int32_t arg3, int32_t arg4);
+		_Func mFunc = (_Func)(GameModule + 0x48a1a0);
+		return mFunc(this, arg2, arg3, arg4);
+	}
+	// [Function] char const* __convention("thiscall") HrMessage::_GetStrings(class HrMessage* const this, int32_t arg2, int32_t arg3, int32_t arg4) [?_GetStrings@HrMessage@@IAEPBDHHH@Z]
+	char const* _GetStrings(int32_t arg2, int32_t arg3, int32_t arg4)
+	{
+		typedef char const*(__thiscall* _Func)(class HrMessage* const thisPtr, int32_t arg2, int32_t arg3, int32_t arg4);
+		_Func mFunc = (_Func)(GameModule + 0x48a210);
+		return mFunc(this, arg2, arg3, arg4);
+	}
+	// [Function] float HrMessage::DispMessage(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10) [?DispMessage@HrMessage@@SAMIPBDHHMMUGXColor@@HH_N@Z]
+	static float DispMessage2(uint32_t arg1, std::string arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, uint32_t arg7, int32_t arg8)
+	{
+		GXColor Color;
+		Color.PackedValue = arg7;
+		const char* c = arg2.c_str();
+		return DispMessage(arg1, c, arg3, arg4, arg5, arg6, Color, arg8, 0, 0);
+	}
+	// [Function] float HrMessage::DispMessage(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10) [?DispMessage@HrMessage@@SAMIPBDHHMMUGXColor@@HH_N@Z]
+	static float DispMessage(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10)
+	{
+		typedef float(__fastcall* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10);
+		_Func mFunc = (_Func)(GameModule + 0x48a280);
+		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	// [Function] class ghmGcFont* HrMessage::GetFont(uint32_t arg1) [?GetFont@HrMessage@@SAPAVghmGcFont@@I@Z]
+	static class ghmGcFont* GetFont(uint32_t arg1)
+	{
+		typedef class ghmGcFont*(__cdecl* _Func)(uint32_t arg1);
+		_Func mFunc = (_Func)(GameModule + 0x48a360);
+		return mFunc(arg1);
+	}
+	// [Function] class WGdl* HrMessage::GetGdl(uint32_t arg1) [?GetGdl@HrMessage@@SAPAVWGdl@@I@Z]
+	static class WGdl* GetGdl(uint32_t arg1)
+	{
+		typedef class WGdl*(__cdecl* _Func)(uint32_t arg1);
+		_Func mFunc = (_Func)(GameModule + 0x48a390);
+		return mFunc(arg1);
+	}
+	// [Function] int32_t HrMessage::GetSentenceNum(uint32_t arg1, char const* arg2, int32_t arg3) [?GetSentenceNum@HrMessage@@SAHIPBDH@Z]
+	static int32_t GetSentenceNum(uint32_t arg1, char const* arg2, int32_t arg3)
+	{
+		typedef int32_t(__cdecl* _Func)(uint32_t arg1, char const* arg2, int32_t arg3);
+		_Func mFunc = (_Func)(GameModule + 0x48a3c0);
+		return mFunc(arg1, arg2, arg3);
+	}
+	// [Function] int32_t HrMessage::GetLineNum(uint32_t arg1, char const* arg2) [?GetLineNum@HrMessage@@SAHIPBD@Z]
+	static int32_t GetLineNum(uint32_t arg1, char const* arg2)
+	{
+		typedef int32_t(__cdecl* _Func)(uint32_t arg1, char const* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x48a450);
+		return mFunc(arg1, arg2);
+	}
+	// [Function] int32_t __convention("thiscall") HrMessage::_GetSentenceNum(class HrMessage* const this, int32_t arg2, int32_t arg3) [?_GetSentenceNum@HrMessage@@IAEHHH@Z]
+	int32_t _GetSentenceNum(int32_t arg2, int32_t arg3)
+	{
+		typedef int32_t(__thiscall* _Func)(class HrMessage* const thisPtr, int32_t arg2, int32_t arg3);
+		_Func mFunc = (_Func)(GameModule + 0x48a510);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] int32_t __convention("thiscall") HrMessage::_GetLineNum(class HrMessage* const this, int32_t arg2) [?_GetLineNum@HrMessage@@IAEHH@Z]
+	int32_t _GetLineNum(int32_t arg2)
+	{
+		typedef int32_t(__thiscall* _Func)(class HrMessage* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x48a570);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") HrMessage::_DispChar(class HrMessage* const this, int32_t arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, float arg7, struct GXColor arg8, uint8_t arg9) [?_DispChar@HrMessage@@IAE_NHHHHMMUGXColor@@_N@Z]
+	uint8_t _DispChar(int32_t arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, float arg7, struct GXColor arg8, uint8_t arg9)
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrMessage* const thisPtr, int32_t arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, float arg7, struct GXColor arg8, uint8_t arg9);
+		_Func mFunc = (_Func)(GameModule + 0x48a5b0);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
+	}
+	// [Function] float __convention("thiscall") HrMessage::_DispMessage(class HrMessage* const this, int32_t arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10) [?_DispMessage@HrMessage@@IAEMHHHMMUGXColor@@HH_N@Z]
+	float _DispMessage(int32_t arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10)
+	{
+		typedef float(__thiscall* _Func)(class HrMessage* const thisPtr, int32_t arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10);
+		_Func mFunc = (_Func)(GameModule + 0x48a6a0);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	// [Function] void __convention("thiscall") HrMessage::_Stop(class HrMessage* const this) [?_Stop@HrMessage@@IAEXXZ]
+	void _Stop()
+	{
+		typedef void(__thiscall* _Func)(class HrMessage* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x48aa70);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") HrMessage::SetMessage(class HrMessage* const this, char const* arg2, uint32_t arg3, uint8_t arg4) [?SetMessage@HrMessage@@QAE_NPBDI_N@Z]
+	uint8_t SetMessage(char const* arg2, uint32_t arg3, uint8_t arg4)
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrMessage* const thisPtr, char const* arg2, uint32_t arg3, uint8_t arg4);
+		_Func mFunc = (_Func)(GameModule + 0x48aaa0);
+		return mFunc(this, arg2, arg3, arg4);
+	}
+	// [Function] void __convention("thiscall") HrMessage::_DePause(class HrMessage* const this) [?_DePause@HrMessage@@IAEXXZ]
+	void _DePause()
+	{
+		typedef void(__thiscall* _Func)(class HrMessage* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x48ad10);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") HrMessage::_Pause(class HrMessage* const this) [?_Pause@HrMessage@@IAEXXZ]
+	void _Pause()
+	{
+		typedef void(__thiscall* _Func)(class HrMessage* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x48ad20);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") HrMessage::SetFont(class HrMessage* const this, class ghmGcFont* arg2) [?SetFont@HrMessage@@QAE_NPAVghmGcFont@@@Z]
+	uint8_t SetFont(class ghmGcFont* arg2)
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrMessage* const thisPtr, class ghmGcFont* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x48ad30);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") HrMessage::_SetPlayTick(class HrMessage* const this, float arg2) [?_SetPlayTick@HrMessage@@IAEXM@Z]
+	void _SetPlayTick(float arg2)
+	{
+		typedef void(__thiscall* _Func)(class HrMessage* const thisPtr, float arg2);
+		_Func mFunc = (_Func)(GameModule + 0x48ad80);
+		return mFunc(this, arg2);
+	}
+	// [Function] int32_t HrMessage::GetDialogoNum(uint32_t arg1) [?GetDialogoNum@HrMessage@@SAHI@Z]
+	static int32_t GetDialogoNum(uint32_t arg1)
+	{
+		typedef int32_t(__cdecl* _Func)(uint32_t arg1);
+		_Func mFunc = (_Func)(GameModule + 0x48ad90);
+		return mFunc(arg1);
+	}
+	// [Function] uint8_t HrMessage::IsMessage() [?IsMessage@HrMessage@@SA_NXZ]
+	static uint8_t IsMessage()
+	{
+		typedef uint8_t(__cdecl* _Func)();
+		_Func mFunc = (_Func)(GameModule + 0x48b0c0);
+		return mFunc();
+	}
+	// [Function] void HrMessage::SetPlayTick(float arg1) [?SetPlayTick@HrMessage@@SAXM@Z]
+	static void SetPlayTick(float arg1)
+	{
+		typedef void(__cdecl* _Func)(float arg1);
+		_Func mFunc = (_Func)(GameModule + 0x48b0f0);
+		return mFunc(arg1);
+	}
+	// [Function] void HrMessage::Pause(uint32_t arg1) [?Pause@HrMessage@@SAXI@Z]
+	static void Pause(uint32_t arg1)
+	{
+		typedef void(__cdecl* _Func)(uint32_t arg1);
+		_Func mFunc = (_Func)(GameModule + 0x48b110);
+		return mFunc(arg1);
+	}
+	// [Function] void HrMessage::DePause(uint32_t arg1) [?DePause@HrMessage@@SAXI@Z]
+	static void DePause(uint32_t arg1)
+	{
+		typedef void(__cdecl* _Func)(uint32_t arg1);
+		_Func mFunc = (_Func)(GameModule + 0x48b140);
+		return mFunc(arg1);
+	}
+	// [Function] uint8_t HrMessage::IsMessageEnd(uint32_t arg1) [?IsMessageEnd@HrMessage@@SA_NI@Z]
+	static uint8_t IsMessageEnd(uint32_t arg1)
+	{
+		typedef uint8_t(__cdecl* _Func)(uint32_t arg1);
+		_Func mFunc = (_Func)(GameModule + 0x48b170);
+		return mFunc(arg1);
+	}
+	// [Function] uint32_t HrMessage::Create(void* arg1) [?Create@HrMessage@@SAIPAX@Z]
+	static uint32_t Create(void* arg1)
+	{
+		typedef uint32_t(__cdecl* _Func)(void* arg1);
+		_Func mFunc = (_Func)(GameModule + 0x48b1b0);
+		return mFunc(arg1);
+	}
+	// [Function] class HrMessage* HrMessage::GetObjectA(uint32_t arg1) [?GetObjectA@HrMessage@@SAPAV1@I@Z]
+	static class HrMessage* GetObjectA(uint32_t arg1)
+	{
+		typedef class HrMessage*(__cdecl* _Func)(uint32_t arg1);
+		_Func mFunc = (_Func)(GameModule + 0x48b220);
+		return mFunc(arg1);
+	}
+	// [Function] void HrMessage::Stop(uint32_t arg1) [?Stop@HrMessage@@SAXI@Z]
+	static void Stop(uint32_t arg1)
+	{
+		typedef void(__cdecl* _Func)(uint32_t arg1);
+		_Func mFunc = (_Func)(GameModule + 0x48b2d0);
+		return mFunc(arg1);
+	}
+	// [Function] void HrMessage::Delete(uint32_t arg1) [?Delete@HrMessage@@SAXI@Z]
+	static void Delete(uint32_t arg1)
+	{
+		typedef void(__cdecl* _Func)(uint32_t arg1);
+		_Func mFunc = (_Func)(GameModule + 0x48b310);
+		return mFunc(arg1);
+	}
+	// [Function] class ghmResGroup* HrMessage::GetLangageGroup(class ghmResGroup* arg1) [?GetLangageGroup@HrMessage@@SAPAVghmResGroup@@PAV2@@Z]
+	static class ghmResGroup* GetLangageGroup(class ghmResGroup* arg1)
+	{
+		typedef class ghmResGroup*(__cdecl* _Func)(class ghmResGroup* arg1);
+		_Func mFunc = (_Func)(GameModule + 0x48b490);
+		return mFunc(arg1);
+	}
+	/// Struct member variables
+
+	// <class ghmListObj field_0, offset 0x0>
+	// class ghmListObj Super;
+
+	// <class ghmListObj m_Anchor, offset 0x10>
+	class ghmListObj m_Anchor;
+
+	// <uint32_t m_Handle, offset 0x20>
+	uint32_t m_Handle;
+
+	// <enum HrMessage::MESS_STATUS_ID m_Status, offset 0x24>
+	enum HrMessage::MESS_STATUS_ID m_Status;
+
+	// <class ghmGcFont* mp_Font, offset 0x28>
+	class ghmGcFont* mp_Font;
+
+	// <class ghmGcFont* m_pFont, offset 0x2c>
+	class ghmGcFont* m_pFont;
+
+	// <class WGdl* mp_Gdl, offset 0x30>
+	class WGdl* mp_Gdl;
+
+	// <uint32_t m_NowTick, offset 0x34>
+	uint32_t m_NowTick;
+
+	// <struct GdlDialog* m_pCurrentDialog, offset 0x38>
+	struct GdlDialog* m_pCurrentDialog;
+
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.deriveClass<HrMessage, ghmListObj>("HrMessage")
+			.addProperty("m_Anchor", &HrMessage::m_Anchor)
+			.addProperty("m_Handle", &HrMessage::m_Handle)
+			.addProperty("m_Status", &HrMessage::m_Status)
+			.addProperty("mp_Font", &HrMessage::mp_Font)
+			.addProperty("m_pFont", &HrMessage::m_pFont)
+			.addProperty("mp_Gdl", &HrMessage::mp_Gdl)
+			.addProperty("m_NowTick", &HrMessage::m_NowTick)
+			.addProperty("m_pCurrentDialog", &HrMessage::m_pCurrentDialog)
+			// Functions with return values pointing to native types ('class ghmGcFont*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addFunction("_GetFont", &HrMessage::_GetFont)
+			.addFunction("_GetStatus", &HrMessage::_GetStatus)
+			// Functions with return values pointing to native types ('class HrMessage*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addFunction("GetNext", &HrMessage::GetNext)
+			// Functions with return values pointing to native types ('class WGdl*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addFunction("_GetGdl", &HrMessage::_GetGdl)
+			.addFunction("GetHandle", &HrMessage::GetHandle)
+			.addStaticFunction("StartMessage", &HrMessage::StartMessage)
+			// Functions with parameters pointing to native types (void* arg1) not supported in LuaBridge.
+			//.addStaticFunction("RenderProcess", &HrMessage::RenderProcess)
+			.addFunction("Render", &HrMessage::Render)
+			// Functions with return values pointing to native types ('struct GdlDialog*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addFunction("GetDialog", &HrMessage::GetDialog)
+			.addFunction("Frame", &HrMessage::Frame)
+			.addFunction("DispLine_RenderProcess", &HrMessage::DispLine_RenderProcess)
+			.addFunction("DispLine_FrameProcess", &HrMessage::DispLine_FrameProcess)
+			// Functions with parameters pointing to native types (float& arg6) not supported in LuaBridge.
+			//.addStaticFunction("GetStrLengthW", &HrMessage::GetStrLengthW)
+			// Functions with parameters pointing to native types (float& arg4) not supported in LuaBridge.
+			//.addStaticFunction("GetStrLengthW", &HrMessage::GetStrLengthW)
+			// Functions with parameters pointing to native types (float& arg6) not supported in LuaBridge.
+			//.addStaticFunction("GetStrLengthW", &HrMessage::GetStrLengthW)
+			// Functions with parameters pointing to native types (float& arg6) not supported in LuaBridge.
+			//.addStaticFunction("GetStrLength", &HrMessage::GetStrLength)
+			// Functions with parameters pointing to native types (float& arg6) not supported in LuaBridge.
+			//.addStaticFunction("GetStrLength", &HrMessage::GetStrLength)
+			// Functions with parameters pointing to native types (uint32_t& arg5) not supported in LuaBridge.
+			//.addStaticFunction("GetTick", &HrMessage::GetTick)
+			// Functions with parameters pointing to native types (uint32_t& arg5) not supported in LuaBridge.
+			//.addStaticFunction("GetTick", &HrMessage::GetTick)
+			// Functions with parameters pointing to native types (uint32_t& arg5) not supported in LuaBridge.
+			//.addFunction("_GetTick", &HrMessage::_GetTick)
+			.addStaticFunction("SetFontFuti", &HrMessage::SetFontFuti)
+			.addFunction("_SetFontFuti", &HrMessage::_SetFontFuti)
+			.addStaticFunction("SetFontEx", &HrMessage::SetFontEx)
+			.addFunction("_SetFontEx", &HrMessage::_SetFontEx)
+			// Functions with return values pointing to native types ('int16_t const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addStaticFunction("GetStringsW", &HrMessage::GetStringsW)
+			// Functions with return values pointing to native types ('int16_t const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addStaticFunction("GetStringsW", &HrMessage::GetStringsW)
+			// Functions with return values pointing to native types ('char const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addStaticFunction("GetStrings", &HrMessage::GetStrings)
+			// Functions with return values pointing to native types ('char const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addStaticFunction("GetStrings", &HrMessage::GetStrings)
+			// Functions with return values pointing to native types ('int16_t const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addFunction("_GetStringsW", &HrMessage::_GetStringsW)
+			// Functions with return values pointing to native types ('char const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addFunction("_GetStrings", &HrMessage::_GetStrings)
+			// Functions with parameters pointing to native types (char const* arg2) not supported in LuaBridge.
+			.addStaticFunction("DispMessage", &HrMessage::DispMessage2)
+			// Function overloading not supported in LuaBridge.
+			//.addStaticFunction("DispMessage", &HrMessage::DispMessage)
+			// Functions with return values pointing to native types ('class ghmGcFont*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addStaticFunction("GetFont", &HrMessage::GetFont)
+			// Functions with return values pointing to native types ('class WGdl*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addStaticFunction("GetGdl", &HrMessage::GetGdl)
+			// Functions with parameters pointing to native types (char const* arg2) not supported in LuaBridge.
+			//.addStaticFunction("GetSentenceNum", &HrMessage::GetSentenceNum)
+			// Function overloading not supported in LuaBridge.
+			//.addStaticFunction("GetSentenceNum", &HrMessage::GetSentenceNum)
+			// Functions with parameters pointing to native types (char const* arg2) not supported in LuaBridge.
+			//.addStaticFunction("GetLineNum", &HrMessage::GetLineNum)
+			// Function overloading not supported in LuaBridge.
+			//.addStaticFunction("GetLineNum", &HrMessage::GetLineNum)
+			.addFunction("_GetSentenceNum", &HrMessage::_GetSentenceNum)
+			.addFunction("_GetLineNum", &HrMessage::_GetLineNum)
+			.addFunction("_DispChar", &HrMessage::_DispChar)
+			.addFunction("_DispMessage", &HrMessage::_DispMessage)
+			.addFunction("_Stop", &HrMessage::_Stop)
+			// Functions with parameters pointing to native types (char const* arg2) not supported in LuaBridge.
+			//.addFunction("SetMessage", &HrMessage::SetMessage)
+			// Function overloading not supported in LuaBridge.
+			//.addFunction("SetMessage", &HrMessage::SetMessage)
+			.addFunction("_DePause", &HrMessage::_DePause)
+			.addFunction("_Pause", &HrMessage::_Pause)
+			// Functions with parameters pointing to native types (class ghmGcFont* arg2) not supported in LuaBridge.
+			//.addFunction("SetFont", &HrMessage::SetFont)
+			.addFunction("_SetPlayTick", &HrMessage::_SetPlayTick)
+			.addStaticFunction("GetDialogoNum", &HrMessage::GetDialogoNum)
+			.addStaticFunction("IsMessage", &HrMessage::IsMessage)
+			.addStaticFunction("SetPlayTick", &HrMessage::SetPlayTick)
+			.addStaticFunction("Pause", &HrMessage::Pause)
+			.addStaticFunction("DePause", &HrMessage::DePause)
+			.addStaticFunction("IsMessageEnd", &HrMessage::IsMessageEnd)
+			// Functions with parameters pointing to native types (void* arg1) not supported in LuaBridge.
+			//.addStaticFunction("Create", &HrMessage::Create)
+			// Functions with return values pointing to native types ('class HrMessage*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addStaticFunction("GetObjectA", &HrMessage::GetObjectA)
+			// Functions with parameters pointing to native types (void* arg2) not supported in LuaBridge.
+			//.addFunction("SetFont", &HrMessage::SetFont)
+			// Functions with parameters pointing to native types (char const* arg2) not supported in LuaBridge.
+			//.addStaticFunction("StartMessage", &HrMessage::StartMessage)
+			.addStaticFunction("Stop", &HrMessage::Stop)
+			.addStaticFunction("Delete", &HrMessage::Delete)
+			// Functions with return values pointing to native types ('class ghmResGroup*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addStaticFunction("GetLangageGroup", &HrMessage::GetLangageGroup)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(HrMessage::m_Anchor) == 16, "expected m_Anchor to be size 16");
+static_assert(sizeof(HrMessage::m_Handle) == 4, "expected m_Handle to be size 4");
+static_assert(sizeof(HrMessage::m_Status) == 4, "expected m_Status to be size 4");
+static_assert(sizeof(HrMessage::mp_Font) == 4, "expected mp_Font to be size 4");
+static_assert(sizeof(HrMessage::m_pFont) == 4, "expected m_pFont to be size 4");
+static_assert(sizeof(HrMessage::mp_Gdl) == 4, "expected mp_Gdl to be size 4");
+static_assert(sizeof(HrMessage::m_NowTick) == 4, "expected m_NowTick to be size 4");
+static_assert(sizeof(HrMessage::m_pCurrentDialog) == 4, "expected m_pCurrentDialog to be size 4");
+static_assert(sizeof(HrMessage) == 60, "expected class HrMessage to be size 60");
+
+// [Structure] class ghmGcFont
+class ghmGcFont
+{
+public:
+	/// Struct member variables
+
+	// <Filler, offset 0x0>
+private:
+	char _Filler[2616];
+public:
+
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<ghmGcFont>("ghmGcFont")
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(ghmGcFont) == 2616, "expected class ghmGcFont to be size 2616");
+
+// [Structure] class WGdl
+class WGdl : public ghmListObj
+{
+public:
+	/// Struct member variables
+
+	// <class ghmListObj field_0, offset 0x0>
+	// class ghmListObj Super;
+
+	// <int32_t mState, offset 0x10>
+	int32_t mState;
+
+	// <int32_t mLoadState, offset 0x14>
+	int32_t mLoadState;
+
+	// <uint32_t mFlag, offset 0x18>
+	uint32_t mFlag;
+
+	// <uint8_t mEidian, offset 0x1c>
+	uint8_t mEidian;
+
+	// <Filler, offset 0x1d>
+private:
+	char _Filler5[3];
+
+public:
+	// <class ghmGcFile* pLoadFilePtr, offset 0x20>
+	class ghmGcFile* pLoadFilePtr;
+
+	// <int32_t LoadFileID, offset 0x24>
+	int32_t LoadFileID;
+
+	// <int32_t LoadID, offset 0x28>
+	int32_t LoadID;
+
+	// <struct GdlHeader* mpData, offset 0x2c>
+	struct GdlHeader* mpData;
+
+	// <uint32_t mTime, offset 0x30>
+	uint32_t mTime;
+
+	// <int32_t mDialogID, offset 0x34>
+	int32_t mDialogID;
+
+	// <struct GdlDialog* mpDialog, offset 0x38>
+	struct GdlDialog* mpDialog;
+
+	// <int32_t mLinesID, offset 0x3c>
+	int32_t mLinesID;
+
+	// <struct GdlLines* mpLines, offset 0x40>
+	struct GdlLines* mpLines;
+
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.deriveClass<WGdl, ghmListObj>("WGdl")
+			.addProperty("mState", &WGdl::mState)
+			.addProperty("mLoadState", &WGdl::mLoadState)
+			.addProperty("mFlag", &WGdl::mFlag)
+			.addProperty("mEidian", &WGdl::mEidian)
+			.addProperty("pLoadFilePtr", &WGdl::pLoadFilePtr)
+			.addProperty("LoadFileID", &WGdl::LoadFileID)
+			.addProperty("LoadID", &WGdl::LoadID)
+			.addProperty("mpData", &WGdl::mpData)
+			.addProperty("mTime", &WGdl::mTime)
+			.addProperty("mDialogID", &WGdl::mDialogID)
+			.addProperty("mpDialog", &WGdl::mpDialog)
+			.addProperty("mLinesID", &WGdl::mLinesID)
+			.addProperty("mpLines", &WGdl::mpLines)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(WGdl::mState) == 4, "expected mState to be size 4");
+static_assert(sizeof(WGdl::mLoadState) == 4, "expected mLoadState to be size 4");
+static_assert(sizeof(WGdl::mFlag) == 4, "expected mFlag to be size 4");
+static_assert(sizeof(WGdl::mEidian) == 1, "expected mEidian to be size 1");
+static_assert(sizeof(WGdl::pLoadFilePtr) == 4, "expected pLoadFilePtr to be size 4");
+static_assert(sizeof(WGdl::LoadFileID) == 4, "expected LoadFileID to be size 4");
+static_assert(sizeof(WGdl::LoadID) == 4, "expected LoadID to be size 4");
+static_assert(sizeof(WGdl::mpData) == 4, "expected mpData to be size 4");
+static_assert(sizeof(WGdl::mTime) == 4, "expected mTime to be size 4");
+static_assert(sizeof(WGdl::mDialogID) == 4, "expected mDialogID to be size 4");
+static_assert(sizeof(WGdl::mpDialog) == 4, "expected mpDialog to be size 4");
+static_assert(sizeof(WGdl::mLinesID) == 4, "expected mLinesID to be size 4");
+static_assert(sizeof(WGdl::mpLines) == 4, "expected mpLines to be size 4");
+static_assert(sizeof(WGdl) == 68, "expected class WGdl to be size 68");
+
+// [Structure] struct GdlHeader
+struct GdlHeader
+{
+public:
+	/// Struct member variables
+
+	// <uint32_t mID, offset 0x0>
+	uint32_t mID;
+
+	// <uint32_t mVersion, offset 0x4>
+	uint32_t mVersion;
+
+	// <uint16_t mDialogCount, offset 0x8>
+	uint16_t mDialogCount;
+
+	// <uint16_t mStringCount, offset 0xa>
+	uint16_t mStringCount;
+
+	// <uint32_t mDialogPtr, offset 0xc>
+	uint32_t mDialogPtr;
+
+	// <struct GdlDialog** mppDialogPtrTable, offset 0x10>
+	struct GdlDialog** mppDialogPtrTable;
+
+	// <uint32_t mStringPtr, offset 0x14>
+	uint32_t mStringPtr;
+
+	// <char const** mppStringPtrTable, offset 0x18>
+	char const** mppStringPtrTable;
+
+	// <uint32_t mFlag, offset 0x1c>
+	uint32_t mFlag;
+
+	// <uint16_t mFacialAnimCount, offset 0x20>
+	uint16_t mFacialAnimCount;
+
+	// <uint16_t mStringUcCount, offset 0x22>
+	uint16_t mStringUcCount;
+
+	// <uint32_t mFacialAnimPtr, offset 0x24>
+	uint32_t mFacialAnimPtr;
+
+	// <void** mppFacialAnimPtrTable, offset 0x28>
+	void** mppFacialAnimPtrTable;
+
+	// <uint32_t mStringUcPtr, offset 0x2c>
+	uint32_t mStringUcPtr;
+
+	// <int16_t const** mppStringUcPtrTable, offset 0x30>
+	int16_t const** mppStringUcPtrTable;
+
+	// <uint32_t mPad[0x3], offset 0x34>
+	uint32_t mPad[3];
+
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<GdlHeader>("GdlHeader")
+			.addProperty("mID", &GdlHeader::mID)
+			.addProperty("mVersion", &GdlHeader::mVersion)
+			.addProperty("mDialogCount", &GdlHeader::mDialogCount)
+			.addProperty("mStringCount", &GdlHeader::mStringCount)
+			.addProperty("mDialogPtr", &GdlHeader::mDialogPtr)
+			// pointer to pointer is not supported in LuaBridge
+			//.addProperty("mppDialogPtrTable", &GdlHeader::mppDialogPtrTable)
+			.addProperty("mStringPtr", &GdlHeader::mStringPtr)
+			// pointer to pointer is not supported in LuaBridge
+			//.addProperty("mppStringPtrTable", &GdlHeader::mppStringPtrTable)
+			.addProperty("mFlag", &GdlHeader::mFlag)
+			.addProperty("mFacialAnimCount", &GdlHeader::mFacialAnimCount)
+			.addProperty("mStringUcCount", &GdlHeader::mStringUcCount)
+			.addProperty("mFacialAnimPtr", &GdlHeader::mFacialAnimPtr)
+			// pointer to pointer is not supported in LuaBridge
+			//.addProperty("mppFacialAnimPtrTable", &GdlHeader::mppFacialAnimPtrTable)
+			.addProperty("mStringUcPtr", &GdlHeader::mStringUcPtr)
+			// pointer to pointer is not supported in LuaBridge
+			//.addProperty("mppStringUcPtrTable", &GdlHeader::mppStringUcPtrTable)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("mPad", &GdlHeader::mPad)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(GdlHeader::mID) == 4, "expected mID to be size 4");
+static_assert(sizeof(GdlHeader::mVersion) == 4, "expected mVersion to be size 4");
+static_assert(sizeof(GdlHeader::mDialogCount) == 2, "expected mDialogCount to be size 2");
+static_assert(sizeof(GdlHeader::mStringCount) == 2, "expected mStringCount to be size 2");
+static_assert(sizeof(GdlHeader::mDialogPtr) == 4, "expected mDialogPtr to be size 4");
+static_assert(sizeof(GdlHeader::mppDialogPtrTable) == 4, "expected mppDialogPtrTable to be size 4");
+static_assert(sizeof(GdlHeader::mStringPtr) == 4, "expected mStringPtr to be size 4");
+static_assert(sizeof(GdlHeader::mppStringPtrTable) == 4, "expected mppStringPtrTable to be size 4");
+static_assert(sizeof(GdlHeader::mFlag) == 4, "expected mFlag to be size 4");
+static_assert(sizeof(GdlHeader::mFacialAnimCount) == 2, "expected mFacialAnimCount to be size 2");
+static_assert(sizeof(GdlHeader::mStringUcCount) == 2, "expected mStringUcCount to be size 2");
+static_assert(sizeof(GdlHeader::mFacialAnimPtr) == 4, "expected mFacialAnimPtr to be size 4");
+static_assert(sizeof(GdlHeader::mppFacialAnimPtrTable) == 4, "expected mppFacialAnimPtrTable to be size 4");
+static_assert(sizeof(GdlHeader::mStringUcPtr) == 4, "expected mStringUcPtr to be size 4");
+static_assert(sizeof(GdlHeader::mppStringUcPtrTable) == 4, "expected mppStringUcPtrTable to be size 4");
+static_assert(sizeof(GdlHeader::mPad) == 12, "expected mPad to be size 12");
+static_assert(sizeof(GdlHeader) == 64, "expected struct GdlHeader to be size 64");
+
+// [Structure] struct GdlDialog
+struct GdlDialog
+{
+public:
+	/// Struct member variables
+
+	// <char const* mpName, offset 0x0>
+	char const* mpName;
+
+	// <uint16_t mLinesCount, offset 0x4>
+	uint16_t mLinesCount;
+
+	// <uint16_t mPad0, offset 0x6>
+	uint16_t mPad0;
+
+	// <struct GdlLines** mppLinesPtrTable, offset 0x8>
+	struct GdlLines** mppLinesPtrTable;
+
+	// <uint32_t mFlag, offset 0xc>
+	uint32_t mFlag;
+
+	// <uint32_t mPad[0x4], offset 0x10>
+	uint32_t mPad[4];
+
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<GdlDialog>("GdlDialog")
+			.addProperty("mpName", &GdlDialog::mpName)
+			.addProperty("mLinesCount", &GdlDialog::mLinesCount)
+			.addProperty("mPad0", &GdlDialog::mPad0)
+			// pointer to pointer is not supported in LuaBridge
+			//.addProperty("mppLinesPtrTable", &GdlDialog::mppLinesPtrTable)
+			.addProperty("mFlag", &GdlDialog::mFlag)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("mPad", &GdlDialog::mPad)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(GdlDialog::mpName) == 4, "expected mpName to be size 4");
+static_assert(sizeof(GdlDialog::mLinesCount) == 2, "expected mLinesCount to be size 2");
+static_assert(sizeof(GdlDialog::mPad0) == 2, "expected mPad0 to be size 2");
+static_assert(sizeof(GdlDialog::mppLinesPtrTable) == 4, "expected mppLinesPtrTable to be size 4");
+static_assert(sizeof(GdlDialog::mFlag) == 4, "expected mFlag to be size 4");
+static_assert(sizeof(GdlDialog::mPad) == 16, "expected mPad to be size 16");
+static_assert(sizeof(GdlDialog) == 32, "expected struct GdlDialog to be size 32");
+
+// [Structure] struct GdlLines
+struct GdlLines
+{
+public:
+	/// Struct member variables
+
+	// <int16_t mVoiceID, offset 0x0>
+	int16_t mVoiceID;
+
+	// <uint16_t mSentenceCount, offset 0x2>
+	uint16_t mSentenceCount;
+
+	// <struct GdlSentence** mppSentencePtrTable, offset 0x4>
+	struct GdlSentence** mppSentencePtrTable;
+
+	// <uint32_t mStartTick, offset 0x8>
+	uint32_t mStartTick;
+
+	// <uint32_t mWaitTick, offset 0xc>
+	uint32_t mWaitTick;
+
+	// <uint32_t mFlag, offset 0x10>
+	uint32_t mFlag;
+
+	// <char const* mpCharaName, offset 0x14>
+	char const* mpCharaName;
+
+	// <void* mpFacialAnim, offset 0x18>
+	void* mpFacialAnim;
+
+	// <uint32_t mPad[0x1], offset 0x1c>
+	uint32_t mPad[1];
+
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<GdlLines>("GdlLines")
+			.addProperty("mVoiceID", &GdlLines::mVoiceID)
+			.addProperty("mSentenceCount", &GdlLines::mSentenceCount)
+			// pointer to pointer is not supported in LuaBridge
+			//.addProperty("mppSentencePtrTable", &GdlLines::mppSentencePtrTable)
+			.addProperty("mStartTick", &GdlLines::mStartTick)
+			.addProperty("mWaitTick", &GdlLines::mWaitTick)
+			.addProperty("mFlag", &GdlLines::mFlag)
+			.addProperty("mpCharaName", &GdlLines::mpCharaName)
+			// void type not supported in LuaBridge
+			//.addProperty("mpFacialAnim", &GdlLines::mpFacialAnim)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("mPad", &GdlLines::mPad)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(GdlLines::mVoiceID) == 2, "expected mVoiceID to be size 2");
+static_assert(sizeof(GdlLines::mSentenceCount) == 2, "expected mSentenceCount to be size 2");
+static_assert(sizeof(GdlLines::mppSentencePtrTable) == 4, "expected mppSentencePtrTable to be size 4");
+static_assert(sizeof(GdlLines::mStartTick) == 4, "expected mStartTick to be size 4");
+static_assert(sizeof(GdlLines::mWaitTick) == 4, "expected mWaitTick to be size 4");
+static_assert(sizeof(GdlLines::mFlag) == 4, "expected mFlag to be size 4");
+static_assert(sizeof(GdlLines::mpCharaName) == 4, "expected mpCharaName to be size 4");
+static_assert(sizeof(GdlLines::mpFacialAnim) == 4, "expected mpFacialAnim to be size 4");
+static_assert(sizeof(GdlLines::mPad) == 4, "expected mPad to be size 4");
+static_assert(sizeof(GdlLines) == 32, "expected struct GdlLines to be size 32");
+
+// [Structure] struct GdlSentence
+struct GdlSentence
+{
+public:
+	/// Struct member variables
+
+	// <int16_t const* mpLettersUc, offset 0x0>
+	int16_t const* mpLettersUc;
+
+	// <uint32_t mFlag, offset 0x4>
+	uint32_t mFlag;
+
+	// <uint32_t mPad[0x2], offset 0x8>
+	uint32_t mPad[2];
+
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<GdlSentence>("GdlSentence")
+			//.addProperty("mpLettersUc", &GdlSentence::mpLettersUc)
+			.addProperty("mFlag", &GdlSentence::mFlag)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("mPad", &GdlSentence::mPad)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(GdlSentence::mpLettersUc) == 4, "expected mpLettersUc to be size 4");
+static_assert(sizeof(GdlSentence::mFlag) == 4, "expected mFlag to be size 4");
+static_assert(sizeof(GdlSentence::mPad) == 8, "expected mPad to be size 8");
+static_assert(sizeof(GdlSentence) == 16, "expected struct GdlSentence to be size 16");
 
 // [Structure] class ACameraModeBase
 class ACameraModeBase
@@ -24488,7 +25386,7 @@ public:
 	};
 
 	// [Function] class EffectCutMark* EffectCutMark::Create(class TGmf* arg1, class mHRChara* arg2, struct Vec* arg3, uint32_t const arg4, enum eEfDmgLevel& arg5, enum EffectCutMark::eCutMarkType& arg6, float const arg7) [?Create@EffectCutMark@@SAPAV1@PAVTGmf@@PAVmHRChara@@PBUVec@@IABW4eEfDmgLevel@@ABW4eCutMarkType@1@M@Z]
-	class EffectCutMark* Create(class TGmf* arg1, class mHRChara* arg2, struct Vec* arg3, uint32_t const arg4, enum eEfDmgLevel& arg5, enum EffectCutMark::eCutMarkType& arg6, float const arg7)
+	static class EffectCutMark* Create(class TGmf* arg1, class mHRChara* arg2, struct Vec* arg3, uint32_t const arg4, enum eEfDmgLevel& arg5, enum EffectCutMark::eCutMarkType& arg6, float const arg7)
 	{
 		typedef class EffectCutMark*(__cdecl* _Func)(class TGmf* arg1, class mHRChara* arg2, struct Vec* arg3, uint32_t const arg4, enum eEfDmgLevel& arg5, enum EffectCutMark::eCutMarkType& arg6, float const arg7);
 		_Func mFunc = (_Func)(GameModule + 0x56f2c0);
@@ -24506,7 +25404,7 @@ public:
 	{
 		NS = NS.beginClass<EffectCutMark>("EffectCutMark")
 			// Functions with return values pointing to native types ('class EffectCutMark*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("Create", &EffectCutMark::Create)
+			//.addStaticFunction("Create", &EffectCutMark::Create)
 		.endClass();
 	}
 #endif
@@ -26674,7 +27572,7 @@ public:
 		return mFunc(this, arg2, arg3, arg4);
 	}
 	// [Function] int32_t __fastcall PJZAKO::StaticProc(class mHRBattle* arg1) [?StaticProc@PJZAKO@@CAXXZ]
-	int32_t StaticProc(class mHRBattle* arg1)
+	static int32_t StaticProc(class mHRBattle* arg1)
 	{
 		typedef int32_t(__fastcall* _Func)(class mHRBattle* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x4de320);
@@ -27125,7 +28023,7 @@ public:
 			// Functions with parameters pointing to native types (class mHRChara* arg4) not supported in LuaBridge.
 			//.addFunction("ConvertDmgMot", &PJZAKO::ConvertDmgMot)
 			// Functions with parameters pointing to native types (class mHRBattle* arg1) not supported in LuaBridge.
-			//.addFunction("StaticProc", &PJZAKO::StaticProc)
+			//.addStaticFunction("StaticProc", &PJZAKO::StaticProc)
 		.endClass();
 	}
 #endif
@@ -31550,7 +32448,7 @@ class EffectBloodSplash : public HrTask
 {
 public:
 	// [Function] class EffectBloodSplash* EffectBloodSplash::Create(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30) [?Create@EffectBloodSplash@@SAPAV1@PAVTGmfNode@@HHMMMMMMMMMMMHMHMMMMMMMMMMI_NPAVmHRChara@@@Z]
-	class EffectBloodSplash* Create(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30)
+	static class EffectBloodSplash* Create(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30)
 	{
 		typedef class EffectBloodSplash*(__cdecl* _Func)(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30);
 		_Func mFunc = (_Func)(GameModule + 0x5b4ec0);
@@ -31764,7 +32662,7 @@ public:
 	static_assert(sizeof(EffectBloodSplash::MAIN) == 160, "expected struct EffectBloodSplash::MAIN to be size 160");
 
 	// [Function] class EffectBloodSplash* EffectBloodSplash::Create2(class TGmfNode* arg1, float arg2, float arg3, float arg4, float arg5, int32_t arg6, uint8_t arg7, class mHRChara* arg8) [?Create2@EffectBloodSplash@@SAPAV1@PAVTGmfNode@@MMMMH_NPAVmHRChara@@@Z]
-	class EffectBloodSplash* Create2(class TGmfNode* arg1, float arg2, float arg3, float arg4, float arg5, int32_t arg6, uint8_t arg7, class mHRChara* arg8)
+	static class EffectBloodSplash* Create2(class TGmfNode* arg1, float arg2, float arg3, float arg4, float arg5, int32_t arg6, uint8_t arg7, class mHRChara* arg8)
 	{
 		typedef class EffectBloodSplash*(__cdecl* _Func)(class TGmfNode* arg1, float arg2, float arg3, float arg4, float arg5, int32_t arg6, uint8_t arg7, class mHRChara* arg8);
 		_Func mFunc = (_Func)(GameModule + 0x5b5410);
@@ -31788,9 +32686,9 @@ public:
 			.addProperty("m_fCreateNum", &EffectBloodSplash::m_fCreateNum)
 			.addProperty("dat", &EffectBloodSplash::dat)
 			// Functions with return values pointing to native types ('class EffectBloodSplash*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("Create", &EffectBloodSplash::Create)
+			//.addStaticFunction("Create", &EffectBloodSplash::Create)
 			// Functions with return values pointing to native types ('class EffectBloodSplash*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("Create2", &EffectBloodSplash::Create2)
+			//.addStaticFunction("Create2", &EffectBloodSplash::Create2)
 		.endClass();
 	}
 #endif
@@ -31849,7 +32747,7 @@ class EffectSlashHit : public HrTask
 {
 public:
 	// [Function] class EffectSlashHit* EffectSlashHit::Create(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4) [?Create@EffectSlashHit@@SAPAV1@ABUVec@@0PBVmHRChara@@M@Z]
-	class EffectSlashHit* Create(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4)
+	static class EffectSlashHit* Create(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4)
 	{
 		typedef class EffectSlashHit*(__cdecl* _Func)(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4);
 		_Func mFunc = (_Func)(GameModule + 0x61f210);
@@ -31897,7 +32795,7 @@ public:
 			.addProperty("m_nCounter", &EffectSlashHit::m_nCounter)
 			.addProperty("m_fScale", &EffectSlashHit::m_fScale)
 			// Functions with return values pointing to native types ('class EffectSlashHit*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("Create", &EffectSlashHit::Create)
+			//.addStaticFunction("Create", &EffectSlashHit::Create)
 		.endClass();
 	}
 #endif
@@ -32108,7 +33006,7 @@ public:
 		return mFunc(this, arg2, arg3);
 	}
 	// [Function] class EffectBeamDragon* EffectBeamDragon::Create(struct Vec* arg1, class mHRChara* arg2) [?Create@EffectBeamDragon@@SAPAV1@PAUVec@@PAVmHRChara@@@Z]
-	class EffectBeamDragon* Create(struct Vec* arg1, class mHRChara* arg2)
+	static class EffectBeamDragon* Create(struct Vec* arg1, class mHRChara* arg2)
 	{
 		typedef class EffectBeamDragon*(__cdecl* _Func)(struct Vec* arg1, class mHRChara* arg2);
 		_Func mFunc = (_Func)(GameModule + 0x644130);
@@ -32128,7 +33026,7 @@ public:
 			// Functions with parameters pointing to native types (class mHRChara* arg3) not supported in LuaBridge.
 			//.addFunction("Set", &EffectBeamDragon::Set)
 			// Functions with return values pointing to native types ('class EffectBeamDragon*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("Create", &EffectBeamDragon::Create)
+			//.addStaticFunction("Create", &EffectBeamDragon::Create)
 		.endClass();
 	}
 #endif
@@ -32147,7 +33045,7 @@ public:
 		return mFunc(this, arg2, arg3, arg4);
 	}
 	// [Function] class EffectGYNMissile* EffectGYNMissile::Create(struct Vec& arg1, float const arg2, class mHRChara* arg3) [?Create@EffectGYNMissile@@SAPAV1@ABUVec@@MPAVmHRChara@@@Z]
-	class EffectGYNMissile* Create(struct Vec& arg1, float const arg2, class mHRChara* arg3)
+	static class EffectGYNMissile* Create(struct Vec& arg1, float const arg2, class mHRChara* arg3)
 	{
 		typedef class EffectGYNMissile*(__cdecl* _Func)(struct Vec& arg1, float const arg2, class mHRChara* arg3);
 		_Func mFunc = (_Func)(GameModule + 0x6467a0);
@@ -32218,7 +33116,7 @@ public:
 			// Functions with parameters pointing to native types (class mHRChara* arg4) not supported in LuaBridge.
 			//.addFunction("Set", &EffectGYNMissile::Set)
 			// Functions with return values pointing to native types ('class EffectGYNMissile*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("Create", &EffectGYNMissile::Create)
+			//.addStaticFunction("Create", &EffectGYNMissile::Create)
 		.endClass();
 	}
 #endif
@@ -32249,7 +33147,7 @@ public:
 		return mFunc(this, arg2, arg3, arg4);
 	}
 	// [Function] class EffectMoeMissile* EffectMoeMissile::Create(struct Vec& arg1, float const arg2, class mHRChara* arg3) [?Create@EffectMoeMissile@@SAPAV1@ABUVec@@MPAVmHRChara@@@Z]
-	class EffectMoeMissile* Create(struct Vec& arg1, float const arg2, class mHRChara* arg3)
+	static class EffectMoeMissile* Create(struct Vec& arg1, float const arg2, class mHRChara* arg3)
 	{
 		typedef class EffectMoeMissile*(__cdecl* _Func)(struct Vec& arg1, float const arg2, class mHRChara* arg3);
 		_Func mFunc = (_Func)(GameModule + 0x64a930);
@@ -32317,7 +33215,7 @@ public:
 			// Functions with parameters pointing to native types (class mHRChara* arg4) not supported in LuaBridge.
 			//.addFunction("Set", &EffectMoeMissile::Set)
 			// Functions with return values pointing to native types ('class EffectMoeMissile*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("Create", &EffectMoeMissile::Create)
+			//.addStaticFunction("Create", &EffectMoeMissile::Create)
 		.endClass();
 	}
 #endif
@@ -33119,6 +34017,34 @@ void BindLua_Exported(luabridge::Namespace& NS)
 	std::cout << "Binding 'struct stThrowInfo'" << std::endl;
 #endif
 	stThrowInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class HrMessage'" << std::endl;
+#endif
+	HrMessage::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmGcFont'" << std::endl;
+#endif
+	ghmGcFont::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class WGdl'" << std::endl;
+#endif
+	WGdl::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct GdlHeader'" << std::endl;
+#endif
+	GdlHeader::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct GdlDialog'" << std::endl;
+#endif
+	GdlDialog::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct GdlLines'" << std::endl;
+#endif
+	GdlLines::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct GdlSentence'" << std::endl;
+#endif
+	GdlSentence::BindLua(NS);
 #ifdef LOG_INIT
 	std::cout << "Binding 'class ACameraModeBase'" << std::endl;
 #endif
