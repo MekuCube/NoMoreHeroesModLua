@@ -374,8 +374,6 @@ class CMotionPlayer;
 struct stBtEffect
 {
 public:
-	/// 1 namespace types: enum stBtEffect::SlowType
-
 	// enum stBtEffect::SlowType
 	enum SlowType : uint32_t
 	{
@@ -388,7 +386,6 @@ public:
 		BossFinish = 1
 
 	};
-
 
 	/// Struct member variables
 
@@ -692,7 +689,6 @@ enum eLightRefPriority : uint32_t
 struct Vec
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float x, offset 0x0>
@@ -768,8 +764,6 @@ enum enPcKind : uint32_t
 class mHRBattle
 {
 public:
-	/// 170 namespace types: class mHRPc* __convention("thiscall") mHRBattle::mGetPcPtr(class mHRBattle* const this), int32_t __convention("thiscall") mHRBattle::mGetSlowMotionTick(class mHRBattle* const this), int32_t __convention("thiscall") mHRBattle::mGetBulletSlow(class mHRBattle* const this), struct stBtEffect* __convention("thiscall") mHRBattle::mGetBtEffect(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetNpcAttackFlag(class mHRBattle* const this, uint8_t arg2), float __convention("thiscall") mHRBattle::mSetNpcAttackRate(class mHRBattle* const this, float arg2), void __convention("thiscall") mHRBattle::SetNpcDatMax(class mHRBattle* const this, int32_t arg2), class EfSmoke* __convention("thiscall") mHRBattle::GetSmokeEf(class mHRBattle* const this), enum enPcKind __convention("thiscall") mHRBattle::mGetPcKind(class mHRBattle* const this), enum enBattleFrameProc __convention("thiscall") mHRBattle::mGetFrameProc(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetCameraAngle(class mHRBattle* const this, float arg2), void __convention("thiscall") mHRBattle::mSetCamMotFlag(class mHRBattle* const this, uint8_t arg2), void __convention("thiscall") mHRBattle::mSetCamMotFlagNoUse(class mHRBattle* const this, uint8_t arg2), void __convention("thiscall") mHRBattle::mSetCameraAutoReturnDisEnable(class mHRBattle* const this, uint8_t arg2), void __convention("thiscall") mHRBattle::mClearKillNum(class mHRBattle* const this), int32_t __convention("thiscall") mHRBattle::mGetKillNum(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetKillNum(class mHRBattle* const this, int32_t arg2), int32_t __convention("thiscall") mHRBattle::GetRevengeMissionZakoKillNum(class mHRBattle* const this), void __convention("thiscall") mHRBattle::ClearRevengeMissionZakoKillNum(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetBattlePause(class mHRBattle* const this, uint8_t arg2), void __convention("thiscall") mHRBattle::mSetDispStatusDisEnable(class mHRBattle* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRBattle::mGetDispStatusDisEnable(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetChargeDamage(class mHRBattle* const this, uint8_t arg2), void __convention("thiscall") mHRBattle::mClearTotalKillNum(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mGetTutoRun(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSubRepopNum(class mHRBattle* const this, int32_t arg2), void __convention("thiscall") mHRBattle::mSetRepopTimer(class mHRBattle* const this, int32_t arg2, int32_t arg3), uint8_t __convention("thiscall") mHRBattle::mGetNewGameDataRequest(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mGetDontChangeTeppeiCamera(class mHRBattle* const this), float __convention("thiscall") mHRBattle::mGetCameraProjection(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetCameraMoveFlag(class mHRBattle* const this, uint8_t arg2), void __convention("thiscall") mHRBattle::mSetMotionCameraPos(class mHRBattle* const this, struct Vec* arg2), struct Vec* __convention("thiscall") mHRBattle::mGetMotionCameraPos(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetMotionCameraY(class mHRBattle* const this, float* arg2), float* __convention("thiscall") mHRBattle::mGetMotionCameraY(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mGetBattlePause(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mGetChargeDamage(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mGetChangeCameraRailFlag(class mHRBattle* const this), float __convention("thiscall") mHRBattle::mGetCameraAngleX(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetLockNavelPos(class mHRBattle* const this, uint8_t arg2), int32_t __convention("thiscall") mHRBattle::mGetTotalKillNum(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetTotalKillNum(class mHRBattle* const this, int32_t arg2), int32_t __convention("thiscall") mHRBattle::mGetBossBreakSlow(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mGetNpcAttackFlag(class mHRBattle* const this), float __convention("thiscall") mHRBattle::mGetNpcAttackRate(class mHRBattle* const this), void __convention("thiscall") mHRBattle::AddRevengeMissionZakoKillNum(class mHRBattle* const this), void __convention("thiscall") mHRBattle::SetCameraMotionEndStop(class mHRBattle* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRBattle::IsBgmEffect(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetDontChangeTeppeiCamera(class mHRBattle* const this, uint8_t arg2), void __convention("thiscall") mHRBattle::UpdateMassKillAchievement(class mHRBattle* const this), void __convention("thiscall") mHRBattle::UpdateMainScreenUI(class mHRBattle* const this), void __convention("thiscall") mHRBattle::BgmEffectProc(class mHRBattle* const this), void __convention("thiscall") mHRBattle::SetBgmEffect(class mHRBattle* const this, float arg2, int32_t arg3), class mHRChara* __convention("thiscall") mHRBattle::GetNpc(class mHRBattle* const this, int32_t arg2), uint8_t __convention("thiscall") mHRBattle::mCheckPcLoaded4WepaponChange(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mCheckBattleInit(class mHRBattle* const this), uint8_t mHRBattle::ChkToiletStage(), uint8_t mHRBattle::ChkBikeStage(), int32_t __convention("thiscall") mHRBattle::GetPickUpGomiSubMissionResult(class mHRBattle* const this, int32_t arg2), void __convention("thiscall") mHRBattle::mAddKillNum(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mSetNpcAppear(class mHRBattle* const this, int32_t arg2), void __convention("thiscall") mHRBattle::FixRotationOfItem(class mHRBattle* const this, int32_t arg2, struct Vec& arg3, struct Vec& arg4), void __convention("thiscall") mHRBattle::FixPositionOfItem(class mHRBattle* const this, int32_t arg2, struct Vec& arg3), int32_t __convention("thiscall") mHRBattle::mSetInitCustomColliderObj(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mSetInitCharaPos(class mHRBattle* const this, class mHRChara* arg2, struct Vec& arg3, struct Vec& arg4), uint8_t __convention("thiscall") mHRBattle::mCheckStatusDispOnlyBattery(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mCheckStatusDispWithoutBattery(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mCheckStatusDisp(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mUndispMoney(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mDispMoney(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mGetDispPcStatus(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mReleaseAllNpcWithoutCmnObj(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetBulletSlowTick(class mHRBattle* const this, int32_t arg2), void __convention("thiscall") mHRBattle::mResetBulletSlow(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mResetSlowMotion(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mLightReflectEfProc(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mCheckSamePopNpcPosAsNpcDat(class mHRBattle* const this, struct Vec& arg2), int32_t __convention("thiscall") mHRBattle::mGetEmptyNpcDatIndex(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mRestorePcData4Lap(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mStorePcData4Lap(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mCallPadProcess(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mClearNpcDat(class mHRBattle* const this, int32_t arg2), void __convention("thiscall") mHRBattle::mEffectProc(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetPopNpc(class mHRBattle* const this, int32_t arg2, struct Vec& arg3, struct Vec& arg4), uint8_t __convention("thiscall") mHRBattle::mTestNpcType(class mHRBattle* const this, class mHRChara* arg2), void __convention("thiscall") mHRBattle::mSetNpcEnterPattern(class mHRBattle* const this, int32_t arg2, int32_t arg3, struct Vec& arg4), void __convention("thiscall") mHRBattle::mSetShadowRate4CommonObject(class mHRBattle* const this, int32_t arg2, int32_t arg3), void __convention("thiscall") mHRBattle::mCreateNewNpc(class mHRBattle* const this, int32_t arg2, int32_t arg3), uint8_t __convention("thiscall") mHRBattle::mCheckNpcInitHp(class mHRBattle* const this, float* arg2), void __convention("thiscall") mHRBattle::mCheckDeadNpc(class mHRBattle* const this), int32_t __convention("thiscall") mHRBattle::mGetEmptyNpcIndex(class mHRBattle* const this), uint32_t __convention("thiscall") mHRBattle::mGetResourceNpcNum(class mHRBattle* const this), void* __convention("thiscall") mHRBattle::mGetResourceZakoNpcMotion(class mHRBattle* const this, char* arg2), void* __convention("thiscall") mHRBattle::mGetResourceZakoCmnMotion(class mHRBattle* const this, int32_t arg2), void* __convention("thiscall") mHRBattle::mGetResourceZakoWepMotion(class mHRBattle* const this, int32_t arg2), void* __convention("thiscall") mHRBattle::mGetResourceNpc(class mHRBattle* const this, int32_t arg2, char const** arg3), int32_t __convention("thiscall") mHRBattle::GetNpcDatIndexByCharPtr(class mHRBattle* const this, class mHRChara* arg2), void __convention("thiscall") mHRBattle::mCameraRotD(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mCameraRotU(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mCameraRotR(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mCameraRotL(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mCameraFrameProc(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetCameraOffset4Fps(class mHRBattle* const this, float arg2, float arg3, float arg4, int32_t arg5), void __convention("thiscall") mHRBattle::mResetCameraOffset4Fps(class mHRBattle* const this, int32_t arg2), void __convention("thiscall") mHRBattle::mSetCameraOffset4En(class mHRBattle* const this, float arg2, float arg3, float arg4, int32_t arg5), void __convention("thiscall") mHRBattle::mSetCameraOffset4Pc(class mHRBattle* const this, float arg2, float arg3, float arg4, int32_t arg5), void __convention("thiscall") mHRBattle::mSetLockOnCameraZoomIn(class mHRBattle* const this, int32_t arg2), void __convention("thiscall") mHRBattle::mSetLockOnCameraZoomOut(class mHRBattle* const this, int32_t arg2), void __convention("thiscall") mHRBattle::mResetLockOnCameraZoom(class mHRBattle* const this, int32_t arg2), uint8_t __convention("thiscall") mHRBattle::mCheckUndispStatusStage(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetMoveInitCamera4MiniDemo(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetLockOnCamera(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mPcTerm(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mPcInit(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mPopPcSaveData(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mPushPcSaveData(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mInitStart(class mHRBattle* const this), void* __convention("thiscall") mHRBattle::mGetResourceCmnObj(class mHRBattle* const this, int32_t arg2), void __convention("thiscall") mHRBattle::mSetLightReflecte(class mHRBattle* const this, struct Vec& arg2, float const arg3, uint32_t const arg4, int32_t const arg5, float const arg6, enum eLightRefPriority arg7), uint8_t __convention("thiscall") mHRBattle::mInit(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mFrameProc(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetVisibleAll(class mHRBattle* const this, uint8_t arg2), void __convention("thiscall") mHRBattle::mSetOperateAll(class mHRBattle* const this, uint8_t arg2), void __convention("thiscall") mHRBattle::mSetNewGameDataRequest(class mHRBattle* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRBattle::mTerm(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mPostRenderProc(class mHRBattle* const this), int32_t __convention("thiscall") mHRBattle::GetBowlingSubMissionResult(class mHRBattle* const this, int32_t arg2), uint8_t __convention("thiscall") mHRBattle::mCheckPcLoaded(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mGetPcOperate(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetMoveInitCamera(class mHRBattle* const this, uint8_t arg2, uint8_t arg3, uint8_t arg4, uint8_t arg5), void __convention("thiscall") mHRBattle::mInitStartMainMission(class mHRBattle* const this), class mHRChara* __convention("thiscall") mHRBattle::mGetNpcPtr(class mHRBattle* const this, int32_t arg2), int32_t __convention("thiscall") mHRBattle::mSetInitNpcDat(class mHRBattle* const this, int32_t arg2, enum enCharaType arg3, int32_t arg4, struct Vec& arg5, struct Vec& arg6, enum enPopReqType arg7, uint8_t arg8), int32_t __convention("thiscall") mHRBattle::mSetInitObjDat(class mHRBattle* const this, int32_t arg2, struct Vec& arg3, struct Vec& arg4, uint8_t arg5, char const* arg6, class TGmfNode* arg7, int32_t arg8, int32_t arg9), void __convention("thiscall") mHRBattle::mSetPopType(class mHRBattle* const this, int32_t arg2, enum enPopReqType arg3), uint8_t __convention("thiscall") mHRBattle::mSetPcKind(class mHRBattle* const this, enum enPcKind arg2, uint8_t arg3), int32_t __convention("thiscall") mHRBattle::mSetInitNpcDat2(class mHRBattle* const this, int32_t arg2, enum enCharaType arg3, int32_t arg4, struct Vec& arg5, struct Vec& arg6, enum enPopReqType arg7, int32_t arg8, float arg9, float arg10, uint8_t arg11), int32_t __convention("thiscall") mHRBattle::mSetInitNpcDat3(class mHRBattle* const this, int32_t arg2, enum enCharaType arg3, int32_t arg4, struct Vec& arg5, struct Vec& arg6, enum enPopReqType arg7, int32_t arg8, float arg9, float arg10, int32_t arg11, uint8_t arg12), int32_t __convention("thiscall") mHRBattle::mSetInitNpcDat4(class mHRBattle* const this, int32_t arg2, enum enCharaType arg3, int32_t arg4, struct Vec& arg5, struct Vec& arg6, enum enPopReqType arg7, int32_t arg8, float arg9, float arg10, int32_t arg11, char* arg12, uint8_t arg13), int32_t __convention("thiscall") mHRBattle::mSetInitNpcDat5(class mHRBattle* const this, int32_t arg2, enum enCharaType arg3, int32_t arg4, struct Vec& arg5, struct Vec& arg6, enum enPopReqType arg7, int32_t arg8, float arg9, float arg10, int32_t arg11, char* arg12, uint8_t arg13, float arg14, int32_t arg15), int32_t __convention("thiscall") mHRBattle::mSetInitNpcDat6(class mHRBattle* const this, int32_t arg2, enum enCharaType arg3, int32_t arg4, struct Vec& arg5, struct Vec& arg6, enum enPopReqType arg7, int32_t arg8, float arg9, float arg10, int32_t arg11, char* arg12, uint8_t arg13, float arg14, int32_t arg15, int32_t arg16), int32_t __convention("thiscall") mHRBattle::mSetInitNpcDat7(class mHRBattle* const this, int32_t arg2, enum enCharaType arg3, int32_t arg4, struct Vec& arg5, struct Vec& arg6, enum enPopReqType arg7, int32_t arg8, float arg9, float arg10, int32_t arg11, char* arg12, uint8_t arg13, float arg14, int32_t arg15, int32_t arg16), int32_t __convention("thiscall") mHRBattle::mSetInitNpcDatObj095(class mHRBattle* const this, int32_t arg2, struct Vec& arg3, struct Vec& arg4, int32_t arg5, int32_t arg6), void __convention("thiscall") mHRBattle::mDispPcStatus(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mDispMiniMap(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mUndispMiniMap(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mDeleteNpc(class mHRBattle* const this, int32_t arg2), uint8_t __convention("thiscall") mHRBattle::RequestMotionNoNpc(class mHRBattle* const this, enum enCharaType arg2, int32_t arg3, uint8_t arg4), class mHRChara* __convention("thiscall") mHRBattle::mGetNpcPtrFromCharaType(class mHRBattle* const this, enum enCharaType arg2), void __convention("thiscall") mHRBattle::mSetZakoNpcMotionProcessDisEnable(class mHRBattle* const this, uint8_t arg2), void __convention("thiscall") mHRBattle::mSetAspectRate(class mHRBattle* const this, float arg2, int32_t arg3), uint8_t __convention("thiscall") mHRBattle::mCheckExistEnemy(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mAllTestZakoDamage(class mHRBattle* const this, int32_t arg2), uint8_t __convention("thiscall") mHRBattle::mAllTestZakoTameDamage(class mHRBattle* const this), uint8_t __convention("thiscall") mHRBattle::mAllEnemyDie(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mAllClearNpcData(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetCameraProjection(class mHRBattle* const this, float arg2), int32_t __convention("thiscall") mHRBattle::mGetObjNpcID(class mHRBattle* const this, int32_t arg2, char* arg3), class mHRChara* __convention("thiscall") mHRBattle::mGetObjPtr(class mHRBattle* const this, int32_t arg2, char* arg3), void __convention("thiscall") mHRBattle::mPopNpc(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetSlowMotionTick(class mHRBattle* const this, int32_t arg2, enum stBtEffect::SlowType arg3), uint8_t __convention("thiscall") mHRBattle::mReleaseAllEnemy(class mHRBattle* const this), int32_t __convention("thiscall") mHRBattle::mSetInitNpcDatObj183(class mHRBattle* const this, int32_t arg2, struct Vec& arg3, struct Vec& arg4, int32_t arg5, int32_t arg6, uint8_t arg7, int32_t arg8), uint8_t __convention("thiscall") mHRBattle::mReleaseAllNpc(class mHRBattle* const this), void __convention("thiscall") mHRBattle::mSetDontAppearStatus(class mHRBattle* const this), void __convention("thiscall") mHRBattle::CameraMotionModeReset(class mHRBattle* const this, uint8_t arg2), void __convention("thiscall") mHRBattle::mSetPcOperate(class mHRBattle* const this, uint8_t arg2), void __convention("thiscall") mHRBattle::mUndispPcStatus(class mHRBattle* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRBattle::mRenderProc(class mHRBattle* const this), float __convention("thiscall") mHRBattle::mGetNpcMotionSpd(class mHRBattle* const this, class mHRChara* arg2)
-
 	// [Function] class mHRPc* __convention("thiscall") mHRBattle::mGetPcPtr(class mHRBattle* const this) [?mGetPcPtr@mHRBattle@@QAEPAVmHRPc@@XZ]
 	class mHRPc* mGetPcPtr()
 	{
@@ -1960,353 +1954,224 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x3fce60);
 		return mFunc(this, arg2);
 	}
-
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[146492];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<mHRBattle>("mHRBattle")
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRPc*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetPcPtr", &mHRBattle::mGetPcPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetSlowMotionTick", &mHRBattle::mGetSlowMotionTick)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBulletSlow", &mHRBattle::mGetBulletSlow)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetSlowMotionTick", &mHRBattle::mGetSlowMotionTick)
+			.addFunction("mGetBulletSlow", &mHRBattle::mGetBulletSlow)
+			// Functions with return values pointing to native types ('struct stBtEffect*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetBtEffect", &mHRBattle::mGetBtEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetNpcAttackFlag", &mHRBattle::mSetNpcAttackFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetNpcAttackRate", &mHRBattle::mSetNpcAttackRate)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("SetNpcDatMax", &mHRBattle::SetNpcDatMax)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetNpcAttackFlag", &mHRBattle::mSetNpcAttackFlag)
+			.addFunction("mSetNpcAttackRate", &mHRBattle::mSetNpcAttackRate)
+			.addFunction("SetNpcDatMax", &mHRBattle::SetNpcDatMax)
+			// Functions with return values pointing to native types ('class EfSmoke*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("GetSmokeEf", &mHRBattle::GetSmokeEf)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetPcKind", &mHRBattle::mGetPcKind)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetFrameProc", &mHRBattle::mGetFrameProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCameraAngle", &mHRBattle::mSetCameraAngle)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCamMotFlag", &mHRBattle::mSetCamMotFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCamMotFlagNoUse", &mHRBattle::mSetCamMotFlagNoUse)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCameraAutoReturnDisEnable", &mHRBattle::mSetCameraAutoReturnDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearKillNum", &mHRBattle::mClearKillNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetKillNum", &mHRBattle::mGetKillNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetKillNum", &mHRBattle::mSetKillNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("GetRevengeMissionZakoKillNum", &mHRBattle::GetRevengeMissionZakoKillNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("ClearRevengeMissionZakoKillNum", &mHRBattle::ClearRevengeMissionZakoKillNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBattlePause", &mHRBattle::mSetBattlePause)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDispStatusDisEnable", &mHRBattle::mSetDispStatusDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDispStatusDisEnable", &mHRBattle::mGetDispStatusDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetChargeDamage", &mHRBattle::mSetChargeDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearTotalKillNum", &mHRBattle::mClearTotalKillNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetTutoRun", &mHRBattle::mGetTutoRun)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSubRepopNum", &mHRBattle::mSubRepopNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetRepopTimer", &mHRBattle::mSetRepopTimer)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetNewGameDataRequest", &mHRBattle::mGetNewGameDataRequest)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDontChangeTeppeiCamera", &mHRBattle::mGetDontChangeTeppeiCamera)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCameraProjection", &mHRBattle::mGetCameraProjection)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCameraMoveFlag", &mHRBattle::mSetCameraMoveFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetPcKind", &mHRBattle::mGetPcKind)
+			.addFunction("mGetFrameProc", &mHRBattle::mGetFrameProc)
+			.addFunction("mSetCameraAngle", &mHRBattle::mSetCameraAngle)
+			.addFunction("mSetCamMotFlag", &mHRBattle::mSetCamMotFlag)
+			.addFunction("mSetCamMotFlagNoUse", &mHRBattle::mSetCamMotFlagNoUse)
+			.addFunction("mSetCameraAutoReturnDisEnable", &mHRBattle::mSetCameraAutoReturnDisEnable)
+			.addFunction("mClearKillNum", &mHRBattle::mClearKillNum)
+			.addFunction("mGetKillNum", &mHRBattle::mGetKillNum)
+			.addFunction("mSetKillNum", &mHRBattle::mSetKillNum)
+			.addFunction("GetRevengeMissionZakoKillNum", &mHRBattle::GetRevengeMissionZakoKillNum)
+			.addFunction("ClearRevengeMissionZakoKillNum", &mHRBattle::ClearRevengeMissionZakoKillNum)
+			.addFunction("mSetBattlePause", &mHRBattle::mSetBattlePause)
+			.addFunction("mSetDispStatusDisEnable", &mHRBattle::mSetDispStatusDisEnable)
+			.addFunction("mGetDispStatusDisEnable", &mHRBattle::mGetDispStatusDisEnable)
+			.addFunction("mSetChargeDamage", &mHRBattle::mSetChargeDamage)
+			.addFunction("mClearTotalKillNum", &mHRBattle::mClearTotalKillNum)
+			.addFunction("mGetTutoRun", &mHRBattle::mGetTutoRun)
+			.addFunction("mSubRepopNum", &mHRBattle::mSubRepopNum)
+			.addFunction("mSetRepopTimer", &mHRBattle::mSetRepopTimer)
+			.addFunction("mGetNewGameDataRequest", &mHRBattle::mGetNewGameDataRequest)
+			.addFunction("mGetDontChangeTeppeiCamera", &mHRBattle::mGetDontChangeTeppeiCamera)
+			.addFunction("mGetCameraProjection", &mHRBattle::mGetCameraProjection)
+			.addFunction("mSetCameraMoveFlag", &mHRBattle::mSetCameraMoveFlag)
+			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
 			//.addFunction("mSetMotionCameraPos", &mHRBattle::mSetMotionCameraPos)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('struct Vec*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetMotionCameraPos", &mHRBattle::mGetMotionCameraPos)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (float* arg2) not supported in LuaBridge.
 			//.addFunction("mSetMotionCameraY", &mHRBattle::mSetMotionCameraY)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('float*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetMotionCameraY", &mHRBattle::mGetMotionCameraY)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBattlePause", &mHRBattle::mGetBattlePause)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetChargeDamage", &mHRBattle::mGetChargeDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetChangeCameraRailFlag", &mHRBattle::mGetChangeCameraRailFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCameraAngleX", &mHRBattle::mGetCameraAngleX)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLockNavelPos", &mHRBattle::mSetLockNavelPos)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetTotalKillNum", &mHRBattle::mGetTotalKillNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetTotalKillNum", &mHRBattle::mSetTotalKillNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBossBreakSlow", &mHRBattle::mGetBossBreakSlow)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetNpcAttackFlag", &mHRBattle::mGetNpcAttackFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetNpcAttackRate", &mHRBattle::mGetNpcAttackRate)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("AddRevengeMissionZakoKillNum", &mHRBattle::AddRevengeMissionZakoKillNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("SetCameraMotionEndStop", &mHRBattle::SetCameraMotionEndStop)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("IsBgmEffect", &mHRBattle::IsBgmEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDontChangeTeppeiCamera", &mHRBattle::mSetDontChangeTeppeiCamera)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("UpdateMassKillAchievement", &mHRBattle::UpdateMassKillAchievement)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("UpdateMainScreenUI", &mHRBattle::UpdateMainScreenUI)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("BgmEffectProc", &mHRBattle::BgmEffectProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("SetBgmEffect", &mHRBattle::SetBgmEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetBattlePause", &mHRBattle::mGetBattlePause)
+			.addFunction("mGetChargeDamage", &mHRBattle::mGetChargeDamage)
+			.addFunction("mGetChangeCameraRailFlag", &mHRBattle::mGetChangeCameraRailFlag)
+			.addFunction("mGetCameraAngleX", &mHRBattle::mGetCameraAngleX)
+			.addFunction("mSetLockNavelPos", &mHRBattle::mSetLockNavelPos)
+			.addFunction("mGetTotalKillNum", &mHRBattle::mGetTotalKillNum)
+			.addFunction("mSetTotalKillNum", &mHRBattle::mSetTotalKillNum)
+			.addFunction("mGetBossBreakSlow", &mHRBattle::mGetBossBreakSlow)
+			.addFunction("mGetNpcAttackFlag", &mHRBattle::mGetNpcAttackFlag)
+			.addFunction("mGetNpcAttackRate", &mHRBattle::mGetNpcAttackRate)
+			.addFunction("AddRevengeMissionZakoKillNum", &mHRBattle::AddRevengeMissionZakoKillNum)
+			.addFunction("SetCameraMotionEndStop", &mHRBattle::SetCameraMotionEndStop)
+			.addFunction("IsBgmEffect", &mHRBattle::IsBgmEffect)
+			.addFunction("mSetDontChangeTeppeiCamera", &mHRBattle::mSetDontChangeTeppeiCamera)
+			.addFunction("UpdateMassKillAchievement", &mHRBattle::UpdateMassKillAchievement)
+			.addFunction("UpdateMainScreenUI", &mHRBattle::UpdateMainScreenUI)
+			.addFunction("BgmEffectProc", &mHRBattle::BgmEffectProc)
+			.addFunction("SetBgmEffect", &mHRBattle::SetBgmEffect)
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("GetNpc", &mHRBattle::GetNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckPcLoaded4WepaponChange", &mHRBattle::mCheckPcLoaded4WepaponChange)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckBattleInit", &mHRBattle::mCheckBattleInit)
+			.addFunction("mCheckPcLoaded4WepaponChange", &mHRBattle::mCheckPcLoaded4WepaponChange)
+			.addFunction("mCheckBattleInit", &mHRBattle::mCheckBattleInit)
 			.addFunction("ChkToiletStage", &mHRBattle::ChkToiletStage)
 			.addFunction("ChkBikeStage", &mHRBattle::ChkBikeStage)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("GetPickUpGomiSubMissionResult", &mHRBattle::GetPickUpGomiSubMissionResult)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAddKillNum", &mHRBattle::mAddKillNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetNpcAppear", &mHRBattle::mSetNpcAppear)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("GetPickUpGomiSubMissionResult", &mHRBattle::GetPickUpGomiSubMissionResult)
+			.addFunction("mAddKillNum", &mHRBattle::mAddKillNum)
+			.addFunction("mSetNpcAppear", &mHRBattle::mSetNpcAppear)
+			// Functions with parameters pointing to native types (struct Vec& arg4) not supported in LuaBridge.
 			//.addFunction("FixRotationOfItem", &mHRBattle::FixRotationOfItem)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (struct Vec& arg3) not supported in LuaBridge.
 			//.addFunction("FixPositionOfItem", &mHRBattle::FixPositionOfItem)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetInitCustomColliderObj", &mHRBattle::mSetInitCustomColliderObj)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetInitCustomColliderObj", &mHRBattle::mSetInitCustomColliderObj)
+			// Functions with parameters pointing to native types (struct Vec& arg4) not supported in LuaBridge.
 			//.addFunction("mSetInitCharaPos", &mHRBattle::mSetInitCharaPos)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckStatusDispOnlyBattery", &mHRBattle::mCheckStatusDispOnlyBattery)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckStatusDispWithoutBattery", &mHRBattle::mCheckStatusDispWithoutBattery)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckStatusDisp", &mHRBattle::mCheckStatusDisp)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mUndispMoney", &mHRBattle::mUndispMoney)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDispMoney", &mHRBattle::mDispMoney)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDispPcStatus", &mHRBattle::mGetDispPcStatus)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mReleaseAllNpcWithoutCmnObj", &mHRBattle::mReleaseAllNpcWithoutCmnObj)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBulletSlowTick", &mHRBattle::mSetBulletSlowTick)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetBulletSlow", &mHRBattle::mResetBulletSlow)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetSlowMotion", &mHRBattle::mResetSlowMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mLightReflectEfProc", &mHRBattle::mLightReflectEfProc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mCheckStatusDispOnlyBattery", &mHRBattle::mCheckStatusDispOnlyBattery)
+			.addFunction("mCheckStatusDispWithoutBattery", &mHRBattle::mCheckStatusDispWithoutBattery)
+			.addFunction("mCheckStatusDisp", &mHRBattle::mCheckStatusDisp)
+			.addFunction("mUndispMoney", &mHRBattle::mUndispMoney)
+			.addFunction("mDispMoney", &mHRBattle::mDispMoney)
+			.addFunction("mGetDispPcStatus", &mHRBattle::mGetDispPcStatus)
+			.addFunction("mReleaseAllNpcWithoutCmnObj", &mHRBattle::mReleaseAllNpcWithoutCmnObj)
+			.addFunction("mSetBulletSlowTick", &mHRBattle::mSetBulletSlowTick)
+			.addFunction("mResetBulletSlow", &mHRBattle::mResetBulletSlow)
+			.addFunction("mResetSlowMotion", &mHRBattle::mResetSlowMotion)
+			.addFunction("mLightReflectEfProc", &mHRBattle::mLightReflectEfProc)
+			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
 			//.addFunction("mCheckSamePopNpcPosAsNpcDat", &mHRBattle::mCheckSamePopNpcPosAsNpcDat)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetEmptyNpcDatIndex", &mHRBattle::mGetEmptyNpcDatIndex)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mRestorePcData4Lap", &mHRBattle::mRestorePcData4Lap)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mStorePcData4Lap", &mHRBattle::mStorePcData4Lap)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCallPadProcess", &mHRBattle::mCallPadProcess)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearNpcDat", &mHRBattle::mClearNpcDat)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mEffectProc", &mHRBattle::mEffectProc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetEmptyNpcDatIndex", &mHRBattle::mGetEmptyNpcDatIndex)
+			.addFunction("mRestorePcData4Lap", &mHRBattle::mRestorePcData4Lap)
+			.addFunction("mStorePcData4Lap", &mHRBattle::mStorePcData4Lap)
+			.addFunction("mCallPadProcess", &mHRBattle::mCallPadProcess)
+			.addFunction("mClearNpcDat", &mHRBattle::mClearNpcDat)
+			.addFunction("mEffectProc", &mHRBattle::mEffectProc)
+			// Functions with parameters pointing to native types (struct Vec& arg4) not supported in LuaBridge.
 			//.addFunction("mSetPopNpc", &mHRBattle::mSetPopNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mTestNpcType", &mHRBattle::mTestNpcType)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (struct Vec& arg4) not supported in LuaBridge.
 			//.addFunction("mSetNpcEnterPattern", &mHRBattle::mSetNpcEnterPattern)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetShadowRate4CommonObject", &mHRBattle::mSetShadowRate4CommonObject)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCreateNewNpc", &mHRBattle::mCreateNewNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetShadowRate4CommonObject", &mHRBattle::mSetShadowRate4CommonObject)
+			.addFunction("mCreateNewNpc", &mHRBattle::mCreateNewNpc)
+			// Functions with parameters pointing to native types (float* arg2) not supported in LuaBridge.
 			//.addFunction("mCheckNpcInitHp", &mHRBattle::mCheckNpcInitHp)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckDeadNpc", &mHRBattle::mCheckDeadNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetEmptyNpcIndex", &mHRBattle::mGetEmptyNpcIndex)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetResourceNpcNum", &mHRBattle::mGetResourceNpcNum)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mCheckDeadNpc", &mHRBattle::mCheckDeadNpc)
+			.addFunction("mGetEmptyNpcIndex", &mHRBattle::mGetEmptyNpcIndex)
+			.addFunction("mGetResourceNpcNum", &mHRBattle::mGetResourceNpcNum)
+			// Functions with return values pointing to native types ('void*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceZakoNpcMotion", &mHRBattle::mGetResourceZakoNpcMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('void*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceZakoCmnMotion", &mHRBattle::mGetResourceZakoCmnMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('void*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceZakoWepMotion", &mHRBattle::mGetResourceZakoWepMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('void*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceNpc", &mHRBattle::mGetResourceNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("GetNpcDatIndexByCharPtr", &mHRBattle::GetNpcDatIndexByCharPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCameraRotD", &mHRBattle::mCameraRotD)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCameraRotU", &mHRBattle::mCameraRotU)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCameraRotR", &mHRBattle::mCameraRotR)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCameraRotL", &mHRBattle::mCameraRotL)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCameraFrameProc", &mHRBattle::mCameraFrameProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCameraOffset4Fps", &mHRBattle::mSetCameraOffset4Fps)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetCameraOffset4Fps", &mHRBattle::mResetCameraOffset4Fps)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCameraOffset4En", &mHRBattle::mSetCameraOffset4En)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCameraOffset4Pc", &mHRBattle::mSetCameraOffset4Pc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLockOnCameraZoomIn", &mHRBattle::mSetLockOnCameraZoomIn)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLockOnCameraZoomOut", &mHRBattle::mSetLockOnCameraZoomOut)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetLockOnCameraZoom", &mHRBattle::mResetLockOnCameraZoom)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckUndispStatusStage", &mHRBattle::mCheckUndispStatusStage)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetMoveInitCamera4MiniDemo", &mHRBattle::mSetMoveInitCamera4MiniDemo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLockOnCamera", &mHRBattle::mSetLockOnCamera)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPcTerm", &mHRBattle::mPcTerm)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPcInit", &mHRBattle::mPcInit)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPopPcSaveData", &mHRBattle::mPopPcSaveData)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPushPcSaveData", &mHRBattle::mPushPcSaveData)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mInitStart", &mHRBattle::mInitStart)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mCameraRotD", &mHRBattle::mCameraRotD)
+			.addFunction("mCameraRotU", &mHRBattle::mCameraRotU)
+			.addFunction("mCameraRotR", &mHRBattle::mCameraRotR)
+			.addFunction("mCameraRotL", &mHRBattle::mCameraRotL)
+			.addFunction("mCameraFrameProc", &mHRBattle::mCameraFrameProc)
+			.addFunction("mSetCameraOffset4Fps", &mHRBattle::mSetCameraOffset4Fps)
+			.addFunction("mResetCameraOffset4Fps", &mHRBattle::mResetCameraOffset4Fps)
+			.addFunction("mSetCameraOffset4En", &mHRBattle::mSetCameraOffset4En)
+			.addFunction("mSetCameraOffset4Pc", &mHRBattle::mSetCameraOffset4Pc)
+			.addFunction("mSetLockOnCameraZoomIn", &mHRBattle::mSetLockOnCameraZoomIn)
+			.addFunction("mSetLockOnCameraZoomOut", &mHRBattle::mSetLockOnCameraZoomOut)
+			.addFunction("mResetLockOnCameraZoom", &mHRBattle::mResetLockOnCameraZoom)
+			.addFunction("mCheckUndispStatusStage", &mHRBattle::mCheckUndispStatusStage)
+			.addFunction("mSetMoveInitCamera4MiniDemo", &mHRBattle::mSetMoveInitCamera4MiniDemo)
+			.addFunction("mSetLockOnCamera", &mHRBattle::mSetLockOnCamera)
+			.addFunction("mPcTerm", &mHRBattle::mPcTerm)
+			.addFunction("mPcInit", &mHRBattle::mPcInit)
+			.addFunction("mPopPcSaveData", &mHRBattle::mPopPcSaveData)
+			.addFunction("mPushPcSaveData", &mHRBattle::mPushPcSaveData)
+			.addFunction("mInitStart", &mHRBattle::mInitStart)
+			// Functions with return values pointing to native types ('void*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceCmnObj", &mHRBattle::mGetResourceCmnObj)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
 			//.addFunction("mSetLightReflecte", &mHRBattle::mSetLightReflecte)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mInit", &mHRBattle::mInit)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mFrameProc", &mHRBattle::mFrameProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetVisibleAll", &mHRBattle::mSetVisibleAll)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetOperateAll", &mHRBattle::mSetOperateAll)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetNewGameDataRequest", &mHRBattle::mSetNewGameDataRequest)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTerm", &mHRBattle::mTerm)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPostRenderProc", &mHRBattle::mPostRenderProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("GetBowlingSubMissionResult", &mHRBattle::GetBowlingSubMissionResult)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckPcLoaded", &mHRBattle::mCheckPcLoaded)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetPcOperate", &mHRBattle::mGetPcOperate)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetMoveInitCamera", &mHRBattle::mSetMoveInitCamera)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mInitStartMainMission", &mHRBattle::mInitStartMainMission)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mInit", &mHRBattle::mInit)
+			.addFunction("mFrameProc", &mHRBattle::mFrameProc)
+			.addFunction("mSetVisibleAll", &mHRBattle::mSetVisibleAll)
+			.addFunction("mSetOperateAll", &mHRBattle::mSetOperateAll)
+			.addFunction("mSetNewGameDataRequest", &mHRBattle::mSetNewGameDataRequest)
+			.addFunction("mTerm", &mHRBattle::mTerm)
+			.addFunction("mPostRenderProc", &mHRBattle::mPostRenderProc)
+			.addFunction("GetBowlingSubMissionResult", &mHRBattle::GetBowlingSubMissionResult)
+			.addFunction("mCheckPcLoaded", &mHRBattle::mCheckPcLoaded)
+			.addFunction("mGetPcOperate", &mHRBattle::mGetPcOperate)
+			.addFunction("mSetMoveInitCamera", &mHRBattle::mSetMoveInitCamera)
+			.addFunction("mInitStartMainMission", &mHRBattle::mInitStartMainMission)
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetNpcPtr", &mHRBattle::mGetNpcPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (struct Vec& arg6) not supported in LuaBridge.
 			//.addFunction("mSetInitNpcDat", &mHRBattle::mSetInitNpcDat)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class TGmfNode* arg7) not supported in LuaBridge.
 			//.addFunction("mSetInitObjDat", &mHRBattle::mSetInitObjDat)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetPopType", &mHRBattle::mSetPopType)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetPcKind", &mHRBattle::mSetPcKind)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetPopType", &mHRBattle::mSetPopType)
+			.addFunction("mSetPcKind", &mHRBattle::mSetPcKind)
+			// Functions with parameters pointing to native types (struct Vec& arg6) not supported in LuaBridge.
 			//.addFunction("mSetInitNpcDat2", &mHRBattle::mSetInitNpcDat2)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (struct Vec& arg6) not supported in LuaBridge.
 			//.addFunction("mSetInitNpcDat3", &mHRBattle::mSetInitNpcDat3)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (char* arg12) not supported in LuaBridge.
 			//.addFunction("mSetInitNpcDat4", &mHRBattle::mSetInitNpcDat4)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (char* arg12) not supported in LuaBridge.
 			//.addFunction("mSetInitNpcDat5", &mHRBattle::mSetInitNpcDat5)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (char* arg12) not supported in LuaBridge.
 			//.addFunction("mSetInitNpcDat6", &mHRBattle::mSetInitNpcDat6)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (char* arg12) not supported in LuaBridge.
 			//.addFunction("mSetInitNpcDat7", &mHRBattle::mSetInitNpcDat7)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (struct Vec& arg4) not supported in LuaBridge.
 			//.addFunction("mSetInitNpcDatObj095", &mHRBattle::mSetInitNpcDatObj095)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDispPcStatus", &mHRBattle::mDispPcStatus)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDispMiniMap", &mHRBattle::mDispMiniMap)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mUndispMiniMap", &mHRBattle::mUndispMiniMap)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDeleteNpc", &mHRBattle::mDeleteNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("RequestMotionNoNpc", &mHRBattle::RequestMotionNoNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mDispPcStatus", &mHRBattle::mDispPcStatus)
+			.addFunction("mDispMiniMap", &mHRBattle::mDispMiniMap)
+			.addFunction("mUndispMiniMap", &mHRBattle::mUndispMiniMap)
+			.addFunction("mDeleteNpc", &mHRBattle::mDeleteNpc)
+			.addFunction("RequestMotionNoNpc", &mHRBattle::RequestMotionNoNpc)
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetNpcPtrFromCharaType", &mHRBattle::mGetNpcPtrFromCharaType)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetZakoNpcMotionProcessDisEnable", &mHRBattle::mSetZakoNpcMotionProcessDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetAspectRate", &mHRBattle::mSetAspectRate)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckExistEnemy", &mHRBattle::mCheckExistEnemy)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAllTestZakoDamage", &mHRBattle::mAllTestZakoDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAllTestZakoTameDamage", &mHRBattle::mAllTestZakoTameDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAllEnemyDie", &mHRBattle::mAllEnemyDie)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAllClearNpcData", &mHRBattle::mAllClearNpcData)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCameraProjection", &mHRBattle::mSetCameraProjection)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetZakoNpcMotionProcessDisEnable", &mHRBattle::mSetZakoNpcMotionProcessDisEnable)
+			.addFunction("mSetAspectRate", &mHRBattle::mSetAspectRate)
+			.addFunction("mCheckExistEnemy", &mHRBattle::mCheckExistEnemy)
+			.addFunction("mAllTestZakoDamage", &mHRBattle::mAllTestZakoDamage)
+			.addFunction("mAllTestZakoTameDamage", &mHRBattle::mAllTestZakoTameDamage)
+			.addFunction("mAllEnemyDie", &mHRBattle::mAllEnemyDie)
+			.addFunction("mAllClearNpcData", &mHRBattle::mAllClearNpcData)
+			.addFunction("mSetCameraProjection", &mHRBattle::mSetCameraProjection)
+			// Functions with parameters pointing to native types (char* arg3) not supported in LuaBridge.
 			//.addFunction("mGetObjNpcID", &mHRBattle::mGetObjNpcID)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetObjPtr", &mHRBattle::mGetObjPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPopNpc", &mHRBattle::mPopNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetSlowMotionTick", &mHRBattle::mSetSlowMotionTick)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mReleaseAllEnemy", &mHRBattle::mReleaseAllEnemy)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mPopNpc", &mHRBattle::mPopNpc)
+			.addFunction("mSetSlowMotionTick", &mHRBattle::mSetSlowMotionTick)
+			.addFunction("mReleaseAllEnemy", &mHRBattle::mReleaseAllEnemy)
+			// Functions with parameters pointing to native types (struct Vec& arg4) not supported in LuaBridge.
 			//.addFunction("mSetInitNpcDatObj183", &mHRBattle::mSetInitNpcDatObj183)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mReleaseAllNpc", &mHRBattle::mReleaseAllNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDontAppearStatus", &mHRBattle::mSetDontAppearStatus)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("CameraMotionModeReset", &mHRBattle::CameraMotionModeReset)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetPcOperate", &mHRBattle::mSetPcOperate)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mUndispPcStatus", &mHRBattle::mUndispPcStatus)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mRenderProc", &mHRBattle::mRenderProc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mReleaseAllNpc", &mHRBattle::mReleaseAllNpc)
+			.addFunction("mSetDontAppearStatus", &mHRBattle::mSetDontAppearStatus)
+			.addFunction("CameraMotionModeReset", &mHRBattle::CameraMotionModeReset)
+			.addFunction("mSetPcOperate", &mHRBattle::mSetPcOperate)
+			.addFunction("mUndispPcStatus", &mHRBattle::mUndispPcStatus)
+			.addFunction("mRenderProc", &mHRBattle::mRenderProc)
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mGetNpcMotionSpd", &mHRBattle::mGetNpcMotionSpd)
 		.endClass();
 	}
@@ -2573,7 +2438,6 @@ enum enEqKind : uint32_t
 class CTimeRatioInterpolate
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float m_fOneRatioTime, offset 0x0>
@@ -2621,7 +2485,6 @@ enum enWepChangeProc : uint32_t
 union uniSMflag
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint16_t smBaceActivSubMission, offset 0x0>
@@ -2659,7 +2522,6 @@ enum enScreenChangeKind : uint32_t
 struct stFade
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <enum enScreenChangeKind kind, offset 0x0>
@@ -2672,8 +2534,10 @@ public:
 	uint8_t requestEnd;
 
 	// <Filler, offset 0x6>
+private:
 	char _Filler3[2];
 
+public:
 	// <class HrOverLap* pOverLap, offset 0x8>
 	class HrOverLap* pOverLap;
 
@@ -2724,7 +2588,6 @@ enum enCharaInitProc : uint32_t
 class CSpringInterpolate
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float m_fSpringCoe, offset 0x0>
@@ -2740,8 +2603,10 @@ public:
 	uint8_t m_bIsRadiInterp;
 
 	// <Filler, offset 0xd>
+private:
 	char _Filler4[3];
 
+public:
 	// <float m_fEpsilon, offset 0x10>
 	float m_fEpsilon;
 
@@ -2774,7 +2639,6 @@ static_assert(sizeof(CSpringInterpolate) == 24, "expected class CSpringInterpola
 class CDoubleSpringInterpolate
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class CSpringInterpolate m_inHopeInterp, offset 0x0>
@@ -2801,7 +2665,6 @@ static_assert(sizeof(CDoubleSpringInterpolate) == 48, "expected class CDoubleSpr
 class CAmbientShadow
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class CDoubleSpringInterpolate m_inRatio, offset 0x0>
@@ -2833,11 +2696,12 @@ static_assert(sizeof(CAmbientShadow) == 56, "expected class CAmbientShadow to be
 struct stCharaEffect
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[292];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -2853,7 +2717,6 @@ static_assert(sizeof(stCharaEffect) == 292, "expected struct stCharaEffect to be
 class stCharaFileData
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ghmGcFile* file, offset 0x0>
@@ -2884,8 +2747,10 @@ public:
 	uint8_t readyDelete;
 
 	// <Filler, offset 0x1f>
+private:
 	char _Filler9[1];
 
+public:
 	// <int32_t sndFileHandle, offset 0x20>
 	int32_t sndFileHandle;
 
@@ -2896,8 +2761,10 @@ public:
 	char FileName[9];
 
 	// <Filler, offset 0x31>
+private:
 	char _Filler12[3];
 
+public:
 	// <class TGan** pGan, offset 0x34>
 	class TGan** pGan;
 
@@ -2944,7 +2811,6 @@ static_assert(sizeof(stCharaFileData) == 56, "expected class stCharaFileData to 
 class ghmSegment
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <struct Vec mCenter, offset 0x0>
@@ -2976,7 +2842,6 @@ static_assert(sizeof(ghmSegment) == 28, "expected class ghmSegment to be size 28
 class ghmCapsule
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ghmSegment mAxis, offset 0x0>
@@ -3003,7 +2868,6 @@ static_assert(sizeof(ghmCapsule) == 32, "expected class ghmCapsule to be size 32
 class ghmGcOctTreeNodeObj
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <void* (* field_0)[0x2], offset 0x0>
@@ -3046,8 +2910,6 @@ static_assert(sizeof(ghmGcOctTreeNodeObj) == 20, "expected class ghmGcOctTreeNod
 class ghmGcCollObj : public ghmGcOctTreeNodeObj
 {
 public:
-	/// 1 namespace types: enum ghmGcCollObj::Type
-
 	// enum ghmGcCollObj::Type
 	enum Type : uint32_t
 	{
@@ -3075,7 +2937,6 @@ public:
 		TYPE_INVALID = UINT32_MAX
 
 	};
-
 
 	/// Struct member variables
 
@@ -3109,7 +2970,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<ghmGcCollObj>("ghmGcCollObj")
+		NS = NS.deriveClass<ghmGcCollObj, ghmGcOctTreeNodeObj>("ghmGcCollObj")
 			.addProperty("mObjType", &ghmGcCollObj::mObjType)
 			.addProperty("mGroup", &ghmGcCollObj::mGroup)
 			.addProperty("mIgnoreGroup", &ghmGcCollObj::mIgnoreGroup)
@@ -3139,7 +3000,6 @@ static_assert(sizeof(ghmGcCollObj) == 64, "expected class ghmGcCollObj to be siz
 class ghmGcCollObjCapsule : public ghmGcCollObj
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ghmGcCollObj field_0, offset 0x0>
@@ -3151,7 +3011,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<ghmGcCollObjCapsule>("ghmGcCollObjCapsule")
+		NS = NS.deriveClass<ghmGcCollObjCapsule, ghmGcCollObj>("ghmGcCollObjCapsule")
 			.addProperty("mShape", &ghmGcCollObjCapsule::mShape)
 		.endClass();
 	}
@@ -3164,7 +3024,6 @@ static_assert(sizeof(ghmGcCollObjCapsule) == 96, "expected class ghmGcCollObjCap
 class WAnim
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <void* (* field_0)[0x1], offset 0x0>
@@ -3187,7 +3046,6 @@ static_assert(sizeof(WAnim) == 4, "expected class WAnim to be size 4");
 class WAnimF : public WAnim
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class WAnim field_0, offset 0x0>
@@ -3217,7 +3075,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<WAnimF>("WAnimF")
+		NS = NS.deriveClass<WAnimF, WAnim>("WAnimF")
 			.addProperty("mCurValue", &WAnimF::mCurValue)
 			.addProperty("mDstValue", &WAnimF::mDstValue)
 			.addProperty("mSrcValue", &WAnimF::mSrcValue)
@@ -3242,7 +3100,6 @@ static_assert(sizeof(WAnimF) == 32, "expected class WAnimF to be size 32");
 struct stDamageInfo
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float dmg, offset 0x0>
@@ -3291,8 +3148,10 @@ public:
 	uint8_t upper;
 
 	// <Filler, offset 0x41>
+private:
 	char _Filler15[3];
 
+public:
 	// <int32_t tick, offset 0x44>
 	int32_t tick;
 
@@ -3306,7 +3165,9 @@ public:
 	uint8_t m_BikeDeadRequest;
 
 	// <Filler, offset 0x6a>
+private:
 	char _Filler[2];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -3360,11 +3221,12 @@ static_assert(sizeof(stDamageInfo) == 108, "expected struct stDamageInfo to be s
 class ghmTriangle
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[36];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -3380,7 +3242,6 @@ static_assert(sizeof(ghmTriangle) == 36, "expected class ghmTriangle to be size 
 class ghmPlane
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <struct Vec mNormal, offset 0x0>
@@ -3407,7 +3268,6 @@ static_assert(sizeof(ghmPlane) == 16, "expected class ghmPlane to be size 16");
 class ghmGcCollObjHitResultObj
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ghmPlane mPlane, offset 0x0>
@@ -3482,7 +3342,6 @@ enum enCharaCondition : uint32_t
 struct stVec
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class WAnimF x, offset 0x0>
@@ -3514,7 +3373,6 @@ static_assert(sizeof(stVec) == 96, "expected struct stVec to be size 96");
 struct Quaternion
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float x, offset 0x0>
@@ -3551,7 +3409,6 @@ static_assert(sizeof(Quaternion) == 16, "expected struct Quaternion to be size 1
 struct stCharaStatus
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <int32_t resNo, offset 0x0>
@@ -3567,8 +3424,10 @@ public:
 	int16_t zakoWepType;
 
 	// <Filler, offset 0xe>
+private:
 	char _Filler4[2];
 
+public:
 	// <float maxHp, offset 0x10>
 	float maxHp;
 
@@ -3591,8 +3450,10 @@ public:
 	uint8_t alwaysCheckHitColl;
 
 	// <Filler, offset 0x25>
+private:
 	char _Filler11[3];
 
+public:
 	// <struct Vec pos, offset 0x28>
 	struct Vec pos;
 
@@ -3672,8 +3533,10 @@ public:
 	char motionBrendNum;
 
 	// <Filler, offset 0x189>
+private:
 	char _Filler37[3];
 
+public:
 	// <float motSpd, offset 0x18c>
 	float motSpd;
 
@@ -3717,8 +3580,10 @@ public:
 	int16_t hitNum;
 
 	// <Filler, offset 0x2ca>
+private:
 	char _Filler51[2];
 
+public:
 	// <class ghmGcCollObjCapsule hitColl, offset 0x2cc>
 	class ghmGcCollObjCapsule hitColl;
 
@@ -3759,8 +3624,10 @@ public:
 	uint8_t JumpBlockHit;
 
 	// <Filler, offset 0x366>
+private:
 	char _Filler64[2];
 
+public:
 	// <float AtkDisAdjust, offset 0x368>
 	float AtkDisAdjust;
 
@@ -3931,7 +3798,6 @@ static_assert(sizeof(stCharaStatus) == 924, "expected struct stCharaStatus to be
 class ghmListObj
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <void* (* field_0)[0x6], offset 0x0>
@@ -4020,7 +3886,6 @@ enum eDmgCallBackDmgType : uint32_t
 struct CharControlMotID
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <int32_t WalkNeutral, offset 0x0>
@@ -4082,7 +3947,6 @@ static_assert(sizeof(CharControlMotID) == 36, "expected struct CharControlMotID 
 struct GXColor
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint32_t PackedValue, offset 0x0>
@@ -4104,7 +3968,6 @@ static_assert(sizeof(GXColor) == 4, "expected struct GXColor to be size 4");
 union __m128
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float m128_f32[0x4], offset 0x0>
@@ -4127,7 +3990,6 @@ static_assert(sizeof(__m128) == 16, "expected union __m128 to be size 16");
 class vector4f
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint32_t u[0x4], offset 0x0>
@@ -4150,7 +4012,6 @@ static_assert(sizeof(vector4f) == 16, "expected class vector4f to be size 16");
 class vector4x
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <double sd[0x2], offset 0x0>
@@ -4173,7 +4034,6 @@ static_assert(sizeof(vector4x) == 16, "expected class vector4x to be size 16");
 class tiVector
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float x, offset 0x0>
@@ -4212,7 +4072,6 @@ namespace mot
 	class IBoneEffectModel
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <void* (* field_0)[0x1f], offset 0x0>
@@ -4221,7 +4080,7 @@ namespace mot
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<mot::IBoneEffectModel>("mot::IBoneEffectModel")
+			NS = NS.beginClass<mot::IBoneEffectModel>("mot_IBoneEffectModel")
 				// delegates are not supported in LuaBridge
 				//.addProperty("field_0", &mot::IBoneEffectModel::field_0)
 			.endClass();
@@ -4238,22 +4097,23 @@ namespace mot
 	class IBoneEffectModelPJ : public mot::IBoneEffectModel
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <class mot::IBoneEffectModel field_0, offset 0x0>
 		// class IBoneEffectModel Super;
 
 		// <Filler, offset 0x4>
+	private:
 		char _Filler1[12];
 
+	public:
 		// <class tiVector m_inYureBonePosiOfst, offset 0x10>
 		class tiVector m_inYureBonePosiOfst;
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<mot::IBoneEffectModelPJ>("mot::IBoneEffectModelPJ")
+			NS = NS.deriveClass<mot::IBoneEffectModelPJ, mot::IBoneEffectModel>("mot_IBoneEffectModelPJ")
 				.addProperty("m_inYureBonePosiOfst", &mot::IBoneEffectModelPJ::m_inYureBonePosiOfst)
 			.endClass();
 		}
@@ -4267,28 +4127,26 @@ static_assert(sizeof(mot::IBoneEffectModelPJ) == 32, "expected class mot::IBoneE
 class TGmf : public mot::IBoneEffectModelPJ
 {
 public:
-	/// 1 namespace types: struct TGmf::tagMAIN
-
 	// [Structure] struct TGmf::tagMAIN
 	struct tagMAIN
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <Filler, offset 0x0>
+	private:
 		char _Filler[2284];
+	public:
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TGmf::tagMAIN>("TGmf::tagMAIN")
+			NS = NS.beginClass<TGmf::tagMAIN>("TGmf_tagMAIN")
 			.endClass();
 		}
 #endif
 	};
 	static_assert(sizeof(TGmf::tagMAIN) == 2284, "expected struct TGmf::tagMAIN to be size 2284");
-
 
 	/// Struct member variables
 
@@ -4302,8 +4160,10 @@ public:
 	uint8_t mUseLight;
 
 	// <Filler, offset 0x90d>
+private:
 	char _Filler3[3];
 
+public:
 	// <class TGanPlay* mpFrameInfoPlay, offset 0x910>
 	class TGanPlay* mpFrameInfoPlay;
 
@@ -4350,8 +4210,10 @@ public:
 	uint8_t mbObj;
 
 	// <Filler, offset 0x946>
+private:
 	char _Filler18[2];
 
+public:
 	// <float m_fFadeAlpha, offset 0x948>
 	float m_fFadeAlpha;
 
@@ -4386,8 +4248,10 @@ public:
 	uint8_t m_bActBoneEffectOnUpdate;
 
 	// <Filler, offset 0x96e>
+private:
 	char _Filler29[2];
 
+public:
 	// <char const* m_sIDName, offset 0x970>
 	char const* m_sIDName;
 
@@ -4407,12 +4271,14 @@ public:
 	uint8_t m_bIsBootCamVib;
 
 	// <Filler, offset 0x985>
+private:
 	char _Filler[11];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<TGmf>("TGmf")
+		NS = NS.deriveClass<TGmf, mot::IBoneEffectModelPJ>("TGmf")
 			.addProperty("dat", &TGmf::dat)
 			.addProperty("mUseLight", &TGmf::mUseLight)
 			.addProperty("mpFrameInfoPlay", &TGmf::mpFrameInfoPlay)
@@ -4491,7 +4357,6 @@ static_assert(sizeof(TGmf) == 2448, "expected class TGmf to be size 2448");
 class NYPhase
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <int32_t m_phase, offset 0x0>
@@ -4507,8 +4372,10 @@ public:
 	uint8_t m_useNext;
 
 	// <Filler, offset 0xd>
+private:
 	char _Filler4[3];
 
+public:
 	// <int32_t m_nextPhase, offset 0x10>
 	int32_t m_nextPhase;
 
@@ -4546,8 +4413,6 @@ static_assert(sizeof(NYPhase) == 28, "expected class NYPhase to be size 28");
 class NYApproachToTargetVal
 {
 public:
-	/// 1 namespace types: enum NYApproachToTargetVal::CHANGE_TYPE
-
 	// enum NYApproachToTargetVal::CHANGE_TYPE
 	enum CHANGE_TYPE : uint32_t
 	{
@@ -4566,7 +4431,6 @@ public:
 		CHANGE_TYPE_NO_CHANGED = 3
 
 	};
-
 
 	/// Struct member variables
 
@@ -4599,11 +4463,12 @@ static_assert(sizeof(NYApproachToTargetVal) == 12, "expected class NYApproachToT
 class HrTask
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[80];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -4656,8 +4521,6 @@ enum : uint32_t
 class HrBattleIcon : public HrTask
 {
 public:
-	/// 6 namespace types: enum HrBattleIcon::E_CON_ACT_ID, enum HrBattleIcon::D_BICON_STAT, enum HrBattleIcon::D_TODOME_DIRECT, class HrBattleIcon::CHrHpGauge, void __convention("thiscall") HrBattleIcon::OnCharacterTerminate(class HrBattleIcon* const this, class mHRChara* arg2), void __convention("thiscall") HrBattleIcon::Initialize(class HrBattleIcon* const this, class mHRChara* arg2, uint8_t arg3)
-
 	// enum HrBattleIcon::E_CON_ACT_ID
 	enum E_CON_ACT_ID : uint32_t
 	{
@@ -4761,8 +4624,6 @@ public:
 	class CHrHpGauge
 	{
 	public:
-		/// 1 namespace types: void __convention("thiscall") HrBattleIcon::CHrHpGauge::Initialize(class HrBattleIcon::CHrHpGauge* const this, class mHRChara* arg2)
-
 		// [Function] void __convention("thiscall") HrBattleIcon::CHrHpGauge::Initialize(class HrBattleIcon::CHrHpGauge* const this, class mHRChara* arg2) [?Initialize@CHrHpGauge@HrBattleIcon@@QAEXPAVmHRChara@@@Z]
 		void Initialize(class mHRChara* arg2)
 		{
@@ -4770,7 +4631,6 @@ public:
 			_Func mFunc = (_Func)(GameModule + 0x4ca550);
 			return mFunc(this, arg2);
 		}
-
 		/// Struct member variables
 
 		// <class NYPhase m_Phase, offset 0x0>
@@ -4792,8 +4652,10 @@ public:
 		int16_t const mc_DrawOffsetY;
 
 		// <Filler, offset 0x5e>
+	private:
 		char _Filler6[2];
 
+	public:
 		// <float m_DrawWidth, offset 0x60>
 		float m_DrawWidth;
 
@@ -4810,12 +4672,14 @@ public:
 		int16_t m_SlashFadeCounter;
 
 		// <Filler, offset 0x72>
+	private:
 		char _Filler[2];
+	public:
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<HrBattleIcon::CHrHpGauge>("HrBattleIcon::CHrHpGauge")
+			NS = NS.beginClass<HrBattleIcon::CHrHpGauge>("HrBattleIcon_CHrHpGauge")
 				.addProperty("m_Phase", &HrBattleIcon::CHrHpGauge::m_Phase)
 				// void type not supported in LuaBridge
 				//.addProperty("m_pPhaseProc", &HrBattleIcon::CHrHpGauge::m_pPhaseProc)
@@ -4831,7 +4695,7 @@ public:
 				.addProperty("m_DrawAlpha", &HrBattleIcon::CHrHpGauge::m_DrawAlpha)
 				.addProperty("m_HpRate", &HrBattleIcon::CHrHpGauge::m_HpRate)
 				.addProperty("m_SlashFadeCounter", &HrBattleIcon::CHrHpGauge::m_SlashFadeCounter)
-				// Functions with pointers to native types not supported in LuaBridge.
+				// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 				//.addFunction("Initialize", &HrBattleIcon::CHrHpGauge::Initialize)
 			.endClass();
 		}
@@ -4864,7 +4728,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x4ce4b0);
 		return mFunc(this, arg2, arg3);
 	}
-
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -4931,8 +4794,10 @@ public:
 	uint8_t m_DrawHitCmbFlag;
 
 	// <Filler, offset 0xa2>
+private:
 	char _Filler21[2];
 
+public:
 	// <float m_TsubaRatio[0x24], offset 0xa4>
 	float m_TsubaRatio[36];
 
@@ -4952,8 +4817,10 @@ public:
 	char m_MeterCounter;
 
 	// <Filler, offset 0x145>
+private:
 	char _Filler27[3];
 
+public:
 	// <float m_Tension[0x2], offset 0x148>
 	float m_Tension[2];
 
@@ -4994,8 +4861,10 @@ public:
 	uint8_t m_bDemo;
 
 	// <Filler, offset 0x187>
+private:
 	char _Filler40[1];
 
+public:
 	// <class HrBattleIcon::CHrHpGauge m_HpGauge, offset 0x188>
 	class HrBattleIcon::CHrHpGauge m_HpGauge;
 
@@ -5005,7 +4874,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<HrBattleIcon>("HrBattleIcon")
+		NS = NS.deriveClass<HrBattleIcon, HrTask>("HrBattleIcon")
 			.addProperty("m_HPVal", &HrBattleIcon::m_HPVal)
 			.addProperty("m_damagedCounter", &HrBattleIcon::m_damagedCounter)
 			.addProperty("m_IconStat", &HrBattleIcon::m_IconStat)
@@ -5058,9 +4927,9 @@ public:
 			.addProperty("m_bDemo", &HrBattleIcon::m_bDemo)
 			//.addProperty("m_HpGauge", &HrBattleIcon::m_HpGauge)
 			.addProperty("m_SlashSEStatus", &HrBattleIcon::m_SlashSEStatus)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("OnCharacterTerminate", &HrBattleIcon::OnCharacterTerminate)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("Initialize", &HrBattleIcon::Initialize)
 		.endClass();
 	}
@@ -5113,8 +4982,6 @@ static_assert(sizeof(HrBattleIcon) == 512, "expected class HrBattleIcon to be si
 class mHRChara : public ghmListObj
 {
 public:
-	/// 367 namespace types: enum enCharaType __convention("thiscall") mHRChara::mGetCharaType(class mHRChara* const this), uint8_t mHRChara::isCharacterTypeZako(enum enCharaType arg1), uint8_t __convention("thiscall") mHRChara::mTestZako(class mHRChara* const this), uint8_t mHRChara::isCharacterTypeBoss(enum enCharaType arg1), uint8_t __convention("thiscall") mHRChara::mTestBoss(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mTestEnemy(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetItemNo(class mHRChara* const this, int32_t arg2), void __convention("thiscall") mHRChara::mSetLockOnNoCheckColl(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::mSetLockOnDistanceLow(class mHRChara* const this, float arg2), void __convention("thiscall") mHRChara::mSetLockOnDistanceHi(class mHRChara* const this, float arg2), void __convention("thiscall") mHRChara::mSetLockOnDistance(class mHRChara* const this, float arg2), void __convention("thiscall") mHRChara::mSetCanLockOn(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::mSetDisableDameged(class mHRChara* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRChara::mGetDisableDameged(class mHRChara* const this), float __convention("thiscall") mHRChara::mGetMaxHp(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mUndispTgtIcn(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mDispTgtIcn(class mHRChara* const this), float __convention("thiscall") mHRChara::mGetHp(class mHRChara* const this), enum enCharaCondition __convention("thiscall") mHRChara::mGetCondition(class mHRChara* const this), class mHRChara* __convention("thiscall") mHRChara::mGetNext(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetHp(class mHRChara* const this, float arg2), class mHRChara* mHRChara::mGetTop(), struct Vec& __convention("thiscall") mHRChara::mGetRot(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetCharaPause(class mHRChara* const this, uint8_t arg2), float __convention("thiscall") mHRChara::mGetRotY(class mHRChara* const this), struct WGclMaterialSpec* __convention("thiscall") mHRChara::GetGroundTouchMaterial(class mHRChara* const this), struct stCharaStatus* __convention("thiscall") mHRChara::mGetStatusPtr(class mHRChara* const this), struct Vec& __convention("thiscall") mHRChara::mGetPos(class mHRChara* const this), int32_t __convention("thiscall") mHRChara::mGetMotionNo(class mHRChara* const this), char* __convention("thiscall") mHRChara::mGetFileName(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::IsTubaAngleCorrect(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::getMiraretaiPosition(class mHRChara* const this, struct Vec* arg2), uint8_t __convention("thiscall") mHRChara::isHopeInterestMe(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::IsWatchPc(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::IsUseRotMov(class mHRChara* const this), char const* __convention("thiscall") mHRChara::getCurMotionName(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mTestRunMotion(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mZakoDieOut(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mCreateLoseSight(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mCheckDamageMotion(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mCheckEnterMotion(class mHRChara* const this), class TGan* __convention("thiscall") mHRChara::mpGetGan(class mHRChara* const this, int32_t arg2), class TGmf* __convention("thiscall") mHRChara::mGetCurResourceGmfPtr(class mHRChara* const this), class TGmf* __convention("thiscall") mHRChara::mGetCurResourceGmfPtr(class mHRChara* const this), class TGmf* __convention("thiscall") mHRChara::mGetResourceGmfWepLPtr(class mHRChara* const this), class TGmf* __convention("thiscall") mHRChara::mGetResourceGmfWepRPtr(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetResourceGmfPtr(class mHRChara* const this, class TGmf* arg2, char* arg3), class TGmf* __convention("thiscall") mHRChara::mGetResourceGmfDeadPtr(class mHRChara* const this), class TGmf* __convention("thiscall") mHRChara::mGetResourceGmfDeadPtr(class mHRChara* const this), class TGmf* __convention("thiscall") mHRChara::mGetResourceGmfPtr(class mHRChara* const this), class TGmf* __convention("thiscall") mHRChara::mGetResourceGmfPtr(class mHRChara* const this), class ghmGcCollObjCapsule* __convention("thiscall") mHRChara::mGetCollPtr(class mHRChara* const this), void __convention("thiscall") mHRChara::mSethitOidashiDisEnable(class mHRChara* const this, uint8_t arg2), struct Vec& __convention("thiscall") mHRChara::mGetBrainPos(class mHRChara* const this), struct Vec& __convention("thiscall") mHRChara::mGetHitPos(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGetMirrorModel(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGetVisibleDist(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetCondition(class mHRChara* const this, enum enCharaCondition arg2), void __convention("thiscall") mHRChara::mSetSubMotionSpd(class mHRChara* const this, float arg2), uint8_t __convention("thiscall") mHRChara::mCheck4tsunbai(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mCheckSquat(class mHRChara* const this), void __convention("thiscall") mHRChara::mGetThrowMotNo(class mHRChara* const this, int32_t* arg2, int32_t* arg3), int32_t __convention("thiscall") mHRChara::mGetTsubazeriMotionID(class mHRChara* const this), void __convention("thiscall") mHRChara::mTsubazeriDifficultyClear(class mHRChara* const this), void __convention("thiscall") mHRChara::mTsubazeriDifficultyUp(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::IsTubaPosAdjust(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mCheckGuard(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mCheckAttack(class mHRChara* const this), void __convention("thiscall") mHRChara::mSubTension(class mHRChara* const this, float arg2), void __convention("thiscall") mHRChara::mAddTension(class mHRChara* const this, float arg2), void __convention("thiscall") mHRChara::mSetTension(class mHRChara* const this, float arg2), void __convention("thiscall") mHRChara::mResetTension(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetMovSpd(class mHRChara* const this, float arg2), uint8_t __convention("thiscall") mHRChara::UnderControllAttack_A(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::UnderControllComboAttack(class mHRChara* const this), void __convention("thiscall") mHRChara::ExitUnderControl(class mHRChara* const this), void __convention("thiscall") mHRChara::EnterUnderControl(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mPostRenderProc(class mHRChara* const this), float __convention("thiscall") mHRChara::getViewClipBoxPositionOffsetY(class mHRChara* const this), void __convention("thiscall") mHRChara::getViewClipBoxHalfLengthXYZ(class mHRChara* const this, struct Vec* arg2), int32_t __convention("thiscall") mHRChara::mGetResNo(class mHRChara* const this), int32_t __convention("thiscall") mHRChara::mGetDropMoney(class mHRChara* const this), int32_t __convention("thiscall") mHRChara::mGetItemNo(class mHRChara* const this), void __convention("thiscall") mHRChara::setLocatorNode(class mHRChara* const this, class TGmfNode* arg2), float __convention("thiscall") mHRChara::mGetHpRate(class mHRChara* const this), void __convention("thiscall") mHRChara::mSubHp(class mHRChara* const this, float arg2), float __convention("thiscall") mHRChara::mGetHitSize(class mHRChara* const this), enum enCharaInitProc __convention("thiscall") mHRChara::mGetInitProc(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::isCrashBreak(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetCharaHit(class mHRChara* const this, uint8_t arg2), int32_t __convention("thiscall") mHRChara::mGetDmgAtkMot(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetMotionProcessDisEnable(class mHRChara* const this, uint8_t arg2), float __convention("thiscall") mHRChara::mGetMotionSpd(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetStageHitDisEnable(class mHRChara* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRChara::IsFootShadowDraw(class mHRChara* const this), void __convention("thiscall") mHRChara::SetFootShadowDraw(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::mSetMotionNoNpc(class mHRChara* const this, int32_t arg2), void __convention("thiscall") mHRChara::mSetCallScriptProc(class mHRChara* const this, char* arg2), void __convention("thiscall") mHRChara::mSetDropMoney(class mHRChara* const this, int32_t arg2), void __convention("thiscall") mHRChara::mSetReactionDist(class mHRChara* const this, float arg2), void __convention("thiscall") mHRChara::mSetEnterPattern(class mHRChara* const this, int32_t arg2), void __convention("thiscall") mHRChara::mSetDatNo(class mHRChara* const this, int32_t arg2), void __convention("thiscall") mHRChara::mSetResNo(class mHRChara* const this, int32_t arg2), void __convention("thiscall") mHRChara::mSetCharaType(class mHRChara* const this, enum enCharaType arg2), int32_t __convention("thiscall") mHRChara::mGetDatNo(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGetResourceDeleteFlag(class mHRChara* const this), float __convention("thiscall") mHRChara::mGetDmgUpperPosY(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGetDmgUpper(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetResourceDeleteFlag(class mHRChara* const this, uint8_t arg2), class ghmPlane& __convention("thiscall") mHRChara::getLatestGroundTouchPlane(class mHRChara* const this), void __convention("thiscall") mHRChara::mUndispBtlIcn(class mHRChara* const this), void __convention("thiscall") mHRChara::mChgBtlIcnFinishDemo(class mHRChara* const this, enum HrBattleIcon::E_CON_ACT_ID arg2, enum HrBattleIcon::E_CON_ACT_ID arg3, uint8_t arg4), void __convention("thiscall") mHRChara::mChgBtlIcnTb(class mHRChara* const this), void __convention("thiscall") mHRChara::mChgBtlIcnFinishDemo(class mHRChara* const this, enum HrBattleIcon::D_TODOME_DIRECT arg2), void __convention("thiscall") mHRChara::SetDrawYAdjust(class mHRChara* const this, float arg2), void __convention("thiscall") mHRChara::mSetDemoCtrl(class mHRChara* const this, uint8_t arg2), uint64_t __convention("thiscall") mHRChara::mGetDemoCtrl(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::isAcceptDistanceDelete(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetStageHitDisEnableReq(class mHRChara* const this, uint8_t arg2), struct stCharaEffect* __convention("thiscall") mHRChara::mGetEffectStPtr(class mHRChara* const this), void __convention("thiscall") mHRChara::setBlackBodyEffect(class mHRChara* const this, class EffectEnemyDamage* arg2), struct Vec& __convention("thiscall") mHRChara::mGetNavelPos(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetDamageAcceptFrame(class mHRChara* const this, int32_t arg2), void __convention("thiscall") mHRChara::mSetAlwaysCheckHitColl(class mHRChara* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRChara::mGetLockOnNoCheckColl(class mHRChara* const this), float __convention("thiscall") mHRChara::mGetLockOnDistanceLow(class mHRChara* const this), float __convention("thiscall") mHRChara::mGetLockOnDistanceHi(class mHRChara* const this), float __convention("thiscall") mHRChara::mGetLockOnDistance(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGetAliveBtlIcn(class mHRChara* const this), void __convention("thiscall") mHRChara::mChgBtlIcnFinish(class mHRChara* const this, enum HrBattleIcon::D_TODOME_DIRECT arg2), void __convention("thiscall") mHRChara::mChgBtlIcnFinish(class mHRChara* const this, enum HrBattleIcon::E_CON_ACT_ID arg2, enum HrBattleIcon::E_CON_ACT_ID arg3, uint8_t arg4), void __convention("thiscall") mHRChara::mSetSlowBlow(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::mSetInputFinishReq(class mHRChara* const this, uint8_t arg2), class TGan* __convention("thiscall") mHRChara::mGetResourceGanPtr(class mHRChara* const this, int32_t arg2), int16_t __convention("thiscall") mHRChara::mGetMoney(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetMoney(class mHRChara* const this, int16_t arg2), uint8_t __convention("thiscall") mHRChara::mGetInputFinishReq(class mHRChara* const this), void __convention("thiscall") mHRChara::mAddMoney(class mHRChara* const this, int16_t arg2), void __convention("thiscall") mHRChara::mSetInvincibleMotion(class mHRChara* const this, int32_t arg2, int32_t arg3), void __convention("thiscall") mHRChara::mResetInvincibleMotion(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mCanGetHitByMotion(class mHRChara* const this, int32_t arg2), uint8_t __convention("thiscall") mHRChara::mDispAtkHitIcn(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGetDontStandUp(class mHRChara* const this), float __convention("thiscall") mHRChara::GetTubaFrmOffset(class mHRChara* const this), float __convention("thiscall") mHRChara::GetAtkDisAdjust(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGetLoseTsubazeriFlag(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetSuccessThrow(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::mSetRotYA(class mHRChara* const this, float arg2), void __convention("thiscall") mHRChara::mSetDontStandUp(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::mSetDmgGrav(class mHRChara* const this, float arg2), void __convention("thiscall") mHRChara::mChgBtlIcnSml(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::mChgBtlIcnBig(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGetCharaHit(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGetCanLockOn(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGethitOidashiDisEnable(class mHRChara* const this), enum HrBattleIcon::D_BICON_STAT __convention("thiscall") mHRChara::mGetBtlIcnStatus(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGetWepVisible(class mHRChara* const this), int32_t __convention("thiscall") mHRChara::mGetMotionBrendNum(class mHRChara* const this), int16_t __convention("thiscall") mHRChara::mGetAiValue(class mHRChara* const this, int32_t arg2), void __convention("thiscall") mHRChara::mResetPosA(class mHRChara* const this), class ghmPlane& __convention("thiscall") mHRChara::getEasyShadowProjectionPlane(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::isInterestTarget(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetMotionSpd(class mHRChara* const this, float arg2), uint8_t __convention("thiscall") mHRChara::mGetWepEffectVisible(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGetVisible(class mHRChara* const this), float __convention("thiscall") mHRChara::mGetTension(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGetMiniMapRender(class mHRChara* const this), class ghmResGroup* __convention("thiscall") mHRChara::mGetResourceRslPtr(class mHRChara* const this), int32_t __convention("thiscall") mHRChara::getFootNumber(class mHRChara* const this), char* __convention("thiscall") mHRChara::mGetCallScriptProc(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGetMotionProcessDisEnable(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::IsBloom(class mHRChara* const this), void __convention("thiscall") mHRChara::SetTermAll(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::SetKnockBackSpd(class mHRChara* const this, float arg2), float __convention("thiscall") mHRChara::GetKnockBackSpd(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGetStageHitDisEnable(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGetStartSplitFlameFlag(class mHRChara* const this), class TGmf* __convention("thiscall") mHRChara::getBoneEffectGmf(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetStartSplitFlameFlag(class mHRChara* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRChara::mGetCharaPause(class mHRChara* const this), struct Vec& __convention("thiscall") mHRChara::mGetBeforePos(class mHRChara* const this), int16_t __convention("thiscall") mHRChara::mGetZakoWepType(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetFootHitResultObj2(class mHRChara* const this, class ghmGcCollObjHitResultObj& arg2), void __convention("thiscall") mHRChara::mSetDmgUpperPow(class mHRChara* const this, float arg2), void __convention("thiscall") mHRChara::mAddHp(class mHRChara* const this, float arg2), float __convention("thiscall") mHRChara::mGetSubMotionSpd(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetZakoWepType(class mHRChara* const this, int16_t arg2), void __convention("thiscall") mHRChara::mSetHitSize(class mHRChara* const this, float arg2), float __convention("thiscall") mHRChara::mGetReactionDist(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetMiniMapRender(class mHRChara* const this, uint8_t arg2), struct Vec __convention("thiscall") mHRChara::GetKnockBackDir(class mHRChara* const this), int32_t __convention("thiscall") mHRChara::mGetMotionNoNpc(class mHRChara* const this), void __convention("thiscall") mHRChara::SetNormalClip(class mHRChara* const this, uint8_t arg2), struct Vec& __convention("thiscall") mHRChara::mGetOldPos(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mGetSuccessThrow(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetDmgUpperPosY(class mHRChara* const this, float const arg2), void __convention("thiscall") mHRChara::SetDeleteReq(class mHRChara* const this), void __convention("thiscall") mHRChara::getShootPosiAndYaw(class mHRChara* const this, struct Vec* arg2, float* arg3, class TGmf& arg4, char const* arg5), void __convention("thiscall") mHRChara::setHomingPositionFromAI(class mHRChara* const this, struct Vec& arg2), void __convention("thiscall") mHRChara::setHomingActFlagFromAI(class mHRChara* const this, uint8_t const arg2), uint8_t __convention("thiscall") mHRChara::isHoming(class mHRChara* const this), void __convention("thiscall") mHRChara::setInterestUseBoneNumFromAI(class mHRChara* const this, int32_t const arg2), uint8_t __convention("thiscall") mHRChara::isInteresting(class mHRChara* const this), void __convention("thiscall") mHRChara::addDamageToYuremono(class mHRChara* const this, float const arg2, struct Vec& arg3), class mot::IBoneEffectPJ* __convention("thiscall") mHRChara::getBoneEffect(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mSetHajikiCheck(class mHRChara* const this, float arg2), uint8_t __convention("thiscall") mHRChara::mCheckDamageAccept(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mTestZakoDown(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mTestPiyoRequest(class mHRChara* const this), float __convention("thiscall") mHRChara::mGetPiyoriHeight(class mHRChara* const this), class mHRChara* mHRChara::mGetCharaPtr(int32_t arg1), void mHRChara::mRenderGmf(void* arg1), int32_t mHRChara::debugDispCharaInfo(), uint8_t mHRChara::mTermAllZakoMotion(), uint8_t mHRChara::mInitAllNpc(), void __convention("thiscall") mHRChara::mCreateBloodSplash(class mHRChara* const this, class TGmfNode* arg2, float arg3, struct tagHRTASKCHECK* arg4), void __convention("thiscall") mHRChara::mBloodSplashProc(class mHRChara* const this), void __convention("thiscall") mHRChara::AddBoneElectPtrToList(class mHRChara* const this, class EffectBoneElect* arg2), uint8_t __convention("thiscall") mHRChara::ReleaseBoneElect(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::IsEmtpyBoneElectList(class mHRChara* const this), void __convention("thiscall") mHRChara::DeleteBoneElectFromList(class mHRChara* const this, class EffectBoneElect* arg2), void __convention("thiscall") mHRChara::AddCutmarkPtrToList(class mHRChara* const this, class EffectCutMark* arg2), uint8_t __convention("thiscall") mHRChara::IsEmtpyCutmarkList(class mHRChara* const this), void __convention("thiscall") mHRChara::DeleteCutmarkFromList(class mHRChara* const this, class EffectCutMark* arg2), uint8_t __convention("thiscall") mHRChara::SetPowerFlash(class mHRChara* const this, int32_t arg2, struct GXColor arg3), uint8_t __convention("thiscall") mHRChara::SetNoGuardEffect(class mHRChara* const this), uint8_t mHRChara::mCheckAtkAllNpc(), uint8_t mHRChara::mCheckCanAtk(), void __convention("thiscall") mHRChara::mCallBeforeRenderProc(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mCheckCanHit(class mHRChara* const this, int32_t arg2, uint8_t arg3, uint8_t arg4), void __convention("thiscall") mHRChara::CreateFootSmokeEffect(class mHRChara* const this), void __convention("thiscall") mHRChara::KnockBackProc(class mHRChara* const this), float __convention("thiscall") mHRChara::GetKnockBackRatio(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mSetDamage(class mHRChara* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10), void __convention("thiscall") mHRChara::mInitDamageMotInfo(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mChangeDefAi(class mHRChara* const this, uint8_t arg2, uint8_t arg3), void __convention("thiscall") mHRChara::mSetDefAI(class mHRChara* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRChara::mCheckCallFrameProc(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::IsNowUnderControl(class mHRChara* const this), void __convention("thiscall") mHRChara::RegistUnderControlAtkFuncPtr(class mHRChara* const this), void __convention("thiscall") mHRChara::RegistUnderControlMotID(class mHRChara* const this, struct CharControlMotID& arg2), void __convention("thiscall") mHRChara::SetUnderControlFlag(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::DrawDebugCollision(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mRenderProc(class mHRChara* const this), void __convention("thiscall") mHRChara::postSetupMatrix(class mHRChara* const this), void __convention("thiscall") mHRChara::preSetupMatrix(class mHRChara* const this), void __convention("thiscall") mHRChara::mFootSmokeEffect(class mHRChara* const this), void __convention("thiscall") mHRChara::mPosAnimationProc(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mPostFrameProc(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mFrameProc(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mInit(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetRotA(class mHRChara* const this, struct Vec& arg2, uint32_t const arg3), void __convention("thiscall") mHRChara::mSetWepEffectVisibleInstant(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::mSubFrameStop(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mPlayMotionMov(class mHRChara* const this, int32_t arg2, float arg3, float arg4, float arg5, uint8_t arg6), uint8_t __convention("thiscall") mHRChara::mTestMotion(class mHRChara* const this, int32_t arg2), void __convention("thiscall") mHRChara::mSetDifficultyMotionSpeed(class mHRChara* const this, float arg2), class mHRChara* mHRChara::getCharaByGM2FileName(char const* arg1), void __convention("thiscall") mHRChara::mSetDeath(class mHRChara* const this), void __convention("thiscall") mHRChara::mDamageCallBackForScript(class mHRChara* const this, int32_t arg2, uint8_t arg3, enum eDmgCallBackDmgType arg4, int32_t arg5), uint8_t __convention("thiscall") mHRChara::mGetMotionPlay(class mHRChara* const this), class mHRChara* mHRChara::mGetAliveResourceCharaPtr(enum enCharaType arg1, uint32_t arg2), uint8_t __convention("thiscall") mHRChara::ReleaseCutmark(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mTestPiyori(class mHRChara* const this), uint32_t __convention("thiscall") mHRChara::mGetMotionTotalTick(class mHRChara* const this, int32_t arg2), void __convention("thiscall") mHRChara::setInterestPositionFromAI(class mHRChara* const this, struct Vec& arg2), void __convention("thiscall") mHRChara::setInterestActFlagFromAI(class mHRChara* const this, uint8_t const arg2), uint8_t __convention("thiscall") mHRChara::mGetWepTopPos(class mHRChara* const this, struct Vec* arg2, enum enWepLeftRight arg3), void __convention("thiscall") mHRChara::mInitDamageStatus(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mPostFrameCommonProc1(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mPostFrameCommonProc2(class mHRChara* const this), class mot::CBoneEffectDamageData* __convention("thiscall") mHRChara::getBoneEffectDamageData(class mHRChara* const this), void __convention("thiscall") mHRChara::SetKnockBack(class mHRChara* const this, float arg2, struct Vec& arg3, float arg4), uint8_t __convention("thiscall") mHRChara::CheckWallCrashAndDamageProc(class mHRChara* const this, int32_t const arg2, int32_t const arg3), uint8_t __convention("thiscall") mHRChara::mSetHpBarVisible(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::mSetPosA(class mHRChara* const this, struct Vec& arg2, uint32_t const arg3, int32_t const arg4), uint8_t __convention("thiscall") mHRChara::mSetSimpleHpBarVisible(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::mPlayCamMotFromCharMot(class mHRChara* const this, int32_t arg2, int32_t arg3, uint8_t arg4, uint8_t arg5, uint8_t arg6), uint8_t __convention("thiscall") mHRChara::mPlayMotionMov(class mHRChara* const this, int32_t arg2, float arg3, float arg4, uint8_t arg5), void __convention("thiscall") mHRChara::checkDeleteBlackBodyEffect(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetHitCounter(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mReleaseBloodSplash(class mHRChara* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRChara::mPreFrameProc(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mPreRenderProc(class mHRChara* const this), void __convention("thiscall") mHRChara::mDetouchMotionBrend(class mHRChara* const this), void __convention("thiscall") mHRChara::mReleaseDemoBtleIcn(class mHRChara* const this), uint8_t mHRChara::isThisCharaExist(class mHRChara* arg1), uint8_t mHRChara::mTermAllNpc(), int32_t mHRChara::mGetPopZakoNum(), void __convention("thiscall") mHRChara::mDeleteDispChara(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetAiDef(class mHRChara* const this, int32_t arg2), void __convention("thiscall") mHRChara::setFootShadowDrawFlag(class mHRChara* const this, uint8_t const arg2), uint8_t mHRChara::mFrameProcAll(), uint8_t mHRChara::mRenderProcAll(uint8_t arg1), uint8_t mHRChara::mPostRenderProcAll(), uint8_t mHRChara::mTermAllNpcWithoutCmnObj(), uint8_t mHRChara::mTermAllEnemyNpc(), class mHRChara* mHRChara::mGetNpcTop(), void __convention("thiscall") mHRChara::SetFileName(class mHRChara* const this, char const* arg2), void __convention("thiscall") mHRChara::mSetMaxHp(class mHRChara* const this, float arg2), uint8_t __convention("thiscall") mHRChara::mTerm(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetPos(class mHRChara* const this, struct Vec& arg2, uint8_t arg3, float arg4), void __convention("thiscall") mHRChara::mSetRot(class mHRChara* const this, struct Vec& arg2), void __convention("thiscall") mHRChara::mSetScale(class mHRChara* const this, struct Vec& arg2), uint8_t __convention("thiscall") mHRChara::mHitCheck(class mHRChara* const this, class mHRChara* arg2), void __convention("thiscall") mHRChara::mMotionSpeedControl(class mHRChara* const this), void __convention("thiscall") mHRChara::mCallMotionProc(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mPlayMotion(class mHRChara* const this, int32_t arg2, uint8_t arg3, int32_t arg4, uint8_t arg5, float arg6), void __convention("thiscall") mHRChara::mCallMoneyDrop(class mHRChara* const this, int32_t arg2, uint8_t arg3, uint8_t arg4), uint8_t __convention("thiscall") mHRChara::mAttachWep(class mHRChara* const this, class TGmf* arg2, enum eUDLR arg3, char* arg4), uint8_t __convention("thiscall") mHRChara::mDetachWep(class mHRChara* const this, enum eUDLR arg2, char* arg3), void __convention("thiscall") mHRChara::mSemitransparentProcess(class mHRChara* const this), void __convention("thiscall") mHRChara::mUpdateAtkColl(class mHRChara* const this), void __convention("thiscall") mHRChara::mRenderShadowProc(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mRefreshFloorPosition(class mHRChara* const this, float arg2, uint8_t arg3), uint8_t __convention("thiscall") mHRChara::mDamageProc(class mHRChara* const this), void __convention("thiscall") mHRChara::mRestoreDamage(class mHRChara* const this, int32_t arg2, float arg3), uint8_t __convention("thiscall") mHRChara::mCheckAttack(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mCheckCanAttack(class mHRChara* const this), void __convention("thiscall") mHRChara::mGetTsubazeriaiPos(class mHRChara* const this, struct Vec* arg2), void __convention("thiscall") mHRChara::mSetPcTsubaOuterMot(class mHRChara* const this), struct Vec __convention("thiscall") mHRChara::GetTsubaEffectPos(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mCheckCanCatch(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mCheckCanThrow(class mHRChara* const this), void __convention("thiscall") mHRChara::mPlayThrownMotion(class mHRChara* const this, int32_t arg2, int32_t arg3), uint8_t __convention("thiscall") mHRChara::mPlayMotionBlend(class mHRChara* const this, class TGan** arg2, char arg3), uint8_t __convention("thiscall") mHRChara::mPlayMotionBlend(class mHRChara* const this, int32_t arg2, char arg3, uint8_t arg4, uint8_t arg5), void __convention("thiscall") mHRChara::mBossDeadCommonProcess(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mCheckCanLockOn(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::getLockOnCursorBasePosition(class mHRChara* const this, struct Vec* arg2), void __convention("thiscall") mHRChara::mSetVisible(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::mSetWepVisible(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::mSetWepEffectVisible(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::mSetVisibleDist(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::mEffectInit(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetMirrorModel(class mHRChara* const this, uint8_t arg2), void __convention("thiscall") mHRChara::mSetAiAtk(class mHRChara* const this, int32_t arg2, int32_t arg3), void __convention("thiscall") mHRChara::mSetWarpPos(class mHRChara* const this, struct Vec& arg2, uint8_t arg3), uint8_t __convention("thiscall") mHRChara::mHitCheckStage(class mHRChara* const this, class ghmGcCollObjCapsule* arg2, struct Vec* arg3, struct Vec* arg4, struct Vec* arg5, struct Vec* arg6, class ghmGcCollObj** arg7, class ghmGcCollObjHitResult** arg8, class ghmGcCollObjHitResultObj* arg9, struct WGclMaterialSpec** arg10, uint8_t* arg11, uint8_t arg12, float arg13), class TGan* __convention("thiscall") mHRChara::mpGetGan(class mHRChara* const this, int32_t arg2), class TGan** __convention("thiscall") mHRChara::mppGetGan(class mHRChara* const this, int32_t arg2), uint8_t __convention("thiscall") mHRChara::mRequestBloodSplash(class mHRChara* const this, char* arg2, int32_t arg3), void __convention("thiscall") mHRChara::mCallKillPcProcess(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mCheckComboing(class mHRChara* const this), float __convention("thiscall") mHRChara::mGetAttackTableValue(class mHRChara* const this, int32_t arg2, int32_t arg3), float __convention("thiscall") mHRChara::mGetAttackDirection(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mTestLowDmg(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mCreatePiyori(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mTermPiyori(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::mPiyoriProc(class mHRChara* const this), void __convention("thiscall") mHRChara::mSetDamageAcceptFrame(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::IsMultiStep(class mHRChara* const this), uint8_t __convention("thiscall") mHRChara::IsDownAttack(class mHRChara* const this), float __convention("thiscall") mHRChara::getFootShadowWidthHalf(class mHRChara* const this), float __convention("thiscall") mHRChara::getFootShadowDepthPlus(class mHRChara* const this), float __convention("thiscall") mHRChara::getFootShadowDepthMinus(class mHRChara* const this), void __convention("thiscall") mHRChara::OnStageUnload(class mHRChara* const this), void __convention("thiscall") mHRChara::setFootGroundTouchActFlagFromAI(class mHRChara* const this, uint8_t const arg2), void __convention("thiscall") mHRChara::mPlayCamMot(class mHRChara* const this, class TGan* arg2, int32_t arg3, uint8_t arg4, struct Vec* arg5, float* arg6, uint8_t arg7), void __convention("thiscall") mHRChara::mStopCamMotFromCharMot(class mHRChara* const this), uint8_t mHRChara::mRenderShadowProcAll(), void __convention("thiscall") mHRChara::mSetRotY(class mHRChara* const this, float arg2), uint8_t __convention("thiscall") mHRChara::mCheckSegmentHitStage(class mHRChara* const this, int64_t arg2, int32_t, float arg4, uint8_t arg5, float* arg6, struct Vec* arg7), void __convention("thiscall") mHRChara::mEraseDispChara(class mHRChara* const this), class mHRChara* mHRChara::mGetCharaPtr(enum enCharaType arg1, uint32_t arg2), class mHRChara* mHRChara::mAllSearchPiyoZako(), void mHRChara::OnStageUnloadAll()
-
 	// [Function] enum enCharaType __convention("thiscall") mHRChara::mGetCharaType(class mHRChara* const this) [?mGetCharaType@mHRChara@@QBE?AW4enCharaType@@XZ]
 	enum enCharaType mGetCharaType()
 	{
@@ -7607,7 +7474,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x4783e0);
 		return mFunc();
 	}
-
 	/// Struct member variables
 
 	// <class ghmListObj field_0, offset 0x0>
@@ -7646,7 +7512,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<mHRChara>("mHRChara")
+		NS = NS.deriveClass<mHRChara, ghmListObj>("mHRChara")
 			.addProperty("mStatus", &mHRChara::mStatus)
 			.addProperty("mResource", &mHRChara::mResource)
 			.addProperty("mEffect", &mHRChara::mEffect)
@@ -7657,718 +7523,458 @@ public:
 			.addProperty("mWepColl", &mHRChara::mWepColl)
 			.addProperty("motionInvincibilityFrames", &mHRChara::motionInvincibilityFrames)
 			.addProperty("invincibileMotion", &mHRChara::invincibileMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCharaType", &mHRChara::mGetCharaType)
+			.addFunction("mGetCharaType", &mHRChara::mGetCharaType)
 			.addFunction("isCharacterTypeZako", &mHRChara::isCharacterTypeZako)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestZako", &mHRChara::mTestZako)
+			.addFunction("mTestZako", &mHRChara::mTestZako)
 			.addFunction("isCharacterTypeBoss", &mHRChara::isCharacterTypeBoss)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestBoss", &mHRChara::mTestBoss)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestEnemy", &mHRChara::mTestEnemy)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetItemNo", &mHRChara::mSetItemNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLockOnNoCheckColl", &mHRChara::mSetLockOnNoCheckColl)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLockOnDistanceLow", &mHRChara::mSetLockOnDistanceLow)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLockOnDistanceHi", &mHRChara::mSetLockOnDistanceHi)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLockOnDistance", &mHRChara::mSetLockOnDistance)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCanLockOn", &mHRChara::mSetCanLockOn)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDisableDameged", &mHRChara::mSetDisableDameged)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDisableDameged", &mHRChara::mGetDisableDameged)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetMaxHp", &mHRChara::mGetMaxHp)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mUndispTgtIcn", &mHRChara::mUndispTgtIcn)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDispTgtIcn", &mHRChara::mDispTgtIcn)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetHp", &mHRChara::mGetHp)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCondition", &mHRChara::mGetCondition)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mTestBoss", &mHRChara::mTestBoss)
+			.addFunction("mTestEnemy", &mHRChara::mTestEnemy)
+			.addFunction("mSetItemNo", &mHRChara::mSetItemNo)
+			.addFunction("mSetLockOnNoCheckColl", &mHRChara::mSetLockOnNoCheckColl)
+			.addFunction("mSetLockOnDistanceLow", &mHRChara::mSetLockOnDistanceLow)
+			.addFunction("mSetLockOnDistanceHi", &mHRChara::mSetLockOnDistanceHi)
+			.addFunction("mSetLockOnDistance", &mHRChara::mSetLockOnDistance)
+			.addFunction("mSetCanLockOn", &mHRChara::mSetCanLockOn)
+			.addFunction("mSetDisableDameged", &mHRChara::mSetDisableDameged)
+			.addFunction("mGetDisableDameged", &mHRChara::mGetDisableDameged)
+			.addFunction("mGetMaxHp", &mHRChara::mGetMaxHp)
+			.addFunction("mUndispTgtIcn", &mHRChara::mUndispTgtIcn)
+			.addFunction("mDispTgtIcn", &mHRChara::mDispTgtIcn)
+			.addFunction("mGetHp", &mHRChara::mGetHp)
+			.addFunction("mGetCondition", &mHRChara::mGetCondition)
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetNext", &mHRChara::mGetNext)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetHp", &mHRChara::mSetHp)
-			.addFunction("mGetTop", &mHRChara::mGetTop)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetHp", &mHRChara::mSetHp)
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addFunction("mGetTop", &mHRChara::mGetTop)
+			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetRot", &mHRChara::mGetRot)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCharaPause", &mHRChara::mSetCharaPause)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetRotY", &mHRChara::mGetRotY)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetCharaPause", &mHRChara::mSetCharaPause)
+			.addFunction("mGetRotY", &mHRChara::mGetRotY)
+			// Functions with return values pointing to native types ('struct WGclMaterialSpec*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("GetGroundTouchMaterial", &mHRChara::GetGroundTouchMaterial)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('struct stCharaStatus*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetStatusPtr", &mHRChara::mGetStatusPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetPos", &mHRChara::mGetPos)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetMotionNo", &mHRChara::mGetMotionNo)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetMotionNo", &mHRChara::mGetMotionNo)
+			// Functions with return values pointing to native types ('char*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetFileName", &mHRChara::mGetFileName)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("IsTubaAngleCorrect", &mHRChara::IsTubaAngleCorrect)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("IsTubaAngleCorrect", &mHRChara::IsTubaAngleCorrect)
+			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
 			//.addFunction("getMiraretaiPosition", &mHRChara::getMiraretaiPosition)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("isHopeInterestMe", &mHRChara::isHopeInterestMe)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("IsWatchPc", &mHRChara::IsWatchPc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("IsUseRotMov", &mHRChara::IsUseRotMov)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("isHopeInterestMe", &mHRChara::isHopeInterestMe)
+			.addFunction("IsWatchPc", &mHRChara::IsWatchPc)
+			.addFunction("IsUseRotMov", &mHRChara::IsUseRotMov)
+			// Functions with return values pointing to native types ('char const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("getCurMotionName", &mHRChara::getCurMotionName)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestRunMotion", &mHRChara::mTestRunMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mZakoDieOut", &mHRChara::mZakoDieOut)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCreateLoseSight", &mHRChara::mCreateLoseSight)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckDamageMotion", &mHRChara::mCheckDamageMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckEnterMotion", &mHRChara::mCheckEnterMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mTestRunMotion", &mHRChara::mTestRunMotion)
+			.addFunction("mZakoDieOut", &mHRChara::mZakoDieOut)
+			.addFunction("mCreateLoseSight", &mHRChara::mCreateLoseSight)
+			.addFunction("mCheckDamageMotion", &mHRChara::mCheckDamageMotion)
+			.addFunction("mCheckEnterMotion", &mHRChara::mCheckEnterMotion)
+			// Functions with return values pointing to native types ('class TGan*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mpGetGan", &mHRChara::mpGetGan)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetCurResourceGmfPtr", &mHRChara::mGetCurResourceGmfPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetCurResourceGmfPtr", &mHRChara::mGetCurResourceGmfPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceGmfWepLPtr", &mHRChara::mGetResourceGmfWepLPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceGmfWepRPtr", &mHRChara::mGetResourceGmfWepRPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (char* arg3) not supported in LuaBridge.
 			//.addFunction("mSetResourceGmfPtr", &mHRChara::mSetResourceGmfPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceGmfDeadPtr", &mHRChara::mGetResourceGmfDeadPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceGmfDeadPtr", &mHRChara::mGetResourceGmfDeadPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceGmfPtr", &mHRChara::mGetResourceGmfPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceGmfPtr", &mHRChara::mGetResourceGmfPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class ghmGcCollObjCapsule*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetCollPtr", &mHRChara::mGetCollPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSethitOidashiDisEnable", &mHRChara::mSethitOidashiDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSethitOidashiDisEnable", &mHRChara::mSethitOidashiDisEnable)
+			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetBrainPos", &mHRChara::mGetBrainPos)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetHitPos", &mHRChara::mGetHitPos)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetMirrorModel", &mHRChara::mGetMirrorModel)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetVisibleDist", &mHRChara::mGetVisibleDist)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCondition", &mHRChara::mSetCondition)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetSubMotionSpd", &mHRChara::mSetSubMotionSpd)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheck4tsunbai", &mHRChara::mCheck4tsunbai)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckSquat", &mHRChara::mCheckSquat)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetMirrorModel", &mHRChara::mGetMirrorModel)
+			.addFunction("mGetVisibleDist", &mHRChara::mGetVisibleDist)
+			.addFunction("mSetCondition", &mHRChara::mSetCondition)
+			.addFunction("mSetSubMotionSpd", &mHRChara::mSetSubMotionSpd)
+			.addFunction("mCheck4tsunbai", &mHRChara::mCheck4tsunbai)
+			.addFunction("mCheckSquat", &mHRChara::mCheckSquat)
+			// Functions with parameters pointing to native types (int32_t* arg3) not supported in LuaBridge.
 			//.addFunction("mGetThrowMotNo", &mHRChara::mGetThrowMotNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetTsubazeriMotionID", &mHRChara::mGetTsubazeriMotionID)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTsubazeriDifficultyClear", &mHRChara::mTsubazeriDifficultyClear)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTsubazeriDifficultyUp", &mHRChara::mTsubazeriDifficultyUp)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("IsTubaPosAdjust", &mHRChara::IsTubaPosAdjust)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckGuard", &mHRChara::mCheckGuard)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckAttack", &mHRChara::mCheckAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSubTension", &mHRChara::mSubTension)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAddTension", &mHRChara::mAddTension)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetTension", &mHRChara::mSetTension)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetTension", &mHRChara::mResetTension)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetMovSpd", &mHRChara::mSetMovSpd)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("UnderControllAttack_A", &mHRChara::UnderControllAttack_A)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("UnderControllComboAttack", &mHRChara::UnderControllComboAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("ExitUnderControl", &mHRChara::ExitUnderControl)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("EnterUnderControl", &mHRChara::EnterUnderControl)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPostRenderProc", &mHRChara::mPostRenderProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("getViewClipBoxPositionOffsetY", &mHRChara::getViewClipBoxPositionOffsetY)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetTsubazeriMotionID", &mHRChara::mGetTsubazeriMotionID)
+			.addFunction("mTsubazeriDifficultyClear", &mHRChara::mTsubazeriDifficultyClear)
+			.addFunction("mTsubazeriDifficultyUp", &mHRChara::mTsubazeriDifficultyUp)
+			.addFunction("IsTubaPosAdjust", &mHRChara::IsTubaPosAdjust)
+			.addFunction("mCheckGuard", &mHRChara::mCheckGuard)
+			.addFunction("mCheckAttack", &mHRChara::mCheckAttack)
+			.addFunction("mSubTension", &mHRChara::mSubTension)
+			.addFunction("mAddTension", &mHRChara::mAddTension)
+			.addFunction("mSetTension", &mHRChara::mSetTension)
+			.addFunction("mResetTension", &mHRChara::mResetTension)
+			.addFunction("mSetMovSpd", &mHRChara::mSetMovSpd)
+			.addFunction("UnderControllAttack_A", &mHRChara::UnderControllAttack_A)
+			.addFunction("UnderControllComboAttack", &mHRChara::UnderControllComboAttack)
+			.addFunction("ExitUnderControl", &mHRChara::ExitUnderControl)
+			.addFunction("EnterUnderControl", &mHRChara::EnterUnderControl)
+			.addFunction("mPostRenderProc", &mHRChara::mPostRenderProc)
+			.addFunction("getViewClipBoxPositionOffsetY", &mHRChara::getViewClipBoxPositionOffsetY)
+			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
 			//.addFunction("getViewClipBoxHalfLengthXYZ", &mHRChara::getViewClipBoxHalfLengthXYZ)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetResNo", &mHRChara::mGetResNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDropMoney", &mHRChara::mGetDropMoney)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetItemNo", &mHRChara::mGetItemNo)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetResNo", &mHRChara::mGetResNo)
+			.addFunction("mGetDropMoney", &mHRChara::mGetDropMoney)
+			.addFunction("mGetItemNo", &mHRChara::mGetItemNo)
+			// Functions with parameters pointing to native types (class TGmfNode* arg2) not supported in LuaBridge.
 			//.addFunction("setLocatorNode", &mHRChara::setLocatorNode)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetHpRate", &mHRChara::mGetHpRate)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSubHp", &mHRChara::mSubHp)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetHitSize", &mHRChara::mGetHitSize)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetInitProc", &mHRChara::mGetInitProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("isCrashBreak", &mHRChara::isCrashBreak)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCharaHit", &mHRChara::mSetCharaHit)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDmgAtkMot", &mHRChara::mGetDmgAtkMot)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetMotionProcessDisEnable", &mHRChara::mSetMotionProcessDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetMotionSpd", &mHRChara::mGetMotionSpd)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetStageHitDisEnable", &mHRChara::mSetStageHitDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("IsFootShadowDraw", &mHRChara::IsFootShadowDraw)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("SetFootShadowDraw", &mHRChara::SetFootShadowDraw)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetMotionNoNpc", &mHRChara::mSetMotionNoNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetHpRate", &mHRChara::mGetHpRate)
+			.addFunction("mSubHp", &mHRChara::mSubHp)
+			.addFunction("mGetHitSize", &mHRChara::mGetHitSize)
+			.addFunction("mGetInitProc", &mHRChara::mGetInitProc)
+			.addFunction("isCrashBreak", &mHRChara::isCrashBreak)
+			.addFunction("mSetCharaHit", &mHRChara::mSetCharaHit)
+			.addFunction("mGetDmgAtkMot", &mHRChara::mGetDmgAtkMot)
+			.addFunction("mSetMotionProcessDisEnable", &mHRChara::mSetMotionProcessDisEnable)
+			.addFunction("mGetMotionSpd", &mHRChara::mGetMotionSpd)
+			.addFunction("mSetStageHitDisEnable", &mHRChara::mSetStageHitDisEnable)
+			.addFunction("IsFootShadowDraw", &mHRChara::IsFootShadowDraw)
+			.addFunction("SetFootShadowDraw", &mHRChara::SetFootShadowDraw)
+			.addFunction("mSetMotionNoNpc", &mHRChara::mSetMotionNoNpc)
+			// Functions with parameters pointing to native types (char* arg2) not supported in LuaBridge.
 			//.addFunction("mSetCallScriptProc", &mHRChara::mSetCallScriptProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDropMoney", &mHRChara::mSetDropMoney)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetReactionDist", &mHRChara::mSetReactionDist)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetEnterPattern", &mHRChara::mSetEnterPattern)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDatNo", &mHRChara::mSetDatNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetResNo", &mHRChara::mSetResNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCharaType", &mHRChara::mSetCharaType)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDatNo", &mHRChara::mGetDatNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetResourceDeleteFlag", &mHRChara::mGetResourceDeleteFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDmgUpperPosY", &mHRChara::mGetDmgUpperPosY)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDmgUpper", &mHRChara::mGetDmgUpper)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetResourceDeleteFlag", &mHRChara::mSetResourceDeleteFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetDropMoney", &mHRChara::mSetDropMoney)
+			.addFunction("mSetReactionDist", &mHRChara::mSetReactionDist)
+			.addFunction("mSetEnterPattern", &mHRChara::mSetEnterPattern)
+			.addFunction("mSetDatNo", &mHRChara::mSetDatNo)
+			.addFunction("mSetResNo", &mHRChara::mSetResNo)
+			.addFunction("mSetCharaType", &mHRChara::mSetCharaType)
+			.addFunction("mGetDatNo", &mHRChara::mGetDatNo)
+			.addFunction("mGetResourceDeleteFlag", &mHRChara::mGetResourceDeleteFlag)
+			.addFunction("mGetDmgUpperPosY", &mHRChara::mGetDmgUpperPosY)
+			.addFunction("mGetDmgUpper", &mHRChara::mGetDmgUpper)
+			.addFunction("mSetResourceDeleteFlag", &mHRChara::mSetResourceDeleteFlag)
+			// Functions with return values pointing to native types ('class ghmPlane&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("getLatestGroundTouchPlane", &mHRChara::getLatestGroundTouchPlane)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mUndispBtlIcn", &mHRChara::mUndispBtlIcn)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mUndispBtlIcn", &mHRChara::mUndispBtlIcn)
+			.addFunction("mChgBtlIcnFinishDemo", &mHRChara::mChgBtlIcnFinishDemo)
+			.addFunction("mChgBtlIcnTb", &mHRChara::mChgBtlIcnTb)
+			// Function overloading not supported in LuaBridge.
 			//.addFunction("mChgBtlIcnFinishDemo", &mHRChara::mChgBtlIcnFinishDemo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mChgBtlIcnTb", &mHRChara::mChgBtlIcnTb)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mChgBtlIcnFinishDemo", &mHRChara::mChgBtlIcnFinishDemo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("SetDrawYAdjust", &mHRChara::SetDrawYAdjust)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDemoCtrl", &mHRChara::mSetDemoCtrl)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDemoCtrl", &mHRChara::mGetDemoCtrl)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("isAcceptDistanceDelete", &mHRChara::isAcceptDistanceDelete)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetStageHitDisEnableReq", &mHRChara::mSetStageHitDisEnableReq)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("SetDrawYAdjust", &mHRChara::SetDrawYAdjust)
+			.addFunction("mSetDemoCtrl", &mHRChara::mSetDemoCtrl)
+			.addFunction("mGetDemoCtrl", &mHRChara::mGetDemoCtrl)
+			.addFunction("isAcceptDistanceDelete", &mHRChara::isAcceptDistanceDelete)
+			.addFunction("mSetStageHitDisEnableReq", &mHRChara::mSetStageHitDisEnableReq)
+			// Functions with return values pointing to native types ('struct stCharaEffect*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetEffectStPtr", &mHRChara::mGetEffectStPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class EffectEnemyDamage* arg2) not supported in LuaBridge.
 			//.addFunction("setBlackBodyEffect", &mHRChara::setBlackBodyEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetNavelPos", &mHRChara::mGetNavelPos)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDamageAcceptFrame", &mHRChara::mSetDamageAcceptFrame)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetAlwaysCheckHitColl", &mHRChara::mSetAlwaysCheckHitColl)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetLockOnNoCheckColl", &mHRChara::mGetLockOnNoCheckColl)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetLockOnDistanceLow", &mHRChara::mGetLockOnDistanceLow)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetLockOnDistanceHi", &mHRChara::mGetLockOnDistanceHi)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetLockOnDistance", &mHRChara::mGetLockOnDistance)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetAliveBtlIcn", &mHRChara::mGetAliveBtlIcn)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetDamageAcceptFrame", &mHRChara::mSetDamageAcceptFrame)
+			.addFunction("mSetAlwaysCheckHitColl", &mHRChara::mSetAlwaysCheckHitColl)
+			.addFunction("mGetLockOnNoCheckColl", &mHRChara::mGetLockOnNoCheckColl)
+			.addFunction("mGetLockOnDistanceLow", &mHRChara::mGetLockOnDistanceLow)
+			.addFunction("mGetLockOnDistanceHi", &mHRChara::mGetLockOnDistanceHi)
+			.addFunction("mGetLockOnDistance", &mHRChara::mGetLockOnDistance)
+			.addFunction("mGetAliveBtlIcn", &mHRChara::mGetAliveBtlIcn)
+			.addFunction("mChgBtlIcnFinish", &mHRChara::mChgBtlIcnFinish)
+			// Function overloading not supported in LuaBridge.
 			//.addFunction("mChgBtlIcnFinish", &mHRChara::mChgBtlIcnFinish)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mChgBtlIcnFinish", &mHRChara::mChgBtlIcnFinish)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetSlowBlow", &mHRChara::mSetSlowBlow)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetInputFinishReq", &mHRChara::mSetInputFinishReq)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetSlowBlow", &mHRChara::mSetSlowBlow)
+			.addFunction("mSetInputFinishReq", &mHRChara::mSetInputFinishReq)
+			// Functions with return values pointing to native types ('class TGan*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceGanPtr", &mHRChara::mGetResourceGanPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetMoney", &mHRChara::mGetMoney)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetMoney", &mHRChara::mSetMoney)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetInputFinishReq", &mHRChara::mGetInputFinishReq)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAddMoney", &mHRChara::mAddMoney)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetInvincibleMotion", &mHRChara::mSetInvincibleMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetInvincibleMotion", &mHRChara::mResetInvincibleMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCanGetHitByMotion", &mHRChara::mCanGetHitByMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDispAtkHitIcn", &mHRChara::mDispAtkHitIcn)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDontStandUp", &mHRChara::mGetDontStandUp)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("GetTubaFrmOffset", &mHRChara::GetTubaFrmOffset)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("GetAtkDisAdjust", &mHRChara::GetAtkDisAdjust)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetLoseTsubazeriFlag", &mHRChara::mGetLoseTsubazeriFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetSuccessThrow", &mHRChara::mSetSuccessThrow)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetRotYA", &mHRChara::mSetRotYA)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDontStandUp", &mHRChara::mSetDontStandUp)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDmgGrav", &mHRChara::mSetDmgGrav)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mChgBtlIcnSml", &mHRChara::mChgBtlIcnSml)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mChgBtlIcnBig", &mHRChara::mChgBtlIcnBig)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCharaHit", &mHRChara::mGetCharaHit)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCanLockOn", &mHRChara::mGetCanLockOn)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGethitOidashiDisEnable", &mHRChara::mGethitOidashiDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBtlIcnStatus", &mHRChara::mGetBtlIcnStatus)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetWepVisible", &mHRChara::mGetWepVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetMotionBrendNum", &mHRChara::mGetMotionBrendNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetAiValue", &mHRChara::mGetAiValue)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetPosA", &mHRChara::mResetPosA)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetMoney", &mHRChara::mGetMoney)
+			.addFunction("mSetMoney", &mHRChara::mSetMoney)
+			.addFunction("mGetInputFinishReq", &mHRChara::mGetInputFinishReq)
+			.addFunction("mAddMoney", &mHRChara::mAddMoney)
+			.addFunction("mSetInvincibleMotion", &mHRChara::mSetInvincibleMotion)
+			.addFunction("mResetInvincibleMotion", &mHRChara::mResetInvincibleMotion)
+			.addFunction("mCanGetHitByMotion", &mHRChara::mCanGetHitByMotion)
+			.addFunction("mDispAtkHitIcn", &mHRChara::mDispAtkHitIcn)
+			.addFunction("mGetDontStandUp", &mHRChara::mGetDontStandUp)
+			.addFunction("GetTubaFrmOffset", &mHRChara::GetTubaFrmOffset)
+			.addFunction("GetAtkDisAdjust", &mHRChara::GetAtkDisAdjust)
+			.addFunction("mGetLoseTsubazeriFlag", &mHRChara::mGetLoseTsubazeriFlag)
+			.addFunction("mSetSuccessThrow", &mHRChara::mSetSuccessThrow)
+			.addFunction("mSetRotYA", &mHRChara::mSetRotYA)
+			.addFunction("mSetDontStandUp", &mHRChara::mSetDontStandUp)
+			.addFunction("mSetDmgGrav", &mHRChara::mSetDmgGrav)
+			.addFunction("mChgBtlIcnSml", &mHRChara::mChgBtlIcnSml)
+			.addFunction("mChgBtlIcnBig", &mHRChara::mChgBtlIcnBig)
+			.addFunction("mGetCharaHit", &mHRChara::mGetCharaHit)
+			.addFunction("mGetCanLockOn", &mHRChara::mGetCanLockOn)
+			.addFunction("mGethitOidashiDisEnable", &mHRChara::mGethitOidashiDisEnable)
+			.addFunction("mGetBtlIcnStatus", &mHRChara::mGetBtlIcnStatus)
+			.addFunction("mGetWepVisible", &mHRChara::mGetWepVisible)
+			.addFunction("mGetMotionBrendNum", &mHRChara::mGetMotionBrendNum)
+			.addFunction("mGetAiValue", &mHRChara::mGetAiValue)
+			.addFunction("mResetPosA", &mHRChara::mResetPosA)
+			// Functions with return values pointing to native types ('class ghmPlane&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("getEasyShadowProjectionPlane", &mHRChara::getEasyShadowProjectionPlane)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("isInterestTarget", &mHRChara::isInterestTarget)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetMotionSpd", &mHRChara::mSetMotionSpd)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetWepEffectVisible", &mHRChara::mGetWepEffectVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetVisible", &mHRChara::mGetVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetTension", &mHRChara::mGetTension)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetMiniMapRender", &mHRChara::mGetMiniMapRender)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("isInterestTarget", &mHRChara::isInterestTarget)
+			.addFunction("mSetMotionSpd", &mHRChara::mSetMotionSpd)
+			.addFunction("mGetWepEffectVisible", &mHRChara::mGetWepEffectVisible)
+			.addFunction("mGetVisible", &mHRChara::mGetVisible)
+			.addFunction("mGetTension", &mHRChara::mGetTension)
+			.addFunction("mGetMiniMapRender", &mHRChara::mGetMiniMapRender)
+			// Functions with return values pointing to native types ('class ghmResGroup*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceRslPtr", &mHRChara::mGetResourceRslPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("getFootNumber", &mHRChara::getFootNumber)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("getFootNumber", &mHRChara::getFootNumber)
+			// Functions with return values pointing to native types ('char*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetCallScriptProc", &mHRChara::mGetCallScriptProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetMotionProcessDisEnable", &mHRChara::mGetMotionProcessDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("IsBloom", &mHRChara::IsBloom)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("SetTermAll", &mHRChara::SetTermAll)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("SetKnockBackSpd", &mHRChara::SetKnockBackSpd)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("GetKnockBackSpd", &mHRChara::GetKnockBackSpd)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetStageHitDisEnable", &mHRChara::mGetStageHitDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetStartSplitFlameFlag", &mHRChara::mGetStartSplitFlameFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetMotionProcessDisEnable", &mHRChara::mGetMotionProcessDisEnable)
+			.addFunction("IsBloom", &mHRChara::IsBloom)
+			.addFunction("SetTermAll", &mHRChara::SetTermAll)
+			.addFunction("SetKnockBackSpd", &mHRChara::SetKnockBackSpd)
+			.addFunction("GetKnockBackSpd", &mHRChara::GetKnockBackSpd)
+			.addFunction("mGetStageHitDisEnable", &mHRChara::mGetStageHitDisEnable)
+			.addFunction("mGetStartSplitFlameFlag", &mHRChara::mGetStartSplitFlameFlag)
+			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("getBoneEffectGmf", &mHRChara::getBoneEffectGmf)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetStartSplitFlameFlag", &mHRChara::mSetStartSplitFlameFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCharaPause", &mHRChara::mGetCharaPause)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetStartSplitFlameFlag", &mHRChara::mSetStartSplitFlameFlag)
+			.addFunction("mGetCharaPause", &mHRChara::mGetCharaPause)
+			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetBeforePos", &mHRChara::mGetBeforePos)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetZakoWepType", &mHRChara::mGetZakoWepType)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetZakoWepType", &mHRChara::mGetZakoWepType)
+			// Functions with parameters pointing to native types (class ghmGcCollObjHitResultObj& arg2) not supported in LuaBridge.
 			//.addFunction("mSetFootHitResultObj2", &mHRChara::mSetFootHitResultObj2)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDmgUpperPow", &mHRChara::mSetDmgUpperPow)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAddHp", &mHRChara::mAddHp)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetSubMotionSpd", &mHRChara::mGetSubMotionSpd)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetZakoWepType", &mHRChara::mSetZakoWepType)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetHitSize", &mHRChara::mSetHitSize)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetReactionDist", &mHRChara::mGetReactionDist)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetMiniMapRender", &mHRChara::mSetMiniMapRender)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("GetKnockBackDir", &mHRChara::GetKnockBackDir)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetMotionNoNpc", &mHRChara::mGetMotionNoNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("SetNormalClip", &mHRChara::SetNormalClip)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetDmgUpperPow", &mHRChara::mSetDmgUpperPow)
+			.addFunction("mAddHp", &mHRChara::mAddHp)
+			.addFunction("mGetSubMotionSpd", &mHRChara::mGetSubMotionSpd)
+			.addFunction("mSetZakoWepType", &mHRChara::mSetZakoWepType)
+			.addFunction("mSetHitSize", &mHRChara::mSetHitSize)
+			.addFunction("mGetReactionDist", &mHRChara::mGetReactionDist)
+			.addFunction("mSetMiniMapRender", &mHRChara::mSetMiniMapRender)
+			.addFunction("GetKnockBackDir", &mHRChara::GetKnockBackDir)
+			.addFunction("mGetMotionNoNpc", &mHRChara::mGetMotionNoNpc)
+			.addFunction("SetNormalClip", &mHRChara::SetNormalClip)
+			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetOldPos", &mHRChara::mGetOldPos)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetSuccessThrow", &mHRChara::mGetSuccessThrow)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDmgUpperPosY", &mHRChara::mSetDmgUpperPosY)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("SetDeleteReq", &mHRChara::SetDeleteReq)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetSuccessThrow", &mHRChara::mGetSuccessThrow)
+			.addFunction("mSetDmgUpperPosY", &mHRChara::mSetDmgUpperPosY)
+			.addFunction("SetDeleteReq", &mHRChara::SetDeleteReq)
+			// Functions with parameters pointing to native types (char const* arg5) not supported in LuaBridge.
 			//.addFunction("getShootPosiAndYaw", &mHRChara::getShootPosiAndYaw)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
 			//.addFunction("setHomingPositionFromAI", &mHRChara::setHomingPositionFromAI)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("setHomingActFlagFromAI", &mHRChara::setHomingActFlagFromAI)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("isHoming", &mHRChara::isHoming)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("setInterestUseBoneNumFromAI", &mHRChara::setInterestUseBoneNumFromAI)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("isInteresting", &mHRChara::isInteresting)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("setHomingActFlagFromAI", &mHRChara::setHomingActFlagFromAI)
+			.addFunction("isHoming", &mHRChara::isHoming)
+			.addFunction("setInterestUseBoneNumFromAI", &mHRChara::setInterestUseBoneNumFromAI)
+			.addFunction("isInteresting", &mHRChara::isInteresting)
+			// Functions with parameters pointing to native types (struct Vec& arg3) not supported in LuaBridge.
 			//.addFunction("addDamageToYuremono", &mHRChara::addDamageToYuremono)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mot::IBoneEffectPJ*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("getBoneEffect", &mHRChara::getBoneEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetHajikiCheck", &mHRChara::mSetHajikiCheck)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckDamageAccept", &mHRChara::mCheckDamageAccept)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestZakoDown", &mHRChara::mTestZakoDown)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestPiyoRequest", &mHRChara::mTestPiyoRequest)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetPiyoriHeight", &mHRChara::mGetPiyoriHeight)
-			.addFunction("mGetCharaPtr", &mHRChara::mGetCharaPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetHajikiCheck", &mHRChara::mSetHajikiCheck)
+			.addFunction("mCheckDamageAccept", &mHRChara::mCheckDamageAccept)
+			.addFunction("mTestZakoDown", &mHRChara::mTestZakoDown)
+			.addFunction("mTestPiyoRequest", &mHRChara::mTestPiyoRequest)
+			.addFunction("mGetPiyoriHeight", &mHRChara::mGetPiyoriHeight)
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addFunction("mGetCharaPtr", &mHRChara::mGetCharaPtr)
+			// Functions with parameters pointing to native types (void* arg1) not supported in LuaBridge.
 			//.addFunction("mRenderGmf", &mHRChara::mRenderGmf)
 			.addFunction("debugDispCharaInfo", &mHRChara::debugDispCharaInfo)
 			.addFunction("mTermAllZakoMotion", &mHRChara::mTermAllZakoMotion)
 			.addFunction("mInitAllNpc", &mHRChara::mInitAllNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (struct tagHRTASKCHECK* arg4) not supported in LuaBridge.
 			//.addFunction("mCreateBloodSplash", &mHRChara::mCreateBloodSplash)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mBloodSplashProc", &mHRChara::mBloodSplashProc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mBloodSplashProc", &mHRChara::mBloodSplashProc)
+			// Functions with parameters pointing to native types (class EffectBoneElect* arg2) not supported in LuaBridge.
 			//.addFunction("AddBoneElectPtrToList", &mHRChara::AddBoneElectPtrToList)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("ReleaseBoneElect", &mHRChara::ReleaseBoneElect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("IsEmtpyBoneElectList", &mHRChara::IsEmtpyBoneElectList)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("ReleaseBoneElect", &mHRChara::ReleaseBoneElect)
+			.addFunction("IsEmtpyBoneElectList", &mHRChara::IsEmtpyBoneElectList)
+			// Functions with parameters pointing to native types (class EffectBoneElect* arg2) not supported in LuaBridge.
 			//.addFunction("DeleteBoneElectFromList", &mHRChara::DeleteBoneElectFromList)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class EffectCutMark* arg2) not supported in LuaBridge.
 			//.addFunction("AddCutmarkPtrToList", &mHRChara::AddCutmarkPtrToList)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("IsEmtpyCutmarkList", &mHRChara::IsEmtpyCutmarkList)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("IsEmtpyCutmarkList", &mHRChara::IsEmtpyCutmarkList)
+			// Functions with parameters pointing to native types (class EffectCutMark* arg2) not supported in LuaBridge.
 			//.addFunction("DeleteCutmarkFromList", &mHRChara::DeleteCutmarkFromList)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("SetPowerFlash", &mHRChara::SetPowerFlash)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("SetNoGuardEffect", &mHRChara::SetNoGuardEffect)
+			.addFunction("SetPowerFlash", &mHRChara::SetPowerFlash)
+			.addFunction("SetNoGuardEffect", &mHRChara::SetNoGuardEffect)
 			.addFunction("mCheckAtkAllNpc", &mHRChara::mCheckAtkAllNpc)
 			.addFunction("mCheckCanAtk", &mHRChara::mCheckCanAtk)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCallBeforeRenderProc", &mHRChara::mCallBeforeRenderProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCanHit", &mHRChara::mCheckCanHit)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("CreateFootSmokeEffect", &mHRChara::CreateFootSmokeEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("KnockBackProc", &mHRChara::KnockBackProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("GetKnockBackRatio", &mHRChara::GetKnockBackRatio)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mCallBeforeRenderProc", &mHRChara::mCallBeforeRenderProc)
+			.addFunction("mCheckCanHit", &mHRChara::mCheckCanHit)
+			.addFunction("CreateFootSmokeEffect", &mHRChara::CreateFootSmokeEffect)
+			.addFunction("KnockBackProc", &mHRChara::KnockBackProc)
+			.addFunction("GetKnockBackRatio", &mHRChara::GetKnockBackRatio)
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &mHRChara::mSetDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mInitDamageMotInfo", &mHRChara::mInitDamageMotInfo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mChangeDefAi", &mHRChara::mChangeDefAi)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDefAI", &mHRChara::mSetDefAI)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCallFrameProc", &mHRChara::mCheckCallFrameProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("IsNowUnderControl", &mHRChara::IsNowUnderControl)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("RegistUnderControlAtkFuncPtr", &mHRChara::RegistUnderControlAtkFuncPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mInitDamageMotInfo", &mHRChara::mInitDamageMotInfo)
+			.addFunction("mChangeDefAi", &mHRChara::mChangeDefAi)
+			.addFunction("mSetDefAI", &mHRChara::mSetDefAI)
+			.addFunction("mCheckCallFrameProc", &mHRChara::mCheckCallFrameProc)
+			.addFunction("IsNowUnderControl", &mHRChara::IsNowUnderControl)
+			.addFunction("RegistUnderControlAtkFuncPtr", &mHRChara::RegistUnderControlAtkFuncPtr)
+			// Functions with parameters pointing to native types (struct CharControlMotID& arg2) not supported in LuaBridge.
 			//.addFunction("RegistUnderControlMotID", &mHRChara::RegistUnderControlMotID)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("SetUnderControlFlag", &mHRChara::SetUnderControlFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("DrawDebugCollision", &mHRChara::DrawDebugCollision)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mRenderProc", &mHRChara::mRenderProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("postSetupMatrix", &mHRChara::postSetupMatrix)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("preSetupMatrix", &mHRChara::preSetupMatrix)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mFootSmokeEffect", &mHRChara::mFootSmokeEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPosAnimationProc", &mHRChara::mPosAnimationProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPostFrameProc", &mHRChara::mPostFrameProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mFrameProc", &mHRChara::mFrameProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mInit", &mHRChara::mInit)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("SetUnderControlFlag", &mHRChara::SetUnderControlFlag)
+			.addFunction("DrawDebugCollision", &mHRChara::DrawDebugCollision)
+			.addFunction("mRenderProc", &mHRChara::mRenderProc)
+			.addFunction("postSetupMatrix", &mHRChara::postSetupMatrix)
+			.addFunction("preSetupMatrix", &mHRChara::preSetupMatrix)
+			.addFunction("mFootSmokeEffect", &mHRChara::mFootSmokeEffect)
+			.addFunction("mPosAnimationProc", &mHRChara::mPosAnimationProc)
+			.addFunction("mPostFrameProc", &mHRChara::mPostFrameProc)
+			.addFunction("mFrameProc", &mHRChara::mFrameProc)
+			.addFunction("mInit", &mHRChara::mInit)
+			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
 			//.addFunction("mSetRotA", &mHRChara::mSetRotA)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetWepEffectVisibleInstant", &mHRChara::mSetWepEffectVisibleInstant)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSubFrameStop", &mHRChara::mSubFrameStop)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayMotionMov", &mHRChara::mPlayMotionMov)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestMotion", &mHRChara::mTestMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDifficultyMotionSpeed", &mHRChara::mSetDifficultyMotionSpeed)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetWepEffectVisibleInstant", &mHRChara::mSetWepEffectVisibleInstant)
+			.addFunction("mSubFrameStop", &mHRChara::mSubFrameStop)
+			.addFunction("mPlayMotionMov", &mHRChara::mPlayMotionMov)
+			.addFunction("mTestMotion", &mHRChara::mTestMotion)
+			.addFunction("mSetDifficultyMotionSpeed", &mHRChara::mSetDifficultyMotionSpeed)
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("getCharaByGM2FileName", &mHRChara::getCharaByGM2FileName)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDeath", &mHRChara::mSetDeath)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDamageCallBackForScript", &mHRChara::mDamageCallBackForScript)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetMotionPlay", &mHRChara::mGetMotionPlay)
-			.addFunction("mGetAliveResourceCharaPtr", &mHRChara::mGetAliveResourceCharaPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("ReleaseCutmark", &mHRChara::ReleaseCutmark)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestPiyori", &mHRChara::mTestPiyori)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetMotionTotalTick", &mHRChara::mGetMotionTotalTick)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetDeath", &mHRChara::mSetDeath)
+			.addFunction("mDamageCallBackForScript", &mHRChara::mDamageCallBackForScript)
+			.addFunction("mGetMotionPlay", &mHRChara::mGetMotionPlay)
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addFunction("mGetAliveResourceCharaPtr", &mHRChara::mGetAliveResourceCharaPtr)
+			.addFunction("ReleaseCutmark", &mHRChara::ReleaseCutmark)
+			.addFunction("mTestPiyori", &mHRChara::mTestPiyori)
+			.addFunction("mGetMotionTotalTick", &mHRChara::mGetMotionTotalTick)
+			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
 			//.addFunction("setInterestPositionFromAI", &mHRChara::setInterestPositionFromAI)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("setInterestActFlagFromAI", &mHRChara::setInterestActFlagFromAI)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("setInterestActFlagFromAI", &mHRChara::setInterestActFlagFromAI)
+			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
 			//.addFunction("mGetWepTopPos", &mHRChara::mGetWepTopPos)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mInitDamageStatus", &mHRChara::mInitDamageStatus)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPostFrameCommonProc1", &mHRChara::mPostFrameCommonProc1)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPostFrameCommonProc2", &mHRChara::mPostFrameCommonProc2)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mInitDamageStatus", &mHRChara::mInitDamageStatus)
+			.addFunction("mPostFrameCommonProc1", &mHRChara::mPostFrameCommonProc1)
+			.addFunction("mPostFrameCommonProc2", &mHRChara::mPostFrameCommonProc2)
+			// Functions with return values pointing to native types ('class mot::CBoneEffectDamageData*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("getBoneEffectDamageData", &mHRChara::getBoneEffectDamageData)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (struct Vec& arg3) not supported in LuaBridge.
 			//.addFunction("SetKnockBack", &mHRChara::SetKnockBack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("CheckWallCrashAndDamageProc", &mHRChara::CheckWallCrashAndDamageProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetHpBarVisible", &mHRChara::mSetHpBarVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("CheckWallCrashAndDamageProc", &mHRChara::CheckWallCrashAndDamageProc)
+			.addFunction("mSetHpBarVisible", &mHRChara::mSetHpBarVisible)
+			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
 			//.addFunction("mSetPosA", &mHRChara::mSetPosA)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetSimpleHpBarVisible", &mHRChara::mSetSimpleHpBarVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayCamMotFromCharMot", &mHRChara::mPlayCamMotFromCharMot)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetSimpleHpBarVisible", &mHRChara::mSetSimpleHpBarVisible)
+			.addFunction("mPlayCamMotFromCharMot", &mHRChara::mPlayCamMotFromCharMot)
+			// Function overloading not supported in LuaBridge.
 			//.addFunction("mPlayMotionMov", &mHRChara::mPlayMotionMov)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("checkDeleteBlackBodyEffect", &mHRChara::checkDeleteBlackBodyEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetHitCounter", &mHRChara::mSetHitCounter)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mReleaseBloodSplash", &mHRChara::mReleaseBloodSplash)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPreFrameProc", &mHRChara::mPreFrameProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPreRenderProc", &mHRChara::mPreRenderProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDetouchMotionBrend", &mHRChara::mDetouchMotionBrend)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mReleaseDemoBtleIcn", &mHRChara::mReleaseDemoBtleIcn)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("checkDeleteBlackBodyEffect", &mHRChara::checkDeleteBlackBodyEffect)
+			.addFunction("mSetHitCounter", &mHRChara::mSetHitCounter)
+			.addFunction("mReleaseBloodSplash", &mHRChara::mReleaseBloodSplash)
+			.addFunction("mPreFrameProc", &mHRChara::mPreFrameProc)
+			.addFunction("mPreRenderProc", &mHRChara::mPreRenderProc)
+			.addFunction("mDetouchMotionBrend", &mHRChara::mDetouchMotionBrend)
+			.addFunction("mReleaseDemoBtleIcn", &mHRChara::mReleaseDemoBtleIcn)
+			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
 			//.addFunction("isThisCharaExist", &mHRChara::isThisCharaExist)
 			.addFunction("mTermAllNpc", &mHRChara::mTermAllNpc)
 			.addFunction("mGetPopZakoNum", &mHRChara::mGetPopZakoNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDeleteDispChara", &mHRChara::mDeleteDispChara)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetAiDef", &mHRChara::mSetAiDef)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("setFootShadowDrawFlag", &mHRChara::setFootShadowDrawFlag)
+			.addFunction("mDeleteDispChara", &mHRChara::mDeleteDispChara)
+			.addFunction("mSetAiDef", &mHRChara::mSetAiDef)
+			.addFunction("setFootShadowDrawFlag", &mHRChara::setFootShadowDrawFlag)
 			.addFunction("mFrameProcAll", &mHRChara::mFrameProcAll)
 			.addFunction("mRenderProcAll", &mHRChara::mRenderProcAll)
 			.addFunction("mPostRenderProcAll", &mHRChara::mPostRenderProcAll)
 			.addFunction("mTermAllNpcWithoutCmnObj", &mHRChara::mTermAllNpcWithoutCmnObj)
 			.addFunction("mTermAllEnemyNpc", &mHRChara::mTermAllEnemyNpc)
-			.addFunction("mGetNpcTop", &mHRChara::mGetNpcTop)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addFunction("mGetNpcTop", &mHRChara::mGetNpcTop)
+			// Functions with parameters pointing to native types (char const* arg2) not supported in LuaBridge.
 			//.addFunction("SetFileName", &mHRChara::SetFileName)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetMaxHp", &mHRChara::mSetMaxHp)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTerm", &mHRChara::mTerm)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetMaxHp", &mHRChara::mSetMaxHp)
+			.addFunction("mTerm", &mHRChara::mTerm)
+			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
 			//.addFunction("mSetPos", &mHRChara::mSetPos)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
 			//.addFunction("mSetRot", &mHRChara::mSetRot)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
 			//.addFunction("mSetScale", &mHRChara::mSetScale)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mHitCheck", &mHRChara::mHitCheck)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mMotionSpeedControl", &mHRChara::mMotionSpeedControl)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCallMotionProc", &mHRChara::mCallMotionProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayMotion", &mHRChara::mPlayMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCallMoneyDrop", &mHRChara::mCallMoneyDrop)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mMotionSpeedControl", &mHRChara::mMotionSpeedControl)
+			.addFunction("mCallMotionProc", &mHRChara::mCallMotionProc)
+			.addFunction("mPlayMotion", &mHRChara::mPlayMotion)
+			.addFunction("mCallMoneyDrop", &mHRChara::mCallMoneyDrop)
+			// Functions with parameters pointing to native types (char* arg4) not supported in LuaBridge.
 			//.addFunction("mAttachWep", &mHRChara::mAttachWep)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (char* arg3) not supported in LuaBridge.
 			//.addFunction("mDetachWep", &mHRChara::mDetachWep)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSemitransparentProcess", &mHRChara::mSemitransparentProcess)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mUpdateAtkColl", &mHRChara::mUpdateAtkColl)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mRenderShadowProc", &mHRChara::mRenderShadowProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mRefreshFloorPosition", &mHRChara::mRefreshFloorPosition)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDamageProc", &mHRChara::mDamageProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mRestoreDamage", &mHRChara::mRestoreDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckAttack", &mHRChara::mCheckAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCanAttack", &mHRChara::mCheckCanAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetTsubazeriaiPos", &mHRChara::mGetTsubazeriaiPos)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetPcTsubaOuterMot", &mHRChara::mSetPcTsubaOuterMot)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("GetTsubaEffectPos", &mHRChara::GetTsubaEffectPos)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCanCatch", &mHRChara::mCheckCanCatch)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCanThrow", &mHRChara::mCheckCanThrow)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayThrownMotion", &mHRChara::mPlayThrownMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayMotionBlend", &mHRChara::mPlayMotionBlend)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayMotionBlend", &mHRChara::mPlayMotionBlend)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mBossDeadCommonProcess", &mHRChara::mBossDeadCommonProcess)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCanLockOn", &mHRChara::mCheckCanLockOn)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("getLockOnCursorBasePosition", &mHRChara::getLockOnCursorBasePosition)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetVisible", &mHRChara::mSetVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetWepVisible", &mHRChara::mSetWepVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetWepEffectVisible", &mHRChara::mSetWepEffectVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetVisibleDist", &mHRChara::mSetVisibleDist)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mEffectInit", &mHRChara::mEffectInit)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetMirrorModel", &mHRChara::mSetMirrorModel)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetAiAtk", &mHRChara::mSetAiAtk)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetWarpPos", &mHRChara::mSetWarpPos)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mHitCheckStage", &mHRChara::mHitCheckStage)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mpGetGan", &mHRChara::mpGetGan)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mppGetGan", &mHRChara::mppGetGan)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mRequestBloodSplash", &mHRChara::mRequestBloodSplash)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCallKillPcProcess", &mHRChara::mCallKillPcProcess)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckComboing", &mHRChara::mCheckComboing)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetAttackTableValue", &mHRChara::mGetAttackTableValue)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetAttackDirection", &mHRChara::mGetAttackDirection)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestLowDmg", &mHRChara::mTestLowDmg)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCreatePiyori", &mHRChara::mCreatePiyori)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTermPiyori", &mHRChara::mTermPiyori)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPiyoriProc", &mHRChara::mPiyoriProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDamageAcceptFrame", &mHRChara::mSetDamageAcceptFrame)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("IsMultiStep", &mHRChara::IsMultiStep)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("IsDownAttack", &mHRChara::IsDownAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("getFootShadowWidthHalf", &mHRChara::getFootShadowWidthHalf)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("getFootShadowDepthPlus", &mHRChara::getFootShadowDepthPlus)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("getFootShadowDepthMinus", &mHRChara::getFootShadowDepthMinus)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("OnStageUnload", &mHRChara::OnStageUnload)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("setFootGroundTouchActFlagFromAI", &mHRChara::setFootGroundTouchActFlagFromAI)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayCamMot", &mHRChara::mPlayCamMot)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mStopCamMotFromCharMot", &mHRChara::mStopCamMotFromCharMot)
-			.addFunction("mRenderShadowProcAll", &mHRChara::mRenderShadowProcAll)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetRotY", &mHRChara::mSetRotY)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckSegmentHitStage", &mHRChara::mCheckSegmentHitStage)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mEraseDispChara", &mHRChara::mEraseDispChara)
+			.addFunction("mSemitransparentProcess", &mHRChara::mSemitransparentProcess)
+			.addFunction("mUpdateAtkColl", &mHRChara::mUpdateAtkColl)
+			.addFunction("mRenderShadowProc", &mHRChara::mRenderShadowProc)
+			.addFunction("mRefreshFloorPosition", &mHRChara::mRefreshFloorPosition)
+			.addFunction("mDamageProc", &mHRChara::mDamageProc)
+			.addFunction("mRestoreDamage", &mHRChara::mRestoreDamage)
 			// Function overloading not supported in LuaBridge.
+			//.addFunction("mCheckAttack", &mHRChara::mCheckAttack)
+			.addFunction("mCheckCanAttack", &mHRChara::mCheckCanAttack)
+			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
+			//.addFunction("mGetTsubazeriaiPos", &mHRChara::mGetTsubazeriaiPos)
+			.addFunction("mSetPcTsubaOuterMot", &mHRChara::mSetPcTsubaOuterMot)
+			.addFunction("GetTsubaEffectPos", &mHRChara::GetTsubaEffectPos)
+			.addFunction("mCheckCanCatch", &mHRChara::mCheckCanCatch)
+			.addFunction("mCheckCanThrow", &mHRChara::mCheckCanThrow)
+			.addFunction("mPlayThrownMotion", &mHRChara::mPlayThrownMotion)
+			// Functions with parameters pointing to native types (class TGan** arg2) not supported in LuaBridge.
+			//.addFunction("mPlayMotionBlend", &mHRChara::mPlayMotionBlend)
+			// Function overloading not supported in LuaBridge.
+			//.addFunction("mPlayMotionBlend", &mHRChara::mPlayMotionBlend)
+			.addFunction("mBossDeadCommonProcess", &mHRChara::mBossDeadCommonProcess)
+			.addFunction("mCheckCanLockOn", &mHRChara::mCheckCanLockOn)
+			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
+			//.addFunction("getLockOnCursorBasePosition", &mHRChara::getLockOnCursorBasePosition)
+			.addFunction("mSetVisible", &mHRChara::mSetVisible)
+			.addFunction("mSetWepVisible", &mHRChara::mSetWepVisible)
+			.addFunction("mSetWepEffectVisible", &mHRChara::mSetWepEffectVisible)
+			.addFunction("mSetVisibleDist", &mHRChara::mSetVisibleDist)
+			.addFunction("mEffectInit", &mHRChara::mEffectInit)
+			.addFunction("mSetMirrorModel", &mHRChara::mSetMirrorModel)
+			.addFunction("mSetAiAtk", &mHRChara::mSetAiAtk)
+			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
+			//.addFunction("mSetWarpPos", &mHRChara::mSetWarpPos)
+			// Functions with parameters pointing to native types (uint8_t* arg11) not supported in LuaBridge.
+			//.addFunction("mHitCheckStage", &mHRChara::mHitCheckStage)
+			// Functions with return values pointing to native types ('class TGan*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addFunction("mpGetGan", &mHRChara::mpGetGan)
+			// Functions with return values pointing to native types ('class TGan**' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addFunction("mppGetGan", &mHRChara::mppGetGan)
+			// Functions with parameters pointing to native types (char* arg2) not supported in LuaBridge.
+			//.addFunction("mRequestBloodSplash", &mHRChara::mRequestBloodSplash)
+			.addFunction("mCallKillPcProcess", &mHRChara::mCallKillPcProcess)
+			.addFunction("mCheckComboing", &mHRChara::mCheckComboing)
+			.addFunction("mGetAttackTableValue", &mHRChara::mGetAttackTableValue)
+			.addFunction("mGetAttackDirection", &mHRChara::mGetAttackDirection)
+			.addFunction("mTestLowDmg", &mHRChara::mTestLowDmg)
+			.addFunction("mCreatePiyori", &mHRChara::mCreatePiyori)
+			.addFunction("mTermPiyori", &mHRChara::mTermPiyori)
+			.addFunction("mPiyoriProc", &mHRChara::mPiyoriProc)
+			// Function overloading not supported in LuaBridge.
+			//.addFunction("mSetDamageAcceptFrame", &mHRChara::mSetDamageAcceptFrame)
+			.addFunction("IsMultiStep", &mHRChara::IsMultiStep)
+			.addFunction("IsDownAttack", &mHRChara::IsDownAttack)
+			.addFunction("getFootShadowWidthHalf", &mHRChara::getFootShadowWidthHalf)
+			.addFunction("getFootShadowDepthPlus", &mHRChara::getFootShadowDepthPlus)
+			.addFunction("getFootShadowDepthMinus", &mHRChara::getFootShadowDepthMinus)
+			.addFunction("OnStageUnload", &mHRChara::OnStageUnload)
+			.addFunction("setFootGroundTouchActFlagFromAI", &mHRChara::setFootGroundTouchActFlagFromAI)
+			// Functions with parameters pointing to native types (float* arg6) not supported in LuaBridge.
+			//.addFunction("mPlayCamMot", &mHRChara::mPlayCamMot)
+			.addFunction("mStopCamMotFromCharMot", &mHRChara::mStopCamMotFromCharMot)
+			.addFunction("mRenderShadowProcAll", &mHRChara::mRenderShadowProcAll)
+			.addFunction("mSetRotY", &mHRChara::mSetRotY)
+			// Functions with parameters pointing to native types (struct Vec* arg7) not supported in LuaBridge.
+			//.addFunction("mCheckSegmentHitStage", &mHRChara::mCheckSegmentHitStage)
+			.addFunction("mEraseDispChara", &mHRChara::mEraseDispChara)
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetCharaPtr", &mHRChara::mGetCharaPtr)
-			.addFunction("mAllSearchPiyoZako", &mHRChara::mAllSearchPiyoZako)
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addFunction("mAllSearchPiyoZako", &mHRChara::mAllSearchPiyoZako)
 			.addFunction("OnStageUnloadAll", &mHRChara::OnStageUnloadAll)
 		.endClass();
 	}
@@ -8390,7 +7996,6 @@ static_assert(sizeof(mHRChara) == 1408, "expected class mHRChara to be size 1408
 class HROBJDummy : public mHRChara
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class mHRChara field_0, offset 0x0>
@@ -8399,7 +8004,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<HROBJDummy>("HROBJDummy")
+		NS = NS.deriveClass<HROBJDummy, mHRChara>("HROBJDummy")
 		.endClass();
 	}
 #endif
@@ -8410,15 +8015,16 @@ static_assert(sizeof(HROBJDummy) == 1408, "expected class HROBJDummy to be size 
 struct stTiger
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint8_t visible, offset 0x0>
 	uint8_t visible;
 
 	// <Filler, offset 0x1>
+private:
 	char _Filler1[3];
 
+public:
 	// <class TGmf* pGmf, offset 0x4>
 	class TGmf* pGmf;
 
@@ -8438,8 +8044,10 @@ public:
 	uint8_t dispTiger;
 
 	// <Filler, offset 0x32>
+private:
 	char _Filler7[2];
 
+public:
 	// <struct Vec startPos, offset 0x34>
 	struct Vec startPos;
 
@@ -8484,7 +8092,6 @@ static_assert(sizeof(stTiger) == 80, "expected struct stTiger to be size 80");
 struct stHugWalk
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class TGmf* pGmf, offset 0x0>
@@ -8517,11 +8124,12 @@ static_assert(sizeof(stHugWalk) == 32, "expected struct stHugWalk to be size 32"
 struct stPcEffect
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[656];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -8605,7 +8213,6 @@ enum enSeReadProc : uint32_t
 struct stPcSndData
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <int32_t seHdlLightsavorReady, offset 0x0>
@@ -8618,8 +8225,10 @@ public:
 	uint8_t seDontPlaySeAgainLSReady;
 
 	// <Filler, offset 0x9>
+private:
 	char _Filler3[3];
 
+public:
 	// <int32_t seHdlSlow, offset 0xc>
 	int32_t seHdlSlow;
 
@@ -8684,7 +8293,9 @@ public:
 	uint8_t playBackAttackPullSe;
 
 	// <Filler, offset 0xae>
+private:
 	char _Filler[2];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -8748,11 +8359,12 @@ static_assert(sizeof(stPcSndData) == 176, "expected struct stPcSndData to be siz
 struct stDarkSideInfo
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[52];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -8768,11 +8380,12 @@ static_assert(sizeof(stDarkSideInfo) == 52, "expected struct stDarkSideInfo to b
 struct stPcSaveData
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[1636];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -8788,7 +8401,6 @@ static_assert(sizeof(stPcSaveData) == 1636, "expected struct stPcSaveData to be 
 struct stMiniDemo
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint8_t play, offset 0x0>
@@ -8801,8 +8413,10 @@ public:
 	uint8_t fadeInPermission;
 
 	// <Filler, offset 0x3>
+private:
 	char _Filler3[1];
 
+public:
 	// <int32_t warpWaitFrame, offset 0x4>
 	int32_t warpWaitFrame;
 
@@ -8833,11 +8447,12 @@ static_assert(sizeof(stMiniDemo) == 12, "expected struct stMiniDemo to be size 1
 struct stPcStatus
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[2308];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -8853,8 +8468,6 @@ static_assert(sizeof(stPcStatus) == 2308, "expected struct stPcStatus to be size
 class mHRPc : public mHRChara
 {
 public:
-	/// 731 namespace types: uint8_t __convention("thiscall") mHRPc::mGetEventWalk(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetDarkSideTick(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::isFireDarkSideModeActive(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetTsubaDisEnable(class mHRPc* const this, uint8_t arg2), enum enPcInputMode __convention("thiscall") mHRPc::mGetInputMode(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetPcMoney(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mSubPcMoney(class mHRPc* const this, int32_t arg2), int32_t __convention("thiscall") mHRPc::mGetPcMoney(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetEquipID(class mHRPc* const this, enum enEqKind arg2), class TGmf* __convention("thiscall") mHRPc::mGetEquipGmfPtr(class mHRPc* const this, enum enEqKind arg2), class mHRBike* __convention("thiscall") mHRPc::mGetBikePtr(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetBgmNo4Load(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckDemoBattou(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckDemoNoutou(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetThrowModeOnly(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetSlashModeOnly(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetCatchModeDisEnable(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetFightTameDisEnable(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetSlashTameDisEnable(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetDownAttackDisEnable(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetDigDisEnable(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetDigDisEnable4SM(class mHRPc* const this), void __convention("thiscall") mHRPc::mClearSubMissionflag(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetSubMissionActivflag(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mSetSkillCatch(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mSetAtkMode(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetAtkMode(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetEqWepLaser(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetAlwaysEmptyBattery(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetCantChargeBattery(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetDontSemitrans(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetCantCallBikeFlag(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetLostBikeFlag(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mResetMaxCombo(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetDigToolFlag(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetPuppetMode(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetUseWeaponEffect(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetTodomePrepareMode(class mHRPc* const this), void __convention("thiscall") mHRPc::mClearTodomePrepareMode(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetThrowPrepareMode(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetThrowInputResult(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetShadowDepth(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetBanSlotCry(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetBanSlotBel(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetBanSlotBar(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetBanSlot777(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetDeadSubmission(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetDontSubBattery(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetAutoSubBatteryDisEnable(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetJustGuardDisEnable(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetDashAtkDisEnable(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetJustEscapeDisEnable(class mHRPc* const this, uint8_t arg2), class mHRChara* __convention("thiscall") mHRPc::mGetTsubaNpc(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetOperate(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetOperate(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetCameraOperate(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckStageChangeTermEnd(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetDeadFlag(class mHRPc* const this), struct HRSAVEDATA_DEBUNEKO* __convention("thiscall") mHRPc::mGetDebuNekoDataPtr(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetPauseAllFlag(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetCancelSetPadOffset(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetChangeEquipFromScript(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetForceLoseTsubazeri(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckDeadFukki(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mPlayMotionFromDatPtrExt(class mHRPc* const this, class TGan* arg2, char const* arg3, uint8_t arg4, int32_t arg5, uint8_t arg6, float arg7), void __convention("thiscall") mHRPc::mSetPcPower(class mHRPc* const this, float arg2), struct tagGHMR_TEX* __convention("thiscall") mHRPc::mGetEquipTexPtr(class mHRPc* const this, enum enEqKind arg2), void __convention("thiscall") mHRPc::mSetRestartBGM(class mHRPc* const this), union uniSMflag* __convention("thiscall") mHRPc::mGetSubMissionflag(class mHRPc* const this), void mHRPc::mSetDisplayMiniMapFlag(uint8_t arg1), uint8_t mHRPc::mGetDisplayMiniMapFlag(), void mHRPc::mSetCameraXReverseControlFlag(uint8_t arg1), uint8_t mHRPc::mGetCameraXReverseControlFlag(), void mHRPc::mSetCameraYReverseControlFlag(uint8_t arg1), uint8_t mHRPc::mGetCameraYReverseControlFlag(), void __convention("thiscall") mHRPc::mAddClearNum(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetDeadSubmission(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckStatusMenuDisp(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetMotionNo(class mHRPc* const this, int32_t arg2), int32_t __convention("thiscall") mHRPc::mGetAtkPauseTime(class mHRPc* const this), void __convention("thiscall") mHRPc::mDecAtkPauseTime(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetWait1Frame(class mHRPc* const this), void __convention("thiscall") mHRPc::mDecWait1Frame(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTestPlayMiniDemoForSantDestroy(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetHugWalk(class mHRPc* const this), void __convention("thiscall") mHRPc::mResetReceiveDamage(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetBikeSight(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetDontChangeBikeCamera(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetCameraOperate(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetPauseAllFlag(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::isBeginFinishAttack(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTestTiger(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetMenuDisEnableFrame(class mHRPc* const this, int32_t arg2), enum enShakeDir __convention("thiscall") mHRPc::mGetNeedShakeDir(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetWepMotionNo(class mHRPc* const this, int32_t arg2), int32_t __convention("thiscall") mHRPc::mGetWepMotionNo(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetBikeVisible(class mHRPc* const this, uint8_t arg2), int32_t __convention("thiscall") mHRPc::mGetNowBuf(class mHRPc* const this, int32_t arg2), int32_t __convention("thiscall") mHRPc::mGetTexNowBuf(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckSNBElecDamage(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckIntoTsubazeriai(class mHRPc* const this), void __convention("thiscall") mHRPc::mPlayMotTsubaszeriai(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckTsubazeriai(class mHRPc* const this), void __convention("thiscall") mHRPc::mWinTsubazeriai(class mHRPc* const this), void __convention("thiscall") mHRPc::mLoseTsubazeriai(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetTsubaOuterMotion(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetTsubaOuterMotionNo(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetTsubaDisEnable(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetTsubaEffectVisible(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetTsubaEffectVisible(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckLockOn(class mHRPc* const this), class mHRChara* __convention("thiscall") mHRPc::mGetLockOnNpc(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetAtkPauseTime(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mSetCmbKind(class mHRPc* const this, enum enPcCmbKind arg2), enum enPcCmbKind __convention("thiscall") mHRPc::mGetCmbKind(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetLockOnThroughWall(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetThrowModeOnly(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetCatchModeDisEnable(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetDownAttackDisEnable(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetDigDisEnable(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetDigDisEnable4SM(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetSkillCatch(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mSetSkillK7(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mGetSkillK7(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mSetPcBtlPose(class mHRPc* const this, enum enPcPose arg2), enum enPcPose __convention("thiscall") mHRPc::mGetPcBtlPose(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetEqWepLaser(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetElectroShockWalk(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetPoisonWalk(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetCantDispLaserEffect(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetWepChangeUnVisible(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetAtkHitAbsoluteFlag(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetAtkHitAbsoluteFlag(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetAttackHitToRollEscepe(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetAttackHitToRollEscepe(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetPuppetMode(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetUseWeaponEffect(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetLastAttackNpc(class mHRPc* const this, class mHRChara* arg2), class mHRChara* __convention("thiscall") mHRPc::mGetLastAttackNpc(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetAttackFromBackNpc(class mHRPc* const this, class mHRChara* arg2), class mHRChara* __convention("thiscall") mHRPc::mGetAttackFromBackNpc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetFinishBonusFlag(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetBanRollEscape(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetBanJump(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetBanPiyori(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetBanDeadFukki(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetBanJustGuard(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetBanWinTsubazeri(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetBanSlotCry(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetBanSlotBel(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetBanSlotBar(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetBanSlot777(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetBanJump(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetBanPiyori(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetBanDeadFukki(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetBanJustGuard(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetBanWinTsubazeri(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetWepStick(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetDontSubBattery(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetAutoSubBatteryDisEnable(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetJustGuardDisEnable(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetDashAtkExec(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetDashAtkExec(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetJustEscapeDisEnable(class mHRPc* const this), struct tagGHMR_TEX* __convention("thiscall") mHRPc::mGetFpsCursorPtr(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetDontRestoreMotion(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetDontRestoreMotion(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetBikeClash2battou(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetRotInterpolate(class mHRPc* const this, float arg2), float __convention("thiscall") mHRPc::mGetRotInterpolateDefault(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetHiTension(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mTestDancingCombo(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTestBullet(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTestFire(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTest360(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetTigerVisible(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetTigerVisible(class mHRPc* const this), class ghmTriangle* __convention("thiscall") mHRPc::mGetRightWepTrianglePtr(class mHRPc* const this), class ghmTriangle* __convention("thiscall") mHRPc::mGetWepTrianglePtr(class mHRPc* const this), class TGmf* __convention("thiscall") mHRPc::mGetResourceGmfPtr(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetPauseNpcFlag(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetPauseNpcFlag(class mHRPc* const this), char const* __convention("thiscall") mHRPc::getCurTigerMotionName(class mHRPc* const this), char const* __convention("thiscall") mHRPc::getCurMotionName(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::isOutResourceMotion(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetCancelSetPadOffset(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetChangeEquipFromScript(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetNoBatteryThrow(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetNoBatteryThrow(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetChangeWeaponEffectVisible(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetChangeWeaponEffectVisible(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetLockOnNockDown(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetLockOnNockDown(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetAttackHajiki(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetAttackHajiki(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetDontPlayLoseTsubazeriMotion(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetDontPlayLoseTsubazeriMotion(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetNoWearJacket(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetDispChangeWeaponIcon(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetDispChangeWeaponIcon(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetStandUpAttack(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetStandUpAttack(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetPushingBatteryChargeButton(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetPushingBatteryChargeButton(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetHitBigConsumeBattertAttack(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetHitBigConsumeBattertAttack(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetStartThrowSlow(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetStartThrowSlow(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetForceLoseTsubazeri(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetEqWepID(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetWepCmbExtend(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mSetDeadMotionPlayFlag(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::getNPCInterestPosition(class mHRPc* const this, struct Vec* arg2), float __convention("thiscall") mHRPc::mGetStammina(class mHRPc* const this), struct stPcStatus* __convention("thiscall") mHRPc::mGetPcStatusPtr(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetBikeVisible(class mHRPc* const this), char __convention("thiscall") mHRPc::mGetFinishNpcNum(class mHRPc* const this), class mHRChara* __convention("thiscall") mHRPc::mGetLockOnDummyPtr(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetCallMotionProcess(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetDeadBossNum(class mHRPc* const this, uint32_t arg2), struct stThrowInfo* __convention("thiscall") mHRPc::mGetThrowInfoPtr(class mHRPc* const this), class mHRChara* __convention("thiscall") mHRPc::mGetCatchNpc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckFinishAttackJustBeforeHitSlow(class mHRPc* const this), struct stPcEffect* __convention("thiscall") mHRPc::mGetPcEffectPtr(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetCallBikeFlag(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetLostBikeFlag(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetBikeSight(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetDontChangeBikeCamera(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mGetOnlyMove(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetDeadPauseFlag(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckTameMax(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTestHitFinishAttack(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetFinishJudgeFrame(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetCmbNum(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetOnlyFlagBattouDemo(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetOnlyFlagNoutouDemo(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetLockOnThroughWall(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mIsDoingFinishMotion(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetSlashModeOnly(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetBanRollEscape(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetDashAtkDisEnable(class mHRPc* const this), struct HRSAVEDATA_SHOP* __convention("thiscall") mHRPc::mGetShopDataPtr(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetCatchTick(class mHRPc* const this), void __convention("thiscall") mHRPc::UnlockAllMoves(class mHRPc* const this), void __convention("thiscall") mHRPc::UnlockAllUpgrades(class mHRPc* const this), void __convention("thiscall") mHRPc::UnlockAllPcUpgrades(class mHRPc* const this), void __convention("thiscall") mHRPc::SwitchToMainWeapon(class mHRPc* const this), void __convention("thiscall") mHRPc::UnlockAllWeapons(class mHRPc* const this), void __convention("thiscall") mHRPc::SubPcNowEquipBatteryRatio(class mHRPc* const this, float const arg2), uint8_t __convention("thiscall") mHRPc::isAcceptCameraFollowRotation(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTestCanDownAttack(class mHRPc* const this, class mHRChara* arg2), uint8_t __convention("thiscall") mHRPc::mTestRunWeaponEffect(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mFloorEventProc(class mHRPc* const this), void __convention("thiscall") mHRPc::mCallClearProcessBeforeEvent(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetSlowMotion(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mSlowMotionProc(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mSlowMotionSystem(class mHRPc* const this, int32_t arg2, int32_t arg3), void __convention("thiscall") mHRPc::mDeadProc(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::IncSwingCount(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::TestStoreBikePosForSM(class mHRPc* const this), void __convention("thiscall") mHRPc::ReStoreBikePosForSM(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mDigHoleProc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTestDigHoleAction(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::PcInputMove(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::PcInputIdleProc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTestCatchZako(class mHRPc* const this), void __convention("thiscall") mHRPc::mRestore1stChBGM(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mPlay2ndChBGM(class mHRPc* const this, int32_t arg2, float arg3, uint8_t arg4), void __convention("thiscall") mHRPc::mGetSmokeColor(class mHRPc* const this, struct GXColor* arg2), void __convention("thiscall") mHRPc::mExitBatteryCharge(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mHitCheckNpc(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetCherryFlag(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckBossThrow(class mHRPc* const this, enum enCharaType arg2), int32_t __convention("thiscall") mHRPc::mGetJustGuardJudgeTick(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckCanFight(class mHRPc* const this), void __convention("thiscall") mHRPc::mClearBomStockNum(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetSpecialAttackRestTick(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetEmptyShinkuWaveIndex(class mHRPc* const this), void __convention("thiscall") mHRPc::mCreateShinkuWave(class mHRPc* const this), void __convention("thiscall") mHRPc::mCallEffectBlur(class mHRPc* const this, int32_t arg2, float arg3, float arg4, int32_t arg5), void __convention("thiscall") mHRPc::mSetLaserTrack(class mHRPc* const this, uint8_t arg2, int32_t arg3, int32_t arg4), void __convention("thiscall") mHRPc::mSetLaserScale(class mHRPc* const this, float arg2), void __convention("thiscall") mHRPc::mSetLaserLogValid(class mHRPc* const this, uint8_t arg2), uint32_t __convention("thiscall") mHRPc::mGetLaserColor(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetLaserColor(class mHRPc* const this, uint8_t arg2, uint8_t arg3, uint8_t arg4, uint8_t arg5), void __convention("thiscall") mHRPc::mCreateLaserEffect(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mDeleteChargeEffect(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mCreateChargeEffect(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckBigWeapon(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetDigToolFlag(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mClearMMSMInit(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetBikePos2Motel(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetStopRenderCounter(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetStopRenderCounter(class mHRPc* const this), uint32_t __convention("thiscall") mHRPc::mGetLightSideNum(class mHRPc* const this), float __convention("thiscall") mHRPc::mGetReceiveDamage(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetMaxCombo(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetDown(class mHRPc* const this, enum enDownStatus arg2, uint8_t arg3), void __convention("thiscall") mHRPc::mSetCallBikeFlag(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetFireMan(class mHRPc* const this, float arg2), int32_t __convention("thiscall") mHRPc::mGetDarkSideUseNum(class mHRPc* const this), float __convention("thiscall") mHRPc::mGetLightSideRate(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCallSwordCutDmgEffect(class mHRPc* const this, class ghmTriangle* arg2, uint32_t const arg3), uint8_t __convention("thiscall") mHRPc::mCallBeamCutDmgEffect(class mHRPc* const this, class ghmTriangle* arg2, uint32_t const arg3), uint8_t __convention("thiscall") mHRPc::mCallFightAttackDmgEffect(class mHRPc* const this, class mHRChara* arg2), uint8_t __convention("thiscall") mHRPc::mCallElectDmgEffect(class mHRPc* const this), void __convention("thiscall") mHRPc::mCallNormalAttackEffect(class mHRPc* const this, class mHRChara* arg2), uint8_t __convention("thiscall") mHRPc::IsCenteringHoseiCutmark(class mHRPc* const this), void __convention("thiscall") mHRPc::CreateCutMarkEffect(class mHRPc* const this, class mHRChara* arg2, enum eEfDmgLevel arg3), void __convention("thiscall") mHRPc::CreateGuardBreakEffect(class mHRPc* const this), void __convention("thiscall") mHRPc::mSePlayChargeAttack(class mHRPc* const this, class mHRChara* arg2), uint8_t __convention("thiscall") mHRPc::mCallFinishAttackEffect(class mHRPc* const this, class mHRChara* arg2), uint8_t __convention("thiscall") mHRPc::mCreateHugGan(class mHRPc* const this, char* arg2, int32_t arg3), void __convention("thiscall") mHRPc::mPlayHugMotion(class mHRPc* const this, int32_t arg2, float arg3), void __convention("thiscall") mHRPc::mSetPoisonWalk(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetElectroShockBGMPitch(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckReadEndAtkMot(class mHRPc* const this), enum enPcPose __convention("thiscall") mHRPc::mGetPcBtlPoseNowMotion(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckFinishNpc(class mHRPc* const this, class mHRChara* arg2), void __convention("thiscall") mHRPc::mGetHitEffectPos(class mHRPc* const this, struct Vec* arg2), void __convention("thiscall") mHRPc::mGetHitEffectPos(class mHRPc* const this, struct Vec* arg2, struct Vec& arg3, uint8_t arg4), void __convention("thiscall") mHRPc::mSetNoutou(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetBattou(class mHRPc* const this, uint8_t arg2), float __convention("thiscall") mHRPc::mGetBikeNitro(class mHRPc* const this), struct Vec& __convention("thiscall") mHRPc::mGetBikeRot(class mHRPc* const this), char __convention("thiscall") mHRPc::mGetEquipDurabilityMax(class mHRPc* const this, int32_t arg2), char __convention("thiscall") mHRPc::mGetEquipDurability(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mSetOnlyEquip(class mHRPc* const this, int32_t arg2, uint8_t arg3), void __convention("thiscall") mHRPc::mChangeWeapon4Debug(class mHRPc* const this, int32_t arg2), int32_t __convention("thiscall") mHRPc::mChangeEquipID2KindIndex(class mHRPc* const this, int32_t arg2), int32_t __convention("thiscall") mHRPc::mGetLockerIndex(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mDelLocker(class mHRPc* const this, int32_t arg2), float __convention("thiscall") mHRPc::mGetDamageRate(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetWepCmbExtend(class mHRPc* const this, int32_t arg2, uint8_t arg3), float __convention("thiscall") mHRPc::mGetWepPower(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mSetWepPower(class mHRPc* const this, int32_t arg2, float arg3), uint8_t __convention("thiscall") mHRPc::mDelWep(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mAddWep(class mHRPc* const this, int32_t arg2, int32_t arg3), void __convention("thiscall") mHRPc::mMissCatch(class mHRPc* const this), void __convention("thiscall") mHRPc::mPlayThrowMissMotion(class mHRPc* const this), void __convention("thiscall") mHRPc::mDispThrowInput(class mHRPc* const this), void __convention("thiscall") mHRPc::mStartThrowInput(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mAdjustHitWallPosition(class mHRPc* const this, struct Vec* arg2), uint8_t __convention("thiscall") mHRPc::mStartThrowSNB(class mHRPc* const this), void __convention("thiscall") mHRPc::mFrameProcChangeScreen(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mPlayMiniDemoForWarpPosSantDestroy(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetAfterWarpPosForSantDestroy(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTestEndWarpPosForSantDestroy(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mSetWarpPosForSantDestroy(class mHRPc* const this, int32_t arg2), enum enScreenChangeStatus __convention("thiscall") mHRPc::mGetChangeScreenStatus(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mEndChangeScreen(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mStartChangeScreen(class mHRPc* const this, enum enScreenChangeKind arg2, int32_t arg3), void __convention("thiscall") mHRPc::mSetBatteryMax(class mHRPc* const this, int16_t arg2, int32_t arg3), float __convention("thiscall") mHRPc::mGetBatteryRatio(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mSubBattery(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mAddBattery(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mRecoverNoutouWeaponBattery(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mPlayMotionEscape(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mGetInputGuardSlide(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTestLeftGuard(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTestRightGuard(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTestUpGuard(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetInputTurn(class mHRPc* const this), float __convention("thiscall") mHRPc::mGetAttackTimingFrame(class mHRPc* const this, int32_t arg2), class ghmTriangle* __convention("thiscall") mHRPc::mGetLeftWepTrianglePtr(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetExtraComboMotionNo(class mHRPc* const this, int32_t arg2, int32_t arg3), int32_t __convention("thiscall") mHRPc::mGetNormalComboMotionNo(class mHRPc* const this, int32_t arg2, int32_t arg3), void __convention("thiscall") mHRPc::mSetComboKind(class mHRPc* const this), void __convention("thiscall") mHRPc::mReturnIdleMove(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mDashProc(class mHRPc* const this), void __convention("thiscall") mHRPc::mDashStartProc(class mHRPc* const this), void __convention("thiscall") mHRPc::mForceLanding(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckJumpAttack(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckJump(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mJumpProc(class mHRPc* const this), void __convention("thiscall") mHRPc::mCheckRouletteAbility(class mHRPc* const this), void __convention("thiscall") mHRPc::mPreStartProcessSpecialMode(class mHRPc* const this), void __convention("thiscall") mHRPc::mClear360(class mHRPc* const this), void __convention("thiscall") mHRPc::mClearFire(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mClearTiger(class mHRPc* const this), void __convention("thiscall") mHRPc::mClearDancingCombo(class mHRPc* const this), void __convention("thiscall") mHRPc::mClearRapidFinish(class mHRPc* const this), void __convention("thiscall") mHRPc::mClearBullet(class mHRPc* const this), void __convention("thiscall") mHRPc::mStartDarkSide(class mHRPc* const this), void __convention("thiscall") mHRPc::mStart360(class mHRPc* const this), void __convention("thiscall") mHRPc::mStartFire(class mHRPc* const this), void __convention("thiscall") mHRPc::mStartTiger(class mHRPc* const this), void __convention("thiscall") mHRPc::mStartDancingCombo(class mHRPc* const this), void __convention("thiscall") mHRPc::mStartRapidFinish(class mHRPc* const this), void __convention("thiscall") mHRPc::mStartBullet(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckTigerAttack(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTermTiger(class mHRPc* const this), void __convention("thiscall") mHRPc::mTigerAttackProc(class mHRPc* const this), void __convention("thiscall") mHRPc::mTigerProc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTigerAttackInput(class mHRPc* const this), void __convention("thiscall") mHRPc::mTigerPadInputProc(class mHRPc* const this), void __convention("thiscall") mHRPc::mCallTigerSetupMatrix(class mHRPc* const this, float arg2), void __convention("thiscall") mHRPc::mCallTigerMotionProcess(class mHRPc* const this), void __convention("thiscall") mHRPc::mUpdateTigerPos(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mPlayTigerMotion(class mHRPc* const this, int32_t arg2, uint8_t arg3, float arg4), void __convention("thiscall") mHRPc::mClearRapidFinishTarget(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetRapidFinishTarget(class mHRPc* const this), class mHRChara* __convention("thiscall") mHRPc::mSearchRapidFinishNpc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckResistRapidFinishNpc(class mHRPc* const this, class mHRChara* arg2), uint8_t __convention("thiscall") mHRPc::mSetRapidFinishNpc(class mHRPc* const this, class mHRChara* arg2), int32_t __convention("thiscall") mHRPc::mGet360Tick(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetFireTick(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetTigerTick(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetDancingComboTick(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetRapidFinishTick(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetBulletTick(class mHRPc* const this), float __convention("thiscall") mHRPc::mGetRotInterpolate(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckChargeMax(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckInputBatteryCharge(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckInputGuard(class mHRPc* const this, uint8_t arg2, uint8_t arg3), void __convention("thiscall") mHRPc::checkAndUpdateWeaponLength(class mHRPc* const this, class TGmf* arg2), void __convention("thiscall") mHRPc::mCallWepMotionProc(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetWepMotionRate(class mHRPc* const this, float arg2, int32_t arg3), void __convention("thiscall") mHRPc::mPlayWepMotion(class mHRPc* const this, int32_t arg2, uint8_t arg3, float arg4, int32_t arg5), void __convention("thiscall") mHRPc::mSetWeaponLength(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mResumeEasyDemo(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mPlayEasyDemo(class mHRPc* const this, int32_t arg2, int32_t arg3, uint8_t arg4), uint8_t __convention("thiscall") mHRPc::mPlayNoutouDemo(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mPlayBattouDemo(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetBattouEndMotion(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetBattouLoopMotion(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetCmbNumMax(class mHRPc* const this), void __convention("thiscall") mHRPc::mUpdateLockOnDummyLocate(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetLockOnDummyAtOutOfRange(class mHRPc* const this), void __convention("thiscall") mHRPc::mUpdateWatchNpc(class mHRPc* const this), void __convention("thiscall") mHRPc::mUpdateLockOnTarget(class mHRPc* const this), void __convention("thiscall") mHRPc::mUpdateLockOnList(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mRotate2LockOnTarget(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetLockOn(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckLockOnDummy(class mHRPc* const this), void __convention("thiscall") mHRPc::mInitLockOn(class mHRPc* const this), void __convention("thiscall") mHRPc::mDarkSideSonicProc(class mHRPc* const this), void __convention("thiscall") mHRPc::bootGuardLightFlashEffect(class mHRPc* const this, struct Vec& arg2), void __convention("thiscall") mHRPc::LaserScaleProc(class mHRPc* const this), void __convention("thiscall") mHRPc::mEffectProc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTestBeamKatanaShowyEffect(class mHRPc* const this), float __convention("thiscall") mHRPc::mGetCatchDistance(class mHRPc* const this), float __convention("thiscall") mHRPc::mGetMotionSpeed(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetFinishMotionSpeed(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckTargetObject(class mHRPc* const this, class mHRChara* arg2), class mHRChara* __convention("thiscall") mHRPc::mSearchAttackTargetNpc(class mHRPc* const this, float arg2, uint8_t arg3), class mHRChara* __convention("thiscall") mHRPc::mSearchDarkSideWarpTargetNpc(class mHRPc* const this), class mHRChara* __convention("thiscall") mHRPc::mSearchNearNpc(class mHRPc* const this, float arg2), class mHRChara* __convention("thiscall") mHRPc::mLookAttackTargetNpc(class mHRPc* const this), class mHRChara* __convention("thiscall") mHRPc::mLockNearNpc(class mHRPc* const this, float arg2, class mHRChara* arg3), class mHRChara* __convention("thiscall") mHRPc::mLockNearCatchNpc(class mHRPc* const this, float arg2, uint8_t arg3), void __convention("thiscall") mHRPc::mAddKillNpcCombo(class mHRPc* const this, class mHRChara* arg2), void __convention("thiscall") mHRPc::mIntiFinishNpc(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetDarkSideTarget(class mHRPc* const this), void __convention("thiscall") mHRPc::mInputDarkSideSuccess(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mPcMoveFrontOfNpc4DarkSideMode(class mHRPc* const this, class mHRChara* arg2), uint8_t __convention("thiscall") mHRPc::mPcMoveFrontOfNpc(class mHRPc* const this, class mHRChara* arg2, uint8_t arg3, int32_t arg4), class mHRChara* __convention("thiscall") mHRPc::mSearchNextNpc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckFinishMode(class mHRPc* const this, class mHRChara* arg2), void __convention("thiscall") mHRPc::mPrepareInputFinish(class mHRPc* const this, class mHRChara* arg2), void __convention("thiscall") mHRPc::mSetIntoTsubazeriai(class mHRPc* const this, class mHRChara* arg2), void __convention("thiscall") mHRPc::mSePlayUpperAttack(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTameAttckProc(class mHRPc* const this), void __convention("thiscall") mHRPc::mJoyuuLight(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mSlotResult(class mHRPc* const this, int16_t arg2), uint8_t __convention("thiscall") mHRPc::mAttackHitCheck(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mAttackProc(class mHRPc* const this), void __convention("thiscall") mHRPc::mFailedInputFinishProcessForVsBoss(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mSpecialFightAttackProc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckComboAttackInput(class mHRPc* const this), void __convention("thiscall") mHRPc::mTrvStartDownAttack(class mHRPc* const this, class mHRChara* arg2), void __convention("thiscall") mHRPc::mStartFightAttack(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetAttackMotionStartFrame30fps(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckCanCatchNpc(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetSEPlayShakeInputSuccess(class mHRPc* const this), void __convention("thiscall") mHRPc::mPlayFinishMotion(class mHRPc* const this), void __convention("thiscall") mHRPc::mSuccessFinishInput(class mHRPc* const this), void __convention("thiscall") mHRPc::mFinishMotionFrameKetaAge(class mHRPc* const this), void __convention("thiscall") mHRPc::mPlayNunchackAttackMotion(class mHRPc* const this), void __convention("thiscall") mHRPc::mClearNpcDamageInfo(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetHjkDir(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetFinishAtkMotNo(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mSearchThrow(class mHRPc* const this, int32_t arg2, int32_t* arg3), int32_t __convention("thiscall") mHRPc::mGetPcThrowMotNo(class mHRPc* const this, enum enThrowDir arg2, class mHRChara* arg3, int32_t* arg4), int32_t __convention("thiscall") mHRPc::mGetThrowDamageMotion(class mHRPc* const this, class mHRChara* arg2, int32_t* arg3), int32_t __convention("thiscall") mHRPc::mGetPcThrowMotNo4ZakoB(class mHRPc* const this, int32_t* arg2), int32_t __convention("thiscall") mHRPc::mGetPcThrowMotNo4ZakoF(class mHRPc* const this, int32_t* arg2), uint8_t __convention("thiscall") mHRPc::mCheckThrowSpace(class mHRPc* const this, struct Vec arg2), int32_t __convention("thiscall") mHRPc::mGetDownAtkMotNo(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetNextAtkMotNo(class mHRPc* const this), void __convention("thiscall") mHRPc::mAttackRestoreProc(class mHRPc* const this, uint8_t arg2, uint8_t arg3), void __convention("thiscall") mHRPc::mAttackStoreProc(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mResetCombo(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mChangeWep(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mWepSeReleaseRequest(class mHRPc* const this), void __convention("thiscall") mHRPc::mInitWepStatus(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetWepIndex(class mHRPc* const this, int32_t arg2), int32_t __convention("thiscall") mHRPc::mGetAtkNo(class mHRPc* const this, int32_t arg2, uint8_t arg3), int32_t __convention("thiscall") mHRPc::mGetAtkNo(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mSideStepProc(class mHRPc* const this, int32_t arg2, int32_t arg3), int32_t __convention("thiscall") mHRPc::mGetRollEscMotNo(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mMoveProc(class mHRPc* const this, float arg2, uint8_t arg3, uint8_t arg4), float __convention("thiscall") mHRPc::mGetPcWillDirectRotY(class mHRPc* const this), float __convention("thiscall") mHRPc::mGetRunSpeed(class mHRPc* const this), float __convention("thiscall") mHRPc::mGetWalkSpeed(class mHRPc* const this), void __convention("thiscall") mHRPc::mMoveCommon(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mLockOnMoveProc(class mHRPc* const this, int32_t arg2, uint8_t arg3), void __convention("thiscall") mHRPc::mUpdateAtkColl(class mHRPc* const this), void __convention("thiscall") mHRPc::mStartChargeEffect(class mHRPc* const this), void __convention("thiscall") mHRPc::mPreResetChargeAttack(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckLastTarget(class mHRPc* const this, class mHRChara* arg2), uint8_t __convention("thiscall") mHRPc::mCheckBDash(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckChangeWeapon(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckWakeUpZako(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckSchool3RapidAttack(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckBackAttack(class mHRPc* const this, int32_t arg2), int32_t __convention("thiscall") mHRPc::mCheckInputDirection4Pc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckThrowInput(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckInputCombo(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckFollowThorough(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckSantDash(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckNormalAttack(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckNormalDashAttack(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheck777Bomb(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheck777BombStart(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckIdling(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckIdlingMotion(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckRollEscape(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckGuard(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckChargeUpDown(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckCharge(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckCanCancelLastCombo(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckLastCombo(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckStrongComboAttack(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckPiyoriComboAttack(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckNockBack(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckDown2StandUp(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckDown(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckBlowStatus(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckBombAttack(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckJumpThrustAttack(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckChargeAttack(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckNunchackAttack(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckRangeAttack(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckThrowBeforeAttack(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckCatchMiss(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mStartCatchAttack(class mHRPc* const this, class mHRChara* arg2), uint8_t __convention("thiscall") mHRPc::mCheckDownAttack(class mHRPc* const this, int32_t arg2, uint8_t arg3), uint8_t __convention("thiscall") mHRPc::mCheckFightCmbAttack(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckCityFightAttack(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckCanAttack(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckAttackHit(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckAttack(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetHajikareWait(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckHajikareWait(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetGuardWait(class mHRPc* const this, float arg2), uint8_t __convention("thiscall") mHRPc::mCheckGuardWait(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckHajikare(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckGuardMotion(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mCheckRestorePadOffset(class mHRPc* const this), void __convention("thiscall") mHRPc::mResetPadOffset(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetNeedShakeDir(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckContinueCombo(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckAtkUpper(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetChargeMotionNo(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::mGetUpChargeAttackMotionNo(class mHRPc* const this), void __convention("thiscall") mHRPc::mResetCatch(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetTsubaOuterMotion(class mHRPc* const this, uint8_t arg2, int32_t arg3), void __convention("thiscall") mHRPc::mSetTsubaDat(class mHRPc* const this, int32_t arg2, uint8_t arg3), void __convention("thiscall") mHRPc::mTsubazeriaiProc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGuardDamageProc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mDamageProc(class mHRPc* const this), float __convention("thiscall") mHRPc::mGetAttackDistance(class mHRPc* const this), float __convention("thiscall") mHRPc::mGetAttackDirection(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTestRunMotion(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckDamageMotion(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckCanHit(class mHRPc* const this, int32_t arg2, uint8_t arg3, uint8_t arg4), uint8_t __convention("thiscall") mHRPc::mHitCheck(class mHRPc* const this, class mHRChara* arg2), uint8_t __convention("thiscall") mHRPc::mSetElectricDamage(class mHRPc* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, int32_t arg11), uint8_t __convention("thiscall") mHRPc::mSetDamage(class mHRPc* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10), uint8_t __convention("thiscall") mHRPc::mJudgeJustGuardInput(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mJudgePiyori(class mHRPc* const this, float arg2), int32_t __convention("thiscall") mHRPc::mConvertGuardMotion(class mHRPc* const this, int32_t arg2, class mHRChara* arg3), void __convention("thiscall") mHRPc::mSetDamageIK(class mHRPc* const this, class mHRChara* arg2, uint8_t arg3), uint8_t __convention("thiscall") mHRPc::mCheckAutoGuard(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckCanGuard(class mHRPc* const this, uint8_t arg2, uint8_t arg3), int32_t __convention("thiscall") mHRPc::mGetBtlCommonMotNo(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mSetWepEffectVisible(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetWepVisible(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetVisible(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetCamera2TrvBack(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetCameraInit(class mHRPc* const this), void __convention("thiscall") mHRPc::mCallCameraInit(class mHRPc* const this), void __convention("thiscall") mHRPc::mCameraInitProcess(class mHRPc* const this), void __convention("thiscall") mHRPc::mCallTsubaBrendMotPorc(class mHRPc* const this, int32_t arg2, char arg3), void __convention("thiscall") mHRPc::mCallCulcBrendRate(class mHRPc* const this, uint8_t arg2), class ghmGcCollObjCapsule* __convention("thiscall") mHRPc::mGetCollPtr(class mHRPc* const this), void __convention("thiscall") mHRPc::mBossDeadCommonProcess(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mPlayBattleIdolMotion(class mHRPc* const this, uint8_t arg2, uint8_t arg3), void __convention("thiscall") mHRPc::mResetValueAtPlayMotion(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mPlayMotionBlend(class mHRPc* const this, class TGan** arg2, char arg3), uint8_t __convention("thiscall") mHRPc::mPlayMotionBlend(class mHRPc* const this, int32_t arg2, char arg3, uint8_t arg4, uint8_t arg5), uint8_t __convention("thiscall") mHRPc::mPlayMotion(class mHRPc* const this, int32_t arg2, uint8_t arg3, int32_t arg4, uint8_t arg5, float arg6), class TGan** __convention("thiscall") mHRPc::mGetAtkMotPPtr(class mHRPc* const this, int32_t arg2), class TGan* __convention("thiscall") mHRPc::mGetAtkMotPtr(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mRequestReadAtkMot(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mReleaseAtkMot(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckNeedModelRead(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mChangeTShirtModel(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mSetNoWearJacket(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mControlDispWestWeapon(class mHRPc* const this, int32_t arg2, char* arg3), void __convention("thiscall") mHRPc::mDetachWeapon(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mAttachWeapon(class mHRPc* const this, int32_t arg2), void mHRPc::mRenderFpsCursor(void* arg1), void __convention("thiscall") mHRPc::mAddTension(class mHRPc* const this, float arg2), void __convention("thiscall") mHRPc::mSetWarpPos(class mHRPc* const this, struct Vec& arg2, uint8_t arg3), void __convention("thiscall") mHRPc::mRenderShadowProc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mPostRenderProc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mRenderProc(class mHRPc* const this), void __convention("thiscall") mHRPc::mSemitransparentProcess(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mPostFrameCommonProc2(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mPostFrameProc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mPcRestoreDamage(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::checkAndPlayCameraBankMotion(class mHRPc* const this), void __convention("thiscall") mHRPc::checkAndBootStageHitEffect(class mHRPc* const this), void __convention("thiscall") mHRPc::onUpdateIK(class mHRPc* const this), void __convention("thiscall") mHRPc::mDamageElectroShockProc(class mHRPc* const this), void __convention("thiscall") mHRPc::mDamageDownLeverGachaProc(class mHRPc* const this), void __convention("thiscall") mHRPc::mSpecialWalkProc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckHaveWep(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mChangeWeaponProcess(class mHRPc* const this), void __convention("thiscall") mHRPc::TryChangeWeapon(class mHRPc* const this), void __convention("thiscall") mHRPc::mStartChangeWeapon(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mFrameProc(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetOffGroundIk(class mHRPc* const this), void __convention("thiscall") mHRPc::mInitData(class mHRPc* const this), void __convention("thiscall") mHRPc::mEffectInit(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTerm(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mInit(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckCanOperate(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetOutsidePlayMotion(class mHRPc* const this), void __convention("thiscall") mHRPc::mGetEquipTextureName(class mHRPc* const this, char* arg2, int32_t arg3), void __convention("thiscall") mHRPc::mGetEquipModelName(class mHRPc* const this, char* arg2, int32_t arg3, uint8_t arg4), void __convention("thiscall") mHRPc::mTermWarpPosForSantDestroy(class mHRPc* const this), void __convention("thiscall") mHRPc::mSubDarkSideTick(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mEquipProc(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckBeforeAttackHit(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckPcReadEndWithoutWeapon(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckFightAttack(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckCatchAttack(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCallAttackEffect(class mHRPc* const this, enum enPcAttackEffect arg2, class mHRChara* arg3, uint8_t arg4, struct Vec* arg5), uint8_t __convention("thiscall") mHRPc::SetPcSpeedBlurOff(class mHRPc* const this), void __convention("thiscall") mHRPc::mStopLightSabelSound(class mHRPc* const this, uint8_t arg2), float __convention("thiscall") mHRPc::mGetPcPower(class mHRPc* const this), void __convention("thiscall") mHRPc::mRestorePcData(class mHRPc* const this, struct stPcSaveData* arg2), void __convention("thiscall") mHRPc::UnlockEverythingForDeathmatch(class mHRPc* const this), void __convention("thiscall") mHRPc::mResetDeadFlag(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetBatteryMaxAllWeapon(class mHRPc* const this), void __convention("thiscall") mHRPc::mPlayLightSabelSound(class mHRPc* const this), void __convention("thiscall") mHRPc::TurnOffLaserEffectOnPlayer(class mHRPc* const this), void __convention("thiscall") mHRPc::mClearBossInit(class mHRPc* const this), struct stPcSaveData* __convention("thiscall") mHRPc::mGetPcSaveData(class mHRPc* const this, uint8_t arg2, struct stPcSaveData* arg3), uint8_t __convention("thiscall") mHRPc::TestStorePcPosForSM(class mHRPc* const this), void __convention("thiscall") mHRPc::ReStorePcPosForSM(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckIntoStatusScreen(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mPlayMotionFromDatPtr(class mHRPc* const this, class TGan* arg2, uint8_t arg3, int32_t arg4, uint8_t arg5, float arg6), uint8_t __convention("thiscall") mHRPc::mCheckFinishAttack(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckTsubazering(class mHRPc* const this, int32_t arg2), struct Vec& __convention("thiscall") mHRPc::mGetBikePos(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTestBikeRide(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetPadOffset(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckNeutral(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mIsPlayMotion(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckBatteryCharge(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckInitCamera(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckDead(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mClearDarkSide(class mHRPc* const this), void __convention("thiscall") mHRPc::mExitChargeBattery4FixCamera(class mHRPc* const this), void __convention("thiscall") mHRPc::StorePcPosForSM(class mHRPc* const this, struct Vec& arg2, struct Vec& arg3), uint8_t __convention("thiscall") mHRPc::mCheckEquipReadEnd(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mTestBattouDemo(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mAddLocker(class mHRPc* const this, int32_t arg2, int16_t arg3, float arg4, uint8_t arg5), uint8_t __convention("thiscall") mHRPc::mChkLocker(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mSetEquip(class mHRPc* const this, int32_t arg2, uint8_t arg3, uint8_t arg4), void __convention("thiscall") mHRPc::mControlDispWestWeapons(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckStageChangeInitEnd(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetElectroShockWalk(class mHRPc* const this, uint8_t arg2), void __convention("thiscall") mHRPc::mSetHugWalk(class mHRPc* const this, uint8_t arg2), float __convention("thiscall") mHRPc::mGetBikeSpd(class mHRPc* const this), void __convention("thiscall") mHRPc::mResetFireMan(class mHRPc* const this), void __convention("thiscall") mHRPc::mResetChargeAttack(class mHRPc* const this), void __convention("thiscall") mHRPc::mResetFPCamera(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckDarkSideMode(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mAttachObj(class mHRPc* const this, class TGmf* arg2, char* arg3, class TGmf* arg4, char* arg5), void __convention("thiscall") mHRPc::mRestoreSubMissionWeapon(class mHRPc* const this), int16_t __convention("thiscall") mHRPc::mGetBattery(class mHRPc* const this, int32_t arg2), int32_t __convention("thiscall") mHRPc::mGetBatteryMax(class mHRPc* const this, int32_t arg2), void __convention("thiscall") mHRPc::mSetBattery(class mHRPc* const this, int16_t arg2, int32_t arg3), void __convention("thiscall") mHRPc::StorePcPosForSM(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::StoreBikePosForSM(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mSetBikePos(class mHRPc* const this, int32_t, float arg3), uint8_t __convention("thiscall") mHRPc::mSetBikeRot(class mHRPc* const this, struct Vec arg2), void __convention("thiscall") mHRPc::mAddPcMoney(class mHRPc* const this, int32_t arg2), int32_t __convention("thiscall") mHRPc::mSetBikeJumpForSubMission(class mHRPc* const this, uint8_t arg2), uint8_t __convention("thiscall") mHRPc::mCallDemoBattou(class mHRPc* const this, uint8_t arg2, uint8_t arg3), uint8_t __convention("thiscall") mHRPc::mTestPauseBattouDemo(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mResumeBattouDemo(class mHRPc* const this), void __convention("thiscall") mHRPc::mCallDemoNoutou(class mHRPc* const this), void __convention("thiscall") mHRPc::mCancelBattouNoutouDemo(class mHRPc* const this), void __convention("thiscall") mHRPc::mRestorePlayMotionFromDatPtr(class mHRPc* const this, uint8_t arg2), int32_t __convention("thiscall") mHRPc::mGetAtkScl(class mHRPc* const this), int32_t __convention("thiscall") mHRPc::GetSwingCount(class mHRPc* const this), void __convention("thiscall") mHRPc::ClearSwingCount(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckLockOnEnemy(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckThrowAttack(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckGetAllWeapon(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckGuardSlide(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckTsubaAttack(class mHRPc* const this, int32_t arg2), uint8_t __convention("thiscall") mHRPc::mCheckSuccessInputFinish(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetInputMode(class mHRPc* const this, enum enPcInputMode arg2, uint8_t arg3), uint8_t __convention("thiscall") mHRPc::mCheckInputMove(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mSetEquipMk3(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckTrvReadEnd(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetWepBattou(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetWepNoutou(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mGetPauseFlag(class mHRPc* const this), uint8_t __convention("thiscall") mHRPc::mCheckFinishAttackAndCantLockOn(class mHRPc* const this), void __convention("thiscall") mHRPc::mTremStageChange(class mHRPc* const this), void __convention("thiscall") mHRPc::mSetEventWalk(class mHRPc* const this, uint8_t arg2, uint8_t arg3), void __convention("thiscall") mHRPc::mInitStageChange(class mHRPc* const this), void __convention("thiscall") mHRPc::mClearGameFlag(class mHRPc* const this)
-
 	// [Function] uint8_t __convention("thiscall") mHRPc::mGetEventWalk(class mHRPc* const this) [?mGetEventWalk@mHRPc@@QAE_NXZ]
 	uint8_t mGetEventWalk()
 	{
@@ -13944,7 +13557,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x44b240);
 		return mFunc(this);
 	}
-
 	/// Struct member variables
 
 	// <class mHRChara field_0, offset 0x0>
@@ -14020,8 +13632,10 @@ public:
 	uint8_t mBanStatusScreen;
 
 	// <Filler, offset 0x15f9>
+private:
 	char _Filler24[3];
 
+public:
 	// <int32_t mAtkPauseTime, offset 0x15fc>
 	int32_t mAtkPauseTime;
 
@@ -14089,8 +13703,10 @@ public:
 	uint8_t mSavehitOidashiDisEnable;
 
 	// <Filler, offset 0x1ee5>
+private:
 	char _Filler46[3];
 
+public:
 	// <int32_t mSlowMotionSytemMotNo, offset 0x1ee8>
 	int32_t mSlowMotionSytemMotNo;
 
@@ -14113,8 +13729,10 @@ public:
 	uint8_t mSubMissionPcPosStoreFlag;
 
 	// <Filler, offset 0x1f27>
+private:
 	char _Filler53[1];
 
+public:
 	// <struct Vec mSubMissionStorePos, offset 0x1f28>
 	struct Vec mSubMissionStorePos;
 
@@ -14125,8 +13743,10 @@ public:
 	uint8_t mSubMissionBikePosStoreFlag;
 
 	// <Filler, offset 0x1f41>
+private:
 	char _Filler56[3];
 
+public:
 	// <struct Vec mSubMissionStoreBikePos, offset 0x1f44>
 	struct Vec mSubMissionStoreBikePos;
 
@@ -14149,8 +13769,10 @@ public:
 	uint8_t mTameSe;
 
 	// <Filler, offset 0x1f67>
+private:
 	char _Filler63[1];
 
+public:
 	// <int32_t mDigAction, offset 0x1f68>
 	int32_t mDigAction;
 
@@ -14176,8 +13798,10 @@ public:
 	uint8_t m_bIsBootStageHitEffect;
 
 	// <Filler, offset 0x1f91>
+private:
 	char _Filler71[3];
 
+public:
 	// <struct Vec m_inPreWeaponTopPosi, offset 0x1f94>
 	struct Vec m_inPreWeaponTopPosi;
 
@@ -14199,7 +13823,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<mHRPc>("mHRPc")
+		NS = NS.deriveClass<mHRPc, mHRChara>("mHRPc")
 			.addProperty("mEscapeActionInit", &mHRPc::mEscapeActionInit)
 			.addProperty("mPcStatus", &mHRPc::mPcStatus)
 			.addProperty("mMiniDemo", &mHRPc::mMiniDemo)
@@ -14278,143 +13902,81 @@ public:
 			.addProperty("m_bIsBeginFinishAttack", &mHRPc::m_bIsBeginFinishAttack)
 			.addProperty("m_bIsPlayCamBankMotion", &mHRPc::m_bIsPlayCamBankMotion)
 			.addProperty("m_inWeaponLengthRatio", &mHRPc::m_inWeaponLengthRatio)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetEventWalk", &mHRPc::mGetEventWalk)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDarkSideTick", &mHRPc::mGetDarkSideTick)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("isFireDarkSideModeActive", &mHRPc::isFireDarkSideModeActive)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetTsubaDisEnable", &mHRPc::mSetTsubaDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetInputMode", &mHRPc::mGetInputMode)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetPcMoney", &mHRPc::mSetPcMoney)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSubPcMoney", &mHRPc::mSubPcMoney)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetPcMoney", &mHRPc::mGetPcMoney)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetEquipID", &mHRPc::mGetEquipID)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetEventWalk", &mHRPc::mGetEventWalk)
+			.addFunction("mGetDarkSideTick", &mHRPc::mGetDarkSideTick)
+			.addFunction("isFireDarkSideModeActive", &mHRPc::isFireDarkSideModeActive)
+			.addFunction("mSetTsubaDisEnable", &mHRPc::mSetTsubaDisEnable)
+			.addFunction("mGetInputMode", &mHRPc::mGetInputMode)
+			.addFunction("mSetPcMoney", &mHRPc::mSetPcMoney)
+			.addFunction("mSubPcMoney", &mHRPc::mSubPcMoney)
+			.addFunction("mGetPcMoney", &mHRPc::mGetPcMoney)
+			.addFunction("mGetEquipID", &mHRPc::mGetEquipID)
+			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetEquipGmfPtr", &mHRPc::mGetEquipGmfPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRBike*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetBikePtr", &mHRPc::mGetBikePtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBgmNo4Load", &mHRPc::mSetBgmNo4Load)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckDemoBattou", &mHRPc::mCheckDemoBattou)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckDemoNoutou", &mHRPc::mCheckDemoNoutou)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetThrowModeOnly", &mHRPc::mSetThrowModeOnly)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetSlashModeOnly", &mHRPc::mSetSlashModeOnly)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCatchModeDisEnable", &mHRPc::mSetCatchModeDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetFightTameDisEnable", &mHRPc::mSetFightTameDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetSlashTameDisEnable", &mHRPc::mSetSlashTameDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDownAttackDisEnable", &mHRPc::mSetDownAttackDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDigDisEnable", &mHRPc::mSetDigDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDigDisEnable4SM", &mHRPc::mGetDigDisEnable4SM)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearSubMissionflag", &mHRPc::mClearSubMissionflag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetSubMissionActivflag", &mHRPc::mSetSubMissionActivflag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetSkillCatch", &mHRPc::mSetSkillCatch)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetAtkMode", &mHRPc::mSetAtkMode)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetAtkMode", &mHRPc::mGetAtkMode)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetEqWepLaser", &mHRPc::mGetEqWepLaser)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetAlwaysEmptyBattery", &mHRPc::mSetAlwaysEmptyBattery)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCantChargeBattery", &mHRPc::mSetCantChargeBattery)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDontSemitrans", &mHRPc::mSetDontSemitrans)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCantCallBikeFlag", &mHRPc::mSetCantCallBikeFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLostBikeFlag", &mHRPc::mSetLostBikeFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetMaxCombo", &mHRPc::mResetMaxCombo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDigToolFlag", &mHRPc::mGetDigToolFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetPuppetMode", &mHRPc::mSetPuppetMode)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetUseWeaponEffect", &mHRPc::mSetUseWeaponEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetTodomePrepareMode", &mHRPc::mGetTodomePrepareMode)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearTodomePrepareMode", &mHRPc::mClearTodomePrepareMode)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetThrowPrepareMode", &mHRPc::mGetThrowPrepareMode)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetThrowInputResult", &mHRPc::mGetThrowInputResult)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetShadowDepth", &mHRPc::mSetShadowDepth)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBanSlotCry", &mHRPc::mSetBanSlotCry)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBanSlotBel", &mHRPc::mSetBanSlotBel)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBanSlotBar", &mHRPc::mSetBanSlotBar)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBanSlot777", &mHRPc::mSetBanSlot777)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDeadSubmission", &mHRPc::mSetDeadSubmission)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDontSubBattery", &mHRPc::mSetDontSubBattery)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetAutoSubBatteryDisEnable", &mHRPc::mSetAutoSubBatteryDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetJustGuardDisEnable", &mHRPc::mSetJustGuardDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDashAtkDisEnable", &mHRPc::mSetDashAtkDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetJustEscapeDisEnable", &mHRPc::mSetJustEscapeDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetBgmNo4Load", &mHRPc::mSetBgmNo4Load)
+			.addFunction("mCheckDemoBattou", &mHRPc::mCheckDemoBattou)
+			.addFunction("mCheckDemoNoutou", &mHRPc::mCheckDemoNoutou)
+			.addFunction("mSetThrowModeOnly", &mHRPc::mSetThrowModeOnly)
+			.addFunction("mSetSlashModeOnly", &mHRPc::mSetSlashModeOnly)
+			.addFunction("mSetCatchModeDisEnable", &mHRPc::mSetCatchModeDisEnable)
+			.addFunction("mSetFightTameDisEnable", &mHRPc::mSetFightTameDisEnable)
+			.addFunction("mSetSlashTameDisEnable", &mHRPc::mSetSlashTameDisEnable)
+			.addFunction("mSetDownAttackDisEnable", &mHRPc::mSetDownAttackDisEnable)
+			.addFunction("mSetDigDisEnable", &mHRPc::mSetDigDisEnable)
+			.addFunction("mGetDigDisEnable4SM", &mHRPc::mGetDigDisEnable4SM)
+			.addFunction("mClearSubMissionflag", &mHRPc::mClearSubMissionflag)
+			.addFunction("mSetSubMissionActivflag", &mHRPc::mSetSubMissionActivflag)
+			.addFunction("mSetSkillCatch", &mHRPc::mSetSkillCatch)
+			.addFunction("mSetAtkMode", &mHRPc::mSetAtkMode)
+			.addFunction("mGetAtkMode", &mHRPc::mGetAtkMode)
+			.addFunction("mGetEqWepLaser", &mHRPc::mGetEqWepLaser)
+			.addFunction("mSetAlwaysEmptyBattery", &mHRPc::mSetAlwaysEmptyBattery)
+			.addFunction("mSetCantChargeBattery", &mHRPc::mSetCantChargeBattery)
+			.addFunction("mSetDontSemitrans", &mHRPc::mSetDontSemitrans)
+			.addFunction("mSetCantCallBikeFlag", &mHRPc::mSetCantCallBikeFlag)
+			.addFunction("mSetLostBikeFlag", &mHRPc::mSetLostBikeFlag)
+			.addFunction("mResetMaxCombo", &mHRPc::mResetMaxCombo)
+			.addFunction("mGetDigToolFlag", &mHRPc::mGetDigToolFlag)
+			.addFunction("mSetPuppetMode", &mHRPc::mSetPuppetMode)
+			.addFunction("mSetUseWeaponEffect", &mHRPc::mSetUseWeaponEffect)
+			.addFunction("mGetTodomePrepareMode", &mHRPc::mGetTodomePrepareMode)
+			.addFunction("mClearTodomePrepareMode", &mHRPc::mClearTodomePrepareMode)
+			.addFunction("mGetThrowPrepareMode", &mHRPc::mGetThrowPrepareMode)
+			.addFunction("mGetThrowInputResult", &mHRPc::mGetThrowInputResult)
+			.addFunction("mSetShadowDepth", &mHRPc::mSetShadowDepth)
+			.addFunction("mSetBanSlotCry", &mHRPc::mSetBanSlotCry)
+			.addFunction("mSetBanSlotBel", &mHRPc::mSetBanSlotBel)
+			.addFunction("mSetBanSlotBar", &mHRPc::mSetBanSlotBar)
+			.addFunction("mSetBanSlot777", &mHRPc::mSetBanSlot777)
+			.addFunction("mSetDeadSubmission", &mHRPc::mSetDeadSubmission)
+			.addFunction("mSetDontSubBattery", &mHRPc::mSetDontSubBattery)
+			.addFunction("mSetAutoSubBatteryDisEnable", &mHRPc::mSetAutoSubBatteryDisEnable)
+			.addFunction("mSetJustGuardDisEnable", &mHRPc::mSetJustGuardDisEnable)
+			.addFunction("mSetDashAtkDisEnable", &mHRPc::mSetDashAtkDisEnable)
+			.addFunction("mSetJustEscapeDisEnable", &mHRPc::mSetJustEscapeDisEnable)
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetTsubaNpc", &mHRPc::mGetTsubaNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetOperate", &mHRPc::mSetOperate)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetOperate", &mHRPc::mGetOperate)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCameraOperate", &mHRPc::mSetCameraOperate)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckStageChangeTermEnd", &mHRPc::mCheckStageChangeTermEnd)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDeadFlag", &mHRPc::mGetDeadFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetOperate", &mHRPc::mSetOperate)
+			.addFunction("mGetOperate", &mHRPc::mGetOperate)
+			.addFunction("mSetCameraOperate", &mHRPc::mSetCameraOperate)
+			.addFunction("mCheckStageChangeTermEnd", &mHRPc::mCheckStageChangeTermEnd)
+			.addFunction("mGetDeadFlag", &mHRPc::mGetDeadFlag)
+			// Functions with return values pointing to native types ('struct HRSAVEDATA_DEBUNEKO*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetDebuNekoDataPtr", &mHRPc::mGetDebuNekoDataPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetPauseAllFlag", &mHRPc::mSetPauseAllFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCancelSetPadOffset", &mHRPc::mSetCancelSetPadOffset)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetChangeEquipFromScript", &mHRPc::mSetChangeEquipFromScript)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetForceLoseTsubazeri", &mHRPc::mSetForceLoseTsubazeri)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckDeadFukki", &mHRPc::mCheckDeadFukki)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetPauseAllFlag", &mHRPc::mSetPauseAllFlag)
+			.addFunction("mSetCancelSetPadOffset", &mHRPc::mSetCancelSetPadOffset)
+			.addFunction("mSetChangeEquipFromScript", &mHRPc::mSetChangeEquipFromScript)
+			.addFunction("mSetForceLoseTsubazeri", &mHRPc::mSetForceLoseTsubazeri)
+			.addFunction("mCheckDeadFukki", &mHRPc::mCheckDeadFukki)
+			// Functions with parameters pointing to native types (char const* arg3) not supported in LuaBridge.
 			//.addFunction("mPlayMotionFromDatPtrExt", &mHRPc::mPlayMotionFromDatPtrExt)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetPcPower", &mHRPc::mSetPcPower)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetPcPower", &mHRPc::mSetPcPower)
+			// Functions with return values pointing to native types ('struct tagGHMR_TEX*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetEquipTexPtr", &mHRPc::mGetEquipTexPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetRestartBGM", &mHRPc::mSetRestartBGM)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetRestartBGM", &mHRPc::mSetRestartBGM)
+			// Functions with return values pointing to native types ('union uniSMflag*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetSubMissionflag", &mHRPc::mGetSubMissionflag)
 			.addFunction("mSetDisplayMiniMapFlag", &mHRPc::mSetDisplayMiniMapFlag)
 			.addFunction("mGetDisplayMiniMapFlag", &mHRPc::mGetDisplayMiniMapFlag)
@@ -14422,1318 +13984,747 @@ public:
 			.addFunction("mGetCameraXReverseControlFlag", &mHRPc::mGetCameraXReverseControlFlag)
 			.addFunction("mSetCameraYReverseControlFlag", &mHRPc::mSetCameraYReverseControlFlag)
 			.addFunction("mGetCameraYReverseControlFlag", &mHRPc::mGetCameraYReverseControlFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAddClearNum", &mHRPc::mAddClearNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDeadSubmission", &mHRPc::mGetDeadSubmission)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckStatusMenuDisp", &mHRPc::mCheckStatusMenuDisp)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetMotionNo", &mHRPc::mSetMotionNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetAtkPauseTime", &mHRPc::mGetAtkPauseTime)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDecAtkPauseTime", &mHRPc::mDecAtkPauseTime)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetWait1Frame", &mHRPc::mGetWait1Frame)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDecWait1Frame", &mHRPc::mDecWait1Frame)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestPlayMiniDemoForSantDestroy", &mHRPc::mTestPlayMiniDemoForSantDestroy)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetHugWalk", &mHRPc::mGetHugWalk)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetReceiveDamage", &mHRPc::mResetReceiveDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBikeSight", &mHRPc::mGetBikeSight)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDontChangeBikeCamera", &mHRPc::mGetDontChangeBikeCamera)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCameraOperate", &mHRPc::mGetCameraOperate)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetPauseAllFlag", &mHRPc::mGetPauseAllFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("isBeginFinishAttack", &mHRPc::isBeginFinishAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestTiger", &mHRPc::mTestTiger)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetMenuDisEnableFrame", &mHRPc::mSetMenuDisEnableFrame)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetNeedShakeDir", &mHRPc::mGetNeedShakeDir)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetWepMotionNo", &mHRPc::mSetWepMotionNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetWepMotionNo", &mHRPc::mGetWepMotionNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBikeVisible", &mHRPc::mSetBikeVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetNowBuf", &mHRPc::mGetNowBuf)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetTexNowBuf", &mHRPc::mGetTexNowBuf)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckSNBElecDamage", &mHRPc::mCheckSNBElecDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckIntoTsubazeriai", &mHRPc::mCheckIntoTsubazeriai)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayMotTsubaszeriai", &mHRPc::mPlayMotTsubaszeriai)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckTsubazeriai", &mHRPc::mCheckTsubazeriai)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mWinTsubazeriai", &mHRPc::mWinTsubazeriai)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mLoseTsubazeriai", &mHRPc::mLoseTsubazeriai)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetTsubaOuterMotion", &mHRPc::mGetTsubaOuterMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetTsubaOuterMotionNo", &mHRPc::mGetTsubaOuterMotionNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetTsubaDisEnable", &mHRPc::mGetTsubaDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetTsubaEffectVisible", &mHRPc::mSetTsubaEffectVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetTsubaEffectVisible", &mHRPc::mGetTsubaEffectVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckLockOn", &mHRPc::mCheckLockOn)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mAddClearNum", &mHRPc::mAddClearNum)
+			.addFunction("mGetDeadSubmission", &mHRPc::mGetDeadSubmission)
+			.addFunction("mCheckStatusMenuDisp", &mHRPc::mCheckStatusMenuDisp)
+			.addFunction("mSetMotionNo", &mHRPc::mSetMotionNo)
+			.addFunction("mGetAtkPauseTime", &mHRPc::mGetAtkPauseTime)
+			.addFunction("mDecAtkPauseTime", &mHRPc::mDecAtkPauseTime)
+			.addFunction("mGetWait1Frame", &mHRPc::mGetWait1Frame)
+			.addFunction("mDecWait1Frame", &mHRPc::mDecWait1Frame)
+			.addFunction("mTestPlayMiniDemoForSantDestroy", &mHRPc::mTestPlayMiniDemoForSantDestroy)
+			.addFunction("mGetHugWalk", &mHRPc::mGetHugWalk)
+			.addFunction("mResetReceiveDamage", &mHRPc::mResetReceiveDamage)
+			.addFunction("mGetBikeSight", &mHRPc::mGetBikeSight)
+			.addFunction("mGetDontChangeBikeCamera", &mHRPc::mGetDontChangeBikeCamera)
+			.addFunction("mGetCameraOperate", &mHRPc::mGetCameraOperate)
+			.addFunction("mGetPauseAllFlag", &mHRPc::mGetPauseAllFlag)
+			.addFunction("isBeginFinishAttack", &mHRPc::isBeginFinishAttack)
+			.addFunction("mTestTiger", &mHRPc::mTestTiger)
+			.addFunction("mSetMenuDisEnableFrame", &mHRPc::mSetMenuDisEnableFrame)
+			.addFunction("mGetNeedShakeDir", &mHRPc::mGetNeedShakeDir)
+			.addFunction("mSetWepMotionNo", &mHRPc::mSetWepMotionNo)
+			.addFunction("mGetWepMotionNo", &mHRPc::mGetWepMotionNo)
+			.addFunction("mSetBikeVisible", &mHRPc::mSetBikeVisible)
+			.addFunction("mGetNowBuf", &mHRPc::mGetNowBuf)
+			.addFunction("mGetTexNowBuf", &mHRPc::mGetTexNowBuf)
+			.addFunction("mCheckSNBElecDamage", &mHRPc::mCheckSNBElecDamage)
+			.addFunction("mCheckIntoTsubazeriai", &mHRPc::mCheckIntoTsubazeriai)
+			.addFunction("mPlayMotTsubaszeriai", &mHRPc::mPlayMotTsubaszeriai)
+			.addFunction("mCheckTsubazeriai", &mHRPc::mCheckTsubazeriai)
+			.addFunction("mWinTsubazeriai", &mHRPc::mWinTsubazeriai)
+			.addFunction("mLoseTsubazeriai", &mHRPc::mLoseTsubazeriai)
+			.addFunction("mGetTsubaOuterMotion", &mHRPc::mGetTsubaOuterMotion)
+			.addFunction("mGetTsubaOuterMotionNo", &mHRPc::mGetTsubaOuterMotionNo)
+			.addFunction("mGetTsubaDisEnable", &mHRPc::mGetTsubaDisEnable)
+			.addFunction("mSetTsubaEffectVisible", &mHRPc::mSetTsubaEffectVisible)
+			.addFunction("mGetTsubaEffectVisible", &mHRPc::mGetTsubaEffectVisible)
+			.addFunction("mCheckLockOn", &mHRPc::mCheckLockOn)
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetLockOnNpc", &mHRPc::mGetLockOnNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetAtkPauseTime", &mHRPc::mSetAtkPauseTime)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCmbKind", &mHRPc::mSetCmbKind)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCmbKind", &mHRPc::mGetCmbKind)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetLockOnThroughWall", &mHRPc::mGetLockOnThroughWall)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetThrowModeOnly", &mHRPc::mGetThrowModeOnly)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCatchModeDisEnable", &mHRPc::mGetCatchModeDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDownAttackDisEnable", &mHRPc::mGetDownAttackDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDigDisEnable", &mHRPc::mGetDigDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDigDisEnable4SM", &mHRPc::mSetDigDisEnable4SM)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetSkillCatch", &mHRPc::mGetSkillCatch)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetSkillK7", &mHRPc::mSetSkillK7)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetSkillK7", &mHRPc::mGetSkillK7)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetPcBtlPose", &mHRPc::mSetPcBtlPose)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetPcBtlPose", &mHRPc::mGetPcBtlPose)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetEqWepLaser", &mHRPc::mSetEqWepLaser)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetElectroShockWalk", &mHRPc::mGetElectroShockWalk)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetPoisonWalk", &mHRPc::mGetPoisonWalk)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCantDispLaserEffect", &mHRPc::mGetCantDispLaserEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetWepChangeUnVisible", &mHRPc::mSetWepChangeUnVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetAtkHitAbsoluteFlag", &mHRPc::mSetAtkHitAbsoluteFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetAtkHitAbsoluteFlag", &mHRPc::mGetAtkHitAbsoluteFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetAttackHitToRollEscepe", &mHRPc::mSetAttackHitToRollEscepe)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetAttackHitToRollEscepe", &mHRPc::mGetAttackHitToRollEscepe)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetPuppetMode", &mHRPc::mGetPuppetMode)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetUseWeaponEffect", &mHRPc::mGetUseWeaponEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetAtkPauseTime", &mHRPc::mSetAtkPauseTime)
+			.addFunction("mSetCmbKind", &mHRPc::mSetCmbKind)
+			.addFunction("mGetCmbKind", &mHRPc::mGetCmbKind)
+			.addFunction("mGetLockOnThroughWall", &mHRPc::mGetLockOnThroughWall)
+			.addFunction("mGetThrowModeOnly", &mHRPc::mGetThrowModeOnly)
+			.addFunction("mGetCatchModeDisEnable", &mHRPc::mGetCatchModeDisEnable)
+			.addFunction("mGetDownAttackDisEnable", &mHRPc::mGetDownAttackDisEnable)
+			.addFunction("mGetDigDisEnable", &mHRPc::mGetDigDisEnable)
+			.addFunction("mSetDigDisEnable4SM", &mHRPc::mSetDigDisEnable4SM)
+			.addFunction("mGetSkillCatch", &mHRPc::mGetSkillCatch)
+			.addFunction("mSetSkillK7", &mHRPc::mSetSkillK7)
+			.addFunction("mGetSkillK7", &mHRPc::mGetSkillK7)
+			.addFunction("mSetPcBtlPose", &mHRPc::mSetPcBtlPose)
+			.addFunction("mGetPcBtlPose", &mHRPc::mGetPcBtlPose)
+			.addFunction("mSetEqWepLaser", &mHRPc::mSetEqWepLaser)
+			.addFunction("mGetElectroShockWalk", &mHRPc::mGetElectroShockWalk)
+			.addFunction("mGetPoisonWalk", &mHRPc::mGetPoisonWalk)
+			.addFunction("mGetCantDispLaserEffect", &mHRPc::mGetCantDispLaserEffect)
+			.addFunction("mSetWepChangeUnVisible", &mHRPc::mSetWepChangeUnVisible)
+			.addFunction("mSetAtkHitAbsoluteFlag", &mHRPc::mSetAtkHitAbsoluteFlag)
+			.addFunction("mGetAtkHitAbsoluteFlag", &mHRPc::mGetAtkHitAbsoluteFlag)
+			.addFunction("mSetAttackHitToRollEscepe", &mHRPc::mSetAttackHitToRollEscepe)
+			.addFunction("mGetAttackHitToRollEscepe", &mHRPc::mGetAttackHitToRollEscepe)
+			.addFunction("mGetPuppetMode", &mHRPc::mGetPuppetMode)
+			.addFunction("mGetUseWeaponEffect", &mHRPc::mGetUseWeaponEffect)
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mSetLastAttackNpc", &mHRPc::mSetLastAttackNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetLastAttackNpc", &mHRPc::mGetLastAttackNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mSetAttackFromBackNpc", &mHRPc::mSetAttackFromBackNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetAttackFromBackNpc", &mHRPc::mGetAttackFromBackNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetFinishBonusFlag", &mHRPc::mGetFinishBonusFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBanRollEscape", &mHRPc::mSetBanRollEscape)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBanJump", &mHRPc::mSetBanJump)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBanPiyori", &mHRPc::mSetBanPiyori)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBanDeadFukki", &mHRPc::mSetBanDeadFukki)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBanJustGuard", &mHRPc::mSetBanJustGuard)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBanWinTsubazeri", &mHRPc::mSetBanWinTsubazeri)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBanSlotCry", &mHRPc::mGetBanSlotCry)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBanSlotBel", &mHRPc::mGetBanSlotBel)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBanSlotBar", &mHRPc::mGetBanSlotBar)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBanSlot777", &mHRPc::mGetBanSlot777)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBanJump", &mHRPc::mGetBanJump)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBanPiyori", &mHRPc::mGetBanPiyori)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBanDeadFukki", &mHRPc::mGetBanDeadFukki)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBanJustGuard", &mHRPc::mGetBanJustGuard)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBanWinTsubazeri", &mHRPc::mGetBanWinTsubazeri)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetWepStick", &mHRPc::mGetWepStick)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDontSubBattery", &mHRPc::mGetDontSubBattery)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetAutoSubBatteryDisEnable", &mHRPc::mGetAutoSubBatteryDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetJustGuardDisEnable", &mHRPc::mGetJustGuardDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDashAtkExec", &mHRPc::mSetDashAtkExec)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDashAtkExec", &mHRPc::mGetDashAtkExec)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetJustEscapeDisEnable", &mHRPc::mGetJustEscapeDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetFinishBonusFlag", &mHRPc::mGetFinishBonusFlag)
+			.addFunction("mSetBanRollEscape", &mHRPc::mSetBanRollEscape)
+			.addFunction("mSetBanJump", &mHRPc::mSetBanJump)
+			.addFunction("mSetBanPiyori", &mHRPc::mSetBanPiyori)
+			.addFunction("mSetBanDeadFukki", &mHRPc::mSetBanDeadFukki)
+			.addFunction("mSetBanJustGuard", &mHRPc::mSetBanJustGuard)
+			.addFunction("mSetBanWinTsubazeri", &mHRPc::mSetBanWinTsubazeri)
+			.addFunction("mGetBanSlotCry", &mHRPc::mGetBanSlotCry)
+			.addFunction("mGetBanSlotBel", &mHRPc::mGetBanSlotBel)
+			.addFunction("mGetBanSlotBar", &mHRPc::mGetBanSlotBar)
+			.addFunction("mGetBanSlot777", &mHRPc::mGetBanSlot777)
+			.addFunction("mGetBanJump", &mHRPc::mGetBanJump)
+			.addFunction("mGetBanPiyori", &mHRPc::mGetBanPiyori)
+			.addFunction("mGetBanDeadFukki", &mHRPc::mGetBanDeadFukki)
+			.addFunction("mGetBanJustGuard", &mHRPc::mGetBanJustGuard)
+			.addFunction("mGetBanWinTsubazeri", &mHRPc::mGetBanWinTsubazeri)
+			.addFunction("mGetWepStick", &mHRPc::mGetWepStick)
+			.addFunction("mGetDontSubBattery", &mHRPc::mGetDontSubBattery)
+			.addFunction("mGetAutoSubBatteryDisEnable", &mHRPc::mGetAutoSubBatteryDisEnable)
+			.addFunction("mGetJustGuardDisEnable", &mHRPc::mGetJustGuardDisEnable)
+			.addFunction("mSetDashAtkExec", &mHRPc::mSetDashAtkExec)
+			.addFunction("mGetDashAtkExec", &mHRPc::mGetDashAtkExec)
+			.addFunction("mGetJustEscapeDisEnable", &mHRPc::mGetJustEscapeDisEnable)
+			// Functions with return values pointing to native types ('struct tagGHMR_TEX*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetFpsCursorPtr", &mHRPc::mGetFpsCursorPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDontRestoreMotion", &mHRPc::mSetDontRestoreMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDontRestoreMotion", &mHRPc::mGetDontRestoreMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBikeClash2battou", &mHRPc::mSetBikeClash2battou)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetRotInterpolate", &mHRPc::mSetRotInterpolate)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetRotInterpolateDefault", &mHRPc::mGetRotInterpolateDefault)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetHiTension", &mHRPc::mGetHiTension)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestDancingCombo", &mHRPc::mTestDancingCombo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestBullet", &mHRPc::mTestBullet)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestFire", &mHRPc::mTestFire)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTest360", &mHRPc::mTest360)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetTigerVisible", &mHRPc::mSetTigerVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetTigerVisible", &mHRPc::mGetTigerVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetDontRestoreMotion", &mHRPc::mSetDontRestoreMotion)
+			.addFunction("mGetDontRestoreMotion", &mHRPc::mGetDontRestoreMotion)
+			.addFunction("mSetBikeClash2battou", &mHRPc::mSetBikeClash2battou)
+			.addFunction("mSetRotInterpolate", &mHRPc::mSetRotInterpolate)
+			.addFunction("mGetRotInterpolateDefault", &mHRPc::mGetRotInterpolateDefault)
+			.addFunction("mGetHiTension", &mHRPc::mGetHiTension)
+			.addFunction("mTestDancingCombo", &mHRPc::mTestDancingCombo)
+			.addFunction("mTestBullet", &mHRPc::mTestBullet)
+			.addFunction("mTestFire", &mHRPc::mTestFire)
+			.addFunction("mTest360", &mHRPc::mTest360)
+			.addFunction("mSetTigerVisible", &mHRPc::mSetTigerVisible)
+			.addFunction("mGetTigerVisible", &mHRPc::mGetTigerVisible)
+			// Functions with return values pointing to native types ('class ghmTriangle*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetRightWepTrianglePtr", &mHRPc::mGetRightWepTrianglePtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class ghmTriangle*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetWepTrianglePtr", &mHRPc::mGetWepTrianglePtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceGmfPtr", &mHRPc::mGetResourceGmfPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetPauseNpcFlag", &mHRPc::mSetPauseNpcFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetPauseNpcFlag", &mHRPc::mGetPauseNpcFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetPauseNpcFlag", &mHRPc::mSetPauseNpcFlag)
+			.addFunction("mGetPauseNpcFlag", &mHRPc::mGetPauseNpcFlag)
+			// Functions with return values pointing to native types ('char const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("getCurTigerMotionName", &mHRPc::getCurTigerMotionName)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('char const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("getCurMotionName", &mHRPc::getCurMotionName)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("isOutResourceMotion", &mHRPc::isOutResourceMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCancelSetPadOffset", &mHRPc::mGetCancelSetPadOffset)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetChangeEquipFromScript", &mHRPc::mGetChangeEquipFromScript)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetNoBatteryThrow", &mHRPc::mSetNoBatteryThrow)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetNoBatteryThrow", &mHRPc::mGetNoBatteryThrow)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetChangeWeaponEffectVisible", &mHRPc::mSetChangeWeaponEffectVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetChangeWeaponEffectVisible", &mHRPc::mGetChangeWeaponEffectVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLockOnNockDown", &mHRPc::mSetLockOnNockDown)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetLockOnNockDown", &mHRPc::mGetLockOnNockDown)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetAttackHajiki", &mHRPc::mSetAttackHajiki)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetAttackHajiki", &mHRPc::mGetAttackHajiki)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDontPlayLoseTsubazeriMotion", &mHRPc::mSetDontPlayLoseTsubazeriMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDontPlayLoseTsubazeriMotion", &mHRPc::mGetDontPlayLoseTsubazeriMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetNoWearJacket", &mHRPc::mGetNoWearJacket)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDispChangeWeaponIcon", &mHRPc::mSetDispChangeWeaponIcon)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDispChangeWeaponIcon", &mHRPc::mGetDispChangeWeaponIcon)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetStandUpAttack", &mHRPc::mSetStandUpAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetStandUpAttack", &mHRPc::mGetStandUpAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetPushingBatteryChargeButton", &mHRPc::mSetPushingBatteryChargeButton)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetPushingBatteryChargeButton", &mHRPc::mGetPushingBatteryChargeButton)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetHitBigConsumeBattertAttack", &mHRPc::mSetHitBigConsumeBattertAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetHitBigConsumeBattertAttack", &mHRPc::mGetHitBigConsumeBattertAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetStartThrowSlow", &mHRPc::mSetStartThrowSlow)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetStartThrowSlow", &mHRPc::mGetStartThrowSlow)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetForceLoseTsubazeri", &mHRPc::mGetForceLoseTsubazeri)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetEqWepID", &mHRPc::mGetEqWepID)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetWepCmbExtend", &mHRPc::mGetWepCmbExtend)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDeadMotionPlayFlag", &mHRPc::mSetDeadMotionPlayFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("isOutResourceMotion", &mHRPc::isOutResourceMotion)
+			.addFunction("mGetCancelSetPadOffset", &mHRPc::mGetCancelSetPadOffset)
+			.addFunction("mGetChangeEquipFromScript", &mHRPc::mGetChangeEquipFromScript)
+			.addFunction("mSetNoBatteryThrow", &mHRPc::mSetNoBatteryThrow)
+			.addFunction("mGetNoBatteryThrow", &mHRPc::mGetNoBatteryThrow)
+			.addFunction("mSetChangeWeaponEffectVisible", &mHRPc::mSetChangeWeaponEffectVisible)
+			.addFunction("mGetChangeWeaponEffectVisible", &mHRPc::mGetChangeWeaponEffectVisible)
+			.addFunction("mSetLockOnNockDown", &mHRPc::mSetLockOnNockDown)
+			.addFunction("mGetLockOnNockDown", &mHRPc::mGetLockOnNockDown)
+			.addFunction("mSetAttackHajiki", &mHRPc::mSetAttackHajiki)
+			.addFunction("mGetAttackHajiki", &mHRPc::mGetAttackHajiki)
+			.addFunction("mSetDontPlayLoseTsubazeriMotion", &mHRPc::mSetDontPlayLoseTsubazeriMotion)
+			.addFunction("mGetDontPlayLoseTsubazeriMotion", &mHRPc::mGetDontPlayLoseTsubazeriMotion)
+			.addFunction("mGetNoWearJacket", &mHRPc::mGetNoWearJacket)
+			.addFunction("mSetDispChangeWeaponIcon", &mHRPc::mSetDispChangeWeaponIcon)
+			.addFunction("mGetDispChangeWeaponIcon", &mHRPc::mGetDispChangeWeaponIcon)
+			.addFunction("mSetStandUpAttack", &mHRPc::mSetStandUpAttack)
+			.addFunction("mGetStandUpAttack", &mHRPc::mGetStandUpAttack)
+			.addFunction("mSetPushingBatteryChargeButton", &mHRPc::mSetPushingBatteryChargeButton)
+			.addFunction("mGetPushingBatteryChargeButton", &mHRPc::mGetPushingBatteryChargeButton)
+			.addFunction("mSetHitBigConsumeBattertAttack", &mHRPc::mSetHitBigConsumeBattertAttack)
+			.addFunction("mGetHitBigConsumeBattertAttack", &mHRPc::mGetHitBigConsumeBattertAttack)
+			.addFunction("mSetStartThrowSlow", &mHRPc::mSetStartThrowSlow)
+			.addFunction("mGetStartThrowSlow", &mHRPc::mGetStartThrowSlow)
+			.addFunction("mGetForceLoseTsubazeri", &mHRPc::mGetForceLoseTsubazeri)
+			.addFunction("mGetEqWepID", &mHRPc::mGetEqWepID)
+			.addFunction("mGetWepCmbExtend", &mHRPc::mGetWepCmbExtend)
+			.addFunction("mSetDeadMotionPlayFlag", &mHRPc::mSetDeadMotionPlayFlag)
+			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
 			//.addFunction("getNPCInterestPosition", &mHRPc::getNPCInterestPosition)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetStammina", &mHRPc::mGetStammina)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetStammina", &mHRPc::mGetStammina)
+			// Functions with return values pointing to native types ('struct stPcStatus*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetPcStatusPtr", &mHRPc::mGetPcStatusPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBikeVisible", &mHRPc::mGetBikeVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetFinishNpcNum", &mHRPc::mGetFinishNpcNum)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetBikeVisible", &mHRPc::mGetBikeVisible)
+			.addFunction("mGetFinishNpcNum", &mHRPc::mGetFinishNpcNum)
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetLockOnDummyPtr", &mHRPc::mGetLockOnDummyPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCallMotionProcess", &mHRPc::mGetCallMotionProcess)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDeadBossNum", &mHRPc::mSetDeadBossNum)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetCallMotionProcess", &mHRPc::mGetCallMotionProcess)
+			.addFunction("mSetDeadBossNum", &mHRPc::mSetDeadBossNum)
+			// Functions with return values pointing to native types ('struct stThrowInfo*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetThrowInfoPtr", &mHRPc::mGetThrowInfoPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetCatchNpc", &mHRPc::mGetCatchNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckFinishAttackJustBeforeHitSlow", &mHRPc::mCheckFinishAttackJustBeforeHitSlow)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mCheckFinishAttackJustBeforeHitSlow", &mHRPc::mCheckFinishAttackJustBeforeHitSlow)
+			// Functions with return values pointing to native types ('struct stPcEffect*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetPcEffectPtr", &mHRPc::mGetPcEffectPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCallBikeFlag", &mHRPc::mGetCallBikeFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetLostBikeFlag", &mHRPc::mGetLostBikeFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBikeSight", &mHRPc::mSetBikeSight)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDontChangeBikeCamera", &mHRPc::mSetDontChangeBikeCamera)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetOnlyMove", &mHRPc::mGetOnlyMove)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDeadPauseFlag", &mHRPc::mGetDeadPauseFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckTameMax", &mHRPc::mCheckTameMax)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestHitFinishAttack", &mHRPc::mTestHitFinishAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetFinishJudgeFrame", &mHRPc::mGetFinishJudgeFrame)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCmbNum", &mHRPc::mGetCmbNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetOnlyFlagBattouDemo", &mHRPc::mSetOnlyFlagBattouDemo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetOnlyFlagNoutouDemo", &mHRPc::mSetOnlyFlagNoutouDemo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLockOnThroughWall", &mHRPc::mSetLockOnThroughWall)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mIsDoingFinishMotion", &mHRPc::mIsDoingFinishMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetSlashModeOnly", &mHRPc::mGetSlashModeOnly)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBanRollEscape", &mHRPc::mGetBanRollEscape)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDashAtkDisEnable", &mHRPc::mGetDashAtkDisEnable)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetCallBikeFlag", &mHRPc::mGetCallBikeFlag)
+			.addFunction("mGetLostBikeFlag", &mHRPc::mGetLostBikeFlag)
+			.addFunction("mSetBikeSight", &mHRPc::mSetBikeSight)
+			.addFunction("mSetDontChangeBikeCamera", &mHRPc::mSetDontChangeBikeCamera)
+			.addFunction("mGetOnlyMove", &mHRPc::mGetOnlyMove)
+			.addFunction("mGetDeadPauseFlag", &mHRPc::mGetDeadPauseFlag)
+			.addFunction("mCheckTameMax", &mHRPc::mCheckTameMax)
+			.addFunction("mTestHitFinishAttack", &mHRPc::mTestHitFinishAttack)
+			.addFunction("mGetFinishJudgeFrame", &mHRPc::mGetFinishJudgeFrame)
+			.addFunction("mGetCmbNum", &mHRPc::mGetCmbNum)
+			.addFunction("mSetOnlyFlagBattouDemo", &mHRPc::mSetOnlyFlagBattouDemo)
+			.addFunction("mSetOnlyFlagNoutouDemo", &mHRPc::mSetOnlyFlagNoutouDemo)
+			.addFunction("mSetLockOnThroughWall", &mHRPc::mSetLockOnThroughWall)
+			.addFunction("mIsDoingFinishMotion", &mHRPc::mIsDoingFinishMotion)
+			.addFunction("mGetSlashModeOnly", &mHRPc::mGetSlashModeOnly)
+			.addFunction("mGetBanRollEscape", &mHRPc::mGetBanRollEscape)
+			.addFunction("mGetDashAtkDisEnable", &mHRPc::mGetDashAtkDisEnable)
+			// Functions with return values pointing to native types ('struct HRSAVEDATA_SHOP*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetShopDataPtr", &mHRPc::mGetShopDataPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCatchTick", &mHRPc::mGetCatchTick)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("UnlockAllMoves", &mHRPc::UnlockAllMoves)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("UnlockAllUpgrades", &mHRPc::UnlockAllUpgrades)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("UnlockAllPcUpgrades", &mHRPc::UnlockAllPcUpgrades)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("SwitchToMainWeapon", &mHRPc::SwitchToMainWeapon)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("UnlockAllWeapons", &mHRPc::UnlockAllWeapons)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("SubPcNowEquipBatteryRatio", &mHRPc::SubPcNowEquipBatteryRatio)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("isAcceptCameraFollowRotation", &mHRPc::isAcceptCameraFollowRotation)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetCatchTick", &mHRPc::mGetCatchTick)
+			.addFunction("UnlockAllMoves", &mHRPc::UnlockAllMoves)
+			.addFunction("UnlockAllUpgrades", &mHRPc::UnlockAllUpgrades)
+			.addFunction("UnlockAllPcUpgrades", &mHRPc::UnlockAllPcUpgrades)
+			.addFunction("SwitchToMainWeapon", &mHRPc::SwitchToMainWeapon)
+			.addFunction("UnlockAllWeapons", &mHRPc::UnlockAllWeapons)
+			.addFunction("SubPcNowEquipBatteryRatio", &mHRPc::SubPcNowEquipBatteryRatio)
+			.addFunction("isAcceptCameraFollowRotation", &mHRPc::isAcceptCameraFollowRotation)
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mTestCanDownAttack", &mHRPc::mTestCanDownAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestRunWeaponEffect", &mHRPc::mTestRunWeaponEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mFloorEventProc", &mHRPc::mFloorEventProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCallClearProcessBeforeEvent", &mHRPc::mCallClearProcessBeforeEvent)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetSlowMotion", &mHRPc::mGetSlowMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSlowMotionProc", &mHRPc::mSlowMotionProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSlowMotionSystem", &mHRPc::mSlowMotionSystem)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDeadProc", &mHRPc::mDeadProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("IncSwingCount", &mHRPc::IncSwingCount)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("TestStoreBikePosForSM", &mHRPc::TestStoreBikePosForSM)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("ReStoreBikePosForSM", &mHRPc::ReStoreBikePosForSM)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDigHoleProc", &mHRPc::mDigHoleProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestDigHoleAction", &mHRPc::mTestDigHoleAction)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("PcInputMove", &mHRPc::PcInputMove)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("PcInputIdleProc", &mHRPc::PcInputIdleProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestCatchZako", &mHRPc::mTestCatchZako)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mRestore1stChBGM", &mHRPc::mRestore1stChBGM)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlay2ndChBGM", &mHRPc::mPlay2ndChBGM)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mTestRunWeaponEffect", &mHRPc::mTestRunWeaponEffect)
+			.addFunction("mFloorEventProc", &mHRPc::mFloorEventProc)
+			.addFunction("mCallClearProcessBeforeEvent", &mHRPc::mCallClearProcessBeforeEvent)
+			.addFunction("mGetSlowMotion", &mHRPc::mGetSlowMotion)
+			.addFunction("mSlowMotionProc", &mHRPc::mSlowMotionProc)
+			.addFunction("mSlowMotionSystem", &mHRPc::mSlowMotionSystem)
+			.addFunction("mDeadProc", &mHRPc::mDeadProc)
+			.addFunction("IncSwingCount", &mHRPc::IncSwingCount)
+			.addFunction("TestStoreBikePosForSM", &mHRPc::TestStoreBikePosForSM)
+			.addFunction("ReStoreBikePosForSM", &mHRPc::ReStoreBikePosForSM)
+			.addFunction("mDigHoleProc", &mHRPc::mDigHoleProc)
+			.addFunction("mTestDigHoleAction", &mHRPc::mTestDigHoleAction)
+			.addFunction("PcInputMove", &mHRPc::PcInputMove)
+			.addFunction("PcInputIdleProc", &mHRPc::PcInputIdleProc)
+			.addFunction("mTestCatchZako", &mHRPc::mTestCatchZako)
+			.addFunction("mRestore1stChBGM", &mHRPc::mRestore1stChBGM)
+			.addFunction("mPlay2ndChBGM", &mHRPc::mPlay2ndChBGM)
+			// Functions with parameters pointing to native types (struct GXColor* arg2) not supported in LuaBridge.
 			//.addFunction("mGetSmokeColor", &mHRPc::mGetSmokeColor)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mExitBatteryCharge", &mHRPc::mExitBatteryCharge)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mHitCheckNpc", &mHRPc::mHitCheckNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCherryFlag", &mHRPc::mSetCherryFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckBossThrow", &mHRPc::mCheckBossThrow)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetJustGuardJudgeTick", &mHRPc::mGetJustGuardJudgeTick)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCanFight", &mHRPc::mCheckCanFight)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearBomStockNum", &mHRPc::mClearBomStockNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetSpecialAttackRestTick", &mHRPc::mGetSpecialAttackRestTick)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetEmptyShinkuWaveIndex", &mHRPc::mGetEmptyShinkuWaveIndex)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCreateShinkuWave", &mHRPc::mCreateShinkuWave)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCallEffectBlur", &mHRPc::mCallEffectBlur)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLaserTrack", &mHRPc::mSetLaserTrack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLaserScale", &mHRPc::mSetLaserScale)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLaserLogValid", &mHRPc::mSetLaserLogValid)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetLaserColor", &mHRPc::mGetLaserColor)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLaserColor", &mHRPc::mSetLaserColor)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCreateLaserEffect", &mHRPc::mCreateLaserEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDeleteChargeEffect", &mHRPc::mDeleteChargeEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCreateChargeEffect", &mHRPc::mCreateChargeEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckBigWeapon", &mHRPc::mCheckBigWeapon)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDigToolFlag", &mHRPc::mSetDigToolFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearMMSMInit", &mHRPc::mClearMMSMInit)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBikePos2Motel", &mHRPc::mSetBikePos2Motel)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetStopRenderCounter", &mHRPc::mGetStopRenderCounter)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetStopRenderCounter", &mHRPc::mSetStopRenderCounter)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetLightSideNum", &mHRPc::mGetLightSideNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetReceiveDamage", &mHRPc::mGetReceiveDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetMaxCombo", &mHRPc::mGetMaxCombo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDown", &mHRPc::mSetDown)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCallBikeFlag", &mHRPc::mSetCallBikeFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetFireMan", &mHRPc::mSetFireMan)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDarkSideUseNum", &mHRPc::mGetDarkSideUseNum)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetLightSideRate", &mHRPc::mGetLightSideRate)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mExitBatteryCharge", &mHRPc::mExitBatteryCharge)
+			.addFunction("mHitCheckNpc", &mHRPc::mHitCheckNpc)
+			.addFunction("mSetCherryFlag", &mHRPc::mSetCherryFlag)
+			.addFunction("mCheckBossThrow", &mHRPc::mCheckBossThrow)
+			.addFunction("mGetJustGuardJudgeTick", &mHRPc::mGetJustGuardJudgeTick)
+			.addFunction("mCheckCanFight", &mHRPc::mCheckCanFight)
+			.addFunction("mClearBomStockNum", &mHRPc::mClearBomStockNum)
+			.addFunction("mGetSpecialAttackRestTick", &mHRPc::mGetSpecialAttackRestTick)
+			.addFunction("mGetEmptyShinkuWaveIndex", &mHRPc::mGetEmptyShinkuWaveIndex)
+			.addFunction("mCreateShinkuWave", &mHRPc::mCreateShinkuWave)
+			.addFunction("mCallEffectBlur", &mHRPc::mCallEffectBlur)
+			.addFunction("mSetLaserTrack", &mHRPc::mSetLaserTrack)
+			.addFunction("mSetLaserScale", &mHRPc::mSetLaserScale)
+			.addFunction("mSetLaserLogValid", &mHRPc::mSetLaserLogValid)
+			.addFunction("mGetLaserColor", &mHRPc::mGetLaserColor)
+			.addFunction("mSetLaserColor", &mHRPc::mSetLaserColor)
+			.addFunction("mCreateLaserEffect", &mHRPc::mCreateLaserEffect)
+			.addFunction("mDeleteChargeEffect", &mHRPc::mDeleteChargeEffect)
+			.addFunction("mCreateChargeEffect", &mHRPc::mCreateChargeEffect)
+			.addFunction("mCheckBigWeapon", &mHRPc::mCheckBigWeapon)
+			.addFunction("mSetDigToolFlag", &mHRPc::mSetDigToolFlag)
+			.addFunction("mClearMMSMInit", &mHRPc::mClearMMSMInit)
+			.addFunction("mSetBikePos2Motel", &mHRPc::mSetBikePos2Motel)
+			.addFunction("mGetStopRenderCounter", &mHRPc::mGetStopRenderCounter)
+			.addFunction("mSetStopRenderCounter", &mHRPc::mSetStopRenderCounter)
+			.addFunction("mGetLightSideNum", &mHRPc::mGetLightSideNum)
+			.addFunction("mGetReceiveDamage", &mHRPc::mGetReceiveDamage)
+			.addFunction("mGetMaxCombo", &mHRPc::mGetMaxCombo)
+			.addFunction("mSetDown", &mHRPc::mSetDown)
+			.addFunction("mSetCallBikeFlag", &mHRPc::mSetCallBikeFlag)
+			.addFunction("mSetFireMan", &mHRPc::mSetFireMan)
+			.addFunction("mGetDarkSideUseNum", &mHRPc::mGetDarkSideUseNum)
+			.addFunction("mGetLightSideRate", &mHRPc::mGetLightSideRate)
+			// Functions with parameters pointing to native types (class ghmTriangle* arg2) not supported in LuaBridge.
 			//.addFunction("mCallSwordCutDmgEffect", &mHRPc::mCallSwordCutDmgEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class ghmTriangle* arg2) not supported in LuaBridge.
 			//.addFunction("mCallBeamCutDmgEffect", &mHRPc::mCallBeamCutDmgEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mCallFightAttackDmgEffect", &mHRPc::mCallFightAttackDmgEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCallElectDmgEffect", &mHRPc::mCallElectDmgEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mCallElectDmgEffect", &mHRPc::mCallElectDmgEffect)
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mCallNormalAttackEffect", &mHRPc::mCallNormalAttackEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("IsCenteringHoseiCutmark", &mHRPc::IsCenteringHoseiCutmark)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("IsCenteringHoseiCutmark", &mHRPc::IsCenteringHoseiCutmark)
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("CreateCutMarkEffect", &mHRPc::CreateCutMarkEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("CreateGuardBreakEffect", &mHRPc::CreateGuardBreakEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("CreateGuardBreakEffect", &mHRPc::CreateGuardBreakEffect)
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mSePlayChargeAttack", &mHRPc::mSePlayChargeAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mCallFinishAttackEffect", &mHRPc::mCallFinishAttackEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (char* arg2) not supported in LuaBridge.
 			//.addFunction("mCreateHugGan", &mHRPc::mCreateHugGan)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayHugMotion", &mHRPc::mPlayHugMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetPoisonWalk", &mHRPc::mSetPoisonWalk)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetElectroShockBGMPitch", &mHRPc::mSetElectroShockBGMPitch)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckReadEndAtkMot", &mHRPc::mCheckReadEndAtkMot)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetPcBtlPoseNowMotion", &mHRPc::mGetPcBtlPoseNowMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mPlayHugMotion", &mHRPc::mPlayHugMotion)
+			.addFunction("mSetPoisonWalk", &mHRPc::mSetPoisonWalk)
+			.addFunction("mSetElectroShockBGMPitch", &mHRPc::mSetElectroShockBGMPitch)
+			.addFunction("mCheckReadEndAtkMot", &mHRPc::mCheckReadEndAtkMot)
+			.addFunction("mGetPcBtlPoseNowMotion", &mHRPc::mGetPcBtlPoseNowMotion)
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mCheckFinishNpc", &mHRPc::mCheckFinishNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
 			//.addFunction("mGetHitEffectPos", &mHRPc::mGetHitEffectPos)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (struct Vec& arg3) not supported in LuaBridge.
 			//.addFunction("mGetHitEffectPos", &mHRPc::mGetHitEffectPos)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetNoutou", &mHRPc::mSetNoutou)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBattou", &mHRPc::mSetBattou)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBikeNitro", &mHRPc::mGetBikeNitro)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSetNoutou", &mHRPc::mSetNoutou)
+			.addFunction("mSetBattou", &mHRPc::mSetBattou)
+			.addFunction("mGetBikeNitro", &mHRPc::mGetBikeNitro)
+			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetBikeRot", &mHRPc::mGetBikeRot)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetEquipDurabilityMax", &mHRPc::mGetEquipDurabilityMax)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetEquipDurability", &mHRPc::mGetEquipDurability)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetOnlyEquip", &mHRPc::mSetOnlyEquip)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mChangeWeapon4Debug", &mHRPc::mChangeWeapon4Debug)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mChangeEquipID2KindIndex", &mHRPc::mChangeEquipID2KindIndex)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetLockerIndex", &mHRPc::mGetLockerIndex)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDelLocker", &mHRPc::mDelLocker)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDamageRate", &mHRPc::mGetDamageRate)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetWepCmbExtend", &mHRPc::mSetWepCmbExtend)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetWepPower", &mHRPc::mGetWepPower)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetWepPower", &mHRPc::mSetWepPower)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDelWep", &mHRPc::mDelWep)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAddWep", &mHRPc::mAddWep)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mMissCatch", &mHRPc::mMissCatch)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayThrowMissMotion", &mHRPc::mPlayThrowMissMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDispThrowInput", &mHRPc::mDispThrowInput)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mStartThrowInput", &mHRPc::mStartThrowInput)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetEquipDurabilityMax", &mHRPc::mGetEquipDurabilityMax)
+			.addFunction("mGetEquipDurability", &mHRPc::mGetEquipDurability)
+			.addFunction("mSetOnlyEquip", &mHRPc::mSetOnlyEquip)
+			.addFunction("mChangeWeapon4Debug", &mHRPc::mChangeWeapon4Debug)
+			.addFunction("mChangeEquipID2KindIndex", &mHRPc::mChangeEquipID2KindIndex)
+			.addFunction("mGetLockerIndex", &mHRPc::mGetLockerIndex)
+			.addFunction("mDelLocker", &mHRPc::mDelLocker)
+			.addFunction("mGetDamageRate", &mHRPc::mGetDamageRate)
+			.addFunction("mSetWepCmbExtend", &mHRPc::mSetWepCmbExtend)
+			.addFunction("mGetWepPower", &mHRPc::mGetWepPower)
+			.addFunction("mSetWepPower", &mHRPc::mSetWepPower)
+			.addFunction("mDelWep", &mHRPc::mDelWep)
+			.addFunction("mAddWep", &mHRPc::mAddWep)
+			.addFunction("mMissCatch", &mHRPc::mMissCatch)
+			.addFunction("mPlayThrowMissMotion", &mHRPc::mPlayThrowMissMotion)
+			.addFunction("mDispThrowInput", &mHRPc::mDispThrowInput)
+			.addFunction("mStartThrowInput", &mHRPc::mStartThrowInput)
+			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
 			//.addFunction("mAdjustHitWallPosition", &mHRPc::mAdjustHitWallPosition)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mStartThrowSNB", &mHRPc::mStartThrowSNB)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mFrameProcChangeScreen", &mHRPc::mFrameProcChangeScreen)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayMiniDemoForWarpPosSantDestroy", &mHRPc::mPlayMiniDemoForWarpPosSantDestroy)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetAfterWarpPosForSantDestroy", &mHRPc::mSetAfterWarpPosForSantDestroy)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestEndWarpPosForSantDestroy", &mHRPc::mTestEndWarpPosForSantDestroy)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetWarpPosForSantDestroy", &mHRPc::mSetWarpPosForSantDestroy)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetChangeScreenStatus", &mHRPc::mGetChangeScreenStatus)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mEndChangeScreen", &mHRPc::mEndChangeScreen)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mStartChangeScreen", &mHRPc::mStartChangeScreen)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBatteryMax", &mHRPc::mSetBatteryMax)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBatteryRatio", &mHRPc::mGetBatteryRatio)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSubBattery", &mHRPc::mSubBattery)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAddBattery", &mHRPc::mAddBattery)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mRecoverNoutouWeaponBattery", &mHRPc::mRecoverNoutouWeaponBattery)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayMotionEscape", &mHRPc::mPlayMotionEscape)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetInputGuardSlide", &mHRPc::mGetInputGuardSlide)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestLeftGuard", &mHRPc::mTestLeftGuard)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestRightGuard", &mHRPc::mTestRightGuard)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestUpGuard", &mHRPc::mTestUpGuard)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetInputTurn", &mHRPc::mGetInputTurn)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetAttackTimingFrame", &mHRPc::mGetAttackTimingFrame)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mStartThrowSNB", &mHRPc::mStartThrowSNB)
+			.addFunction("mFrameProcChangeScreen", &mHRPc::mFrameProcChangeScreen)
+			.addFunction("mPlayMiniDemoForWarpPosSantDestroy", &mHRPc::mPlayMiniDemoForWarpPosSantDestroy)
+			.addFunction("mSetAfterWarpPosForSantDestroy", &mHRPc::mSetAfterWarpPosForSantDestroy)
+			.addFunction("mTestEndWarpPosForSantDestroy", &mHRPc::mTestEndWarpPosForSantDestroy)
+			.addFunction("mSetWarpPosForSantDestroy", &mHRPc::mSetWarpPosForSantDestroy)
+			.addFunction("mGetChangeScreenStatus", &mHRPc::mGetChangeScreenStatus)
+			.addFunction("mEndChangeScreen", &mHRPc::mEndChangeScreen)
+			.addFunction("mStartChangeScreen", &mHRPc::mStartChangeScreen)
+			.addFunction("mSetBatteryMax", &mHRPc::mSetBatteryMax)
+			.addFunction("mGetBatteryRatio", &mHRPc::mGetBatteryRatio)
+			.addFunction("mSubBattery", &mHRPc::mSubBattery)
+			.addFunction("mAddBattery", &mHRPc::mAddBattery)
+			.addFunction("mRecoverNoutouWeaponBattery", &mHRPc::mRecoverNoutouWeaponBattery)
+			.addFunction("mPlayMotionEscape", &mHRPc::mPlayMotionEscape)
+			.addFunction("mGetInputGuardSlide", &mHRPc::mGetInputGuardSlide)
+			.addFunction("mTestLeftGuard", &mHRPc::mTestLeftGuard)
+			.addFunction("mTestRightGuard", &mHRPc::mTestRightGuard)
+			.addFunction("mTestUpGuard", &mHRPc::mTestUpGuard)
+			.addFunction("mGetInputTurn", &mHRPc::mGetInputTurn)
+			.addFunction("mGetAttackTimingFrame", &mHRPc::mGetAttackTimingFrame)
+			// Functions with return values pointing to native types ('class ghmTriangle*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetLeftWepTrianglePtr", &mHRPc::mGetLeftWepTrianglePtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetExtraComboMotionNo", &mHRPc::mGetExtraComboMotionNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetNormalComboMotionNo", &mHRPc::mGetNormalComboMotionNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetComboKind", &mHRPc::mSetComboKind)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mReturnIdleMove", &mHRPc::mReturnIdleMove)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDashProc", &mHRPc::mDashProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDashStartProc", &mHRPc::mDashStartProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mForceLanding", &mHRPc::mForceLanding)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckJumpAttack", &mHRPc::mCheckJumpAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckJump", &mHRPc::mCheckJump)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mJumpProc", &mHRPc::mJumpProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckRouletteAbility", &mHRPc::mCheckRouletteAbility)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPreStartProcessSpecialMode", &mHRPc::mPreStartProcessSpecialMode)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClear360", &mHRPc::mClear360)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearFire", &mHRPc::mClearFire)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearTiger", &mHRPc::mClearTiger)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearDancingCombo", &mHRPc::mClearDancingCombo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearRapidFinish", &mHRPc::mClearRapidFinish)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearBullet", &mHRPc::mClearBullet)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mStartDarkSide", &mHRPc::mStartDarkSide)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mStart360", &mHRPc::mStart360)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mStartFire", &mHRPc::mStartFire)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mStartTiger", &mHRPc::mStartTiger)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mStartDancingCombo", &mHRPc::mStartDancingCombo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mStartRapidFinish", &mHRPc::mStartRapidFinish)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mStartBullet", &mHRPc::mStartBullet)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckTigerAttack", &mHRPc::mCheckTigerAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTermTiger", &mHRPc::mTermTiger)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTigerAttackProc", &mHRPc::mTigerAttackProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTigerProc", &mHRPc::mTigerProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTigerAttackInput", &mHRPc::mTigerAttackInput)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTigerPadInputProc", &mHRPc::mTigerPadInputProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCallTigerSetupMatrix", &mHRPc::mCallTigerSetupMatrix)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCallTigerMotionProcess", &mHRPc::mCallTigerMotionProcess)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mUpdateTigerPos", &mHRPc::mUpdateTigerPos)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayTigerMotion", &mHRPc::mPlayTigerMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearRapidFinishTarget", &mHRPc::mClearRapidFinishTarget)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetRapidFinishTarget", &mHRPc::mSetRapidFinishTarget)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGetExtraComboMotionNo", &mHRPc::mGetExtraComboMotionNo)
+			.addFunction("mGetNormalComboMotionNo", &mHRPc::mGetNormalComboMotionNo)
+			.addFunction("mSetComboKind", &mHRPc::mSetComboKind)
+			.addFunction("mReturnIdleMove", &mHRPc::mReturnIdleMove)
+			.addFunction("mDashProc", &mHRPc::mDashProc)
+			.addFunction("mDashStartProc", &mHRPc::mDashStartProc)
+			.addFunction("mForceLanding", &mHRPc::mForceLanding)
+			.addFunction("mCheckJumpAttack", &mHRPc::mCheckJumpAttack)
+			.addFunction("mCheckJump", &mHRPc::mCheckJump)
+			.addFunction("mJumpProc", &mHRPc::mJumpProc)
+			.addFunction("mCheckRouletteAbility", &mHRPc::mCheckRouletteAbility)
+			.addFunction("mPreStartProcessSpecialMode", &mHRPc::mPreStartProcessSpecialMode)
+			.addFunction("mClear360", &mHRPc::mClear360)
+			.addFunction("mClearFire", &mHRPc::mClearFire)
+			.addFunction("mClearTiger", &mHRPc::mClearTiger)
+			.addFunction("mClearDancingCombo", &mHRPc::mClearDancingCombo)
+			.addFunction("mClearRapidFinish", &mHRPc::mClearRapidFinish)
+			.addFunction("mClearBullet", &mHRPc::mClearBullet)
+			.addFunction("mStartDarkSide", &mHRPc::mStartDarkSide)
+			.addFunction("mStart360", &mHRPc::mStart360)
+			.addFunction("mStartFire", &mHRPc::mStartFire)
+			.addFunction("mStartTiger", &mHRPc::mStartTiger)
+			.addFunction("mStartDancingCombo", &mHRPc::mStartDancingCombo)
+			.addFunction("mStartRapidFinish", &mHRPc::mStartRapidFinish)
+			.addFunction("mStartBullet", &mHRPc::mStartBullet)
+			.addFunction("mCheckTigerAttack", &mHRPc::mCheckTigerAttack)
+			.addFunction("mTermTiger", &mHRPc::mTermTiger)
+			.addFunction("mTigerAttackProc", &mHRPc::mTigerAttackProc)
+			.addFunction("mTigerProc", &mHRPc::mTigerProc)
+			.addFunction("mTigerAttackInput", &mHRPc::mTigerAttackInput)
+			.addFunction("mTigerPadInputProc", &mHRPc::mTigerPadInputProc)
+			.addFunction("mCallTigerSetupMatrix", &mHRPc::mCallTigerSetupMatrix)
+			.addFunction("mCallTigerMotionProcess", &mHRPc::mCallTigerMotionProcess)
+			.addFunction("mUpdateTigerPos", &mHRPc::mUpdateTigerPos)
+			.addFunction("mPlayTigerMotion", &mHRPc::mPlayTigerMotion)
+			.addFunction("mClearRapidFinishTarget", &mHRPc::mClearRapidFinishTarget)
+			.addFunction("mSetRapidFinishTarget", &mHRPc::mSetRapidFinishTarget)
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mSearchRapidFinishNpc", &mHRPc::mSearchRapidFinishNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mCheckResistRapidFinishNpc", &mHRPc::mCheckResistRapidFinishNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mSetRapidFinishNpc", &mHRPc::mSetRapidFinishNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGet360Tick", &mHRPc::mGet360Tick)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetFireTick", &mHRPc::mGetFireTick)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetTigerTick", &mHRPc::mGetTigerTick)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDancingComboTick", &mHRPc::mGetDancingComboTick)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetRapidFinishTick", &mHRPc::mGetRapidFinishTick)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBulletTick", &mHRPc::mGetBulletTick)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetRotInterpolate", &mHRPc::mGetRotInterpolate)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckChargeMax", &mHRPc::mCheckChargeMax)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckInputBatteryCharge", &mHRPc::mCheckInputBatteryCharge)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckInputGuard", &mHRPc::mCheckInputGuard)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mGet360Tick", &mHRPc::mGet360Tick)
+			.addFunction("mGetFireTick", &mHRPc::mGetFireTick)
+			.addFunction("mGetTigerTick", &mHRPc::mGetTigerTick)
+			.addFunction("mGetDancingComboTick", &mHRPc::mGetDancingComboTick)
+			.addFunction("mGetRapidFinishTick", &mHRPc::mGetRapidFinishTick)
+			.addFunction("mGetBulletTick", &mHRPc::mGetBulletTick)
+			.addFunction("mGetRotInterpolate", &mHRPc::mGetRotInterpolate)
+			.addFunction("mCheckChargeMax", &mHRPc::mCheckChargeMax)
+			.addFunction("mCheckInputBatteryCharge", &mHRPc::mCheckInputBatteryCharge)
+			.addFunction("mCheckInputGuard", &mHRPc::mCheckInputGuard)
+			// Functions with parameters pointing to native types (class TGmf* arg2) not supported in LuaBridge.
 			//.addFunction("checkAndUpdateWeaponLength", &mHRPc::checkAndUpdateWeaponLength)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCallWepMotionProc", &mHRPc::mCallWepMotionProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetWepMotionRate", &mHRPc::mSetWepMotionRate)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayWepMotion", &mHRPc::mPlayWepMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetWeaponLength", &mHRPc::mSetWeaponLength)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResumeEasyDemo", &mHRPc::mResumeEasyDemo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayEasyDemo", &mHRPc::mPlayEasyDemo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayNoutouDemo", &mHRPc::mPlayNoutouDemo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayBattouDemo", &mHRPc::mPlayBattouDemo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBattouEndMotion", &mHRPc::mGetBattouEndMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBattouLoopMotion", &mHRPc::mGetBattouLoopMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCmbNumMax", &mHRPc::mGetCmbNumMax)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mUpdateLockOnDummyLocate", &mHRPc::mUpdateLockOnDummyLocate)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLockOnDummyAtOutOfRange", &mHRPc::mSetLockOnDummyAtOutOfRange)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mUpdateWatchNpc", &mHRPc::mUpdateWatchNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mUpdateLockOnTarget", &mHRPc::mUpdateLockOnTarget)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mUpdateLockOnList", &mHRPc::mUpdateLockOnList)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mRotate2LockOnTarget", &mHRPc::mRotate2LockOnTarget)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetLockOn", &mHRPc::mSetLockOn)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckLockOnDummy", &mHRPc::mCheckLockOnDummy)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mInitLockOn", &mHRPc::mInitLockOn)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDarkSideSonicProc", &mHRPc::mDarkSideSonicProc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mCallWepMotionProc", &mHRPc::mCallWepMotionProc)
+			.addFunction("mSetWepMotionRate", &mHRPc::mSetWepMotionRate)
+			.addFunction("mPlayWepMotion", &mHRPc::mPlayWepMotion)
+			.addFunction("mSetWeaponLength", &mHRPc::mSetWeaponLength)
+			.addFunction("mResumeEasyDemo", &mHRPc::mResumeEasyDemo)
+			.addFunction("mPlayEasyDemo", &mHRPc::mPlayEasyDemo)
+			.addFunction("mPlayNoutouDemo", &mHRPc::mPlayNoutouDemo)
+			.addFunction("mPlayBattouDemo", &mHRPc::mPlayBattouDemo)
+			.addFunction("mGetBattouEndMotion", &mHRPc::mGetBattouEndMotion)
+			.addFunction("mGetBattouLoopMotion", &mHRPc::mGetBattouLoopMotion)
+			.addFunction("mGetCmbNumMax", &mHRPc::mGetCmbNumMax)
+			.addFunction("mUpdateLockOnDummyLocate", &mHRPc::mUpdateLockOnDummyLocate)
+			.addFunction("mSetLockOnDummyAtOutOfRange", &mHRPc::mSetLockOnDummyAtOutOfRange)
+			.addFunction("mUpdateWatchNpc", &mHRPc::mUpdateWatchNpc)
+			.addFunction("mUpdateLockOnTarget", &mHRPc::mUpdateLockOnTarget)
+			.addFunction("mUpdateLockOnList", &mHRPc::mUpdateLockOnList)
+			.addFunction("mRotate2LockOnTarget", &mHRPc::mRotate2LockOnTarget)
+			.addFunction("mSetLockOn", &mHRPc::mSetLockOn)
+			.addFunction("mCheckLockOnDummy", &mHRPc::mCheckLockOnDummy)
+			.addFunction("mInitLockOn", &mHRPc::mInitLockOn)
+			.addFunction("mDarkSideSonicProc", &mHRPc::mDarkSideSonicProc)
+			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
 			//.addFunction("bootGuardLightFlashEffect", &mHRPc::bootGuardLightFlashEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("LaserScaleProc", &mHRPc::LaserScaleProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mEffectProc", &mHRPc::mEffectProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestBeamKatanaShowyEffect", &mHRPc::mTestBeamKatanaShowyEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetCatchDistance", &mHRPc::mGetCatchDistance)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetMotionSpeed", &mHRPc::mGetMotionSpeed)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetFinishMotionSpeed", &mHRPc::mSetFinishMotionSpeed)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("LaserScaleProc", &mHRPc::LaserScaleProc)
+			.addFunction("mEffectProc", &mHRPc::mEffectProc)
+			.addFunction("mTestBeamKatanaShowyEffect", &mHRPc::mTestBeamKatanaShowyEffect)
+			.addFunction("mGetCatchDistance", &mHRPc::mGetCatchDistance)
+			.addFunction("mGetMotionSpeed", &mHRPc::mGetMotionSpeed)
+			.addFunction("mSetFinishMotionSpeed", &mHRPc::mSetFinishMotionSpeed)
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mCheckTargetObject", &mHRPc::mCheckTargetObject)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mSearchAttackTargetNpc", &mHRPc::mSearchAttackTargetNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mSearchDarkSideWarpTargetNpc", &mHRPc::mSearchDarkSideWarpTargetNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mSearchNearNpc", &mHRPc::mSearchNearNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mLookAttackTargetNpc", &mHRPc::mLookAttackTargetNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mLockNearNpc", &mHRPc::mLockNearNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mLockNearCatchNpc", &mHRPc::mLockNearCatchNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mAddKillNpcCombo", &mHRPc::mAddKillNpcCombo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mIntiFinishNpc", &mHRPc::mIntiFinishNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetDarkSideTarget", &mHRPc::mSetDarkSideTarget)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mInputDarkSideSuccess", &mHRPc::mInputDarkSideSuccess)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mIntiFinishNpc", &mHRPc::mIntiFinishNpc)
+			.addFunction("mSetDarkSideTarget", &mHRPc::mSetDarkSideTarget)
+			.addFunction("mInputDarkSideSuccess", &mHRPc::mInputDarkSideSuccess)
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mPcMoveFrontOfNpc4DarkSideMode", &mHRPc::mPcMoveFrontOfNpc4DarkSideMode)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mPcMoveFrontOfNpc", &mHRPc::mPcMoveFrontOfNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mSearchNextNpc", &mHRPc::mSearchNextNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mCheckFinishMode", &mHRPc::mCheckFinishMode)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mPrepareInputFinish", &mHRPc::mPrepareInputFinish)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mSetIntoTsubazeriai", &mHRPc::mSetIntoTsubazeriai)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSePlayUpperAttack", &mHRPc::mSePlayUpperAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTameAttckProc", &mHRPc::mTameAttckProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mJoyuuLight", &mHRPc::mJoyuuLight)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSlotResult", &mHRPc::mSlotResult)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAttackHitCheck", &mHRPc::mAttackHitCheck)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAttackProc", &mHRPc::mAttackProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mFailedInputFinishProcessForVsBoss", &mHRPc::mFailedInputFinishProcessForVsBoss)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSpecialFightAttackProc", &mHRPc::mSpecialFightAttackProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckComboAttackInput", &mHRPc::mCheckComboAttackInput)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSePlayUpperAttack", &mHRPc::mSePlayUpperAttack)
+			.addFunction("mTameAttckProc", &mHRPc::mTameAttckProc)
+			.addFunction("mJoyuuLight", &mHRPc::mJoyuuLight)
+			.addFunction("mSlotResult", &mHRPc::mSlotResult)
+			.addFunction("mAttackHitCheck", &mHRPc::mAttackHitCheck)
+			.addFunction("mAttackProc", &mHRPc::mAttackProc)
+			.addFunction("mFailedInputFinishProcessForVsBoss", &mHRPc::mFailedInputFinishProcessForVsBoss)
+			.addFunction("mSpecialFightAttackProc", &mHRPc::mSpecialFightAttackProc)
+			.addFunction("mCheckComboAttackInput", &mHRPc::mCheckComboAttackInput)
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mTrvStartDownAttack", &mHRPc::mTrvStartDownAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mStartFightAttack", &mHRPc::mStartFightAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetAttackMotionStartFrame30fps", &mHRPc::mGetAttackMotionStartFrame30fps)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCanCatchNpc", &mHRPc::mCheckCanCatchNpc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetSEPlayShakeInputSuccess", &mHRPc::mSetSEPlayShakeInputSuccess)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayFinishMotion", &mHRPc::mPlayFinishMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSuccessFinishInput", &mHRPc::mSuccessFinishInput)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mFinishMotionFrameKetaAge", &mHRPc::mFinishMotionFrameKetaAge)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayNunchackAttackMotion", &mHRPc::mPlayNunchackAttackMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearNpcDamageInfo", &mHRPc::mClearNpcDamageInfo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetHjkDir", &mHRPc::mGetHjkDir)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetFinishAtkMotNo", &mHRPc::mGetFinishAtkMotNo)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mStartFightAttack", &mHRPc::mStartFightAttack)
+			.addFunction("mGetAttackMotionStartFrame30fps", &mHRPc::mGetAttackMotionStartFrame30fps)
+			.addFunction("mCheckCanCatchNpc", &mHRPc::mCheckCanCatchNpc)
+			.addFunction("mSetSEPlayShakeInputSuccess", &mHRPc::mSetSEPlayShakeInputSuccess)
+			.addFunction("mPlayFinishMotion", &mHRPc::mPlayFinishMotion)
+			.addFunction("mSuccessFinishInput", &mHRPc::mSuccessFinishInput)
+			.addFunction("mFinishMotionFrameKetaAge", &mHRPc::mFinishMotionFrameKetaAge)
+			.addFunction("mPlayNunchackAttackMotion", &mHRPc::mPlayNunchackAttackMotion)
+			.addFunction("mClearNpcDamageInfo", &mHRPc::mClearNpcDamageInfo)
+			.addFunction("mGetHjkDir", &mHRPc::mGetHjkDir)
+			.addFunction("mGetFinishAtkMotNo", &mHRPc::mGetFinishAtkMotNo)
+			// Functions with parameters pointing to native types (int32_t* arg3) not supported in LuaBridge.
 			//.addFunction("mSearchThrow", &mHRPc::mSearchThrow)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (int32_t* arg4) not supported in LuaBridge.
 			//.addFunction("mGetPcThrowMotNo", &mHRPc::mGetPcThrowMotNo)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (int32_t* arg3) not supported in LuaBridge.
 			//.addFunction("mGetThrowDamageMotion", &mHRPc::mGetThrowDamageMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (int32_t* arg2) not supported in LuaBridge.
 			//.addFunction("mGetPcThrowMotNo4ZakoB", &mHRPc::mGetPcThrowMotNo4ZakoB)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (int32_t* arg2) not supported in LuaBridge.
 			//.addFunction("mGetPcThrowMotNo4ZakoF", &mHRPc::mGetPcThrowMotNo4ZakoF)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckThrowSpace", &mHRPc::mCheckThrowSpace)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetDownAtkMotNo", &mHRPc::mGetDownAtkMotNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetNextAtkMotNo", &mHRPc::mGetNextAtkMotNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAttackRestoreProc", &mHRPc::mAttackRestoreProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAttackStoreProc", &mHRPc::mAttackStoreProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetCombo", &mHRPc::mResetCombo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mChangeWep", &mHRPc::mChangeWep)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mWepSeReleaseRequest", &mHRPc::mWepSeReleaseRequest)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mInitWepStatus", &mHRPc::mInitWepStatus)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetWepIndex", &mHRPc::mGetWepIndex)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mCheckThrowSpace", &mHRPc::mCheckThrowSpace)
+			.addFunction("mGetDownAtkMotNo", &mHRPc::mGetDownAtkMotNo)
+			.addFunction("mGetNextAtkMotNo", &mHRPc::mGetNextAtkMotNo)
+			.addFunction("mAttackRestoreProc", &mHRPc::mAttackRestoreProc)
+			.addFunction("mAttackStoreProc", &mHRPc::mAttackStoreProc)
+			.addFunction("mResetCombo", &mHRPc::mResetCombo)
+			.addFunction("mChangeWep", &mHRPc::mChangeWep)
+			.addFunction("mWepSeReleaseRequest", &mHRPc::mWepSeReleaseRequest)
+			.addFunction("mInitWepStatus", &mHRPc::mInitWepStatus)
+			.addFunction("mGetWepIndex", &mHRPc::mGetWepIndex)
+			.addFunction("mGetAtkNo", &mHRPc::mGetAtkNo)
+			// Function overloading not supported in LuaBridge.
 			//.addFunction("mGetAtkNo", &mHRPc::mGetAtkNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetAtkNo", &mHRPc::mGetAtkNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSideStepProc", &mHRPc::mSideStepProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetRollEscMotNo", &mHRPc::mGetRollEscMotNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mMoveProc", &mHRPc::mMoveProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetPcWillDirectRotY", &mHRPc::mGetPcWillDirectRotY)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetRunSpeed", &mHRPc::mGetRunSpeed)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetWalkSpeed", &mHRPc::mGetWalkSpeed)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mMoveCommon", &mHRPc::mMoveCommon)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mLockOnMoveProc", &mHRPc::mLockOnMoveProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mUpdateAtkColl", &mHRPc::mUpdateAtkColl)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mStartChargeEffect", &mHRPc::mStartChargeEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPreResetChargeAttack", &mHRPc::mPreResetChargeAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mSideStepProc", &mHRPc::mSideStepProc)
+			.addFunction("mGetRollEscMotNo", &mHRPc::mGetRollEscMotNo)
+			.addFunction("mMoveProc", &mHRPc::mMoveProc)
+			.addFunction("mGetPcWillDirectRotY", &mHRPc::mGetPcWillDirectRotY)
+			.addFunction("mGetRunSpeed", &mHRPc::mGetRunSpeed)
+			.addFunction("mGetWalkSpeed", &mHRPc::mGetWalkSpeed)
+			.addFunction("mMoveCommon", &mHRPc::mMoveCommon)
+			.addFunction("mLockOnMoveProc", &mHRPc::mLockOnMoveProc)
+			.addFunction("mUpdateAtkColl", &mHRPc::mUpdateAtkColl)
+			.addFunction("mStartChargeEffect", &mHRPc::mStartChargeEffect)
+			.addFunction("mPreResetChargeAttack", &mHRPc::mPreResetChargeAttack)
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mCheckLastTarget", &mHRPc::mCheckLastTarget)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckBDash", &mHRPc::mCheckBDash)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckChangeWeapon", &mHRPc::mCheckChangeWeapon)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckWakeUpZako", &mHRPc::mCheckWakeUpZako)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckSchool3RapidAttack", &mHRPc::mCheckSchool3RapidAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckBackAttack", &mHRPc::mCheckBackAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckInputDirection4Pc", &mHRPc::mCheckInputDirection4Pc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckThrowInput", &mHRPc::mCheckThrowInput)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckInputCombo", &mHRPc::mCheckInputCombo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckFollowThorough", &mHRPc::mCheckFollowThorough)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckSantDash", &mHRPc::mCheckSantDash)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckNormalAttack", &mHRPc::mCheckNormalAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckNormalDashAttack", &mHRPc::mCheckNormalDashAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheck777Bomb", &mHRPc::mCheck777Bomb)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheck777BombStart", &mHRPc::mCheck777BombStart)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckIdling", &mHRPc::mCheckIdling)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckIdlingMotion", &mHRPc::mCheckIdlingMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckRollEscape", &mHRPc::mCheckRollEscape)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckGuard", &mHRPc::mCheckGuard)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckChargeUpDown", &mHRPc::mCheckChargeUpDown)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCharge", &mHRPc::mCheckCharge)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCanCancelLastCombo", &mHRPc::mCheckCanCancelLastCombo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckLastCombo", &mHRPc::mCheckLastCombo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckStrongComboAttack", &mHRPc::mCheckStrongComboAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckPiyoriComboAttack", &mHRPc::mCheckPiyoriComboAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckNockBack", &mHRPc::mCheckNockBack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckDown2StandUp", &mHRPc::mCheckDown2StandUp)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckDown", &mHRPc::mCheckDown)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckBlowStatus", &mHRPc::mCheckBlowStatus)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckBombAttack", &mHRPc::mCheckBombAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckJumpThrustAttack", &mHRPc::mCheckJumpThrustAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckChargeAttack", &mHRPc::mCheckChargeAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckNunchackAttack", &mHRPc::mCheckNunchackAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckRangeAttack", &mHRPc::mCheckRangeAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckThrowBeforeAttack", &mHRPc::mCheckThrowBeforeAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCatchMiss", &mHRPc::mCheckCatchMiss)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mCheckBDash", &mHRPc::mCheckBDash)
+			.addFunction("mCheckChangeWeapon", &mHRPc::mCheckChangeWeapon)
+			.addFunction("mCheckWakeUpZako", &mHRPc::mCheckWakeUpZako)
+			.addFunction("mCheckSchool3RapidAttack", &mHRPc::mCheckSchool3RapidAttack)
+			.addFunction("mCheckBackAttack", &mHRPc::mCheckBackAttack)
+			.addFunction("mCheckInputDirection4Pc", &mHRPc::mCheckInputDirection4Pc)
+			.addFunction("mCheckThrowInput", &mHRPc::mCheckThrowInput)
+			.addFunction("mCheckInputCombo", &mHRPc::mCheckInputCombo)
+			.addFunction("mCheckFollowThorough", &mHRPc::mCheckFollowThorough)
+			.addFunction("mCheckSantDash", &mHRPc::mCheckSantDash)
+			.addFunction("mCheckNormalAttack", &mHRPc::mCheckNormalAttack)
+			.addFunction("mCheckNormalDashAttack", &mHRPc::mCheckNormalDashAttack)
+			.addFunction("mCheck777Bomb", &mHRPc::mCheck777Bomb)
+			.addFunction("mCheck777BombStart", &mHRPc::mCheck777BombStart)
+			.addFunction("mCheckIdling", &mHRPc::mCheckIdling)
+			.addFunction("mCheckIdlingMotion", &mHRPc::mCheckIdlingMotion)
+			.addFunction("mCheckRollEscape", &mHRPc::mCheckRollEscape)
+			.addFunction("mCheckGuard", &mHRPc::mCheckGuard)
+			.addFunction("mCheckChargeUpDown", &mHRPc::mCheckChargeUpDown)
+			.addFunction("mCheckCharge", &mHRPc::mCheckCharge)
+			.addFunction("mCheckCanCancelLastCombo", &mHRPc::mCheckCanCancelLastCombo)
+			.addFunction("mCheckLastCombo", &mHRPc::mCheckLastCombo)
+			.addFunction("mCheckStrongComboAttack", &mHRPc::mCheckStrongComboAttack)
+			.addFunction("mCheckPiyoriComboAttack", &mHRPc::mCheckPiyoriComboAttack)
+			.addFunction("mCheckNockBack", &mHRPc::mCheckNockBack)
+			.addFunction("mCheckDown2StandUp", &mHRPc::mCheckDown2StandUp)
+			.addFunction("mCheckDown", &mHRPc::mCheckDown)
+			.addFunction("mCheckBlowStatus", &mHRPc::mCheckBlowStatus)
+			.addFunction("mCheckBombAttack", &mHRPc::mCheckBombAttack)
+			.addFunction("mCheckJumpThrustAttack", &mHRPc::mCheckJumpThrustAttack)
+			.addFunction("mCheckChargeAttack", &mHRPc::mCheckChargeAttack)
+			.addFunction("mCheckNunchackAttack", &mHRPc::mCheckNunchackAttack)
+			.addFunction("mCheckRangeAttack", &mHRPc::mCheckRangeAttack)
+			.addFunction("mCheckThrowBeforeAttack", &mHRPc::mCheckThrowBeforeAttack)
+			.addFunction("mCheckCatchMiss", &mHRPc::mCheckCatchMiss)
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mStartCatchAttack", &mHRPc::mStartCatchAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckDownAttack", &mHRPc::mCheckDownAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckFightCmbAttack", &mHRPc::mCheckFightCmbAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCityFightAttack", &mHRPc::mCheckCityFightAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCanAttack", &mHRPc::mCheckCanAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckAttackHit", &mHRPc::mCheckAttackHit)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckAttack", &mHRPc::mCheckAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetHajikareWait", &mHRPc::mSetHajikareWait)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckHajikareWait", &mHRPc::mCheckHajikareWait)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetGuardWait", &mHRPc::mSetGuardWait)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckGuardWait", &mHRPc::mCheckGuardWait)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckHajikare", &mHRPc::mCheckHajikare)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckGuardMotion", &mHRPc::mCheckGuardMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckRestorePadOffset", &mHRPc::mCheckRestorePadOffset)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetPadOffset", &mHRPc::mResetPadOffset)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetNeedShakeDir", &mHRPc::mSetNeedShakeDir)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckContinueCombo", &mHRPc::mCheckContinueCombo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckAtkUpper", &mHRPc::mCheckAtkUpper)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetChargeMotionNo", &mHRPc::mGetChargeMotionNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetUpChargeAttackMotionNo", &mHRPc::mGetUpChargeAttackMotionNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetCatch", &mHRPc::mResetCatch)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetTsubaOuterMotion", &mHRPc::mSetTsubaOuterMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetTsubaDat", &mHRPc::mSetTsubaDat)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTsubazeriaiProc", &mHRPc::mTsubazeriaiProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGuardDamageProc", &mHRPc::mGuardDamageProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDamageProc", &mHRPc::mDamageProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetAttackDistance", &mHRPc::mGetAttackDistance)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetAttackDirection", &mHRPc::mGetAttackDirection)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestRunMotion", &mHRPc::mTestRunMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckDamageMotion", &mHRPc::mCheckDamageMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCanHit", &mHRPc::mCheckCanHit)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mCheckDownAttack", &mHRPc::mCheckDownAttack)
+			.addFunction("mCheckFightCmbAttack", &mHRPc::mCheckFightCmbAttack)
+			.addFunction("mCheckCityFightAttack", &mHRPc::mCheckCityFightAttack)
+			.addFunction("mCheckCanAttack", &mHRPc::mCheckCanAttack)
+			.addFunction("mCheckAttackHit", &mHRPc::mCheckAttackHit)
+			.addFunction("mCheckAttack", &mHRPc::mCheckAttack)
+			.addFunction("mSetHajikareWait", &mHRPc::mSetHajikareWait)
+			.addFunction("mCheckHajikareWait", &mHRPc::mCheckHajikareWait)
+			.addFunction("mSetGuardWait", &mHRPc::mSetGuardWait)
+			.addFunction("mCheckGuardWait", &mHRPc::mCheckGuardWait)
+			.addFunction("mCheckHajikare", &mHRPc::mCheckHajikare)
+			.addFunction("mCheckGuardMotion", &mHRPc::mCheckGuardMotion)
+			.addFunction("mCheckRestorePadOffset", &mHRPc::mCheckRestorePadOffset)
+			.addFunction("mResetPadOffset", &mHRPc::mResetPadOffset)
+			.addFunction("mSetNeedShakeDir", &mHRPc::mSetNeedShakeDir)
+			.addFunction("mCheckContinueCombo", &mHRPc::mCheckContinueCombo)
+			.addFunction("mCheckAtkUpper", &mHRPc::mCheckAtkUpper)
+			.addFunction("mGetChargeMotionNo", &mHRPc::mGetChargeMotionNo)
+			.addFunction("mGetUpChargeAttackMotionNo", &mHRPc::mGetUpChargeAttackMotionNo)
+			.addFunction("mResetCatch", &mHRPc::mResetCatch)
+			.addFunction("mSetTsubaOuterMotion", &mHRPc::mSetTsubaOuterMotion)
+			.addFunction("mSetTsubaDat", &mHRPc::mSetTsubaDat)
+			.addFunction("mTsubazeriaiProc", &mHRPc::mTsubazeriaiProc)
+			.addFunction("mGuardDamageProc", &mHRPc::mGuardDamageProc)
+			.addFunction("mDamageProc", &mHRPc::mDamageProc)
+			.addFunction("mGetAttackDistance", &mHRPc::mGetAttackDistance)
+			.addFunction("mGetAttackDirection", &mHRPc::mGetAttackDirection)
+			.addFunction("mTestRunMotion", &mHRPc::mTestRunMotion)
+			.addFunction("mCheckDamageMotion", &mHRPc::mCheckDamageMotion)
+			.addFunction("mCheckCanHit", &mHRPc::mCheckCanHit)
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mHitCheck", &mHRPc::mHitCheck)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetElectricDamage", &mHRPc::mSetElectricDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &mHRPc::mSetDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mJudgeJustGuardInput", &mHRPc::mJudgeJustGuardInput)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mJudgePiyori", &mHRPc::mJudgePiyori)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mJudgeJustGuardInput", &mHRPc::mJudgeJustGuardInput)
+			.addFunction("mJudgePiyori", &mHRPc::mJudgePiyori)
+			// Functions with parameters pointing to native types (class mHRChara* arg3) not supported in LuaBridge.
 			//.addFunction("mConvertGuardMotion", &mHRPc::mConvertGuardMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mSetDamageIK", &mHRPc::mSetDamageIK)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckAutoGuard", &mHRPc::mCheckAutoGuard)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCanGuard", &mHRPc::mCheckCanGuard)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBtlCommonMotNo", &mHRPc::mGetBtlCommonMotNo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetWepEffectVisible", &mHRPc::mSetWepEffectVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetWepVisible", &mHRPc::mSetWepVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetVisible", &mHRPc::mSetVisible)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCamera2TrvBack", &mHRPc::mSetCamera2TrvBack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetCameraInit", &mHRPc::mSetCameraInit)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCallCameraInit", &mHRPc::mCallCameraInit)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCameraInitProcess", &mHRPc::mCameraInitProcess)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCallTsubaBrendMotPorc", &mHRPc::mCallTsubaBrendMotPorc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCallCulcBrendRate", &mHRPc::mCallCulcBrendRate)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mCheckAutoGuard", &mHRPc::mCheckAutoGuard)
+			.addFunction("mCheckCanGuard", &mHRPc::mCheckCanGuard)
+			.addFunction("mGetBtlCommonMotNo", &mHRPc::mGetBtlCommonMotNo)
+			.addFunction("mSetWepEffectVisible", &mHRPc::mSetWepEffectVisible)
+			.addFunction("mSetWepVisible", &mHRPc::mSetWepVisible)
+			.addFunction("mSetVisible", &mHRPc::mSetVisible)
+			.addFunction("mSetCamera2TrvBack", &mHRPc::mSetCamera2TrvBack)
+			.addFunction("mSetCameraInit", &mHRPc::mSetCameraInit)
+			.addFunction("mCallCameraInit", &mHRPc::mCallCameraInit)
+			.addFunction("mCameraInitProcess", &mHRPc::mCameraInitProcess)
+			.addFunction("mCallTsubaBrendMotPorc", &mHRPc::mCallTsubaBrendMotPorc)
+			.addFunction("mCallCulcBrendRate", &mHRPc::mCallCulcBrendRate)
+			// Functions with return values pointing to native types ('class ghmGcCollObjCapsule*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetCollPtr", &mHRPc::mGetCollPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mBossDeadCommonProcess", &mHRPc::mBossDeadCommonProcess)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayBattleIdolMotion", &mHRPc::mPlayBattleIdolMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetValueAtPlayMotion", &mHRPc::mResetValueAtPlayMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mBossDeadCommonProcess", &mHRPc::mBossDeadCommonProcess)
+			.addFunction("mPlayBattleIdolMotion", &mHRPc::mPlayBattleIdolMotion)
+			.addFunction("mResetValueAtPlayMotion", &mHRPc::mResetValueAtPlayMotion)
+			// Functions with parameters pointing to native types (class TGan** arg2) not supported in LuaBridge.
 			//.addFunction("mPlayMotionBlend", &mHRPc::mPlayMotionBlend)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addFunction("mPlayMotionBlend", &mHRPc::mPlayMotionBlend)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayMotion", &mHRPc::mPlayMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mPlayMotion", &mHRPc::mPlayMotion)
+			// Functions with return values pointing to native types ('class TGan**' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetAtkMotPPtr", &mHRPc::mGetAtkMotPPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class TGan*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetAtkMotPtr", &mHRPc::mGetAtkMotPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mRequestReadAtkMot", &mHRPc::mRequestReadAtkMot)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mReleaseAtkMot", &mHRPc::mReleaseAtkMot)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckNeedModelRead", &mHRPc::mCheckNeedModelRead)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mChangeTShirtModel", &mHRPc::mChangeTShirtModel)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetNoWearJacket", &mHRPc::mSetNoWearJacket)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mRequestReadAtkMot", &mHRPc::mRequestReadAtkMot)
+			.addFunction("mReleaseAtkMot", &mHRPc::mReleaseAtkMot)
+			.addFunction("mCheckNeedModelRead", &mHRPc::mCheckNeedModelRead)
+			.addFunction("mChangeTShirtModel", &mHRPc::mChangeTShirtModel)
+			.addFunction("mSetNoWearJacket", &mHRPc::mSetNoWearJacket)
+			// Functions with parameters pointing to native types (char* arg3) not supported in LuaBridge.
 			//.addFunction("mControlDispWestWeapon", &mHRPc::mControlDispWestWeapon)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDetachWeapon", &mHRPc::mDetachWeapon)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAttachWeapon", &mHRPc::mAttachWeapon)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mDetachWeapon", &mHRPc::mDetachWeapon)
+			.addFunction("mAttachWeapon", &mHRPc::mAttachWeapon)
+			// Functions with parameters pointing to native types (void* arg1) not supported in LuaBridge.
 			//.addFunction("mRenderFpsCursor", &mHRPc::mRenderFpsCursor)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAddTension", &mHRPc::mAddTension)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mAddTension", &mHRPc::mAddTension)
+			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
 			//.addFunction("mSetWarpPos", &mHRPc::mSetWarpPos)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mRenderShadowProc", &mHRPc::mRenderShadowProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPostRenderProc", &mHRPc::mPostRenderProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mRenderProc", &mHRPc::mRenderProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSemitransparentProcess", &mHRPc::mSemitransparentProcess)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPostFrameCommonProc2", &mHRPc::mPostFrameCommonProc2)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPostFrameProc", &mHRPc::mPostFrameProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPcRestoreDamage", &mHRPc::mPcRestoreDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("checkAndPlayCameraBankMotion", &mHRPc::checkAndPlayCameraBankMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("checkAndBootStageHitEffect", &mHRPc::checkAndBootStageHitEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("onUpdateIK", &mHRPc::onUpdateIK)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDamageElectroShockProc", &mHRPc::mDamageElectroShockProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mDamageDownLeverGachaProc", &mHRPc::mDamageDownLeverGachaProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSpecialWalkProc", &mHRPc::mSpecialWalkProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckHaveWep", &mHRPc::mCheckHaveWep)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mChangeWeaponProcess", &mHRPc::mChangeWeaponProcess)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("TryChangeWeapon", &mHRPc::TryChangeWeapon)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mStartChangeWeapon", &mHRPc::mStartChangeWeapon)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mFrameProc", &mHRPc::mFrameProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetOffGroundIk", &mHRPc::mSetOffGroundIk)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mInitData", &mHRPc::mInitData)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mEffectInit", &mHRPc::mEffectInit)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTerm", &mHRPc::mTerm)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mInit", &mHRPc::mInit)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCanOperate", &mHRPc::mCheckCanOperate)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetOutsidePlayMotion", &mHRPc::mSetOutsidePlayMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mRenderShadowProc", &mHRPc::mRenderShadowProc)
+			.addFunction("mPostRenderProc", &mHRPc::mPostRenderProc)
+			.addFunction("mRenderProc", &mHRPc::mRenderProc)
+			.addFunction("mSemitransparentProcess", &mHRPc::mSemitransparentProcess)
+			.addFunction("mPostFrameCommonProc2", &mHRPc::mPostFrameCommonProc2)
+			.addFunction("mPostFrameProc", &mHRPc::mPostFrameProc)
+			.addFunction("mPcRestoreDamage", &mHRPc::mPcRestoreDamage)
+			.addFunction("checkAndPlayCameraBankMotion", &mHRPc::checkAndPlayCameraBankMotion)
+			.addFunction("checkAndBootStageHitEffect", &mHRPc::checkAndBootStageHitEffect)
+			.addFunction("onUpdateIK", &mHRPc::onUpdateIK)
+			.addFunction("mDamageElectroShockProc", &mHRPc::mDamageElectroShockProc)
+			.addFunction("mDamageDownLeverGachaProc", &mHRPc::mDamageDownLeverGachaProc)
+			.addFunction("mSpecialWalkProc", &mHRPc::mSpecialWalkProc)
+			.addFunction("mCheckHaveWep", &mHRPc::mCheckHaveWep)
+			.addFunction("mChangeWeaponProcess", &mHRPc::mChangeWeaponProcess)
+			.addFunction("TryChangeWeapon", &mHRPc::TryChangeWeapon)
+			.addFunction("mStartChangeWeapon", &mHRPc::mStartChangeWeapon)
+			.addFunction("mFrameProc", &mHRPc::mFrameProc)
+			.addFunction("mSetOffGroundIk", &mHRPc::mSetOffGroundIk)
+			.addFunction("mInitData", &mHRPc::mInitData)
+			.addFunction("mEffectInit", &mHRPc::mEffectInit)
+			.addFunction("mTerm", &mHRPc::mTerm)
+			.addFunction("mInit", &mHRPc::mInit)
+			.addFunction("mCheckCanOperate", &mHRPc::mCheckCanOperate)
+			.addFunction("mSetOutsidePlayMotion", &mHRPc::mSetOutsidePlayMotion)
+			// Functions with parameters pointing to native types (char* arg2) not supported in LuaBridge.
 			//.addFunction("mGetEquipTextureName", &mHRPc::mGetEquipTextureName)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (char* arg2) not supported in LuaBridge.
 			//.addFunction("mGetEquipModelName", &mHRPc::mGetEquipModelName)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTermWarpPosForSantDestroy", &mHRPc::mTermWarpPosForSantDestroy)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSubDarkSideTick", &mHRPc::mSubDarkSideTick)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mEquipProc", &mHRPc::mEquipProc)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckBeforeAttackHit", &mHRPc::mCheckBeforeAttackHit)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckPcReadEndWithoutWeapon", &mHRPc::mCheckPcReadEndWithoutWeapon)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckFightAttack", &mHRPc::mCheckFightAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckCatchAttack", &mHRPc::mCheckCatchAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mTermWarpPosForSantDestroy", &mHRPc::mTermWarpPosForSantDestroy)
+			.addFunction("mSubDarkSideTick", &mHRPc::mSubDarkSideTick)
+			.addFunction("mEquipProc", &mHRPc::mEquipProc)
+			.addFunction("mCheckBeforeAttackHit", &mHRPc::mCheckBeforeAttackHit)
+			.addFunction("mCheckPcReadEndWithoutWeapon", &mHRPc::mCheckPcReadEndWithoutWeapon)
+			.addFunction("mCheckFightAttack", &mHRPc::mCheckFightAttack)
+			.addFunction("mCheckCatchAttack", &mHRPc::mCheckCatchAttack)
+			// Functions with parameters pointing to native types (struct Vec* arg5) not supported in LuaBridge.
 			//.addFunction("mCallAttackEffect", &mHRPc::mCallAttackEffect)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("SetPcSpeedBlurOff", &mHRPc::SetPcSpeedBlurOff)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mStopLightSabelSound", &mHRPc::mStopLightSabelSound)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetPcPower", &mHRPc::mGetPcPower)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("SetPcSpeedBlurOff", &mHRPc::SetPcSpeedBlurOff)
+			.addFunction("mStopLightSabelSound", &mHRPc::mStopLightSabelSound)
+			.addFunction("mGetPcPower", &mHRPc::mGetPcPower)
+			// Functions with parameters pointing to native types (struct stPcSaveData* arg2) not supported in LuaBridge.
 			//.addFunction("mRestorePcData", &mHRPc::mRestorePcData)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("UnlockEverythingForDeathmatch", &mHRPc::UnlockEverythingForDeathmatch)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetDeadFlag", &mHRPc::mResetDeadFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBatteryMaxAllWeapon", &mHRPc::mSetBatteryMaxAllWeapon)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mPlayLightSabelSound", &mHRPc::mPlayLightSabelSound)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("TurnOffLaserEffectOnPlayer", &mHRPc::TurnOffLaserEffectOnPlayer)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearBossInit", &mHRPc::mClearBossInit)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("UnlockEverythingForDeathmatch", &mHRPc::UnlockEverythingForDeathmatch)
+			.addFunction("mResetDeadFlag", &mHRPc::mResetDeadFlag)
+			.addFunction("mSetBatteryMaxAllWeapon", &mHRPc::mSetBatteryMaxAllWeapon)
+			.addFunction("mPlayLightSabelSound", &mHRPc::mPlayLightSabelSound)
+			.addFunction("TurnOffLaserEffectOnPlayer", &mHRPc::TurnOffLaserEffectOnPlayer)
+			.addFunction("mClearBossInit", &mHRPc::mClearBossInit)
+			// Functions with return values pointing to native types ('struct stPcSaveData*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetPcSaveData", &mHRPc::mGetPcSaveData)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("TestStorePcPosForSM", &mHRPc::TestStorePcPosForSM)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("ReStorePcPosForSM", &mHRPc::ReStorePcPosForSM)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckIntoStatusScreen", &mHRPc::mCheckIntoStatusScreen)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("TestStorePcPosForSM", &mHRPc::TestStorePcPosForSM)
+			.addFunction("ReStorePcPosForSM", &mHRPc::ReStorePcPosForSM)
+			.addFunction("mCheckIntoStatusScreen", &mHRPc::mCheckIntoStatusScreen)
+			// Functions with parameters pointing to native types (class TGan* arg2) not supported in LuaBridge.
 			//.addFunction("mPlayMotionFromDatPtr", &mHRPc::mPlayMotionFromDatPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckFinishAttack", &mHRPc::mCheckFinishAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckTsubazering", &mHRPc::mCheckTsubazering)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mCheckFinishAttack", &mHRPc::mCheckFinishAttack)
+			.addFunction("mCheckTsubazering", &mHRPc::mCheckTsubazering)
+			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetBikePos", &mHRPc::mGetBikePos)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestBikeRide", &mHRPc::mTestBikeRide)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetPadOffset", &mHRPc::mSetPadOffset)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckNeutral", &mHRPc::mCheckNeutral)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mIsPlayMotion", &mHRPc::mIsPlayMotion)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckBatteryCharge", &mHRPc::mCheckBatteryCharge)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckInitCamera", &mHRPc::mCheckInitCamera)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckDead", &mHRPc::mCheckDead)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearDarkSide", &mHRPc::mClearDarkSide)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mExitChargeBattery4FixCamera", &mHRPc::mExitChargeBattery4FixCamera)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mTestBikeRide", &mHRPc::mTestBikeRide)
+			.addFunction("mSetPadOffset", &mHRPc::mSetPadOffset)
+			.addFunction("mCheckNeutral", &mHRPc::mCheckNeutral)
+			.addFunction("mIsPlayMotion", &mHRPc::mIsPlayMotion)
+			.addFunction("mCheckBatteryCharge", &mHRPc::mCheckBatteryCharge)
+			.addFunction("mCheckInitCamera", &mHRPc::mCheckInitCamera)
+			.addFunction("mCheckDead", &mHRPc::mCheckDead)
+			.addFunction("mClearDarkSide", &mHRPc::mClearDarkSide)
+			.addFunction("mExitChargeBattery4FixCamera", &mHRPc::mExitChargeBattery4FixCamera)
+			// Functions with parameters pointing to native types (struct Vec& arg3) not supported in LuaBridge.
 			//.addFunction("StorePcPosForSM", &mHRPc::StorePcPosForSM)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckEquipReadEnd", &mHRPc::mCheckEquipReadEnd)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestBattouDemo", &mHRPc::mTestBattouDemo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAddLocker", &mHRPc::mAddLocker)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mChkLocker", &mHRPc::mChkLocker)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetEquip", &mHRPc::mSetEquip)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mControlDispWestWeapons", &mHRPc::mControlDispWestWeapons)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckStageChangeInitEnd", &mHRPc::mCheckStageChangeInitEnd)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetElectroShockWalk", &mHRPc::mSetElectroShockWalk)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetHugWalk", &mHRPc::mSetHugWalk)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBikeSpd", &mHRPc::mGetBikeSpd)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetFireMan", &mHRPc::mResetFireMan)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetChargeAttack", &mHRPc::mResetChargeAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResetFPCamera", &mHRPc::mResetFPCamera)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckDarkSideMode", &mHRPc::mCheckDarkSideMode)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mCheckEquipReadEnd", &mHRPc::mCheckEquipReadEnd)
+			.addFunction("mTestBattouDemo", &mHRPc::mTestBattouDemo)
+			.addFunction("mAddLocker", &mHRPc::mAddLocker)
+			.addFunction("mChkLocker", &mHRPc::mChkLocker)
+			.addFunction("mSetEquip", &mHRPc::mSetEquip)
+			.addFunction("mControlDispWestWeapons", &mHRPc::mControlDispWestWeapons)
+			.addFunction("mCheckStageChangeInitEnd", &mHRPc::mCheckStageChangeInitEnd)
+			.addFunction("mSetElectroShockWalk", &mHRPc::mSetElectroShockWalk)
+			.addFunction("mSetHugWalk", &mHRPc::mSetHugWalk)
+			.addFunction("mGetBikeSpd", &mHRPc::mGetBikeSpd)
+			.addFunction("mResetFireMan", &mHRPc::mResetFireMan)
+			.addFunction("mResetChargeAttack", &mHRPc::mResetChargeAttack)
+			.addFunction("mResetFPCamera", &mHRPc::mResetFPCamera)
+			.addFunction("mCheckDarkSideMode", &mHRPc::mCheckDarkSideMode)
+			// Functions with parameters pointing to native types (char* arg5) not supported in LuaBridge.
 			//.addFunction("mAttachObj", &mHRPc::mAttachObj)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mRestoreSubMissionWeapon", &mHRPc::mRestoreSubMissionWeapon)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBattery", &mHRPc::mGetBattery)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetBatteryMax", &mHRPc::mGetBatteryMax)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBattery", &mHRPc::mSetBattery)
-			// Functions with pointers to native types not supported in LuaBridge.
+			.addFunction("mRestoreSubMissionWeapon", &mHRPc::mRestoreSubMissionWeapon)
+			.addFunction("mGetBattery", &mHRPc::mGetBattery)
+			.addFunction("mGetBatteryMax", &mHRPc::mGetBatteryMax)
+			.addFunction("mSetBattery", &mHRPc::mSetBattery)
+			// Function overloading not supported in LuaBridge.
 			//.addFunction("StorePcPosForSM", &mHRPc::StorePcPosForSM)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("StoreBikePosForSM", &mHRPc::StoreBikePosForSM)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBikePos", &mHRPc::mSetBikePos)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBikeRot", &mHRPc::mSetBikeRot)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mAddPcMoney", &mHRPc::mAddPcMoney)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetBikeJumpForSubMission", &mHRPc::mSetBikeJumpForSubMission)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCallDemoBattou", &mHRPc::mCallDemoBattou)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTestPauseBattouDemo", &mHRPc::mTestPauseBattouDemo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mResumeBattouDemo", &mHRPc::mResumeBattouDemo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCallDemoNoutou", &mHRPc::mCallDemoNoutou)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCancelBattouNoutouDemo", &mHRPc::mCancelBattouNoutouDemo)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mRestorePlayMotionFromDatPtr", &mHRPc::mRestorePlayMotionFromDatPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetAtkScl", &mHRPc::mGetAtkScl)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("GetSwingCount", &mHRPc::GetSwingCount)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("ClearSwingCount", &mHRPc::ClearSwingCount)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckLockOnEnemy", &mHRPc::mCheckLockOnEnemy)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckThrowAttack", &mHRPc::mCheckThrowAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckGetAllWeapon", &mHRPc::mCheckGetAllWeapon)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckGuardSlide", &mHRPc::mCheckGuardSlide)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckTsubaAttack", &mHRPc::mCheckTsubaAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckSuccessInputFinish", &mHRPc::mCheckSuccessInputFinish)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetInputMode", &mHRPc::mSetInputMode)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckInputMove", &mHRPc::mCheckInputMove)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetEquipMk3", &mHRPc::mSetEquipMk3)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckTrvReadEnd", &mHRPc::mCheckTrvReadEnd)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetWepBattou", &mHRPc::mSetWepBattou)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetWepNoutou", &mHRPc::mSetWepNoutou)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mGetPauseFlag", &mHRPc::mGetPauseFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mCheckFinishAttackAndCantLockOn", &mHRPc::mCheckFinishAttackAndCantLockOn)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mTremStageChange", &mHRPc::mTremStageChange)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mSetEventWalk", &mHRPc::mSetEventWalk)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mInitStageChange", &mHRPc::mInitStageChange)
-			// Functions with pointers to native types not supported in LuaBridge.
-			//.addFunction("mClearGameFlag", &mHRPc::mClearGameFlag)
+			.addFunction("StoreBikePosForSM", &mHRPc::StoreBikePosForSM)
+			.addFunction("mSetBikePos", &mHRPc::mSetBikePos)
+			.addFunction("mSetBikeRot", &mHRPc::mSetBikeRot)
+			.addFunction("mAddPcMoney", &mHRPc::mAddPcMoney)
+			.addFunction("mSetBikeJumpForSubMission", &mHRPc::mSetBikeJumpForSubMission)
+			.addFunction("mCallDemoBattou", &mHRPc::mCallDemoBattou)
+			.addFunction("mTestPauseBattouDemo", &mHRPc::mTestPauseBattouDemo)
+			.addFunction("mResumeBattouDemo", &mHRPc::mResumeBattouDemo)
+			.addFunction("mCallDemoNoutou", &mHRPc::mCallDemoNoutou)
+			.addFunction("mCancelBattouNoutouDemo", &mHRPc::mCancelBattouNoutouDemo)
+			.addFunction("mRestorePlayMotionFromDatPtr", &mHRPc::mRestorePlayMotionFromDatPtr)
+			.addFunction("mGetAtkScl", &mHRPc::mGetAtkScl)
+			.addFunction("GetSwingCount", &mHRPc::GetSwingCount)
+			.addFunction("ClearSwingCount", &mHRPc::ClearSwingCount)
+			.addFunction("mCheckLockOnEnemy", &mHRPc::mCheckLockOnEnemy)
+			.addFunction("mCheckThrowAttack", &mHRPc::mCheckThrowAttack)
+			.addFunction("mCheckGetAllWeapon", &mHRPc::mCheckGetAllWeapon)
+			.addFunction("mCheckGuardSlide", &mHRPc::mCheckGuardSlide)
+			.addFunction("mCheckTsubaAttack", &mHRPc::mCheckTsubaAttack)
+			.addFunction("mCheckSuccessInputFinish", &mHRPc::mCheckSuccessInputFinish)
+			.addFunction("mSetInputMode", &mHRPc::mSetInputMode)
+			.addFunction("mCheckInputMove", &mHRPc::mCheckInputMove)
+			.addFunction("mSetEquipMk3", &mHRPc::mSetEquipMk3)
+			.addFunction("mCheckTrvReadEnd", &mHRPc::mCheckTrvReadEnd)
+			.addFunction("mSetWepBattou", &mHRPc::mSetWepBattou)
+			.addFunction("mSetWepNoutou", &mHRPc::mSetWepNoutou)
+			.addFunction("mGetPauseFlag", &mHRPc::mGetPauseFlag)
+			.addFunction("mCheckFinishAttackAndCantLockOn", &mHRPc::mCheckFinishAttackAndCantLockOn)
+			.addFunction("mTremStageChange", &mHRPc::mTremStageChange)
+			.addFunction("mSetEventWalk", &mHRPc::mSetEventWalk)
+			.addFunction("mInitStageChange", &mHRPc::mInitStageChange)
+			.addFunction("mClearGameFlag", &mHRPc::mClearGameFlag)
 		.endClass();
 	}
 #endif
@@ -15820,7 +14811,6 @@ static_assert(sizeof(mHRPc) == 8112, "expected class mHRPc to be size 8112");
 class ghmAABB
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <struct Vec mCenter, offset 0x0>
@@ -15847,7 +14837,6 @@ static_assert(sizeof(ghmAABB) == 24, "expected class ghmAABB to be size 24");
 class ghmGcOctTreeNode
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <void* (* field_0)[0x1], offset 0x0>
@@ -15917,7 +14906,6 @@ static_assert(sizeof(ghmGcOctTreeNode) == 108, "expected class ghmGcOctTreeNode 
 class ghmGcOctTree
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <void* (* field_0)[0x1], offset 0x0>
@@ -15950,11 +14938,12 @@ static_assert(sizeof(ghmGcOctTree) == 12, "expected class ghmGcOctTree to be siz
 class ghmGcCollObjHitResult
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[48];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -15970,7 +14959,6 @@ static_assert(sizeof(ghmGcCollObjHitResult) == 48, "expected class ghmGcCollObjH
 struct WGclMaterialSpec
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <char mIDStr[0x8], offset 0x0>
@@ -16007,20 +14995,13 @@ namespace EE
 	class SmartPtr
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <class EE::IFile* m_pObject, offset 0x0>
 		class IFile* m_pObject;
 
-#ifdef WITH_LUA
-		static void BindLua(luabridge::Namespace& NS)
-		{
-			NS = NS.beginClass<EE::SmartPtr<EE::IFile>>("EE::SmartPtr<EE::IFile>")
-				.addProperty("m_pObject", &EE::SmartPtr<EE::IFile>::m_pObject)
-			.endClass();
-		}
-#endif
+		// Exporting templated types to Lua currently not supported.
+		// static void BindLua(luabridge::Namespace& NS)
 	};
 }
 static_assert(sizeof(EE::SmartPtr<EE::IFile>::m_pObject) == 4, "expected m_pObject to be size 4");
@@ -16030,7 +15011,6 @@ static_assert(sizeof(EE::SmartPtr<EE::IFile>) == 4, "expected class EE::SmartPtr
 struct DVDCommandBlock
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <DVDCommandBlock* next, offset 0x0>
@@ -16111,7 +15091,6 @@ static_assert(sizeof(DVDCommandBlock) == 48, "expected struct DVDCommandBlock to
 struct DVDFileInfo
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <struct DVDCommandBlock cb, offset 0x0>
@@ -16154,8 +15133,6 @@ static_assert(sizeof(DVDFileInfo) == 64, "expected struct DVDFileInfo to be size
 class ghmGcFile
 {
 public:
-	/// 2 namespace types: enum ghmGcFile::ghmGcFileState, struct ghmGcFile::ghmGcFileInfo
-
 	// enum ghmGcFile::ghmGcFileState
 	enum ghmGcFileState : uint32_t
 	{
@@ -16185,7 +15162,6 @@ public:
 	struct ghmGcFileInfo
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <struct DVDFileInfo mFileInfo, offset 0x0>
@@ -16213,8 +15189,10 @@ public:
 		uint8_t mDivRead;
 
 		// <Filler, offset 0x59>
+	private:
 		char _Filler8[3];
 
+	public:
 		// <int32_t mTotalReadLength, offset 0x5c>
 		int32_t mTotalReadLength;
 
@@ -16236,7 +15214,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<ghmGcFile::ghmGcFileInfo>("ghmGcFile::ghmGcFileInfo")
+			NS = NS.beginClass<ghmGcFile::ghmGcFileInfo>("ghmGcFile_ghmGcFileInfo")
 				.addProperty("mFileInfo", &ghmGcFile::ghmGcFileInfo::mFileInfo)
 				.addProperty("mOffset", &ghmGcFile::ghmGcFileInfo::mOffset)
 				.addProperty("mLength", &ghmGcFile::ghmGcFileInfo::mLength)
@@ -16273,7 +15251,6 @@ public:
 	static_assert(sizeof(ghmGcFile::ghmGcFileInfo::mReadCount) == 4, "expected mReadCount to be size 4");
 	static_assert(sizeof(ghmGcFile::ghmGcFileInfo::mDivNum) == 4, "expected mDivNum to be size 4");
 	static_assert(sizeof(ghmGcFile::ghmGcFileInfo) == 116, "expected struct ghmGcFile::ghmGcFileInfo to be size 116");
-
 
 	/// Struct member variables
 
@@ -16312,7 +15289,6 @@ static_assert(sizeof(ghmGcFile) == 188, "expected class ghmGcFile to be size 188
 struct DVDDiskID
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <char gameName[0x4], offset 0x0>
@@ -16379,7 +15355,6 @@ namespace EE
 	class RefObject
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <void* (* field_0)[0x1], offset 0x0>
@@ -16391,7 +15366,7 @@ namespace EE
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EE::RefObject>("EE::RefObject")
+			NS = NS.beginClass<EE::RefObject>("EE_RefObject")
 				// delegates are not supported in LuaBridge
 				//.addProperty("field_0", &EE::RefObject::field_0)
 				// volatile not supported in LuaBridge and needs a getter
@@ -16411,7 +15386,6 @@ namespace EE
 	class IFile : public EE::RefObject
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <class EE::RefObject field_0, offset 0x0>
@@ -16424,12 +15398,14 @@ namespace EE
 		uint8_t endianSwap;
 
 		// <Filler, offset 0x15>
+	private:
 		char _Filler[3];
+	public:
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EE::IFile>("EE::IFile")
+			NS = NS.deriveClass<EE::IFile, EE::RefObject>("EE_IFile")
 				.addProperty("name", &EE::IFile::name)
 				.addProperty("endianSwap", &EE::IFile::endianSwap)
 			.endClass();
@@ -16445,7 +15421,6 @@ static_assert(sizeof(EE::IFile) == 24, "expected class EE::IFile to be size 24")
 class ghmResGroup
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint32_t mMagicNo, offset 0x0>
@@ -16498,7 +15473,6 @@ static_assert(sizeof(ghmResGroup) == 36, "expected class ghmResGroup to be size 
 class ghmResStrTable
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint32_t mNum, offset 0x0>
@@ -16537,13 +15511,10 @@ static_assert(sizeof(ghmResStrTable) == 16, "expected class ghmResStrTable to be
 class TGanPlay
 {
 public:
-	/// 1 namespace types: struct TGanPlay::MAIN
-
 	// [Structure] struct TGanPlay::MAIN
 	struct MAIN
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <class TGan* pGan, offset 0x0>
@@ -16574,8 +15545,10 @@ public:
 		uint8_t PlayFlag;
 
 		// <Filler, offset 0x1b>
+	private:
 		char _Filler9[1];
 
+	public:
 		// <float PlayTick, offset 0x1c>
 		float PlayTick;
 
@@ -16585,7 +15558,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TGanPlay::MAIN>("TGanPlay::MAIN")
+			NS = NS.beginClass<TGanPlay::MAIN>("TGanPlay_MAIN")
 				.addProperty("pGan", &TGanPlay::MAIN::pGan)
 				.addProperty("pTopNode", &TGanPlay::MAIN::pTopNode)
 				.addProperty("pFAnm", &TGanPlay::MAIN::pFAnm)
@@ -16613,7 +15586,6 @@ public:
 	static_assert(sizeof(TGanPlay::MAIN::PlayTick) == 4, "expected PlayTick to be size 4");
 	static_assert(sizeof(TGanPlay::MAIN::Rate) == 4, "expected Rate to be size 4");
 	static_assert(sizeof(TGanPlay::MAIN) == 36, "expected struct TGanPlay::MAIN to be size 36");
-
 
 	/// Struct member variables
 
@@ -16652,13 +15624,10 @@ enum TGAN_STATE : uint32_t
 class TGan
 {
 public:
-	/// 1 namespace types: struct TGan::tagMAIN
-
 	// [Structure] struct TGan::tagMAIN
 	struct tagMAIN
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <uint8_t ProcessBlock, offset 0x0>
@@ -16668,8 +15637,10 @@ public:
 		uint8_t XYZLS16WKFlag;
 
 		// <Filler, offset 0x2>
+	private:
 		char _Filler2[2];
 
+	public:
 		// <enum TGAN_STATE State, offset 0x4>
 		enum TGAN_STATE State;
 
@@ -16682,7 +15653,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TGan::tagMAIN>("TGan::tagMAIN")
+			NS = NS.beginClass<TGan::tagMAIN>("TGan_tagMAIN")
 				.addProperty("ProcessBlock", &TGan::tagMAIN::ProcessBlock)
 				.addProperty("XYZLS16WKFlag", &TGan::tagMAIN::XYZLS16WKFlag)
 				.addProperty("State", &TGan::tagMAIN::State)
@@ -16698,7 +15669,6 @@ public:
 	static_assert(sizeof(TGan::tagMAIN::pSpec) == 4, "expected pSpec to be size 4");
 	static_assert(sizeof(TGan::tagMAIN::TimingSoundDataIndex) == 4, "expected TimingSoundDataIndex to be size 4");
 	static_assert(sizeof(TGan::tagMAIN) == 16, "expected struct TGan::tagMAIN to be size 16");
-
 
 	/// Struct member variables
 
@@ -16721,7 +15691,6 @@ static_assert(sizeof(TGan) == 16, "expected class TGan to be size 16");
 struct WGanSpec
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint32_t mID, offset 0x0>
@@ -16795,7 +15764,6 @@ static_assert(sizeof(WGanSpec) == 48, "expected struct WGanSpec to be size 48");
 struct WGanMaterialSpec
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <char mIDStr[0x8], offset 0x0>
@@ -16854,7 +15822,6 @@ static_assert(sizeof(WGanMaterialSpec) == 48, "expected struct WGanMaterialSpec 
 struct WGanFAnmSpec
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint16_t mFlag, offset 0x0>
@@ -16908,7 +15875,6 @@ static_assert(sizeof(WGanFAnmSpec) == 32, "expected struct WGanFAnmSpec to be si
 struct _WFAnmObjHeader
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint16_t mKeyListCount, offset 0x0>
@@ -16946,11 +15912,12 @@ static_assert(sizeof(_WFAnmObjHeader) == 12, "expected struct _WFAnmObjHeader to
 struct _WFAnmObjKeyListHeader
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[20];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -16966,7 +15933,6 @@ static_assert(sizeof(_WFAnmObjKeyListHeader) == 20, "expected struct _WFAnmObjKe
 struct WGanMaterialLayerSpec
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint32_t mFlag, offset 0x0>
@@ -17009,7 +15975,6 @@ static_assert(sizeof(WGanMaterialLayerSpec) == 32, "expected struct WGanMaterial
 struct WGanNodeSpec
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <char mIDStr[0x8], offset 0x0>
@@ -17073,21 +16038,20 @@ static_assert(sizeof(WGanNodeSpec) == 48, "expected struct WGanNodeSpec to be si
 class TGanPlayNode
 {
 public:
-	/// 1 namespace types: struct TGanPlayNode::MAIN
-
 	// [Structure] struct TGanPlayNode::MAIN
 	struct MAIN
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <uint8_t ValidAnm, offset 0x0>
 		uint8_t ValidAnm;
 
 		// <Filler, offset 0x1>
+	private:
 		char _Filler1[3];
 
+	public:
 		// <class TFAnm* pAnm, offset 0x4>
 		class TFAnm* pAnm;
 
@@ -17112,7 +16076,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TGanPlayNode::MAIN>("TGanPlayNode::MAIN")
+			NS = NS.beginClass<TGanPlayNode::MAIN>("TGanPlayNode_MAIN")
 				.addProperty("ValidAnm", &TGanPlayNode::MAIN::ValidAnm)
 				.addProperty("pAnm", &TGanPlayNode::MAIN::pAnm)
 				.addProperty("pSpec", &TGanPlayNode::MAIN::pSpec)
@@ -17135,7 +16099,6 @@ public:
 	static_assert(sizeof(TGanPlayNode::MAIN::pParent) == 4, "expected pParent to be size 4");
 	static_assert(sizeof(TGanPlayNode::MAIN) == 32, "expected struct TGanPlayNode::MAIN to be size 32");
 
-
 	/// Struct member variables
 
 	// <struct TGanPlayNode::MAIN dat, offset 0x0>
@@ -17157,13 +16120,10 @@ static_assert(sizeof(TGanPlayNode) == 32, "expected class TGanPlayNode to be siz
 class TFAnm
 {
 public:
-	/// 1 namespace types: struct TFAnm::tagMAIN
-
 	// [Structure] struct TFAnm::tagMAIN
 	struct tagMAIN
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <class TGmfNode* pGmfNode, offset 0x0>
@@ -17199,7 +16159,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TFAnm::tagMAIN>("TFAnm::tagMAIN")
+			NS = NS.beginClass<TFAnm::tagMAIN>("TFAnm_tagMAIN")
 				.addProperty("pGmfNode", &TFAnm::tagMAIN::pGmfNode)
 				.addProperty("pAnmObj3", &TFAnm::tagMAIN::pAnmObj3)
 				.addProperty("AnmObj3Num", &TFAnm::tagMAIN::AnmObj3Num)
@@ -17226,7 +16186,6 @@ public:
 	static_assert(sizeof(TFAnm::tagMAIN::EndTick) == 4, "expected EndTick to be size 4");
 	static_assert(sizeof(TFAnm::tagMAIN) == 40, "expected struct TFAnm::tagMAIN to be size 40");
 
-
 	/// Struct member variables
 
 	// <struct TFAnm::tagMAIN dat, offset 0x0>
@@ -17248,28 +16207,26 @@ static_assert(sizeof(TFAnm) == 40, "expected class TFAnm to be size 40");
 class TGmfNode
 {
 public:
-	/// 1 namespace types: struct TGmfNode::tagMAIN
-
 	// [Structure] struct TGmfNode::tagMAIN
 	struct tagMAIN
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <Filler, offset 0x0>
+	private:
 		char _Filler[244];
+	public:
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TGmfNode::tagMAIN>("TGmfNode::tagMAIN")
+			NS = NS.beginClass<TGmfNode::tagMAIN>("TGmfNode_tagMAIN")
 			.endClass();
 		}
 #endif
 	};
 	static_assert(sizeof(TGmfNode::tagMAIN) == 244, "expected struct TGmfNode::tagMAIN to be size 244");
-
 
 	/// Struct member variables
 
@@ -17280,8 +16237,10 @@ public:
 	uint8_t m_bIsAlwaysSetupMatrix;
 
 	// <Filler, offset 0xf5>
+private:
 	char _Filler2[3];
 
+public:
 	// <int32_t m_nPolyNum, offset 0xf8>
 	int32_t m_nPolyNum;
 
@@ -17342,7 +16301,6 @@ static_assert(sizeof(TGmfNode) == 368, "expected class TGmfNode to be size 368")
 class CViewClipObjSphere
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class tiVector m_inPosi, offset 0x0>
@@ -17352,7 +16310,9 @@ public:
 	float m_fRadius;
 
 	// <Filler, offset 0x14>
+private:
 	char _Filler[12];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -17372,11 +16332,12 @@ static_assert(sizeof(CViewClipObjSphere) == 32, "expected class CViewClipObjSphe
 class CViewClipObjBox
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[64];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -17436,7 +16397,6 @@ enum GHMR_PROJECT : uint32_t
 class rPrimUnific
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class rPrimBase* m_pListTop, offset 0x0>
@@ -17493,15 +16453,16 @@ static_assert(sizeof(rPrimUnific) == 32, "expected class rPrimUnific to be size 
 class EfBase
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint8_t mBitFlag, offset 0x0>
 	uint8_t mBitFlag;
 
 	// <Filler, offset 0x1>
+private:
 	char _Filler1[3];
 
+public:
 	// <uint32_t mTick, offset 0x4>
 	uint32_t mTick;
 
@@ -17543,8 +16504,6 @@ static_assert(sizeof(EfBase) == 24, "expected class EfBase to be size 24");
 class EfDestortion : public HrTask
 {
 public:
-	/// 1 namespace types: enum EfDestortion::UV_Type
-
 	// enum EfDestortion::UV_Type
 	enum UV_Type : uint32_t
 	{
@@ -17557,7 +16516,6 @@ public:
 		UV_Rand = 2
 
 	};
-
 
 	/// Struct member variables
 
@@ -17598,15 +16556,17 @@ public:
 	uint8_t mbRenderWait;
 
 	// <Filler, offset 0xa9>
+private:
 	char _Filler12[3];
 
+public:
 	// <float mSinCnt[0x64], offset 0xac>
 	float mSinCnt[100];
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EfDestortion>("EfDestortion")
+		NS = NS.deriveClass<EfDestortion, HrTask>("EfDestortion")
 			.addProperty("field_50", &EfDestortion::field_50)
 			.addProperty("mpNode", &EfDestortion::mpNode)
 			// pointer to pointer is not supported in LuaBridge
@@ -17644,7 +16604,6 @@ static_assert(sizeof(EfDestortion) == 572, "expected class EfDestortion to be si
 struct TGMFMESH
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class TGmfNode* pNode, offset 0x0>
@@ -17868,7 +16827,6 @@ enum GHMR_TEXADDRESS : uint32_t
 struct GXTexObj
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class GXTexture* pTex, offset 0x0>
@@ -17890,7 +16848,6 @@ static_assert(sizeof(GXTexObj) == 4, "expected struct GXTexObj to be size 4");
 struct tagGHMR_TEX
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint8_t TMEFlag, offset 0x0>
@@ -17903,8 +16860,10 @@ public:
 	uint8_t ImageBufferFreeFlag;
 
 	// <Filler, offset 0x3>
+private:
 	char _Filler3[1];
 
+public:
 	// <void* FileImage, offset 0x4>
 	void* FileImage;
 
@@ -17977,7 +16936,6 @@ static_assert(sizeof(tagGHMR_TEX) == 40, "expected struct tagGHMR_TEX to be size
 union GXSamplerStuff
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint32_t wrapS, offset 0x0>
@@ -17999,13 +16957,10 @@ static_assert(sizeof(GXSamplerStuff) == 4, "expected union GXSamplerStuff to be 
 class GXTexture : public EE::RefObject
 {
 public:
-	/// 1 namespace types: struct GXTexture::GXSpecs
-
 	// [Structure] struct GXTexture::GXSpecs
 	struct GXSpecs
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <uint16_t width, offset 0x0>
@@ -18033,15 +16988,17 @@ public:
 		uint8_t do_edge_lod;
 
 		// <Filler, offset 0xf>
+	private:
 		char _Filler8[1];
 
+	public:
 		// <uint32_t hash, offset 0x10>
 		uint32_t hash;
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<GXTexture::GXSpecs>("GXTexture::GXSpecs")
+			NS = NS.beginClass<GXTexture::GXSpecs>("GXTexture_GXSpecs")
 				.addProperty("width", &GXTexture::GXSpecs::width)
 				.addProperty("height", &GXTexture::GXSpecs::height)
 				.addProperty("rtWidth", &GXTexture::GXSpecs::rtWidth)
@@ -18065,7 +17022,6 @@ public:
 	static_assert(sizeof(GXTexture::GXSpecs::do_edge_lod) == 1, "expected do_edge_lod to be size 1");
 	static_assert(sizeof(GXTexture::GXSpecs::hash) == 4, "expected hash to be size 4");
 	static_assert(sizeof(GXTexture::GXSpecs) == 20, "expected struct GXTexture::GXSpecs to be size 20");
-
 
 	/// Struct member variables
 
@@ -18108,7 +17064,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<GXTexture>("GXTexture")
+		NS = NS.deriveClass<GXTexture, EE::RefObject>("GXTexture")
 			.addProperty("marker", &GXTexture::marker)
 			.addProperty("sampler", &GXTexture::sampler)
 			.addProperty("textureView", &GXTexture::textureView)
@@ -18141,7 +17097,6 @@ static_assert(sizeof(GXTexture) == 84, "expected class GXTexture to be size 84")
 struct rAlphaAnime
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float Add, offset 0x0>
@@ -18168,7 +17123,6 @@ static_assert(sizeof(rAlphaAnime) == 8, "expected struct rAlphaAnime to be size 
 struct rAnimeCounter
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint16_t Count, offset 0x0>
@@ -18195,7 +17149,6 @@ static_assert(sizeof(rAnimeCounter) == 4, "expected struct rAnimeCounter to be s
 struct rST
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float s, offset 0x0>
@@ -18222,7 +17175,6 @@ static_assert(sizeof(rST) == 8, "expected struct rST to be size 8");
 struct rColor
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float r, offset 0x0>
@@ -18259,7 +17211,6 @@ static_assert(sizeof(rColor) == 16, "expected struct rColor to be size 16");
 class rPrimBase
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <void* (* field_0)[0x3], offset 0x0>
@@ -18297,7 +17248,6 @@ static_assert(sizeof(rPrimBase) == 16, "expected class rPrimBase to be size 16")
 class rTriangleList : public rPrimBase
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class rPrimBase field_0, offset 0x0>
@@ -18321,7 +17271,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<rTriangleList>("rTriangleList")
+		NS = NS.deriveClass<rTriangleList, rPrimBase>("rTriangleList")
 			.addProperty("m_Position", &rTriangleList::m_Position)
 			.addProperty("m_Color", &rTriangleList::m_Color)
 			.addProperty("m_ST", &rTriangleList::m_ST)
@@ -18342,13 +17292,10 @@ static_assert(sizeof(rTriangleList) == 64, "expected class rTriangleList to be s
 class CVertexAnimation
 {
 public:
-	/// 1 namespace types: class CVertexAnimation::CVertex
-
 	// [Structure] class CVertexAnimation::CVertex
 	class CVertex
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <int32_t m_nPosiIndex, offset 0x0>
@@ -18363,7 +17310,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<CVertexAnimation::CVertex>("CVertexAnimation::CVertex")
+			NS = NS.beginClass<CVertexAnimation::CVertex>("CVertexAnimation_CVertex")
 				.addProperty("m_nPosiIndex", &CVertexAnimation::CVertex::m_nPosiIndex)
 				.addProperty("m_fCenter", &CVertexAnimation::CVertex::m_fCenter)
 				.addProperty("m_nSinIndex", &CVertexAnimation::CVertex::m_nSinIndex)
@@ -18375,7 +17322,6 @@ public:
 	static_assert(sizeof(CVertexAnimation::CVertex::m_fCenter) == 4, "expected m_fCenter to be size 4");
 	static_assert(sizeof(CVertexAnimation::CVertex::m_nSinIndex) == 4, "expected m_nSinIndex to be size 4");
 	static_assert(sizeof(CVertexAnimation::CVertex) == 12, "expected class CVertexAnimation::CVertex to be size 12");
-
 
 	/// Struct member variables
 
@@ -18420,28 +17366,26 @@ static_assert(sizeof(CVertexAnimation) == 32, "expected class CVertexAnimation t
 class TFAnmObjF32_3
 {
 public:
-	/// 1 namespace types: struct TFAnmObjF32_3::tagMAIN
-
 	// [Structure] struct TFAnmObjF32_3::tagMAIN
 	struct tagMAIN
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <Filler, offset 0x0>
+	private:
 		char _Filler[360];
+	public:
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TFAnmObjF32_3::tagMAIN>("TFAnmObjF32_3::tagMAIN")
+			NS = NS.beginClass<TFAnmObjF32_3::tagMAIN>("TFAnmObjF32_3_tagMAIN")
 			.endClass();
 		}
 #endif
 	};
 	static_assert(sizeof(TFAnmObjF32_3::tagMAIN) == 360, "expected struct TFAnmObjF32_3::tagMAIN to be size 360");
-
 
 	/// Struct member variables
 
@@ -18464,7 +17408,6 @@ static_assert(sizeof(TFAnmObjF32_3) == 360, "expected class TFAnmObjF32_3 to be 
 union _WFAnmVal
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float mFVal, offset 0x0>
@@ -18520,13 +17463,10 @@ enum TFANMOBJDATATYPE : uint32_t
 class TFAnmObj
 {
 public:
-	/// 2 namespace types: struct TFAnmObj::tagGETA, struct TFAnmObj::tagMAIN
-
 	// [Structure] struct TFAnmObj::tagGETA
 	struct tagGETA
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <float Value, offset 0x0>
@@ -18547,7 +17487,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TFAnmObj::tagGETA>("TFAnmObj::tagGETA")
+			NS = NS.beginClass<TFAnmObj::tagGETA>("TFAnmObj_tagGETA")
 				.addProperty("Value", &TFAnmObj::tagGETA::Value)
 				.addProperty("Wait", &TFAnmObj::tagGETA::Wait)
 				.addProperty("LockWait", &TFAnmObj::tagGETA::LockWait)
@@ -18568,7 +17508,6 @@ public:
 	struct tagMAIN
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <struct _WFAnmObjHeader* pAnmData, offset 0x0>
@@ -18652,7 +17591,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TFAnmObj::tagMAIN>("TFAnmObj::tagMAIN")
+			NS = NS.beginClass<TFAnmObj::tagMAIN>("TFAnmObj_tagMAIN")
 				.addProperty("pAnmData", &TFAnmObj::tagMAIN::pAnmData)
 				.addProperty("DataType", &TFAnmObj::tagMAIN::DataType)
 				// void type not supported in LuaBridge
@@ -18716,7 +17655,6 @@ public:
 	static_assert(sizeof(TFAnmObj::tagMAIN::pNowKey) == 4, "expected pNowKey to be size 4");
 	static_assert(sizeof(TFAnmObj::tagMAIN) == 140, "expected struct TFAnmObj::tagMAIN to be size 140");
 
-
 	/// Struct member variables
 
 	// <struct TFAnmObj::tagMAIN dat, offset 0x0>
@@ -18740,7 +17678,6 @@ namespace mot
 	class IBoneEffectPJ
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <void* (* field_0)[0x17], offset 0x0>
@@ -18749,7 +17686,7 @@ namespace mot
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<mot::IBoneEffectPJ>("mot::IBoneEffectPJ")
+			NS = NS.beginClass<mot::IBoneEffectPJ>("mot_IBoneEffectPJ")
 				// delegates are not supported in LuaBridge
 				//.addProperty("field_0", &mot::IBoneEffectPJ::field_0)
 			.endClass();
@@ -18816,8 +17753,6 @@ enum ECameraVibAnimeType : uint32_t
 class CCameraVibTiming
 {
 public:
-	/// 1 namespace types: class CCameraVibTiming* CCameraVibTiming::getTable(int32_t* arg1, class mHRChara& arg2)
-
 	// [Function] class CCameraVibTiming* CCameraVibTiming::getTable(int32_t* arg1, class mHRChara& arg2) [?getTable@CCameraVibTiming@@SAPBV1@PAHABVmHRChara@@@Z]
 	class CCameraVibTiming* getTable(int32_t* arg1, class mHRChara& arg2)
 	{
@@ -18825,7 +17760,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x567740);
 		return mFunc(arg1, arg2);
 	}
-
 	/// Struct member variables
 
 	// <char const* m_sMotName, offset 0x0>
@@ -18848,7 +17782,7 @@ public:
 			.addProperty("m_fMotFrame", &CCameraVibTiming::m_fMotFrame)
 			.addProperty("m_eAnimeType", &CCameraVibTiming::m_eAnimeType)
 			.addProperty("m_fAnimeScale", &CCameraVibTiming::m_fAnimeScale)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class CCameraVibTiming*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("getTable", &CCameraVibTiming::getTable)
 		.endClass();
 	}
@@ -18883,7 +17817,6 @@ enum eENVOICE : uint32_t
 struct HRCHARAVOICE
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <char const* pFileName, offset 0x0>
@@ -18917,7 +17850,6 @@ namespace gameUtil
 	class CPlane
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <class tiVector m_inABCD, offset 0x0>
@@ -18926,7 +17858,7 @@ namespace gameUtil
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<gameUtil::CPlane>("gameUtil::CPlane")
+			NS = NS.beginClass<gameUtil::CPlane>("gameUtil_CPlane")
 				.addProperty("m_inABCD", &gameUtil::CPlane::m_inABCD)
 			.endClass();
 		}
@@ -18940,7 +17872,6 @@ static_assert(sizeof(gameUtil::CPlane) == 16, "expected class gameUtil::CPlane t
 class CStickShadow
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class gameUtil::CPlane m_inProjPlane, offset 0x0>
@@ -18965,7 +17896,9 @@ public:
 	float m_fAlphaMinDist;
 
 	// <Filler, offset 0x28>
+private:
 	char _Filler[8];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -18995,8 +17928,6 @@ static_assert(sizeof(CStickShadow) == 48, "expected class CStickShadow to be siz
 class CharController
 {
 public:
-	/// 1 namespace types: enum CharController::eChrCntrlMoveMode
-
 	// enum CharController::eChrCntrlMoveMode
 	enum eChrCntrlMoveMode : uint32_t
 	{
@@ -19025,7 +17956,6 @@ public:
 
 	};
 
-
 	/// Struct member variables
 
 	// <uint8_t m_boNowUnderControl, offset 0x0>
@@ -19035,8 +17965,10 @@ public:
 	uint8_t m_boEnableControl;
 
 	// <Filler, offset 0x2>
+private:
 	char _Filler2[2];
 
+public:
 	// <class mHRChara* m_pOwnerChar, offset 0x4>
 	class mHRChara* m_pOwnerChar;
 
@@ -19053,8 +17985,10 @@ public:
 	uint8_t m_boLockon;
 
 	// <Filler, offset 0x2f>
+private:
 	char _Filler7[1];
 
+public:
 	// <struct Vec m_PcDirection, offset 0x30>
 	struct Vec m_PcDirection;
 
@@ -19108,7 +18042,6 @@ static_assert(sizeof(CharController) == 92, "expected class CharController to be
 class CObjectShadow
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <struct tagGHMR_TEX m_inUpTex, offset 0x0>
@@ -19175,7 +18108,6 @@ static_assert(sizeof(CObjectShadow) == 112, "expected class CObjectShadow to be 
 struct stBikeEffect
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class EffectDriftMark* pDriftMark, offset 0x0>
@@ -19317,7 +18249,6 @@ enum enBikeProc : uint32_t
 struct stBike
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class TGmf* pGmf, offset 0x0>
@@ -19459,8 +18390,10 @@ public:
 	uint8_t alwaysCheckHitColl;
 
 	// <Filler, offset 0xf9>
+private:
 	char _Filler46[3];
 
+public:
 	// <int32_t hp, offset 0xfc>
 	int32_t hp;
 
@@ -19519,8 +18452,10 @@ public:
 	uint8_t useNitro;
 
 	// <Filler, offset 0x145>
+private:
 	char _Filler65[3];
 
+public:
 	// <float nitro, offset 0x148>
 	float nitro;
 
@@ -19585,8 +18520,10 @@ public:
 	uint8_t changeVolEngineIdle;
 
 	// <Filler, offset 0x172>
+private:
 	char _Filler86[2];
 
+public:
 	// <int32_t startWait, offset 0x174>
 	int32_t startWait;
 
@@ -19642,8 +18579,10 @@ public:
 	uint8_t crashFlag;
 
 	// <Filler, offset 0x44a>
+private:
 	char _Filler104[2];
 
+public:
 	// <int32_t damageCount, offset 0x44c>
 	int32_t damageCount;
 
@@ -19660,8 +18599,10 @@ public:
 	uint8_t muteSe;
 
 	// <Filler, offset 0x4c9>
+private:
 	char _Filler109[3];
 
+public:
 	// <int32_t seLoadNoiseNo, offset 0x4cc>
 	int32_t seLoadNoiseNo;
 
@@ -19916,7 +18857,6 @@ static_assert(sizeof(stBike) == 1244, "expected struct stBike to be size 1244");
 class mHRBike
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <struct stBike mBike, offset 0x0>
@@ -19929,8 +18869,10 @@ public:
 	uint8_t mhitStage;
 
 	// <Filler, offset 0x505>
+private:
 	char _Filler3[3];
 
+public:
 	// <float mWryRate, offset 0x508>
 	float mWryRate;
 
@@ -20016,7 +18958,6 @@ static_assert(sizeof(mHRBike) == 1452, "expected class mHRBike to be size 1452")
 class EventAreaCircle : public ghmListObj
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ghmListObj field_0, offset 0x0>
@@ -20071,8 +19012,10 @@ public:
 	char m_StageName[16];
 
 	// <Filler, offset 0x71>
+private:
 	char _Filler17[3];
 
+public:
 	// <uint32_t m_HrScriptHandle, offset 0x74>
 	uint32_t m_HrScriptHandle;
 
@@ -20080,8 +19023,10 @@ public:
 	uint8_t m_PlayBossCornMotionFlag;
 
 	// <Filler, offset 0x79>
+private:
 	char _Filler19[3];
 
+public:
 	// <class TGmf* m_pCornGmf, offset 0x7c>
 	class TGmf* m_pCornGmf;
 
@@ -20101,8 +19046,10 @@ public:
 	uint8_t m_PlaySe[2];
 
 	// <Filler, offset 0x92>
+private:
 	char _Filler25[2];
 
+public:
 	// <int32_t m_MakerType, offset 0x94>
 	int32_t m_MakerType;
 
@@ -20125,8 +19072,10 @@ public:
 	uint8_t m_Visible;
 
 	// <Filler, offset 0xaa>
+private:
 	char _Filler32[2];
 
+public:
 	// <int32_t m_SleepMessage, offset 0xac>
 	int32_t m_SleepMessage;
 
@@ -20149,8 +19098,10 @@ public:
 	uint8_t mCameraPosSetType;
 
 	// <Filler, offset 0xc2>
+private:
 	char _Filler39[2];
 
+public:
 	// <struct Vec mCameraPos, offset 0xc4>
 	struct Vec mCameraPos;
 
@@ -20161,8 +19112,10 @@ public:
 	uint8_t mPcPosSetType;
 
 	// <Filler, offset 0xdd>
+private:
 	char _Filler42[3];
 
+public:
 	// <struct Vec mPcPos, offset 0xe0>
 	struct Vec mPcPos;
 
@@ -20191,8 +19144,10 @@ public:
 	uint8_t mDelete;
 
 	// <Filler, offset 0x109>
+private:
 	char _Filler51[3];
 
+public:
 	// <class EveCorn* mpEveCorn, offset 0x10c>
 	class EveCorn* mpEveCorn;
 
@@ -20200,8 +19155,10 @@ public:
 	uint8_t mEveCornVisible;
 
 	// <Filler, offset 0x111>
+private:
 	char _Filler53[3];
 
+public:
 	// <int32_t mEveCornRefreshCnt, offset 0x114>
 	int32_t mEveCornRefreshCnt;
 
@@ -20215,8 +19172,10 @@ public:
 	uint8_t mFlashSE;
 
 	// <Filler, offset 0x11b>
+private:
 	char _Filler57[1];
 
+public:
 	// <int32_t mFlashCounter, offset 0x11c>
 	int32_t mFlashCounter;
 
@@ -20224,8 +19183,10 @@ public:
 	uint8_t mBikeRide;
 
 	// <Filler, offset 0x121>
+private:
 	char _Filler59[3];
 
+public:
 	// <class EventAreaCamera* mpEventAreaCamera, offset 0x124>
 	class EventAreaCamera* mpEventAreaCamera;
 
@@ -20238,7 +19199,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EventAreaCircle>("EventAreaCircle")
+		NS = NS.deriveClass<EventAreaCircle, ghmListObj>("EventAreaCircle")
 			.addProperty("m_Kind", &EventAreaCircle::m_Kind)
 			.addProperty("m_Center", &EventAreaCircle::m_Center)
 			.addProperty("m_sRadius", &EventAreaCircle::m_sRadius)
@@ -20375,7 +19336,6 @@ static_assert(sizeof(EventAreaCircle) == 304, "expected class EventAreaCircle to
 class ghmScriptVariables
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <char* mpChar, offset 0x0>
@@ -20418,7 +19378,9 @@ public:
 	uint8_t mAdjustEnable;
 
 	// <Filler, offset 0x31>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -20465,7 +19427,6 @@ static_assert(sizeof(ghmScriptVariables) == 52, "expected class ghmScriptVariabl
 class ghmScript : public ghmListObj
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ghmListObj field_0, offset 0x0>
@@ -20505,8 +19466,10 @@ public:
 	uint8_t mconvendian;
 
 	// <Filler, offset 0x75>
+private:
 	char _Filler12[3];
 
+public:
 	// <uint32_t mFlag, offset 0x78>
 	uint32_t mFlag;
 
@@ -20519,7 +19482,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<ghmScript>("ghmScript")
+		NS = NS.deriveClass<ghmScript, ghmListObj>("ghmScript")
 			.addProperty("mpObjectType", &ghmScript::mpObjectType)
 			.addProperty("mObjectTypeNum", &ghmScript::mObjectTypeNum)
 			.addProperty("mpObject", &ghmScript::mpObject)
@@ -20560,7 +19523,6 @@ static_assert(sizeof(ghmScript) == 156, "expected class ghmScript to be size 156
 class ghmScriptFunc : public ghmListObj
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ghmListObj field_0, offset 0x0>
@@ -20573,8 +19535,10 @@ public:
 	uint16_t mReturnType;
 
 	// <Filler, offset 0x52>
+private:
 	char _Filler3[2];
 
+public:
 	// <class ghmScriptFuncArgBase* mpReturnValue, offset 0x54>
 	class ghmScriptFuncArgBase* mpReturnValue;
 
@@ -20585,8 +19549,10 @@ public:
 	uint16_t mArgs[18];
 
 	// <Filler, offset 0x7e>
+private:
 	char _Filler6[2];
 
+public:
 	// <class ghmScriptFuncArgBase* mpArgs[0x12], offset 0x80>
 	class ghmScriptFuncArgBase* mpArgs[18];
 
@@ -20599,7 +19565,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<ghmScriptFunc>("ghmScriptFunc")
+		NS = NS.deriveClass<ghmScriptFunc, ghmListObj>("ghmScriptFunc")
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("mName", &ghmScriptFunc::mName)
 			.addProperty("mReturnType", &ghmScriptFunc::mReturnType)
@@ -20629,8 +19595,6 @@ static_assert(sizeof(ghmScriptFunc) == 208, "expected class ghmScriptFunc to be 
 class HrScriptFunc : public ghmScriptFunc
 {
 public:
-	/// 1 namespace types: enum HrScriptFunc::SCRIPTFUNC_STS
-
 	// enum HrScriptFunc::SCRIPTFUNC_STS
 	enum SCRIPTFUNC_STS : uint32_t
 	{
@@ -20650,7 +19614,6 @@ public:
 
 	};
 
-
 	/// Struct member variables
 
 	// <class ghmScriptFunc field_0, offset 0x0>
@@ -20663,8 +19626,10 @@ public:
 	uint8_t m_WaitVsync;
 
 	// <Filler, offset 0xd5>
+private:
 	char _Filler3[3];
 
+public:
 	// <void* m_pScrData, offset 0xd8>
 	void* m_pScrData;
 
@@ -20677,7 +19642,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<HrScriptFunc>("HrScriptFunc")
+		NS = NS.deriveClass<HrScriptFunc, ghmScriptFunc>("HrScriptFunc")
 			.addProperty("m_Status", &HrScriptFunc::m_Status)
 			.addProperty("m_WaitVsync", &HrScriptFunc::m_WaitVsync)
 			// void type not supported in LuaBridge
@@ -20700,7 +19665,6 @@ static_assert(sizeof(HrScriptFunc) == 392, "expected class HrScriptFunc to be si
 class ghmScriptBase
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 #ifdef WITH_LUA
@@ -20717,7 +19681,6 @@ static_assert(sizeof(ghmScriptBase) == 1, "expected class ghmScriptBase to be si
 class CCameraCollision
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 #ifdef WITH_LUA
@@ -20734,8 +19697,6 @@ static_assert(sizeof(CCameraCollision) == 1, "expected class CCameraCollision to
 class FkPjLib
 {
 public:
-	/// 4 namespace types: float FkPjLib::GetCharaNowPlayMotionTick(class mHRChara* arg1), uint8_t FkPjLib::CheckValidCharaPtr(class mHRChara* arg1), uint8_t FkPjLib::CheckCharSurroundStageCollisionAndAdjustSafetyPos(class mHRChara* arg1, float arg2, float arg3), class mHRChara* FkPjLib::GetCharaPtrByNpcID(int32_t const arg1, uint8_t const arg2)
-
 	// [Function] float FkPjLib::GetCharaNowPlayMotionTick(class mHRChara* arg1) [?GetCharaNowPlayMotionTick@FkPjLib@@SAMPAVmHRChara@@@Z]
 	float GetCharaNowPlayMotionTick(class mHRChara* arg1)
 	{
@@ -20764,20 +19725,20 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x4bdf20);
 		return mFunc(arg1, arg2);
 	}
-
 	/// Struct member variables
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<FkPjLib>("FkPjLib")
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
 			//.addFunction("GetCharaNowPlayMotionTick", &FkPjLib::GetCharaNowPlayMotionTick)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
 			//.addFunction("CheckValidCharaPtr", &FkPjLib::CheckValidCharaPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
 			//.addFunction("CheckCharSurroundStageCollisionAndAdjustSafetyPos", &FkPjLib::CheckCharSurroundStageCollisionAndAdjustSafetyPos)
-			.addFunction("GetCharaPtrByNpcID", &FkPjLib::GetCharaPtrByNpcID)
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			//.addFunction("GetCharaPtrByNpcID", &FkPjLib::GetCharaPtrByNpcID)
 		.endClass();
 	}
 #endif
@@ -20788,7 +19749,6 @@ static_assert(sizeof(FkPjLib) == 1, "expected class FkPjLib to be size 1");
 class ghmScriptFuncArgBase
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <void* (* field_0)[0xe], offset 0x0>
@@ -20811,7 +19771,6 @@ static_assert(sizeof(ghmScriptFuncArgBase) == 4, "expected class ghmScriptFuncAr
 struct ghmScriptObjectType
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint8_t (* mpMethod)(class ghmScript*, uint16_t, uint16_t), offset 0x0>
@@ -20864,7 +19823,6 @@ static_assert(sizeof(ghmScriptObjectType) == 28, "expected struct ghmScriptObjec
 class ghmScriptObject
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ghmScriptVariables* mpProperty, offset 0x0>
@@ -20891,7 +19849,6 @@ static_assert(sizeof(ghmScriptObject) == 8, "expected class ghmScriptObject to b
 class ghmString
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <void* (* field_0)[0x1], offset 0x0>
@@ -20930,7 +19887,6 @@ static_assert(sizeof(ghmString) == 16, "expected class ghmString to be size 16")
 struct ghmScrHeader
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint8_t mMagicNoStr[0x4], offset 0x0>
@@ -21002,7 +19958,6 @@ static_assert(sizeof(ghmScrHeader) == 32, "expected struct ghmScrHeader to be si
 struct ghmScrFuncHeader
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <char const* mpName, offset 0x0>
@@ -21062,7 +20017,6 @@ static_assert(sizeof(ghmScrFuncHeader) == 32, "expected struct ghmScrFuncHeader 
 class ghmScriptProgFunc : public ghmListObj
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ghmListObj field_0, offset 0x0>
@@ -21080,7 +20034,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<ghmScriptProgFunc>("ghmScriptProgFunc")
+		NS = NS.deriveClass<ghmScriptProgFunc, ghmListObj>("ghmScriptProgFunc")
 			.addProperty("mFunc", &ghmScriptProgFunc::mFunc)
 			// delegates are not supported in LuaBridge
 			//.addProperty("mpCallback", &ghmScriptProgFunc::mpCallback)
@@ -21098,7 +20052,6 @@ static_assert(sizeof(ghmScriptProgFunc) == 232, "expected class ghmScriptProgFun
 struct ghmScriptStackData
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint16_t mData[0x5], offset 0x0>
@@ -21111,14 +20064,18 @@ public:
 	uint8_t mType;
 
 	// <Filler, offset 0xc>
+private:
 	char _Filler3[4];
 
+public:
 	// <float mFloat, offset 0x10>
 	float mFloat;
 
 	// <Filler, offset 0x14>
+private:
 	char _Filler4[4];
 
+public:
 	// <class ghmString mString, offset 0x18>
 	class ghmString mString;
 
@@ -21147,11 +20104,12 @@ static_assert(sizeof(ghmScriptStackData) == 40, "expected struct ghmScriptStackD
 class ghmScriptStack
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[744];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -21167,7 +20125,6 @@ static_assert(sizeof(ghmScriptStack) == 744, "expected class ghmScriptStack to b
 class ghmScriptContext : public ghmListObj
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ghmListObj field_0, offset 0x0>
@@ -21200,7 +20157,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<ghmScriptContext>("ghmScriptContext")
+		NS = NS.deriveClass<ghmScriptContext, ghmListObj>("ghmScriptContext")
 			.addProperty("mpContainer", &ghmScriptContext::mpContainer)
 			.addProperty("mpDataSource", &ghmScriptContext::mpDataSource)
 			.addProperty("mAutoVariables", &ghmScriptContext::mAutoVariables)
@@ -21228,15 +20185,16 @@ static_assert(sizeof(ghmScriptContext) == 872, "expected class ghmScriptContext 
 class EveCorn
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint8_t flag, offset 0x0>
 	uint8_t flag;
 
 	// <Filler, offset 0x1>
+private:
 	char _Filler1[3];
 
+public:
 	// <float mScale, offset 0x4>
 	float mScale;
 
@@ -21288,7 +20246,6 @@ static_assert(sizeof(EveCorn) == 40, "expected class EveCorn to be size 40");
 class EventAreaCamera : public ghmListObj
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ghmListObj field_0, offset 0x0>
@@ -21300,7 +20257,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EventAreaCamera>("EventAreaCamera")
+		NS = NS.deriveClass<EventAreaCamera, ghmListObj>("EventAreaCamera")
 			.addProperty("pd", &EventAreaCamera::pd)
 		.endClass();
 	}
@@ -21338,7 +20295,6 @@ enum HRCAMERA_MODE : uint32_t
 struct EVENTAREACAMERA_DATA
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <struct Vec mCenter, offset 0x0>
@@ -21375,8 +20331,10 @@ public:
 	char mStageName[16];
 
 	// <Filler, offset 0x52>
+private:
 	char _Filler11[2];
 
+public:
 	// <int32_t mStatus, offset 0x54>
 	int32_t mStatus;
 
@@ -21399,7 +20357,9 @@ public:
 	uint8_t mEventEndPcNoRefresh;
 
 	// <Filler, offset 0x6a>
+private:
 	char _Filler[2];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -21452,11 +20412,12 @@ static_assert(sizeof(EVENTAREACAMERA_DATA) == 108, "expected struct EVENTAREACAM
 class EffectDriftMark
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[388];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -21472,7 +20433,6 @@ static_assert(sizeof(EffectDriftMark) == 388, "expected class EffectDriftMark to
 class EffectKeepSmoke : public HrTask
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -21482,8 +20442,10 @@ public:
 	uint8_t m_Flag;
 
 	// <Filler, offset 0x51>
+private:
 	char _Filler2[3];
 
+public:
 	// <class rPrimUnific m_QuadUni, offset 0x54>
 	class rPrimUnific m_QuadUni;
 
@@ -21526,7 +20488,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EffectKeepSmoke>("EffectKeepSmoke")
+		NS = NS.deriveClass<EffectKeepSmoke, HrTask>("EffectKeepSmoke")
 			.addProperty("m_Flag", &EffectKeepSmoke::m_Flag)
 			.addProperty("m_QuadUni", &EffectKeepSmoke::m_QuadUni)
 			.addProperty("m_pQuadArray", &EffectKeepSmoke::m_pQuadArray)
@@ -21568,11 +20530,12 @@ static_assert(sizeof(EffectKeepSmoke) == 200, "expected class EffectKeepSmoke to
 class rQuad
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[172];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -21613,13 +20576,10 @@ enum GHMR_BLEND : uint32_t
 class EffectFixFire : public HrTask
 {
 public:
-	/// 1 namespace types: struct EffectFixFire::Object
-
 	// [Structure] struct EffectFixFire::Object
 	struct Object
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <EffectFixFire::Object* m_pNext, offset 0x0>
@@ -21632,8 +20592,10 @@ public:
 		uint8_t m_Fade;
 
 		// <Filler, offset 0x9>
+	private:
 		char _Filler3[3];
 
+	public:
 		// <struct Vec m_MoveVec, offset 0xc>
 		struct Vec m_MoveVec;
 
@@ -21655,7 +20617,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EffectFixFire::Object>("EffectFixFire::Object")
+			NS = NS.beginClass<EffectFixFire::Object>("EffectFixFire_Object")
 				.addProperty("m_pNext", &EffectFixFire::Object::m_pNext)
 				.addProperty("m_pPrev", &EffectFixFire::Object::m_pPrev)
 				.addProperty("m_Fade", &EffectFixFire::Object::m_Fade)
@@ -21680,7 +20642,6 @@ public:
 	static_assert(sizeof(EffectFixFire::Object::m_Alpha) == 4, "expected m_Alpha to be size 4");
 	static_assert(sizeof(EffectFixFire::Object) == 52, "expected struct EffectFixFire::Object to be size 52");
 
-
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -21690,8 +20651,10 @@ public:
 	uint8_t m_Flag;
 
 	// <Filler, offset 0x51>
+private:
 	char _Filler2[3];
 
+public:
 	// <struct EffectFixFire::Object* m_pObject, offset 0x54>
 	struct EffectFixFire::Object* m_pObject;
 
@@ -21755,7 +20718,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EffectFixFire>("EffectFixFire")
+		NS = NS.deriveClass<EffectFixFire, HrTask>("EffectFixFire")
 			.addProperty("m_Flag", &EffectFixFire::m_Flag)
 			.addProperty("m_pObject", &EffectFixFire::m_pObject)
 			.addProperty("m_ValidFirst", &EffectFixFire::m_ValidFirst)
@@ -21808,15 +20771,16 @@ static_assert(sizeof(EffectFixFire) == 416, "expected class EffectFixFire to be 
 class HrOverLap
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint8_t mAlloc, offset 0x0>
 	uint8_t mAlloc;
 
 	// <Filler, offset 0x1>
+private:
 	char _Filler1[3];
 
+public:
 	// <int32_t mStatus, offset 0x4>
 	int32_t mStatus;
 
@@ -21833,7 +20797,9 @@ public:
 	uint8_t mbVisible;
 
 	// <Filler, offset 0x39>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -21861,11 +20827,12 @@ static_assert(sizeof(HrOverLap) == 60, "expected class HrOverLap to be size 60")
 class HrScreenStatus
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[14448];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -21881,8 +20848,6 @@ static_assert(sizeof(HrScreenStatus) == 14448, "expected class HrScreenStatus to
 class HrEffectShutter : public HrTask
 {
 public:
-	/// 1 namespace types: enum HrEffectShutter::D_EFFECTSHUTTER_STAT
-
 	// enum HrEffectShutter::D_EFFECTSHUTTER_STAT
 	enum D_EFFECTSHUTTER_STAT : uint32_t
 	{
@@ -21905,7 +20870,6 @@ public:
 
 	};
 
-
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -21924,12 +20888,14 @@ public:
 	int16_t m_CloseTime;
 
 	// <Filler, offset 0x5a>
+private:
 	char _Filler[2];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<HrEffectShutter>("HrEffectShutter")
+		NS = NS.deriveClass<HrEffectShutter, HrTask>("HrEffectShutter")
 			.addProperty("m_Stat", &HrEffectShutter::m_Stat)
 			.addProperty("m_Counter", &HrEffectShutter::m_Counter)
 			.addProperty("m_OpenTime", &HrEffectShutter::m_OpenTime)
@@ -21948,13 +20914,10 @@ static_assert(sizeof(HrEffectShutter) == 92, "expected class HrEffectShutter to 
 class EfSmoke : public HrTask
 {
 public:
-	/// 1 namespace types: struct EfSmoke::SmokePrim
-
 	// [Structure] struct EfSmoke::SmokePrim
 	struct SmokePrim
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <struct Vec Pos, offset 0x0>
@@ -22005,7 +20968,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EfSmoke::SmokePrim>("EfSmoke::SmokePrim")
+			NS = NS.beginClass<EfSmoke::SmokePrim>("EfSmoke_SmokePrim")
 				.addProperty("Pos", &EfSmoke::SmokePrim::Pos)
 				.addProperty("Mov", &EfSmoke::SmokePrim::Mov)
 				.addProperty("Color", &EfSmoke::SmokePrim::Color)
@@ -22042,7 +21005,6 @@ public:
 	static_assert(sizeof(EfSmoke::SmokePrim::pPrev) == 4, "expected pPrev to be size 4");
 	static_assert(sizeof(EfSmoke::SmokePrim) == 76, "expected struct EfSmoke::SmokePrim to be size 76");
 
-
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -22072,7 +21034,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EfSmoke>("EfSmoke")
+		NS = NS.deriveClass<EfSmoke, HrTask>("EfSmoke")
 			.addProperty("field_50", &EfSmoke::field_50)
 			.addProperty("mpPrimAry", &EfSmoke::mpPrimAry)
 			.addProperty("mpValidList", &EfSmoke::mpValidList)
@@ -22097,15 +21059,16 @@ static_assert(sizeof(EfSmoke) == 128, "expected class EfSmoke to be size 128");
 struct HRSAVEDATA_DEBUNEKO
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint8_t boEndTraining[0x5], offset 0x0>
 	uint8_t boEndTraining[5];
 
 	// <Filler, offset 0x5>
+private:
 	char _Filler1[3];
 
+public:
 	// <int32_t CatWeight, offset 0x8>
 	int32_t CatWeight;
 
@@ -22133,7 +21096,6 @@ static_assert(sizeof(HRSAVEDATA_DEBUNEKO) == 16, "expected struct HRSAVEDATA_DEB
 class WGcl : public ghmListObj
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ghmListObj field_0, offset 0x0>
@@ -22166,7 +21128,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<WGcl>("WGcl")
+		NS = NS.deriveClass<WGcl, ghmListObj>("WGcl")
 			.addProperty("mState", &WGcl::mState)
 			.addProperty("mFlag", &WGcl::mFlag)
 			.addProperty("mpSpec", &WGcl::mpSpec)
@@ -22194,8 +21156,6 @@ static_assert(sizeof(WGcl) == 108, "expected class WGcl to be size 108");
 class commonObj : public mHRChara
 {
 public:
-	/// 2 namespace types: uint8_t __convention("thiscall") commonObj::mSetDamage(class commonObj* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10), uint8_t __convention("thiscall") commonObj::mSetDamage(class commonObj* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11)
-
 	// [Function] uint8_t __convention("thiscall") commonObj::mSetDamage(class commonObj* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@commonObj@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
 	{
@@ -22203,7 +21163,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x3f1e50);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
-
 	/// Struct member variables
 
 	// <class mHRChara field_0, offset 0x0>
@@ -22213,8 +21172,10 @@ public:
 	uint8_t mCallMotionProcFlag;
 
 	// <Filler, offset 0x581>
+private:
 	char _Filler2[3];
 
+public:
 	// <class WGcl mGcl, offset 0x584>
 	class WGcl mGcl;
 
@@ -22237,8 +21198,10 @@ public:
 	uint8_t m_bActVisibleFade;
 
 	// <Filler, offset 0x601>
+private:
 	char _Filler9[3];
 
+public:
 	// <float m_FadeDist, offset 0x604>
 	float m_FadeDist;
 
@@ -22252,8 +21215,10 @@ public:
 	uint8_t m_bIsNeedSetupMatrix;
 
 	// <Filler, offset 0x60e>
+private:
 	char _Filler13[2];
 
+public:
 	// <float m_fDestroyTimer, offset 0x610>
 	float m_fDestroyTimer;
 
@@ -22264,8 +21229,10 @@ public:
 	uint8_t m_bIsMiniDemoDamage;
 
 	// <Filler, offset 0x616>
+private:
 	char _Filler16[2];
 
+public:
 	// <float m_fDamagePower, offset 0x618>
 	float m_fDamagePower;
 
@@ -22279,8 +21246,10 @@ public:
 	uint8_t m_bIsSpreadBreak;
 
 	// <Filler, offset 0x625>
+private:
 	char _Filler20[3];
 
+public:
 	// <struct Vec m_inSpreadBreakSrcPosiOfst, offset 0x628>
 	struct Vec m_inSpreadBreakSrcPosiOfst;
 
@@ -22288,8 +21257,10 @@ public:
 	uint8_t m_bIsSetGroundColPlane;
 
 	// <Filler, offset 0x635>
+private:
 	char _Filler22[3];
 
+public:
 	// <class ghmPlane m_inGroundColPlane, offset 0x638>
 	class ghmPlane m_inGroundColPlane;
 
@@ -22297,12 +21268,14 @@ public:
 	uint8_t mbDistEraseDisable;
 
 	// <Filler, offset 0x649>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<commonObj>("commonObj")
+		NS = NS.deriveClass<commonObj, mHRChara>("commonObj")
 			.addProperty("mCallMotionProcFlag", &commonObj::mCallMotionProcFlag)
 			.addProperty("mGcl", &commonObj::mGcl)
 			.addProperty("m_bIsGclExist", &commonObj::m_bIsGclExist)
@@ -22326,9 +21299,9 @@ public:
 			.addProperty("m_bIsSetGroundColPlane", &commonObj::m_bIsSetGroundColPlane)
 			.addProperty("m_inGroundColPlane", &commonObj::m_inGroundColPlane)
 			.addProperty("mbDistEraseDisable", &commonObj::mbDistEraseDisable)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &commonObj::mSetDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &commonObj::mSetDamage)
 		.endClass();
 	}
@@ -22363,8 +21336,6 @@ static_assert(sizeof(commonObj) == 1612, "expected class commonObj to be size 16
 class CustomColliderObj : public commonObj
 {
 public:
-	/// 3 namespace types: uint8_t __convention("thiscall") CustomColliderObj::mSetDamage(class CustomColliderObj* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11), uint8_t __convention("thiscall") CustomColliderObj::mSetDamage(class CustomColliderObj* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10), uint8_t __convention("thiscall") CustomColliderObj::mHitCheck(class CustomColliderObj* const this, class mHRChara* arg2)
-
 	// [Function] uint8_t __convention("thiscall") CustomColliderObj::mSetDamage(class CustomColliderObj* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11) [?mSetDamage@CustomColliderObj@@UAE_NMHHHMHMMPAVmHRChara@@M@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11)
 	{
@@ -22379,7 +21350,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x5596a0);
 		return mFunc(this, arg2);
 	}
-
 	/// Struct member variables
 
 	// <class commonObj field_0, offset 0x0>
@@ -22391,13 +21361,13 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<CustomColliderObj>("CustomColliderObj")
+		NS = NS.deriveClass<CustomColliderObj, commonObj>("CustomColliderObj")
 			.addProperty("capsuleCollider", &CustomColliderObj::capsuleCollider)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &CustomColliderObj::mSetDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &CustomColliderObj::mSetDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mHitCheck", &CustomColliderObj::mHitCheck)
 		.endClass();
 	}
@@ -22410,7 +21380,6 @@ static_assert(sizeof(CustomColliderObj) == 1616, "expected class CustomColliderO
 struct WGclSpec
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint32_t mID, offset 0x0>
@@ -22473,7 +21442,6 @@ static_assert(sizeof(WGclSpec) == 48, "expected struct WGclSpec to be size 48");
 struct WGclNodeSpec
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <char mIDStr[0x8], offset 0x0>
@@ -22547,7 +21515,6 @@ static_assert(sizeof(WGclNodeSpec) == 80, "expected struct WGclNodeSpec to be si
 struct WGclNodeShapeMeshSpec
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <struct WGclNodeShapeMeshBspNodeSpec* mpBspTree, offset 0x0>
@@ -22594,7 +21561,6 @@ static_assert(sizeof(WGclNodeShapeMeshSpec) == 40, "expected struct WGclNodeShap
 struct WGclNodeShapeMeshBspNodeSpec
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <WGclNodeShapeMeshBspNodeSpec* mpFront, offset 0x0>
@@ -22646,11 +21612,12 @@ static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec) == 32, "expected struct WGclN
 struct WGclNodeShapeTriangleSpec
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[48];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -22666,7 +21633,6 @@ static_assert(sizeof(WGclNodeShapeTriangleSpec) == 48, "expected struct WGclNode
 class ghmGcColl
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <void* (* field_0)[0x1], offset 0x0>
@@ -22694,15 +21660,16 @@ static_assert(sizeof(ghmGcColl) == 16, "expected class ghmGcColl to be size 16")
 class WGclNode
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <void* (* field_0)[0x1], offset 0x0>
 	void* (* field_0)[0x1];
 
 	// <Filler, offset 0x4>
+private:
 	char _Filler1[4];
 
+public:
 	// <char mIDStr[0x8], offset 0x8>
 	char mIDStr[8];
 
@@ -22788,7 +21755,6 @@ static_assert(sizeof(WGclNode) == 168, "expected class WGclNode to be size 168")
 class CSpringInterpolate3D
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float m_fSpringCoe, offset 0x0>
@@ -22804,8 +21770,10 @@ public:
 	uint8_t m_bIsRadiInterp;
 
 	// <Filler, offset 0xd>
+private:
 	char _Filler4[3];
 
+public:
 	// <float m_fEpsilon, offset 0x10>
 	float m_fEpsilon;
 
@@ -22813,8 +21781,10 @@ public:
 	float m_fW;
 
 	// <Filler, offset 0x18>
+private:
 	char _Filler6[8];
 
+public:
 	// <class tiVector m_inValue, offset 0x20>
 	class tiVector m_inValue;
 
@@ -22846,7 +21816,6 @@ static_assert(sizeof(CSpringInterpolate3D) == 48, "expected class CSpringInterpo
 class CDoubleSpringInterpolate3D
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class CSpringInterpolate3D m_inHopeInterp, offset 0x0>
@@ -22875,8 +21844,6 @@ namespace mot
 	class CBoneEffectDamageData
 	{
 	public:
-		/// 3 namespace types: enum mot::CBoneEffectDamageData::EAttackType, enum mot::CBoneEffectDamageData::EAttackPart, void __convention("thiscall") mot::CBoneEffectDamageData::setup(class mot::CBoneEffectDamageData* const this, class mHRChara* arg2)
-
 		// enum mot::CBoneEffectDamageData::EAttackType
 		enum EAttackType : uint32_t
 		{
@@ -22943,7 +21910,6 @@ namespace mot
 			_Func mFunc = (_Func)(GameModule + 0xabfa0);
 			return mFunc(this, arg2);
 		}
-
 		/// Struct member variables
 
 		// <uint8_t m_bIsHit, offset 0x0>
@@ -22956,8 +21922,10 @@ namespace mot
 		uint8_t m_bIsKeepMyAttack;
 
 		// <Filler, offset 0x3>
+	private:
 		char _Filler3[1];
 
+	public:
 		// <class mHRChara* m_pAttackChara, offset 0x4>
 		class mHRChara* m_pAttackChara;
 
@@ -22970,14 +21938,14 @@ namespace mot
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<mot::CBoneEffectDamageData>("mot::CBoneEffectDamageData")
+			NS = NS.beginClass<mot::CBoneEffectDamageData>("mot_CBoneEffectDamageData")
 				.addProperty("m_bIsHit", &mot::CBoneEffectDamageData::m_bIsHit)
 				.addProperty("m_bIsSuccessDefense", &mot::CBoneEffectDamageData::m_bIsSuccessDefense)
 				.addProperty("m_bIsKeepMyAttack", &mot::CBoneEffectDamageData::m_bIsKeepMyAttack)
 				.addProperty("m_pAttackChara", &mot::CBoneEffectDamageData::m_pAttackChara)
 				.addProperty("m_eAttackType", &mot::CBoneEffectDamageData::m_eAttackType)
 				.addProperty("m_eAttackPart", &mot::CBoneEffectDamageData::m_eAttackPart)
-				// Functions with pointers to native types not supported in LuaBridge.
+				// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 				//.addFunction("setup", &mot::CBoneEffectDamageData::setup)
 			.endClass();
 		}
@@ -22996,7 +21964,6 @@ static_assert(sizeof(mot::CBoneEffectDamageData) == 16, "expected class mot::CBo
 class CGameDataLink
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class CGameData* m_pData, offset 0x0>
@@ -23030,7 +21997,6 @@ namespace mot
 	class CBoneEffectManager
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <class CGameDataLink m_inDataLink, offset 0x0>
@@ -23048,7 +22014,7 @@ namespace mot
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<mot::CBoneEffectManager>("mot::CBoneEffectManager")
+			NS = NS.beginClass<mot::CBoneEffectManager>("mot_CBoneEffectManager")
 				.addProperty("m_inDataLink", &mot::CBoneEffectManager::m_inDataLink)
 				.addProperty("m_apBoneEffect", &mot::CBoneEffectManager::m_apBoneEffect)
 				.addProperty("m_pIK", &mot::CBoneEffectManager::m_pIK)
@@ -23070,8 +22036,6 @@ namespace mot
 	class CBoneEffectPJ : public mot::IBoneEffectPJ
 	{
 	public:
-		/// 1 namespace types: enum mot::CBoneEffectDamageData::EAttackType __convention("thiscall") mot::CBoneEffectPJ::getAttackType(class mot::CBoneEffectPJ* const this, class mHRChara* arg2)
-
 		// [Function] enum mot::CBoneEffectDamageData::EAttackType __convention("thiscall") mot::CBoneEffectPJ::getAttackType(class mot::CBoneEffectPJ* const this, class mHRChara* arg2) [?getAttackType@CBoneEffectPJ@mot@@QAE?AW4EAttackType@CBoneEffectDamageData@2@PBVmHRChara@@@Z]
 		enum mot::CBoneEffectDamageData::EAttackType getAttackType(class mHRChara* arg2)
 		{
@@ -23079,7 +22043,6 @@ namespace mot
 			_Func mFunc = (_Func)(GameModule + 0xa77c0);
 			return mFunc(this, arg2);
 		}
-
 		/// Struct member variables
 
 		// <class mot::IBoneEffectPJ field_0, offset 0x0>
@@ -23095,8 +22058,10 @@ namespace mot
 		uint8_t m_bActedWarp;
 
 		// <Filler, offset 0x26>
+	private:
 		char _Filler4[10];
 
+	public:
 		// <class tiMatrix m_inPreWorldMat, offset 0x30>
 		class tiMatrix m_inPreWorldMat;
 
@@ -23116,15 +22081,17 @@ namespace mot
 		uint8_t m_bIsNeedMoveInterp;
 
 		// <Filler, offset 0x93>
+	private:
 		char _Filler10[13];
 
+	public:
 		// <class CDoubleSpringInterpolate3D m_inInterpMove, offset 0xa0>
 		class CDoubleSpringInterpolate3D m_inInterpMove;
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<mot::CBoneEffectPJ>("mot::CBoneEffectPJ")
+			NS = NS.deriveClass<mot::CBoneEffectPJ, mot::IBoneEffectPJ>("mot_CBoneEffectPJ")
 				.addProperty("m_inManager", &mot::CBoneEffectPJ::m_inManager)
 				.addProperty("m_bIsYuremonoExist", &mot::CBoneEffectPJ::m_bIsYuremonoExist)
 				.addProperty("m_bActedWarp", &mot::CBoneEffectPJ::m_bActedWarp)
@@ -23135,7 +22102,7 @@ namespace mot
 				.addProperty("m_bIsAttackDirSide", &mot::CBoneEffectPJ::m_bIsAttackDirSide)
 				.addProperty("m_bIsNeedMoveInterp", &mot::CBoneEffectPJ::m_bIsNeedMoveInterp)
 				.addProperty("m_inInterpMove", &mot::CBoneEffectPJ::m_inInterpMove)
-				// Functions with pointers to native types not supported in LuaBridge.
+				// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 				//.addFunction("getAttackType", &mot::CBoneEffectPJ::getAttackType)
 			.endClass();
 		}
@@ -23158,7 +22125,6 @@ static_assert(sizeof(mot::CBoneEffectPJ) == 256, "expected class mot::CBoneEffec
 class CGameData
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <int32_t m_nID, offset 0x0>
@@ -23200,7 +22166,6 @@ static_assert(sizeof(CGameData) == 20, "expected class CGameData to be size 20")
 class CPackFileDataElement
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <char const* m_sName, offset 0x0>
@@ -23216,7 +22181,9 @@ public:
 	uint8_t m_endianSwapped;
 
 	// <Filler, offset 0xd>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -23241,7 +22208,6 @@ static_assert(sizeof(CPackFileDataElement) == 16, "expected class CPackFileDataE
 class CFileData
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <int32_t m_nSize, offset 0x0>
@@ -23274,7 +22240,6 @@ static_assert(sizeof(CFileData) == 20, "expected class CFileData to be size 20")
 class CPackFileData
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class CFileData m_inPackData, offset 0x0>
@@ -23301,7 +22266,6 @@ static_assert(sizeof(CPackFileData) == 32, "expected class CPackFileData to be s
 class CGameDataManager
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class CPackFileData m_inGDPackData, offset 0x0>
@@ -23330,7 +22294,6 @@ namespace mot
 	class IBoneEffect
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <void* (* field_0)[0xa], offset 0x0>
@@ -23339,7 +22302,7 @@ namespace mot
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<mot::IBoneEffect>("mot::IBoneEffect")
+			NS = NS.beginClass<mot::IBoneEffect>("mot_IBoneEffect")
 				// delegates are not supported in LuaBridge
 				//.addProperty("field_0", &mot::IBoneEffect::field_0)
 			.endClass();
@@ -23356,7 +22319,6 @@ namespace mot
 	class CIKManager
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <class mot::CBoneEffectManager* m_pBoneEffectManager, offset 0x0>
@@ -23368,7 +22330,7 @@ namespace mot
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<mot::CIKManager>("mot::CIKManager")
+			NS = NS.beginClass<mot::CIKManager>("mot_CIKManager")
 				.addProperty("m_pBoneEffectManager", &mot::CIKManager::m_pBoneEffectManager)
 				.addProperty("m_inDamagePartDataLink", &mot::CIKManager::m_inDamagePartDataLink)
 			.endClass();
@@ -23386,7 +22348,6 @@ namespace mot
 	class CYuremonoManager
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <class mot::CBoneEffectManager* m_pBoneEffectManager, offset 0x0>
@@ -23395,7 +22356,7 @@ namespace mot
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<mot::CYuremonoManager>("mot::CYuremonoManager")
+			NS = NS.beginClass<mot::CYuremonoManager>("mot_CYuremonoManager")
 				.addProperty("m_pBoneEffectManager", &mot::CYuremonoManager::m_pBoneEffectManager)
 			.endClass();
 		}
@@ -23409,8 +22370,6 @@ static_assert(sizeof(mot::CYuremonoManager) == 4, "expected class mot::CYuremono
 class mHRLockOnList : public ghmListObj
 {
 public:
-	/// 5 namespace types: class mHRChara* __convention("thiscall") mHRLockOnList::mGetCharaPtr(class mHRLockOnList* const this), uint8_t mHRLockOnList::mCheckEntry(class mHRChara* arg1), void mHRLockOnList::mAddList(class mHRChara* arg1), void mHRLockOnList::mDelList(class mHRChara* arg1), class mHRLockOnList* mHRLockOnList::mGetNextTatget(class mHRChara* arg1)
-
 	// [Function] class mHRChara* __convention("thiscall") mHRLockOnList::mGetCharaPtr(class mHRLockOnList* const this) [?mGetCharaPtr@mHRLockOnList@@QAEPAVmHRChara@@XZ]
 	class mHRChara* mGetCharaPtr()
 	{
@@ -23446,7 +22405,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x567940);
 		return mFunc(arg1);
 	}
-
 	/// Struct member variables
 
 	// <class ghmListObj field_0, offset 0x0>
@@ -23458,17 +22416,17 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<mHRLockOnList>("mHRLockOnList")
+		NS = NS.deriveClass<mHRLockOnList, ghmListObj>("mHRLockOnList")
 			.addProperty("mpChara", &mHRLockOnList::mpChara)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetCharaPtr", &mHRLockOnList::mGetCharaPtr)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
 			//.addFunction("mCheckEntry", &mHRLockOnList::mCheckEntry)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
 			//.addFunction("mAddList", &mHRLockOnList::mAddList)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
 			//.addFunction("mDelList", &mHRLockOnList::mDelList)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRLockOnList*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetNextTatget", &mHRLockOnList::mGetNextTatget)
 		.endClass();
 	}
@@ -23481,8 +22439,6 @@ static_assert(sizeof(mHRLockOnList) == 20, "expected class mHRLockOnList to be s
 class EffectEnemyDamage : public HrTask
 {
 public:
-	/// 1 namespace types: class EffectEnemyDamage* EffectEnemyDamage::Create(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4)
-
 	// [Function] class EffectEnemyDamage* EffectEnemyDamage::Create(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4) [?Create@EffectEnemyDamage@@SAPAV1@PAVmHRChara@@PAVTGmf@@HI@Z]
 	class EffectEnemyDamage* Create(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4)
 	{
@@ -23490,7 +22446,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x585710);
 		return mFunc(arg1, arg2, arg3, arg4);
 	}
-
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -23514,13 +22469,13 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EffectEnemyDamage>("EffectEnemyDamage")
+		NS = NS.deriveClass<EffectEnemyDamage, HrTask>("EffectEnemyDamage")
 			.addProperty("m_pChara", &EffectEnemyDamage::m_pChara)
 			.addProperty("m_pGmf", &EffectEnemyDamage::m_pGmf)
 			.addProperty("m_nUpSpeed", &EffectEnemyDamage::m_nUpSpeed)
 			.addProperty("m_nColorMin", &EffectEnemyDamage::m_nColorMin)
 			.addProperty("m_nBright", &EffectEnemyDamage::m_nBright)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class EffectEnemyDamage*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("Create", &EffectEnemyDamage::Create)
 		.endClass();
 	}
@@ -23537,8 +22492,6 @@ static_assert(sizeof(EffectEnemyDamage) == 100, "expected class EffectEnemyDamag
 class HrMap
 {
 public:
-	/// 1 namespace types: uint8_t __convention("thiscall") HrMap::IsDied(class HrMap* const this, class mHRChara* arg2)
-
 	// [Function] uint8_t __convention("thiscall") HrMap::IsDied(class HrMap* const this, class mHRChara* arg2) [?IsDied@HrMap@@IAE_NPAVmHRChara@@@Z]
 	uint8_t IsDied(class mHRChara* arg2)
 	{
@@ -23546,17 +22499,18 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xaceb0);
 		return mFunc(this, arg2);
 	}
-
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[7844];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<HrMap>("HrMap")
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("IsDied", &HrMap::IsDied)
 		.endClass();
 	}
@@ -23568,7 +22522,6 @@ static_assert(sizeof(HrMap) == 7844, "expected class HrMap to be size 7844");
 struct stThrowInfo
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float targetRotation, offset 0x0>
@@ -23596,7 +22549,9 @@ public:
 	uint8_t setThrowDamage;
 
 	// <Filler, offset 0x3d>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -23628,7 +22583,6 @@ static_assert(sizeof(stThrowInfo) == 64, "expected struct stThrowInfo to be size
 class ACameraModeBase
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <void* (* field_0)[0x1], offset 0x0>
@@ -23641,7 +22595,9 @@ public:
 	uint8_t m_bIsInitRatioOne;
 
 	// <Filler, offset 0x11>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -23664,8 +22620,6 @@ static_assert(sizeof(ACameraModeBase) == 20, "expected class ACameraModeBase to 
 class CCameraModeLockOn : public ACameraModeBase
 {
 public:
-	/// 1 namespace types: class mHRChara* __convention("thiscall") CCameraModeLockOn::getLockOnCharacter(class CCameraModeLockOn* const this)
-
 	// [Function] class mHRChara* __convention("thiscall") CCameraModeLockOn::getLockOnCharacter(class CCameraModeLockOn* const this) [?getLockOnCharacter@CCameraModeLockOn@@QBEPBVmHRChara@@XZ]
 	class mHRChara* getLockOnCharacter()
 	{
@@ -23673,7 +22627,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xb5050);
 		return mFunc(this);
 	}
-
 	/// Struct member variables
 
 	// <class ACameraModeBase field_0, offset 0x0>
@@ -23692,8 +22645,10 @@ public:
 	float m_fHopePitch;
 
 	// <Filler, offset 0x7c>
+private:
 	char _Filler5[4];
 
+public:
 	// <class tiVector m_inLockOnPosi, offset 0x80>
 	class tiVector m_inLockOnPosi;
 
@@ -23707,8 +22662,10 @@ public:
 	uint8_t m_bIsChangeLockOnChara;
 
 	// <Filler, offset 0x99>
+private:
 	char _Filler9[3];
 
+public:
 	// <class mHRChara* m_pLockOnChara, offset 0x9c>
 	class mHRChara* m_pLockOnChara;
 
@@ -23716,12 +22673,14 @@ public:
 	uint8_t m_bStgHit;
 
 	// <Filler, offset 0xa1>
+private:
 	char _Filler[15];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<CCameraModeLockOn>("CCameraModeLockOn")
+		NS = NS.deriveClass<CCameraModeLockOn, ACameraModeBase>("CCameraModeLockOn")
 			.addProperty("m_inYaw", &CCameraModeLockOn::m_inYaw)
 			.addProperty("m_inPitch", &CCameraModeLockOn::m_inPitch)
 			.addProperty("m_fHopeYaw", &CCameraModeLockOn::m_fHopeYaw)
@@ -23732,7 +22691,7 @@ public:
 			.addProperty("m_bIsChangeLockOnChara", &CCameraModeLockOn::m_bIsChangeLockOnChara)
 			.addProperty("m_pLockOnChara", &CCameraModeLockOn::m_pLockOnChara)
 			.addProperty("m_bStgHit", &CCameraModeLockOn::m_bStgHit)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("getLockOnCharacter", &CCameraModeLockOn::getLockOnCharacter)
 		.endClass();
 	}
@@ -23754,7 +22713,6 @@ static_assert(sizeof(CCameraModeLockOn) == 176, "expected class CCameraModeLockO
 struct HRSAVEDATA_SHOP
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint32_t m_checkedFlag[0xd], offset 0x0>
@@ -23777,11 +22735,12 @@ static_assert(sizeof(HRSAVEDATA_SHOP) == 52, "expected struct HRSAVEDATA_SHOP to
 class CCameraVibManager
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[576];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -23797,7 +22756,6 @@ static_assert(sizeof(CCameraVibManager) == 576, "expected class CCameraVibManage
 class CCameraBank
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class CDoubleSpringInterpolate m_inOfst, offset 0x0>
@@ -23819,7 +22777,6 @@ static_assert(sizeof(CCameraBank) == 48, "expected class CCameraBank to be size 
 class CCameraModeSubjective : public ACameraModeBase
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ACameraModeBase field_0, offset 0x0>
@@ -23832,8 +22789,10 @@ public:
 	float m_fDisappearTimer;
 
 	// <Filler, offset 0x1c>
+private:
 	char _Filler3[4];
 
+public:
 	// <class tiVector m_inSrcLookAtPosi, offset 0x20>
 	class tiVector m_inSrcLookAtPosi;
 
@@ -23856,12 +22815,14 @@ public:
 	float m_fPitch;
 
 	// <Filler, offset 0x54>
+private:
 	char _Filler[12];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<CCameraModeSubjective>("CCameraModeSubjective")
+		NS = NS.deriveClass<CCameraModeSubjective, ACameraModeBase>("CCameraModeSubjective")
 			.addProperty("m_fTimer", &CCameraModeSubjective::m_fTimer)
 			.addProperty("m_fDisappearTimer", &CCameraModeSubjective::m_fDisappearTimer)
 			.addProperty("m_inSrcLookAtPosi", &CCameraModeSubjective::m_inSrcLookAtPosi)
@@ -23890,15 +22851,16 @@ static_assert(sizeof(CCameraModeSubjective) == 96, "expected class CCameraModeSu
 class CCameraModePetitMovie : public ACameraModeBase
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ACameraModeBase field_0, offset 0x0>
 	// class ACameraModeBase Super;
 
 	// <Filler, offset 0x14>
+private:
 	char _Filler1[12];
 
+public:
 	// <class CDoubleSpringInterpolate3D m_inAngle, offset 0x20>
 	class CDoubleSpringInterpolate3D m_inAngle;
 
@@ -23906,8 +22868,10 @@ public:
 	uint8_t m_bAct;
 
 	// <Filler, offset 0x81>
+private:
 	char _Filler3[3];
 
+public:
 	// <float m_fLookAtOfstX, offset 0x84>
 	float m_fLookAtOfstX;
 
@@ -23924,12 +22888,14 @@ public:
 	float m_fPitchOfst;
 
 	// <Filler, offset 0x98>
+private:
 	char _Filler[8];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<CCameraModePetitMovie>("CCameraModePetitMovie")
+		NS = NS.deriveClass<CCameraModePetitMovie, ACameraModeBase>("CCameraModePetitMovie")
 			.addProperty("m_inAngle", &CCameraModePetitMovie::m_inAngle)
 			.addProperty("m_bAct", &CCameraModePetitMovie::m_bAct)
 			.addProperty("m_fLookAtOfstX", &CCameraModePetitMovie::m_fLookAtOfstX)
@@ -23954,7 +22920,6 @@ static_assert(sizeof(CCameraModePetitMovie) == 160, "expected class CCameraModeP
 class CCameraModeCircle : public ACameraModeBase
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ACameraModeBase field_0, offset 0x0>
@@ -23964,15 +22929,17 @@ public:
 	uint8_t m_bIsPlusRot;
 
 	// <Filler, offset 0x15>
+private:
 	char _Filler2[3];
 
+public:
 	// <float m_fRotVel, offset 0x18>
 	float m_fRotVel;
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<CCameraModeCircle>("CCameraModeCircle")
+		NS = NS.deriveClass<CCameraModeCircle, ACameraModeBase>("CCameraModeCircle")
 			.addProperty("m_bIsPlusRot", &CCameraModeCircle::m_bIsPlusRot)
 			.addProperty("m_fRotVel", &CCameraModeCircle::m_fRotVel)
 		.endClass();
@@ -23987,15 +22954,16 @@ static_assert(sizeof(CCameraModeCircle) == 28, "expected class CCameraModeCircle
 class CCameraModeDefaultAngle : public ACameraModeBase
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ACameraModeBase field_0, offset 0x0>
 	// class ACameraModeBase Super;
 
 	// <Filler, offset 0x14>
+private:
 	char _Filler1[12];
 
+public:
 	// <class CDoubleSpringInterpolate3D m_inAngle, offset 0x20>
 	class CDoubleSpringInterpolate3D m_inAngle;
 
@@ -24006,12 +22974,14 @@ public:
 	uint8_t m_bIsInputButton;
 
 	// <Filler, offset 0x91>
+private:
 	char _Filler[15];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<CCameraModeDefaultAngle>("CCameraModeDefaultAngle")
+		NS = NS.deriveClass<CCameraModeDefaultAngle, ACameraModeBase>("CCameraModeDefaultAngle")
 			.addProperty("m_inAngle", &CCameraModeDefaultAngle::m_inAngle)
 			.addProperty("m_inHopeAngle", &CCameraModeDefaultAngle::m_inHopeAngle)
 			.addProperty("m_bIsInputButton", &CCameraModeDefaultAngle::m_bIsInputButton)
@@ -24028,7 +22998,6 @@ static_assert(sizeof(CCameraModeDefaultAngle) == 160, "expected class CCameraMod
 class CCameraModeFree : public ACameraModeBase
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ACameraModeBase field_0, offset 0x0>
@@ -24049,7 +23018,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<CCameraModeFree>("CCameraModeFree")
+		NS = NS.deriveClass<CCameraModeFree, ACameraModeBase>("CCameraModeFree")
 			.addProperty("m_fInputYaw", &CCameraModeFree::m_fInputYaw)
 			.addProperty("m_fInputPitch", &CCameraModeFree::m_fInputPitch)
 			.addProperty("m_fKeepTimer", &CCameraModeFree::m_fKeepTimer)
@@ -24068,7 +23037,6 @@ static_assert(sizeof(CCameraModeFree) == 128, "expected class CCameraModeFree to
 class CCameraModeNormal : public ACameraModeBase
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ACameraModeBase field_0, offset 0x0>
@@ -24089,7 +23057,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<CCameraModeNormal>("CCameraModeNormal")
+		NS = NS.deriveClass<CCameraModeNormal, ACameraModeBase>("CCameraModeNormal")
 			.addProperty("m_inYaw", &CCameraModeNormal::m_inYaw)
 			.addProperty("m_inPitch", &CCameraModeNormal::m_inPitch)
 			.addProperty("m_fHopeYaw", &CCameraModeNormal::m_fHopeYaw)
@@ -24108,7 +23076,6 @@ static_assert(sizeof(CCameraModeNormal) == 132, "expected class CCameraModeNorma
 class CCameraModeReset : public ACameraModeBase
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ACameraModeBase field_0, offset 0x0>
@@ -24118,15 +23085,17 @@ public:
 	uint8_t m_bIsSetResetYaw;
 
 	// <Filler, offset 0x15>
+private:
 	char _Filler2[3];
 
+public:
 	// <float m_fResetYaw, offset 0x18>
 	float m_fResetYaw;
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<CCameraModeReset>("CCameraModeReset")
+		NS = NS.deriveClass<CCameraModeReset, ACameraModeBase>("CCameraModeReset")
 			.addProperty("m_bIsSetResetYaw", &CCameraModeReset::m_bIsSetResetYaw)
 			.addProperty("m_fResetYaw", &CCameraModeReset::m_fResetYaw)
 		.endClass();
@@ -24141,7 +23110,6 @@ static_assert(sizeof(CCameraModeReset) == 28, "expected class CCameraModeReset t
 class CCameraDistToLookAt
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class CDoubleSpringInterpolate m_inDistToLookAt, offset 0x0>
@@ -24163,7 +23131,6 @@ static_assert(sizeof(CCameraDistToLookAt) == 48, "expected class CCameraDistToLo
 class CCameraFollowRot
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class CDoubleSpringInterpolate3D m_inMove, offset 0x0>
@@ -24185,15 +23152,16 @@ static_assert(sizeof(CCameraFollowRot) == 96, "expected class CCameraFollowRot t
 class CCameraLookAtOffset
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class CTimeRatioInterpolate m_inInterpCoeRatio, offset 0x0>
 	class CTimeRatioInterpolate m_inInterpCoeRatio;
 
 	// <Filler, offset 0xc>
+private:
 	char _Filler1[4];
 
+public:
 	// <class CDoubleSpringInterpolate3D m_inLocalOfst, offset 0x10>
 	class CDoubleSpringInterpolate3D m_inLocalOfst;
 
@@ -24207,8 +23175,10 @@ public:
 	uint8_t m_bIsOfstRayHit;
 
 	// <Filler, offset 0x85>
+private:
 	char _Filler5[3];
 
+public:
 	// <float m_fOfstRayHitTimer, offset 0x88>
 	float m_fOfstRayHitTimer;
 
@@ -24258,7 +23228,6 @@ static_assert(sizeof(CCameraLookAtOffset) == 192, "expected class CCameraLookAtO
 class CCameraLookAtBase
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class tiVector m_inPosi, offset 0x0>
@@ -24295,7 +23264,6 @@ static_assert(sizeof(CCameraLookAtBase) == 144, "expected class CCameraLookAtBas
 class CCameraDefaultAngle
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class tiVector m_inDefaultYP, offset 0x0>
@@ -24308,8 +23276,10 @@ public:
 	uint8_t m_bIsDownAttackPitchUp;
 
 	// <Filler, offset 0x12>
+private:
 	char _Filler3[2];
 
+public:
 	// <float m_fSlopeCheckDelayTimer, offset 0x14>
 	float m_fSlopeCheckDelayTimer;
 
@@ -24326,8 +23296,10 @@ public:
 	float m_fSlopeCheckYaw;
 
 	// <Filler, offset 0x34>
+private:
 	char _Filler8[12];
 
+public:
 	// <class tiVector m_inSlopeCheckDir, offset 0x40>
 	class tiVector m_inSlopeCheckDir;
 
@@ -24368,7 +23340,6 @@ static_assert(sizeof(CCameraDefaultAngle) == 96, "expected class CCameraDefaultA
 class CCameraLockOnModeData
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float m_fLookAtOfstMinX, offset 0x0>
@@ -24435,7 +23406,6 @@ static_assert(sizeof(CCameraLockOnModeData) == 40, "expected class CCameraLockOn
 class CCameraNormalModeData
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float m_fFollowRotCoe, offset 0x0>
@@ -24457,7 +23427,6 @@ static_assert(sizeof(CCameraNormalModeData) == 4, "expected class CCameraNormalM
 class CCameraModeCommonData
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float m_fLookAtOfstMinX, offset 0x0>
@@ -24514,7 +23483,6 @@ static_assert(sizeof(CCameraModeCommonData) == 32, "expected class CCameraModeCo
 class CCameraDataManager
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <int32_t m_eEventCond, offset 0x0>
@@ -24571,11 +23539,12 @@ static_assert(sizeof(CCameraDataManager) == 128, "expected class CCameraDataMana
 class CCameraAreaManager
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[4336];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -24593,7 +23562,6 @@ namespace gameUtil
 	class CPositionControl
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <class tiVector m_inPosi, offset 0x0>
@@ -24603,12 +23571,14 @@ namespace gameUtil
 		float m_fUpdateDistSqu;
 
 		// <Filler, offset 0x14>
+	private:
 		char _Filler[12];
+	public:
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<gameUtil::CPositionControl>("gameUtil::CPositionControl")
+			NS = NS.beginClass<gameUtil::CPositionControl>("gameUtil_CPositionControl")
 				.addProperty("m_inPosi", &gameUtil::CPositionControl::m_inPosi)
 				.addProperty("m_fUpdateDistSqu", &gameUtil::CPositionControl::m_fUpdateDistSqu)
 			.endClass();
@@ -24624,15 +23594,16 @@ static_assert(sizeof(gameUtil::CPositionControl) == 32, "expected class gameUtil
 class CCameraTarget
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class mot::IBoneEffectModel* m_pModel, offset 0x0>
 	class mot::IBoneEffectModel* m_pModel;
 
 	// <Filler, offset 0x4>
+private:
 	char _Filler1[12];
 
+public:
 	// <class tiVector m_inCenterPosi, offset 0x10>
 	class tiVector m_inCenterPosi;
 
@@ -24652,8 +23623,10 @@ public:
 	uint8_t m_bIsVisibleYawExist;
 
 	// <Filler, offset 0x2b>
+private:
 	char _Filler7[1];
 
+public:
 	// <float m_fVisibleYaw, offset 0x2c>
 	float m_fVisibleYaw;
 
@@ -24664,7 +23637,9 @@ public:
 	float m_fVisiblePosiInterpTimer;
 
 	// <Filler, offset 0x54>
+private:
 	char _Filler[12];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -24736,7 +23711,6 @@ namespace ti
 	class CCamera
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <class tiVector m_inPosi, offset 0x0>
@@ -24770,15 +23744,17 @@ namespace ti
 		float m_fAspectRatio;
 
 		// <Filler, offset 0x58>
+	private:
 		char _Filler10[8];
 
+	public:
 		// <class tiMatrix m_inWorldMat, offset 0x60>
 		class tiMatrix m_inWorldMat;
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<ti::CCamera>("ti::CCamera")
+			NS = NS.beginClass<ti::CCamera>("ti_CCamera")
 				.addProperty("m_inPosi", &ti::CCamera::m_inPosi)
 				.addProperty("m_inDir", &ti::CCamera::m_inDir)
 				.addProperty("m_inUpDir", &ti::CCamera::m_inUpDir)
@@ -24812,7 +23788,6 @@ static_assert(sizeof(ti::CCamera) == 160, "expected class ti::CCamera to be size
 class CGameCamera
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class ti::CCamera m_inCamera, offset 0x0>
@@ -24831,14 +23806,18 @@ public:
 	uint8_t m_bActCircle;
 
 	// <Filler, offset 0xad>
+private:
 	char _Filler5[3];
 
+public:
 	// <float m_fSearchAreaTimer, offset 0xb0>
 	float m_fSearchAreaTimer;
 
 	// <Filler, offset 0xb4>
+private:
 	char _Filler6[12];
 
+public:
 	// <class CCameraTarget m_inTarget, offset 0xc0>
 	class CCameraTarget m_inTarget;
 
@@ -24882,8 +23861,10 @@ public:
 	class CCameraModeCircle m_inCircleMode;
 
 	// <Filler, offset 0x175c>
+private:
 	char _Filler20[4];
 
+public:
 	// <class CCameraModePetitMovie m_inPetitMovieMode, offset 0x1760>
 	class CCameraModePetitMovie m_inPetitMovieMode;
 
@@ -24894,14 +23875,18 @@ public:
 	class CCameraCollision m_inCollision;
 
 	// <Filler, offset 0x1861>
+private:
 	char _Filler23[3];
 
+public:
 	// <class CCameraBank m_inBank, offset 0x1864>
 	class CCameraBank m_inBank;
 
 	// <Filler, offset 0x1894>
+private:
 	char _Filler24[12];
 
+public:
 	// <class CCameraVibManager m_inVibManager, offset 0x18a0>
 	class CCameraVibManager m_inVibManager;
 
@@ -24988,8 +23973,6 @@ enum ECameraResetType : uint32_t
 class CCameraman
 {
 public:
-	/// 2 namespace types: void __convention("thiscall") CCameraman::beginTsubazeriai(class CCameraman* const this, class mHRChara* arg2, float const arg3), enum CCameraman::ECameraMode
-
 	// [Function] void __convention("thiscall") CCameraman::beginTsubazeriai(class CCameraman* const this, class mHRChara* arg2, float const arg3) [?beginTsubazeriai@CCameraman@@QAEXPBVmHRChara@@M@Z]
 	void beginTsubazeriai(class mHRChara* arg2, float const arg3)
 	{
@@ -25013,7 +23996,6 @@ public:
 
 	};
 
-
 	/// Struct member variables
 
 	// <class ti::CCamera m_inCamera, offset 0x0>
@@ -25023,8 +24005,10 @@ public:
 	uint8_t m_bIsCalledOnUpdate;
 
 	// <Filler, offset 0xa1>
+private:
 	char _Filler2[3];
 
+public:
 	// <enum ECameraResetType m_eResetType, offset 0xa4>
 	enum ECameraResetType m_eResetType;
 
@@ -25041,8 +24025,10 @@ public:
 	uint8_t m_bIsTsubazeriai;
 
 	// <Filler, offset 0x1b91>
+private:
 	char _Filler7[3];
 
+public:
 	// <enum enCharaType m_eTsubaTarget, offset 0x1b94>
 	enum enCharaType m_eTsubaTarget;
 
@@ -25053,13 +24039,17 @@ public:
 	uint8_t m_bIsTsubaYawPlus;
 
 	// <Filler, offset 0x1b9d>
+private:
 	char _Filler10[3];
 
+public:
 	// <int32_t m_nTsubaCamVibID, offset 0x1ba0>
 	int32_t m_nTsubaCamVibID;
 
 	// <Filler, offset 0x1ba4>
+private:
 	char _Filler[12];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -25076,7 +24066,7 @@ public:
 			.addProperty("m_fTsubaSuperiorRatio", &CCameraman::m_fTsubaSuperiorRatio)
 			.addProperty("m_bIsTsubaYawPlus", &CCameraman::m_bIsTsubaYawPlus)
 			.addProperty("m_nTsubaCamVibID", &CCameraman::m_nTsubaCamVibID)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("beginTsubazeriai", &CCameraman::beginTsubazeriai)
 		.endClass();
 	}
@@ -25099,8 +24089,6 @@ static_assert(sizeof(CCameraman) == 7088, "expected class CCameraman to be size 
 class HrMiniDemoObj : public ghmListObj
 {
 public:
-	/// 2 namespace types: enum HrMiniDemoObj::HRMINIDEMOOBJ_KIND_ID, enum HrMiniDemoObj::MDEMO_OBJ_STS
-
 	// enum HrMiniDemoObj::HRMINIDEMOOBJ_KIND_ID
 	enum HRMINIDEMOOBJ_KIND_ID : uint32_t
 	{
@@ -25160,7 +24148,6 @@ public:
 
 	};
 
-
 	/// Struct member variables
 
 	// <class ghmListObj field_0, offset 0x0>
@@ -25188,8 +24175,10 @@ public:
 	uint8_t mEndPauseDo;
 
 	// <Filler, offset 0x23>
+private:
 	char _Filler8[5];
 
+public:
 	// <uint64_t mName, offset 0x28>
 	uint64_t mName;
 
@@ -25200,8 +24189,10 @@ public:
 	uint8_t mSHeightflg;
 
 	// <Filler, offset 0x41>
+private:
 	char _Filler11[3];
 
+public:
 	// <float mSHeight, offset 0x44>
 	float mSHeight;
 
@@ -25212,12 +24203,14 @@ public:
 	uint8_t mbShadowDraw;
 
 	// <Filler, offset 0x4a>
+private:
 	char _Filler[6];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<HrMiniDemoObj>("HrMiniDemoObj")
+		NS = NS.deriveClass<HrMiniDemoObj, ghmListObj>("HrMiniDemoObj")
 			.addProperty("mKind", &HrMiniDemoObj::mKind)
 			.addProperty("mpGan", &HrMiniDemoObj::mpGan)
 			.addProperty("mStartTick", &HrMiniDemoObj::mStartTick)
@@ -25255,7 +24248,6 @@ static_assert(sizeof(HrMiniDemoObj) == 80, "expected class HrMiniDemoObj to be s
 class HrMiniDemoModel : public HrMiniDemoObj
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class HrMiniDemoObj field_0, offset 0x0>
@@ -25280,12 +24272,14 @@ public:
 	uint8_t mUseTexShadow;
 
 	// <Filler, offset 0x75>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<HrMiniDemoModel>("HrMiniDemoModel")
+		NS = NS.deriveClass<HrMiniDemoModel, HrMiniDemoObj>("HrMiniDemoModel")
 			.addProperty("mpGanNodeSpec", &HrMiniDemoModel::mpGanNodeSpec)
 			.addProperty("mpGmf", &HrMiniDemoModel::mpGmf)
 			.addProperty("mpChara", &HrMiniDemoModel::mpChara)
@@ -25322,8 +24316,6 @@ int32_t sub_4467e6(int32_t* arg1, class mHRPc* arg2, class mHRChara* arg3)
 class STG0202
 {
 public:
-	/// 1 namespace types: void __convention("thiscall") STG0202::CharMoveByConbeyor(class STG0202* const this, class mHRChara* arg2)
-
 	// [Function] void __convention("thiscall") STG0202::CharMoveByConbeyor(class STG0202* const this, class mHRChara* arg2) [?CharMoveByConbeyor@STG0202@@AAEXPAVmHRChara@@@Z]
 	void CharMoveByConbeyor(class mHRChara* arg2)
 	{
@@ -25331,17 +24323,18 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x455920);
 		return mFunc(this, arg2);
 	}
-
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[96];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<STG0202>("STG0202")
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("CharMoveByConbeyor", &STG0202::CharMoveByConbeyor)
 		.endClass();
 	}
@@ -25353,7 +24346,6 @@ static_assert(sizeof(STG0202) == 96, "expected class STG0202 to be size 96");
 struct tagHRTASKCHECK
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class HrTask* Task, offset 0x0>
@@ -25380,7 +24372,6 @@ static_assert(sizeof(tagHRTASKCHECK) == 8, "expected struct tagHRTASKCHECK to be
 class EffectBoneElect : public HrTask
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -25410,7 +24401,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EffectBoneElect>("EffectBoneElect")
+		NS = NS.deriveClass<EffectBoneElect, HrTask>("EffectBoneElect")
 			.addProperty("m_pGmf", &EffectBoneElect::m_pGmf)
 			.addProperty("m_Color", &EffectBoneElect::m_Color)
 			.addProperty("m_BoneStrmObjPtrList", &EffectBoneElect::m_BoneStrmObjPtrList)
@@ -25435,11 +24426,12 @@ static_assert(sizeof(EffectBoneElect) == 116, "expected class EffectBoneElect to
 class BoneStreamObj
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[220];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -25455,11 +24447,12 @@ static_assert(sizeof(BoneStreamObj) == 220, "expected class BoneStreamObj to be 
 class EffectMetalElect
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[226464];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -25475,8 +24468,6 @@ static_assert(sizeof(EffectMetalElect) == 226464, "expected class EffectMetalEle
 class EffectCutMark
 {
 public:
-	/// 2 namespace types: enum EffectCutMark::eCutMarkType, class EffectCutMark* EffectCutMark::Create(class TGmf* arg1, class mHRChara* arg2, struct Vec* arg3, uint32_t const arg4, enum eEfDmgLevel& arg5, enum EffectCutMark::eCutMarkType& arg6, float const arg7)
-
 	// enum EffectCutMark::eCutMarkType
 	enum eCutMarkType : uint32_t
 	{
@@ -25503,17 +24494,18 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x56f2c0);
 		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 	}
-
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[21812];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<EffectCutMark>("EffectCutMark")
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class EffectCutMark*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("Create", &EffectCutMark::Create)
 		.endClass();
 	}
@@ -25525,8 +24517,6 @@ static_assert(sizeof(EffectCutMark) == 21812, "expected class EffectCutMark to b
 class PJTateshi
 {
 public:
-	/// 2 namespace types: void __convention("thiscall") PJTateshi::SetZakoAllFuttobiFromPc(class PJTateshi* const this, class mHRChara* arg2), void __convention("thiscall") PJTateshi::SetDemoDamage2PC(class PJTateshi* const this, float const arg2, class mHRChara* arg3)
-
 	// [Function] void __convention("thiscall") PJTateshi::SetZakoAllFuttobiFromPc(class PJTateshi* const this, class mHRChara* arg2) [?SetZakoAllFuttobiFromPc@PJTateshi@@QAEXPAVmHRChara@@@Z]
 	void SetZakoAllFuttobiFromPc(class mHRChara* arg2)
 	{
@@ -25541,19 +24531,20 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x4b1ea0);
 		return mFunc(this, arg2, arg3);
 	}
-
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[492];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<PJTateshi>("PJTateshi")
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("SetZakoAllFuttobiFromPc", &PJTateshi::SetZakoAllFuttobiFromPc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg3) not supported in LuaBridge.
 			//.addFunction("SetDemoDamage2PC", &PJTateshi::SetDemoDamage2PC)
 		.endClass();
 	}
@@ -25565,7 +24556,6 @@ static_assert(sizeof(PJTateshi) == 492, "expected class PJTateshi to be size 492
 class PJState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <void* (* field_0)[0x5], offset 0x0>
@@ -25588,8 +24578,6 @@ static_assert(sizeof(PJState) == 4, "expected class PJState to be size 4");
 class ZkState_DownAttack : public PJState
 {
 public:
-	/// 1 namespace types: enum ZkState_DownAttack::eStat
-
 	// enum ZkState_DownAttack::eStat
 	enum eStat : uint32_t
 	{
@@ -25603,7 +24591,6 @@ public:
 
 	};
 
-
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -25615,7 +24602,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<ZkState_DownAttack>("ZkState_DownAttack")
+		NS = NS.deriveClass<ZkState_DownAttack, PJState>("ZkState_DownAttack")
 			.addProperty("m_eStat", &ZkState_DownAttack::m_eStat)
 		.endClass();
 	}
@@ -25628,7 +24615,6 @@ static_assert(sizeof(ZkState_DownAttack) == 8, "expected class ZkState_DownAttac
 class State_AwayAfterAttack : public PJState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -25637,7 +24623,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_AwayAfterAttack>("State_AwayAfterAttack")
+		NS = NS.deriveClass<State_AwayAfterAttack, PJState>("State_AwayAfterAttack")
 		.endClass();
 	}
 #endif
@@ -25648,7 +24634,6 @@ static_assert(sizeof(State_AwayAfterAttack) == 4, "expected class State_AwayAfte
 class State_CloseBeforeAttack : public PJState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -25657,7 +24642,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_CloseBeforeAttack>("State_CloseBeforeAttack")
+		NS = NS.deriveClass<State_CloseBeforeAttack, PJState>("State_CloseBeforeAttack")
 		.endClass();
 	}
 #endif
@@ -25668,7 +24653,6 @@ static_assert(sizeof(State_CloseBeforeAttack) == 4, "expected class State_CloseB
 class State_StepInAttack : public PJState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -25677,7 +24661,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_StepInAttack>("State_StepInAttack")
+		NS = NS.deriveClass<State_StepInAttack, PJState>("State_StepInAttack")
 		.endClass();
 	}
 #endif
@@ -25688,7 +24672,6 @@ static_assert(sizeof(State_StepInAttack) == 4, "expected class State_StepInAttac
 class State_DownDamage : public PJState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -25697,7 +24680,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_DownDamage>("State_DownDamage")
+		NS = NS.deriveClass<State_DownDamage, PJState>("State_DownDamage")
 		.endClass();
 	}
 #endif
@@ -25708,7 +24691,6 @@ static_assert(sizeof(State_DownDamage) == 4, "expected class State_DownDamage to
 class State_TojoBaseState : public PJState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -25717,7 +24699,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_TojoBaseState>("State_TojoBaseState")
+		NS = NS.deriveClass<State_TojoBaseState, PJState>("State_TojoBaseState")
 		.endClass();
 	}
 #endif
@@ -25728,7 +24710,6 @@ static_assert(sizeof(State_TojoBaseState) == 4, "expected class State_TojoBaseSt
 class State_LeadPcWayPointMove : public PJState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -25737,7 +24718,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_LeadPcWayPointMove>("State_LeadPcWayPointMove")
+		NS = NS.deriveClass<State_LeadPcWayPointMove, PJState>("State_LeadPcWayPointMove")
 		.endClass();
 	}
 #endif
@@ -25748,7 +24729,6 @@ static_assert(sizeof(State_LeadPcWayPointMove) == 4, "expected class State_LeadP
 class State_FixTurret : public PJState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -25757,7 +24737,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_FixTurret>("State_FixTurret")
+		NS = NS.deriveClass<State_FixTurret, PJState>("State_FixTurret")
 		.endClass();
 	}
 #endif
@@ -25768,7 +24748,6 @@ static_assert(sizeof(State_FixTurret) == 4, "expected class State_FixTurret to b
 class State_WayPointMoveAfterPop : public PJState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -25777,7 +24756,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_WayPointMoveAfterPop>("State_WayPointMoveAfterPop")
+		NS = NS.deriveClass<State_WayPointMoveAfterPop, PJState>("State_WayPointMoveAfterPop")
 		.endClass();
 	}
 #endif
@@ -25788,8 +24767,6 @@ static_assert(sizeof(State_WayPointMoveAfterPop) == 4, "expected class State_Way
 class State_Tojo_RoomRunner : public State_TojoBaseState
 {
 public:
-	/// 1 namespace types: enum State_Tojo_RoomRunner::eStat
-
 	// enum State_Tojo_RoomRunner::eStat
 	enum eStat : uint32_t
 	{
@@ -25803,7 +24780,6 @@ public:
 
 	};
 
-
 	/// Struct member variables
 
 	// <class State_TojoBaseState field_0, offset 0x0>
@@ -25815,7 +24791,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Tojo_RoomRunner>("State_Tojo_RoomRunner")
+		NS = NS.deriveClass<State_Tojo_RoomRunner, State_TojoBaseState>("State_Tojo_RoomRunner")
 			.addProperty("m_eStat", &State_Tojo_RoomRunner::m_eStat)
 		.endClass();
 	}
@@ -25828,8 +24804,6 @@ static_assert(sizeof(State_Tojo_RoomRunner) == 8, "expected class State_Tojo_Roo
 class State_Tojo_AeroBike : public State_TojoBaseState
 {
 public:
-	/// 1 namespace types: enum State_Tojo_AeroBike::eStat
-
 	// enum State_Tojo_AeroBike::eStat
 	enum eStat : uint32_t
 	{
@@ -25843,7 +24817,6 @@ public:
 
 	};
 
-
 	/// Struct member variables
 
 	// <class State_TojoBaseState field_0, offset 0x0>
@@ -25855,7 +24828,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Tojo_AeroBike>("State_Tojo_AeroBike")
+		NS = NS.deriveClass<State_Tojo_AeroBike, State_TojoBaseState>("State_Tojo_AeroBike")
 			.addProperty("m_eStat", &State_Tojo_AeroBike::m_eStat)
 		.endClass();
 	}
@@ -25868,8 +24841,6 @@ static_assert(sizeof(State_Tojo_AeroBike) == 8, "expected class State_Tojo_AeroB
 class State_Tojo_BreakCmnObj : public State_TojoBaseState
 {
 public:
-	/// 1 namespace types: enum State_Tojo_BreakCmnObj::eStat
-
 	// enum State_Tojo_BreakCmnObj::eStat
 	enum eStat : uint32_t
 	{
@@ -25883,7 +24854,6 @@ public:
 
 	};
 
-
 	/// Struct member variables
 
 	// <class State_TojoBaseState field_0, offset 0x0>
@@ -25896,12 +24866,14 @@ public:
 	uint8_t m_boAttacked;
 
 	// <Filler, offset 0x9>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Tojo_BreakCmnObj>("State_Tojo_BreakCmnObj")
+		NS = NS.deriveClass<State_Tojo_BreakCmnObj, State_TojoBaseState>("State_Tojo_BreakCmnObj")
 			.addProperty("m_eStat", &State_Tojo_BreakCmnObj::m_eStat)
 			.addProperty("m_boAttacked", &State_Tojo_BreakCmnObj::m_boAttacked)
 		.endClass();
@@ -25916,7 +24888,6 @@ static_assert(sizeof(State_Tojo_BreakCmnObj) == 12, "expected class State_Tojo_B
 class State_Tojo_JumpOff : public State_TojoBaseState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class State_TojoBaseState field_0, offset 0x0>
@@ -25928,7 +24899,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Tojo_JumpOff>("State_Tojo_JumpOff")
+		NS = NS.deriveClass<State_Tojo_JumpOff, State_TojoBaseState>("State_Tojo_JumpOff")
 			.addProperty("m_fSpdY", &State_Tojo_JumpOff::m_fSpdY)
 		.endClass();
 	}
@@ -25941,8 +24912,6 @@ static_assert(sizeof(State_Tojo_JumpOff) == 8, "expected class State_Tojo_JumpOf
 class State_Tojo_Car : public State_TojoBaseState
 {
 public:
-	/// 1 namespace types: enum State_Tojo_Car::eStat
-
 	// enum State_Tojo_Car::eStat
 	enum eStat : uint32_t
 	{
@@ -25956,7 +24925,6 @@ public:
 
 	};
 
-
 	/// Struct member variables
 
 	// <class State_TojoBaseState field_0, offset 0x0>
@@ -25968,7 +24936,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Tojo_Car>("State_Tojo_Car")
+		NS = NS.deriveClass<State_Tojo_Car, State_TojoBaseState>("State_Tojo_Car")
 			.addProperty("m_eStat", &State_Tojo_Car::m_eStat)
 		.endClass();
 	}
@@ -25981,7 +24949,6 @@ static_assert(sizeof(State_Tojo_Car) == 8, "expected class State_Tojo_Car to be 
 class State_Tojo_RunAndTurnPc : public State_TojoBaseState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class State_TojoBaseState field_0, offset 0x0>
@@ -25990,7 +24957,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Tojo_RunAndTurnPc>("State_Tojo_RunAndTurnPc")
+		NS = NS.deriveClass<State_Tojo_RunAndTurnPc, State_TojoBaseState>("State_Tojo_RunAndTurnPc")
 		.endClass();
 	}
 #endif
@@ -26001,7 +24968,6 @@ static_assert(sizeof(State_Tojo_RunAndTurnPc) == 4, "expected class State_Tojo_R
 class State_Idle : public State_TojoBaseState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class State_TojoBaseState field_0, offset 0x0>
@@ -26010,7 +24976,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Idle>("State_Idle")
+		NS = NS.deriveClass<State_Idle, State_TojoBaseState>("State_Idle")
 		.endClass();
 	}
 #endif
@@ -26021,7 +24987,6 @@ static_assert(sizeof(State_Idle) == 4, "expected class State_Idle to be size 4")
 class State_Tojo_AgainstWall : public State_TojoBaseState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class State_TojoBaseState field_0, offset 0x0>
@@ -26030,7 +24995,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Tojo_AgainstWall>("State_Tojo_AgainstWall")
+		NS = NS.deriveClass<State_Tojo_AgainstWall, State_TojoBaseState>("State_Tojo_AgainstWall")
 		.endClass();
 	}
 #endif
@@ -26041,7 +25006,6 @@ static_assert(sizeof(State_Tojo_AgainstWall) == 4, "expected class State_Tojo_Ag
 class State_Tojo_LookAround : public State_TojoBaseState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class State_TojoBaseState field_0, offset 0x0>
@@ -26050,7 +25014,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Tojo_LookAround>("State_Tojo_LookAround")
+		NS = NS.deriveClass<State_Tojo_LookAround, State_TojoBaseState>("State_Tojo_LookAround")
 		.endClass();
 	}
 #endif
@@ -26061,7 +25025,6 @@ static_assert(sizeof(State_Tojo_LookAround) == 4, "expected class State_Tojo_Loo
 class State_Tojo_Stand : public State_TojoBaseState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class State_TojoBaseState field_0, offset 0x0>
@@ -26070,7 +25033,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Tojo_Stand>("State_Tojo_Stand")
+		NS = NS.deriveClass<State_Tojo_Stand, State_TojoBaseState>("State_Tojo_Stand")
 		.endClass();
 	}
 #endif
@@ -26081,7 +25044,6 @@ static_assert(sizeof(State_Tojo_Stand) == 4, "expected class State_Tojo_Stand to
 class State_Tojo_Bench : public State_TojoBaseState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class State_TojoBaseState field_0, offset 0x0>
@@ -26090,7 +25052,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Tojo_Bench>("State_Tojo_Bench")
+		NS = NS.deriveClass<State_Tojo_Bench, State_TojoBaseState>("State_Tojo_Bench")
 		.endClass();
 	}
 #endif
@@ -26101,7 +25063,6 @@ static_assert(sizeof(State_Tojo_Bench) == 4, "expected class State_Tojo_Bench to
 class State_Tojo_Sit : public State_TojoBaseState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class State_TojoBaseState field_0, offset 0x0>
@@ -26110,7 +25071,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Tojo_Sit>("State_Tojo_Sit")
+		NS = NS.deriveClass<State_Tojo_Sit, State_TojoBaseState>("State_Tojo_Sit")
 		.endClass();
 	}
 #endif
@@ -26121,7 +25082,6 @@ static_assert(sizeof(State_Tojo_Sit) == 4, "expected class State_Tojo_Sit to be 
 class State_Tojo_SuddenAttack : public State_TojoBaseState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class State_TojoBaseState field_0, offset 0x0>
@@ -26130,7 +25090,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Tojo_SuddenAttack>("State_Tojo_SuddenAttack")
+		NS = NS.deriveClass<State_Tojo_SuddenAttack, State_TojoBaseState>("State_Tojo_SuddenAttack")
 		.endClass();
 	}
 #endif
@@ -26141,7 +25101,6 @@ static_assert(sizeof(State_Tojo_SuddenAttack) == 4, "expected class State_Tojo_S
 class State_ReleaseWaitIdle : public State_Idle
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class State_Idle field_0, offset 0x0>
@@ -26150,7 +25109,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_ReleaseWaitIdle>("State_ReleaseWaitIdle")
+		NS = NS.deriveClass<State_ReleaseWaitIdle, State_Idle>("State_ReleaseWaitIdle")
 		.endClass();
 	}
 #endif
@@ -26161,7 +25120,6 @@ static_assert(sizeof(State_ReleaseWaitIdle) == 4, "expected class State_ReleaseW
 class State_Scare_Base : public PJState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -26173,7 +25131,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Scare_Base>("State_Scare_Base")
+		NS = NS.deriveClass<State_Scare_Base, PJState>("State_Scare_Base")
 			.addProperty("m_Cnt", &State_Scare_Base::m_Cnt)
 		.endClass();
 	}
@@ -26186,7 +25144,6 @@ static_assert(sizeof(State_Scare_Base) == 8, "expected class State_Scare_Base to
 class State_Scare_Kosinukasi : public State_Scare_Base
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class State_Scare_Base field_0, offset 0x0>
@@ -26195,7 +25152,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Scare_Kosinukasi>("State_Scare_Kosinukasi")
+		NS = NS.deriveClass<State_Scare_Kosinukasi, State_Scare_Base>("State_Scare_Kosinukasi")
 		.endClass();
 	}
 #endif
@@ -26206,7 +25163,6 @@ static_assert(sizeof(State_Scare_Kosinukasi) == 8, "expected class State_Scare_K
 class State_Scare_Run : public State_Scare_Base
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class State_Scare_Base field_0, offset 0x0>
@@ -26215,7 +25171,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Scare_Run>("State_Scare_Run")
+		NS = NS.deriveClass<State_Scare_Run, State_Scare_Base>("State_Scare_Run")
 		.endClass();
 	}
 #endif
@@ -26226,8 +25182,6 @@ static_assert(sizeof(State_Scare_Run) == 8, "expected class State_Scare_Run to b
 class State_WayPointMove : public PJState
 {
 public:
-	/// 1 namespace types: enum State_WayPointMove::eWaypointSbSt
-
 	// enum State_WayPointMove::eWaypointSbSt
 	enum eWaypointSbSt : uint32_t
 	{
@@ -26244,7 +25198,6 @@ public:
 
 	};
 
-
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -26256,7 +25209,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_WayPointMove>("State_WayPointMove")
+		NS = NS.deriveClass<State_WayPointMove, PJState>("State_WayPointMove")
 			.addProperty("m_eStat", &State_WayPointMove::m_eStat)
 		.endClass();
 	}
@@ -26269,8 +25222,6 @@ static_assert(sizeof(State_WayPointMove) == 8, "expected class State_WayPointMov
 class State_Pressure : public PJState
 {
 public:
-	/// 1 namespace types: enum State_Pressure::eStat
-
 	// enum State_Pressure::eStat
 	enum eStat : uint32_t
 	{
@@ -26287,7 +25238,6 @@ public:
 
 	};
 
-
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -26302,7 +25252,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Pressure>("State_Pressure")
+		NS = NS.deriveClass<State_Pressure, PJState>("State_Pressure")
 			.addProperty("m_eStat", &State_Pressure::m_eStat)
 			.addProperty("m_WaitCnt", &State_Pressure::m_WaitCnt)
 		.endClass();
@@ -26317,7 +25267,6 @@ static_assert(sizeof(State_Pressure) == 12, "expected class State_Pressure to be
 class State_ThroughDamage : public PJState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -26327,12 +25276,14 @@ public:
 	uint8_t m_boHitSword;
 
 	// <Filler, offset 0x5>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_ThroughDamage>("State_ThroughDamage")
+		NS = NS.deriveClass<State_ThroughDamage, PJState>("State_ThroughDamage")
 			.addProperty("m_boHitSword", &State_ThroughDamage::m_boHitSword)
 		.endClass();
 	}
@@ -26370,7 +25321,6 @@ enum eMoveDir : uint32_t
 class State_Defence : public PJState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -26382,7 +25332,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Defence>("State_Defence")
+		NS = NS.deriveClass<State_Defence, PJState>("State_Defence")
 			.addProperty("m_eStateMovDir", &State_Defence::m_eStateMovDir)
 		.endClass();
 	}
@@ -26395,7 +25345,6 @@ static_assert(sizeof(State_Defence) == 8, "expected class State_Defence to be si
 class State_Evacuate : public PJState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -26407,7 +25356,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Evacuate>("State_Evacuate")
+		NS = NS.deriveClass<State_Evacuate, PJState>("State_Evacuate")
 			.addProperty("m_nContinueEvacuate", &State_Evacuate::m_nContinueEvacuate)
 		.endClass();
 	}
@@ -26420,8 +25369,6 @@ static_assert(sizeof(State_Evacuate) == 8, "expected class State_Evacuate to be 
 class State_ComboAttack : public PJState
 {
 public:
-	/// 1 namespace types: enum State_ComboAttack::eStat
-
 	// enum State_ComboAttack::eStat
 	enum eStat : uint32_t
 	{
@@ -26435,7 +25382,6 @@ public:
 
 	};
 
-
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -26448,12 +25394,14 @@ public:
 	uint8_t m_ComboRequest;
 
 	// <Filler, offset 0x9>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_ComboAttack>("State_ComboAttack")
+		NS = NS.deriveClass<State_ComboAttack, PJState>("State_ComboAttack")
 			.addProperty("m_eStat", &State_ComboAttack::m_eStat)
 			.addProperty("m_ComboRequest", &State_ComboAttack::m_ComboRequest)
 		.endClass();
@@ -26468,8 +25416,6 @@ static_assert(sizeof(State_ComboAttack) == 12, "expected class State_ComboAttack
 class State_Damage : public PJState
 {
 public:
-	/// 1 namespace types: enum State_Damage::eStat
-
 	// enum State_Damage::eStat
 	enum eStat : uint32_t
 	{
@@ -26501,7 +25447,6 @@ public:
 
 	};
 
-
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -26516,7 +25461,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Damage>("State_Damage")
+		NS = NS.deriveClass<State_Damage, PJState>("State_Damage")
 			.addProperty("m_DownCnt", &State_Damage::m_DownCnt)
 			.addProperty("m_eStat", &State_Damage::m_eStat)
 		.endClass();
@@ -26531,7 +25476,6 @@ static_assert(sizeof(State_Damage) == 12, "expected class State_Damage to be siz
 struct CollInfo
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float fDistLeft, offset 0x0>
@@ -26792,7 +25736,6 @@ enum eFightLine : uint32_t
 struct ZkGuardParam
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <int32_t GrdCnt, offset 0x0>
@@ -26808,7 +25751,9 @@ public:
 	uint8_t boGrdStiff;
 
 	// <Filler, offset 0xd>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -26832,7 +25777,6 @@ static_assert(sizeof(ZkGuardParam) == 16, "expected struct ZkGuardParam to be si
 struct ZkEvacuateParam
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <int32_t EvcCnt, offset 0x0>
@@ -26903,7 +25847,6 @@ enum eZkCarSheet : uint32_t
 class FkCounter
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <int32_t NowCnt, offset 0x0>
@@ -26959,7 +25902,6 @@ enum eSideFromPc : uint32_t
 struct ZkSetDamageInfo
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <uint8_t boCounterHit, offset 0x0>
@@ -27024,7 +25966,6 @@ enum eZkBoneScale : uint32_t
 class State_Scare_Yotunbai : public State_Scare_Base
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class State_Scare_Base field_0, offset 0x0>
@@ -27033,7 +25974,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Scare_Yotunbai>("State_Scare_Yotunbai")
+		NS = NS.deriveClass<State_Scare_Yotunbai, State_Scare_Base>("State_Scare_Yotunbai")
 		.endClass();
 	}
 #endif
@@ -27044,7 +25985,6 @@ static_assert(sizeof(State_Scare_Yotunbai) == 8, "expected class State_Scare_Yot
 class State_Scare_Stand : public State_Scare_Base
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class State_Scare_Base field_0, offset 0x0>
@@ -27053,7 +25993,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Scare_Stand>("State_Scare_Stand")
+		NS = NS.deriveClass<State_Scare_Stand, State_Scare_Base>("State_Scare_Stand")
 		.endClass();
 	}
 #endif
@@ -27064,7 +26004,6 @@ static_assert(sizeof(State_Scare_Stand) == 8, "expected class State_Scare_Stand 
 class State_RandomMove : public PJState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -27076,7 +26015,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_RandomMove>("State_RandomMove")
+		NS = NS.deriveClass<State_RandomMove, PJState>("State_RandomMove")
 			.addProperty("m_eStateMovDir", &State_RandomMove::m_eStateMovDir)
 		.endClass();
 	}
@@ -27089,7 +26028,6 @@ static_assert(sizeof(State_RandomMove) == 8, "expected class State_RandomMove to
 class State_PerformIll : public State_Scare_Base
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class State_Scare_Base field_0, offset 0x0>
@@ -27098,7 +26036,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_PerformIll>("State_PerformIll")
+		NS = NS.deriveClass<State_PerformIll, State_Scare_Base>("State_PerformIll")
 		.endClass();
 	}
 #endif
@@ -27109,8 +26047,6 @@ static_assert(sizeof(State_PerformIll) == 8, "expected class State_PerformIll to
 class PJZAKO : public mHRChara
 {
 public:
-	/// 21 namespace types: uint8_t __convention("thiscall") PJZAKO::IsAtkObj(class PJZAKO* const this, class mHRChara* arg2), struct PJZAKO::ZakoInfo, struct PJZAKO::MotionInfo, struct PJZAKO::TojoInfo, struct PJZAKO::PcInfo, struct PJZAKO::DmgInfo, struct PJZAKO::AiInfo, struct PJZAKO::EfDanmen, enum PJZAKO::eSuddenAtkPopDir, enum PJZAKO::eTimeShare, uint8_t __convention("thiscall") PJZAKO::IsSetDamageFromPcThroughAttack(class PJZAKO* const this, class mHRChara* arg2), void __convention("thiscall") PJZAKO::mSetDamage_Dead(class PJZAKO* const this, int32_t const arg2, int32_t const arg3, class mHRChara* arg4), void __convention("thiscall") PJZAKO::mSetDamage_CutDamage(class PJZAKO* const this, class mHRChara* arg2, int32_t arg3), void __convention("thiscall") PJZAKO::mSetDamage_NoStateChangeDamage(class PJZAKO* const this, class mHRChara* arg2), void __convention("thiscall") PJZAKO::mSetDamage_DamageCounterProc(class PJZAKO* const this, int32_t* arg2, class mHRChara* arg3), void __convention("thiscall") PJZAKO::mSetDamage_InitDamageReaction(class PJZAKO* const this, class mHRChara* arg2, int32_t const arg3), void __convention("thiscall") PJZAKO::mSetDamage_Initialize(class PJZAKO* const this, class mHRChara* arg2, int32_t const arg3), uint8_t __convention("thiscall") PJZAKO::mSetDamage(class PJZAKO* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10), void __convention("thiscall") PJZAKO::CheckSetDmgFuncGarbageInData(class PJZAKO* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10), int32_t __convention("thiscall") PJZAKO::ConvertDmgMot(class PJZAKO* const this, int32_t const arg2, int32_t const arg3, class mHRChara* arg4), int32_t __fastcall PJZAKO::StaticProc(class mHRBattle* arg1)
-
 	// [Function] uint8_t __convention("thiscall") PJZAKO::IsAtkObj(class PJZAKO* const this, class mHRChara* arg2) [?IsAtkObj@PJZAKO@@EAE_NPAVmHRChara@@@Z]
 	uint8_t IsAtkObj(class mHRChara* arg2)
 	{
@@ -27122,7 +26058,6 @@ public:
 	struct ZakoInfo
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <int32_t m_ComboAtkTbl[0x4], offset 0x0>
@@ -27135,8 +26070,10 @@ public:
 		uint8_t m_ComboAtkReq;
 
 		// <Filler, offset 0x15>
+	private:
 		char _Filler3[3];
 
+	public:
 		// <int32_t m_nMaxComboAtk, offset 0x18>
 		int32_t m_nMaxComboAtk;
 
@@ -27183,8 +26120,10 @@ public:
 		uint8_t m_boWaypointMoveStopping;
 
 		// <Filler, offset 0x89>
+	private:
 		char _Filler18[3];
 
+	public:
 		// <int32_t m_GoPointKuruKuruCnt, offset 0x8c>
 		int32_t m_GoPointKuruKuruCnt;
 
@@ -27192,12 +26131,14 @@ public:
 		uint8_t m_boLookPC;
 
 		// <Filler, offset 0x91>
+	private:
 		char _Filler[3];
+	public:
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<PJZAKO::ZakoInfo>("PJZAKO::ZakoInfo")
+			NS = NS.beginClass<PJZAKO::ZakoInfo>("PJZAKO_ZakoInfo")
 				// static arrays are not supported in LuaBridge (only std::vector)
 				//.addProperty("m_ComboAtkTbl", &PJZAKO::ZakoInfo::m_ComboAtkTbl)
 				.addProperty("m_NowComboAtkNo", &PJZAKO::ZakoInfo::m_NowComboAtkNo)
@@ -27251,7 +26192,6 @@ public:
 	struct MotionInfo
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <int32_t m_MotionFrame, offset 0x0>
@@ -27269,7 +26209,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<PJZAKO::MotionInfo>("PJZAKO::MotionInfo")
+			NS = NS.beginClass<PJZAKO::MotionInfo>("PJZAKO_MotionInfo")
 				.addProperty("m_MotionFrame", &PJZAKO::MotionInfo::m_MotionFrame)
 				.addProperty("m_fMotSpd", &PJZAKO::MotionInfo::m_fMotSpd)
 				.addProperty("m_nMaxCommonMot", &PJZAKO::MotionInfo::m_nMaxCommonMot)
@@ -27288,15 +26228,16 @@ public:
 	struct TojoInfo
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <uint8_t m_boWaitReleaseIdleState, offset 0x0>
 		uint8_t m_boWaitReleaseIdleState;
 
 		// <Filler, offset 0x1>
+	private:
 		char _Filler1[3];
 
+	public:
 		// <class commonObj* m_pSyncStgObj, offset 0x4>
 		class commonObj* m_pSyncStgObj;
 
@@ -27304,8 +26245,10 @@ public:
 		uint8_t m_boGetOffCar;
 
 		// <Filler, offset 0x9>
+	private:
 		char _Filler3[3];
 
+	public:
 		// <enum eZkCarSheet m_eCarSheet, offset 0xc>
 		enum eZkCarSheet m_eCarSheet;
 
@@ -27313,12 +26256,14 @@ public:
 		uint8_t m_boBreakPopCmnObjStart;
 
 		// <Filler, offset 0x11>
+	private:
 		char _Filler[3];
+	public:
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<PJZAKO::TojoInfo>("PJZAKO::TojoInfo")
+			NS = NS.beginClass<PJZAKO::TojoInfo>("PJZAKO_TojoInfo")
 				.addProperty("m_boWaitReleaseIdleState", &PJZAKO::TojoInfo::m_boWaitReleaseIdleState)
 				.addProperty("m_pSyncStgObj", &PJZAKO::TojoInfo::m_pSyncStgObj)
 				.addProperty("m_boGetOffCar", &PJZAKO::TojoInfo::m_boGetOffCar)
@@ -27339,7 +26284,6 @@ public:
 	struct PcInfo
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <struct Vec m_PcPosition, offset 0x0>
@@ -27370,12 +26314,14 @@ public:
 		uint8_t m_boPcInSight;
 
 		// <Filler, offset 0x3e>
+	private:
 		char _Filler[2];
+	public:
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<PJZAKO::PcInfo>("PJZAKO::PcInfo")
+			NS = NS.beginClass<PJZAKO::PcInfo>("PJZAKO_PcInfo")
 				.addProperty("m_PcPosition", &PJZAKO::PcInfo::m_PcPosition)
 				.addProperty("m_PcDirection", &PJZAKO::PcInfo::m_PcDirection)
 				.addProperty("m_PcNavel", &PJZAKO::PcInfo::m_PcNavel)
@@ -27404,7 +26350,6 @@ public:
 	struct DmgInfo
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <int32_t mLoseSightTick, offset 0x0>
@@ -27429,8 +26374,10 @@ public:
 		uint8_t m_boDagekiCounterAttack;
 
 		// <Filler, offset 0x19>
+	private:
 		char _Filler7[3];
 
+	public:
 		// <int32_t m_PiyoTick, offset 0x1c>
 		int32_t m_PiyoTick;
 
@@ -27456,12 +26403,14 @@ public:
 		uint8_t m_boCantCreaatedDeadModelByNoMemory;
 
 		// <Filler, offset 0x41>
+	private:
 		char _Filler[3];
+	public:
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<PJZAKO::DmgInfo>("PJZAKO::DmgInfo")
+			NS = NS.beginClass<PJZAKO::DmgInfo>("PJZAKO_DmgInfo")
 				.addProperty("mLoseSightTick", &PJZAKO::DmgInfo::mLoseSightTick)
 				.addProperty("m_PiyoDuration", &PJZAKO::DmgInfo::m_PiyoDuration)
 				.addProperty("m_mSetDmgDir", &PJZAKO::DmgInfo::m_mSetDmgDir)
@@ -27502,15 +26451,16 @@ public:
 	struct AiInfo
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <uint8_t m_boCutAi, offset 0x0>
 		uint8_t m_boCutAi;
 
 		// <Filler, offset 0x1>
+	private:
 		char _Filler1[3];
 
+	public:
 		// <int32_t m_ThinkCnt, offset 0x4>
 		int32_t m_ThinkCnt;
 
@@ -27550,7 +26500,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<PJZAKO::AiInfo>("PJZAKO::AiInfo")
+			NS = NS.beginClass<PJZAKO::AiInfo>("PJZAKO_AiInfo")
 				.addProperty("m_boCutAi", &PJZAKO::AiInfo::m_boCutAi)
 				.addProperty("m_ThinkCnt", &PJZAKO::AiInfo::m_ThinkCnt)
 				.addProperty("m_EvacuateParam", &PJZAKO::AiInfo::m_EvacuateParam)
@@ -27587,7 +26537,6 @@ public:
 	struct EfDanmen
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <class EffectDanmenFlash* pEf, offset 0x0>
@@ -27599,7 +26548,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<PJZAKO::EfDanmen>("PJZAKO::EfDanmen")
+			NS = NS.beginClass<PJZAKO::EfDanmen>("PJZAKO_EfDanmen")
 				.addProperty("pEf", &PJZAKO::EfDanmen::pEf)
 				.addProperty("taskCheck", &PJZAKO::EfDanmen::taskCheck)
 			.endClass();
@@ -27731,7 +26680,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x4de320);
 		return mFunc(arg1);
 	}
-
 	/// Struct member variables
 
 	// <class mHRChara field_0, offset 0x0>
@@ -27783,8 +26731,10 @@ public:
 	uint8_t m_boWayPointMoveAfterPop;
 
 	// <Filler, offset 0x80f>
+private:
 	char _Filler16[1];
 
+public:
 	// <class PJStateMachine* m_pStateMachine, offset 0x810>
 	class PJStateMachine* m_pStateMachine;
 
@@ -27843,8 +26793,10 @@ public:
 	uint8_t m_boFirstBombDeadFxPlay;
 
 	// <Filler, offset 0x865>
+private:
 	char _Filler35[3];
 
+public:
 	// <struct Vec m_JumpOffTojoLandingPos, offset 0x868>
 	struct Vec m_JumpOffTojoLandingPos;
 
@@ -27852,8 +26804,10 @@ public:
 	uint8_t m_boFixTurret;
 
 	// <Filler, offset 0x875>
+private:
 	char _Filler37[3];
 
+public:
 	// <enum PJZAKO::eSuddenAtkPopDir m_eSdnAtkPopDir, offset 0x878>
 	enum PJZAKO::eSuddenAtkPopDir m_eSdnAtkPopDir;
 
@@ -27870,8 +26824,10 @@ public:
 	uint8_t m_boPcDownLaugh;
 
 	// <Filler, offset 0x889>
+private:
 	char _Filler42[3];
 
+public:
 	// <class FkBulletManager* m_pBulletManager, offset 0x88c>
 	class FkBulletManager* m_pBulletManager;
 
@@ -27882,8 +26838,10 @@ public:
 	uint8_t m_bIsHeadPhysicsEnd;
 
 	// <Filler, offset 0x892>
+private:
 	char _Filler45[2];
 
+public:
 	// <class TGmf* m_pPhysicDeadGmf, offset 0x894>
 	class TGmf* m_pPhysicDeadGmf;
 
@@ -27894,8 +26852,10 @@ public:
 	uint8_t m_boDeadEffectReq;
 
 	// <Filler, offset 0x89a>
+private:
 	char _Filler48[2];
 
+public:
 	// <int32_t m_DeadEffectCountCown, offset 0x89c>
 	int32_t m_DeadEffectCountCown;
 
@@ -27909,8 +26869,10 @@ public:
 	uint8_t m_boTimeShareUpdate;
 
 	// <Filler, offset 0x8a9>
+private:
 	char _Filler52[3];
 
+public:
 	// <enum PJZAKO::eTimeShare m_eTimeShareStat, offset 0x8ac>
 	enum PJZAKO::eTimeShare m_eTimeShareStat;
 
@@ -27936,8 +26898,10 @@ public:
 	uint8_t m_boCalledNoGuardEfOnce;
 
 	// <Filler, offset 0x8fd>
+private:
 	char _Filler60[3];
 
+public:
 	// <int32_t m_OutOfCameraIkakuShootTime, offset 0x900>
 	int32_t m_OutOfCameraIkakuShootTime;
 
@@ -28043,7 +27007,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<PJZAKO>("PJZAKO")
+		NS = NS.deriveClass<PJZAKO, mHRChara>("PJZAKO")
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("m_StatePtrArr", &PJZAKO::m_StatePtrArr)
 			.addProperty("m_BoneScale", &PJZAKO::m_BoneScale)
@@ -28138,29 +27102,29 @@ public:
 			.addProperty("m_State_FixTurret", &PJZAKO::m_State_FixTurret)
 			.addProperty("m_State_WayPointMoveAfterPop", &PJZAKO::m_State_WayPointMoveAfterPop)
 			.addProperty("m_State_DownAttack", &PJZAKO::m_State_DownAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("IsAtkObj", &PJZAKO::IsAtkObj)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("IsSetDamageFromPcThroughAttack", &PJZAKO::IsSetDamageFromPcThroughAttack)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg4) not supported in LuaBridge.
 			//.addFunction("mSetDamage_Dead", &PJZAKO::mSetDamage_Dead)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mSetDamage_CutDamage", &PJZAKO::mSetDamage_CutDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mSetDamage_NoStateChangeDamage", &PJZAKO::mSetDamage_NoStateChangeDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg3) not supported in LuaBridge.
 			//.addFunction("mSetDamage_DamageCounterProc", &PJZAKO::mSetDamage_DamageCounterProc)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mSetDamage_InitDamageReaction", &PJZAKO::mSetDamage_InitDamageReaction)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mSetDamage_Initialize", &PJZAKO::mSetDamage_Initialize)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &PJZAKO::mSetDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("CheckSetDmgFuncGarbageInData", &PJZAKO::CheckSetDmgFuncGarbageInData)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg4) not supported in LuaBridge.
 			//.addFunction("ConvertDmgMot", &PJZAKO::ConvertDmgMot)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRBattle* arg1) not supported in LuaBridge.
 			//.addFunction("StaticProc", &PJZAKO::StaticProc)
 		.endClass();
 	}
@@ -28265,7 +27229,6 @@ static_assert(sizeof(PJZAKO) == 2532, "expected class PJZAKO to be size 2532");
 class PJStateMachine
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <void* (* field_0)[0x1], offset 0x0>
@@ -28308,11 +27271,12 @@ static_assert(sizeof(PJStateMachine) == 20, "expected class PJStateMachine to be
 class EffectDanmenFlash
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[604];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -28328,7 +27292,6 @@ static_assert(sizeof(EffectDanmenFlash) == 604, "expected class EffectDanmenFlas
 class EffectQuestion : public HrTask
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -28338,8 +27301,10 @@ public:
 	uint8_t m_Flag;
 
 	// <Filler, offset 0x51>
+private:
 	char _Filler2[3];
 
+public:
 	// <class rPrimUnific m_StarUni, offset 0x54>
 	class rPrimUnific m_StarUni;
 
@@ -28373,7 +27338,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EffectQuestion>("EffectQuestion")
+		NS = NS.deriveClass<EffectQuestion, HrTask>("EffectQuestion")
 			.addProperty("m_Flag", &EffectQuestion::m_Flag)
 			.addProperty("m_StarUni", &EffectQuestion::m_StarUni)
 			.addProperty("m_Star", &EffectQuestion::m_Star)
@@ -28406,8 +27371,6 @@ static_assert(sizeof(EffectQuestion) == 364, "expected class EffectQuestion to b
 class PJZakoMotMng
 {
 public:
-	/// 1 namespace types: enum PJZakoMotMng::MotMode
-
 	// enum PJZakoMotMng::MotMode
 	enum MotMode : uint32_t
 	{
@@ -28444,7 +27407,6 @@ public:
 		MotMode_NUM = 9
 
 	};
-
 
 	/// Struct member variables
 
@@ -28497,11 +27459,12 @@ static_assert(sizeof(PJZakoMotMng) == 36, "expected class PJZakoMotMng to be siz
 class PathPlanner
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[1220];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -28517,13 +27480,10 @@ static_assert(sizeof(PathPlanner) == 1220, "expected class PathPlanner to be siz
 class FkDynamicParam
 {
 public:
-	/// 2 namespace types: struct FkDynamicParam::DynamicParam, enum FkDynamicParam::DP_STAT
-
 	// [Structure] struct FkDynamicParam::DynamicParam
 	struct DynamicParam
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <char* strParamName, offset 0x0>
@@ -28535,7 +27495,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<FkDynamicParam::DynamicParam>("FkDynamicParam::DynamicParam")
+			NS = NS.beginClass<FkDynamicParam::DynamicParam>("FkDynamicParam_DynamicParam")
 				// native pointer type (char*) not supported in LuaBridge (needs wrapper function)
 				//.addProperty("strParamName", &FkDynamicParam::DynamicParam::strParamName)
 				.addProperty("fParam", &FkDynamicParam::DynamicParam::fParam)
@@ -28559,7 +27519,6 @@ public:
 		eDP_STAT_STANDBY = 0
 
 	};
-
 
 	/// Struct member variables
 
@@ -28591,7 +27550,9 @@ public:
 	uint8_t m_boEOF;
 
 	// <Filler, offset 0x131>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -28628,11 +27589,12 @@ static_assert(sizeof(FkDynamicParam) == 308, "expected class FkDynamicParam to b
 class FkObstacleSensor
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[52];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -28648,21 +27610,20 @@ static_assert(sizeof(FkObstacleSensor) == 52, "expected class FkObstacleSensor t
 class FkBulletManager
 {
 public:
-	/// 3 namespace types: struct FkBulletManager::stEfBullet, struct FkBulletManager::DmgInfo, void __convention("thiscall") FkBulletManager::AddManageBullet(class FkBulletManager* const this, class HrTask* arg2, class EffectFkTobiDoguBase* arg3, class mHRChara* arg4, float arg5, float arg6, int32_t arg7, float arg8, uint8_t arg9, int32_t arg10)
-
 	// [Structure] struct FkBulletManager::stEfBullet
 	struct stEfBullet
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <uint8_t fireFlag, offset 0x0>
 		uint8_t fireFlag;
 
 		// <Filler, offset 0x1>
+	private:
 		char _Filler1[3];
 
+	public:
 		// <class HrTask* pTask, offset 0x4>
 		class HrTask* pTask;
 
@@ -28675,7 +27636,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<FkBulletManager::stEfBullet>("FkBulletManager::stEfBullet")
+			NS = NS.beginClass<FkBulletManager::stEfBullet>("FkBulletManager_stEfBullet")
 				.addProperty("fireFlag", &FkBulletManager::stEfBullet::fireFlag)
 				.addProperty("pTask", &FkBulletManager::stEfBullet::pTask)
 				.addProperty("taskCheckBullet", &FkBulletManager::stEfBullet::taskCheckBullet)
@@ -28694,7 +27655,6 @@ public:
 	struct DmgInfo
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <float fDmg, offset 0x0>
@@ -28713,8 +27673,10 @@ public:
 		uint8_t boDownAtk;
 
 		// <Filler, offset 0x11>
+	private:
 		char _Filler5[3];
 
+	public:
 		// <class mHRChara* pOwner, offset 0x14>
 		class mHRChara* pOwner;
 
@@ -28724,7 +27686,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<FkBulletManager::DmgInfo>("FkBulletManager::DmgInfo")
+			NS = NS.beginClass<FkBulletManager::DmgInfo>("FkBulletManager_DmgInfo")
 				.addProperty("fDmg", &FkBulletManager::DmgInfo::fDmg)
 				.addProperty("fKnockBack", &FkBulletManager::DmgInfo::fKnockBack)
 				.addProperty("AtkKind", &FkBulletManager::DmgInfo::AtkKind)
@@ -28752,7 +27714,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x5d03f0);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
-
 	/// Struct member variables
 
 	// <class FkStlVector<FkBulletManager::stEfBullet> mEfBulletArr, offset 0x0>
@@ -28771,7 +27732,7 @@ public:
 			.addProperty("mEfBulletArr", &FkBulletManager::mEfBulletArr)
 			.addProperty("m_nBulletMax", &FkBulletManager::m_nBulletMax)
 			.addProperty("m_DmgInfo", &FkBulletManager::m_DmgInfo)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg4) not supported in LuaBridge.
 			//.addFunction("AddManageBullet", &FkBulletManager::AddManageBullet)
 		.endClass();
 	}
@@ -28786,13 +27747,10 @@ static_assert(sizeof(FkBulletManager) == 52, "expected class FkBulletManager to 
 class EffectFkTobiDoguBase
 {
 public:
-	/// 3 namespace types: struct EffectFkTobiDoguBase::strHitCheck, enum EffectFkTobiDoguBase::eHitObjType, struct EffectFkTobiDoguBase::HitObjInfo
-
 	// [Structure] struct EffectFkTobiDoguBase::strHitCheck
 	struct strHitCheck
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <float fTgtRadius, offset 0x0>
@@ -28804,7 +27762,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EffectFkTobiDoguBase::strHitCheck>("EffectFkTobiDoguBase::strHitCheck")
+			NS = NS.beginClass<EffectFkTobiDoguBase::strHitCheck>("EffectFkTobiDoguBase_strHitCheck")
 				.addProperty("fTgtRadius", &EffectFkTobiDoguBase::strHitCheck::fTgtRadius)
 				.addProperty("pTgtPos", &EffectFkTobiDoguBase::strHitCheck::pTgtPos)
 			.endClass();
@@ -28835,15 +27793,16 @@ public:
 	struct HitObjInfo
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <uint8_t boHit, offset 0x0>
 		uint8_t boHit;
 
 		// <Filler, offset 0x1>
+	private:
 		char _Filler1[3];
 
+	public:
 		// <enum EffectFkTobiDoguBase::eHitObjType eHitObjType, offset 0x4>
 		enum eHitObjType eHitObjType;
 
@@ -28856,7 +27815,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EffectFkTobiDoguBase::HitObjInfo>("EffectFkTobiDoguBase::HitObjInfo")
+			NS = NS.beginClass<EffectFkTobiDoguBase::HitObjInfo>("EffectFkTobiDoguBase_HitObjInfo")
 				.addProperty("boHit", &EffectFkTobiDoguBase::HitObjInfo::boHit)
 				.addProperty("eHitObjType", &EffectFkTobiDoguBase::HitObjInfo::eHitObjType)
 				.addProperty("HitPos", &EffectFkTobiDoguBase::HitObjInfo::HitPos)
@@ -28871,7 +27830,6 @@ public:
 	static_assert(sizeof(EffectFkTobiDoguBase::HitObjInfo::fSqDistFromLaunch) == 4, "expected fSqDistFromLaunch to be size 4");
 	static_assert(sizeof(EffectFkTobiDoguBase::HitObjInfo) == 24, "expected struct EffectFkTobiDoguBase::HitObjInfo to be size 24");
 
-
 	/// Struct member variables
 
 	// <void* (* field_0)[0x3], offset 0x0>
@@ -28881,8 +27839,10 @@ public:
 	uint8_t m_Flag;
 
 	// <Filler, offset 0x5>
+private:
 	char _Filler2[3];
 
+public:
 	// <float m_TimeCount, offset 0x8>
 	float m_TimeCount;
 
@@ -28923,8 +27883,10 @@ public:
 	uint8_t m_boDeleteRequest;
 
 	// <Filler, offset 0x3b>
+private:
 	char _Filler15[1];
 
+public:
 	// <struct Vec m_LancPos, offset 0x3c>
 	struct Vec m_LancPos;
 
@@ -29035,11 +27997,12 @@ static_assert(sizeof(EffectFkTobiDoguBase) == 196, "expected class EffectFkTobiD
 class rQuadEx
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[220];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -29055,7 +28018,6 @@ static_assert(sizeof(rQuadEx) == 220, "expected class rQuadEx to be size 220");
 class EffectGunTrack : public HrTask
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -29065,8 +28027,10 @@ public:
 	uint8_t m_Flag;
 
 	// <Filler, offset 0x51>
+private:
 	char _Filler2[3];
 
+public:
 	// <class rPrimUnific m_SmokeUni, offset 0x54>
 	class rPrimUnific m_SmokeUni;
 
@@ -29127,7 +28091,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EffectGunTrack>("EffectGunTrack")
+		NS = NS.deriveClass<EffectGunTrack, HrTask>("EffectGunTrack")
 			.addProperty("m_Flag", &EffectGunTrack::m_Flag)
 			.addProperty("m_SmokeUni", &EffectGunTrack::m_SmokeUni)
 			.addProperty("m_pWidth", &EffectGunTrack::m_pWidth)
@@ -29179,8 +28143,6 @@ static_assert(sizeof(EffectGunTrack) == 648, "expected class EffectGunTrack to b
 class pcSNB
 {
 public:
-	/// 1 namespace types: class mHRChara* __convention("thiscall") pcSNB::mGetSerchNearJumpAttackTarget(class pcSNB* const this)
-
 	// [Function] class mHRChara* __convention("thiscall") pcSNB::mGetSerchNearJumpAttackTarget(class pcSNB* const this) [?mGetSerchNearJumpAttackTarget@pcSNB@@QAEPAVmHRChara@@XZ]
 	class mHRChara* mGetSerchNearJumpAttackTarget()
 	{
@@ -29188,17 +28150,18 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x4f8fc0);
 		return mFunc(this);
 	}
-
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[8252];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<pcSNB>("pcSNB")
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetSerchNearJumpAttackTarget", &pcSNB::mGetSerchNearJumpAttackTarget)
 		.endClass();
 	}
@@ -29210,8 +28173,6 @@ static_assert(sizeof(pcSNB) == 8252, "expected class pcSNB to be size 8252");
 class State_Tojo_Knife_SuddenAttack : public State_Tojo_SuddenAttack
 {
 public:
-	/// 1 namespace types: enum State_Tojo_Knife_SuddenAttack::eStat
-
 	// enum State_Tojo_Knife_SuddenAttack::eStat
 	enum eStat : uint32_t
 	{
@@ -29228,7 +28189,6 @@ public:
 
 	};
 
-
 	/// Struct member variables
 
 	// <class State_Tojo_SuddenAttack field_0, offset 0x0>
@@ -29243,7 +28203,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<State_Tojo_Knife_SuddenAttack>("State_Tojo_Knife_SuddenAttack")
+		NS = NS.deriveClass<State_Tojo_Knife_SuddenAttack, State_Tojo_SuddenAttack>("State_Tojo_Knife_SuddenAttack")
 			.addProperty("m_eStat", &State_Tojo_Knife_SuddenAttack::m_eStat)
 			.addProperty("m_TrapPos", &State_Tojo_Knife_SuddenAttack::m_TrapPos)
 		.endClass();
@@ -29258,7 +28218,6 @@ static_assert(sizeof(State_Tojo_Knife_SuddenAttack) == 20, "expected class State
 class ZkKnifeState_ThroughKnife : public PJState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class PJState field_0, offset 0x0>
@@ -29268,12 +28227,14 @@ public:
 	uint8_t m_boTrigger;
 
 	// <Filler, offset 0x5>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<ZkKnifeState_ThroughKnife>("ZkKnifeState_ThroughKnife")
+		NS = NS.deriveClass<ZkKnifeState_ThroughKnife, PJState>("ZkKnifeState_ThroughKnife")
 			.addProperty("m_boTrigger", &ZkKnifeState_ThroughKnife::m_boTrigger)
 		.endClass();
 	}
@@ -29286,7 +28247,6 @@ static_assert(sizeof(ZkKnifeState_ThroughKnife) == 8, "expected class ZkKnifeSta
 class PJZAKOBoneB : public PJZAKO
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class PJZAKO field_0, offset 0x0>
@@ -29295,7 +28255,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<PJZAKOBoneB>("PJZAKOBoneB")
+		NS = NS.deriveClass<PJZAKOBoneB, PJZAKO>("PJZAKOBoneB")
 		.endClass();
 	}
 #endif
@@ -29306,8 +28266,6 @@ static_assert(sizeof(PJZAKOBoneB) == 2532, "expected class PJZAKOBoneB to be siz
 class PJZakoKnife : public PJZAKOBoneB
 {
 public:
-	/// 1 namespace types: int32_t __convention("thiscall") PJZakoKnife::ConvertDmgMot(class PJZakoKnife* const this, int32_t const arg2, int32_t const arg3, class mHRChara* arg4)
-
 	// [Function] int32_t __convention("thiscall") PJZakoKnife::ConvertDmgMot(class PJZakoKnife* const this, int32_t const arg2, int32_t const arg3, class mHRChara* arg4) [?ConvertDmgMot@PJZakoKnife@@UAEHHHPAVmHRChara@@@Z]
 	int32_t ConvertDmgMot(int32_t const arg2, int32_t const arg3, class mHRChara* arg4)
 	{
@@ -29315,7 +28273,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x4fd290);
 		return mFunc(this, arg2, arg3, arg4);
 	}
-
 	/// Struct member variables
 
 	// <class PJZAKOBoneB field_0, offset 0x0>
@@ -29330,10 +28287,10 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<PJZakoKnife>("PJZakoKnife")
+		NS = NS.deriveClass<PJZakoKnife, PJZAKOBoneB>("PJZakoKnife")
 			.addProperty("m_State_ThroughKnife", &PJZakoKnife::m_State_ThroughKnife)
 			.addProperty("m_State_SdnAtk", &PJZakoKnife::m_State_SdnAtk)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg4) not supported in LuaBridge.
 			//.addFunction("ConvertDmgMot", &PJZakoKnife::ConvertDmgMot)
 		.endClass();
 	}
@@ -29347,8 +28304,6 @@ static_assert(sizeof(PJZakoKnife) == 2560, "expected class PJZakoKnife to be siz
 class bsSKE
 {
 public:
-	/// 1 namespace types: uint8_t __convention("thiscall") bsSKE::mSetDamage(class bsSKE* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-
 	// [Function] uint8_t __convention("thiscall") bsSKE::mSetDamage(class bsSKE* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsSKE@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
 	{
@@ -29356,17 +28311,18 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x501450);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
-
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[3684];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<bsSKE>("bsSKE")
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &bsSKE::mSetDamage)
 		.endClass();
 	}
@@ -29378,8 +28334,6 @@ static_assert(sizeof(bsSKE) == 3684, "expected class bsSKE to be size 3684");
 class bsLEZ
 {
 public:
-	/// 1 namespace types: uint8_t __convention("thiscall") bsLEZ::mSetDamage(class bsLEZ* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-
 	// [Function] uint8_t __convention("thiscall") bsLEZ::mSetDamage(class bsLEZ* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsLEZ@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
 	{
@@ -29387,17 +28341,18 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x52ed70);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
-
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[4412];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<bsLEZ>("bsLEZ")
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &bsLEZ::mSetDamage)
 		.endClass();
 	}
@@ -29409,8 +28364,6 @@ static_assert(sizeof(bsLEZ) == 4412, "expected class bsLEZ to be size 4412");
 class bsCEW
 {
 public:
-	/// 1 namespace types: uint8_t __convention("thiscall") bsCEW::mSetDamage(class bsCEW* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-
 	// [Function] uint8_t __convention("thiscall") bsCEW::mSetDamage(class bsCEW* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsCEW@@EAE_NMHHHMHMMPAVmHRChara@@@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
 	{
@@ -29418,17 +28371,18 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x533080);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
-
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[4232];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<bsCEW>("bsCEW")
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &bsCEW::mSetDamage)
 		.endClass();
 	}
@@ -29440,8 +28394,6 @@ static_assert(sizeof(bsCEW) == 4232, "expected class bsCEW to be size 4232");
 class bsAST
 {
 public:
-	/// 1 namespace types: uint8_t __convention("thiscall") bsAST::mSetDamage(class bsAST* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-
 	// [Function] uint8_t __convention("thiscall") bsAST::mSetDamage(class bsAST* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsAST@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
 	{
@@ -29449,17 +28401,18 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x541b20);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
-
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[4352];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<bsAST>("bsAST")
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &bsAST::mSetDamage)
 		.endClass();
 	}
@@ -29471,8 +28424,6 @@ static_assert(sizeof(bsAST) == 4352, "expected class bsAST to be size 4352");
 class bsRKT
 {
 public:
-	/// 1 namespace types: uint8_t __convention("thiscall") bsRKT::mSetDamage(class bsRKT* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-
 	// [Function] uint8_t __convention("thiscall") bsRKT::mSetDamage(class bsRKT* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsRKT@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
 	{
@@ -29480,17 +28431,18 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x547690);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
-
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[4672];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<bsRKT>("bsRKT")
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &bsRKT::mSetDamage)
 		.endClass();
 	}
@@ -29503,21 +28455,13 @@ template<typename T>
 class KrBaseState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <void* (* field_0)[0x7], offset 0x0>
 	void* (* field_0)[0x7];
 
-#ifdef WITH_LUA
-	static void BindLua(luabridge::Namespace& NS)
-	{
-		NS = NS.beginClass<KrBaseState<bsBasic>>("KrBaseState<bsBasic>")
-			// delegates are not supported in LuaBridge
-			//.addProperty("field_0", &KrBaseState<bsBasic>::field_0)
-		.endClass();
-	}
-#endif
+	// Exporting templated types to Lua currently not supported.
+	// static void BindLua(luabridge::Namespace& NS)
 };
 static_assert(sizeof(KrBaseState<bsBasic>::field_0) == 4, "expected field_0 to be size 4");
 static_assert(sizeof(KrBaseState<bsBasic>) == 4, "expected class KrBaseState<bsBasic> to be size 4");
@@ -29526,7 +28470,6 @@ static_assert(sizeof(KrBaseState<bsBasic>) == 4, "expected class KrBaseState<bsB
 class GLBDeathState : public KrBaseState<pcGLB>
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
@@ -29551,7 +28494,6 @@ static_assert(sizeof(GLBDeathState) == 8, "expected class GLBDeathState to be si
 class GLBWalkState : public KrBaseState<pcGLB>
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
@@ -29571,7 +28513,6 @@ static_assert(sizeof(GLBWalkState) == 4, "expected class GLBWalkState to be size
 class GLBComboState : public KrBaseState<pcGLB>
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
@@ -29581,7 +28522,9 @@ public:
 	uint8_t mbCancel;
 
 	// <Filler, offset 0x5>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -29599,7 +28542,6 @@ static_assert(sizeof(GLBComboState) == 8, "expected class GLBComboState to be si
 class GLBIdleState : public KrBaseState<pcGLB>
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
@@ -29619,7 +28561,6 @@ static_assert(sizeof(GLBIdleState) == 4, "expected class GLBIdleState to be size
 class GLBJampState : public KrBaseState<pcGLB>
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
@@ -29645,7 +28586,6 @@ template<typename T1, int T2>
 class KrStateMachine
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class pcGLB* mpOwner, offset 0x0>
@@ -29663,19 +28603,8 @@ public:
 	// <class KrBaseState<pcGLB>* mpState[0x20], offset 0x10>
 	class KrBaseState<T1>* mpState[T2];
 
-#ifdef WITH_LUA
-	static void BindLua(luabridge::Namespace& NS)
-	{
-		NS = NS.beginClass<KrStateMachine<pcGLB,32>>("KrStateMachine<pcGLB,32>")
-			.addProperty("mpOwner", &KrStateMachine<pcGLB,32>::mpOwner)
-			.addProperty("mpCurrentIdx", &KrStateMachine<pcGLB,32>::mpCurrentIdx)
-			.addProperty("mpPreviousIdx", &KrStateMachine<pcGLB,32>::mpPreviousIdx)
-			.addProperty("mpGlobalIdx", &KrStateMachine<pcGLB,32>::mpGlobalIdx)
-			// static arrays are not supported in LuaBridge (only std::vector)
-			//.addProperty("mpState", &KrStateMachine<pcGLB,32>::mpState)
-		.endClass();
-	}
-#endif
+	// Exporting templated types to Lua currently not supported.
+	// static void BindLua(luabridge::Namespace& NS)
 };
 static_assert(sizeof(KrStateMachine<pcGLB,32>::mpOwner) == 4, "expected mpOwner to be size 4");
 static_assert(sizeof(KrStateMachine<pcGLB,32>::mpCurrentIdx) == 4, "expected mpCurrentIdx to be size 4");
@@ -29688,7 +28617,6 @@ static_assert(sizeof(KrStateMachine<pcGLB,32>) == 144, "expected class KrStateMa
 class rSideScrollCamera
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <void* (* field_0)[0x1], offset 0x0>
@@ -29719,8 +28647,10 @@ public:
 	uint8_t mbZoom;
 
 	// <Filler, offset 0x31>
+private:
 	char _Filler9[3];
 
+public:
 	// <float mZoomDist, offset 0x34>
 	float mZoomDist;
 
@@ -29769,7 +28699,6 @@ static_assert(sizeof(rSideScrollCamera) == 72, "expected class rSideScrollCamera
 class GLBDamageState : public KrBaseState<pcGLB>
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
@@ -29789,7 +28718,6 @@ static_assert(sizeof(GLBDamageState) == 4, "expected class GLBDamageState to be 
 class GLBGuardState : public KrBaseState<pcGLB>
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
@@ -29809,7 +28737,6 @@ static_assert(sizeof(GLBGuardState) == 4, "expected class GLBGuardState to be si
 class GLBAirKickState : public KrBaseState<pcGLB>
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
@@ -29829,8 +28756,6 @@ static_assert(sizeof(GLBAirKickState) == 4, "expected class GLBAirKickState to b
 class pcGLB : public mHRChara
 {
 public:
-	/// 6 namespace types: uint8_t __convention("thiscall") pcGLB::IsAtkObj(class pcGLB* const this, class mHRChara* arg2), struct pcGLB::DmgInfo, struct pcGLB::TickCnt, enum pcGLB::MiniDemoEnum, void __convention("thiscall") pcGLB::SetDamageIK(class pcGLB* const this, class mHRChara* arg2, uint8_t arg3), uint8_t __convention("thiscall") pcGLB::mSetDamage(class pcGLB* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-
 	// [Function] uint8_t __convention("thiscall") pcGLB::IsAtkObj(class pcGLB* const this, class mHRChara* arg2) [?IsAtkObj@pcGLB@@EAE_NPAVmHRChara@@@Z]
 	uint8_t IsAtkObj(class mHRChara* arg2)
 	{
@@ -29842,7 +28767,6 @@ public:
 	struct DmgInfo
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <uint32_t Kind, offset 0x0>
@@ -29881,7 +28805,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<pcGLB::DmgInfo>("pcGLB::DmgInfo")
+			NS = NS.beginClass<pcGLB::DmgInfo>("pcGLB_DmgInfo")
 				.addProperty("Kind", &pcGLB::DmgInfo::Kind)
 				.addProperty("DirecKind", &pcGLB::DmgInfo::DirecKind)
 				.addProperty("Direc", &pcGLB::DmgInfo::Direc)
@@ -29914,7 +28838,6 @@ public:
 	struct TickCnt
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <int32_t Motion, offset 0x0>
@@ -29938,7 +28861,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<pcGLB::TickCnt>("pcGLB::TickCnt")
+			NS = NS.beginClass<pcGLB::TickCnt>("pcGLB_TickCnt")
 				.addProperty("Motion", &pcGLB::TickCnt::Motion)
 				.addProperty("AtkWait", &pcGLB::TickCnt::AtkWait)
 				.addProperty("Loop", &pcGLB::TickCnt::Loop)
@@ -29990,7 +28913,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x54bb60);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
-
 	/// Struct member variables
 
 	// <class mHRChara field_0, offset 0x0>
@@ -30003,8 +28925,10 @@ public:
 	uint8_t mTestOnCanOperate;
 
 	// <Filler, offset 0x582>
+private:
 	char _Filler3[2];
 
+public:
 	// <class rSideScrollCamera mSideCamera, offset 0x584>
 	class rSideScrollCamera mSideCamera;
 
@@ -30057,8 +28981,10 @@ public:
 	uint8_t mbAir;
 
 	// <Filler, offset 0x6dd>
+private:
 	char _Filler20[3];
 
+public:
 	// <float mTension, offset 0x6e0>
 	float mTension;
 
@@ -30078,8 +29004,10 @@ public:
 	uint8_t mbDemoWait;
 
 	// <Filler, offset 0x6fd>
+private:
 	char _Filler26[3];
 
+public:
 	// <class TGmfNode* mpWristLNode, offset 0x700>
 	class TGmfNode* mpWristLNode;
 
@@ -30090,8 +29018,10 @@ public:
 	uint8_t mbCanKick;
 
 	// <Filler, offset 0x709>
+private:
 	char _Filler29[3];
 
+public:
 	// <int32_t mhVernierSE, offset 0x70c>
 	int32_t mhVernierSE;
 
@@ -30101,7 +29031,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<pcGLB>("pcGLB")
+		NS = NS.deriveClass<pcGLB, mHRChara>("pcGLB")
 			.addProperty("mCanOperate", &pcGLB::mCanOperate)
 			.addProperty("mTestOnCanOperate", &pcGLB::mTestOnCanOperate)
 			.addProperty("mSideCamera", &pcGLB::mSideCamera)
@@ -30132,11 +29062,11 @@ public:
 			.addProperty("mbCanKick", &pcGLB::mbCanKick)
 			.addProperty("mhVernierSE", &pcGLB::mhVernierSE)
 			.addProperty("mMDFlag", &pcGLB::mMDFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("IsAtkObj", &pcGLB::IsAtkObj)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("SetDamageIK", &pcGLB::SetDamageIK)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &pcGLB::mSetDamage)
 		.endClass();
 	}
@@ -30178,8 +29108,6 @@ static_assert(sizeof(pcGLB) == 1812, "expected class pcGLB to be size 1812");
 class EfRoboInterface : public HrTask
 {
 public:
-	/// 1 namespace types: enum EfRoboInterface::InterfaceState
-
 	// enum EfRoboInterface::InterfaceState
 	enum InterfaceState : uint32_t
 	{
@@ -30198,7 +29126,6 @@ public:
 		State_FadeOut = 3
 
 	};
-
 
 	/// Struct member variables
 
@@ -30275,8 +29202,10 @@ public:
 	uint8_t mbInputCVisble;
 
 	// <Filler, offset 0x345>
+private:
 	char _Filler24[3];
 
+public:
 	// <float mInputCAlpha, offset 0x348>
 	float mInputCAlpha;
 
@@ -30362,8 +29291,10 @@ public:
 	uint8_t mbEnemyMaxVisible;
 
 	// <Filler, offset 0x3b2>
+private:
 	char _Filler52[2];
 
+public:
 	// <uint32_t mDmgAnimeCnt, offset 0x3b4>
 	uint32_t mDmgAnimeCnt;
 
@@ -30371,8 +29302,10 @@ public:
 	uint8_t mbFinish;
 
 	// <Filler, offset 0x3b9>
+private:
 	char _Filler54[3];
 
+public:
 	// <float mBlurAlpha, offset 0x3bc>
 	float mBlurAlpha;
 
@@ -30380,12 +29313,14 @@ public:
 	uint8_t mBlurValid;
 
 	// <Filler, offset 0x3c1>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EfRoboInterface>("EfRoboInterface")
+		NS = NS.deriveClass<EfRoboInterface, HrTask>("EfRoboInterface")
 			.addProperty("field_50", &EfRoboInterface::field_50)
 			.addProperty("mpBlur", &EfRoboInterface::mpBlur)
 			.addProperty("mInputCZTex", &EfRoboInterface::mInputCZTex)
@@ -30506,7 +29441,6 @@ static_assert(sizeof(EfRoboInterface) == 964, "expected class EfRoboInterface to
 class EffectSpeedBlur : public HrTask
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -30516,8 +29450,10 @@ public:
 	uint8_t m_Flag;
 
 	// <Filler, offset 0x51>
+private:
 	char _Filler2[3];
 
+public:
 	// <float m_BlurValue, offset 0x54>
 	float m_BlurValue;
 
@@ -30531,12 +29467,14 @@ public:
 	uint8_t m_Wait;
 
 	// <Filler, offset 0x61>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EffectSpeedBlur>("EffectSpeedBlur")
+		NS = NS.deriveClass<EffectSpeedBlur, HrTask>("EffectSpeedBlur")
 			.addProperty("m_Flag", &EffectSpeedBlur::m_Flag)
 			.addProperty("m_BlurValue", &EffectSpeedBlur::m_BlurValue)
 			.addProperty("m_Scale", &EffectSpeedBlur::m_Scale)
@@ -30557,7 +29495,6 @@ static_assert(sizeof(EffectSpeedBlur) == 100, "expected class EffectSpeedBlur to
 class CmDeathState : public KrBaseState<bsBasic>
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class KrBaseState<bsBasic> field_0, offset 0x0>
@@ -30567,7 +29504,9 @@ public:
 	uint8_t mbDeadScriptCall;
 
 	// <Filler, offset 0x5>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -30585,7 +29524,6 @@ static_assert(sizeof(CmDeathState) == 8, "expected class CmDeathState to be size
 class SDPDeathState : public CmDeathState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class CmDeathState field_0, offset 0x0>
@@ -30594,7 +29532,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<SDPDeathState>("SDPDeathState")
+		NS = NS.deriveClass<SDPDeathState, CmDeathState>("SDPDeathState")
 		.endClass();
 	}
 #endif
@@ -30605,7 +29543,6 @@ static_assert(sizeof(SDPDeathState) == 8, "expected class SDPDeathState to be si
 class SDPComboState : public KrBaseState<bsBasic>
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class KrBaseState<bsBasic> field_0, offset 0x0>
@@ -30625,7 +29562,6 @@ static_assert(sizeof(SDPComboState) == 4, "expected class SDPComboState to be si
 class CmDamageState : public KrBaseState<bsBasic>
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class KrBaseState<bsBasic> field_0, offset 0x0>
@@ -30650,7 +29586,6 @@ static_assert(sizeof(CmDamageState) == 8, "expected class CmDamageState to be si
 class SDPDamageState : public CmDamageState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class CmDamageState field_0, offset 0x0>
@@ -30659,7 +29594,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<SDPDamageState>("SDPDamageState")
+		NS = NS.deriveClass<SDPDamageState, CmDamageState>("SDPDamageState")
 		.endClass();
 	}
 #endif
@@ -30670,7 +29605,6 @@ static_assert(sizeof(SDPDamageState) == 8, "expected class SDPDamageState to be 
 class SDPBeamState : public KrBaseState<bsBasic>
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class KrBaseState<bsBasic> field_0, offset 0x0>
@@ -30690,7 +29624,6 @@ static_assert(sizeof(SDPBeamState) == 4, "expected class SDPBeamState to be size
 class CmIdleState : public KrBaseState<bsBasic>
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class KrBaseState<bsBasic> field_0, offset 0x0>
@@ -30715,7 +29648,6 @@ static_assert(sizeof(CmIdleState) == 8, "expected class CmIdleState to be size 8
 class SDPIdleState : public CmIdleState
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class CmIdleState field_0, offset 0x0>
@@ -30724,7 +29656,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<SDPIdleState>("SDPIdleState")
+		NS = NS.deriveClass<SDPIdleState, CmIdleState>("SDPIdleState")
 		.endClass();
 	}
 #endif
@@ -30735,13 +29667,10 @@ static_assert(sizeof(SDPIdleState) == 8, "expected class SDPIdleState to be size
 class bsBasic : public mHRChara
 {
 public:
-	/// 9 namespace types: struct bsBasic::PcInfo, struct bsBasic::SurroundInfo, struct bsBasic::DistSense, struct bsBasic::TickCnt, struct bsBasic::BattleParam, struct bsBasic::DmgInfo, void __convention("thiscall") bsBasic::SetDamageIK(class bsBasic* const this, class mHRChara* arg2, uint8_t arg3), uint8_t __convention("thiscall") bsBasic::mSetDamage(class bsBasic* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10), uint8_t __convention("thiscall") bsBasic::IsAtkObj(class bsBasic* const this, class mHRChara* arg2)
-
 	// [Structure] struct bsBasic::PcInfo
 	struct PcInfo
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <struct Vec Pos, offset 0x0>
@@ -30769,12 +29698,14 @@ public:
 		uint8_t bObstacle;
 
 		// <Filler, offset 0x35>
+	private:
 		char _Filler[3];
+	public:
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<bsBasic::PcInfo>("bsBasic::PcInfo")
+			NS = NS.beginClass<bsBasic::PcInfo>("bsBasic_PcInfo")
 				.addProperty("Pos", &bsBasic::PcInfo::Pos)
 				.addProperty("NavelPos", &bsBasic::PcInfo::NavelPos)
 				.addProperty("Direc", &bsBasic::PcInfo::Direc)
@@ -30801,7 +29732,6 @@ public:
 	struct SurroundInfo
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <float SearchDist, offset 0x0>
@@ -30885,7 +29815,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<bsBasic::SurroundInfo>("bsBasic::SurroundInfo")
+			NS = NS.beginClass<bsBasic::SurroundInfo>("bsBasic_SurroundInfo")
 				.addProperty("SearchDist", &bsBasic::SurroundInfo::SearchDist)
 				.addProperty("FrontDist", &bsBasic::SurroundInfo::FrontDist)
 				.addProperty("BackDist", &bsBasic::SurroundInfo::BackDist)
@@ -30948,7 +29878,6 @@ public:
 	struct DistSense
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <float Base, offset 0x0>
@@ -30969,7 +29898,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<bsBasic::DistSense>("bsBasic::DistSense")
+			NS = NS.beginClass<bsBasic::DistSense>("bsBasic_DistSense")
 				.addProperty("Base", &bsBasic::DistSense::Base)
 				.addProperty("Small", &bsBasic::DistSense::Small)
 				.addProperty("Middle", &bsBasic::DistSense::Middle)
@@ -30990,7 +29919,6 @@ public:
 	struct TickCnt
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <int32_t Motion, offset 0x0>
@@ -31020,7 +29948,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<bsBasic::TickCnt>("bsBasic::TickCnt")
+			NS = NS.beginClass<bsBasic::TickCnt>("bsBasic_TickCnt")
 				.addProperty("Motion", &bsBasic::TickCnt::Motion)
 				.addProperty("AtkWait", &bsBasic::TickCnt::AtkWait)
 				.addProperty("Loop", &bsBasic::TickCnt::Loop)
@@ -31047,7 +29975,6 @@ public:
 	struct BattleParam
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <struct Vec TargetPos, offset 0x0>
@@ -31066,15 +29993,17 @@ public:
 		uint8_t TsubaRotNum;
 
 		// <Filler, offset 0x19>
+	private:
 		char _Filler5[3];
 
+	public:
 		// <int32_t HpPhase, offset 0x1c>
 		int32_t HpPhase;
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<bsBasic::BattleParam>("bsBasic::BattleParam")
+			NS = NS.beginClass<bsBasic::BattleParam>("bsBasic_BattleParam")
 				.addProperty("TargetPos", &bsBasic::BattleParam::TargetPos)
 				.addProperty("AtkPercent", &bsBasic::BattleParam::AtkPercent)
 				.addProperty("GrdPercent", &bsBasic::BattleParam::GrdPercent)
@@ -31097,7 +30026,6 @@ public:
 	struct DmgInfo
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <uint32_t Kind, offset 0x0>
@@ -31142,7 +30070,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<bsBasic::DmgInfo>("bsBasic::DmgInfo")
+			NS = NS.beginClass<bsBasic::DmgInfo>("bsBasic_DmgInfo")
 				.addProperty("Kind", &bsBasic::DmgInfo::Kind)
 				.addProperty("DirecKind", &bsBasic::DmgInfo::DirecKind)
 				.addProperty("Direc", &bsBasic::DmgInfo::Direc)
@@ -31196,7 +30124,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x5786a0);
 		return mFunc(this, arg2);
 	}
-
 	/// Struct member variables
 
 	// <class mHRChara field_0, offset 0x0>
@@ -31236,8 +30163,10 @@ public:
 	uint8_t mbDownVoice;
 
 	// <Filler, offset 0xc65>
+private:
 	char _Filler12[3];
 
+public:
 	// <int32_t mMiniDemoNum, offset 0xc68>
 	int32_t mMiniDemoNum;
 
@@ -31257,8 +30186,10 @@ public:
 	uint8_t m_boCalledNoGuardEfOnce;
 
 	// <Filler, offset 0xc7a>
+private:
 	char _Filler18[2];
 
+public:
 	// <float m_fCheckSrroundHeight, offset 0xc7c>
 	float m_fCheckSrroundHeight;
 
@@ -31268,7 +30199,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<bsBasic>("bsBasic")
+		NS = NS.deriveClass<bsBasic, mHRChara>("bsBasic")
 			.addProperty("mRotSpeed", &bsBasic::mRotSpeed)
 			.addProperty("mPcInfo", &bsBasic::mPcInfo)
 			.addProperty("mSurroundInfo", &bsBasic::mSurroundInfo)
@@ -31288,11 +30219,11 @@ public:
 			.addProperty("m_boCalledNoGuardEfOnce", &bsBasic::m_boCalledNoGuardEfOnce)
 			.addProperty("m_fCheckSrroundHeight", &bsBasic::m_fCheckSrroundHeight)
 			.addProperty("mFlag", &bsBasic::mFlag)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("SetDamageIK", &bsBasic::SetDamageIK)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &bsBasic::mSetDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("IsAtkObj", &bsBasic::IsAtkObj)
 		.endClass();
 	}
@@ -31323,7 +30254,6 @@ static_assert(sizeof(bsBasic) == 3204, "expected class bsBasic to be size 3204")
 class SDPMoveState : public KrBaseState<bsBasic>
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class KrBaseState<bsBasic> field_0, offset 0x0>
@@ -31343,7 +30273,6 @@ static_assert(sizeof(SDPMoveState) == 4, "expected class SDPMoveState to be size
 class SDPGuardState : public KrBaseState<bsBasic>
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class KrBaseState<bsBasic> field_0, offset 0x0>
@@ -31363,8 +30292,6 @@ static_assert(sizeof(SDPGuardState) == 4, "expected class SDPGuardState to be si
 class bsSDP : public bsBasic
 {
 public:
-	/// 2 namespace types: uint8_t __convention("thiscall") bsSDP::IsAtkObj(class bsSDP* const this, class mHRChara* arg2), uint8_t __convention("thiscall") bsSDP::mSetDamage(class bsSDP* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-
 	// [Function] uint8_t __convention("thiscall") bsSDP::IsAtkObj(class bsSDP* const this, class mHRChara* arg2) [?IsAtkObj@bsSDP@@EAE_NPAVmHRChara@@@Z]
 	uint8_t IsAtkObj(class mHRChara* arg2)
 	{
@@ -31379,7 +30306,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x54ebc0);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
-
 	/// Struct member variables
 
 	// <class bsBasic field_0, offset 0x0>
@@ -31442,7 +30368,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<bsSDP>("bsSDP")
+		NS = NS.deriveClass<bsSDP, bsBasic>("bsSDP")
 			.addProperty("mpIntarface", &bsSDP::mpIntarface)
 			.addProperty("mpGLB", &bsSDP::mpGLB)
 			.addProperty("mpGeneralBeam", &bsSDP::mpGeneralBeam)
@@ -31461,9 +30387,9 @@ public:
 			.addProperty("mbDeadScriptCall", &bsSDP::mbDeadScriptCall)
 			.addProperty("mbFirstSE", &bsSDP::mbFirstSE)
 			.addProperty("mbGLBSE", &bsSDP::mbGLBSE)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("IsAtkObj", &bsSDP::IsAtkObj)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &bsSDP::mSetDamage)
 		.endClass();
 	}
@@ -31493,7 +30419,6 @@ static_assert(sizeof(bsSDP) == 3284, "expected class bsSDP to be size 3284");
 class FkTriangleList
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class FkStlVector<FkVtx> m_VtxArr, offset 0x0>
@@ -31515,7 +30440,6 @@ static_assert(sizeof(FkTriangleList) == 20, "expected class FkTriangleList to be
 class EffectModelBeam : public HrTask
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -31537,15 +30461,17 @@ public:
 	uint8_t m_boVisible;
 
 	// <Filler, offset 0x71>
+private:
 	char _Filler6[3];
 
+public:
 	// <float m_fScale, offset 0x74>
 	float m_fScale;
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EffectModelBeam>("EffectModelBeam")
+		NS = NS.deriveClass<EffectModelBeam, HrTask>("EffectModelBeam")
 			.addProperty("m_TriangleList", &EffectModelBeam::m_TriangleList)
 			.addProperty("m_pGmf", &EffectModelBeam::m_pGmf)
 			.addProperty("m_pBeamNode", &EffectModelBeam::m_pBeamNode)
@@ -31568,7 +30494,6 @@ static_assert(sizeof(EffectModelBeam) == 120, "expected class EffectModelBeam to
 struct FkVtx
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <struct Vec Pos, offset 0x0>
@@ -31595,11 +30520,12 @@ static_assert(sizeof(FkVtx) == 24, "expected struct FkVtx to be size 24");
 class EfGeneralBeam
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[54968];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -31615,8 +30541,6 @@ static_assert(sizeof(EfGeneralBeam) == 54968, "expected class EfGeneralBeam to b
 class PJOBJ0029 : public commonObj
 {
 public:
-	/// 1 namespace types: uint8_t __convention("thiscall") PJOBJ0029::mSetDamage(class PJOBJ0029* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11)
-
 	// [Function] uint8_t __convention("thiscall") PJOBJ0029::mSetDamage(class PJOBJ0029* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11) [?mSetDamage@PJOBJ0029@@UAE_NMHHHMHMMPAVmHRChara@@M@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11)
 	{
@@ -31624,7 +30548,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x5541f0);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
 	}
-
 	/// Struct member variables
 
 	// <class commonObj field_0, offset 0x0>
@@ -31637,19 +30560,21 @@ public:
 	uint8_t mbBreak;
 
 	// <Filler, offset 0x651>
+private:
 	char _Filler3[3];
 
+public:
 	// <float mRadius, offset 0x654>
 	float mRadius;
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<PJOBJ0029>("PJOBJ0029")
+		NS = NS.deriveClass<PJOBJ0029, commonObj>("PJOBJ0029")
 			.addProperty("mpTopNode", &PJOBJ0029::mpTopNode)
 			.addProperty("mbBreak", &PJOBJ0029::mbBreak)
 			.addProperty("mRadius", &PJOBJ0029::mRadius)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0029::mSetDamage)
 		.endClass();
 	}
@@ -31664,8 +30589,6 @@ static_assert(sizeof(PJOBJ0029) == 1624, "expected class PJOBJ0029 to be size 16
 class PJOBJ0033 : public commonObj
 {
 public:
-	/// 1 namespace types: uint8_t __convention("thiscall") PJOBJ0033::mSetDamage(class PJOBJ0033* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11)
-
 	// [Function] uint8_t __convention("thiscall") PJOBJ0033::mSetDamage(class PJOBJ0033* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11) [?mSetDamage@PJOBJ0033@@UAE_NMHHHMHMMPAVmHRChara@@M@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11)
 	{
@@ -31673,7 +30596,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x554750);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
 	}
-
 	/// Struct member variables
 
 	// <class commonObj field_0, offset 0x0>
@@ -31692,8 +30614,10 @@ public:
 	uint8_t m_Off;
 
 	// <Filler, offset 0x653>
+private:
 	char _Filler5[1];
 
+public:
 	// <struct Vec m_CenterPos, offset 0x654>
 	struct Vec m_CenterPos;
 
@@ -31710,8 +30634,10 @@ public:
 	uint8_t m_boCreateFire;
 
 	// <Filler, offset 0x66a>
+private:
 	char _Filler10[2];
 
+public:
 	// <int32_t m_BlinkCnt, offset 0x66c>
 	int32_t m_BlinkCnt;
 
@@ -31719,8 +30645,10 @@ public:
 	uint8_t m_boBlink;
 
 	// <Filler, offset 0x671>
+private:
 	char _Filler12[3];
 
+public:
 	// <class FkStlVector<TGmfNode const *> m_apNode, offset 0x674>
 	class FkStlVector<TGmfNode const *> m_apNode;
 
@@ -31733,7 +30661,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<PJOBJ0033>("PJOBJ0033")
+		NS = NS.deriveClass<PJOBJ0033, commonObj>("PJOBJ0033")
 			.addProperty("m_BreakCnt", &PJOBJ0033::m_BreakCnt)
 			.addProperty("m_Dead", &PJOBJ0033::m_Dead)
 			.addProperty("m_Motion", &PJOBJ0033::m_Motion)
@@ -31748,7 +30676,7 @@ public:
 			.addProperty("m_apNode", &PJOBJ0033::m_apNode)
 			.addProperty("m_pModelFireArr", &PJOBJ0033::m_pModelFireArr)
 			.addProperty("m_SeHnd", &PJOBJ0033::m_SeHnd)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0033::mSetDamage)
 		.endClass();
 	}
@@ -31774,7 +30702,6 @@ static_assert(sizeof(PJOBJ0033) == 1696, "expected class PJOBJ0033 to be size 16
 struct EFFECTSIMPLEOBJ3PARAM
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <int32_t MaxObjNum, offset 0x0>
@@ -31891,7 +30818,6 @@ static_assert(sizeof(EFFECTSIMPLEOBJ3PARAM) == 68, "expected struct EFFECTSIMPLE
 struct EFFECTMODELFIREPARAM
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float CreateRate, offset 0x0>
@@ -31923,13 +30849,10 @@ static_assert(sizeof(EFFECTMODELFIREPARAM) == 76, "expected struct EFFECTMODELFI
 class EffectModelFire : public HrTask
 {
 public:
-	/// 1 namespace types: struct EffectModelFire::MAIN
-
 	// [Structure] struct EffectModelFire::MAIN
 	struct MAIN
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <class TGmf* pGmf, offset 0x0>
@@ -31977,7 +30900,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EffectModelFire::MAIN>("EffectModelFire::MAIN")
+			NS = NS.beginClass<EffectModelFire::MAIN>("EffectModelFire_MAIN")
 				.addProperty("pGmf", &EffectModelFire::MAIN::pGmf)
 				.addProperty("pGmfNode", &EffectModelFire::MAIN::pGmfNode)
 				.addProperty("CreateCounter", &EffectModelFire::MAIN::CreateCounter)
@@ -32014,7 +30937,6 @@ public:
 	static_assert(sizeof(EffectModelFire::MAIN::pObj3) == 4, "expected pObj3 to be size 4");
 	static_assert(sizeof(EffectModelFire::MAIN) == 144, "expected struct EffectModelFire::MAIN to be size 144");
 
-
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -32026,7 +30948,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EffectModelFire>("EffectModelFire")
+		NS = NS.deriveClass<EffectModelFire, HrTask>("EffectModelFire")
 			.addProperty("dat", &EffectModelFire::dat)
 		.endClass();
 	}
@@ -32039,13 +30961,10 @@ static_assert(sizeof(EffectModelFire) == 224, "expected class EffectModelFire to
 class EffectSimpleObj3 : public HrTask
 {
 public:
-	/// 2 namespace types: struct EffectSimpleObj3::MAIN, struct EffectSimpleObj3::OBJECT
-
 	// [Structure] struct EffectSimpleObj3::MAIN
 	struct MAIN
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <int32_t ObjNum, offset 0x0>
@@ -32066,7 +30985,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EffectSimpleObj3::MAIN>("EffectSimpleObj3::MAIN")
+			NS = NS.beginClass<EffectSimpleObj3::MAIN>("EffectSimpleObj3_MAIN")
 				.addProperty("ObjNum", &EffectSimpleObj3::MAIN::ObjNum)
 				.addProperty("Obj", &EffectSimpleObj3::MAIN::Obj)
 				.addProperty("ValidFirstObj", &EffectSimpleObj3::MAIN::ValidFirstObj)
@@ -32087,22 +31006,22 @@ public:
 	struct OBJECT
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <Filler, offset 0x0>
+	private:
 		char _Filler[68];
+	public:
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EffectSimpleObj3::OBJECT>("EffectSimpleObj3::OBJECT")
+			NS = NS.beginClass<EffectSimpleObj3::OBJECT>("EffectSimpleObj3_OBJECT")
 			.endClass();
 		}
 #endif
 	};
 	static_assert(sizeof(EffectSimpleObj3::OBJECT) == 68, "expected struct EffectSimpleObj3::OBJECT to be size 68");
-
 
 	/// Struct member variables
 
@@ -32115,7 +31034,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EffectSimpleObj3>("EffectSimpleObj3")
+		NS = NS.deriveClass<EffectSimpleObj3, HrTask>("EffectSimpleObj3")
 			.addProperty("dat", &EffectSimpleObj3::dat)
 		.endClass();
 	}
@@ -32128,7 +31047,6 @@ static_assert(sizeof(EffectSimpleObj3) == 164, "expected class EffectSimpleObj3 
 struct tagTLIST
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <tagTLIST* Prev, offset 0x0>
@@ -32155,8 +31073,6 @@ static_assert(sizeof(tagTLIST) == 8, "expected struct tagTLIST to be size 8");
 class PJOBJ0036 : public commonObj
 {
 public:
-	/// 1 namespace types: uint8_t __convention("thiscall") PJOBJ0036::mSetDamage(class PJOBJ0036* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-
 	// [Function] uint8_t __convention("thiscall") PJOBJ0036::mSetDamage(class PJOBJ0036* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJOBJ0036@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
 	{
@@ -32164,7 +31080,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x556080);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
-
 	/// Struct member variables
 
 	// <class commonObj field_0, offset 0x0>
@@ -32180,8 +31095,10 @@ public:
 	uint8_t m_Off;
 
 	// <Filler, offset 0x64f>
+private:
 	char _Filler4[1];
 
+public:
 	// <struct Vec m_CenterPos, offset 0x650>
 	struct Vec m_CenterPos;
 
@@ -32198,8 +31115,10 @@ public:
 	uint8_t m_boGetBreakNode;
 
 	// <Filler, offset 0x669>
+private:
 	char _Filler9[3];
 
+public:
 	// <struct tagGHMR_TEX m_Tex, offset 0x66c>
 	struct tagGHMR_TEX m_Tex;
 
@@ -32209,7 +31128,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<PJOBJ0036>("PJOBJ0036")
+		NS = NS.deriveClass<PJOBJ0036, commonObj>("PJOBJ0036")
 			.addProperty("m_Dead", &PJOBJ0036::m_Dead)
 			.addProperty("m_Motion", &PJOBJ0036::m_Motion)
 			.addProperty("m_Off", &PJOBJ0036::m_Off)
@@ -32220,7 +31139,7 @@ public:
 			.addProperty("m_boGetBreakNode", &PJOBJ0036::m_boGetBreakNode)
 			.addProperty("m_Tex", &PJOBJ0036::m_Tex)
 			.addProperty("m_apNode", &PJOBJ0036::m_apNode)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0036::mSetDamage)
 		.endClass();
 	}
@@ -32242,8 +31161,6 @@ static_assert(sizeof(PJOBJ0036) == 1704, "expected class PJOBJ0036 to be size 17
 class PJOBJ0037 : public commonObj
 {
 public:
-	/// 2 namespace types: uint8_t __convention("thiscall") PJOBJ0037::mSetDamage(class PJOBJ0037* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10), uint8_t __convention("thiscall") PJOBJ0037::IsHitChar(class PJOBJ0037* const this, class mHRChara* arg2)
-
 	// [Function] uint8_t __convention("thiscall") PJOBJ0037::mSetDamage(class PJOBJ0037* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJOBJ0037@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
 	{
@@ -32258,7 +31175,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x556590);
 		return mFunc(this, arg2);
 	}
-
 	/// Struct member variables
 
 	// <class commonObj field_0, offset 0x0>
@@ -32267,10 +31183,10 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<PJOBJ0037>("PJOBJ0037")
-			// Functions with pointers to native types not supported in LuaBridge.
+		NS = NS.deriveClass<PJOBJ0037, commonObj>("PJOBJ0037")
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0037::mSetDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("IsHitChar", &PJOBJ0037::IsHitChar)
 		.endClass();
 	}
@@ -32282,8 +31198,6 @@ static_assert(sizeof(PJOBJ0037) == 1612, "expected class PJOBJ0037 to be size 16
 class PJOBJ0104 : public commonObj
 {
 public:
-	/// 1 namespace types: uint8_t __convention("thiscall") PJOBJ0104::mSetDamage(class PJOBJ0104* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-
 	// [Function] uint8_t __convention("thiscall") PJOBJ0104::mSetDamage(class PJOBJ0104* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJOBJ0104@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
 	{
@@ -32291,7 +31205,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x556730);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
-
 	/// Struct member variables
 
 	// <class commonObj field_0, offset 0x0>
@@ -32307,8 +31220,10 @@ public:
 	uint8_t m_Off;
 
 	// <Filler, offset 0x64f>
+private:
 	char _Filler4[1];
 
+public:
 	// <struct Vec m_CenterPos, offset 0x650>
 	struct Vec m_CenterPos;
 
@@ -32327,7 +31242,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<PJOBJ0104>("PJOBJ0104")
+		NS = NS.deriveClass<PJOBJ0104, commonObj>("PJOBJ0104")
 			.addProperty("m_Dead", &PJOBJ0104::m_Dead)
 			.addProperty("m_Motion", &PJOBJ0104::m_Motion)
 			.addProperty("m_Off", &PJOBJ0104::m_Off)
@@ -32337,7 +31252,7 @@ public:
 			.addProperty("m_BreakMotion", &PJOBJ0104::m_BreakMotion)
 			.addProperty("m_fAccumDmg", &PJOBJ0104::m_fAccumDmg)
 			.addProperty("m_fMaxAccumDmg", &PJOBJ0104::m_fMaxAccumDmg)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0104::mSetDamage)
 		.endClass();
 	}
@@ -32357,8 +31272,6 @@ static_assert(sizeof(PJOBJ0104) == 1652, "expected class PJOBJ0104 to be size 16
 class PJOBJ0155 : public commonObj
 {
 public:
-	/// 1 namespace types: uint8_t __convention("thiscall") PJOBJ0155::mSetDamage(class PJOBJ0155* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-
 	// [Function] uint8_t __convention("thiscall") PJOBJ0155::mSetDamage(class PJOBJ0155* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJOBJ0155@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
 	{
@@ -32366,7 +31279,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x556c00);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
-
 	/// Struct member variables
 
 	// <class commonObj field_0, offset 0x0>
@@ -32388,8 +31300,10 @@ public:
 	uint8_t m_Off;
 
 	// <Filler, offset 0x657>
+private:
 	char _Filler6[1];
 
+public:
 	// <struct Vec m_CenterPos, offset 0x658>
 	struct Vec m_CenterPos;
 
@@ -32405,7 +31319,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<PJOBJ0155>("PJOBJ0155")
+		NS = NS.deriveClass<PJOBJ0155, commonObj>("PJOBJ0155")
 			.addProperty("m_AlphaVisibleCnt", &PJOBJ0155::m_AlphaVisibleCnt)
 			.addProperty("m_AlphaVisibleFrmMax", &PJOBJ0155::m_AlphaVisibleFrmMax)
 			.addProperty("m_Dead", &PJOBJ0155::m_Dead)
@@ -32415,7 +31329,7 @@ public:
 			.addProperty("m_Counter", &PJOBJ0155::m_Counter)
 			.addProperty("m_nPipe", &PJOBJ0155::m_nPipe)
 			.addProperty("m_Tex", &PJOBJ0155::m_Tex)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0155::mSetDamage)
 		.endClass();
 	}
@@ -32436,8 +31350,6 @@ static_assert(sizeof(PJOBJ0155) == 1684, "expected class PJOBJ0155 to be size 16
 class PJOBJ0190 : public commonObj
 {
 public:
-	/// 2 namespace types: uint8_t __convention("thiscall") PJOBJ0190::mSetDamage(class PJOBJ0190* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11), uint8_t __convention("thiscall") PJOBJ0190::mSetDamage(class PJOBJ0190* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-
 	// [Function] uint8_t __convention("thiscall") PJOBJ0190::mSetDamage(class PJOBJ0190* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11) [?mSetDamage@PJOBJ0190@@UAE_NMHHHMHMMPAVmHRChara@@M@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11)
 	{
@@ -32445,7 +31357,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x557250);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
 	}
-
 	/// Struct member variables
 
 	// <class commonObj field_0, offset 0x0>
@@ -32458,21 +31369,23 @@ public:
 	uint8_t mbBreak;
 
 	// <Filler, offset 0x651>
+private:
 	char _Filler3[3];
 
+public:
 	// <float mRadius, offset 0x654>
 	float mRadius;
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<PJOBJ0190>("PJOBJ0190")
+		NS = NS.deriveClass<PJOBJ0190, commonObj>("PJOBJ0190")
 			.addProperty("mpTopNode", &PJOBJ0190::mpTopNode)
 			.addProperty("mbBreak", &PJOBJ0190::mbBreak)
 			.addProperty("mRadius", &PJOBJ0190::mRadius)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0190::mSetDamage)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0190::mSetDamage)
 		.endClass();
 	}
@@ -32487,8 +31400,6 @@ static_assert(sizeof(PJOBJ0190) == 1624, "expected class PJOBJ0190 to be size 16
 class PJPTR
 {
 public:
-	/// 1 namespace types: uint8_t __convention("thiscall") PJPTR::mSetDamage(class PJPTR* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-
 	// [Function] uint8_t __convention("thiscall") PJPTR::mSetDamage(class PJPTR* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJPTR@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
 	{
@@ -32496,17 +31407,18 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x557550);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
-
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[1668];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<PJPTR>("PJPTR")
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &PJPTR::mSetDamage)
 		.endClass();
 	}
@@ -32525,7 +31437,6 @@ void mHRCharaVoiceTable_Initialize()
 struct FkDbgInfo_EventArea
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <float fRadius, offset 0x0>
@@ -32552,8 +31463,6 @@ static_assert(sizeof(FkDbgInfo_EventArea) == 16, "expected struct FkDbgInfo_Even
 class FkGlobalDBG
 {
 public:
-	/// 2 namespace types: void __convention("thiscall") FkGlobalDBG::ReleaseCtrlChar(class FkGlobalDBG* const this, class mHRChara* arg2), struct FkGlobalDBG::CommonObjSetInf
-
 	// [Function] void __convention("thiscall") FkGlobalDBG::ReleaseCtrlChar(class FkGlobalDBG* const this, class mHRChara* arg2) [?ReleaseCtrlChar@FkGlobalDBG@@QAEXPAVmHRChara@@@Z]
 	void ReleaseCtrlChar(class mHRChara* arg2)
 	{
@@ -32565,7 +31474,6 @@ public:
 	struct CommonObjSetInf
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <int32_t iNowCursor, offset 0x0>
@@ -32580,7 +31488,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<FkGlobalDBG::CommonObjSetInf>("FkGlobalDBG::CommonObjSetInf")
+			NS = NS.beginClass<FkGlobalDBG::CommonObjSetInf>("FkGlobalDBG_CommonObjSetInf")
 				.addProperty("iNowCursor", &FkGlobalDBG::CommonObjSetInf::iNowCursor)
 				.addProperty("nObjRegist", &FkGlobalDBG::CommonObjSetInf::nObjRegist)
 				.addProperty("SetPos", &FkGlobalDBG::CommonObjSetInf::SetPos)
@@ -32593,7 +31501,6 @@ public:
 	static_assert(sizeof(FkGlobalDBG::CommonObjSetInf::SetPos) == 12, "expected SetPos to be size 12");
 	static_assert(sizeof(FkGlobalDBG::CommonObjSetInf) == 20, "expected struct FkGlobalDBG::CommonObjSetInf to be size 20");
 
-
 	/// Struct member variables
 
 	// <struct FkDbgInfo_EventArea m_EventAreaDbgInfo, offset 0x0>
@@ -32603,8 +31510,10 @@ public:
 	class PathPlanner* m_pPathPlanner;
 
 	// <Filler, offset 0x14>
+private:
 	char _Filler2[4];
 
+public:
 	// <uint64_t m_PathPlanningTime, offset 0x18>
 	uint64_t m_PathPlanningTime;
 
@@ -32623,7 +31532,7 @@ public:
 			.addProperty("m_PathPlanningTime", &FkGlobalDBG::m_PathPlanningTime)
 			.addProperty("m_pCtrlChar", &FkGlobalDBG::m_pCtrlChar)
 			.addProperty("m_CmnObjSetInf", &FkGlobalDBG::m_CmnObjSetInf)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("ReleaseCtrlChar", &FkGlobalDBG::ReleaseCtrlChar)
 		.endClass();
 	}
@@ -32640,8 +31549,6 @@ static_assert(sizeof(FkGlobalDBG) == 56, "expected class FkGlobalDBG to be size 
 class EffectBloodSplash : public HrTask
 {
 public:
-	/// 3 namespace types: class EffectBloodSplash* EffectBloodSplash::Create(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30), struct EffectBloodSplash::MAIN, class EffectBloodSplash* EffectBloodSplash::Create2(class TGmfNode* arg1, float arg2, float arg3, float arg4, float arg5, int32_t arg6, uint8_t arg7, class mHRChara* arg8)
-
 	// [Function] class EffectBloodSplash* EffectBloodSplash::Create(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30) [?Create@EffectBloodSplash@@SAPAV1@PAVTGmfNode@@HHMMMMMMMMMMMHMHMMMMMMMMMMI_NPAVmHRChara@@@Z]
 	class EffectBloodSplash* Create(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30)
 	{
@@ -32653,7 +31560,6 @@ public:
 	struct MAIN
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <class TGmfNode* Node, offset 0x0>
@@ -32762,8 +31668,10 @@ public:
 		uint8_t AddStopFlag;
 
 		// <Filler, offset 0x96>
+	private:
 		char _Filler35[2];
 
+	public:
 		// <int32_t id, offset 0x98>
 		int32_t id;
 
@@ -32773,7 +31681,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EffectBloodSplash::MAIN>("EffectBloodSplash::MAIN")
+			NS = NS.beginClass<EffectBloodSplash::MAIN>("EffectBloodSplash_MAIN")
 				.addProperty("Node", &EffectBloodSplash::MAIN::Node)
 				.addProperty("Line", &EffectBloodSplash::MAIN::Line)
 				// pointer to pointer is not supported in LuaBridge
@@ -32862,7 +31770,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x5b5410);
 		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
 	}
-
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -32877,12 +31784,12 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EffectBloodSplash>("EffectBloodSplash")
+		NS = NS.deriveClass<EffectBloodSplash, HrTask>("EffectBloodSplash")
 			.addProperty("m_fCreateNum", &EffectBloodSplash::m_fCreateNum)
 			.addProperty("dat", &EffectBloodSplash::dat)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class EffectBloodSplash*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("Create", &EffectBloodSplash::Create)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class EffectBloodSplash*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("Create2", &EffectBloodSplash::Create2)
 		.endClass();
 	}
@@ -32896,28 +31803,26 @@ static_assert(sizeof(EffectBloodSplash) == 244, "expected class EffectBloodSplas
 class EffectSimpleObj2 : public HrTask
 {
 public:
-	/// 1 namespace types: struct EffectSimpleObj2::MAIN
-
 	// [Structure] struct EffectSimpleObj2::MAIN
 	struct MAIN
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <Filler, offset 0x0>
+	private:
 		char _Filler[176];
+	public:
 
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EffectSimpleObj2::MAIN>("EffectSimpleObj2::MAIN")
+			NS = NS.beginClass<EffectSimpleObj2::MAIN>("EffectSimpleObj2_MAIN")
 			.endClass();
 		}
 #endif
 	};
 	static_assert(sizeof(EffectSimpleObj2::MAIN) == 176, "expected struct EffectSimpleObj2::MAIN to be size 176");
-
 
 	/// Struct member variables
 
@@ -32930,7 +31835,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EffectSimpleObj2>("EffectSimpleObj2")
+		NS = NS.deriveClass<EffectSimpleObj2, HrTask>("EffectSimpleObj2")
 			.addProperty("dat", &EffectSimpleObj2::dat)
 		.endClass();
 	}
@@ -32943,8 +31848,6 @@ static_assert(sizeof(EffectSimpleObj2) == 256, "expected class EffectSimpleObj2 
 class EffectSlashHit : public HrTask
 {
 public:
-	/// 1 namespace types: class EffectSlashHit* EffectSlashHit::Create(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4)
-
 	// [Function] class EffectSlashHit* EffectSlashHit::Create(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4) [?Create@EffectSlashHit@@SAPAV1@ABUVec@@0PBVmHRChara@@M@Z]
 	class EffectSlashHit* Create(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4)
 	{
@@ -32952,7 +31855,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x61f210);
 		return mFunc(arg1, arg2, arg3, arg4);
 	}
-
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -32985,7 +31887,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EffectSlashHit>("EffectSlashHit")
+		NS = NS.deriveClass<EffectSlashHit, HrTask>("EffectSlashHit")
 			.addProperty("m_SlashVec", &EffectSlashHit::m_SlashVec)
 			.addProperty("m_SlashPlnNrm", &EffectSlashHit::m_SlashPlnNrm)
 			.addProperty("m_pChara", &EffectSlashHit::m_pChara)
@@ -32994,7 +31896,7 @@ public:
 			.addProperty("m_nColor", &EffectSlashHit::m_nColor)
 			.addProperty("m_nCounter", &EffectSlashHit::m_nCounter)
 			.addProperty("m_fScale", &EffectSlashHit::m_fScale)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class EffectSlashHit*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("Create", &EffectSlashHit::Create)
 		.endClass();
 	}
@@ -33014,8 +31916,6 @@ static_assert(sizeof(EffectSlashHit) == 136, "expected class EffectSlashHit to b
 class FkBoss : public bsBasic
 {
 public:
-	/// 3 namespace types: uint8_t __convention("thiscall") FkBoss::mSetDamage(class FkBoss* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10), struct FkBoss::GuardParam, enum FkBoss::eReqAvoidDir
-
 	// [Function] uint8_t __convention("thiscall") FkBoss::mSetDamage(class FkBoss* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@FkBoss@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
 	{
@@ -33027,7 +31927,6 @@ public:
 	struct GuardParam
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <int32_t GuardBeginCnt, offset 0x0>
@@ -33039,7 +31938,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<FkBoss::GuardParam>("FkBoss::GuardParam")
+			NS = NS.beginClass<FkBoss::GuardParam>("FkBoss_GuardParam")
 				.addProperty("GuardBeginCnt", &FkBoss::GuardParam::GuardBeginCnt)
 				.addProperty("GuardContinueCnt", &FkBoss::GuardParam::GuardContinueCnt)
 			.endClass();
@@ -33065,7 +31964,6 @@ public:
 		eReqAvoidDir_Back = 1
 
 	};
-
 
 	/// Struct member variables
 
@@ -33103,8 +32001,10 @@ public:
 	uint8_t m_boNoEfGuard;
 
 	// <Filler, offset 0xd71>
+private:
 	char _Filler11[3];
 
+public:
 	// <struct Vec m_FrontDir, offset 0xd74>
 	struct Vec m_FrontDir;
 
@@ -33129,7 +32029,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<FkBoss>("FkBoss")
+		NS = NS.deriveClass<FkBoss, bsBasic>("FkBoss")
 			.addProperty("m_ContinueAvoidNum", &FkBoss::m_ContinueAvoidNum)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("m_GeneralComboAttackArray", &FkBoss::m_GeneralComboAttackArray)
@@ -33150,7 +32050,7 @@ public:
 			//.addProperty("m_apTex", &FkBoss::m_apTex)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("m_pEfSamasoTrack", &FkBoss::m_pEfSamasoTrack)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &FkBoss::mSetDamage)
 		.endClass();
 	}
@@ -33179,11 +32079,12 @@ static_assert(sizeof(FkBoss) == 3500, "expected class FkBoss to be size 3500");
 class EffectSlashTrack
 {
 public:
-	/// No namespace types
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[944];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -33199,8 +32100,6 @@ static_assert(sizeof(EffectSlashTrack) == 944, "expected class EffectSlashTrack 
 class EffectBeamDragon
 {
 public:
-	/// 2 namespace types: void __convention("thiscall") EffectBeamDragon::Set(class EffectBeamDragon* const this, struct Vec* arg2, class mHRChara* arg3), class EffectBeamDragon* EffectBeamDragon::Create(struct Vec* arg1, class mHRChara* arg2)
-
 	// [Function] void __convention("thiscall") EffectBeamDragon::Set(class EffectBeamDragon* const this, struct Vec* arg2, class mHRChara* arg3) [?Set@EffectBeamDragon@@QAEXPAUVec@@PAVmHRChara@@@Z]
 	void Set(struct Vec* arg2, class mHRChara* arg3)
 	{
@@ -33215,19 +32114,20 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x644130);
 		return mFunc(arg1, arg2);
 	}
-
 	/// Struct member variables
 
 	// <Filler, offset 0x0>
+private:
 	char _Filler[520];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<EffectBeamDragon>("EffectBeamDragon")
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg3) not supported in LuaBridge.
 			//.addFunction("Set", &EffectBeamDragon::Set)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class EffectBeamDragon*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("Create", &EffectBeamDragon::Create)
 		.endClass();
 	}
@@ -33239,8 +32139,6 @@ static_assert(sizeof(EffectBeamDragon) == 520, "expected class EffectBeamDragon 
 class EffectGYNMissile : public HrTask
 {
 public:
-	/// 2 namespace types: void __convention("thiscall") EffectGYNMissile::Set(class EffectGYNMissile* const this, struct Vec& arg2, float const arg3, class mHRChara* arg4), class EffectGYNMissile* EffectGYNMissile::Create(struct Vec& arg1, float const arg2, class mHRChara* arg3)
-
 	// [Function] void __convention("thiscall") EffectGYNMissile::Set(class EffectGYNMissile* const this, struct Vec& arg2, float const arg3, class mHRChara* arg4) [?Set@EffectGYNMissile@@AAEXABUVec@@MPAVmHRChara@@@Z]
 	void Set(struct Vec& arg2, float const arg3, class mHRChara* arg4)
 	{
@@ -33255,7 +32153,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x6467a0);
 		return mFunc(arg1, arg2, arg3);
 	}
-
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -33298,12 +32195,14 @@ public:
 	uint8_t m_boHoming;
 
 	// <Filler, offset 0xa5>
+private:
 	char _Filler[3];
+public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EffectGYNMissile>("EffectGYNMissile")
+		NS = NS.deriveClass<EffectGYNMissile, HrTask>("EffectGYNMissile")
 			.addProperty("m_pTgtChar", &EffectGYNMissile::m_pTgtChar)
 			.addProperty("m_pMissileGmf", &EffectGYNMissile::m_pMissileGmf)
 			.addProperty("m_Pos", &EffectGYNMissile::m_Pos)
@@ -33316,9 +32215,9 @@ public:
 			.addProperty("m_Cnt", &EffectGYNMissile::m_Cnt)
 			.addProperty("m_SeHnd", &EffectGYNMissile::m_SeHnd)
 			.addProperty("m_boHoming", &EffectGYNMissile::m_boHoming)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg4) not supported in LuaBridge.
 			//.addFunction("Set", &EffectGYNMissile::Set)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class EffectGYNMissile*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("Create", &EffectGYNMissile::Create)
 		.endClass();
 	}
@@ -33342,8 +32241,6 @@ static_assert(sizeof(EffectGYNMissile) == 168, "expected class EffectGYNMissile 
 class EffectMoeMissile : public HrTask
 {
 public:
-	/// 2 namespace types: void __convention("thiscall") EffectMoeMissile::Set(class EffectMoeMissile* const this, struct Vec& arg2, float const arg3, class mHRChara* arg4), class EffectMoeMissile* EffectMoeMissile::Create(struct Vec& arg1, float const arg2, class mHRChara* arg3)
-
 	// [Function] void __convention("thiscall") EffectMoeMissile::Set(class EffectMoeMissile* const this, struct Vec& arg2, float const arg3, class mHRChara* arg4) [?Set@EffectMoeMissile@@AAEXABUVec@@MPAVmHRChara@@@Z]
 	void Set(struct Vec& arg2, float const arg3, class mHRChara* arg4)
 	{
@@ -33358,7 +32255,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x64a930);
 		return mFunc(arg1, arg2, arg3);
 	}
-
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -33386,8 +32282,10 @@ public:
 	uint8_t m_boHoming;
 
 	// <Filler, offset 0x91>
+private:
 	char _Filler8[3];
 
+public:
 	// <class EffectFixFire* m_pFire, offset 0x94>
 	class EffectFixFire* m_pFire;
 
@@ -33403,7 +32301,7 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<EffectMoeMissile>("EffectMoeMissile")
+		NS = NS.deriveClass<EffectMoeMissile, HrTask>("EffectMoeMissile")
 			.addProperty("m_pTgtChar", &EffectMoeMissile::m_pTgtChar)
 			.addProperty("m_Pos", &EffectMoeMissile::m_Pos)
 			.addProperty("m_BeforePos", &EffectMoeMissile::m_BeforePos)
@@ -33416,9 +32314,9 @@ public:
 			//.addProperty("m_MatRot", &EffectMoeMissile::m_MatRot)
 			.addProperty("m_fSpd", &EffectMoeMissile::m_fSpd)
 			.addProperty("m_pMissileGmf", &EffectMoeMissile::m_pMissileGmf)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg4) not supported in LuaBridge.
 			//.addFunction("Set", &EffectMoeMissile::Set)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with return values pointing to native types ('class EffectMoeMissile*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("Create", &EffectMoeMissile::Create)
 		.endClass();
 	}
@@ -33441,8 +32339,6 @@ static_assert(sizeof(EffectMoeMissile) == 208, "expected class EffectMoeMissile 
 class CMotionPlayer
 {
 public:
-	/// 2 namespace types: void __convention("thiscall") CMotionPlayer::begin(class CMotionPlayer* const this, class mHRChara* arg2), class CMotionPlayer::CElement
-
 	// [Function] void __convention("thiscall") CMotionPlayer::begin(class CMotionPlayer* const this, class mHRChara* arg2) [?begin@CMotionPlayer@@QAEXPAVmHRChara@@@Z]
 	void begin(class mHRChara* arg2)
 	{
@@ -33454,7 +32350,6 @@ public:
 	class CElement
 	{
 	public:
-		/// No namespace types
 		/// Struct member variables
 
 		// <int32_t m_nMotIndex, offset 0x0>
@@ -33466,7 +32361,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<CMotionPlayer::CElement>("CMotionPlayer::CElement")
+			NS = NS.beginClass<CMotionPlayer::CElement>("CMotionPlayer_CElement")
 				.addProperty("m_nMotIndex", &CMotionPlayer::CElement::m_nMotIndex)
 				.addProperty("m_eCamMode", &CMotionPlayer::CElement::m_eCamMode)
 			.endClass();
@@ -33476,7 +32371,6 @@ public:
 	static_assert(sizeof(CMotionPlayer::CElement::m_nMotIndex) == 4, "expected m_nMotIndex to be size 4");
 	static_assert(sizeof(CMotionPlayer::CElement::m_eCamMode) == 4, "expected m_eCamMode to be size 4");
 	static_assert(sizeof(CMotionPlayer::CElement) == 8, "expected class CMotionPlayer::CElement to be size 8");
-
 
 	/// Struct member variables
 
@@ -33496,7 +32390,7 @@ public:
 			.addProperty("m_ainElement", &CMotionPlayer::m_ainElement)
 			.addProperty("m_pChara", &CMotionPlayer::m_pChara)
 			.addProperty("m_nPlayIndex", &CMotionPlayer::m_nPlayIndex)
-			// Functions with pointers to native types not supported in LuaBridge.
+			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("begin", &CMotionPlayer::begin)
 		.endClass();
 	}
@@ -33513,367 +32407,1441 @@ static_assert(sizeof(CMotionPlayer) == 20, "expected class CMotionPlayer to be s
 
 void BindLua_Exported(luabridge::Namespace& NS)
 {
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stBtEffect'" << std::endl;
+#endif
 	stBtEffect::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct Vec'" << std::endl;
+#endif
 	Vec::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class mHRBattle'" << std::endl;
+#endif
 	mHRBattle::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CTimeRatioInterpolate'" << std::endl;
+#endif
 	CTimeRatioInterpolate::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'union uniSMflag'" << std::endl;
+#endif
 	uniSMflag::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stFade'" << std::endl;
+#endif
 	stFade::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CSpringInterpolate'" << std::endl;
+#endif
 	CSpringInterpolate::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CDoubleSpringInterpolate'" << std::endl;
+#endif
 	CDoubleSpringInterpolate::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CAmbientShadow'" << std::endl;
+#endif
 	CAmbientShadow::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stCharaEffect'" << std::endl;
+#endif
 	stCharaEffect::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class stCharaFileData'" << std::endl;
+#endif
 	stCharaFileData::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmSegment'" << std::endl;
+#endif
 	ghmSegment::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmCapsule'" << std::endl;
+#endif
 	ghmCapsule::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmGcOctTreeNodeObj'" << std::endl;
+#endif
 	ghmGcOctTreeNodeObj::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmGcCollObj'" << std::endl;
+#endif
 	ghmGcCollObj::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmGcCollObjCapsule'" << std::endl;
+#endif
 	ghmGcCollObjCapsule::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class WAnim'" << std::endl;
+#endif
 	WAnim::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class WAnimF'" << std::endl;
+#endif
 	WAnimF::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stDamageInfo'" << std::endl;
+#endif
 	stDamageInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmTriangle'" << std::endl;
+#endif
 	ghmTriangle::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmPlane'" << std::endl;
+#endif
 	ghmPlane::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmGcCollObjHitResultObj'" << std::endl;
+#endif
 	ghmGcCollObjHitResultObj::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stVec'" << std::endl;
+#endif
 	stVec::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct Quaternion'" << std::endl;
+#endif
 	Quaternion::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stCharaStatus'" << std::endl;
+#endif
 	stCharaStatus::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmListObj'" << std::endl;
+#endif
 	ghmListObj::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct CharControlMotID'" << std::endl;
+#endif
 	CharControlMotID::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct GXColor'" << std::endl;
+#endif
 	GXColor::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'union __m128'" << std::endl;
+#endif
 	__m128::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class vector4f'" << std::endl;
+#endif
 	vector4f::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class vector4x'" << std::endl;
+#endif
 	vector4x::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class tiVector'" << std::endl;
+#endif
 	tiVector::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class mot::IBoneEffectModel'" << std::endl;
+#endif
 	mot::IBoneEffectModel::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class mot::IBoneEffectModelPJ'" << std::endl;
+#endif
 	mot::IBoneEffectModelPJ::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct TGmf::tagMAIN'" << std::endl;
+#endif
 	TGmf::tagMAIN::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class TGmf'" << std::endl;
+#endif
 	TGmf::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class NYPhase'" << std::endl;
+#endif
 	NYPhase::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class NYApproachToTargetVal'" << std::endl;
+#endif
 	NYApproachToTargetVal::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class HrTask'" << std::endl;
+#endif
 	HrTask::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class HrBattleIcon::CHrHpGauge'" << std::endl;
+#endif
 	HrBattleIcon::CHrHpGauge::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class HrBattleIcon'" << std::endl;
+#endif
 	HrBattleIcon::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class mHRChara'" << std::endl;
+#endif
 	mHRChara::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class HROBJDummy'" << std::endl;
+#endif
 	HROBJDummy::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stTiger'" << std::endl;
+#endif
 	stTiger::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stHugWalk'" << std::endl;
+#endif
 	stHugWalk::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stPcEffect'" << std::endl;
+#endif
 	stPcEffect::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stPcSndData'" << std::endl;
+#endif
 	stPcSndData::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stDarkSideInfo'" << std::endl;
+#endif
 	stDarkSideInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stPcSaveData'" << std::endl;
+#endif
 	stPcSaveData::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stMiniDemo'" << std::endl;
+#endif
 	stMiniDemo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stPcStatus'" << std::endl;
+#endif
 	stPcStatus::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class mHRPc'" << std::endl;
+#endif
 	mHRPc::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmAABB'" << std::endl;
+#endif
 	ghmAABB::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmGcOctTreeNode'" << std::endl;
+#endif
 	ghmGcOctTreeNode::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmGcOctTree'" << std::endl;
+#endif
 	ghmGcOctTree::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmGcCollObjHitResult'" << std::endl;
+#endif
 	ghmGcCollObjHitResult::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct WGclMaterialSpec'" << std::endl;
+#endif
 	WGclMaterialSpec::BindLua(NS);
-	EE::SmartPtr<EE::IFile>::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct DVDCommandBlock'" << std::endl;
+#endif
 	DVDCommandBlock::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct DVDFileInfo'" << std::endl;
+#endif
 	DVDFileInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct ghmGcFile::ghmGcFileInfo'" << std::endl;
+#endif
 	ghmGcFile::ghmGcFileInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmGcFile'" << std::endl;
+#endif
 	ghmGcFile::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct DVDDiskID'" << std::endl;
+#endif
 	DVDDiskID::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EE::RefObject'" << std::endl;
+#endif
 	EE::RefObject::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EE::IFile'" << std::endl;
+#endif
 	EE::IFile::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmResGroup'" << std::endl;
+#endif
 	ghmResGroup::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmResStrTable'" << std::endl;
+#endif
 	ghmResStrTable::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct TGanPlay::MAIN'" << std::endl;
+#endif
 	TGanPlay::MAIN::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class TGanPlay'" << std::endl;
+#endif
 	TGanPlay::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct TGan::tagMAIN'" << std::endl;
+#endif
 	TGan::tagMAIN::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class TGan'" << std::endl;
+#endif
 	TGan::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct WGanSpec'" << std::endl;
+#endif
 	WGanSpec::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct WGanMaterialSpec'" << std::endl;
+#endif
 	WGanMaterialSpec::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct WGanFAnmSpec'" << std::endl;
+#endif
 	WGanFAnmSpec::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct _WFAnmObjHeader'" << std::endl;
+#endif
 	_WFAnmObjHeader::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct _WFAnmObjKeyListHeader'" << std::endl;
+#endif
 	_WFAnmObjKeyListHeader::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct WGanMaterialLayerSpec'" << std::endl;
+#endif
 	WGanMaterialLayerSpec::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct WGanNodeSpec'" << std::endl;
+#endif
 	WGanNodeSpec::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct TGanPlayNode::MAIN'" << std::endl;
+#endif
 	TGanPlayNode::MAIN::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class TGanPlayNode'" << std::endl;
+#endif
 	TGanPlayNode::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct TFAnm::tagMAIN'" << std::endl;
+#endif
 	TFAnm::tagMAIN::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class TFAnm'" << std::endl;
+#endif
 	TFAnm::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct TGmfNode::tagMAIN'" << std::endl;
+#endif
 	TGmfNode::tagMAIN::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class TGmfNode'" << std::endl;
+#endif
 	TGmfNode::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CViewClipObjSphere'" << std::endl;
+#endif
 	CViewClipObjSphere::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CViewClipObjBox'" << std::endl;
+#endif
 	CViewClipObjBox::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class rPrimUnific'" << std::endl;
+#endif
 	rPrimUnific::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EfBase'" << std::endl;
+#endif
 	EfBase::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EfDestortion'" << std::endl;
+#endif
 	EfDestortion::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct TGMFMESH'" << std::endl;
+#endif
 	TGMFMESH::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct GXTexObj'" << std::endl;
+#endif
 	GXTexObj::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct tagGHMR_TEX'" << std::endl;
+#endif
 	tagGHMR_TEX::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'union GXSamplerStuff'" << std::endl;
+#endif
 	GXSamplerStuff::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct GXTexture::GXSpecs'" << std::endl;
+#endif
 	GXTexture::GXSpecs::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class GXTexture'" << std::endl;
+#endif
 	GXTexture::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct rAlphaAnime'" << std::endl;
+#endif
 	rAlphaAnime::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct rAnimeCounter'" << std::endl;
+#endif
 	rAnimeCounter::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct rST'" << std::endl;
+#endif
 	rST::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct rColor'" << std::endl;
+#endif
 	rColor::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class rPrimBase'" << std::endl;
+#endif
 	rPrimBase::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class rTriangleList'" << std::endl;
+#endif
 	rTriangleList::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CVertexAnimation::CVertex'" << std::endl;
+#endif
 	CVertexAnimation::CVertex::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CVertexAnimation'" << std::endl;
+#endif
 	CVertexAnimation::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct TFAnmObjF32_3::tagMAIN'" << std::endl;
+#endif
 	TFAnmObjF32_3::tagMAIN::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class TFAnmObjF32_3'" << std::endl;
+#endif
 	TFAnmObjF32_3::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'union _WFAnmVal'" << std::endl;
+#endif
 	_WFAnmVal::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct TFAnmObj::tagGETA'" << std::endl;
+#endif
 	TFAnmObj::tagGETA::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct TFAnmObj::tagMAIN'" << std::endl;
+#endif
 	TFAnmObj::tagMAIN::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class TFAnmObj'" << std::endl;
+#endif
 	TFAnmObj::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class mot::IBoneEffectPJ'" << std::endl;
+#endif
 	mot::IBoneEffectPJ::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraVibTiming'" << std::endl;
+#endif
 	CCameraVibTiming::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct HRCHARAVOICE'" << std::endl;
+#endif
 	HRCHARAVOICE::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class gameUtil::CPlane'" << std::endl;
+#endif
 	gameUtil::CPlane::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CStickShadow'" << std::endl;
+#endif
 	CStickShadow::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CharController'" << std::endl;
+#endif
 	CharController::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CObjectShadow'" << std::endl;
+#endif
 	CObjectShadow::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stBikeEffect'" << std::endl;
+#endif
 	stBikeEffect::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stBike'" << std::endl;
+#endif
 	stBike::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class mHRBike'" << std::endl;
+#endif
 	mHRBike::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EventAreaCircle'" << std::endl;
+#endif
 	EventAreaCircle::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmScriptVariables'" << std::endl;
+#endif
 	ghmScriptVariables::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmScript'" << std::endl;
+#endif
 	ghmScript::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmScriptFunc'" << std::endl;
+#endif
 	ghmScriptFunc::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class HrScriptFunc'" << std::endl;
+#endif
 	HrScriptFunc::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmScriptBase'" << std::endl;
+#endif
 	ghmScriptBase::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraCollision'" << std::endl;
+#endif
 	CCameraCollision::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class FkPjLib'" << std::endl;
+#endif
 	FkPjLib::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmScriptFuncArgBase'" << std::endl;
+#endif
 	ghmScriptFuncArgBase::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct ghmScriptObjectType'" << std::endl;
+#endif
 	ghmScriptObjectType::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmScriptObject'" << std::endl;
+#endif
 	ghmScriptObject::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmString'" << std::endl;
+#endif
 	ghmString::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct ghmScrHeader'" << std::endl;
+#endif
 	ghmScrHeader::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct ghmScrFuncHeader'" << std::endl;
+#endif
 	ghmScrFuncHeader::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmScriptProgFunc'" << std::endl;
+#endif
 	ghmScriptProgFunc::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct ghmScriptStackData'" << std::endl;
+#endif
 	ghmScriptStackData::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmScriptStack'" << std::endl;
+#endif
 	ghmScriptStack::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmScriptContext'" << std::endl;
+#endif
 	ghmScriptContext::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EveCorn'" << std::endl;
+#endif
 	EveCorn::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EventAreaCamera'" << std::endl;
+#endif
 	EventAreaCamera::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct EVENTAREACAMERA_DATA'" << std::endl;
+#endif
 	EVENTAREACAMERA_DATA::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectDriftMark'" << std::endl;
+#endif
 	EffectDriftMark::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectKeepSmoke'" << std::endl;
+#endif
 	EffectKeepSmoke::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class rQuad'" << std::endl;
+#endif
 	rQuad::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct EffectFixFire::Object'" << std::endl;
+#endif
 	EffectFixFire::Object::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectFixFire'" << std::endl;
+#endif
 	EffectFixFire::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class HrOverLap'" << std::endl;
+#endif
 	HrOverLap::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class HrScreenStatus'" << std::endl;
+#endif
 	HrScreenStatus::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class HrEffectShutter'" << std::endl;
+#endif
 	HrEffectShutter::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct EfSmoke::SmokePrim'" << std::endl;
+#endif
 	EfSmoke::SmokePrim::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EfSmoke'" << std::endl;
+#endif
 	EfSmoke::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct HRSAVEDATA_DEBUNEKO'" << std::endl;
+#endif
 	HRSAVEDATA_DEBUNEKO::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class WGcl'" << std::endl;
+#endif
 	WGcl::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class commonObj'" << std::endl;
+#endif
 	commonObj::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CustomColliderObj'" << std::endl;
+#endif
 	CustomColliderObj::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct WGclSpec'" << std::endl;
+#endif
 	WGclSpec::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct WGclNodeSpec'" << std::endl;
+#endif
 	WGclNodeSpec::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct WGclNodeShapeMeshSpec'" << std::endl;
+#endif
 	WGclNodeShapeMeshSpec::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct WGclNodeShapeMeshBspNodeSpec'" << std::endl;
+#endif
 	WGclNodeShapeMeshBspNodeSpec::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct WGclNodeShapeTriangleSpec'" << std::endl;
+#endif
 	WGclNodeShapeTriangleSpec::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ghmGcColl'" << std::endl;
+#endif
 	ghmGcColl::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class WGclNode'" << std::endl;
+#endif
 	WGclNode::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CSpringInterpolate3D'" << std::endl;
+#endif
 	CSpringInterpolate3D::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CDoubleSpringInterpolate3D'" << std::endl;
+#endif
 	CDoubleSpringInterpolate3D::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class mot::CBoneEffectDamageData'" << std::endl;
+#endif
 	mot::CBoneEffectDamageData::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CGameDataLink'" << std::endl;
+#endif
 	CGameDataLink::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class mot::CBoneEffectManager'" << std::endl;
+#endif
 	mot::CBoneEffectManager::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class mot::CBoneEffectPJ'" << std::endl;
+#endif
 	mot::CBoneEffectPJ::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CGameData'" << std::endl;
+#endif
 	CGameData::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CPackFileDataElement'" << std::endl;
+#endif
 	CPackFileDataElement::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CFileData'" << std::endl;
+#endif
 	CFileData::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CPackFileData'" << std::endl;
+#endif
 	CPackFileData::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CGameDataManager'" << std::endl;
+#endif
 	CGameDataManager::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class mot::IBoneEffect'" << std::endl;
+#endif
 	mot::IBoneEffect::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class mot::CIKManager'" << std::endl;
+#endif
 	mot::CIKManager::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class mot::CYuremonoManager'" << std::endl;
+#endif
 	mot::CYuremonoManager::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class mHRLockOnList'" << std::endl;
+#endif
 	mHRLockOnList::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectEnemyDamage'" << std::endl;
+#endif
 	EffectEnemyDamage::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class HrMap'" << std::endl;
+#endif
 	HrMap::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct stThrowInfo'" << std::endl;
+#endif
 	stThrowInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ACameraModeBase'" << std::endl;
+#endif
 	ACameraModeBase::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraModeLockOn'" << std::endl;
+#endif
 	CCameraModeLockOn::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct HRSAVEDATA_SHOP'" << std::endl;
+#endif
 	HRSAVEDATA_SHOP::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraVibManager'" << std::endl;
+#endif
 	CCameraVibManager::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraBank'" << std::endl;
+#endif
 	CCameraBank::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraModeSubjective'" << std::endl;
+#endif
 	CCameraModeSubjective::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraModePetitMovie'" << std::endl;
+#endif
 	CCameraModePetitMovie::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraModeCircle'" << std::endl;
+#endif
 	CCameraModeCircle::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraModeDefaultAngle'" << std::endl;
+#endif
 	CCameraModeDefaultAngle::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraModeFree'" << std::endl;
+#endif
 	CCameraModeFree::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraModeNormal'" << std::endl;
+#endif
 	CCameraModeNormal::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraModeReset'" << std::endl;
+#endif
 	CCameraModeReset::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraDistToLookAt'" << std::endl;
+#endif
 	CCameraDistToLookAt::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraFollowRot'" << std::endl;
+#endif
 	CCameraFollowRot::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraLookAtOffset'" << std::endl;
+#endif
 	CCameraLookAtOffset::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraLookAtBase'" << std::endl;
+#endif
 	CCameraLookAtBase::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraDefaultAngle'" << std::endl;
+#endif
 	CCameraDefaultAngle::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraLockOnModeData'" << std::endl;
+#endif
 	CCameraLockOnModeData::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraNormalModeData'" << std::endl;
+#endif
 	CCameraNormalModeData::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraModeCommonData'" << std::endl;
+#endif
 	CCameraModeCommonData::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraDataManager'" << std::endl;
+#endif
 	CCameraDataManager::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraAreaManager'" << std::endl;
+#endif
 	CCameraAreaManager::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class gameUtil::CPositionControl'" << std::endl;
+#endif
 	gameUtil::CPositionControl::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraTarget'" << std::endl;
+#endif
 	CCameraTarget::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ti::CCamera'" << std::endl;
+#endif
 	ti::CCamera::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CGameCamera'" << std::endl;
+#endif
 	CGameCamera::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CCameraman'" << std::endl;
+#endif
 	CCameraman::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class HrMiniDemoObj'" << std::endl;
+#endif
 	HrMiniDemoObj::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class HrMiniDemoModel'" << std::endl;
+#endif
 	HrMiniDemoModel::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class STG0202'" << std::endl;
+#endif
 	STG0202::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct tagHRTASKCHECK'" << std::endl;
+#endif
 	tagHRTASKCHECK::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectBoneElect'" << std::endl;
+#endif
 	EffectBoneElect::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class BoneStreamObj'" << std::endl;
+#endif
 	BoneStreamObj::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectMetalElect'" << std::endl;
+#endif
 	EffectMetalElect::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectCutMark'" << std::endl;
+#endif
 	EffectCutMark::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class PJTateshi'" << std::endl;
+#endif
 	PJTateshi::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class PJState'" << std::endl;
+#endif
 	PJState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ZkState_DownAttack'" << std::endl;
+#endif
 	ZkState_DownAttack::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_AwayAfterAttack'" << std::endl;
+#endif
 	State_AwayAfterAttack::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_CloseBeforeAttack'" << std::endl;
+#endif
 	State_CloseBeforeAttack::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_StepInAttack'" << std::endl;
+#endif
 	State_StepInAttack::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_DownDamage'" << std::endl;
+#endif
 	State_DownDamage::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_TojoBaseState'" << std::endl;
+#endif
 	State_TojoBaseState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_LeadPcWayPointMove'" << std::endl;
+#endif
 	State_LeadPcWayPointMove::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_FixTurret'" << std::endl;
+#endif
 	State_FixTurret::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_WayPointMoveAfterPop'" << std::endl;
+#endif
 	State_WayPointMoveAfterPop::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Tojo_RoomRunner'" << std::endl;
+#endif
 	State_Tojo_RoomRunner::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Tojo_AeroBike'" << std::endl;
+#endif
 	State_Tojo_AeroBike::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Tojo_BreakCmnObj'" << std::endl;
+#endif
 	State_Tojo_BreakCmnObj::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Tojo_JumpOff'" << std::endl;
+#endif
 	State_Tojo_JumpOff::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Tojo_Car'" << std::endl;
+#endif
 	State_Tojo_Car::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Tojo_RunAndTurnPc'" << std::endl;
+#endif
 	State_Tojo_RunAndTurnPc::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Idle'" << std::endl;
+#endif
 	State_Idle::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Tojo_AgainstWall'" << std::endl;
+#endif
 	State_Tojo_AgainstWall::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Tojo_LookAround'" << std::endl;
+#endif
 	State_Tojo_LookAround::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Tojo_Stand'" << std::endl;
+#endif
 	State_Tojo_Stand::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Tojo_Bench'" << std::endl;
+#endif
 	State_Tojo_Bench::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Tojo_Sit'" << std::endl;
+#endif
 	State_Tojo_Sit::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Tojo_SuddenAttack'" << std::endl;
+#endif
 	State_Tojo_SuddenAttack::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_ReleaseWaitIdle'" << std::endl;
+#endif
 	State_ReleaseWaitIdle::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Scare_Base'" << std::endl;
+#endif
 	State_Scare_Base::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Scare_Kosinukasi'" << std::endl;
+#endif
 	State_Scare_Kosinukasi::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Scare_Run'" << std::endl;
+#endif
 	State_Scare_Run::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_WayPointMove'" << std::endl;
+#endif
 	State_WayPointMove::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Pressure'" << std::endl;
+#endif
 	State_Pressure::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_ThroughDamage'" << std::endl;
+#endif
 	State_ThroughDamage::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Defence'" << std::endl;
+#endif
 	State_Defence::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Evacuate'" << std::endl;
+#endif
 	State_Evacuate::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_ComboAttack'" << std::endl;
+#endif
 	State_ComboAttack::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Damage'" << std::endl;
+#endif
 	State_Damage::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct CollInfo'" << std::endl;
+#endif
 	CollInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct ZkGuardParam'" << std::endl;
+#endif
 	ZkGuardParam::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct ZkEvacuateParam'" << std::endl;
+#endif
 	ZkEvacuateParam::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class FkCounter'" << std::endl;
+#endif
 	FkCounter::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct ZkSetDamageInfo'" << std::endl;
+#endif
 	ZkSetDamageInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Scare_Yotunbai'" << std::endl;
+#endif
 	State_Scare_Yotunbai::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Scare_Stand'" << std::endl;
+#endif
 	State_Scare_Stand::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_RandomMove'" << std::endl;
+#endif
 	State_RandomMove::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_PerformIll'" << std::endl;
+#endif
 	State_PerformIll::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct PJZAKO::ZakoInfo'" << std::endl;
+#endif
 	PJZAKO::ZakoInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct PJZAKO::MotionInfo'" << std::endl;
+#endif
 	PJZAKO::MotionInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct PJZAKO::TojoInfo'" << std::endl;
+#endif
 	PJZAKO::TojoInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct PJZAKO::PcInfo'" << std::endl;
+#endif
 	PJZAKO::PcInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct PJZAKO::DmgInfo'" << std::endl;
+#endif
 	PJZAKO::DmgInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct PJZAKO::AiInfo'" << std::endl;
+#endif
 	PJZAKO::AiInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct PJZAKO::EfDanmen'" << std::endl;
+#endif
 	PJZAKO::EfDanmen::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class PJZAKO'" << std::endl;
+#endif
 	PJZAKO::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class PJStateMachine'" << std::endl;
+#endif
 	PJStateMachine::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectDanmenFlash'" << std::endl;
+#endif
 	EffectDanmenFlash::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectQuestion'" << std::endl;
+#endif
 	EffectQuestion::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class PJZakoMotMng'" << std::endl;
+#endif
 	PJZakoMotMng::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class PathPlanner'" << std::endl;
+#endif
 	PathPlanner::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct FkDynamicParam::DynamicParam'" << std::endl;
+#endif
 	FkDynamicParam::DynamicParam::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class FkDynamicParam'" << std::endl;
+#endif
 	FkDynamicParam::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class FkObstacleSensor'" << std::endl;
+#endif
 	FkObstacleSensor::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct FkBulletManager::stEfBullet'" << std::endl;
+#endif
 	FkBulletManager::stEfBullet::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct FkBulletManager::DmgInfo'" << std::endl;
+#endif
 	FkBulletManager::DmgInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class FkBulletManager'" << std::endl;
+#endif
 	FkBulletManager::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct EffectFkTobiDoguBase::strHitCheck'" << std::endl;
+#endif
 	EffectFkTobiDoguBase::strHitCheck::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct EffectFkTobiDoguBase::HitObjInfo'" << std::endl;
+#endif
 	EffectFkTobiDoguBase::HitObjInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectFkTobiDoguBase'" << std::endl;
+#endif
 	EffectFkTobiDoguBase::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class rQuadEx'" << std::endl;
+#endif
 	rQuadEx::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectGunTrack'" << std::endl;
+#endif
 	EffectGunTrack::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class pcSNB'" << std::endl;
+#endif
 	pcSNB::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class State_Tojo_Knife_SuddenAttack'" << std::endl;
+#endif
 	State_Tojo_Knife_SuddenAttack::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class ZkKnifeState_ThroughKnife'" << std::endl;
+#endif
 	ZkKnifeState_ThroughKnife::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class PJZAKOBoneB'" << std::endl;
+#endif
 	PJZAKOBoneB::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class PJZakoKnife'" << std::endl;
+#endif
 	PJZakoKnife::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class bsSKE'" << std::endl;
+#endif
 	bsSKE::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class bsLEZ'" << std::endl;
+#endif
 	bsLEZ::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class bsCEW'" << std::endl;
+#endif
 	bsCEW::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class bsAST'" << std::endl;
+#endif
 	bsAST::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class bsRKT'" << std::endl;
+#endif
 	bsRKT::BindLua(NS);
-	KrBaseState<bsBasic>::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class GLBDeathState'" << std::endl;
+#endif
 	GLBDeathState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class GLBWalkState'" << std::endl;
+#endif
 	GLBWalkState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class GLBComboState'" << std::endl;
+#endif
 	GLBComboState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class GLBIdleState'" << std::endl;
+#endif
 	GLBIdleState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class GLBJampState'" << std::endl;
+#endif
 	GLBJampState::BindLua(NS);
-	KrStateMachine<pcGLB,32>::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class rSideScrollCamera'" << std::endl;
+#endif
 	rSideScrollCamera::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class GLBDamageState'" << std::endl;
+#endif
 	GLBDamageState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class GLBGuardState'" << std::endl;
+#endif
 	GLBGuardState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class GLBAirKickState'" << std::endl;
+#endif
 	GLBAirKickState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct pcGLB::DmgInfo'" << std::endl;
+#endif
 	pcGLB::DmgInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct pcGLB::TickCnt'" << std::endl;
+#endif
 	pcGLB::TickCnt::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class pcGLB'" << std::endl;
+#endif
 	pcGLB::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EfRoboInterface'" << std::endl;
+#endif
 	EfRoboInterface::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectSpeedBlur'" << std::endl;
+#endif
 	EffectSpeedBlur::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CmDeathState'" << std::endl;
+#endif
 	CmDeathState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class SDPDeathState'" << std::endl;
+#endif
 	SDPDeathState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class SDPComboState'" << std::endl;
+#endif
 	SDPComboState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CmDamageState'" << std::endl;
+#endif
 	CmDamageState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class SDPDamageState'" << std::endl;
+#endif
 	SDPDamageState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class SDPBeamState'" << std::endl;
+#endif
 	SDPBeamState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CmIdleState'" << std::endl;
+#endif
 	CmIdleState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class SDPIdleState'" << std::endl;
+#endif
 	SDPIdleState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct bsBasic::PcInfo'" << std::endl;
+#endif
 	bsBasic::PcInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct bsBasic::SurroundInfo'" << std::endl;
+#endif
 	bsBasic::SurroundInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct bsBasic::DistSense'" << std::endl;
+#endif
 	bsBasic::DistSense::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct bsBasic::TickCnt'" << std::endl;
+#endif
 	bsBasic::TickCnt::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct bsBasic::BattleParam'" << std::endl;
+#endif
 	bsBasic::BattleParam::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct bsBasic::DmgInfo'" << std::endl;
+#endif
 	bsBasic::DmgInfo::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class bsBasic'" << std::endl;
+#endif
 	bsBasic::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class SDPMoveState'" << std::endl;
+#endif
 	SDPMoveState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class SDPGuardState'" << std::endl;
+#endif
 	SDPGuardState::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class bsSDP'" << std::endl;
+#endif
 	bsSDP::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class FkTriangleList'" << std::endl;
+#endif
 	FkTriangleList::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectModelBeam'" << std::endl;
+#endif
 	EffectModelBeam::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct FkVtx'" << std::endl;
+#endif
 	FkVtx::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EfGeneralBeam'" << std::endl;
+#endif
 	EfGeneralBeam::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class PJOBJ0029'" << std::endl;
+#endif
 	PJOBJ0029::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class PJOBJ0033'" << std::endl;
+#endif
 	PJOBJ0033::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct EFFECTSIMPLEOBJ3PARAM'" << std::endl;
+#endif
 	EFFECTSIMPLEOBJ3PARAM::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct EFFECTMODELFIREPARAM'" << std::endl;
+#endif
 	EFFECTMODELFIREPARAM::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct EffectModelFire::MAIN'" << std::endl;
+#endif
 	EffectModelFire::MAIN::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectModelFire'" << std::endl;
+#endif
 	EffectModelFire::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct EffectSimpleObj3::MAIN'" << std::endl;
+#endif
 	EffectSimpleObj3::MAIN::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct EffectSimpleObj3::OBJECT'" << std::endl;
+#endif
 	EffectSimpleObj3::OBJECT::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectSimpleObj3'" << std::endl;
+#endif
 	EffectSimpleObj3::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct tagTLIST'" << std::endl;
+#endif
 	tagTLIST::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class PJOBJ0036'" << std::endl;
+#endif
 	PJOBJ0036::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class PJOBJ0037'" << std::endl;
+#endif
 	PJOBJ0037::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class PJOBJ0104'" << std::endl;
+#endif
 	PJOBJ0104::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class PJOBJ0155'" << std::endl;
+#endif
 	PJOBJ0155::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class PJOBJ0190'" << std::endl;
+#endif
 	PJOBJ0190::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class PJPTR'" << std::endl;
+#endif
 	PJPTR::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct FkDbgInfo_EventArea'" << std::endl;
+#endif
 	FkDbgInfo_EventArea::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct FkGlobalDBG::CommonObjSetInf'" << std::endl;
+#endif
 	FkGlobalDBG::CommonObjSetInf::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class FkGlobalDBG'" << std::endl;
+#endif
 	FkGlobalDBG::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct EffectBloodSplash::MAIN'" << std::endl;
+#endif
 	EffectBloodSplash::MAIN::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectBloodSplash'" << std::endl;
+#endif
 	EffectBloodSplash::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct EffectSimpleObj2::MAIN'" << std::endl;
+#endif
 	EffectSimpleObj2::MAIN::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectSimpleObj2'" << std::endl;
+#endif
 	EffectSimpleObj2::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectSlashHit'" << std::endl;
+#endif
 	EffectSlashHit::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct FkBoss::GuardParam'" << std::endl;
+#endif
 	FkBoss::GuardParam::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class FkBoss'" << std::endl;
+#endif
 	FkBoss::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectSlashTrack'" << std::endl;
+#endif
 	EffectSlashTrack::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectBeamDragon'" << std::endl;
+#endif
 	EffectBeamDragon::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectGYNMissile'" << std::endl;
+#endif
 	EffectGYNMissile::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectMoeMissile'" << std::endl;
+#endif
 	EffectMoeMissile::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CMotionPlayer::CElement'" << std::endl;
+#endif
 	CMotionPlayer::CElement::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CMotionPlayer'" << std::endl;
+#endif
 	CMotionPlayer::BindLua(NS);
 }
 #endif

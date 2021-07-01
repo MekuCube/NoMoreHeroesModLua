@@ -333,7 +333,7 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 			if len(InType.structure.members) > 0:
 				FirstMember = InType.structure.members[0]
 				if str(FirstMember.name) == "field_0" and not "*" in str(FirstMember.type) and ("class " in str(FirstMember.type) or "struct " in str(FirstMember.type)):
-					SuperClassType = FirstMember.type	
+					SuperClassType = FirstMember.type
 			CustomNameSpace = None
 			ParentNameSpace = GetParentNameSpaceFromType(InType)
 			if ParentNameSpace != None:
@@ -384,28 +384,28 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 				# Export all types in our namespace
 				TypesInNameSpace = GetTypesInNameSpace(InType, AllTypes)
 				if len(TypesInNameSpace) > 0:
-					print("	"*indent + "/// "+str(len(TypesInNameSpace))+" namespace types: ", end="", file=file)
+					#print("	"*indent + "/// "+str(len(TypesInNameSpace))+" namespace types: ", end="", file=file)
 					if file != None:
 						file.flush()
 					SortTypesByDependency(TypesInNameSpace, AllTypes) # Sort em
-					IsFirst = True
-					for TypeIt in TypesInNameSpace:
-						if IsFirst:
-							IsFirst = False
-						else:
-							print(", ", end="", file=file)
-						print(str(TypeIt), end="", file=file)
-						if file != None:
-							file.flush()
-					print("", file=file)
-					print("", file=file)
+					#IsFirst = True
+					#for TypeIt in TypesInNameSpace:
+					#	if IsFirst:
+					#		IsFirst = False
+					#	else:
+					#		print(", ", end="", file=file)
+					#	print(str(TypeIt), end="", file=file)
+					#	if file != None:
+					#		file.flush()
+					#print("", file=file)
+					#print("", file=file)
 					for TypeIt in TypesInNameSpace:
 						ExportType(TypeIt, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings, file, indent)
-					print("", file=file)
+					#print("", file=file)
 					if file != None:
 						file.flush()
-				else:
-					print("	"*indent + "/// No namespace types", file=file)
+				#else:
+				#	print("	"*indent + "/// No namespace types", file=file)
 				# Export member variables
 				print("	"*indent + "/// Struct member variables", file=file)
 				print("", file=file)
@@ -417,8 +417,10 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 						PrevOffset = FlattenMembers[i-1].offset + FlattenMembers[i-1].type.width
 						if MemberIt.offset > PrevOffset:
 							print("	"*indent + "// <Filler, offset "+str(hex(PrevOffset)) + ">", file=file)
+							print("	"*(indent-1) + "private:", file=file)
 							print("	"*indent + "char _Filler"+str(i)+"[" + str(MemberIt.offset - PrevOffset) + "];", file=file)
 							print("", file=file)
+							print("	"*(indent-1) + "public:", file=file)
 					print("	"*indent + "// " + str(MemberIt), file=file)
 					MemberName = str(MemberIt.name)
 					MemberType = MemberIt.type
@@ -479,69 +481,108 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 					MemberWidth = InType.structure.members[-1].offset + InType.structure.members[-1].type.width
 				if MemberWidth < InType.width and not (InType.width <= 1 and MemberWidth <= 0):
 					print("	"*indent + "// <Filler, offset "+str(hex(MemberWidth)) + ">", file=file)
+					print("	"*(indent-1) + "private:", file=file)
 					print("	"*indent + "char _Filler[" + str(InType.width - MemberWidth) + "];", file=file)
+					print("	"*(indent-1) + "public:", file=file)
 					print("", file=file)
-				# Expose to Lua
-				ExportedLuaBindings.append(InType)
-				print("#ifdef WITH_LUA", file=file)
-				print("	"*indent + "static void BindLua(luabridge::Namespace& NS)", file=file)
-				print("	"*indent + "{", file=file)
-				indent = indent+1
-				# Class
-				print("	"*indent + "NS = NS.beginClass<"+TypeStrNoPrefix+">(\""+TypeStrNoPrefix+"\")", end="", file=file)
-				# Members
-				indent = indent+1
-				for MemberIt in GetFlattenedStructMembers(InType, SuperClassType):
-					NotSupportedReason = None
-					MemberTypeStr = str(MemberIt.type)
-					MemberStringAfterName = MemberIt.type.get_string_after_name()
-					if MemberTypeStr.startswith("void"):
-						NotSupportedReason = "void type not supported in LuaBridge"
-					if MemberTypeStr in ["char*", "unsigned char*", "int*", "unsigned int*", "short*", "unsigned short*", "__int64*", "int64_t*", "uint64_t*", "int8_t*", "uint8_t*", "int16_t*", "uint16_t*", "int32_t*", "uint32_t*", "float*"]:
-						NotSupportedReason = "native pointer type ("+MemberTypeStr+") not supported in LuaBridge (needs wrapper function)"
-					if "**" in str(MemberIt.type):
-						NotSupportedReason = "pointer to pointer is not supported in LuaBridge"
-					if MemberStringAfterName.startswith("[") and MemberStringAfterName.endswith("]"):
-						NotSupportedReason = "static arrays are not supported in LuaBridge (only std::vector)"
-					if MemberStringAfterName.startswith(")"):
-						NotSupportedReason = "delegates are not supported in LuaBridge"
-					if MemberTypeStr.endswith(" const"):
-						NotSupportedReason = "const not supported in LuaBridge and needs a getter"
-					if MemberTypeStr.endswith(" volatile"):
-						NotSupportedReason = "volatile not supported in LuaBridge and needs a getter"
+				# Expose to Lua (templates not yet supported)
+				if TemplateTypesStr == None:
+					ExportedLuaBindings.append(InType)
+					print("#ifdef WITH_LUA", file=file)
+					print("	"*indent + "static void BindLua(luabridge::Namespace& NS)", file=file)
+					print("	"*indent + "{", file=file)
+					indent = indent+1
+					# Class
+					TempClassNameC = TypeStrNoPrefix
+					TempClassNameLua = TypeStrNoPrefix
+					SuperClassName = None
+					if SuperClassType != None:
+						SuperClassName = str(SuperClassType)
+					# Replace templates
+					if TemplateTypesStr != None:
+						i = 1
+						for TemplateTypeStrIt in TemplateTypesStr:
+							TemplateNameStr = "T"
+							if len(TemplateTypesStr) > 1:
+								TemplateNameStr = "T"+str(i)
+							TemplateNameLua = "\""+TemplateNameStr+"\""
+							TempClassNameC = TempClassNameC.replace("class " + TemplateTypeStrIt, TemplateNameStr)
+							TempClassNameC = TempClassNameC.replace("struct " + TemplateTypeStrIt, TemplateNameStr)
+							TempClassNameC = TempClassNameC.replace(TemplateTypeStrIt, TemplateNameStr)
+							TempClassNameLua = TempClassNameLua.replace("class " + TemplateTypeStrIt, TemplateNameLua)
+							TempClassNameLua = TempClassNameLua.replace("struct " + TemplateTypeStrIt, TemplateNameLua)
+							TempClassNameLua = TempClassNameLua.replace(TemplateTypeStrIt, TemplateNameLua)
+							if SuperClassName != None:
+								SuperClassName = SuperClassName.replace("class " + TemplateTypeStrIt, TemplateNameStr)
+								SuperClassName = SuperClassName.replace("struct " + TemplateTypeStrIt, TemplateNameStr)
+								SuperClassName = SuperClassName.replace(TemplateTypeStrIt, TemplateNameStr)
+							i = i + 1
+					# Sanitize name
+					TempClassNameLua = TempClassNameLua.replace("<", "_").replace(">", "").replace("::", "_").replace(":", "")
+					# Templates not yet supported
+					if SuperClassType != None and not "<" in str(SuperClassType):
+						print("	"*indent + "NS = NS.deriveClass<"+TempClassNameC+", "+SuperClassName.replace("struct ", "").replace("class ", "")+">(\""+TempClassNameLua+"\")", end="", file=file)
+					else:
+						print("	"*indent + "NS = NS.beginClass<"+TempClassNameC+">(\""+TempClassNameLua+"\")", end="", file=file)
+					# Members
+					indent = indent+1
+					for MemberIt in GetFlattenedStructMembers(InType, SuperClassType):
+						NotSupportedReason = None
+						MemberTypeStr = str(MemberIt.type)
+						MemberStringAfterName = MemberIt.type.get_string_after_name()
+						if MemberTypeStr.startswith("void"):
+							NotSupportedReason = "void type not supported in LuaBridge"
+						if MemberTypeStr in ["char*", "unsigned char*", "int*", "unsigned int*", "short*", "unsigned short*", "__int64*", "int64_t*", "uint64_t*", "int8_t*", "uint8_t*", "int16_t*", "uint16_t*", "int32_t*", "uint32_t*", "float*"]:
+							NotSupportedReason = "native pointer type ("+MemberTypeStr+") not supported in LuaBridge (needs wrapper function)"
+						if "**" in str(MemberIt.type):
+							NotSupportedReason = "pointer to pointer is not supported in LuaBridge"
+						if MemberStringAfterName.startswith("[") and MemberStringAfterName.endswith("]"):
+							NotSupportedReason = "static arrays are not supported in LuaBridge (only std::vector)"
+						if MemberStringAfterName.startswith(")"):
+							NotSupportedReason = "delegates are not supported in LuaBridge"
+						if MemberTypeStr.endswith(" const"):
+							NotSupportedReason = "const not supported in LuaBridge and needs a getter"
+						if MemberTypeStr.endswith(" volatile"):
+							NotSupportedReason = "volatile not supported in LuaBridge and needs a getter"
+						print("", file=file)
+						print("	"*indent, end="", file=file)
+						if NotSupportedReason != None:
+							print("// " + NotSupportedReason, file=file)
+							print("	"*indent, end="", file=file)
+							print("//", end="", file=file)
+						print(".addProperty(\"" + str(MemberIt.name) + "\", &"+TypeStrNoPrefix+"::"+str(MemberIt.name), end="", file=file)
+						# Mark as read-only
+						print(")", end="", file=file)
 					print("", file=file)
-					print("	"*indent, end="", file=file)
-					if NotSupportedReason != None:
-						print("// " + NotSupportedReason, file=file)
-						print("	"*indent, end="", file=file)
-						print("//", end="", file=file)
-					print(".addProperty(\"" + str(MemberIt.name) + "\", &"+TypeStrNoPrefix+"::"+str(MemberIt.name), end="", file=file)
-					# Mark as read-only
-					print(")", end="", file=file)
-				print("", file=file)
-				# Functions
-				ExportedFunctions = []
-				for TypeIt in TypesInNameSpace:
-					if isinstance(TypeIt, binaryninja.function.Function):
-						FunctionName = GetFunctionNameWithoutNameSpace(TypeIt)
-						print("	"*indent, end="", file=file)
-						HasError = None
-						if FunctionName in ExportedFunctions:
-							HasError = "Function overloading not supported in LuaBridge."
-						for VarIt in TypeIt.parameter_vars:
-							if VarIt.type != None and VarIt.type.type_class == TypeClass.PointerTypeClass and VarIt.type.element_type != None and VarIt.type.element_type.type_class != TypeClass.StructureTypeClass:
-								HasError = "Functions with pointers to native types not supported in LuaBridge."
-						if HasError != None:
-							print("// "+HasError, file=file)
-							print("	"*indent + "//", end="", file=file)
-						ExportedFunctions.append(FunctionName)
-						print(".addFunction(\"" + str(FunctionName) + "\", &"+TypeStrNoPrefix+"::"+str(FunctionName) + ")", file=file)
-				# Lua end func
-				indent = indent-1
-				print("	"*indent + ".endClass();", file=file)
-				indent = indent-1
-				print("	"*indent + "}", file=file)
-				print("#endif", file=file)
+					# Functions
+					ExportedFunctions = []
+					for TypeIt in TypesInNameSpace:
+						if isinstance(TypeIt, binaryninja.function.Function):
+							FunctionName = GetFunctionNameWithoutNameSpace(TypeIt)
+							print("	"*indent, end="", file=file)
+							HasError = None
+							if FunctionName in ExportedFunctions:
+								HasError = "Function overloading not supported in LuaBridge."
+							else:
+								ExportedFunctions.append(FunctionName)
+							for VarIt in TypeIt.parameter_vars:
+								if VarIt.type != None and (str(VarIt.type).endswith("*") or str(VarIt.type).endswith("&")) and VarIt.type.type_class == TypeClass.PointerTypeClass and VarIt.type.element_type != None and VarIt.type.element_type.type_class != TypeClass.StructureTypeClass:
+									HasError = "Functions with parameters pointing to native types ("+str(VarIt.type)+" " + str(VarIt.name) + ") not supported in LuaBridge."
+							if TypeIt.return_type != None and (str(TypeIt.return_type).endswith("*") or str(TypeIt.return_type).endswith("&")) and TypeIt.return_type.type_class == TypeClass.PointerTypeClass and TypeIt.return_type.element_type != None and TypeIt.return_type.element_type.type_class != TypeClass.StructureTypeClass:
+									HasError = "Functions with return values pointing to native types ('"+str(TypeIt.return_type)+"' ["+str(TypeIt.return_type.type_class)+"]) not supported in LuaBridge."
+							if HasError != None:
+								print("// "+HasError, file=file)
+								print("	"*indent + "//", end="", file=file)
+							print(".addFunction(\"" + str(FunctionName) + "\", &"+TypeStrNoPrefix+"::"+str(FunctionName) + ")", file=file)
+					# Lua end func
+					indent = indent-1
+					print("	"*indent + ".endClass();", file=file)
+					indent = indent-1
+					print("	"*indent + "}", file=file)
+					print("#endif", file=file)
+				else:
+					print("	"*indent + "// Exporting templated types to Lua currently not supported.", file=file)
+					print("	"*indent + "// static void BindLua(luabridge::Namespace& NS)", file=file)
 				# Class end
 				indent = indent-1
 				print("	"*indent + "};", file=file)
@@ -865,7 +906,7 @@ def GetFlattenedStructMembers(InType, InSuperClass = None):
 
 # Export
 def DoExport(AllRootTypes, AllRelevantTypes):
-	with open("E:/C++/NoMoreHeroesModLua/Games/NMH2/exported_data_types.h", "w") as text_file:
+	with open("E:/C++/NoMoreHeroesModLua/Games/NMH2/exported_data_types_new.h", "w") as text_file:
 		print("// Exporter by @MekuCube", file=text_file)
 		print("", file=text_file)
 		print("#pragma once", file=text_file)
@@ -925,6 +966,9 @@ def DoExport(AllRootTypes, AllRelevantTypes):
 		print("{", file=text_file)
 		for TypeIt in ExportedLuaBindings:
 			if isinstance(TypeIt, binaryninja.types.Type) and TypeIt.type_class == TypeClass.StructureTypeClass:
+				print("#ifdef LOG_INIT", file=text_file)
+				print("	" + "std::cout << \"Binding '" + str(TypeIt) + "'\" << std::endl;", file=text_file)
+				print("#endif", file=text_file)
 				print("	" + str(TypeIt).replace("class ", "").replace("struct ", "").replace("union ", "") + "::BindLua(NS);", file=text_file)
 		print("}", file=text_file)
 		print("#endif", file=text_file)
@@ -937,6 +981,7 @@ AllRelevantTypes = []
 CollectTypes(AllRelevantTypes, ["mHRChara", "mHRBattle", "mHRPc"])
 #CollectTypes(AllRelevantTypes, ["mHRBattle::mSetSlowMotionTick"])
 #CollectTypes(AllRelevantTypes, ["EffectCutMark::Create"])
+#CollectTypes(AllRelevantTypes, ["GLBDeathState"])
 print("Collected " + str(len(AllRelevantTypes)) + " types.")
 
 # Only export roots
