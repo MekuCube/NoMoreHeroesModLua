@@ -7,7 +7,7 @@
 #include <sstream>
 #include <d3d11.h>
 #include "mem.h"
-#include "games/gamedefs.h"
+#include "Games/gamedefs.h"
 
 #if WITH_LUA
 extern "C"
@@ -27,8 +27,9 @@ extern "C"
 uintptr_t GameModule = NULL;
 
 #ifdef GAME_NMH2
-    #include "games/nmh2/exported_data_types.h"
-    #include "games/nmh2/nmh2_gamedefs.h"
+    #include "Games/NMH2/exported_data_types.h"
+    #include "Games/NMH2/nmh2_gamedefs.h"
+    #include "GameFunctions.h"
 #else
     #error "No game specified."
 #endif

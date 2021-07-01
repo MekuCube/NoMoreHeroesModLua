@@ -32,26 +32,42 @@ def GetTypeByName(InString):
 		print("")
 
 GetTypeByName.cache = None
-
-def GetRootNameSpaceFromString(InString):
 	
-	NameSpaces = GetNameSpacesFromString(InString)
+def GetParentNameSpaceFromType(InType):
+	
+	NameSpaces = GetNameSpacesFromType(InType)
 	if NameSpaces == None or len(NameSpaces) <= 0:
 		return None
-	return NameSpaces[0]
+	return NameSpaces[-1]
 
-def HasValidParentNameSpace(InString):
-	ParentNameSpace = GetParentNameSpaceFromString(InString)
+def HasValidParentNameSpace(InType):
+	ParentNameSpace = GetParentNameSpaceFromType(InType)
 	if ParentNameSpace == None:
 		return False
 	return GetTypeByName(ParentNameSpace) != None
 
-def GetParentNameSpaceFromString(InString):
-	
-	NameSpaces = GetNameSpacesFromString(InString)
-	if NameSpaces == None or len(NameSpaces) <= 0:
-		return None
-	return NameSpaces[-1]
+def GetFunctionNameWithoutNameSpace(InType):
+	FunctionName = str(InType.name)
+	FunctionName = FunctionName.split("?", 1)[-1] # Starts at "?"
+	FunctionName = FunctionName.split("@")[0]
+	return FunctionName
+
+# Given a type returns a list of parent namespaces as strings (['A', 'A::B']
+def GetNameSpacesFromType(InType):
+	Input = str(InType)
+	if isinstance(InType, binaryninja.function.Function):
+		FunctionName = GetFunctionNameWithoutNameSpace(InType)
+		
+		# TODO: Comment
+		Input = Input.split(FunctionName + "(")[0]
+		Input = Input.split(" ")[-1]
+		Input = Input + FunctionName
+		
+		return GetNameSpacesFromString(Input)
+	else:
+		# Check for template
+		Input = Input.split("<")[0]
+		return GetNameSpacesFromString(Input)
 
 # Given a string (A::B::C) returns a list of parent namespaces as strings (['A', 'A::B']
 def GetNameSpacesFromString(InString):
@@ -86,7 +102,7 @@ def IsInListPure(InType, InList):
 	return False
 
 # Returns true if any added to the visited_types array
-def VisitType(InType, visited_types, VisitNameSpace = True, VisitPointers = True):
+def VisitType(InType, visited_types, VisitOuterNameSpace = True, VisitPointers = True):
 	if InType == None:
 		return False
 	TypeStr = str(InType)
@@ -112,15 +128,18 @@ def VisitType(InType, visited_types, VisitNameSpace = True, VisitPointers = True
 				#	print("Attempting to redirect to '" + str(TypeNameObject) + "' (type: '"+str(TypeNameObject.type_class)+"', str: '" + TypeNameStr + "')")
 				#else:
 				#	print("Failed to find '" + TypeNameStr + "'")
-				if VisitType(TypeNameObject, visited_types, VisitNameSpace, VisitPointers):
+				if VisitType(TypeNameObject, visited_types, VisitOuterNameSpace, VisitPointers):
 					return True
 			#print("Failed to resolve NamedTypeReferenceClass '" + str(InType) + "' (" + TypeNameStr + ")")
 			return False
 		if InType.type_class == TypeClass.PointerTypeClass:
-			if VisitPointers and InType.element_type != None:
-				return VisitType(InType.element_type, visited_types, VisitNameSpace, VisitPointers)
-			#print("Skipped pointer '" + str(InType) + "' due to type_class '" + str(InType.type_class) + "'.")
-			#print("element_type: " + str(InType.element_type))
+			IsProperPointer = TypeStr.endswith("*")
+			if IsProperPointer and not VisitPointers:
+				#print("Skipped pointer '" + str(InType) + "' due to type_class '" + str(InType.type_class) + "'.")
+				#print("element_type: " + str(InType.element_type))
+				return False
+			if InType.element_type != None:
+				return VisitType(InType.element_type, visited_types, VisitOuterNameSpace, VisitPointers)
 			return False
 		if not VisitPointers and TypeStr.endswith("*"):
 			#print("Skipped pointer '" + str(InType) + "' due to ending with '*'.")
@@ -128,21 +147,15 @@ def VisitType(InType, visited_types, VisitNameSpace = True, VisitPointers = True
 		if InType.type_class != TypeClass.StructureTypeClass and InType.type_class != TypeClass.EnumerationTypeClass:
 			#print("Skipped '" + str(InType) + "' due to type_class '" + str(InType.type_class) + "'")
 			return False
-		# STD:: explicit instantiation, ignore
-		#if InType.type_class == TypeClass.StructureTypeClass:
-		#	TypesToIgnore = ["class EE::StringBase<", "enum EE::StringBase<", "class EE::String", "struct D3D11", "struct ID3D11", "struct IUnknown" ]
-		#	for TypeToIgnore in TypesToIgnore:
-		#		if TypeStr.startswith(TypeToIgnore):
-		#			return False
 	#print("Visit: '" + TypeStr + "'")
 	# Mark as visited
 	visited_types.append(InType)
-	# Visit namespaces
-	if VisitNameSpace:
-		NameSpaces = GetNameSpacesFromString(str(InType))
+	# Visit outer namespaces
+	if VisitOuterNameSpace:
+		NameSpaces = GetNameSpacesFromType(InType)
 		if NameSpaces != None:
 			for NameSpace in NameSpaces:
-				VisitType(GetTypeByName(NameSpace), visited_types, VisitNameSpace, VisitPointers)
+				VisitType(GetTypeByName(NameSpace), visited_types, VisitOuterNameSpace, VisitPointers)
 	if isinstance(InType, binaryninja.types.Type):
 		# Visit struct members
 		if InType.structure != None:
@@ -150,31 +163,39 @@ def VisitType(InType, visited_types, VisitNameSpace = True, VisitPointers = True
 			for MemberIt in InType.structure.members:
 				if MemberIt.type != None and MemberIt.type != InType:
 					#print("   - Trying to visit member type: '" + str(MemberIt.type) + "' (" + str(MemberIt.type.type_class) + ")")
-					VisitType(MemberIt.type, visited_types, VisitNameSpace, VisitPointers)
+					VisitType(MemberIt.type, visited_types, VisitOuterNameSpace, VisitPointers)
 				if VisitPointers and MemberIt.type.element_type != None and MemberIt.type.element_type != InType:
 					#print("   - Trying to visit element type: '" + str(MemberIt.type))
-					VisitType(MemberIt.type.element_type, visited_types, VisitNameSpace, VisitPointers)
+					VisitType(MemberIt.type.element_type, visited_types, VisitOuterNameSpace, VisitPointers)
 		# Visit parameters
 		if InType.parameters != None:
 			for ParameterIt in InType.parameters:
 				if ParameterIt.type != None and ParameterIt.type != InType:
-					VisitType(ParameterIt.type, visited_types, VisitNameSpace, VisitPointers)
+					VisitType(ParameterIt.type, visited_types, VisitOuterNameSpace, VisitPointers)
 		# Visit element type
 		if InType.element_type != None and InType.element_type != InType:
-			VisitType(InType.element_type, visited_types, VisitNameSpace, VisitPointers)
+			VisitType(InType.element_type, visited_types, VisitOuterNameSpace, VisitPointers)
 		# Named type
 		if InType.named_type_reference != None and InType.named_type_reference.type_class != None:
 			NamedType = InType.named_type_reference.name
 			NamedTypeRef = GetTypeByName(str(NamedType))
 			if NamedTypeRef != None and NamedTypeRef != InType:
-				VisitType(NamedTypeRef, visited_types, VisitNameSpace, VisitPointers)
-	# Visit function return type
+				VisitType(NamedTypeRef, visited_types, VisitOuterNameSpace, VisitPointers)
+	# Visit function
 	if isinstance(InType, binaryninja.function.Function):
+		# return type
 		if InType.return_type != InType:
-			VisitType(InType.return_type, visited_types, VisitNameSpace, VisitPointers)
-		type, name = demangle_ms(Architecture["x86"], InType.name, False)
-		if type != None and type != InType:
-			VisitType(type, visited_types, VisitNameSpace, VisitPointers)
+			VisitType(InType.return_type, visited_types, VisitOuterNameSpace, VisitPointers)
+		DemangledType, DemangledName = demangle_ms(Architecture["x86"], InType.name, False)
+		if DemangledType != None and DemangledType != InType:
+			VisitType(DemangledType, visited_types, VisitOuterNameSpace, VisitPointers)
+		# Function type
+		if InType.function_type != None and InType.function_type != InType:
+			VisitType(InType.function_type, visited_types, VisitOuterNameSpace, VisitPointers)
+		# Parameter vars
+		#print("Visiting function vars for '" + str(InType) + "'")
+		for VarIt in InType.parameter_vars:
+			VisitType(VarIt.type, visited_types, VisitOuterNameSpace, VisitPointers)
 	return True
 
 
@@ -189,9 +210,18 @@ def CollectTypes(visited_types, AllowHeaders):
 					ShouldIgnore = False
 		if not ShouldIgnore:
 			VisitType(FunctionIt, visited_types, True, True)
+	for TypeIt in bv.types:
+		TypeStr = str(TypeIt)
+		ShouldIgnore = AllowHeaders != None and len(AllowHeaders) > 0
+		if AllowHeaders != None:
+			for AllowIt in AllowHeaders:
+				if AllowIt in TypeStr:
+					ShouldIgnore = False
+		if not ShouldIgnore:
+			VisitType(TypeIt, visited_types, True, True)
 			
 	# Filter (TODO: Doesn't seem to work)
-	TypesToIgnore = ["class CStlVector<", "class EE::StringBase<", "enum EE::StringBase<", "class EE::String", "struct D3D11", "struct ID3D11", "struct IUnknown", "struct EE::OptListNode<", "class FkStlVector<", "class FkStlList<", "class tiMatrix", "struct CONTAINER<" ]
+	TypesToIgnore = ["class CStlVector<", "class EE::StringBase<", "enum EE::StringBase<", "class EE::String", "struct D3D11", "struct ID3D11", "struct IUnknown", "struct EE::OptListNode<", "class FkStlVector<", "class FkStlList<", "class tiMatrix", "struct CONTAINER<", "::<lambda_" ]
 	filtered_types = []
 	for TypeIt in visited_types:
 		if isinstance(TypeIt, binaryninja.types.Type):
@@ -223,12 +253,14 @@ def CollectTypes(visited_types, AllowHeaders):
 def GetTypesInNameSpace(NameSpaceRoot, AllTypes):
 	OutResult = []
 	RootStr = str(NameSpaceRoot)
+	if RootStr in GetTypesInNameSpace.cache:
+		return GetTypesInNameSpace.cache[RootStr]
 	for TypeIt in AllTypes:
 		if TypeIt == NameSpaceRoot:
 			continue
 		TypeStr = str(TypeIt)
-		ParentNameSpace = GetParentNameSpaceFromString(TypeStr)
-		#print("GetParentNameSpaceFromString(" + TypeStr + "): " + str(ParentNameSpace))
+		ParentNameSpace = GetParentNameSpaceFromType(TypeIt)
+		#print("GetParentNameSpaceFromType(" + TypeStr + "): " + str(ParentNameSpace))
 		if ParentNameSpace == None:
 			continue
 		# Quick naive check
@@ -240,12 +272,6 @@ def GetTypesInNameSpace(NameSpaceRoot, AllTypes):
 		if ParentNameSpaceType != NameSpaceRoot:
 			#print("'"+str(TypeIt) + "' skipped due to mismatch in ParentNameSpace. Got '"+str(ParentNameSpaceType)+"' ["+str(ParentNameSpaceType.type_class)+"] (from string '" + str(ParentNameSpace) + "'), expected: '" + str(NameSpaceRoot) + "' ["+str(NameSpaceRoot.type_class)+"]")
 			continue
-		# Check that no root is present
-		#if ParentNameSpaceType == None:
-		#	continue
-		# Check that its not this root
-		#if ParentNameSpaceType != RootStr:
-		#	continue
 		# Check if its a named type
 		if isinstance(TypeIt, binaryninja.types.Type) and TypeIt.named_type_reference != None and TypeIt.named_type_reference.type_class != None:
 			NamedType = TypeIt.named_type_reference.name
@@ -254,9 +280,12 @@ def GetTypesInNameSpace(NameSpaceRoot, AllTypes):
 				OutResult.append(NamedTypeRef)
 				continue
 		OutResult.append(TypeIt)
+	GetTypesInNameSpace.cache[RootStr] = OutResult
 	return OutResult
 
-def ExportType(InType, AllTypes, ExportedTypes, ExportedTemplates, ExportedLuaBindings, file, indent = 0, bFowardDeclare = False):
+GetTypesInNameSpace.cache = {}
+
+def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings, file, indent = 0, bFowardDeclare = False):
 	if IsInListPure(InType, ExportedTypes):
 		return
 	ExportedTypes.append(InType)
@@ -273,10 +302,15 @@ def ExportType(InType, AllTypes, ExportedTypes, ExportedTemplates, ExportedLuaBi
 			TypeStr = str(InType)
 			TypeStrNoPrefix = TypeStr.replace("class ", "").replace("struct ", "").replace("union ", "")
 			# Check if we should export this struct/class
-			TypesToIgnore = ["class CStlVector<", "class EE::StringBase<", "enum EE::StringBase<", "class EE::String", "struct D3D11", "struct ID3D11", "struct IUnknown", "struct EE::OptListNode<", "class FkStlVector<", "class FkStlList<", "class tiMatrix", "struct CONTAINER<" ]
-			for TypeToIgnore in TypesToIgnore:
+			TypePrefixToIgnore = ["class CStlVector<", "class EE::StringBase<", "class EE::String", "struct D3D11", "struct ID3D11", "struct IUnknown", "struct EE::OptListNode<", "class FkStlVector<", "class FkStlList<", "class tiMatrix", "struct CONTAINER<" ]
+			TypeContainToIgnore = ["::<lambda_"]
+			for TypeToIgnore in TypePrefixToIgnore:
 				if TypeStr.startswith(TypeToIgnore):
-					print("THIS SHOULD NO LONGER BE NECESSARY!!")
+					#print("THIS SHOULD NO LONGER BE NECESSARY!!")
+					return
+			for TypeToIgnore in TypeContainToIgnore:
+				if TypeToIgnore in TypeStr:
+					#print("THIS SHOULD NO LONGER BE NECESSARY!!")
 					return
 			if bFowardDeclare and not str(InType).startswith("class ") and not str(InType).startswith("struct "):
 				return
@@ -288,10 +322,12 @@ def ExportType(InType, AllTypes, ExportedTypes, ExportedTemplates, ExportedLuaBi
 				TemplateNameStr = TemplateMatch[2]
 				TypeStr = TemplateMatch[1] + TemplateNameStr
 				# If template is already declared
-				if TemplateNameStr in ExportedTemplates:
+				if not "ExportedTemplates" in SessionData:
+					SessionData["ExportedTemplates"] = []
+				if TemplateNameStr in SessionData["ExportedTemplates"]:
 					return
 				#print("[Template] '" + TemplateNameStr + "'")
-				ExportedTemplates.append(TemplateNameStr)
+				SessionData["ExportedTemplates"].append(TemplateNameStr)
 			# Find super class
 			SuperClassType = None
 			if len(InType.structure.members) > 0:
@@ -299,18 +335,18 @@ def ExportType(InType, AllTypes, ExportedTypes, ExportedTemplates, ExportedLuaBi
 				if str(FirstMember.name) == "field_0" and not "*" in str(FirstMember.type) and ("class " in str(FirstMember.type) or "struct " in str(FirstMember.type)):
 					SuperClassType = FirstMember.type	
 			CustomNameSpace = None
-			ParentNameSpace = GetParentNameSpaceFromString(TypeStr)
+			ParentNameSpace = GetParentNameSpaceFromType(InType)
 			if ParentNameSpace != None:
 				# HACK: Indent check is a hack to ensure we're the root
-				if not HasValidParentNameSpace(TypeStr) and indent == 0:
+				if not HasValidParentNameSpace(InType) and indent == 0:
 					CustomNameSpace = ParentNameSpace
 				TypeStr = TypeStr.replace(ParentNameSpace+"::", "")
 			# Raw
 			if not bFowardDeclare:
-				print("	"*indent + "// " + str(InType), file=file)
+				print("	"*indent + "// [Structure] " + str(InType), file=file)
 			# DEBUG: print dependencies
-			if not bFowardDeclare:
-				DebugPrintDependencies(InType, "	"*indent + "// ", file)
+			#if not bFowardDeclare:
+			#	DebugPrintDependencies(InType, AllTypes, "	"*indent + "// ", file)
 			# Custom NameSpace
 			if CustomNameSpace != None:
 				print("	"*indent + "namespace " + CustomNameSpace, file=file)
@@ -335,7 +371,7 @@ def ExportType(InType, AllTypes, ExportedTypes, ExportedTemplates, ExportedLuaBi
 			# Structure name
 			print("	"*indent + TypeStr, end="", file=file)
 			if SuperClassType != None and not bFowardDeclare:
-				print(" : " + str(SuperClassType).replace("class ", "").replace("struct ", ""), end="", file=file)
+				print(" : public " + str(SuperClassType).replace("class ", "").replace("struct ", ""), end="", file=file)
 			if bFowardDeclare:
 				print(";", end="", file=file)
 			print("", file=file)
@@ -351,7 +387,7 @@ def ExportType(InType, AllTypes, ExportedTypes, ExportedTemplates, ExportedLuaBi
 					print("	"*indent + "/// "+str(len(TypesInNameSpace))+" namespace types: ", end="", file=file)
 					if file != None:
 						file.flush()
-					SortTypesByDependency(TypesInNameSpace) # Sort em
+					SortTypesByDependency(TypesInNameSpace, AllTypes) # Sort em
 					IsFirst = True
 					for TypeIt in TypesInNameSpace:
 						if IsFirst:
@@ -364,7 +400,7 @@ def ExportType(InType, AllTypes, ExportedTypes, ExportedTemplates, ExportedLuaBi
 					print("", file=file)
 					print("", file=file)
 					for TypeIt in TypesInNameSpace:
-						ExportType(TypeIt, AllTypes, ExportedTypes, ExportedTemplates, ExportedLuaBindings, file, indent)
+						ExportType(TypeIt, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings, file, indent)
 					print("", file=file)
 					if file != None:
 						file.flush()
@@ -482,9 +518,26 @@ def ExportType(InType, AllTypes, ExportedTypes, ExportedTemplates, ExportedLuaBi
 					print(".addProperty(\"" + str(MemberIt.name) + "\", &"+TypeStrNoPrefix+"::"+str(MemberIt.name), end="", file=file)
 					# Mark as read-only
 					print(")", end="", file=file)
+				print("", file=file)
+				# Functions
+				ExportedFunctions = []
+				for TypeIt in TypesInNameSpace:
+					if isinstance(TypeIt, binaryninja.function.Function):
+						FunctionName = GetFunctionNameWithoutNameSpace(TypeIt)
+						print("	"*indent, end="", file=file)
+						HasError = None
+						if FunctionName in ExportedFunctions:
+							HasError = "Function overloading not supported in LuaBridge."
+						for VarIt in TypeIt.parameter_vars:
+							if VarIt.type != None and VarIt.type.type_class == TypeClass.PointerTypeClass and VarIt.type.element_type != None and VarIt.type.element_type.type_class != TypeClass.StructureTypeClass:
+								HasError = "Functions with pointers to native types not supported in LuaBridge."
+						if HasError != None:
+							print("// "+HasError, file=file)
+							print("	"*indent + "//", end="", file=file)
+						ExportedFunctions.append(FunctionName)
+						print(".addFunction(\"" + str(FunctionName) + "\", &"+TypeStrNoPrefix+"::"+str(FunctionName) + ")", file=file)
 				# Lua end func
 				indent = indent-1
-				print("", file=file)
 				print("	"*indent + ".endClass();", file=file)
 				indent = indent-1
 				print("	"*indent + "}", file=file)
@@ -500,17 +553,22 @@ def ExportType(InType, AllTypes, ExportedTypes, ExportedTemplates, ExportedLuaBi
 				for MemberIt in GetFlattenedStructMembers(InType, SuperClassType):
 					print("	"*indent + "static_assert(sizeof("+TypeStrNoPrefix + "::" + str(MemberIt.name) +") == "+str(MemberIt.type.width)+", \"expected "+str(MemberIt.name) + " to be size " + str(MemberIt.type.width) + "\");", file=file)
 				# Static error checking - class
-				print("	"*indent + "static_assert(sizeof("+str(InType)+") == "+str(InType.width)+", \"expected "+str(InType) + " to be size " + str(InType.width) + "\");", file=file)
+				print("	"*indent + "static_assert(sizeof("+str(TypeStrNoPrefix)+") == "+str(InType.width)+", \"expected "+str(InType) + " to be size " + str(InType.width) + "\");", file=file)
 				print("", file=file)
 		# Enum data
 		if InType.enumeration != None and not bFowardDeclare:
 			TypeStr = str(InType)
+			TypePrefixToIgnore = ["enum EE::StringBase<" ]
+			for TypeToIgnore in TypePrefixToIgnore:
+				if TypeStr.startswith(TypeToIgnore):
+					#print("THIS SHOULD NO LONGER BE NECESSARY!!")
+					return
 			# Find namespace
 			CustomNameSpace = None
-			ParentNameSpace = GetParentNameSpaceFromString(TypeStr)
+			ParentNameSpace = GetParentNameSpaceFromType(InType)
 			if ParentNameSpace != None:
 				# HACK: Indent check is a hack to ensure we're the root
-				if not HasValidParentNameSpace(TypeStr) and indent == 0:
+				if not HasValidParentNameSpace(InType) and indent == 0:
 					CustomNameSpace = ParentNameSpace
 				TypeStr = TypeStr.replace(ParentNameSpace+"::", "")
 			print("	"*indent + "// " + str(InType), file=file)
@@ -549,14 +607,95 @@ def ExportType(InType, AllTypes, ExportedTypes, ExportedTemplates, ExportedLuaBi
 				print("	"*indent + "}", file=file)
 			print("", file=file)
 	elif isinstance(InType, binaryninja.function.Function):
-		print("	"*indent +"// TODO: Function '" + str(InType) + "'", file=file)
+		# Operator functions not supported
+		if "`" in str(InType):
+			return
+		if "::operator" in InType.name:
+			return
+		# Constructor functions not supported
+		if InType.name.startswith("??0"):
+			return
+		# Destructor functions not supported
+		if InType.name.startswith("??1"):
+			return
+		if bFowardDeclare:
+			return
+		if not "ExportedFunctions" in SessionData:
+			SessionData["ExportedFunctions"] = []
+		# Lua bridge does not support function overloading
+		ParentNameSpaceStr = GetParentNameSpaceFromType(InType)
+		FunctionName = GetFunctionNameWithoutNameSpace(InType)
+		FunctionNameWithNameSpace = FunctionName
+		if ParentNameSpaceStr != None:
+			FunctionNameWithNameSpace = ParentNameSpaceStr + "::" + FunctionName
+		if FunctionNameWithNameSpace in SessionData["ExportedFunctions"]:
+			return
+		SessionData["ExportedFunctions"].append(FunctionNameWithNameSpace)
+		Inputs = ""
+		OuterParameters = ""
+		InnerTypeParameters = ""
+		i = 0
+		IsInstance = False
+		for VarIt in InType.parameter_vars:
+			VariableName = str(VarIt.name)
+			VariableTypeStr = str(VarIt.type)
+			# Untyped arguments not supported
+			if VariableTypeStr == "void":
+				return
+				
+			if VariableName == "":
+				VariableName = "arg"+str(i+1)
+				# TODO: HACK!!!!
+				if VariableTypeStr == "" or VariableTypeStr == "None":
+					VariableTypeStr = "int32_t"
+			AdjVariableName = VariableName
+			if AdjVariableName == "this":
+				AdjVariableName = "thisPtr"
+			
+			# Skip if class' "this" pointer
+			if ParentNameSpaceStr != None and VariableName == "this" and i == 0:
+				IsInstance = True
+			else:
+				if OuterParameters != "":
+					OuterParameters = OuterParameters + ", "
+				OuterParameters = OuterParameters + VariableTypeStr + " " + AdjVariableName
+			if InnerTypeParameters != "":
+				InnerTypeParameters = InnerTypeParameters + ", "
+			InnerTypeParameters = InnerTypeParameters + VariableTypeStr + " " + AdjVariableName
+			if Inputs != "":
+				Inputs = Inputs + ", "
+			if IsInstance:
+				Inputs = Inputs + VariableName
+			else:
+				Inputs = Inputs + AdjVariableName
+			i = i + 1
+		# Raw data as comment
+		print("	"*indent +"// [Function] " + str(InType) + " [" + str(InType.name) + "]", file=file)
+		# DEBUG: print dependencies
+		#if not bFowardDeclare:
+		#	DebugPrintDependencies(InType, AllTypes, "	"*indent + "// ", file)
+		# Function
+		print("	"*indent + str(InType.return_type) + " " + FunctionName + "("+OuterParameters+")", end="", file=file)
+		if InType.function_type.const:
+			print(" const", end="", file=file)
+		print("", file=file)
+		print("	"*indent +"{", file=file)
+		indent = indent + 1
+		print("	"*indent +"typedef " + str(InType.return_type) + "(__"+str(InType.calling_convention)+"* _Func)" + "(", end="", file=file)
+		#if IsConst and IsInstance:
+		#	print("const ", end="", file=file)
+		print(InnerTypeParameters+");", file=file)
+		print("	"*indent +"_Func mFunc = (_Func)(GameModule + " + str(hex(InType.start)) + ");", file=file)
+		print("	"*indent + "return mFunc" + "("+Inputs+");", file=file)
+		indent = indent - 1
+		print("	"*indent +"}", file=file)
 	else:
 		print("Unknown type: '" + str(InType) + "' (type: '" + str(type(InType)) + ")")
 		
 	if file != None:
 		file.flush()
 
-def SortTypesByDependency(TypesToSort):
+def SortTypesByDependency(TypesToSort, AllTypes):
 	#print("SortTypesByDependency", end="")
 	i = 0
 	StuckCheck = 0
@@ -564,7 +703,7 @@ def SortTypesByDependency(TypesToSort):
 		#print(".", end="")
 		TypeToSort = TypesToSort[i]
 		# These are the root types that need to be declared ahead of us
-		DependencyTypes = GetDependencies(TypeToSort)
+		DependencyTypes = GetDependencies(TypeToSort, AllTypes)
 		#print("[SORT] Sorting '" + str(TypeToSort) + "' with " + str(len(DependencyTypes)) + " dependencies")
 		AnyPushed = None
 		for DependencyType in DependencyTypes:
@@ -600,19 +739,46 @@ def SortTypesByDependency(TypesToSort):
 			if StuckCheck > 5000:
 				print("[SORT] Recursive loop detected between '" + str(TypeToSort) + "' and '" + str(AnyPushed) + "'")
 				print("[SORT] '" + str(TypeToSort) + "' has ", end="")
-				DebugPrintDependencies(TypeToSort, "", None, DependencyTypes)
+				DebugPrintDependencies(TypeToSort, AllTypes, "", None, DependencyTypes)
 				print("[SORT] '" + str(AnyPushed) + "' has ", end="")
-				DebugPrintDependencies(AnyPushed, "", None)
+				DebugPrintDependencies(AnyPushed, AllTypes, "", None)
 				i = i + 1
 				StuckCheck = 0
 
-def GetDependencies(InType):
+def GetDependencies(InType, AllTypes):
+	#if "EffectCutMark::Create" in str(InType):
+	#	print("Dependencies for " + str(InType) + ":")
+	InTypeStr = str(InType)
+	# Cache
+	if InTypeStr in GetDependencies.cache:
+		return GetDependencies.cache[InTypeStr]
 	DependencyTypes = []
-	VisitType(InType, DependencyTypes, False, False)
+	# Fill the visit list with our outer namespaces so they won't be visited
+	NameSpaces = GetNameSpacesFromType(InType)
+	NameSpaceTypes = []
+	if NameSpaces != None:
+		for NameSpace in NameSpaces:
+			TypeIt = GetTypeByName(NameSpace)
+			if TypeIt == None or TypeIt == InType:
+				continue
+			NameSpaceTypes.append(TypeIt)
+			DependencyTypes.append(TypeIt)
+	StartLen = len(DependencyTypes)
+	# Visit our type
+	VisitType(InType, DependencyTypes, True, False)
+	# Visit all types in our namespace
+	TypesInNameSpace = GetTypesInNameSpace(InType, AllTypes)
+	for TypeIt in TypesInNameSpace:
+		VisitType(TypeIt, DependencyTypes, True, False)
+	#if "EffectCutMark::Create" in str(InType):
+	#	print("end")
+	# Trim away added outer namespaces
+	DependencyTypes = DependencyTypes[StartLen:]
+	# Remove first entry (InType itself)
 	if len(DependencyTypes) > 0:
 		DependencyTypes = DependencyTypes[1:]
 	#Templates
-	TemplateTypes = ["class CStlVector<", "struct EE::OptListNode<" ]
+	TemplateTypes = ["class CStlVector<", "struct EE::OptListNode<", "enum EE::StringBase<" ]
 	FilteredTypes = []
 	for TypeIt in DependencyTypes:
 		if TypeIt == None:
@@ -626,12 +792,15 @@ def GetDependencies(InType):
 			continue
 		FilteredTypes.append(TypeIt)
 	DependencyTypes = FilteredTypes
+	GetDependencies.cache[InTypeStr] = DependencyTypes
 	return DependencyTypes
 
-def DebugPrintDependencies(InType, prefix, file, DependencyTypes = None):
+GetDependencies.cache = {}
+
+def DebugPrintDependencies(InType, AllTypes, prefix, file, DependencyTypes = None):
 	# DEBUG: print dependencies
 	if DependencyTypes == None:
-		DependencyTypes = GetDependencies(InType)
+		DependencyTypes = GetDependencies(InType, AllTypes)
 	if len(DependencyTypes) > 0:
 		print(prefix + str(len(DependencyTypes)) + " dependencies: ", end="", file=file)
 		if file != None:
@@ -640,9 +809,12 @@ def DebugPrintDependencies(InType, prefix, file, DependencyTypes = None):
 		for DependencyType in DependencyTypes:
 			if IsFirst:
 				IsFirst = False
-			else:
-				print(", ", end="", file=file)
+			#else:
+				#print(", ", end="", file=file)
+			print("", file=file)
+			print("// ", end="", file=file)
 			print(str(DependencyType), end="", file=file)
+			print(" [" + str(type(DependencyType)) + "]", end="", file=file)
 			if file != None:
 				file.flush()
 		print("", file=file)
@@ -693,13 +865,13 @@ def GetFlattenedStructMembers(InType, InSuperClass = None):
 
 # Export
 def DoExport(AllRootTypes, AllRelevantTypes):
-	with open("E:/C++/NoMoreHeroesModLua/nmh2/exported_data_types.h", "w") as text_file:
+	with open("E:/C++/NoMoreHeroesModLua/Games/NMH2/exported_data_types.h", "w") as text_file:
 		print("// Exporter by @MekuCube", file=text_file)
 		print("", file=text_file)
 		print("#pragma once", file=text_file)
 		print("", file=text_file)
 		ExportedTypes = []
-		ExportedTemplates = []
+		SessionData = {}
 		ExportedLuaBindings = []
 		i = 0
 		# Forward declare first
@@ -710,7 +882,7 @@ def DoExport(AllRootTypes, AllRelevantTypes):
 			print("Root " + str(i) + " / " + str(len(AllRootTypes)) + ": " + str(TypeIt))
 			#profiler = cProfile.Profile()
 			#profiler.enable()
-			ExportType(TypeIt, AllRelevantTypes, ExportedTypes, ExportedTemplates, ExportedLuaBindings, text_file, 0, True)
+			ExportType(TypeIt, AllRelevantTypes, ExportedTypes, SessionData, ExportedLuaBindings, text_file, 0, True)
 			#profiler.disable()
 			#stats = pstats.Stats(profiler).sort_stats('cumtime')
 			#stats.print_stats()
@@ -722,7 +894,7 @@ def DoExport(AllRootTypes, AllRelevantTypes):
 			i = i + 1
 			#text_file.flush()
 		ExportedTypes = []
-		ExportedTemplates = []
+		SessionData = {}
 		ExportedLuaBindings = []
 		i = 0
 		print("", file=text_file)
@@ -734,7 +906,7 @@ def DoExport(AllRootTypes, AllRelevantTypes):
 			print("Root " + str(i) + " / " + str(len(AllRootTypes)) + ": " + str(TypeIt))
 			#profiler = cProfile.Profile()
 			#profiler.enable()
-			ExportType(TypeIt, AllRelevantTypes, ExportedTypes, ExportedTemplates, ExportedLuaBindings, text_file, 0, False)
+			ExportType(TypeIt, AllRelevantTypes, ExportedTypes, SessionData, ExportedLuaBindings, text_file, 0, False)
 			#profiler.disable()
 			#stats = pstats.Stats(profiler).sort_stats('cumtime')
 			#stats.print_stats()
@@ -744,7 +916,6 @@ def DoExport(AllRootTypes, AllRelevantTypes):
 			else:
 				print("Exported " + str(len(ExportedTypes)) + " / " + str(len(AllRelevantTypes)))
 			i = i + 1
-		
 		# Bind to Lua
 		print("", file=text_file)
 		print("#ifdef WITH_LUA", file=text_file)
@@ -754,8 +925,6 @@ def DoExport(AllRootTypes, AllRelevantTypes):
 		print("{", file=text_file)
 		for TypeIt in ExportedLuaBindings:
 			if isinstance(TypeIt, binaryninja.types.Type) and TypeIt.type_class == TypeClass.StructureTypeClass:
-				# Debuging
-				#print("	" + "std::cout << \"" + str(TypeIt).replace("class ", "").replace("struct ", "").replace("union ", "") + "::BindLua(NS)\" << std::endl;", file=text_file)
 				print("	" + str(TypeIt).replace("class ", "").replace("struct ", "").replace("union ", "") + "::BindLua(NS);", file=text_file)
 		print("}", file=text_file)
 		print("#endif", file=text_file)
@@ -765,22 +934,29 @@ def DoExport(AllRootTypes, AllRelevantTypes):
 				print("Failed to export: '" + str(TypeIt) + "'")
 
 AllRelevantTypes = []
-CollectTypes(AllRelevantTypes, ["mHRChara"])
+CollectTypes(AllRelevantTypes, ["mHRChara", "mHRBattle", "mHRPc"])
+#CollectTypes(AllRelevantTypes, ["mHRBattle::mSetSlowMotionTick"])
+#CollectTypes(AllRelevantTypes, ["EffectCutMark::Create"])
 print("Collected " + str(len(AllRelevantTypes)) + " types.")
 
 # Only export roots
 AllRootTypes = []
 for TypeIt in AllRelevantTypes:
 	# Has a parent
-	if HasValidParentNameSpace(str(TypeIt)):
+	if HasValidParentNameSpace(TypeIt):
 		continue
 	if isinstance(TypeIt, binaryninja.types.Type):
 		if TypeIt.type_class != TypeClass.StructureTypeClass and TypeIt.type_class != TypeClass.EnumerationTypeClass:
 			continue
-	print("[Root] " + str(TypeIt) + " is root")
+	#print("[Root] " + str(TypeIt) + " is root")
 	AllRootTypes.append(TypeIt)
 
-SortTypesByDependency(AllRootTypes)
+profiler = cProfile.Profile()
+profiler.enable()
+SortTypesByDependency(AllRootTypes, AllRelevantTypes)
+profiler.disable()
+stats = pstats.Stats(profiler).sort_stats('cumtime')
+stats.print_stats()
 print("Root types: " + str(len(AllRootTypes)))
 #for TypeIt in AllRootTypes:
 #	print(TypeIt, end=", ")
