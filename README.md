@@ -15,3 +15,4 @@ A work-in-progress.
 ## Not started:
 * Loading multiple Lua scripts
 * Hook on game startup
+* Sharing C and Lua namespaces
