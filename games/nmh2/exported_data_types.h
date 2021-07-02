@@ -418,10 +418,14 @@ public:
 	// <int32_t bossBreakSlowTick, offset 0x1c>
 	int32_t bossBreakSlowTick;
 
+	std::string ToString() const { return "struct stBtEffect(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stBtEffect>("stBtEffect")
+			.addFunction("__tostring", &stBtEffect::ToString)
+			.addFunction("GetPtrAddr", &stBtEffect::GetPtrAddr)
 			.addProperty("pScreenStatus", &stBtEffect::pScreenStatus)
 			.addProperty("pShutter", &stBtEffect::pShutter)
 			.addProperty("pSmoke", &stBtEffect::pSmoke)
@@ -704,10 +708,14 @@ public:
 
 	Vec() { x = 0; y = 0; z = 0; }
 	Vec(float inX, float inY, float inZ) { x = inX; y = inY; z = inZ; }
+	std::string ToString() const { return "struct Vec(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<Vec>("Vec")
+			.addFunction("__tostring", &Vec::ToString)
+			.addFunction("GetPtrAddr", &Vec::GetPtrAddr)
 			.addProperty("x", &Vec::x)
 			.addProperty("y", &Vec::y)
 			.addProperty("z", &Vec::z)
@@ -1011,11 +1019,12 @@ public:
 		return mFunc(this, arg2);
 	}
 	// [Function] float* __convention("thiscall") mHRBattle::mGetMotionCameraY(class mHRBattle* const this) [?mGetMotionCameraY@mHRBattle@@QAEPAMXZ]
-	float* mGetMotionCameraY()
+	// Can't export pointer to native type 'float*' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetMotionCameraY()
 	{
 		typedef float*(__thiscall* _Func)(class mHRBattle* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xa5300);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRBattle::mGetBattlePause(class mHRBattle* const this) [?mGetBattlePause@mHRBattle@@QAE_NXZ]
 	uint8_t mGetBattlePause()
@@ -1167,14 +1176,14 @@ public:
 	// [Function] uint8_t mHRBattle::ChkToiletStage() [?ChkToiletStage@mHRBattle@@SA_NXZ]
 	static uint8_t ChkToiletStage()
 	{
-		typedef uint8_t(__cdecl* _Func)();
+		typedef uint8_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x3f3e30);
 		return mFunc();
 	}
 	// [Function] uint8_t mHRBattle::ChkBikeStage() [?ChkBikeStage@mHRBattle@@SA_NXZ]
 	static uint8_t ChkBikeStage()
 	{
-		typedef uint8_t(__cdecl* _Func)();
+		typedef uint8_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x3f3e40);
 		return mFunc();
 	}
@@ -1417,32 +1426,36 @@ public:
 		return mFunc(this);
 	}
 	// [Function] void* __convention("thiscall") mHRBattle::mGetResourceZakoNpcMotion(class mHRBattle* const this, char* arg2) [?mGetResourceZakoNpcMotion@mHRBattle@@QAEPAXPAD@Z]
-	void* mGetResourceZakoNpcMotion(char* arg2)
+	// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetResourceZakoNpcMotion(char* arg2)
 	{
 		typedef void*(__thiscall* _Func)(class mHRBattle* const thisPtr, char* arg2);
 		_Func mFunc = (_Func)(GameModule + 0x3f7bb0);
-		return mFunc(this, arg2);
+		mFunc(this, arg2);
 	}
 	// [Function] void* __convention("thiscall") mHRBattle::mGetResourceZakoCmnMotion(class mHRBattle* const this, int32_t arg2) [?mGetResourceZakoCmnMotion@mHRBattle@@QAEPAXH@Z]
-	void* mGetResourceZakoCmnMotion(int32_t arg2)
+	// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetResourceZakoCmnMotion(int32_t arg2)
 	{
 		typedef void*(__thiscall* _Func)(class mHRBattle* const thisPtr, int32_t arg2);
 		_Func mFunc = (_Func)(GameModule + 0x3f7cc0);
-		return mFunc(this, arg2);
+		mFunc(this, arg2);
 	}
 	// [Function] void* __convention("thiscall") mHRBattle::mGetResourceZakoWepMotion(class mHRBattle* const this, int32_t arg2) [?mGetResourceZakoWepMotion@mHRBattle@@QAEPAXH@Z]
-	void* mGetResourceZakoWepMotion(int32_t arg2)
+	// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetResourceZakoWepMotion(int32_t arg2)
 	{
 		typedef void*(__thiscall* _Func)(class mHRBattle* const thisPtr, int32_t arg2);
 		_Func mFunc = (_Func)(GameModule + 0x3f7cf0);
-		return mFunc(this, arg2);
+		mFunc(this, arg2);
 	}
 	// [Function] void* __convention("thiscall") mHRBattle::mGetResourceNpc(class mHRBattle* const this, int32_t arg2, char const** arg3) [?mGetResourceNpc@mHRBattle@@QAEPAXHPAPBD@Z]
-	void* mGetResourceNpc(int32_t arg2, char const** arg3)
+	// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetResourceNpc(int32_t arg2, char const** arg3)
 	{
 		typedef void*(__thiscall* _Func)(class mHRBattle* const thisPtr, int32_t arg2, char const** arg3);
 		_Func mFunc = (_Func)(GameModule + 0x3f7d90);
-		return mFunc(this, arg2, arg3);
+		mFunc(this, arg2, arg3);
 	}
 	// [Function] int32_t __convention("thiscall") mHRBattle::GetNpcDatIndexByCharPtr(class mHRBattle* const this, class mHRChara* arg2) [?GetNpcDatIndexByCharPtr@mHRBattle@@QAEHPAVmHRChara@@@Z]
 	int32_t GetNpcDatIndexByCharPtr(class mHRChara* arg2)
@@ -1592,11 +1605,12 @@ public:
 		return mFunc(this);
 	}
 	// [Function] void* __convention("thiscall") mHRBattle::mGetResourceCmnObj(class mHRBattle* const this, int32_t arg2) [?mGetResourceCmnObj@mHRBattle@@QAEPAXH@Z]
-	void* mGetResourceCmnObj(int32_t arg2)
+	// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetResourceCmnObj(int32_t arg2)
 	{
 		typedef void*(__thiscall* _Func)(class mHRBattle* const thisPtr, int32_t arg2);
 		_Func mFunc = (_Func)(GameModule + 0x3f9cb0);
-		return mFunc(this, arg2);
+		mFunc(this, arg2);
 	}
 	// [Function] void __convention("thiscall") mHRBattle::mSetLightReflecte(class mHRBattle* const this, struct Vec& arg2, float const arg3, uint32_t const arg4, int32_t const arg5, float const arg6, enum eLightRefPriority arg7) [?mSetLightReflecte@mHRBattle@@QAEXABUVec@@MIHMW4eLightRefPriority@@@Z]
 	void mSetLightReflecte(struct Vec& arg2, float const arg3, uint32_t const arg4, int32_t const arg5, float const arg6, enum eLightRefPriority arg7)
@@ -1704,11 +1718,12 @@ public:
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
 	}
 	// [Function] int32_t __convention("thiscall") mHRBattle::mSetInitObjDat(class mHRBattle* const this, int32_t arg2, struct Vec& arg3, struct Vec& arg4, uint8_t arg5, char const* arg6, class TGmfNode* arg7, int32_t arg8, int32_t arg9) [?mSetInitObjDat@mHRBattle@@QAEHHABUVec@@0_NPBDPBVTGmfNode@@HH@Z]
-	int32_t mSetInitObjDat(int32_t arg2, struct Vec& arg3, struct Vec& arg4, uint8_t arg5, char const* arg6, class TGmfNode* arg7, int32_t arg8, int32_t arg9)
+	int32_t mSetInitObjDat(int32_t arg2, struct Vec& arg3, struct Vec& arg4, uint8_t arg5, std::string arg6, class TGmfNode* arg7, int32_t arg8, int32_t arg9)
 	{
+		char const* arg6_c_str = arg6.c_str();
 		typedef int32_t(__thiscall* _Func)(class mHRBattle* const thisPtr, int32_t arg2, struct Vec& arg3, struct Vec& arg4, uint8_t arg5, char const* arg6, class TGmfNode* arg7, int32_t arg8, int32_t arg9);
 		_Func mFunc = (_Func)(GameModule + 0x3fa830);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6_c_str, arg7, arg8, arg9);
 	}
 	// [Function] void __convention("thiscall") mHRBattle::mSetPopType(class mHRBattle* const this, int32_t arg2, enum enPopReqType arg3) [?mSetPopType@mHRBattle@@QAEXHW4enPopReqType@@@Z]
 	void mSetPopType(int32_t arg2, enum enPopReqType arg3)
@@ -1969,21 +1984,22 @@ private:
 	char _UnidentifiedData[146492];
 public:
 
+	std::string ToString() const { return "class mHRBattle(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<mHRBattle>("mHRBattle")
-			// Functions with return values pointing to native types ('class mHRPc*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetPcPtr", &mHRBattle::mGetPcPtr)
+			.addFunction("__tostring", &mHRBattle::ToString)
+			.addFunction("GetPtrAddr", &mHRBattle::GetPtrAddr)
+			.addFunction("mGetPcPtr", &mHRBattle::mGetPcPtr)
 			.addFunction("mGetSlowMotionTick", &mHRBattle::mGetSlowMotionTick)
 			.addFunction("mGetBulletSlow", &mHRBattle::mGetBulletSlow)
-			// Functions with return values pointing to native types ('struct stBtEffect*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetBtEffect", &mHRBattle::mGetBtEffect)
+			.addFunction("mGetBtEffect", &mHRBattle::mGetBtEffect)
 			.addFunction("mSetNpcAttackFlag", &mHRBattle::mSetNpcAttackFlag)
 			.addFunction("mSetNpcAttackRate", &mHRBattle::mSetNpcAttackRate)
 			.addFunction("SetNpcDatMax", &mHRBattle::SetNpcDatMax)
-			// Functions with return values pointing to native types ('class EfSmoke*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("GetSmokeEf", &mHRBattle::GetSmokeEf)
+			.addFunction("GetSmokeEf", &mHRBattle::GetSmokeEf)
 			.addFunction("mGetPcKind", &mHRBattle::mGetPcKind)
 			.addFunction("mGetFrameProc", &mHRBattle::mGetFrameProc)
 			.addFunction("mSetCameraAngle", &mHRBattle::mSetCameraAngle)
@@ -2007,14 +2023,11 @@ public:
 			.addFunction("mGetDontChangeTeppeiCamera", &mHRBattle::mGetDontChangeTeppeiCamera)
 			.addFunction("mGetCameraProjection", &mHRBattle::mGetCameraProjection)
 			.addFunction("mSetCameraMoveFlag", &mHRBattle::mSetCameraMoveFlag)
-			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
-			//.addFunction("mSetMotionCameraPos", &mHRBattle::mSetMotionCameraPos)
-			// Functions with return values pointing to native types ('struct Vec*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetMotionCameraPos", &mHRBattle::mGetMotionCameraPos)
-			// Functions with parameters pointing to native types (float* arg2) not supported in LuaBridge.
+			.addFunction("mSetMotionCameraPos", &mHRBattle::mSetMotionCameraPos)
+			.addFunction("mGetMotionCameraPos", &mHRBattle::mGetMotionCameraPos)
+			// Can't export pointer to native type 'float*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetMotionCameraY", &mHRBattle::mSetMotionCameraY)
-			// Functions with return values pointing to native types ('float*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetMotionCameraY", &mHRBattle::mGetMotionCameraY)
+			.addFunction("mGetMotionCameraY", &mHRBattle::mGetMotionCameraY)
 			.addFunction("mGetBattlePause", &mHRBattle::mGetBattlePause)
 			.addFunction("mGetChargeDamage", &mHRBattle::mGetChargeDamage)
 			.addFunction("mGetChangeCameraRailFlag", &mHRBattle::mGetChangeCameraRailFlag)
@@ -2033,8 +2046,7 @@ public:
 			.addFunction("UpdateMainScreenUI", &mHRBattle::UpdateMainScreenUI)
 			.addFunction("BgmEffectProc", &mHRBattle::BgmEffectProc)
 			.addFunction("SetBgmEffect", &mHRBattle::SetBgmEffect)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("GetNpc", &mHRBattle::GetNpc)
+			.addFunction("GetNpc", &mHRBattle::GetNpc)
 			.addFunction("mCheckPcLoaded4WepaponChange", &mHRBattle::mCheckPcLoaded4WepaponChange)
 			.addFunction("mCheckBattleInit", &mHRBattle::mCheckBattleInit)
 			.addStaticFunction("ChkToiletStage", &mHRBattle::ChkToiletStage)
@@ -2042,12 +2054,12 @@ public:
 			.addFunction("GetPickUpGomiSubMissionResult", &mHRBattle::GetPickUpGomiSubMissionResult)
 			.addFunction("mAddKillNum", &mHRBattle::mAddKillNum)
 			.addFunction("mSetNpcAppear", &mHRBattle::mSetNpcAppear)
-			// Functions with parameters pointing to native types (struct Vec& arg4) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("FixRotationOfItem", &mHRBattle::FixRotationOfItem)
-			// Functions with parameters pointing to native types (struct Vec& arg3) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("FixPositionOfItem", &mHRBattle::FixPositionOfItem)
 			.addFunction("mSetInitCustomColliderObj", &mHRBattle::mSetInitCustomColliderObj)
-			// Functions with parameters pointing to native types (struct Vec& arg4) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetInitCharaPos", &mHRBattle::mSetInitCharaPos)
 			.addFunction("mCheckStatusDispOnlyBattery", &mHRBattle::mCheckStatusDispOnlyBattery)
 			.addFunction("mCheckStatusDispWithoutBattery", &mHRBattle::mCheckStatusDispWithoutBattery)
@@ -2060,7 +2072,7 @@ public:
 			.addFunction("mResetBulletSlow", &mHRBattle::mResetBulletSlow)
 			.addFunction("mResetSlowMotion", &mHRBattle::mResetSlowMotion)
 			.addFunction("mLightReflectEfProc", &mHRBattle::mLightReflectEfProc)
-			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mCheckSamePopNpcPosAsNpcDat", &mHRBattle::mCheckSamePopNpcPosAsNpcDat)
 			.addFunction("mGetEmptyNpcDatIndex", &mHRBattle::mGetEmptyNpcDatIndex)
 			.addFunction("mRestorePcData4Lap", &mHRBattle::mRestorePcData4Lap)
@@ -2068,29 +2080,25 @@ public:
 			.addFunction("mCallPadProcess", &mHRBattle::mCallPadProcess)
 			.addFunction("mClearNpcDat", &mHRBattle::mClearNpcDat)
 			.addFunction("mEffectProc", &mHRBattle::mEffectProc)
-			// Functions with parameters pointing to native types (struct Vec& arg4) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetPopNpc", &mHRBattle::mSetPopNpc)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mTestNpcType", &mHRBattle::mTestNpcType)
-			// Functions with parameters pointing to native types (struct Vec& arg4) not supported in LuaBridge.
+			.addFunction("mTestNpcType", &mHRBattle::mTestNpcType)
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetNpcEnterPattern", &mHRBattle::mSetNpcEnterPattern)
 			.addFunction("mSetShadowRate4CommonObject", &mHRBattle::mSetShadowRate4CommonObject)
 			.addFunction("mCreateNewNpc", &mHRBattle::mCreateNewNpc)
-			// Functions with parameters pointing to native types (float* arg2) not supported in LuaBridge.
+			// Can't export pointer to native type 'float*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mCheckNpcInitHp", &mHRBattle::mCheckNpcInitHp)
 			.addFunction("mCheckDeadNpc", &mHRBattle::mCheckDeadNpc)
 			.addFunction("mGetEmptyNpcIndex", &mHRBattle::mGetEmptyNpcIndex)
 			.addFunction("mGetResourceNpcNum", &mHRBattle::mGetResourceNpcNum)
-			// Functions with return values pointing to native types ('void*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mGetResourceZakoNpcMotion", &mHRBattle::mGetResourceZakoNpcMotion)
-			// Functions with return values pointing to native types ('void*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetResourceZakoCmnMotion", &mHRBattle::mGetResourceZakoCmnMotion)
-			// Functions with return values pointing to native types ('void*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetResourceZakoWepMotion", &mHRBattle::mGetResourceZakoWepMotion)
-			// Functions with return values pointing to native types ('void*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			.addFunction("mGetResourceZakoCmnMotion", &mHRBattle::mGetResourceZakoCmnMotion)
+			.addFunction("mGetResourceZakoWepMotion", &mHRBattle::mGetResourceZakoWepMotion)
+			// Can't export pointer to native type 'char const**' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mGetResourceNpc", &mHRBattle::mGetResourceNpc)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("GetNpcDatIndexByCharPtr", &mHRBattle::GetNpcDatIndexByCharPtr)
+			.addFunction("GetNpcDatIndexByCharPtr", &mHRBattle::GetNpcDatIndexByCharPtr)
 			.addFunction("mCameraRotD", &mHRBattle::mCameraRotD)
 			.addFunction("mCameraRotU", &mHRBattle::mCameraRotU)
 			.addFunction("mCameraRotR", &mHRBattle::mCameraRotR)
@@ -2111,9 +2119,8 @@ public:
 			.addFunction("mPopPcSaveData", &mHRBattle::mPopPcSaveData)
 			.addFunction("mPushPcSaveData", &mHRBattle::mPushPcSaveData)
 			.addFunction("mInitStart", &mHRBattle::mInitStart)
-			// Functions with return values pointing to native types ('void*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetResourceCmnObj", &mHRBattle::mGetResourceCmnObj)
-			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
+			.addFunction("mGetResourceCmnObj", &mHRBattle::mGetResourceCmnObj)
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetLightReflecte", &mHRBattle::mSetLightReflecte)
 			.addFunction("mInit", &mHRBattle::mInit)
 			.addFunction("mFrameProc", &mHRBattle::mFrameProc)
@@ -2127,35 +2134,33 @@ public:
 			.addFunction("mGetPcOperate", &mHRBattle::mGetPcOperate)
 			.addFunction("mSetMoveInitCamera", &mHRBattle::mSetMoveInitCamera)
 			.addFunction("mInitStartMainMission", &mHRBattle::mInitStartMainMission)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetNpcPtr", &mHRBattle::mGetNpcPtr)
-			// Functions with parameters pointing to native types (struct Vec& arg6) not supported in LuaBridge.
+			.addFunction("mGetNpcPtr", &mHRBattle::mGetNpcPtr)
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetInitNpcDat", &mHRBattle::mSetInitNpcDat)
-			// Functions with parameters pointing to native types (class TGmfNode* arg7) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetInitObjDat", &mHRBattle::mSetInitObjDat)
 			.addFunction("mSetPopType", &mHRBattle::mSetPopType)
 			.addFunction("mSetPcKind", &mHRBattle::mSetPcKind)
-			// Functions with parameters pointing to native types (struct Vec& arg6) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetInitNpcDat2", &mHRBattle::mSetInitNpcDat2)
-			// Functions with parameters pointing to native types (struct Vec& arg6) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetInitNpcDat3", &mHRBattle::mSetInitNpcDat3)
-			// Functions with parameters pointing to native types (char* arg12) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetInitNpcDat4", &mHRBattle::mSetInitNpcDat4)
-			// Functions with parameters pointing to native types (char* arg12) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetInitNpcDat5", &mHRBattle::mSetInitNpcDat5)
-			// Functions with parameters pointing to native types (char* arg12) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetInitNpcDat6", &mHRBattle::mSetInitNpcDat6)
-			// Functions with parameters pointing to native types (char* arg12) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetInitNpcDat7", &mHRBattle::mSetInitNpcDat7)
-			// Functions with parameters pointing to native types (struct Vec& arg4) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetInitNpcDatObj095", &mHRBattle::mSetInitNpcDatObj095)
 			.addFunction("mDispPcStatus", &mHRBattle::mDispPcStatus)
 			.addFunction("mDispMiniMap", &mHRBattle::mDispMiniMap)
 			.addFunction("mUndispMiniMap", &mHRBattle::mUndispMiniMap)
 			.addFunction("mDeleteNpc", &mHRBattle::mDeleteNpc)
 			.addFunction("RequestMotionNoNpc", &mHRBattle::RequestMotionNoNpc)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetNpcPtrFromCharaType", &mHRBattle::mGetNpcPtrFromCharaType)
+			.addFunction("mGetNpcPtrFromCharaType", &mHRBattle::mGetNpcPtrFromCharaType)
 			.addFunction("mSetZakoNpcMotionProcessDisEnable", &mHRBattle::mSetZakoNpcMotionProcessDisEnable)
 			.addFunction("mSetAspectRate", &mHRBattle::mSetAspectRate)
 			.addFunction("mCheckExistEnemy", &mHRBattle::mCheckExistEnemy)
@@ -2164,14 +2169,14 @@ public:
 			.addFunction("mAllEnemyDie", &mHRBattle::mAllEnemyDie)
 			.addFunction("mAllClearNpcData", &mHRBattle::mAllClearNpcData)
 			.addFunction("mSetCameraProjection", &mHRBattle::mSetCameraProjection)
-			// Functions with parameters pointing to native types (char* arg3) not supported in LuaBridge.
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mGetObjNpcID", &mHRBattle::mGetObjNpcID)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mGetObjPtr", &mHRBattle::mGetObjPtr)
 			.addFunction("mPopNpc", &mHRBattle::mPopNpc)
 			.addFunction("mSetSlowMotionTick", &mHRBattle::mSetSlowMotionTick)
 			.addFunction("mReleaseAllEnemy", &mHRBattle::mReleaseAllEnemy)
-			// Functions with parameters pointing to native types (struct Vec& arg4) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetInitNpcDatObj183", &mHRBattle::mSetInitNpcDatObj183)
 			.addFunction("mReleaseAllNpc", &mHRBattle::mReleaseAllNpc)
 			.addFunction("mSetDontAppearStatus", &mHRBattle::mSetDontAppearStatus)
@@ -2179,8 +2184,7 @@ public:
 			.addFunction("mSetPcOperate", &mHRBattle::mSetPcOperate)
 			.addFunction("mUndispPcStatus", &mHRBattle::mUndispPcStatus)
 			.addFunction("mRenderProc", &mHRBattle::mRenderProc)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mGetNpcMotionSpd", &mHRBattle::mGetNpcMotionSpd)
+			.addFunction("mGetNpcMotionSpd", &mHRBattle::mGetNpcMotionSpd)
 		.endClass();
 	}
 #endif
@@ -2439,10 +2443,14 @@ public:
 	// <float m_fTimer, offset 0x8>
 	float m_fTimer;
 
+	std::string ToString() const { return "class CTimeRatioInterpolate(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CTimeRatioInterpolate>("CTimeRatioInterpolate")
+			.addFunction("__tostring", &CTimeRatioInterpolate::ToString)
+			.addFunction("GetPtrAddr", &CTimeRatioInterpolate::GetPtrAddr)
 			.addProperty("m_fOneRatioTime", &CTimeRatioInterpolate::m_fOneRatioTime)
 			.addProperty("m_fRatio", &CTimeRatioInterpolate::m_fRatio)
 			.addProperty("m_fTimer", &CTimeRatioInterpolate::m_fTimer)
@@ -2478,10 +2486,14 @@ public:
 	// <uint16_t smBaceActivSubMission, offset 0x0>
 	uint16_t smBaceActivSubMission;
 
+	std::string ToString() const { return "union uniSMflag(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<uniSMflag>("uniSMflag")
+			.addFunction("__tostring", &uniSMflag::ToString)
+			.addFunction("GetPtrAddr", &uniSMflag::GetPtrAddr)
 			.addProperty("smBaceActivSubMission", &uniSMflag::smBaceActivSubMission)
 		.endClass();
 	}
@@ -2527,10 +2539,14 @@ public:
 	// <class HrOverLap* pOverLap, offset 0x8>
 	class HrOverLap* pOverLap;
 
+	std::string ToString() const { return "struct stFade(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stFade>("stFade")
+			.addFunction("__tostring", &stFade::ToString)
+			.addFunction("GetPtrAddr", &stFade::GetPtrAddr)
 			.addProperty("kind", &stFade::kind)
 			.addProperty("requestStart", &stFade::requestStart)
 			.addProperty("requestEnd", &stFade::requestEnd)
@@ -2597,10 +2613,14 @@ public:
 	// <float m_fValue, offset 0x14>
 	float m_fValue;
 
+	std::string ToString() const { return "class CSpringInterpolate(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CSpringInterpolate>("CSpringInterpolate")
+			.addFunction("__tostring", &CSpringInterpolate::ToString)
+			.addFunction("GetPtrAddr", &CSpringInterpolate::GetPtrAddr)
 			.addProperty("m_fSpringCoe", &CSpringInterpolate::m_fSpringCoe)
 			.addProperty("m_fMaxVel", &CSpringInterpolate::m_fMaxVel)
 			.addProperty("m_fMinVel", &CSpringInterpolate::m_fMinVel)
@@ -2631,10 +2651,14 @@ public:
 	// <class CSpringInterpolate m_inCurInterp, offset 0x18>
 	class CSpringInterpolate m_inCurInterp;
 
+	std::string ToString() const { return "class CDoubleSpringInterpolate(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CDoubleSpringInterpolate>("CDoubleSpringInterpolate")
+			.addFunction("__tostring", &CDoubleSpringInterpolate::ToString)
+			.addFunction("GetPtrAddr", &CDoubleSpringInterpolate::GetPtrAddr)
 			.addProperty("m_inHopeInterp", &CDoubleSpringInterpolate::m_inHopeInterp)
 			.addProperty("m_inCurInterp", &CDoubleSpringInterpolate::m_inCurInterp)
 		.endClass();
@@ -2660,10 +2684,14 @@ public:
 	// <class TGmf* m_pPreGmf, offset 0x34>
 	class TGmf* m_pPreGmf;
 
+	std::string ToString() const { return "class CAmbientShadow(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CAmbientShadow>("CAmbientShadow")
+			.addFunction("__tostring", &CAmbientShadow::ToString)
+			.addFunction("GetPtrAddr", &CAmbientShadow::GetPtrAddr)
 			.addProperty("m_inRatio", &CAmbientShadow::m_inRatio)
 			.addProperty("m_fSetRatio", &CAmbientShadow::m_fSetRatio)
 			.addProperty("m_pPreGmf", &CAmbientShadow::m_pPreGmf)
@@ -2687,10 +2715,14 @@ private:
 	char _UnidentifiedData[292];
 public:
 
+	std::string ToString() const { return "struct stCharaEffect(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stCharaEffect>("stCharaEffect")
+			.addFunction("__tostring", &stCharaEffect::ToString)
+			.addFunction("GetPtrAddr", &stCharaEffect::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -2752,10 +2784,14 @@ public:
 	// <class TGan** pGan, offset 0x34>
 	class TGan** pGan;
 
+	std::string ToString() const { return "class stCharaFileData(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stCharaFileData>("stCharaFileData")
+			.addFunction("__tostring", &stCharaFileData::ToString)
+			.addFunction("GetPtrAddr", &stCharaFileData::GetPtrAddr)
 			.addProperty("file", &stCharaFileData::file)
 			// void type not supported in LuaBridge
 			//.addProperty("pData", &stCharaFileData::pData)
@@ -2806,10 +2842,14 @@ public:
 	// <float mExtent, offset 0x18>
 	float mExtent;
 
+	std::string ToString() const { return "class ghmSegment(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmSegment>("ghmSegment")
+			.addFunction("__tostring", &ghmSegment::ToString)
+			.addFunction("GetPtrAddr", &ghmSegment::GetPtrAddr)
 			.addProperty("mCenter", &ghmSegment::mCenter)
 			.addProperty("mDir", &ghmSegment::mDir)
 			.addProperty("mExtent", &ghmSegment::mExtent)
@@ -2834,10 +2874,14 @@ public:
 	// <float mRadius, offset 0x1c>
 	float mRadius;
 
+	std::string ToString() const { return "class ghmCapsule(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmCapsule>("ghmCapsule")
+			.addFunction("__tostring", &ghmCapsule::ToString)
+			.addFunction("GetPtrAddr", &ghmCapsule::GetPtrAddr)
 			.addProperty("mAxis", &ghmCapsule::mAxis)
 			.addProperty("mRadius", &ghmCapsule::mRadius)
 		.endClass();
@@ -2869,10 +2913,14 @@ public:
 	// <uint32_t mUserData, offset 0x10>
 	uint32_t mUserData;
 
+	std::string ToString() const { return "class ghmGcOctTreeNodeObj(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmGcOctTreeNodeObj>("ghmGcOctTreeNodeObj")
+			.addFunction("__tostring", &ghmGcOctTreeNodeObj::ToString)
+			.addFunction("GetPtrAddr", &ghmGcOctTreeNodeObj::GetPtrAddr)
 			// delegates are not supported in LuaBridge
 			//.addProperty("field_0", &ghmGcOctTreeNodeObj::field_0)
 			.addProperty("mpContainer", &ghmGcOctTreeNodeObj::mpContainer)
@@ -2949,10 +2997,14 @@ public:
 	// <uint32_t mParam[0x2], offset 0x38>
 	uint32_t mParam[2];
 
+	std::string ToString() const { return "class ghmGcCollObj(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<ghmGcCollObj, ghmGcOctTreeNodeObj>("ghmGcCollObj")
+			.addFunction("__tostring", &ghmGcCollObj::ToString)
+			.addFunction("GetPtrAddr", &ghmGcCollObj::GetPtrAddr)
 			.addProperty("mObjType", &ghmGcCollObj::mObjType)
 			.addProperty("mGroup", &ghmGcCollObj::mGroup)
 			.addProperty("mIgnoreGroup", &ghmGcCollObj::mIgnoreGroup)
@@ -2990,10 +3042,14 @@ public:
 	// <class ghmCapsule mShape, offset 0x40>
 	class ghmCapsule mShape;
 
+	std::string ToString() const { return "class ghmGcCollObjCapsule(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<ghmGcCollObjCapsule, ghmGcCollObj>("ghmGcCollObjCapsule")
+			.addFunction("__tostring", &ghmGcCollObjCapsule::ToString)
+			.addFunction("GetPtrAddr", &ghmGcCollObjCapsule::GetPtrAddr)
 			.addProperty("mShape", &ghmGcCollObjCapsule::mShape)
 		.endClass();
 	}
@@ -3011,10 +3067,14 @@ public:
 	// <void* (* field_0)[0x1], offset 0x0>
 	void* (* field_0)[0x1];
 
+	std::string ToString() const { return "class WAnim(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<WAnim>("WAnim")
+			.addFunction("__tostring", &WAnim::ToString)
+			.addFunction("GetPtrAddr", &WAnim::GetPtrAddr)
 			// delegates are not supported in LuaBridge
 			//.addProperty("field_0", &WAnim::field_0)
 		.endClass();
@@ -3054,10 +3114,14 @@ public:
 	// <float mMotionRate, offset 0x1c>
 	float mMotionRate;
 
+	std::string ToString() const { return "class WAnimF(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<WAnimF, WAnim>("WAnimF")
+			.addFunction("__tostring", &WAnimF::ToString)
+			.addFunction("GetPtrAddr", &WAnimF::GetPtrAddr)
 			.addProperty("mCurValue", &WAnimF::mCurValue)
 			.addProperty("mDstValue", &WAnimF::mDstValue)
 			.addProperty("mSrcValue", &WAnimF::mSrcValue)
@@ -3151,10 +3215,14 @@ private:
 	char _UnidentifiedData[2];
 public:
 
+	std::string ToString() const { return "struct stDamageInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stDamageInfo>("stDamageInfo")
+			.addFunction("__tostring", &stDamageInfo::ToString)
+			.addFunction("GetPtrAddr", &stDamageInfo::GetPtrAddr)
 			.addProperty("dmg", &stDamageInfo::dmg)
 			.addProperty("dmgMot", &stDamageInfo::dmgMot)
 			.addProperty("grdMot", &stDamageInfo::grdMot)
@@ -3210,10 +3278,14 @@ private:
 	char _UnidentifiedData[36];
 public:
 
+	std::string ToString() const { return "class ghmTriangle(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmTriangle>("ghmTriangle")
+			.addFunction("__tostring", &ghmTriangle::ToString)
+			.addFunction("GetPtrAddr", &ghmTriangle::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -3232,10 +3304,14 @@ public:
 	// <float mDist, offset 0xc>
 	float mDist;
 
+	std::string ToString() const { return "class ghmPlane(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmPlane>("ghmPlane")
+			.addFunction("__tostring", &ghmPlane::ToString)
+			.addFunction("GetPtrAddr", &ghmPlane::GetPtrAddr)
 			.addProperty("mNormal", &ghmPlane::mNormal)
 			.addProperty("mDist", &ghmPlane::mDist)
 		.endClass();
@@ -3270,10 +3346,14 @@ public:
 	// <class ghmGcCollObj* mpObj, offset 0x48>
 	class ghmGcCollObj* mpObj;
 
+	std::string ToString() const { return "class ghmGcCollObjHitResultObj(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmGcCollObjHitResultObj>("ghmGcCollObjHitResultObj")
+			.addFunction("__tostring", &ghmGcCollObjHitResultObj::ToString)
+			.addFunction("GetPtrAddr", &ghmGcCollObjHitResultObj::GetPtrAddr)
 			.addProperty("mPlane", &ghmGcCollObjHitResultObj::mPlane)
 			.addProperty("mTriangle", &ghmGcCollObjHitResultObj::mTriangle)
 			.addProperty("mPoint", &ghmGcCollObjHitResultObj::mPoint)
@@ -3333,10 +3413,14 @@ public:
 	// <class WAnimF z, offset 0x40>
 	class WAnimF z;
 
+	std::string ToString() const { return "struct stVec(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stVec>("stVec")
+			.addFunction("__tostring", &stVec::ToString)
+			.addFunction("GetPtrAddr", &stVec::GetPtrAddr)
 			.addProperty("x", &stVec::x)
 			.addProperty("y", &stVec::y)
 			.addProperty("z", &stVec::z)
@@ -3367,10 +3451,14 @@ public:
 	// <float w, offset 0xc>
 	float w;
 
+	std::string ToString() const { return "struct Quaternion(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<Quaternion>("Quaternion")
+			.addFunction("__tostring", &Quaternion::ToString)
+			.addFunction("GetPtrAddr", &Quaternion::GetPtrAddr)
 			.addProperty("x", &Quaternion::x)
 			.addProperty("y", &Quaternion::y)
 			.addProperty("z", &Quaternion::z)
@@ -3386,6 +3474,9 @@ static_assert(sizeof(Quaternion::w) == 4, "expected w to be size 4");
 static_assert(sizeof(Quaternion) == 16, "expected struct Quaternion to be size 16");
 
 // [Structure] struct stCharaStatus
+/// <summary>
+/// Contains position, rotation, hp, flags, etc
+/// </summary>
 struct stCharaStatus
 {
 public:
@@ -3623,10 +3714,14 @@ public:
 	// <uint32_t flag[0x2], offset 0x394>
 	uint32_t flag[2];
 
+	std::string ToString() const { return "struct stCharaStatus(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stCharaStatus>("stCharaStatus")
+			.addFunction("__tostring", &stCharaStatus::ToString)
+			.addFunction("GetPtrAddr", &stCharaStatus::GetPtrAddr)
 			.addProperty("resNo", &stCharaStatus::resNo)
 			.addProperty("datNo", &stCharaStatus::datNo)
 			.addProperty("charaType", &stCharaStatus::charaType)
@@ -3659,7 +3754,7 @@ public:
 			.addProperty("mAiDefTick", &stCharaStatus::mAiDefTick)
 			.addProperty("mAiDefBaseTick", &stCharaStatus::mAiDefBaseTick)
 			.addProperty("mAiDamageCount", &stCharaStatus::mAiDamageCount)
-			// native pointer type (char*) not supported in LuaBridge (needs wrapper function)
+			// char* type not supported in LuaBridge
 			//.addProperty("pScriptProc", &stCharaStatus::pScriptProc)
 			.addProperty("tsubazeriNum", &stCharaStatus::tsubazeriNum)
 			.addProperty("DamageAcceptFrame", &stCharaStatus::DamageAcceptFrame)
@@ -3775,6 +3870,9 @@ static_assert(sizeof(stCharaStatus::flag) == 8, "expected flag to be size 8");
 static_assert(sizeof(stCharaStatus) == 924, "expected struct stCharaStatus to be size 924");
 
 // [Structure] class ghmListObj
+/// <summary>
+/// Linked list object (mpPrev and mpNext).
+/// </summary>
 class ghmListObj
 {
 public:
@@ -3792,15 +3890,21 @@ public:
 	// <int32_t mPriority, offset 0xc>
 	int32_t mPriority;
 
+	mHRChara* AsHRChara() const { return (mHRChara*)this; }
+	std::string ToString() const { return "class ghmListObj(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmListObj>("ghmListObj")
+			.addFunction("__tostring", &ghmListObj::ToString)
+			.addFunction("GetPtrAddr", &ghmListObj::GetPtrAddr)
 			// delegates are not supported in LuaBridge
 			//.addProperty("field_0", &ghmListObj::field_0)
 			.addProperty("mpPrev", &ghmListObj::mpPrev)
 			.addProperty("mpNext", &ghmListObj::mpNext)
 			.addProperty("mPriority", &ghmListObj::mPriority)
+			.addFunction("AsHRChara", &ghmListObj::AsHRChara)
 		.endClass();
 	}
 #endif
@@ -3889,10 +3993,14 @@ public:
 	// <int32_t EvacuateRight, offset 0x20>
 	int32_t EvacuateRight;
 
+	std::string ToString() const { return "struct CharControlMotID(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CharControlMotID>("CharControlMotID")
+			.addFunction("__tostring", &CharControlMotID::ToString)
+			.addFunction("GetPtrAddr", &CharControlMotID::GetPtrAddr)
 			.addProperty("WalkNeutral", &CharControlMotID::WalkNeutral)
 			.addProperty("WalkFront", &CharControlMotID::WalkFront)
 			.addProperty("WalkBack", &CharControlMotID::WalkBack)
@@ -3926,10 +4034,14 @@ public:
 	// <uint32_t PackedValue, offset 0x0>
 	uint32_t PackedValue;
 
+	std::string ToString() const { return "struct GXColor(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GXColor>("GXColor")
+			.addFunction("__tostring", &GXColor::ToString)
+			.addFunction("GetPtrAddr", &GXColor::GetPtrAddr)
 			.addProperty("PackedValue", &GXColor::PackedValue)
 		.endClass();
 	}
@@ -3947,10 +4059,14 @@ public:
 	// <float m128_f32[0x4], offset 0x0>
 	float m128_f32[4];
 
+	std::string ToString() const { return "union __m128(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<__m128>("__m128")
+			.addFunction("__tostring", &__m128::ToString)
+			.addFunction("GetPtrAddr", &__m128::GetPtrAddr)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("m128_f32", &__m128::m128_f32)
 		.endClass();
@@ -3969,10 +4085,14 @@ public:
 	// <uint32_t u[0x4], offset 0x0>
 	uint32_t u[4];
 
+	std::string ToString() const { return "class vector4f(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<vector4f>("vector4f")
+			.addFunction("__tostring", &vector4f::ToString)
+			.addFunction("GetPtrAddr", &vector4f::GetPtrAddr)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("u", &vector4f::u)
 		.endClass();
@@ -3991,10 +4111,14 @@ public:
 	// <double sd[0x2], offset 0x0>
 	double sd[2];
 
+	std::string ToString() const { return "class vector4x(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<vector4x>("vector4x")
+			.addFunction("__tostring", &vector4x::ToString)
+			.addFunction("GetPtrAddr", &vector4x::GetPtrAddr)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("sd", &vector4x::sd)
 		.endClass();
@@ -4022,10 +4146,14 @@ public:
 	// <float w, offset 0xc>
 	float w;
 
+	std::string ToString() const { return "class tiVector(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<tiVector>("tiVector")
+			.addFunction("__tostring", &tiVector::ToString)
+			.addFunction("GetPtrAddr", &tiVector::GetPtrAddr)
 			.addProperty("x", &tiVector::x)
 			.addProperty("y", &tiVector::y)
 			.addProperty("z", &tiVector::z)
@@ -4051,10 +4179,14 @@ namespace mot
 		// <void* (* field_0)[0x1f], offset 0x0>
 		void* (* field_0)[0x1f];
 
+		std::string ToString() const { return "class IBoneEffectModel(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<mot::IBoneEffectModel>("mot_IBoneEffectModel")
+				.addFunction("__tostring", &mot::IBoneEffectModel::ToString)
+				.addFunction("GetPtrAddr", &mot::IBoneEffectModel::GetPtrAddr)
 				// delegates are not supported in LuaBridge
 				//.addProperty("field_0", &mot::IBoneEffectModel::field_0)
 			.endClass();
@@ -4084,10 +4216,14 @@ namespace mot
 		// <class tiVector m_inYureBonePosiOfst, offset 0x10>
 		class tiVector m_inYureBonePosiOfst;
 
+		std::string ToString() const { return "class IBoneEffectModelPJ(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.deriveClass<mot::IBoneEffectModelPJ, mot::IBoneEffectModel>("mot_IBoneEffectModelPJ")
+				.addFunction("__tostring", &mot::IBoneEffectModelPJ::ToString)
+				.addFunction("GetPtrAddr", &mot::IBoneEffectModelPJ::GetPtrAddr)
 				.addProperty("m_inYureBonePosiOfst", &mot::IBoneEffectModelPJ::m_inYureBonePosiOfst)
 			.endClass();
 		}
@@ -4112,10 +4248,14 @@ public:
 		char _UnidentifiedData[2284];
 	public:
 
+		std::string ToString() const { return "struct tagMAIN(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<TGmf::tagMAIN>("TGmf_tagMAIN")
+				.addFunction("__tostring", &TGmf::tagMAIN::ToString)
+				.addFunction("GetPtrAddr", &TGmf::tagMAIN::GetPtrAddr)
 			.endClass();
 		}
 #endif
@@ -4249,10 +4389,14 @@ private:
 	char _UnidentifiedData[11];
 public:
 
+	std::string ToString() const { return "class TGmf(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<TGmf, mot::IBoneEffectModelPJ>("TGmf")
+			.addFunction("__tostring", &TGmf::ToString)
+			.addFunction("GetPtrAddr", &TGmf::GetPtrAddr)
 			.addProperty("dat", &TGmf::dat)
 			.addProperty("mUseLight", &TGmf::mUseLight)
 			.addProperty("mpFrameInfoPlay", &TGmf::mpFrameInfoPlay)
@@ -4361,10 +4505,14 @@ public:
 	// <float m_nextFrameMax, offset 0x18>
 	float m_nextFrameMax;
 
+	std::string ToString() const { return "class NYPhase(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<NYPhase>("NYPhase")
+			.addFunction("__tostring", &NYPhase::ToString)
+			.addFunction("GetPtrAddr", &NYPhase::GetPtrAddr)
 			.addProperty("m_phase", &NYPhase::m_phase)
 			.addProperty("m_frame", &NYPhase::m_frame)
 			.addProperty("m_frameMax", &NYPhase::m_frameMax)
@@ -4417,10 +4565,14 @@ public:
 	// <enum NYApproachToTargetVal::CHANGE_TYPE m_lastChangeType, offset 0x8>
 	enum NYApproachToTargetVal::CHANGE_TYPE m_lastChangeType;
 
+	std::string ToString() const { return "class NYApproachToTargetVal(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<NYApproachToTargetVal>("NYApproachToTargetVal")
+			.addFunction("__tostring", &NYApproachToTargetVal::ToString)
+			.addFunction("GetPtrAddr", &NYApproachToTargetVal::GetPtrAddr)
 			.addProperty("m_val", &NYApproachToTargetVal::m_val)
 			.addProperty("m_targetVal", &NYApproachToTargetVal::m_targetVal)
 			.addProperty("m_lastChangeType", &NYApproachToTargetVal::m_lastChangeType)
@@ -4444,10 +4596,14 @@ private:
 	char _UnidentifiedData[80];
 public:
 
+	std::string ToString() const { return "class HrTask(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<HrTask>("HrTask")
+			.addFunction("__tostring", &HrTask::ToString)
+			.addFunction("GetPtrAddr", &HrTask::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -4603,7 +4759,7 @@ public:
 		class NYPhase m_Phase;
 
 		// <void (* m_pPhaseProc[0x7][0x2])(HrBattleIcon::CHrHpGauge* const this), offset 0x1c>
-		char m_pPhaseProc[56];
+		void (* m_pPhaseProc[0x7][0x2])(HrBattleIcon::CHrHpGauge* const ThisPtr);
 
 		// <class mHRChara* m_pTargetChara, offset 0x54>
 		class mHRChara* m_pTargetChara;
@@ -4642,10 +4798,14 @@ public:
 		char _UnidentifiedData[2];
 	public:
 
+		std::string ToString() const { return "class CHrHpGauge(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<HrBattleIcon::CHrHpGauge>("HrBattleIcon_CHrHpGauge")
+				.addFunction("__tostring", &HrBattleIcon::CHrHpGauge::ToString)
+				.addFunction("GetPtrAddr", &HrBattleIcon::CHrHpGauge::GetPtrAddr)
 				.addProperty("m_Phase", &HrBattleIcon::CHrHpGauge::m_Phase)
 				// void type not supported in LuaBridge
 				//.addProperty("m_pPhaseProc", &HrBattleIcon::CHrHpGauge::m_pPhaseProc)
@@ -4661,8 +4821,7 @@ public:
 				.addProperty("m_DrawAlpha", &HrBattleIcon::CHrHpGauge::m_DrawAlpha)
 				.addProperty("m_HpRate", &HrBattleIcon::CHrHpGauge::m_HpRate)
 				.addProperty("m_SlashFadeCounter", &HrBattleIcon::CHrHpGauge::m_SlashFadeCounter)
-				// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-				//.addFunction("Initialize", &HrBattleIcon::CHrHpGauge::Initialize)
+				.addFunction("Initialize", &HrBattleIcon::CHrHpGauge::Initialize)
 			.endClass();
 		}
 #endif
@@ -4837,10 +4996,14 @@ public:
 	// <int32_t m_SlashSEStatus, offset 0x1fc>
 	int32_t m_SlashSEStatus;
 
+	std::string ToString() const { return "class HrBattleIcon(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<HrBattleIcon, HrTask>("HrBattleIcon")
+			.addFunction("__tostring", &HrBattleIcon::ToString)
+			.addFunction("GetPtrAddr", &HrBattleIcon::GetPtrAddr)
 			.addProperty("m_HPVal", &HrBattleIcon::m_HPVal)
 			.addProperty("m_damagedCounter", &HrBattleIcon::m_damagedCounter)
 			.addProperty("m_IconStat", &HrBattleIcon::m_IconStat)
@@ -4893,10 +5056,8 @@ public:
 			.addProperty("m_bDemo", &HrBattleIcon::m_bDemo)
 			.addProperty("m_HpGauge", &HrBattleIcon::m_HpGauge)
 			.addProperty("m_SlashSEStatus", &HrBattleIcon::m_SlashSEStatus)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("OnCharacterTerminate", &HrBattleIcon::OnCharacterTerminate)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("Initialize", &HrBattleIcon::Initialize)
+			.addFunction("OnCharacterTerminate", &HrBattleIcon::OnCharacterTerminate)
+			.addFunction("Initialize", &HrBattleIcon::Initialize)
 		.endClass();
 	}
 #endif
@@ -4961,7 +5122,7 @@ public:
 	// [Function] uint8_t mHRChara::isCharacterTypeZako(enum enCharaType arg1) [?isCharacterTypeZako@mHRChara@@SA_NW4enCharaType@@@Z]
 	static uint8_t isCharacterTypeZako(enum enCharaType arg1)
 	{
-		typedef uint8_t(__cdecl* _Func)(enum enCharaType arg1);
+		typedef uint8_t(__fastcall* _Func)(enum enCharaType arg1);
 		_Func mFunc = (_Func)(GameModule + 0xa2c60);
 		return mFunc(arg1);
 	}
@@ -4975,7 +5136,7 @@ public:
 	// [Function] uint8_t mHRChara::isCharacterTypeBoss(enum enCharaType arg1) [?isCharacterTypeBoss@mHRChara@@SA_NW4enCharaType@@@Z]
 	static uint8_t isCharacterTypeBoss(enum enCharaType arg1)
 	{
-		typedef uint8_t(__cdecl* _Func)(enum enCharaType arg1);
+		typedef uint8_t(__fastcall* _Func)(enum enCharaType arg1);
 		_Func mFunc = (_Func)(GameModule + 0xa2c80);
 		return mFunc(arg1);
 	}
@@ -5101,16 +5262,17 @@ public:
 	// [Function] class mHRChara* mHRChara::mGetTop() [?mGetTop@mHRChara@@SAPAV1@XZ]
 	static class mHRChara* mGetTop()
 	{
-		typedef class mHRChara*(__cdecl* _Func)();
+		typedef class mHRChara*(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0xa3020);
 		return mFunc();
 	}
 	// [Function] struct Vec& __convention("thiscall") mHRChara::mGetRot(class mHRChara* const this) [?mGetRot@mHRChara@@QAEAAUVec@@XZ]
-	struct Vec& mGetRot()
+	// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetRot()
 	{
 		typedef struct Vec&(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xa3030);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] void __convention("thiscall") mHRChara::mSetCharaPause(class mHRChara* const this, uint8_t arg2) [?mSetCharaPause@mHRChara@@QAEX_N@Z]
 	void mSetCharaPause(uint8_t arg2)
@@ -5141,11 +5303,12 @@ public:
 		return mFunc(this);
 	}
 	// [Function] struct Vec& __convention("thiscall") mHRChara::mGetPos(class mHRChara* const this) [?mGetPos@mHRChara@@QAEAAUVec@@XZ]
-	struct Vec& mGetPos()
+	// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetPos()
 	{
 		typedef struct Vec&(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xa3280);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] int32_t __convention("thiscall") mHRChara::mGetMotionNo(class mHRChara* const this) [?mGetMotionNo@mHRChara@@QBEHXZ]
 	int32_t mGetMotionNo()
@@ -5155,11 +5318,12 @@ public:
 		return mFunc(this);
 	}
 	// [Function] char* __convention("thiscall") mHRChara::mGetFileName(class mHRChara* const this) [?mGetFileName@mHRChara@@QAEPADXZ]
-	char* mGetFileName()
+	// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetFileName()
 	{
 		typedef char*(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xa3ac0);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRChara::IsTubaAngleCorrect(class mHRChara* const this) [?IsTubaAngleCorrect@mHRChara@@UAE_NXZ]
 	uint8_t IsTubaAngleCorrect()
@@ -5197,11 +5361,12 @@ public:
 		return mFunc(this);
 	}
 	// [Function] char const* __convention("thiscall") mHRChara::getCurMotionName(class mHRChara* const this) [?getCurMotionName@mHRChara@@UBEPBDXZ]
-	char const* getCurMotionName()
+	// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
+	void getCurMotionName()
 	{
 		typedef char const*(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xa4940);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRChara::mTestRunMotion(class mHRChara* const this) [?mTestRunMotion@mHRChara@@UAE_NXZ]
 	uint8_t mTestRunMotion()
@@ -5302,18 +5467,20 @@ public:
 		return mFunc(this, arg2);
 	}
 	// [Function] struct Vec& __convention("thiscall") mHRChara::mGetBrainPos(class mHRChara* const this) [?mGetBrainPos@mHRChara@@UAEAAUVec@@XZ]
-	struct Vec& mGetBrainPos()
+	// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetBrainPos()
 	{
 		typedef struct Vec&(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xa4ae0);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] struct Vec& __convention("thiscall") mHRChara::mGetHitPos(class mHRChara* const this) [?mGetHitPos@mHRChara@@UAEAAUVec@@XZ]
-	struct Vec& mGetHitPos()
+	// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetHitPos()
 	{
 		typedef struct Vec&(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xa4af0);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRChara::mGetMirrorModel(class mHRChara* const this) [?mGetMirrorModel@mHRChara@@UAE_NXZ]
 	uint8_t mGetMirrorModel()
@@ -5694,11 +5861,12 @@ public:
 		return mFunc(this, arg2);
 	}
 	// [Function] class ghmPlane& __convention("thiscall") mHRChara::getLatestGroundTouchPlane(class mHRChara* const this) [?getLatestGroundTouchPlane@mHRChara@@QBEABVghmPlane@@XZ]
-	class ghmPlane& getLatestGroundTouchPlane()
+	// Can't export & pointer 'class ghmPlane&' [TypeClass.PointerTypeClass] in LuaBridge
+	void getLatestGroundTouchPlane()
 	{
 		typedef class ghmPlane&(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xa89d0);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] void __convention("thiscall") mHRChara::mUndispBtlIcn(class mHRChara* const this) [?mUndispBtlIcn@mHRChara@@QAEXXZ]
 	void mUndispBtlIcn()
@@ -5771,11 +5939,12 @@ public:
 		return mFunc(this, arg2);
 	}
 	// [Function] struct Vec& __convention("thiscall") mHRChara::mGetNavelPos(class mHRChara* const this) [?mGetNavelPos@mHRChara@@UAEAAUVec@@XZ]
-	struct Vec& mGetNavelPos()
+	// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetNavelPos()
 	{
 		typedef struct Vec&(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xab980);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] void __convention("thiscall") mHRChara::mSetDamageAcceptFrame(class mHRChara* const this, int32_t arg2) [?mSetDamageAcceptFrame@mHRChara@@QAEXH@Z]
 	void mSetDamageAcceptFrame(int32_t arg2)
@@ -6037,11 +6206,12 @@ public:
 		return mFunc(this);
 	}
 	// [Function] class ghmPlane& __convention("thiscall") mHRChara::getEasyShadowProjectionPlane(class mHRChara* const this) [?getEasyShadowProjectionPlane@mHRChara@@QBEABVghmPlane@@XZ]
-	class ghmPlane& getEasyShadowProjectionPlane()
+	// Can't export & pointer 'class ghmPlane&' [TypeClass.PointerTypeClass] in LuaBridge
+	void getEasyShadowProjectionPlane()
 	{
 		typedef class ghmPlane&(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xac0d0);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRChara::isInterestTarget(class mHRChara* const this) [?isInterestTarget@mHRChara@@QBE_NXZ]
 	uint8_t isInterestTarget()
@@ -6100,11 +6270,12 @@ public:
 		return mFunc(this);
 	}
 	// [Function] char* __convention("thiscall") mHRChara::mGetCallScriptProc(class mHRChara* const this) [?mGetCallScriptProc@mHRChara@@QAEPADXZ]
-	char* mGetCallScriptProc()
+	// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetCallScriptProc()
 	{
 		typedef char*(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xb03a0);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRChara::mGetMotionProcessDisEnable(class mHRChara* const this) [?mGetMotionProcessDisEnable@mHRChara@@QBE_NXZ]
 	uint8_t mGetMotionProcessDisEnable()
@@ -6177,11 +6348,12 @@ public:
 		return mFunc(this);
 	}
 	// [Function] struct Vec& __convention("thiscall") mHRChara::mGetBeforePos(class mHRChara* const this) [?mGetBeforePos@mHRChara@@QAEAAUVec@@XZ]
-	struct Vec& mGetBeforePos()
+	// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetBeforePos()
 	{
 		typedef struct Vec&(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xb9640);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] int16_t __convention("thiscall") mHRChara::mGetZakoWepType(class mHRChara* const this) [?mGetZakoWepType@mHRChara@@QBEFXZ]
 	int16_t mGetZakoWepType()
@@ -6268,11 +6440,12 @@ public:
 		return mFunc(this, arg2);
 	}
 	// [Function] struct Vec& __convention("thiscall") mHRChara::mGetOldPos(class mHRChara* const this) [?mGetOldPos@mHRChara@@QAEAAUVec@@XZ]
-	struct Vec& mGetOldPos()
+	// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetOldPos()
 	{
 		typedef struct Vec&(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xd4ae0);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRChara::mGetSuccessThrow(class mHRChara* const this) [?mGetSuccessThrow@mHRChara@@QAE_NXZ]
 	uint8_t mGetSuccessThrow()
@@ -6296,11 +6469,12 @@ public:
 		return mFunc(this);
 	}
 	// [Function] void __convention("thiscall") mHRChara::getShootPosiAndYaw(class mHRChara* const this, struct Vec* arg2, float* arg3, class TGmf& arg4, char const* arg5) [?getShootPosiAndYaw@mHRChara@@QBEXPAUVec@@PAMABVTGmf@@PBD@Z]
-	void getShootPosiAndYaw(struct Vec* arg2, float* arg3, class TGmf& arg4, char const* arg5)
+	void getShootPosiAndYaw(struct Vec* arg2, float* arg3, class TGmf& arg4, std::string arg5)
 	{
+		char const* arg5_c_str = arg5.c_str();
 		typedef void(__thiscall* _Func)(class mHRChara* const thisPtr, struct Vec* arg2, float* arg3, class TGmf& arg4, char const* arg5);
 		_Func mFunc = (_Func)(GameModule + 0x46dd10);
-		return mFunc(this, arg2, arg3, arg4, arg5);
+		return mFunc(this, arg2, arg3, arg4, arg5_c_str);
 	}
 	// [Function] void __convention("thiscall") mHRChara::setHomingPositionFromAI(class mHRChara* const this, struct Vec& arg2) [?setHomingPositionFromAI@mHRChara@@QAEXABUVec@@@Z]
 	void setHomingPositionFromAI(struct Vec& arg2)
@@ -6389,35 +6563,35 @@ public:
 	// [Function] class mHRChara* mHRChara::mGetCharaPtr(int32_t arg1) [?mGetCharaPtr@mHRChara@@SAPAV1@H@Z]
 	static class mHRChara* mGetCharaPtr(int32_t arg1)
 	{
-		typedef class mHRChara*(__cdecl* _Func)(int32_t arg1);
+		typedef class mHRChara*(__fastcall* _Func)(int32_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0x46e100);
 		return mFunc(arg1);
 	}
 	// [Function] void mHRChara::mRenderGmf(void* arg1) [?mRenderGmf@mHRChara@@SAXPAX@Z]
 	static void mRenderGmf(void* arg1)
 	{
-		typedef void(__cdecl* _Func)(void* arg1);
+		typedef void(__fastcall* _Func)(void* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x46e120);
 		return mFunc(arg1);
 	}
 	// [Function] int32_t mHRChara::debugDispCharaInfo() [?debugDispCharaInfo@mHRChara@@SAXXZ]
 	static int32_t debugDispCharaInfo()
 	{
-		typedef int32_t(__cdecl* _Func)();
+		typedef int32_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x46e140);
 		return mFunc();
 	}
 	// [Function] uint8_t mHRChara::mTermAllZakoMotion() [?mTermAllZakoMotion@mHRChara@@SA_NXZ]
 	static uint8_t mTermAllZakoMotion()
 	{
-		typedef uint8_t(__cdecl* _Func)();
+		typedef uint8_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x46e150);
 		return mFunc();
 	}
 	// [Function] uint8_t mHRChara::mInitAllNpc() [?mInitAllNpc@mHRChara@@SA_NXZ]
 	static uint8_t mInitAllNpc()
 	{
-		typedef uint8_t(__cdecl* _Func)();
+		typedef uint8_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x46e3a0);
 		return mFunc();
 	}
@@ -6501,14 +6675,14 @@ public:
 	// [Function] uint8_t mHRChara::mCheckAtkAllNpc() [?mCheckAtkAllNpc@mHRChara@@SA_NXZ]
 	static uint8_t mCheckAtkAllNpc()
 	{
-		typedef uint8_t(__cdecl* _Func)();
+		typedef uint8_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x46e840);
 		return mFunc();
 	}
 	// [Function] uint8_t mHRChara::mCheckCanAtk() [?mCheckCanAtk@mHRChara@@SA_NXZ]
 	static uint8_t mCheckCanAtk()
 	{
-		typedef uint8_t(__cdecl* _Func)();
+		typedef uint8_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x46e870);
 		return mFunc();
 	}
@@ -6719,11 +6893,12 @@ public:
 		return mFunc(this, arg2);
 	}
 	// [Function] class mHRChara* mHRChara::getCharaByGM2FileName(char const* arg1) [?getCharaByGM2FileName@mHRChara@@SAPAV1@PBD@Z]
-	static class mHRChara* getCharaByGM2FileName(char const* arg1)
+	static class mHRChara* getCharaByGM2FileName(std::string arg1)
 	{
-		typedef class mHRChara*(__cdecl* _Func)(char const* arg1);
+		char const* arg1_c_str = arg1.c_str();
+		typedef class mHRChara*(__fastcall* _Func)(char const* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x470040);
-		return mFunc(arg1);
+		return mFunc(arg1_c_str);
 	}
 	// [Function] void __convention("thiscall") mHRChara::mSetDeath(class mHRChara* const this) [?mSetDeath@mHRChara@@QAEXXZ]
 	void mSetDeath()
@@ -6749,7 +6924,7 @@ public:
 	// [Function] class mHRChara* mHRChara::mGetAliveResourceCharaPtr(enum enCharaType arg1, uint32_t arg2) [?mGetAliveResourceCharaPtr@mHRChara@@SAPAV1@W4enCharaType@@I@Z]
 	static class mHRChara* mGetAliveResourceCharaPtr(enum enCharaType arg1, uint32_t arg2)
 	{
-		typedef class mHRChara*(__cdecl* _Func)(enum enCharaType arg1, uint32_t arg2);
+		typedef class mHRChara*(__fastcall* _Func)(enum enCharaType arg1, uint32_t arg2);
 		_Func mFunc = (_Func)(GameModule + 0x470150);
 		return mFunc(arg1, arg2);
 	}
@@ -6917,21 +7092,21 @@ public:
 	// [Function] uint8_t mHRChara::isThisCharaExist(class mHRChara* arg1) [?isThisCharaExist@mHRChara@@SA_NPBV1@@Z]
 	static uint8_t isThisCharaExist(class mHRChara* arg1)
 	{
-		typedef uint8_t(__cdecl* _Func)(class mHRChara* arg1);
+		typedef uint8_t(__fastcall* _Func)(class mHRChara* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x4725d0);
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t mHRChara::mTermAllNpc() [?mTermAllNpc@mHRChara@@SA_NXZ]
 	static uint8_t mTermAllNpc()
 	{
-		typedef uint8_t(__cdecl* _Func)();
+		typedef uint8_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x472600);
 		return mFunc();
 	}
 	// [Function] int32_t mHRChara::mGetPopZakoNum() [?mGetPopZakoNum@mHRChara@@SAHXZ]
 	static int32_t mGetPopZakoNum()
 	{
-		typedef int32_t(__cdecl* _Func)();
+		typedef int32_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x472670);
 		return mFunc();
 	}
@@ -6959,51 +7134,52 @@ public:
 	// [Function] uint8_t mHRChara::mFrameProcAll() [?mFrameProcAll@mHRChara@@SA_NXZ]
 	static uint8_t mFrameProcAll()
 	{
-		typedef uint8_t(__cdecl* _Func)();
+		typedef uint8_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x472810);
 		return mFunc();
 	}
 	// [Function] uint8_t mHRChara::mRenderProcAll(uint8_t arg1) [?mRenderProcAll@mHRChara@@SA_N_N@Z]
 	static uint8_t mRenderProcAll(uint8_t arg1)
 	{
-		typedef uint8_t(__cdecl* _Func)(uint8_t arg1);
+		typedef uint8_t(__fastcall* _Func)(uint8_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0x472a40);
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t mHRChara::mPostRenderProcAll() [?mPostRenderProcAll@mHRChara@@SA_NXZ]
 	static uint8_t mPostRenderProcAll()
 	{
-		typedef uint8_t(__cdecl* _Func)();
+		typedef uint8_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x472ba0);
 		return mFunc();
 	}
 	// [Function] uint8_t mHRChara::mTermAllNpcWithoutCmnObj() [?mTermAllNpcWithoutCmnObj@mHRChara@@SA_NXZ]
 	static uint8_t mTermAllNpcWithoutCmnObj()
 	{
-		typedef uint8_t(__cdecl* _Func)();
+		typedef uint8_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x472c10);
 		return mFunc();
 	}
 	// [Function] uint8_t mHRChara::mTermAllEnemyNpc() [?mTermAllEnemyNpc@mHRChara@@SA_NXZ]
 	static uint8_t mTermAllEnemyNpc()
 	{
-		typedef uint8_t(__cdecl* _Func)();
+		typedef uint8_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x472c80);
 		return mFunc();
 	}
 	// [Function] class mHRChara* mHRChara::mGetNpcTop() [?mGetNpcTop@mHRChara@@SAPAV1@XZ]
 	static class mHRChara* mGetNpcTop()
 	{
-		typedef class mHRChara*(__cdecl* _Func)();
+		typedef class mHRChara*(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x472cf0);
 		return mFunc();
 	}
 	// [Function] void __convention("thiscall") mHRChara::SetFileName(class mHRChara* const this, char const* arg2) [?SetFileName@mHRChara@@QAEXPBD@Z]
-	void SetFileName(char const* arg2)
+	void SetFileName(std::string arg2)
 	{
+		char const* arg2_c_str = arg2.c_str();
 		typedef void(__thiscall* _Func)(class mHRChara* const thisPtr, char const* arg2);
 		_Func mFunc = (_Func)(GameModule + 0x473620);
-		return mFunc(this, arg2);
+		return mFunc(this, arg2_c_str);
 	}
 	// [Function] void __convention("thiscall") mHRChara::mSetMaxHp(class mHRChara* const this, float arg2) [?mSetMaxHp@mHRChara@@QAEXM@Z]
 	void mSetMaxHp(float arg2)
@@ -7272,11 +7448,12 @@ public:
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13);
 	}
 	// [Function] class TGan** __convention("thiscall") mHRChara::mppGetGan(class mHRChara* const this, int32_t arg2) [?mppGetGan@mHRChara@@UAEPAPAVTGan@@H@Z]
-	class TGan** mppGetGan(int32_t arg2)
+	// Can't export pointer to pointer 'class TGan**' [TypeClass.PointerTypeClass] in LuaBridge
+	void mppGetGan(int32_t arg2)
 	{
 		typedef class TGan**(__thiscall* _Func)(class mHRChara* const thisPtr, int32_t arg2);
 		_Func mFunc = (_Func)(GameModule + 0x4779c0);
-		return mFunc(this, arg2);
+		mFunc(this, arg2);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRChara::mRequestBloodSplash(class mHRChara* const this, char* arg2, int32_t arg3) [?mRequestBloodSplash@mHRChara@@UAE_NPADH@Z]
 	uint8_t mRequestBloodSplash(char* arg2, int32_t arg3)
@@ -7410,7 +7587,7 @@ public:
 	// [Function] uint8_t mHRChara::mRenderShadowProcAll() [?mRenderShadowProcAll@mHRChara@@SA_NXZ]
 	static uint8_t mRenderShadowProcAll()
 	{
-		typedef uint8_t(__cdecl* _Func)();
+		typedef uint8_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x477e60);
 		return mFunc();
 	}
@@ -7438,14 +7615,14 @@ public:
 	// [Function] class mHRChara* mHRChara::mAllSearchPiyoZako() [?mAllSearchPiyoZako@mHRChara@@SAPAV1@XZ]
 	static class mHRChara* mAllSearchPiyoZako()
 	{
-		typedef class mHRChara*(__cdecl* _Func)();
+		typedef class mHRChara*(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x4783a0);
 		return mFunc();
 	}
 	// [Function] void mHRChara::OnStageUnloadAll() [?OnStageUnloadAll@mHRChara@@SAXXZ]
 	static void OnStageUnloadAll()
 	{
-		typedef void(__cdecl* _Func)();
+		typedef void(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x4783e0);
 		return mFunc();
 	}
@@ -7484,10 +7661,14 @@ public:
 	// <int32_t invincibileMotion, offset 0x57c>
 	int32_t invincibileMotion;
 
+	std::string ToString() const { return "class mHRChara(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<mHRChara, ghmListObj>("mHRChara")
+			.addFunction("__tostring", &mHRChara::ToString)
+			.addFunction("GetPtrAddr", &mHRChara::GetPtrAddr)
 			.addProperty("mStatus", &mHRChara::mStatus)
 			.addProperty("mResource", &mHRChara::mResource)
 			.addProperty("mEffect", &mHRChara::mEffect)
@@ -7517,71 +7698,53 @@ public:
 			.addFunction("mDispTgtIcn", &mHRChara::mDispTgtIcn)
 			.addFunction("mGetHp", &mHRChara::mGetHp)
 			.addFunction("mGetCondition", &mHRChara::mGetCondition)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetNext", &mHRChara::mGetNext)
+			.addFunction("mGetNext", &mHRChara::mGetNext)
 			.addFunction("mSetHp", &mHRChara::mSetHp)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addStaticFunction("mGetTop", &mHRChara::mGetTop)
-			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetRot", &mHRChara::mGetRot)
+			.addStaticFunction("mGetTop", &mHRChara::mGetTop)
+			.addFunction("mGetRot", &mHRChara::mGetRot)
 			.addFunction("mSetCharaPause", &mHRChara::mSetCharaPause)
 			.addFunction("mGetRotY", &mHRChara::mGetRotY)
-			// Functions with return values pointing to native types ('struct WGclMaterialSpec*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("GetGroundTouchMaterial", &mHRChara::GetGroundTouchMaterial)
-			// Functions with return values pointing to native types ('struct stCharaStatus*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetStatusPtr", &mHRChara::mGetStatusPtr)
-			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetPos", &mHRChara::mGetPos)
+			.addFunction("GetGroundTouchMaterial", &mHRChara::GetGroundTouchMaterial)
+			.addFunction("mGetStatusPtr", &mHRChara::mGetStatusPtr)
+			.addFunction("mGetPos", &mHRChara::mGetPos)
 			.addFunction("mGetMotionNo", &mHRChara::mGetMotionNo)
-			// Functions with return values pointing to native types ('char*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetFileName", &mHRChara::mGetFileName)
+			.addFunction("mGetFileName", &mHRChara::mGetFileName)
 			.addFunction("IsTubaAngleCorrect", &mHRChara::IsTubaAngleCorrect)
-			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
-			//.addFunction("getMiraretaiPosition", &mHRChara::getMiraretaiPosition)
+			.addFunction("getMiraretaiPosition", &mHRChara::getMiraretaiPosition)
 			.addFunction("isHopeInterestMe", &mHRChara::isHopeInterestMe)
 			.addFunction("IsWatchPc", &mHRChara::IsWatchPc)
 			.addFunction("IsUseRotMov", &mHRChara::IsUseRotMov)
-			// Functions with return values pointing to native types ('char const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("getCurMotionName", &mHRChara::getCurMotionName)
+			.addFunction("getCurMotionName", &mHRChara::getCurMotionName)
 			.addFunction("mTestRunMotion", &mHRChara::mTestRunMotion)
 			.addFunction("mZakoDieOut", &mHRChara::mZakoDieOut)
 			.addFunction("mCreateLoseSight", &mHRChara::mCreateLoseSight)
 			.addFunction("mCheckDamageMotion", &mHRChara::mCheckDamageMotion)
 			.addFunction("mCheckEnterMotion", &mHRChara::mCheckEnterMotion)
-			// Functions with return values pointing to native types ('class TGan*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mpGetGan", &mHRChara::mpGetGan)
-			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetCurResourceGmfPtr", &mHRChara::mGetCurResourceGmfPtr)
+			.addFunction("mpGetGan", &mHRChara::mpGetGan)
+			.addFunction("mGetCurResourceGmfPtr", &mHRChara::mGetCurResourceGmfPtr)
 			// Function overloading not supported in LuaBridge.
 			//.addFunction("mGetCurResourceGmfPtr", &mHRChara::mGetCurResourceGmfPtr)
-			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetResourceGmfWepLPtr", &mHRChara::mGetResourceGmfWepLPtr)
-			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetResourceGmfWepRPtr", &mHRChara::mGetResourceGmfWepRPtr)
-			// Functions with parameters pointing to native types (char* arg3) not supported in LuaBridge.
+			.addFunction("mGetResourceGmfWepLPtr", &mHRChara::mGetResourceGmfWepLPtr)
+			.addFunction("mGetResourceGmfWepRPtr", &mHRChara::mGetResourceGmfWepRPtr)
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetResourceGmfPtr", &mHRChara::mSetResourceGmfPtr)
-			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetResourceGmfDeadPtr", &mHRChara::mGetResourceGmfDeadPtr)
+			.addFunction("mGetResourceGmfDeadPtr", &mHRChara::mGetResourceGmfDeadPtr)
 			// Function overloading not supported in LuaBridge.
 			//.addFunction("mGetResourceGmfDeadPtr", &mHRChara::mGetResourceGmfDeadPtr)
-			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetResourceGmfPtr", &mHRChara::mGetResourceGmfPtr)
+			.addFunction("mGetResourceGmfPtr", &mHRChara::mGetResourceGmfPtr)
 			// Function overloading not supported in LuaBridge.
 			//.addFunction("mGetResourceGmfPtr", &mHRChara::mGetResourceGmfPtr)
-			// Functions with return values pointing to native types ('class ghmGcCollObjCapsule*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetCollPtr", &mHRChara::mGetCollPtr)
+			.addFunction("mGetCollPtr", &mHRChara::mGetCollPtr)
 			.addFunction("mSethitOidashiDisEnable", &mHRChara::mSethitOidashiDisEnable)
-			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetBrainPos", &mHRChara::mGetBrainPos)
-			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetHitPos", &mHRChara::mGetHitPos)
+			.addFunction("mGetBrainPos", &mHRChara::mGetBrainPos)
+			.addFunction("mGetHitPos", &mHRChara::mGetHitPos)
 			.addFunction("mGetMirrorModel", &mHRChara::mGetMirrorModel)
 			.addFunction("mGetVisibleDist", &mHRChara::mGetVisibleDist)
 			.addFunction("mSetCondition", &mHRChara::mSetCondition)
 			.addFunction("mSetSubMotionSpd", &mHRChara::mSetSubMotionSpd)
 			.addFunction("mCheck4tsunbai", &mHRChara::mCheck4tsunbai)
 			.addFunction("mCheckSquat", &mHRChara::mCheckSquat)
-			// Functions with parameters pointing to native types (int32_t* arg3) not supported in LuaBridge.
+			// Can't export pointer to native type 'int32_t*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mGetThrowMotNo", &mHRChara::mGetThrowMotNo)
 			.addFunction("mGetTsubazeriMotionID", &mHRChara::mGetTsubazeriMotionID)
 			.addFunction("mTsubazeriDifficultyClear", &mHRChara::mTsubazeriDifficultyClear)
@@ -7600,13 +7763,11 @@ public:
 			.addFunction("EnterUnderControl", &mHRChara::EnterUnderControl)
 			.addFunction("mPostRenderProc", &mHRChara::mPostRenderProc)
 			.addFunction("getViewClipBoxPositionOffsetY", &mHRChara::getViewClipBoxPositionOffsetY)
-			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
-			//.addFunction("getViewClipBoxHalfLengthXYZ", &mHRChara::getViewClipBoxHalfLengthXYZ)
+			.addFunction("getViewClipBoxHalfLengthXYZ", &mHRChara::getViewClipBoxHalfLengthXYZ)
 			.addFunction("mGetResNo", &mHRChara::mGetResNo)
 			.addFunction("mGetDropMoney", &mHRChara::mGetDropMoney)
 			.addFunction("mGetItemNo", &mHRChara::mGetItemNo)
-			// Functions with parameters pointing to native types (class TGmfNode* arg2) not supported in LuaBridge.
-			//.addFunction("setLocatorNode", &mHRChara::setLocatorNode)
+			.addFunction("setLocatorNode", &mHRChara::setLocatorNode)
 			.addFunction("mGetHpRate", &mHRChara::mGetHpRate)
 			.addFunction("mSubHp", &mHRChara::mSubHp)
 			.addFunction("mGetHitSize", &mHRChara::mGetHitSize)
@@ -7620,7 +7781,7 @@ public:
 			.addFunction("IsFootShadowDraw", &mHRChara::IsFootShadowDraw)
 			.addFunction("SetFootShadowDraw", &mHRChara::SetFootShadowDraw)
 			.addFunction("mSetMotionNoNpc", &mHRChara::mSetMotionNoNpc)
-			// Functions with parameters pointing to native types (char* arg2) not supported in LuaBridge.
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetCallScriptProc", &mHRChara::mSetCallScriptProc)
 			.addFunction("mSetDropMoney", &mHRChara::mSetDropMoney)
 			.addFunction("mSetReactionDist", &mHRChara::mSetReactionDist)
@@ -7633,8 +7794,7 @@ public:
 			.addFunction("mGetDmgUpperPosY", &mHRChara::mGetDmgUpperPosY)
 			.addFunction("mGetDmgUpper", &mHRChara::mGetDmgUpper)
 			.addFunction("mSetResourceDeleteFlag", &mHRChara::mSetResourceDeleteFlag)
-			// Functions with return values pointing to native types ('class ghmPlane&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("getLatestGroundTouchPlane", &mHRChara::getLatestGroundTouchPlane)
+			.addFunction("getLatestGroundTouchPlane", &mHRChara::getLatestGroundTouchPlane)
 			.addFunction("mUndispBtlIcn", &mHRChara::mUndispBtlIcn)
 			.addFunction("mChgBtlIcnFinishDemo", &mHRChara::mChgBtlIcnFinishDemo)
 			.addFunction("mChgBtlIcnTb", &mHRChara::mChgBtlIcnTb)
@@ -7645,12 +7805,9 @@ public:
 			.addFunction("mGetDemoCtrl", &mHRChara::mGetDemoCtrl)
 			.addFunction("isAcceptDistanceDelete", &mHRChara::isAcceptDistanceDelete)
 			.addFunction("mSetStageHitDisEnableReq", &mHRChara::mSetStageHitDisEnableReq)
-			// Functions with return values pointing to native types ('struct stCharaEffect*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetEffectStPtr", &mHRChara::mGetEffectStPtr)
-			// Functions with parameters pointing to native types (class EffectEnemyDamage* arg2) not supported in LuaBridge.
-			//.addFunction("setBlackBodyEffect", &mHRChara::setBlackBodyEffect)
-			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetNavelPos", &mHRChara::mGetNavelPos)
+			.addFunction("mGetEffectStPtr", &mHRChara::mGetEffectStPtr)
+			.addFunction("setBlackBodyEffect", &mHRChara::setBlackBodyEffect)
+			.addFunction("mGetNavelPos", &mHRChara::mGetNavelPos)
 			.addFunction("mSetDamageAcceptFrame", &mHRChara::mSetDamageAcceptFrame)
 			.addFunction("mSetAlwaysCheckHitColl", &mHRChara::mSetAlwaysCheckHitColl)
 			.addFunction("mGetLockOnNoCheckColl", &mHRChara::mGetLockOnNoCheckColl)
@@ -7663,8 +7820,7 @@ public:
 			//.addFunction("mChgBtlIcnFinish", &mHRChara::mChgBtlIcnFinish)
 			.addFunction("mSetSlowBlow", &mHRChara::mSetSlowBlow)
 			.addFunction("mSetInputFinishReq", &mHRChara::mSetInputFinishReq)
-			// Functions with return values pointing to native types ('class TGan*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetResourceGanPtr", &mHRChara::mGetResourceGanPtr)
+			.addFunction("mGetResourceGanPtr", &mHRChara::mGetResourceGanPtr)
 			.addFunction("mGetMoney", &mHRChara::mGetMoney)
 			.addFunction("mSetMoney", &mHRChara::mSetMoney)
 			.addFunction("mGetInputFinishReq", &mHRChara::mGetInputFinishReq)
@@ -7691,19 +7847,16 @@ public:
 			.addFunction("mGetMotionBrendNum", &mHRChara::mGetMotionBrendNum)
 			.addFunction("mGetAiValue", &mHRChara::mGetAiValue)
 			.addFunction("mResetPosA", &mHRChara::mResetPosA)
-			// Functions with return values pointing to native types ('class ghmPlane&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("getEasyShadowProjectionPlane", &mHRChara::getEasyShadowProjectionPlane)
+			.addFunction("getEasyShadowProjectionPlane", &mHRChara::getEasyShadowProjectionPlane)
 			.addFunction("isInterestTarget", &mHRChara::isInterestTarget)
 			.addFunction("mSetMotionSpd", &mHRChara::mSetMotionSpd)
 			.addFunction("mGetWepEffectVisible", &mHRChara::mGetWepEffectVisible)
 			.addFunction("mGetVisible", &mHRChara::mGetVisible)
 			.addFunction("mGetTension", &mHRChara::mGetTension)
 			.addFunction("mGetMiniMapRender", &mHRChara::mGetMiniMapRender)
-			// Functions with return values pointing to native types ('class ghmResGroup*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetResourceRslPtr", &mHRChara::mGetResourceRslPtr)
+			.addFunction("mGetResourceRslPtr", &mHRChara::mGetResourceRslPtr)
 			.addFunction("getFootNumber", &mHRChara::getFootNumber)
-			// Functions with return values pointing to native types ('char*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetCallScriptProc", &mHRChara::mGetCallScriptProc)
+			.addFunction("mGetCallScriptProc", &mHRChara::mGetCallScriptProc)
 			.addFunction("mGetMotionProcessDisEnable", &mHRChara::mGetMotionProcessDisEnable)
 			.addFunction("IsBloom", &mHRChara::IsBloom)
 			.addFunction("SetTermAll", &mHRChara::SetTermAll)
@@ -7711,14 +7864,12 @@ public:
 			.addFunction("GetKnockBackSpd", &mHRChara::GetKnockBackSpd)
 			.addFunction("mGetStageHitDisEnable", &mHRChara::mGetStageHitDisEnable)
 			.addFunction("mGetStartSplitFlameFlag", &mHRChara::mGetStartSplitFlameFlag)
-			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("getBoneEffectGmf", &mHRChara::getBoneEffectGmf)
+			.addFunction("getBoneEffectGmf", &mHRChara::getBoneEffectGmf)
 			.addFunction("mSetStartSplitFlameFlag", &mHRChara::mSetStartSplitFlameFlag)
 			.addFunction("mGetCharaPause", &mHRChara::mGetCharaPause)
-			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetBeforePos", &mHRChara::mGetBeforePos)
+			.addFunction("mGetBeforePos", &mHRChara::mGetBeforePos)
 			.addFunction("mGetZakoWepType", &mHRChara::mGetZakoWepType)
-			// Functions with parameters pointing to native types (class ghmGcCollObjHitResultObj& arg2) not supported in LuaBridge.
+			// Can't export & pointer 'class ghmGcCollObjHitResultObj&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetFootHitResultObj2", &mHRChara::mSetFootHitResultObj2)
 			.addFunction("mSetDmgUpperPow", &mHRChara::mSetDmgUpperPow)
 			.addFunction("mAddHp", &mHRChara::mAddHp)
@@ -7730,49 +7881,41 @@ public:
 			.addFunction("GetKnockBackDir", &mHRChara::GetKnockBackDir)
 			.addFunction("mGetMotionNoNpc", &mHRChara::mGetMotionNoNpc)
 			.addFunction("SetNormalClip", &mHRChara::SetNormalClip)
-			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetOldPos", &mHRChara::mGetOldPos)
+			.addFunction("mGetOldPos", &mHRChara::mGetOldPos)
 			.addFunction("mGetSuccessThrow", &mHRChara::mGetSuccessThrow)
 			.addFunction("mSetDmgUpperPosY", &mHRChara::mSetDmgUpperPosY)
 			.addFunction("SetDeleteReq", &mHRChara::SetDeleteReq)
-			// Functions with parameters pointing to native types (char const* arg5) not supported in LuaBridge.
+			// Can't export pointer to native type 'float*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("getShootPosiAndYaw", &mHRChara::getShootPosiAndYaw)
-			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("setHomingPositionFromAI", &mHRChara::setHomingPositionFromAI)
 			.addFunction("setHomingActFlagFromAI", &mHRChara::setHomingActFlagFromAI)
 			.addFunction("isHoming", &mHRChara::isHoming)
 			.addFunction("setInterestUseBoneNumFromAI", &mHRChara::setInterestUseBoneNumFromAI)
 			.addFunction("isInteresting", &mHRChara::isInteresting)
-			// Functions with parameters pointing to native types (struct Vec& arg3) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("addDamageToYuremono", &mHRChara::addDamageToYuremono)
-			// Functions with return values pointing to native types ('class mot::IBoneEffectPJ*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("getBoneEffect", &mHRChara::getBoneEffect)
+			.addFunction("getBoneEffect", &mHRChara::getBoneEffect)
 			.addFunction("mSetHajikiCheck", &mHRChara::mSetHajikiCheck)
 			.addFunction("mCheckDamageAccept", &mHRChara::mCheckDamageAccept)
 			.addFunction("mTestZakoDown", &mHRChara::mTestZakoDown)
 			.addFunction("mTestPiyoRequest", &mHRChara::mTestPiyoRequest)
 			.addFunction("mGetPiyoriHeight", &mHRChara::mGetPiyoriHeight)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addStaticFunction("mGetCharaPtr", &mHRChara::mGetCharaPtr)
-			// Functions with parameters pointing to native types (void* arg1) not supported in LuaBridge.
+			.addStaticFunction("mGetCharaPtr", &mHRChara::mGetCharaPtr)
+			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("mRenderGmf", &mHRChara::mRenderGmf)
 			.addStaticFunction("debugDispCharaInfo", &mHRChara::debugDispCharaInfo)
 			.addStaticFunction("mTermAllZakoMotion", &mHRChara::mTermAllZakoMotion)
 			.addStaticFunction("mInitAllNpc", &mHRChara::mInitAllNpc)
-			// Functions with parameters pointing to native types (struct tagHRTASKCHECK* arg4) not supported in LuaBridge.
-			//.addFunction("mCreateBloodSplash", &mHRChara::mCreateBloodSplash)
+			.addFunction("mCreateBloodSplash", &mHRChara::mCreateBloodSplash)
 			.addFunction("mBloodSplashProc", &mHRChara::mBloodSplashProc)
-			// Functions with parameters pointing to native types (class EffectBoneElect* arg2) not supported in LuaBridge.
-			//.addFunction("AddBoneElectPtrToList", &mHRChara::AddBoneElectPtrToList)
+			.addFunction("AddBoneElectPtrToList", &mHRChara::AddBoneElectPtrToList)
 			.addFunction("ReleaseBoneElect", &mHRChara::ReleaseBoneElect)
 			.addFunction("IsEmtpyBoneElectList", &mHRChara::IsEmtpyBoneElectList)
-			// Functions with parameters pointing to native types (class EffectBoneElect* arg2) not supported in LuaBridge.
-			//.addFunction("DeleteBoneElectFromList", &mHRChara::DeleteBoneElectFromList)
-			// Functions with parameters pointing to native types (class EffectCutMark* arg2) not supported in LuaBridge.
-			//.addFunction("AddCutmarkPtrToList", &mHRChara::AddCutmarkPtrToList)
+			.addFunction("DeleteBoneElectFromList", &mHRChara::DeleteBoneElectFromList)
+			.addFunction("AddCutmarkPtrToList", &mHRChara::AddCutmarkPtrToList)
 			.addFunction("IsEmtpyCutmarkList", &mHRChara::IsEmtpyCutmarkList)
-			// Functions with parameters pointing to native types (class EffectCutMark* arg2) not supported in LuaBridge.
-			//.addFunction("DeleteCutmarkFromList", &mHRChara::DeleteCutmarkFromList)
+			.addFunction("DeleteCutmarkFromList", &mHRChara::DeleteCutmarkFromList)
 			.addFunction("SetPowerFlash", &mHRChara::SetPowerFlash)
 			.addFunction("SetNoGuardEffect", &mHRChara::SetNoGuardEffect)
 			.addStaticFunction("mCheckAtkAllNpc", &mHRChara::mCheckAtkAllNpc)
@@ -7782,7 +7925,7 @@ public:
 			.addFunction("CreateFootSmokeEffect", &mHRChara::CreateFootSmokeEffect)
 			.addFunction("KnockBackProc", &mHRChara::KnockBackProc)
 			.addFunction("GetKnockBackRatio", &mHRChara::GetKnockBackRatio)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &mHRChara::mSetDamage)
 			.addFunction("mInitDamageMotInfo", &mHRChara::mInitDamageMotInfo)
 			.addFunction("mChangeDefAi", &mHRChara::mChangeDefAi)
@@ -7790,7 +7933,7 @@ public:
 			.addFunction("mCheckCallFrameProc", &mHRChara::mCheckCallFrameProc)
 			.addFunction("IsNowUnderControl", &mHRChara::IsNowUnderControl)
 			.addFunction("RegistUnderControlAtkFuncPtr", &mHRChara::RegistUnderControlAtkFuncPtr)
-			// Functions with parameters pointing to native types (struct CharControlMotID& arg2) not supported in LuaBridge.
+			// Can't export & pointer 'struct CharControlMotID&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("RegistUnderControlMotID", &mHRChara::RegistUnderControlMotID)
 			.addFunction("SetUnderControlFlag", &mHRChara::SetUnderControlFlag)
 			.addFunction("DrawDebugCollision", &mHRChara::DrawDebugCollision)
@@ -7802,38 +7945,35 @@ public:
 			.addFunction("mPostFrameProc", &mHRChara::mPostFrameProc)
 			.addFunction("mFrameProc", &mHRChara::mFrameProc)
 			.addFunction("mInit", &mHRChara::mInit)
-			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetRotA", &mHRChara::mSetRotA)
 			.addFunction("mSetWepEffectVisibleInstant", &mHRChara::mSetWepEffectVisibleInstant)
 			.addFunction("mSubFrameStop", &mHRChara::mSubFrameStop)
 			.addFunction("mPlayMotionMov", &mHRChara::mPlayMotionMov)
 			.addFunction("mTestMotion", &mHRChara::mTestMotion)
 			.addFunction("mSetDifficultyMotionSpeed", &mHRChara::mSetDifficultyMotionSpeed)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("getCharaByGM2FileName", &mHRChara::getCharaByGM2FileName)
 			.addFunction("mSetDeath", &mHRChara::mSetDeath)
 			.addFunction("mDamageCallBackForScript", &mHRChara::mDamageCallBackForScript)
 			.addFunction("mGetMotionPlay", &mHRChara::mGetMotionPlay)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addStaticFunction("mGetAliveResourceCharaPtr", &mHRChara::mGetAliveResourceCharaPtr)
+			.addStaticFunction("mGetAliveResourceCharaPtr", &mHRChara::mGetAliveResourceCharaPtr)
 			.addFunction("ReleaseCutmark", &mHRChara::ReleaseCutmark)
 			.addFunction("mTestPiyori", &mHRChara::mTestPiyori)
 			.addFunction("mGetMotionTotalTick", &mHRChara::mGetMotionTotalTick)
-			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("setInterestPositionFromAI", &mHRChara::setInterestPositionFromAI)
 			.addFunction("setInterestActFlagFromAI", &mHRChara::setInterestActFlagFromAI)
-			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
-			//.addFunction("mGetWepTopPos", &mHRChara::mGetWepTopPos)
+			.addFunction("mGetWepTopPos", &mHRChara::mGetWepTopPos)
 			.addFunction("mInitDamageStatus", &mHRChara::mInitDamageStatus)
 			.addFunction("mPostFrameCommonProc1", &mHRChara::mPostFrameCommonProc1)
 			.addFunction("mPostFrameCommonProc2", &mHRChara::mPostFrameCommonProc2)
-			// Functions with return values pointing to native types ('class mot::CBoneEffectDamageData*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("getBoneEffectDamageData", &mHRChara::getBoneEffectDamageData)
-			// Functions with parameters pointing to native types (struct Vec& arg3) not supported in LuaBridge.
+			.addFunction("getBoneEffectDamageData", &mHRChara::getBoneEffectDamageData)
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("SetKnockBack", &mHRChara::SetKnockBack)
 			.addFunction("CheckWallCrashAndDamageProc", &mHRChara::CheckWallCrashAndDamageProc)
 			.addFunction("mSetHpBarVisible", &mHRChara::mSetHpBarVisible)
-			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetPosA", &mHRChara::mSetPosA)
 			.addFunction("mSetSimpleHpBarVisible", &mHRChara::mSetSimpleHpBarVisible)
 			.addFunction("mPlayCamMotFromCharMot", &mHRChara::mPlayCamMotFromCharMot)
@@ -7846,8 +7986,7 @@ public:
 			.addFunction("mPreRenderProc", &mHRChara::mPreRenderProc)
 			.addFunction("mDetouchMotionBrend", &mHRChara::mDetouchMotionBrend)
 			.addFunction("mReleaseDemoBtleIcn", &mHRChara::mReleaseDemoBtleIcn)
-			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
-			//.addStaticFunction("isThisCharaExist", &mHRChara::isThisCharaExist)
+			.addStaticFunction("isThisCharaExist", &mHRChara::isThisCharaExist)
 			.addStaticFunction("mTermAllNpc", &mHRChara::mTermAllNpc)
 			.addStaticFunction("mGetPopZakoNum", &mHRChara::mGetPopZakoNum)
 			.addFunction("mDeleteDispChara", &mHRChara::mDeleteDispChara)
@@ -7858,27 +7997,25 @@ public:
 			.addStaticFunction("mPostRenderProcAll", &mHRChara::mPostRenderProcAll)
 			.addStaticFunction("mTermAllNpcWithoutCmnObj", &mHRChara::mTermAllNpcWithoutCmnObj)
 			.addStaticFunction("mTermAllEnemyNpc", &mHRChara::mTermAllEnemyNpc)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addStaticFunction("mGetNpcTop", &mHRChara::mGetNpcTop)
-			// Functions with parameters pointing to native types (char const* arg2) not supported in LuaBridge.
+			.addStaticFunction("mGetNpcTop", &mHRChara::mGetNpcTop)
+			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("SetFileName", &mHRChara::SetFileName)
 			.addFunction("mSetMaxHp", &mHRChara::mSetMaxHp)
 			.addFunction("mTerm", &mHRChara::mTerm)
-			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetPos", &mHRChara::mSetPos)
-			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetRot", &mHRChara::mSetRot)
-			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetScale", &mHRChara::mSetScale)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mHitCheck", &mHRChara::mHitCheck)
+			.addFunction("mHitCheck", &mHRChara::mHitCheck)
 			.addFunction("mMotionSpeedControl", &mHRChara::mMotionSpeedControl)
 			.addFunction("mCallMotionProc", &mHRChara::mCallMotionProc)
 			.addFunction("mPlayMotion", &mHRChara::mPlayMotion)
 			.addFunction("mCallMoneyDrop", &mHRChara::mCallMoneyDrop)
-			// Functions with parameters pointing to native types (char* arg4) not supported in LuaBridge.
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mAttachWep", &mHRChara::mAttachWep)
-			// Functions with parameters pointing to native types (char* arg3) not supported in LuaBridge.
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mDetachWep", &mHRChara::mDetachWep)
 			.addFunction("mSemitransparentProcess", &mHRChara::mSemitransparentProcess)
 			.addFunction("mUpdateAtkColl", &mHRChara::mUpdateAtkColl)
@@ -7889,21 +8026,19 @@ public:
 			// Function overloading not supported in LuaBridge.
 			//.addFunction("mCheckAttack", &mHRChara::mCheckAttack)
 			.addFunction("mCheckCanAttack", &mHRChara::mCheckCanAttack)
-			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
-			//.addFunction("mGetTsubazeriaiPos", &mHRChara::mGetTsubazeriaiPos)
+			.addFunction("mGetTsubazeriaiPos", &mHRChara::mGetTsubazeriaiPos)
 			.addFunction("mSetPcTsubaOuterMot", &mHRChara::mSetPcTsubaOuterMot)
 			.addFunction("GetTsubaEffectPos", &mHRChara::GetTsubaEffectPos)
 			.addFunction("mCheckCanCatch", &mHRChara::mCheckCanCatch)
 			.addFunction("mCheckCanThrow", &mHRChara::mCheckCanThrow)
 			.addFunction("mPlayThrownMotion", &mHRChara::mPlayThrownMotion)
-			// Functions with parameters pointing to native types (class TGan** arg2) not supported in LuaBridge.
+			// Can't export pointer to pointer 'class TGan**' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mPlayMotionBlend", &mHRChara::mPlayMotionBlend)
 			// Function overloading not supported in LuaBridge.
 			//.addFunction("mPlayMotionBlend", &mHRChara::mPlayMotionBlend)
 			.addFunction("mBossDeadCommonProcess", &mHRChara::mBossDeadCommonProcess)
 			.addFunction("mCheckCanLockOn", &mHRChara::mCheckCanLockOn)
-			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
-			//.addFunction("getLockOnCursorBasePosition", &mHRChara::getLockOnCursorBasePosition)
+			.addFunction("getLockOnCursorBasePosition", &mHRChara::getLockOnCursorBasePosition)
 			.addFunction("mSetVisible", &mHRChara::mSetVisible)
 			.addFunction("mSetWepVisible", &mHRChara::mSetWepVisible)
 			.addFunction("mSetWepEffectVisible", &mHRChara::mSetWepEffectVisible)
@@ -7911,15 +8046,14 @@ public:
 			.addFunction("mEffectInit", &mHRChara::mEffectInit)
 			.addFunction("mSetMirrorModel", &mHRChara::mSetMirrorModel)
 			.addFunction("mSetAiAtk", &mHRChara::mSetAiAtk)
-			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetWarpPos", &mHRChara::mSetWarpPos)
-			// Functions with parameters pointing to native types (uint8_t* arg11) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mHitCheckStage", &mHRChara::mHitCheckStage)
 			// Function overloading not supported in LuaBridge.
 			//.addFunction("mpGetGan", &mHRChara::mpGetGan)
-			// Functions with return values pointing to native types ('class TGan**' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mppGetGan", &mHRChara::mppGetGan)
-			// Functions with parameters pointing to native types (char* arg2) not supported in LuaBridge.
+			.addFunction("mppGetGan", &mHRChara::mppGetGan)
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mRequestBloodSplash", &mHRChara::mRequestBloodSplash)
 			.addFunction("mCallKillPcProcess", &mHRChara::mCallKillPcProcess)
 			.addFunction("mCheckComboing", &mHRChara::mCheckComboing)
@@ -7938,18 +8072,17 @@ public:
 			.addFunction("getFootShadowDepthMinus", &mHRChara::getFootShadowDepthMinus)
 			.addFunction("OnStageUnload", &mHRChara::OnStageUnload)
 			.addFunction("setFootGroundTouchActFlagFromAI", &mHRChara::setFootGroundTouchActFlagFromAI)
-			// Functions with parameters pointing to native types (float* arg6) not supported in LuaBridge.
+			// Can't export pointer to native type 'float*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mPlayCamMot", &mHRChara::mPlayCamMot)
 			.addFunction("mStopCamMotFromCharMot", &mHRChara::mStopCamMotFromCharMot)
 			.addStaticFunction("mRenderShadowProcAll", &mHRChara::mRenderShadowProcAll)
 			.addFunction("mSetRotY", &mHRChara::mSetRotY)
-			// Functions with parameters pointing to native types (struct Vec* arg7) not supported in LuaBridge.
+			// Can't export pointer to native type 'float*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mCheckSegmentHitStage", &mHRChara::mCheckSegmentHitStage)
 			.addFunction("mEraseDispChara", &mHRChara::mEraseDispChara)
 			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("mGetCharaPtr", &mHRChara::mGetCharaPtr)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addStaticFunction("mAllSearchPiyoZako", &mHRChara::mAllSearchPiyoZako)
+			.addStaticFunction("mAllSearchPiyoZako", &mHRChara::mAllSearchPiyoZako)
 			.addStaticFunction("OnStageUnloadAll", &mHRChara::OnStageUnloadAll)
 		.endClass();
 	}
@@ -7976,10 +8109,14 @@ public:
 	// <class mHRChara field_0, offset 0x0>
 	// class mHRChara Super;
 
+	std::string ToString() const { return "class HROBJDummy(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<HROBJDummy, mHRChara>("HROBJDummy")
+			.addFunction("__tostring", &HROBJDummy::ToString)
+			.addFunction("GetPtrAddr", &HROBJDummy::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -8032,10 +8169,14 @@ public:
 	// <int32_t endFadeTick, offset 0x4c>
 	int32_t endFadeTick;
 
+	std::string ToString() const { return "struct stTiger(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stTiger>("stTiger")
+			.addFunction("__tostring", &stTiger::ToString)
+			.addFunction("GetPtrAddr", &stTiger::GetPtrAddr)
 			.addProperty("visible", &stTiger::visible)
 			.addProperty("pGmf", &stTiger::pGmf)
 			// static arrays are not supported in LuaBridge (only std::vector)
@@ -8079,10 +8220,14 @@ public:
 	// <int32_t motNo, offset 0x1c>
 	int32_t motNo;
 
+	std::string ToString() const { return "struct stHugWalk(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stHugWalk>("stHugWalk")
+			.addFunction("__tostring", &stHugWalk::ToString)
+			.addFunction("GetPtrAddr", &stHugWalk::GetPtrAddr)
 			.addProperty("pGmf", &stHugWalk::pGmf)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("pGan", &stHugWalk::pGan)
@@ -8107,10 +8252,14 @@ private:
 	char _UnidentifiedData[656];
 public:
 
+	std::string ToString() const { return "struct stPcEffect(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stPcEffect>("stPcEffect")
+			.addFunction("__tostring", &stPcEffect::ToString)
+			.addFunction("GetPtrAddr", &stPcEffect::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -8269,10 +8418,14 @@ private:
 	char _UnidentifiedData[2];
 public:
 
+	std::string ToString() const { return "struct stPcSndData(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stPcSndData>("stPcSndData")
+			.addFunction("__tostring", &stPcSndData::ToString)
+			.addFunction("GetPtrAddr", &stPcSndData::GetPtrAddr)
 			.addProperty("seHdlLightsavorReady", &stPcSndData::seHdlLightsavorReady)
 			.addProperty("seVolLightsavorReady", &stPcSndData::seVolLightsavorReady)
 			.addProperty("seDontPlaySeAgainLSReady", &stPcSndData::seDontPlaySeAgainLSReady)
@@ -8338,10 +8491,14 @@ private:
 	char _UnidentifiedData[52];
 public:
 
+	std::string ToString() const { return "struct stDarkSideInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stDarkSideInfo>("stDarkSideInfo")
+			.addFunction("__tostring", &stDarkSideInfo::ToString)
+			.addFunction("GetPtrAddr", &stDarkSideInfo::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -8359,10 +8516,14 @@ private:
 	char _UnidentifiedData[1636];
 public:
 
+	std::string ToString() const { return "struct stPcSaveData(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stPcSaveData>("stPcSaveData")
+			.addFunction("__tostring", &stPcSaveData::ToString)
+			.addFunction("GetPtrAddr", &stPcSaveData::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -8395,10 +8556,14 @@ public:
 	// <int32_t warpTargetIndex, offset 0x8>
 	int32_t warpTargetIndex;
 
+	std::string ToString() const { return "struct stMiniDemo(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stMiniDemo>("stMiniDemo")
+			.addFunction("__tostring", &stMiniDemo::ToString)
+			.addFunction("GetPtrAddr", &stMiniDemo::GetPtrAddr)
 			.addProperty("play", &stMiniDemo::play)
 			.addProperty("pauseStart", &stMiniDemo::pauseStart)
 			.addProperty("fadeInPermission", &stMiniDemo::fadeInPermission)
@@ -8426,10 +8591,14 @@ private:
 	char _UnidentifiedData[2308];
 public:
 
+	std::string ToString() const { return "struct stPcStatus(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stPcStatus>("stPcStatus")
+			.addFunction("__tostring", &stPcStatus::ToString)
+			.addFunction("GetPtrAddr", &stPcStatus::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -8892,11 +9061,12 @@ public:
 		return mFunc(this);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRPc::mPlayMotionFromDatPtrExt(class mHRPc* const this, class TGan* arg2, char const* arg3, uint8_t arg4, int32_t arg5, uint8_t arg6, float arg7) [?mPlayMotionFromDatPtrExt@mHRPc@@QAE_NPAVTGan@@PBD_NH2M@Z]
-	uint8_t mPlayMotionFromDatPtrExt(class TGan* arg2, char const* arg3, uint8_t arg4, int32_t arg5, uint8_t arg6, float arg7)
+	uint8_t mPlayMotionFromDatPtrExt(class TGan* arg2, std::string arg3, uint8_t arg4, int32_t arg5, uint8_t arg6, float arg7)
 	{
+		char const* arg3_c_str = arg3.c_str();
 		typedef uint8_t(__thiscall* _Func)(class mHRPc* const thisPtr, class TGan* arg2, char const* arg3, uint8_t arg4, int32_t arg5, uint8_t arg6, float arg7);
 		_Func mFunc = (_Func)(GameModule + 0xa32a0);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7);
+		return mFunc(this, arg2, arg3_c_str, arg4, arg5, arg6, arg7);
 	}
 	// [Function] void __convention("thiscall") mHRPc::mSetPcPower(class mHRPc* const this, float arg2) [?mSetPcPower@mHRPc@@QAEXM@Z]
 	void mSetPcPower(float arg2)
@@ -8929,42 +9099,42 @@ public:
 	// [Function] void mHRPc::mSetDisplayMiniMapFlag(uint8_t arg1) [?mSetDisplayMiniMapFlag@mHRPc@@SAX_N@Z]
 	static void mSetDisplayMiniMapFlag(uint8_t arg1)
 	{
-		typedef void(__cdecl* _Func)(uint8_t arg1);
+		typedef void(__fastcall* _Func)(uint8_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0xa3330);
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t mHRPc::mGetDisplayMiniMapFlag() [?mGetDisplayMiniMapFlag@mHRPc@@SA_NXZ]
 	static uint8_t mGetDisplayMiniMapFlag()
 	{
-		typedef uint8_t(__cdecl* _Func)();
+		typedef uint8_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0xa3340);
 		return mFunc();
 	}
 	// [Function] void mHRPc::mSetCameraXReverseControlFlag(uint8_t arg1) [?mSetCameraXReverseControlFlag@mHRPc@@SAX_N@Z]
 	static void mSetCameraXReverseControlFlag(uint8_t arg1)
 	{
-		typedef void(__cdecl* _Func)(uint8_t arg1);
+		typedef void(__fastcall* _Func)(uint8_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0xa3350);
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t mHRPc::mGetCameraXReverseControlFlag() [?mGetCameraXReverseControlFlag@mHRPc@@SA_NXZ]
 	static uint8_t mGetCameraXReverseControlFlag()
 	{
-		typedef uint8_t(__cdecl* _Func)();
+		typedef uint8_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0xa3360);
 		return mFunc();
 	}
 	// [Function] void mHRPc::mSetCameraYReverseControlFlag(uint8_t arg1) [?mSetCameraYReverseControlFlag@mHRPc@@SAX_N@Z]
 	static void mSetCameraYReverseControlFlag(uint8_t arg1)
 	{
-		typedef void(__cdecl* _Func)(uint8_t arg1);
+		typedef void(__fastcall* _Func)(uint8_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0xa3370);
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t mHRPc::mGetCameraYReverseControlFlag() [?mGetCameraYReverseControlFlag@mHRPc@@SA_NXZ]
 	static uint8_t mGetCameraYReverseControlFlag()
 	{
-		typedef uint8_t(__cdecl* _Func)();
+		typedef uint8_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0xa3380);
 		return mFunc();
 	}
@@ -9718,18 +9888,20 @@ public:
 		return mFunc(this);
 	}
 	// [Function] char const* __convention("thiscall") mHRPc::getCurTigerMotionName(class mHRPc* const this) [?getCurTigerMotionName@mHRPc@@QBEPBDXZ]
-	char const* getCurTigerMotionName()
+	// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
+	void getCurTigerMotionName()
 	{
 		typedef char const*(__thiscall* _Func)(class mHRPc* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xaa5b0);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] char const* __convention("thiscall") mHRPc::getCurMotionName(class mHRPc* const this) [?getCurMotionName@mHRPc@@UBEPBDXZ]
-	char const* getCurMotionName()
+	// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
+	void getCurMotionName()
 	{
 		typedef char const*(__thiscall* _Func)(class mHRPc* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xaa5c0);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRPc::isOutResourceMotion(class mHRPc* const this) [?isOutResourceMotion@mHRPc@@QBE_NXZ]
 	uint8_t isOutResourceMotion()
@@ -10708,11 +10880,12 @@ public:
 		return mFunc(this);
 	}
 	// [Function] struct Vec& __convention("thiscall") mHRPc::mGetBikeRot(class mHRPc* const this) [?mGetBikeRot@mHRPc@@QAEAAUVec@@XZ]
-	struct Vec& mGetBikeRot()
+	// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetBikeRot()
 	{
 		typedef struct Vec&(__thiscall* _Func)(class mHRPc* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0x41ed30);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] char __convention("thiscall") mHRPc::mGetEquipDurabilityMax(class mHRPc* const this, int32_t arg2) [?mGetEquipDurabilityMax@mHRPc@@QAECH@Z]
 	char mGetEquipDurabilityMax(int32_t arg2)
@@ -12647,11 +12820,12 @@ public:
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6);
 	}
 	// [Function] class TGan** __convention("thiscall") mHRPc::mGetAtkMotPPtr(class mHRPc* const this, int32_t arg2) [?mGetAtkMotPPtr@mHRPc@@QAEPAPAVTGan@@H@Z]
-	class TGan** mGetAtkMotPPtr(int32_t arg2)
+	// Can't export pointer to pointer 'class TGan**' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetAtkMotPPtr(int32_t arg2)
 	{
 		typedef class TGan**(__thiscall* _Func)(class mHRPc* const thisPtr, int32_t arg2);
 		_Func mFunc = (_Func)(GameModule + 0x43c300);
-		return mFunc(this, arg2);
+		mFunc(this, arg2);
 	}
 	// [Function] class TGan* __convention("thiscall") mHRPc::mGetAtkMotPtr(class mHRPc* const this, int32_t arg2) [?mGetAtkMotPtr@mHRPc@@QAEPAVTGan@@H@Z]
 	class TGan* mGetAtkMotPtr(int32_t arg2)
@@ -12719,7 +12893,7 @@ public:
 	// [Function] void mHRPc::mRenderFpsCursor(void* arg1) [?mRenderFpsCursor@mHRPc@@SAXPAX@Z]
 	static void mRenderFpsCursor(void* arg1)
 	{
-		typedef void(__cdecl* _Func)(void* arg1);
+		typedef void(__fastcall* _Func)(void* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x43cc10);
 		return mFunc(arg1);
 	}
@@ -13105,11 +13279,12 @@ public:
 		return mFunc(this, arg2);
 	}
 	// [Function] struct Vec& __convention("thiscall") mHRPc::mGetBikePos(class mHRPc* const this) [?mGetBikePos@mHRPc@@QAEAAUVec@@XZ]
-	struct Vec& mGetBikePos()
+	// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+	void mGetBikePos()
 	{
 		typedef struct Vec&(__thiscall* _Func)(class mHRPc* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0x448240);
-		return mFunc(this);
+		mFunc(this);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRPc::mTestBikeRide(class mHRPc* const this) [?mTestBikeRide@mHRPc@@QAE_NXZ]
 	uint8_t mTestBikeRide()
@@ -13801,10 +13976,14 @@ public:
 	// <class CTimeRatioInterpolate m_inWeaponLengthRatio, offset 0x1fa4>
 	class CTimeRatioInterpolate m_inWeaponLengthRatio;
 
+	std::string ToString() const { return "class mHRPc(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<mHRPc, mHRChara>("mHRPc")
+			.addFunction("__tostring", &mHRPc::ToString)
+			.addFunction("GetPtrAddr", &mHRPc::GetPtrAddr)
 			.addProperty("mEscapeActionInit", &mHRPc::mEscapeActionInit)
 			.addProperty("mPcStatus", &mHRPc::mPcStatus)
 			.addProperty("mMiniDemo", &mHRPc::mMiniDemo)
@@ -13894,10 +14073,8 @@ public:
 			.addFunction("mSubPcMoney", &mHRPc::mSubPcMoney)
 			.addFunction("mGetPcMoney", &mHRPc::mGetPcMoney)
 			.addFunction("mGetEquipID", &mHRPc::mGetEquipID)
-			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetEquipGmfPtr", &mHRPc::mGetEquipGmfPtr)
-			// Functions with return values pointing to native types ('class mHRBike*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetBikePtr", &mHRPc::mGetBikePtr)
+			.addFunction("mGetEquipGmfPtr", &mHRPc::mGetEquipGmfPtr)
+			.addFunction("mGetBikePtr", &mHRPc::mGetBikePtr)
 			.addFunction("mSetBgmNo4Load", &mHRPc::mSetBgmNo4Load)
 			.addFunction("mCheckDemoBattou", &mHRPc::mCheckDemoBattou)
 			.addFunction("mCheckDemoNoutou", &mHRPc::mCheckDemoNoutou)
@@ -13939,28 +14116,24 @@ public:
 			.addFunction("mSetJustGuardDisEnable", &mHRPc::mSetJustGuardDisEnable)
 			.addFunction("mSetDashAtkDisEnable", &mHRPc::mSetDashAtkDisEnable)
 			.addFunction("mSetJustEscapeDisEnable", &mHRPc::mSetJustEscapeDisEnable)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetTsubaNpc", &mHRPc::mGetTsubaNpc)
+			.addFunction("mGetTsubaNpc", &mHRPc::mGetTsubaNpc)
 			.addFunction("mSetOperate", &mHRPc::mSetOperate)
 			.addFunction("mGetOperate", &mHRPc::mGetOperate)
 			.addFunction("mSetCameraOperate", &mHRPc::mSetCameraOperate)
 			.addFunction("mCheckStageChangeTermEnd", &mHRPc::mCheckStageChangeTermEnd)
 			.addFunction("mGetDeadFlag", &mHRPc::mGetDeadFlag)
-			// Functions with return values pointing to native types ('struct HRSAVEDATA_DEBUNEKO*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetDebuNekoDataPtr", &mHRPc::mGetDebuNekoDataPtr)
+			.addFunction("mGetDebuNekoDataPtr", &mHRPc::mGetDebuNekoDataPtr)
 			.addFunction("mSetPauseAllFlag", &mHRPc::mSetPauseAllFlag)
 			.addFunction("mSetCancelSetPadOffset", &mHRPc::mSetCancelSetPadOffset)
 			.addFunction("mSetChangeEquipFromScript", &mHRPc::mSetChangeEquipFromScript)
 			.addFunction("mSetForceLoseTsubazeri", &mHRPc::mSetForceLoseTsubazeri)
 			.addFunction("mCheckDeadFukki", &mHRPc::mCheckDeadFukki)
-			// Functions with parameters pointing to native types (char const* arg3) not supported in LuaBridge.
+			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mPlayMotionFromDatPtrExt", &mHRPc::mPlayMotionFromDatPtrExt)
 			.addFunction("mSetPcPower", &mHRPc::mSetPcPower)
-			// Functions with return values pointing to native types ('struct tagGHMR_TEX*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetEquipTexPtr", &mHRPc::mGetEquipTexPtr)
+			.addFunction("mGetEquipTexPtr", &mHRPc::mGetEquipTexPtr)
 			.addFunction("mSetRestartBGM", &mHRPc::mSetRestartBGM)
-			// Functions with return values pointing to native types ('union uniSMflag*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetSubMissionflag", &mHRPc::mGetSubMissionflag)
+			.addFunction("mGetSubMissionflag", &mHRPc::mGetSubMissionflag)
 			.addStaticFunction("mSetDisplayMiniMapFlag", &mHRPc::mSetDisplayMiniMapFlag)
 			.addStaticFunction("mGetDisplayMiniMapFlag", &mHRPc::mGetDisplayMiniMapFlag)
 			.addStaticFunction("mSetCameraXReverseControlFlag", &mHRPc::mSetCameraXReverseControlFlag)
@@ -14003,8 +14176,7 @@ public:
 			.addFunction("mSetTsubaEffectVisible", &mHRPc::mSetTsubaEffectVisible)
 			.addFunction("mGetTsubaEffectVisible", &mHRPc::mGetTsubaEffectVisible)
 			.addFunction("mCheckLockOn", &mHRPc::mCheckLockOn)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetLockOnNpc", &mHRPc::mGetLockOnNpc)
+			.addFunction("mGetLockOnNpc", &mHRPc::mGetLockOnNpc)
 			.addFunction("mSetAtkPauseTime", &mHRPc::mSetAtkPauseTime)
 			.addFunction("mSetCmbKind", &mHRPc::mSetCmbKind)
 			.addFunction("mGetCmbKind", &mHRPc::mGetCmbKind)
@@ -14030,14 +14202,10 @@ public:
 			.addFunction("mGetAttackHitToRollEscepe", &mHRPc::mGetAttackHitToRollEscepe)
 			.addFunction("mGetPuppetMode", &mHRPc::mGetPuppetMode)
 			.addFunction("mGetUseWeaponEffect", &mHRPc::mGetUseWeaponEffect)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mSetLastAttackNpc", &mHRPc::mSetLastAttackNpc)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetLastAttackNpc", &mHRPc::mGetLastAttackNpc)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mSetAttackFromBackNpc", &mHRPc::mSetAttackFromBackNpc)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetAttackFromBackNpc", &mHRPc::mGetAttackFromBackNpc)
+			.addFunction("mSetLastAttackNpc", &mHRPc::mSetLastAttackNpc)
+			.addFunction("mGetLastAttackNpc", &mHRPc::mGetLastAttackNpc)
+			.addFunction("mSetAttackFromBackNpc", &mHRPc::mSetAttackFromBackNpc)
+			.addFunction("mGetAttackFromBackNpc", &mHRPc::mGetAttackFromBackNpc)
 			.addFunction("mGetFinishBonusFlag", &mHRPc::mGetFinishBonusFlag)
 			.addFunction("mSetBanRollEscape", &mHRPc::mSetBanRollEscape)
 			.addFunction("mSetBanJump", &mHRPc::mSetBanJump)
@@ -14061,8 +14229,7 @@ public:
 			.addFunction("mSetDashAtkExec", &mHRPc::mSetDashAtkExec)
 			.addFunction("mGetDashAtkExec", &mHRPc::mGetDashAtkExec)
 			.addFunction("mGetJustEscapeDisEnable", &mHRPc::mGetJustEscapeDisEnable)
-			// Functions with return values pointing to native types ('struct tagGHMR_TEX*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetFpsCursorPtr", &mHRPc::mGetFpsCursorPtr)
+			.addFunction("mGetFpsCursorPtr", &mHRPc::mGetFpsCursorPtr)
 			.addFunction("mSetDontRestoreMotion", &mHRPc::mSetDontRestoreMotion)
 			.addFunction("mGetDontRestoreMotion", &mHRPc::mGetDontRestoreMotion)
 			.addFunction("mSetBikeClash2battou", &mHRPc::mSetBikeClash2battou)
@@ -14075,18 +14242,13 @@ public:
 			.addFunction("mTest360", &mHRPc::mTest360)
 			.addFunction("mSetTigerVisible", &mHRPc::mSetTigerVisible)
 			.addFunction("mGetTigerVisible", &mHRPc::mGetTigerVisible)
-			// Functions with return values pointing to native types ('class ghmTriangle*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetRightWepTrianglePtr", &mHRPc::mGetRightWepTrianglePtr)
-			// Functions with return values pointing to native types ('class ghmTriangle*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetWepTrianglePtr", &mHRPc::mGetWepTrianglePtr)
-			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetResourceGmfPtr", &mHRPc::mGetResourceGmfPtr)
+			.addFunction("mGetRightWepTrianglePtr", &mHRPc::mGetRightWepTrianglePtr)
+			.addFunction("mGetWepTrianglePtr", &mHRPc::mGetWepTrianglePtr)
+			.addFunction("mGetResourceGmfPtr", &mHRPc::mGetResourceGmfPtr)
 			.addFunction("mSetPauseNpcFlag", &mHRPc::mSetPauseNpcFlag)
 			.addFunction("mGetPauseNpcFlag", &mHRPc::mGetPauseNpcFlag)
-			// Functions with return values pointing to native types ('char const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("getCurTigerMotionName", &mHRPc::getCurTigerMotionName)
-			// Functions with return values pointing to native types ('char const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("getCurMotionName", &mHRPc::getCurMotionName)
+			.addFunction("getCurTigerMotionName", &mHRPc::getCurTigerMotionName)
+			.addFunction("getCurMotionName", &mHRPc::getCurMotionName)
 			.addFunction("isOutResourceMotion", &mHRPc::isOutResourceMotion)
 			.addFunction("mGetCancelSetPadOffset", &mHRPc::mGetCancelSetPadOffset)
 			.addFunction("mGetChangeEquipFromScript", &mHRPc::mGetChangeEquipFromScript)
@@ -14115,24 +14277,18 @@ public:
 			.addFunction("mGetEqWepID", &mHRPc::mGetEqWepID)
 			.addFunction("mGetWepCmbExtend", &mHRPc::mGetWepCmbExtend)
 			.addFunction("mSetDeadMotionPlayFlag", &mHRPc::mSetDeadMotionPlayFlag)
-			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
-			//.addFunction("getNPCInterestPosition", &mHRPc::getNPCInterestPosition)
+			.addFunction("getNPCInterestPosition", &mHRPc::getNPCInterestPosition)
 			.addFunction("mGetStammina", &mHRPc::mGetStammina)
-			// Functions with return values pointing to native types ('struct stPcStatus*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetPcStatusPtr", &mHRPc::mGetPcStatusPtr)
+			.addFunction("mGetPcStatusPtr", &mHRPc::mGetPcStatusPtr)
 			.addFunction("mGetBikeVisible", &mHRPc::mGetBikeVisible)
 			.addFunction("mGetFinishNpcNum", &mHRPc::mGetFinishNpcNum)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetLockOnDummyPtr", &mHRPc::mGetLockOnDummyPtr)
+			.addFunction("mGetLockOnDummyPtr", &mHRPc::mGetLockOnDummyPtr)
 			.addFunction("mGetCallMotionProcess", &mHRPc::mGetCallMotionProcess)
 			.addFunction("mSetDeadBossNum", &mHRPc::mSetDeadBossNum)
-			// Functions with return values pointing to native types ('struct stThrowInfo*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetThrowInfoPtr", &mHRPc::mGetThrowInfoPtr)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetCatchNpc", &mHRPc::mGetCatchNpc)
+			.addFunction("mGetThrowInfoPtr", &mHRPc::mGetThrowInfoPtr)
+			.addFunction("mGetCatchNpc", &mHRPc::mGetCatchNpc)
 			.addFunction("mCheckFinishAttackJustBeforeHitSlow", &mHRPc::mCheckFinishAttackJustBeforeHitSlow)
-			// Functions with return values pointing to native types ('struct stPcEffect*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetPcEffectPtr", &mHRPc::mGetPcEffectPtr)
+			.addFunction("mGetPcEffectPtr", &mHRPc::mGetPcEffectPtr)
 			.addFunction("mGetCallBikeFlag", &mHRPc::mGetCallBikeFlag)
 			.addFunction("mGetLostBikeFlag", &mHRPc::mGetLostBikeFlag)
 			.addFunction("mSetBikeSight", &mHRPc::mSetBikeSight)
@@ -14150,8 +14306,7 @@ public:
 			.addFunction("mGetSlashModeOnly", &mHRPc::mGetSlashModeOnly)
 			.addFunction("mGetBanRollEscape", &mHRPc::mGetBanRollEscape)
 			.addFunction("mGetDashAtkDisEnable", &mHRPc::mGetDashAtkDisEnable)
-			// Functions with return values pointing to native types ('struct HRSAVEDATA_SHOP*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetShopDataPtr", &mHRPc::mGetShopDataPtr)
+			.addFunction("mGetShopDataPtr", &mHRPc::mGetShopDataPtr)
 			.addFunction("mGetCatchTick", &mHRPc::mGetCatchTick)
 			.addFunction("UnlockAllMoves", &mHRPc::UnlockAllMoves)
 			.addFunction("UnlockAllUpgrades", &mHRPc::UnlockAllUpgrades)
@@ -14160,8 +14315,7 @@ public:
 			.addFunction("UnlockAllWeapons", &mHRPc::UnlockAllWeapons)
 			.addFunction("SubPcNowEquipBatteryRatio", &mHRPc::SubPcNowEquipBatteryRatio)
 			.addFunction("isAcceptCameraFollowRotation", &mHRPc::isAcceptCameraFollowRotation)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mTestCanDownAttack", &mHRPc::mTestCanDownAttack)
+			.addFunction("mTestCanDownAttack", &mHRPc::mTestCanDownAttack)
 			.addFunction("mTestRunWeaponEffect", &mHRPc::mTestRunWeaponEffect)
 			.addFunction("mFloorEventProc", &mHRPc::mFloorEventProc)
 			.addFunction("mCallClearProcessBeforeEvent", &mHRPc::mCallClearProcessBeforeEvent)
@@ -14179,8 +14333,7 @@ public:
 			.addFunction("mTestCatchZako", &mHRPc::mTestCatchZako)
 			.addFunction("mRestore1stChBGM", &mHRPc::mRestore1stChBGM)
 			.addFunction("mPlay2ndChBGM", &mHRPc::mPlay2ndChBGM)
-			// Functions with parameters pointing to native types (struct GXColor* arg2) not supported in LuaBridge.
-			//.addFunction("mGetSmokeColor", &mHRPc::mGetSmokeColor)
+			.addFunction("mGetSmokeColor", &mHRPc::mGetSmokeColor)
 			.addFunction("mExitBatteryCharge", &mHRPc::mExitBatteryCharge)
 			.addFunction("mHitCheckNpc", &mHRPc::mHitCheckNpc)
 			.addFunction("mSetCherryFlag", &mHRPc::mSetCherryFlag)
@@ -14214,41 +14367,31 @@ public:
 			.addFunction("mSetFireMan", &mHRPc::mSetFireMan)
 			.addFunction("mGetDarkSideUseNum", &mHRPc::mGetDarkSideUseNum)
 			.addFunction("mGetLightSideRate", &mHRPc::mGetLightSideRate)
-			// Functions with parameters pointing to native types (class ghmTriangle* arg2) not supported in LuaBridge.
-			//.addFunction("mCallSwordCutDmgEffect", &mHRPc::mCallSwordCutDmgEffect)
-			// Functions with parameters pointing to native types (class ghmTriangle* arg2) not supported in LuaBridge.
-			//.addFunction("mCallBeamCutDmgEffect", &mHRPc::mCallBeamCutDmgEffect)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mCallFightAttackDmgEffect", &mHRPc::mCallFightAttackDmgEffect)
+			.addFunction("mCallSwordCutDmgEffect", &mHRPc::mCallSwordCutDmgEffect)
+			.addFunction("mCallBeamCutDmgEffect", &mHRPc::mCallBeamCutDmgEffect)
+			.addFunction("mCallFightAttackDmgEffect", &mHRPc::mCallFightAttackDmgEffect)
 			.addFunction("mCallElectDmgEffect", &mHRPc::mCallElectDmgEffect)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mCallNormalAttackEffect", &mHRPc::mCallNormalAttackEffect)
+			.addFunction("mCallNormalAttackEffect", &mHRPc::mCallNormalAttackEffect)
 			.addFunction("IsCenteringHoseiCutmark", &mHRPc::IsCenteringHoseiCutmark)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("CreateCutMarkEffect", &mHRPc::CreateCutMarkEffect)
+			.addFunction("CreateCutMarkEffect", &mHRPc::CreateCutMarkEffect)
 			.addFunction("CreateGuardBreakEffect", &mHRPc::CreateGuardBreakEffect)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mSePlayChargeAttack", &mHRPc::mSePlayChargeAttack)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mCallFinishAttackEffect", &mHRPc::mCallFinishAttackEffect)
-			// Functions with parameters pointing to native types (char* arg2) not supported in LuaBridge.
+			.addFunction("mSePlayChargeAttack", &mHRPc::mSePlayChargeAttack)
+			.addFunction("mCallFinishAttackEffect", &mHRPc::mCallFinishAttackEffect)
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mCreateHugGan", &mHRPc::mCreateHugGan)
 			.addFunction("mPlayHugMotion", &mHRPc::mPlayHugMotion)
 			.addFunction("mSetPoisonWalk", &mHRPc::mSetPoisonWalk)
 			.addFunction("mSetElectroShockBGMPitch", &mHRPc::mSetElectroShockBGMPitch)
 			.addFunction("mCheckReadEndAtkMot", &mHRPc::mCheckReadEndAtkMot)
 			.addFunction("mGetPcBtlPoseNowMotion", &mHRPc::mGetPcBtlPoseNowMotion)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mCheckFinishNpc", &mHRPc::mCheckFinishNpc)
-			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
-			//.addFunction("mGetHitEffectPos", &mHRPc::mGetHitEffectPos)
+			.addFunction("mCheckFinishNpc", &mHRPc::mCheckFinishNpc)
+			.addFunction("mGetHitEffectPos", &mHRPc::mGetHitEffectPos)
 			// Function overloading not supported in LuaBridge.
 			//.addFunction("mGetHitEffectPos", &mHRPc::mGetHitEffectPos)
 			.addFunction("mSetNoutou", &mHRPc::mSetNoutou)
 			.addFunction("mSetBattou", &mHRPc::mSetBattou)
 			.addFunction("mGetBikeNitro", &mHRPc::mGetBikeNitro)
-			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetBikeRot", &mHRPc::mGetBikeRot)
+			.addFunction("mGetBikeRot", &mHRPc::mGetBikeRot)
 			.addFunction("mGetEquipDurabilityMax", &mHRPc::mGetEquipDurabilityMax)
 			.addFunction("mGetEquipDurability", &mHRPc::mGetEquipDurability)
 			.addFunction("mSetOnlyEquip", &mHRPc::mSetOnlyEquip)
@@ -14266,8 +14409,7 @@ public:
 			.addFunction("mPlayThrowMissMotion", &mHRPc::mPlayThrowMissMotion)
 			.addFunction("mDispThrowInput", &mHRPc::mDispThrowInput)
 			.addFunction("mStartThrowInput", &mHRPc::mStartThrowInput)
-			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
-			//.addFunction("mAdjustHitWallPosition", &mHRPc::mAdjustHitWallPosition)
+			.addFunction("mAdjustHitWallPosition", &mHRPc::mAdjustHitWallPosition)
 			.addFunction("mStartThrowSNB", &mHRPc::mStartThrowSNB)
 			.addFunction("mFrameProcChangeScreen", &mHRPc::mFrameProcChangeScreen)
 			.addFunction("mPlayMiniDemoForWarpPosSantDestroy", &mHRPc::mPlayMiniDemoForWarpPosSantDestroy)
@@ -14289,8 +14431,7 @@ public:
 			.addFunction("mTestUpGuard", &mHRPc::mTestUpGuard)
 			.addFunction("mGetInputTurn", &mHRPc::mGetInputTurn)
 			.addFunction("mGetAttackTimingFrame", &mHRPc::mGetAttackTimingFrame)
-			// Functions with return values pointing to native types ('class ghmTriangle*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetLeftWepTrianglePtr", &mHRPc::mGetLeftWepTrianglePtr)
+			.addFunction("mGetLeftWepTrianglePtr", &mHRPc::mGetLeftWepTrianglePtr)
 			.addFunction("mGetExtraComboMotionNo", &mHRPc::mGetExtraComboMotionNo)
 			.addFunction("mGetNormalComboMotionNo", &mHRPc::mGetNormalComboMotionNo)
 			.addFunction("mSetComboKind", &mHRPc::mSetComboKind)
@@ -14328,12 +14469,9 @@ public:
 			.addFunction("mPlayTigerMotion", &mHRPc::mPlayTigerMotion)
 			.addFunction("mClearRapidFinishTarget", &mHRPc::mClearRapidFinishTarget)
 			.addFunction("mSetRapidFinishTarget", &mHRPc::mSetRapidFinishTarget)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mSearchRapidFinishNpc", &mHRPc::mSearchRapidFinishNpc)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mCheckResistRapidFinishNpc", &mHRPc::mCheckResistRapidFinishNpc)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mSetRapidFinishNpc", &mHRPc::mSetRapidFinishNpc)
+			.addFunction("mSearchRapidFinishNpc", &mHRPc::mSearchRapidFinishNpc)
+			.addFunction("mCheckResistRapidFinishNpc", &mHRPc::mCheckResistRapidFinishNpc)
+			.addFunction("mSetRapidFinishNpc", &mHRPc::mSetRapidFinishNpc)
 			.addFunction("mGet360Tick", &mHRPc::mGet360Tick)
 			.addFunction("mGetFireTick", &mHRPc::mGetFireTick)
 			.addFunction("mGetTigerTick", &mHRPc::mGetTigerTick)
@@ -14344,8 +14482,7 @@ public:
 			.addFunction("mCheckChargeMax", &mHRPc::mCheckChargeMax)
 			.addFunction("mCheckInputBatteryCharge", &mHRPc::mCheckInputBatteryCharge)
 			.addFunction("mCheckInputGuard", &mHRPc::mCheckInputGuard)
-			// Functions with parameters pointing to native types (class TGmf* arg2) not supported in LuaBridge.
-			//.addFunction("checkAndUpdateWeaponLength", &mHRPc::checkAndUpdateWeaponLength)
+			.addFunction("checkAndUpdateWeaponLength", &mHRPc::checkAndUpdateWeaponLength)
 			.addFunction("mCallWepMotionProc", &mHRPc::mCallWepMotionProc)
 			.addFunction("mSetWepMotionRate", &mHRPc::mSetWepMotionRate)
 			.addFunction("mPlayWepMotion", &mHRPc::mPlayWepMotion)
@@ -14367,7 +14504,7 @@ public:
 			.addFunction("mCheckLockOnDummy", &mHRPc::mCheckLockOnDummy)
 			.addFunction("mInitLockOn", &mHRPc::mInitLockOn)
 			.addFunction("mDarkSideSonicProc", &mHRPc::mDarkSideSonicProc)
-			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("bootGuardLightFlashEffect", &mHRPc::bootGuardLightFlashEffect)
 			.addFunction("LaserScaleProc", &mHRPc::LaserScaleProc)
 			.addFunction("mEffectProc", &mHRPc::mEffectProc)
@@ -14375,37 +14512,23 @@ public:
 			.addFunction("mGetCatchDistance", &mHRPc::mGetCatchDistance)
 			.addFunction("mGetMotionSpeed", &mHRPc::mGetMotionSpeed)
 			.addFunction("mSetFinishMotionSpeed", &mHRPc::mSetFinishMotionSpeed)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mCheckTargetObject", &mHRPc::mCheckTargetObject)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mSearchAttackTargetNpc", &mHRPc::mSearchAttackTargetNpc)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mSearchDarkSideWarpTargetNpc", &mHRPc::mSearchDarkSideWarpTargetNpc)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mSearchNearNpc", &mHRPc::mSearchNearNpc)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mLookAttackTargetNpc", &mHRPc::mLookAttackTargetNpc)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mLockNearNpc", &mHRPc::mLockNearNpc)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mLockNearCatchNpc", &mHRPc::mLockNearCatchNpc)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mAddKillNpcCombo", &mHRPc::mAddKillNpcCombo)
+			.addFunction("mCheckTargetObject", &mHRPc::mCheckTargetObject)
+			.addFunction("mSearchAttackTargetNpc", &mHRPc::mSearchAttackTargetNpc)
+			.addFunction("mSearchDarkSideWarpTargetNpc", &mHRPc::mSearchDarkSideWarpTargetNpc)
+			.addFunction("mSearchNearNpc", &mHRPc::mSearchNearNpc)
+			.addFunction("mLookAttackTargetNpc", &mHRPc::mLookAttackTargetNpc)
+			.addFunction("mLockNearNpc", &mHRPc::mLockNearNpc)
+			.addFunction("mLockNearCatchNpc", &mHRPc::mLockNearCatchNpc)
+			.addFunction("mAddKillNpcCombo", &mHRPc::mAddKillNpcCombo)
 			.addFunction("mIntiFinishNpc", &mHRPc::mIntiFinishNpc)
 			.addFunction("mSetDarkSideTarget", &mHRPc::mSetDarkSideTarget)
 			.addFunction("mInputDarkSideSuccess", &mHRPc::mInputDarkSideSuccess)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mPcMoveFrontOfNpc4DarkSideMode", &mHRPc::mPcMoveFrontOfNpc4DarkSideMode)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mPcMoveFrontOfNpc", &mHRPc::mPcMoveFrontOfNpc)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mSearchNextNpc", &mHRPc::mSearchNextNpc)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mCheckFinishMode", &mHRPc::mCheckFinishMode)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mPrepareInputFinish", &mHRPc::mPrepareInputFinish)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mSetIntoTsubazeriai", &mHRPc::mSetIntoTsubazeriai)
+			.addFunction("mPcMoveFrontOfNpc4DarkSideMode", &mHRPc::mPcMoveFrontOfNpc4DarkSideMode)
+			.addFunction("mPcMoveFrontOfNpc", &mHRPc::mPcMoveFrontOfNpc)
+			.addFunction("mSearchNextNpc", &mHRPc::mSearchNextNpc)
+			.addFunction("mCheckFinishMode", &mHRPc::mCheckFinishMode)
+			.addFunction("mPrepareInputFinish", &mHRPc::mPrepareInputFinish)
+			.addFunction("mSetIntoTsubazeriai", &mHRPc::mSetIntoTsubazeriai)
 			.addFunction("mSePlayUpperAttack", &mHRPc::mSePlayUpperAttack)
 			.addFunction("mTameAttckProc", &mHRPc::mTameAttckProc)
 			.addFunction("mJoyuuLight", &mHRPc::mJoyuuLight)
@@ -14415,8 +14538,7 @@ public:
 			.addFunction("mFailedInputFinishProcessForVsBoss", &mHRPc::mFailedInputFinishProcessForVsBoss)
 			.addFunction("mSpecialFightAttackProc", &mHRPc::mSpecialFightAttackProc)
 			.addFunction("mCheckComboAttackInput", &mHRPc::mCheckComboAttackInput)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mTrvStartDownAttack", &mHRPc::mTrvStartDownAttack)
+			.addFunction("mTrvStartDownAttack", &mHRPc::mTrvStartDownAttack)
 			.addFunction("mStartFightAttack", &mHRPc::mStartFightAttack)
 			.addFunction("mGetAttackMotionStartFrame30fps", &mHRPc::mGetAttackMotionStartFrame30fps)
 			.addFunction("mCheckCanCatchNpc", &mHRPc::mCheckCanCatchNpc)
@@ -14428,15 +14550,15 @@ public:
 			.addFunction("mClearNpcDamageInfo", &mHRPc::mClearNpcDamageInfo)
 			.addFunction("mGetHjkDir", &mHRPc::mGetHjkDir)
 			.addFunction("mGetFinishAtkMotNo", &mHRPc::mGetFinishAtkMotNo)
-			// Functions with parameters pointing to native types (int32_t* arg3) not supported in LuaBridge.
+			// Can't export pointer to native type 'int32_t*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSearchThrow", &mHRPc::mSearchThrow)
-			// Functions with parameters pointing to native types (int32_t* arg4) not supported in LuaBridge.
+			// Can't export pointer to native type 'int32_t*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mGetPcThrowMotNo", &mHRPc::mGetPcThrowMotNo)
-			// Functions with parameters pointing to native types (int32_t* arg3) not supported in LuaBridge.
+			// Can't export pointer to native type 'int32_t*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mGetThrowDamageMotion", &mHRPc::mGetThrowDamageMotion)
-			// Functions with parameters pointing to native types (int32_t* arg2) not supported in LuaBridge.
+			// Can't export pointer to native type 'int32_t*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mGetPcThrowMotNo4ZakoB", &mHRPc::mGetPcThrowMotNo4ZakoB)
-			// Functions with parameters pointing to native types (int32_t* arg2) not supported in LuaBridge.
+			// Can't export pointer to native type 'int32_t*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mGetPcThrowMotNo4ZakoF", &mHRPc::mGetPcThrowMotNo4ZakoF)
 			.addFunction("mCheckThrowSpace", &mHRPc::mCheckThrowSpace)
 			.addFunction("mGetDownAtkMotNo", &mHRPc::mGetDownAtkMotNo)
@@ -14462,8 +14584,7 @@ public:
 			.addFunction("mUpdateAtkColl", &mHRPc::mUpdateAtkColl)
 			.addFunction("mStartChargeEffect", &mHRPc::mStartChargeEffect)
 			.addFunction("mPreResetChargeAttack", &mHRPc::mPreResetChargeAttack)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mCheckLastTarget", &mHRPc::mCheckLastTarget)
+			.addFunction("mCheckLastTarget", &mHRPc::mCheckLastTarget)
 			.addFunction("mCheckBDash", &mHRPc::mCheckBDash)
 			.addFunction("mCheckChangeWeapon", &mHRPc::mCheckChangeWeapon)
 			.addFunction("mCheckWakeUpZako", &mHRPc::mCheckWakeUpZako)
@@ -14499,8 +14620,7 @@ public:
 			.addFunction("mCheckRangeAttack", &mHRPc::mCheckRangeAttack)
 			.addFunction("mCheckThrowBeforeAttack", &mHRPc::mCheckThrowBeforeAttack)
 			.addFunction("mCheckCatchMiss", &mHRPc::mCheckCatchMiss)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mStartCatchAttack", &mHRPc::mStartCatchAttack)
+			.addFunction("mStartCatchAttack", &mHRPc::mStartCatchAttack)
 			.addFunction("mCheckDownAttack", &mHRPc::mCheckDownAttack)
 			.addFunction("mCheckFightCmbAttack", &mHRPc::mCheckFightCmbAttack)
 			.addFunction("mCheckCityFightAttack", &mHRPc::mCheckCityFightAttack)
@@ -14531,18 +14651,15 @@ public:
 			.addFunction("mTestRunMotion", &mHRPc::mTestRunMotion)
 			.addFunction("mCheckDamageMotion", &mHRPc::mCheckDamageMotion)
 			.addFunction("mCheckCanHit", &mHRPc::mCheckCanHit)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mHitCheck", &mHRPc::mHitCheck)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			.addFunction("mHitCheck", &mHRPc::mHitCheck)
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetElectricDamage", &mHRPc::mSetElectricDamage)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &mHRPc::mSetDamage)
 			.addFunction("mJudgeJustGuardInput", &mHRPc::mJudgeJustGuardInput)
 			.addFunction("mJudgePiyori", &mHRPc::mJudgePiyori)
-			// Functions with parameters pointing to native types (class mHRChara* arg3) not supported in LuaBridge.
-			//.addFunction("mConvertGuardMotion", &mHRPc::mConvertGuardMotion)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mSetDamageIK", &mHRPc::mSetDamageIK)
+			.addFunction("mConvertGuardMotion", &mHRPc::mConvertGuardMotion)
+			.addFunction("mSetDamageIK", &mHRPc::mSetDamageIK)
 			.addFunction("mCheckAutoGuard", &mHRPc::mCheckAutoGuard)
 			.addFunction("mCheckCanGuard", &mHRPc::mCheckCanGuard)
 			.addFunction("mGetBtlCommonMotNo", &mHRPc::mGetBtlCommonMotNo)
@@ -14555,33 +14672,30 @@ public:
 			.addFunction("mCameraInitProcess", &mHRPc::mCameraInitProcess)
 			.addFunction("mCallTsubaBrendMotPorc", &mHRPc::mCallTsubaBrendMotPorc)
 			.addFunction("mCallCulcBrendRate", &mHRPc::mCallCulcBrendRate)
-			// Functions with return values pointing to native types ('class ghmGcCollObjCapsule*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetCollPtr", &mHRPc::mGetCollPtr)
+			.addFunction("mGetCollPtr", &mHRPc::mGetCollPtr)
 			.addFunction("mBossDeadCommonProcess", &mHRPc::mBossDeadCommonProcess)
 			.addFunction("mPlayBattleIdolMotion", &mHRPc::mPlayBattleIdolMotion)
 			.addFunction("mResetValueAtPlayMotion", &mHRPc::mResetValueAtPlayMotion)
-			// Functions with parameters pointing to native types (class TGan** arg2) not supported in LuaBridge.
+			// Can't export pointer to pointer 'class TGan**' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mPlayMotionBlend", &mHRPc::mPlayMotionBlend)
 			// Function overloading not supported in LuaBridge.
 			//.addFunction("mPlayMotionBlend", &mHRPc::mPlayMotionBlend)
 			.addFunction("mPlayMotion", &mHRPc::mPlayMotion)
-			// Functions with return values pointing to native types ('class TGan**' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetAtkMotPPtr", &mHRPc::mGetAtkMotPPtr)
-			// Functions with return values pointing to native types ('class TGan*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetAtkMotPtr", &mHRPc::mGetAtkMotPtr)
+			.addFunction("mGetAtkMotPPtr", &mHRPc::mGetAtkMotPPtr)
+			.addFunction("mGetAtkMotPtr", &mHRPc::mGetAtkMotPtr)
 			.addFunction("mRequestReadAtkMot", &mHRPc::mRequestReadAtkMot)
 			.addFunction("mReleaseAtkMot", &mHRPc::mReleaseAtkMot)
 			.addFunction("mCheckNeedModelRead", &mHRPc::mCheckNeedModelRead)
 			.addFunction("mChangeTShirtModel", &mHRPc::mChangeTShirtModel)
 			.addFunction("mSetNoWearJacket", &mHRPc::mSetNoWearJacket)
-			// Functions with parameters pointing to native types (char* arg3) not supported in LuaBridge.
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mControlDispWestWeapon", &mHRPc::mControlDispWestWeapon)
 			.addFunction("mDetachWeapon", &mHRPc::mDetachWeapon)
 			.addFunction("mAttachWeapon", &mHRPc::mAttachWeapon)
-			// Functions with parameters pointing to native types (void* arg1) not supported in LuaBridge.
+			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("mRenderFpsCursor", &mHRPc::mRenderFpsCursor)
 			.addFunction("mAddTension", &mHRPc::mAddTension)
-			// Functions with parameters pointing to native types (struct Vec& arg2) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetWarpPos", &mHRPc::mSetWarpPos)
 			.addFunction("mRenderShadowProc", &mHRPc::mRenderShadowProc)
 			.addFunction("mPostRenderProc", &mHRPc::mPostRenderProc)
@@ -14608,9 +14722,9 @@ public:
 			.addFunction("mInit", &mHRPc::mInit)
 			.addFunction("mCheckCanOperate", &mHRPc::mCheckCanOperate)
 			.addFunction("mSetOutsidePlayMotion", &mHRPc::mSetOutsidePlayMotion)
-			// Functions with parameters pointing to native types (char* arg2) not supported in LuaBridge.
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mGetEquipTextureName", &mHRPc::mGetEquipTextureName)
-			// Functions with parameters pointing to native types (char* arg2) not supported in LuaBridge.
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mGetEquipModelName", &mHRPc::mGetEquipModelName)
 			.addFunction("mTermWarpPosForSantDestroy", &mHRPc::mTermWarpPosForSantDestroy)
 			.addFunction("mSubDarkSideTick", &mHRPc::mSubDarkSideTick)
@@ -14619,30 +14733,25 @@ public:
 			.addFunction("mCheckPcReadEndWithoutWeapon", &mHRPc::mCheckPcReadEndWithoutWeapon)
 			.addFunction("mCheckFightAttack", &mHRPc::mCheckFightAttack)
 			.addFunction("mCheckCatchAttack", &mHRPc::mCheckCatchAttack)
-			// Functions with parameters pointing to native types (struct Vec* arg5) not supported in LuaBridge.
-			//.addFunction("mCallAttackEffect", &mHRPc::mCallAttackEffect)
+			.addFunction("mCallAttackEffect", &mHRPc::mCallAttackEffect)
 			.addFunction("SetPcSpeedBlurOff", &mHRPc::SetPcSpeedBlurOff)
 			.addFunction("mStopLightSabelSound", &mHRPc::mStopLightSabelSound)
 			.addFunction("mGetPcPower", &mHRPc::mGetPcPower)
-			// Functions with parameters pointing to native types (struct stPcSaveData* arg2) not supported in LuaBridge.
-			//.addFunction("mRestorePcData", &mHRPc::mRestorePcData)
+			.addFunction("mRestorePcData", &mHRPc::mRestorePcData)
 			.addFunction("UnlockEverythingForDeathmatch", &mHRPc::UnlockEverythingForDeathmatch)
 			.addFunction("mResetDeadFlag", &mHRPc::mResetDeadFlag)
 			.addFunction("mSetBatteryMaxAllWeapon", &mHRPc::mSetBatteryMaxAllWeapon)
 			.addFunction("mPlayLightSabelSound", &mHRPc::mPlayLightSabelSound)
 			.addFunction("TurnOffLaserEffectOnPlayer", &mHRPc::TurnOffLaserEffectOnPlayer)
 			.addFunction("mClearBossInit", &mHRPc::mClearBossInit)
-			// Functions with return values pointing to native types ('struct stPcSaveData*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetPcSaveData", &mHRPc::mGetPcSaveData)
+			.addFunction("mGetPcSaveData", &mHRPc::mGetPcSaveData)
 			.addFunction("TestStorePcPosForSM", &mHRPc::TestStorePcPosForSM)
 			.addFunction("ReStorePcPosForSM", &mHRPc::ReStorePcPosForSM)
 			.addFunction("mCheckIntoStatusScreen", &mHRPc::mCheckIntoStatusScreen)
-			// Functions with parameters pointing to native types (class TGan* arg2) not supported in LuaBridge.
-			//.addFunction("mPlayMotionFromDatPtr", &mHRPc::mPlayMotionFromDatPtr)
+			.addFunction("mPlayMotionFromDatPtr", &mHRPc::mPlayMotionFromDatPtr)
 			.addFunction("mCheckFinishAttack", &mHRPc::mCheckFinishAttack)
 			.addFunction("mCheckTsubazering", &mHRPc::mCheckTsubazering)
-			// Functions with return values pointing to native types ('struct Vec&' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetBikePos", &mHRPc::mGetBikePos)
+			.addFunction("mGetBikePos", &mHRPc::mGetBikePos)
 			.addFunction("mTestBikeRide", &mHRPc::mTestBikeRide)
 			.addFunction("mSetPadOffset", &mHRPc::mSetPadOffset)
 			.addFunction("mCheckNeutral", &mHRPc::mCheckNeutral)
@@ -14652,7 +14761,7 @@ public:
 			.addFunction("mCheckDead", &mHRPc::mCheckDead)
 			.addFunction("mClearDarkSide", &mHRPc::mClearDarkSide)
 			.addFunction("mExitChargeBattery4FixCamera", &mHRPc::mExitChargeBattery4FixCamera)
-			// Functions with parameters pointing to native types (struct Vec& arg3) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("StorePcPosForSM", &mHRPc::StorePcPosForSM)
 			.addFunction("mCheckEquipReadEnd", &mHRPc::mCheckEquipReadEnd)
 			.addFunction("mTestBattouDemo", &mHRPc::mTestBattouDemo)
@@ -14668,7 +14777,7 @@ public:
 			.addFunction("mResetChargeAttack", &mHRPc::mResetChargeAttack)
 			.addFunction("mResetFPCamera", &mHRPc::mResetFPCamera)
 			.addFunction("mCheckDarkSideMode", &mHRPc::mCheckDarkSideMode)
-			// Functions with parameters pointing to native types (char* arg5) not supported in LuaBridge.
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mAttachObj", &mHRPc::mAttachObj)
 			.addFunction("mRestoreSubMissionWeapon", &mHRPc::mRestoreSubMissionWeapon)
 			.addFunction("mGetBattery", &mHRPc::mGetBattery)
@@ -14802,10 +14911,14 @@ public:
 	// <struct Vec mExtent, offset 0xc>
 	struct Vec mExtent;
 
+	std::string ToString() const { return "class ghmAABB(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmAABB>("ghmAABB")
+			.addFunction("__tostring", &ghmAABB::ToString)
+			.addFunction("GetPtrAddr", &ghmAABB::GetPtrAddr)
 			.addProperty("mCenter", &ghmAABB::mCenter)
 			.addProperty("mExtent", &ghmAABB::mExtent)
 		.endClass();
@@ -14852,10 +14965,14 @@ public:
 	// <uint32_t mVisible, offset 0x68>
 	uint32_t mVisible;
 
+	std::string ToString() const { return "class ghmGcOctTreeNode(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmGcOctTreeNode>("ghmGcOctTreeNode")
+			.addFunction("__tostring", &ghmGcOctTreeNode::ToString)
+			.addFunction("GetPtrAddr", &ghmGcOctTreeNode::GetPtrAddr)
 			// delegates are not supported in LuaBridge
 			//.addProperty("field_0", &ghmGcOctTreeNode::field_0)
 			.addProperty("mpContainer", &ghmGcOctTreeNode::mpContainer)
@@ -14900,10 +15017,14 @@ public:
 	// <class ghmGcOctTreeNode* mpRootNode, offset 0x8>
 	class ghmGcOctTreeNode* mpRootNode;
 
+	std::string ToString() const { return "class ghmGcOctTree(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmGcOctTree>("ghmGcOctTree")
+			.addFunction("__tostring", &ghmGcOctTree::ToString)
+			.addFunction("GetPtrAddr", &ghmGcOctTree::GetPtrAddr)
 			// delegates are not supported in LuaBridge
 			//.addProperty("field_0", &ghmGcOctTree::field_0)
 			.addProperty("mMaxDepthLevel", &ghmGcOctTree::mMaxDepthLevel)
@@ -14928,10 +15049,14 @@ private:
 	char _UnidentifiedData[48];
 public:
 
+	std::string ToString() const { return "class ghmGcCollObjHitResult(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmGcCollObjHitResult>("ghmGcCollObjHitResult")
+			.addFunction("__tostring", &ghmGcCollObjHitResult::ToString)
+			.addFunction("GetPtrAddr", &ghmGcCollObjHitResult::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -14953,10 +15078,14 @@ public:
 	// <uint32_t mPad[0x5], offset 0xc>
 	uint32_t mPad[5];
 
+	std::string ToString() const { return "struct WGclMaterialSpec(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<WGclMaterialSpec>("WGclMaterialSpec")
+			.addFunction("__tostring", &WGclMaterialSpec::ToString)
+			.addFunction("GetPtrAddr", &WGclMaterialSpec::GetPtrAddr)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("mIDStr", &WGclMaterialSpec::mIDStr)
 			.addProperty("mEnable", &WGclMaterialSpec::mEnable)
@@ -14983,6 +15112,8 @@ namespace EE
 		// <class EE::IFile* m_pObject, offset 0x0>
 		class IFile* m_pObject;
 
+		std::string ToString() const { return "class SmartPtr(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 		// Exporting templated types to Lua currently not supported.
 		// static void BindLua(luabridge::Namespace& NS)
 	};
@@ -15032,10 +15163,14 @@ public:
 	// <void* userData, offset 0x2c>
 	void* userData;
 
+	std::string ToString() const { return "struct DVDCommandBlock(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<DVDCommandBlock>("DVDCommandBlock")
+			.addFunction("__tostring", &DVDCommandBlock::ToString)
+			.addFunction("GetPtrAddr", &DVDCommandBlock::GetPtrAddr)
 			.addProperty("next", &DVDCommandBlock::next)
 			.addProperty("prev", &DVDCommandBlock::prev)
 			.addProperty("command", &DVDCommandBlock::command)
@@ -15091,10 +15226,14 @@ public:
 	// <class EE::SmartPtr<EE::IFile> file, offset 0x3c>
 	class EE::SmartPtr<EE::IFile> file;
 
+	std::string ToString() const { return "struct DVDFileInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<DVDFileInfo>("DVDFileInfo")
+			.addFunction("__tostring", &DVDFileInfo::ToString)
+			.addFunction("GetPtrAddr", &DVDFileInfo::GetPtrAddr)
 			.addProperty("cb", &DVDFileInfo::cb)
 			.addProperty("startAddr", &DVDFileInfo::startAddr)
 			.addProperty("length", &DVDFileInfo::length)
@@ -15192,10 +15331,14 @@ public:
 		// <int32_t mDivNum, offset 0x70>
 		int32_t mDivNum;
 
+		std::string ToString() const { return "struct ghmGcFileInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<ghmGcFile::ghmGcFileInfo>("ghmGcFile_ghmGcFileInfo")
+				.addFunction("__tostring", &ghmGcFile::ghmGcFileInfo::ToString)
+				.addFunction("GetPtrAddr", &ghmGcFile::ghmGcFileInfo::GetPtrAddr)
 				.addProperty("mFileInfo", &ghmGcFile::ghmGcFileInfo::mFileInfo)
 				.addProperty("mOffset", &ghmGcFile::ghmGcFileInfo::mOffset)
 				.addProperty("mLength", &ghmGcFile::ghmGcFileInfo::mLength)
@@ -15247,10 +15390,14 @@ public:
 	// <char mFileName[0x40], offset 0x7c>
 	char mFileName[64];
 
+	std::string ToString() const { return "class ghmGcFile(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmGcFile>("ghmGcFile")
+			.addFunction("__tostring", &ghmGcFile::ToString)
+			.addFunction("GetPtrAddr", &ghmGcFile::GetPtrAddr)
 			.addProperty("mInfo", &ghmGcFile::mInfo)
 			.addProperty("mpPrev", &ghmGcFile::mpPrev)
 			.addProperty("mpNext", &ghmGcFile::mpNext)
@@ -15299,10 +15446,14 @@ public:
 	// <uint32_t gcMagic, offset 0x1c>
 	uint32_t gcMagic;
 
+	std::string ToString() const { return "struct DVDDiskID(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<DVDDiskID>("DVDDiskID")
+			.addFunction("__tostring", &DVDDiskID::ToString)
+			.addFunction("GetPtrAddr", &DVDDiskID::GetPtrAddr)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("gameName", &DVDDiskID::gameName)
 			// static arrays are not supported in LuaBridge (only std::vector)
@@ -15344,10 +15495,14 @@ namespace EE
 		// <int32_t volatile refCount, offset 0x4>
 		int32_t volatile refCount;
 
+		std::string ToString() const { return "class RefObject(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<EE::RefObject>("EE_RefObject")
+				.addFunction("__tostring", &EE::RefObject::ToString)
+				.addFunction("GetPtrAddr", &EE::RefObject::GetPtrAddr)
 				// delegates are not supported in LuaBridge
 				//.addProperty("field_0", &EE::RefObject::field_0)
 				// volatile not supported in LuaBridge and needs a getter
@@ -15383,10 +15538,14 @@ namespace EE
 		char _UnidentifiedData[3];
 	public:
 
+		std::string ToString() const { return "class IFile(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.deriveClass<EE::IFile, EE::RefObject>("EE_IFile")
+				.addFunction("__tostring", &EE::IFile::ToString)
+				.addFunction("GetPtrAddr", &EE::IFile::GetPtrAddr)
 				.addProperty("name", &EE::IFile::name)
 				.addProperty("endianSwap", &EE::IFile::endianSwap)
 			.endClass();
@@ -15425,10 +15584,14 @@ public:
 	// <uint32_t mPad[0x3], offset 0x18>
 	uint32_t mPad[3];
 
+	std::string ToString() const { return "class ghmResGroup(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmResGroup>("ghmResGroup")
+			.addFunction("__tostring", &ghmResGroup::ToString)
+			.addFunction("GetPtrAddr", &ghmResGroup::GetPtrAddr)
 			.addProperty("mMagicNo", &ghmResGroup::mMagicNo)
 			.addProperty("mResourceNum", &ghmResGroup::mResourceNum)
 			.addProperty("mAttrOffset", &ghmResGroup::mAttrOffset)
@@ -15468,10 +15631,14 @@ public:
 	// <uint32_t mPad[0x1], offset 0xc>
 	uint32_t mPad[1];
 
+	std::string ToString() const { return "class ghmResStrTable(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmResStrTable>("ghmResStrTable")
+			.addFunction("__tostring", &ghmResStrTable::ToString)
+			.addFunction("GetPtrAddr", &ghmResStrTable::GetPtrAddr)
 			.addProperty("mNum", &ghmResStrTable::mNum)
 			// pointer to pointer is not supported in LuaBridge
 			//.addProperty("mppStrings", &ghmResStrTable::mppStrings)
@@ -15536,10 +15703,14 @@ public:
 		// <float Rate, offset 0x20>
 		float Rate;
 
+		std::string ToString() const { return "struct MAIN(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<TGanPlay::MAIN>("TGanPlay_MAIN")
+				.addFunction("__tostring", &TGanPlay::MAIN::ToString)
+				.addFunction("GetPtrAddr", &TGanPlay::MAIN::GetPtrAddr)
 				.addProperty("pGan", &TGanPlay::MAIN::pGan)
 				.addProperty("pTopNode", &TGanPlay::MAIN::pTopNode)
 				.addProperty("pFAnm", &TGanPlay::MAIN::pFAnm)
@@ -15573,10 +15744,14 @@ public:
 	// <struct TGanPlay::MAIN dat, offset 0x0>
 	struct TGanPlay::MAIN dat;
 
+	std::string ToString() const { return "class TGanPlay(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<TGanPlay>("TGanPlay")
+			.addFunction("__tostring", &TGanPlay::ToString)
+			.addFunction("GetPtrAddr", &TGanPlay::GetPtrAddr)
 			.addProperty("dat", &TGanPlay::dat)
 		.endClass();
 	}
@@ -15629,10 +15804,14 @@ public:
 		// <int32_t TimingSoundDataIndex, offset 0xc>
 		int32_t TimingSoundDataIndex;
 
+		std::string ToString() const { return "struct tagMAIN(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<TGan::tagMAIN>("TGan_tagMAIN")
+				.addFunction("__tostring", &TGan::tagMAIN::ToString)
+				.addFunction("GetPtrAddr", &TGan::tagMAIN::GetPtrAddr)
 				.addProperty("ProcessBlock", &TGan::tagMAIN::ProcessBlock)
 				.addProperty("XYZLS16WKFlag", &TGan::tagMAIN::XYZLS16WKFlag)
 				.addProperty("State", &TGan::tagMAIN::State)
@@ -15654,10 +15833,14 @@ public:
 	// <struct TGan::tagMAIN dat, offset 0x0>
 	struct TGan::tagMAIN dat;
 
+	std::string ToString() const { return "class TGan(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<TGan>("TGan")
+			.addFunction("__tostring", &TGan::ToString)
+			.addFunction("GetPtrAddr", &TGan::GetPtrAddr)
 			.addProperty("dat", &TGan::dat)
 		.endClass();
 	}
@@ -15705,10 +15888,14 @@ public:
 	// <uint32_t mPad1[0x3], offset 0x24>
 	uint32_t mPad1[3];
 
+	std::string ToString() const { return "struct WGanSpec(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<WGanSpec>("WGanSpec")
+			.addFunction("__tostring", &WGanSpec::ToString)
+			.addFunction("GetPtrAddr", &WGanSpec::GetPtrAddr)
 			.addProperty("mID", &WGanSpec::mID)
 			.addProperty("mVersion", &WGanSpec::mVersion)
 			.addProperty("mStartTick", &WGanSpec::mStartTick)
@@ -15769,10 +15956,14 @@ public:
 	// <uint32_t mPad1[0x4], offset 0x20>
 	uint32_t mPad1[4];
 
+	std::string ToString() const { return "struct WGanMaterialSpec(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<WGanMaterialSpec>("WGanMaterialSpec")
+			.addFunction("__tostring", &WGanMaterialSpec::ToString)
+			.addFunction("GetPtrAddr", &WGanMaterialSpec::GetPtrAddr)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("mIDStr", &WGanMaterialSpec::mIDStr)
 			.addProperty("mFlag", &WGanMaterialSpec::mFlag)
@@ -15824,10 +16015,14 @@ public:
 	// <struct _WFAnmObjHeader** mppHeader, offset 0x1c>
 	struct _WFAnmObjHeader** mppHeader;
 
+	std::string ToString() const { return "struct WGanFAnmSpec(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<WGanFAnmSpec>("WGanFAnmSpec")
+			.addFunction("__tostring", &WGanFAnmSpec::ToString)
+			.addFunction("GetPtrAddr", &WGanFAnmSpec::GetPtrAddr)
 			.addProperty("mFlag", &WGanFAnmSpec::mFlag)
 			.addProperty("mTFlag", &WGanFAnmSpec::mTFlag)
 			.addProperty("mStartTick", &WGanFAnmSpec::mStartTick)
@@ -15868,10 +16063,14 @@ public:
 	// <struct _WFAnmObjKeyListHeader* mpListHeader[0x1], offset 0x8>
 	struct _WFAnmObjKeyListHeader* mpListHeader[1];
 
+	std::string ToString() const { return "struct _WFAnmObjHeader(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<_WFAnmObjHeader>("_WFAnmObjHeader")
+			.addFunction("__tostring", &_WFAnmObjHeader::ToString)
+			.addFunction("GetPtrAddr", &_WFAnmObjHeader::GetPtrAddr)
 			.addProperty("mKeyListCount", &_WFAnmObjHeader::mKeyListCount)
 			.addProperty("mType", &_WFAnmObjHeader::mType)
 			.addProperty("mPad", &_WFAnmObjHeader::mPad)
@@ -15898,10 +16097,14 @@ private:
 	char _UnidentifiedData[20];
 public:
 
+	std::string ToString() const { return "struct _WFAnmObjKeyListHeader(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<_WFAnmObjKeyListHeader>("_WFAnmObjKeyListHeader")
+			.addFunction("__tostring", &_WFAnmObjKeyListHeader::ToString)
+			.addFunction("GetPtrAddr", &_WFAnmObjKeyListHeader::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -15929,10 +16132,14 @@ public:
 	// <uint32_t mPad[0x4], offset 0x10>
 	uint32_t mPad[4];
 
+	std::string ToString() const { return "struct WGanMaterialLayerSpec(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<WGanMaterialLayerSpec>("WGanMaterialLayerSpec")
+			.addFunction("__tostring", &WGanMaterialLayerSpec::ToString)
+			.addFunction("GetPtrAddr", &WGanMaterialLayerSpec::GetPtrAddr)
 			.addProperty("mFlag", &WGanMaterialLayerSpec::mFlag)
 			.addProperty("mpPrev", &WGanMaterialLayerSpec::mpPrev)
 			.addProperty("mpNext", &WGanMaterialLayerSpec::mpNext)
@@ -15983,10 +16190,14 @@ public:
 	// <uint32_t mPad1[0x3], offset 0x24>
 	uint32_t mPad1[3];
 
+	std::string ToString() const { return "struct WGanNodeSpec(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<WGanNodeSpec>("WGanNodeSpec")
+			.addFunction("__tostring", &WGanNodeSpec::ToString)
+			.addFunction("GetPtrAddr", &WGanNodeSpec::GetPtrAddr)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("mIDStr", &WGanNodeSpec::mIDStr)
 			.addProperty("mFlag", &WGanNodeSpec::mFlag)
@@ -16052,10 +16263,14 @@ public:
 		// <class TGanPlayNode* pParent, offset 0x1c>
 		class TGanPlayNode* pParent;
 
+		std::string ToString() const { return "struct MAIN(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<TGanPlayNode::MAIN>("TGanPlayNode_MAIN")
+				.addFunction("__tostring", &TGanPlayNode::MAIN::ToString)
+				.addFunction("GetPtrAddr", &TGanPlayNode::MAIN::GetPtrAddr)
 				.addProperty("ValidAnm", &TGanPlayNode::MAIN::ValidAnm)
 				.addProperty("pAnm", &TGanPlayNode::MAIN::pAnm)
 				.addProperty("pSpec", &TGanPlayNode::MAIN::pSpec)
@@ -16083,10 +16298,14 @@ public:
 	// <struct TGanPlayNode::MAIN dat, offset 0x0>
 	struct TGanPlayNode::MAIN dat;
 
+	std::string ToString() const { return "class TGanPlayNode(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<TGanPlayNode>("TGanPlayNode")
+			.addFunction("__tostring", &TGanPlayNode::ToString)
+			.addFunction("GetPtrAddr", &TGanPlayNode::GetPtrAddr)
 			.addProperty("dat", &TGanPlayNode::dat)
 		.endClass();
 	}
@@ -16135,10 +16354,14 @@ public:
 		// <float EndTick, offset 0x24>
 		float EndTick;
 
+		std::string ToString() const { return "struct tagMAIN(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<TFAnm::tagMAIN>("TFAnm_tagMAIN")
+				.addFunction("__tostring", &TFAnm::tagMAIN::ToString)
+				.addFunction("GetPtrAddr", &TFAnm::tagMAIN::GetPtrAddr)
 				.addProperty("pGmfNode", &TFAnm::tagMAIN::pGmfNode)
 				.addProperty("pAnmObj3", &TFAnm::tagMAIN::pAnmObj3)
 				.addProperty("AnmObj3Num", &TFAnm::tagMAIN::AnmObj3Num)
@@ -16170,10 +16393,14 @@ public:
 	// <struct TFAnm::tagMAIN dat, offset 0x0>
 	struct TFAnm::tagMAIN dat;
 
+	std::string ToString() const { return "class TFAnm(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<TFAnm>("TFAnm")
+			.addFunction("__tostring", &TFAnm::ToString)
+			.addFunction("GetPtrAddr", &TFAnm::GetPtrAddr)
 			.addProperty("dat", &TFAnm::dat)
 		.endClass();
 	}
@@ -16197,10 +16424,14 @@ public:
 		char _UnidentifiedData[244];
 	public:
 
+		std::string ToString() const { return "struct tagMAIN(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<TGmfNode::tagMAIN>("TGmfNode_tagMAIN")
+				.addFunction("__tostring", &TGmfNode::tagMAIN::ToString)
+				.addFunction("GetPtrAddr", &TGmfNode::tagMAIN::GetPtrAddr)
 			.endClass();
 		}
 #endif
@@ -16244,10 +16475,14 @@ public:
 	// <class CVertexAnimation* m_pVertexAnime, offset 0x16c>
 	class CVertexAnimation* m_pVertexAnime;
 
+	std::string ToString() const { return "class TGmfNode(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<TGmfNode>("TGmfNode")
+			.addFunction("__tostring", &TGmfNode::ToString)
+			.addFunction("GetPtrAddr", &TGmfNode::GetPtrAddr)
 			.addProperty("dat", &TGmfNode::dat)
 			.addProperty("m_bIsAlwaysSetupMatrix", &TGmfNode::m_bIsAlwaysSetupMatrix)
 			.addProperty("m_nPolyNum", &TGmfNode::m_nPolyNum)
@@ -16293,10 +16528,14 @@ private:
 	char _UnidentifiedData[12];
 public:
 
+	std::string ToString() const { return "class CViewClipObjSphere(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CViewClipObjSphere>("CViewClipObjSphere")
+			.addFunction("__tostring", &CViewClipObjSphere::ToString)
+			.addFunction("GetPtrAddr", &CViewClipObjSphere::GetPtrAddr)
 			.addProperty("m_inPosi", &CViewClipObjSphere::m_inPosi)
 			.addProperty("m_fRadius", &CViewClipObjSphere::m_fRadius)
 		.endClass();
@@ -16318,10 +16557,14 @@ private:
 	char _UnidentifiedData[64];
 public:
 
+	std::string ToString() const { return "class CViewClipObjBox(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CViewClipObjBox>("CViewClipObjBox")
+			.addFunction("__tostring", &CViewClipObjBox::ToString)
+			.addFunction("GetPtrAddr", &CViewClipObjBox::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -16398,10 +16641,14 @@ public:
 	// <uint32_t m_BitFlag, offset 0x1c>
 	uint32_t m_BitFlag;
 
+	std::string ToString() const { return "class rPrimUnific(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<rPrimUnific>("rPrimUnific")
+			.addFunction("__tostring", &rPrimUnific::ToString)
+			.addFunction("GetPtrAddr", &rPrimUnific::GetPtrAddr)
 			.addProperty("m_pListTop", &rPrimUnific::m_pListTop)
 			.addProperty("m_pListEnd", &rPrimUnific::m_pListEnd)
 			.addProperty("m_ProjectMode", &rPrimUnific::m_ProjectMode)
@@ -16453,10 +16700,14 @@ public:
 	// <uint32_t mKeyWait, offset 0x14>
 	uint32_t mKeyWait;
 
+	std::string ToString() const { return "class EfBase(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<EfBase>("EfBase")
+			.addFunction("__tostring", &EfBase::ToString)
+			.addFunction("GetPtrAddr", &EfBase::GetPtrAddr)
 			.addProperty("mBitFlag", &EfBase::mBitFlag)
 			.addProperty("mTick", &EfBase::mTick)
 			.addProperty("mBefFrameTick", &EfBase::mBefFrameTick)
@@ -16536,10 +16787,14 @@ public:
 	// <float mSinCnt[0x64], offset 0xac>
 	float mSinCnt[100];
 
+	std::string ToString() const { return "class EfDestortion(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EfDestortion, HrTask>("EfDestortion")
+			.addFunction("__tostring", &EfDestortion::ToString)
+			.addFunction("GetPtrAddr", &EfDestortion::GetPtrAddr)
 			.addProperty("field_50", &EfDestortion::field_50)
 			.addProperty("mpNode", &EfDestortion::mpNode)
 			// pointer to pointer is not supported in LuaBridge
@@ -16621,10 +16876,14 @@ public:
 	// <uint32_t* PolyList, offset 0x1a4>
 	uint32_t* PolyList;
 
+	std::string ToString() const { return "struct TGMFMESH(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<TGMFMESH>("TGMFMESH")
+			.addFunction("__tostring", &TGMFMESH::ToString)
+			.addFunction("GetPtrAddr", &TGMFMESH::GetPtrAddr)
 			.addProperty("pNode", &TGMFMESH::pNode)
 			.addProperty("pTex", &TGMFMESH::pTex)
 			.addProperty("VertexNum", &TGMFMESH::VertexNum)
@@ -16797,10 +17056,14 @@ public:
 	// <class GXTexture* pTex, offset 0x0>
 	class GXTexture* pTex;
 
+	std::string ToString() const { return "struct GXTexObj(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GXTexObj>("GXTexObj")
+			.addFunction("__tostring", &GXTexObj::ToString)
+			.addFunction("GetPtrAddr", &GXTexObj::GetPtrAddr)
 			.addProperty("pTex", &GXTexObj::pTex)
 		.endClass();
 	}
@@ -16859,10 +17122,14 @@ public:
 	// <enum GHMR_TEXDOT_ASPECT Aspect, offset 0x24>
 	enum GHMR_TEXDOT_ASPECT Aspect;
 
+	std::string ToString() const { return "struct tagGHMR_TEX(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<tagGHMR_TEX>("tagGHMR_TEX")
+			.addFunction("__tostring", &tagGHMR_TEX::ToString)
+			.addFunction("GetPtrAddr", &tagGHMR_TEX::GetPtrAddr)
 			.addProperty("TMEFlag", &tagGHMR_TEX::TMEFlag)
 			.addProperty("AlphaFlag", &tagGHMR_TEX::AlphaFlag)
 			.addProperty("ImageBufferFreeFlag", &tagGHMR_TEX::ImageBufferFreeFlag)
@@ -16906,10 +17173,14 @@ public:
 	// <uint32_t wrapS, offset 0x0>
 	uint32_t wrapS;
 
+	std::string ToString() const { return "union GXSamplerStuff(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GXSamplerStuff>("GXSamplerStuff")
+			.addFunction("__tostring", &GXSamplerStuff::ToString)
+			.addFunction("GetPtrAddr", &GXSamplerStuff::GetPtrAddr)
 			.addProperty("wrapS", &GXSamplerStuff::wrapS)
 		.endClass();
 	}
@@ -16960,10 +17231,14 @@ public:
 		// <uint32_t hash, offset 0x10>
 		uint32_t hash;
 
+		std::string ToString() const { return "struct GXSpecs(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<GXTexture::GXSpecs>("GXTexture_GXSpecs")
+				.addFunction("__tostring", &GXTexture::GXSpecs::ToString)
+				.addFunction("GetPtrAddr", &GXTexture::GXSpecs::GetPtrAddr)
 				.addProperty("width", &GXTexture::GXSpecs::width)
 				.addProperty("height", &GXTexture::GXSpecs::height)
 				.addProperty("rtWidth", &GXTexture::GXSpecs::rtWidth)
@@ -17026,10 +17301,14 @@ public:
 	// <struct EE::OptListNode<GXTexture *> renderTargetListNode, offset 0x48>
 	struct EE::OptListNode<GXTexture *> renderTargetListNode;
 
+	std::string ToString() const { return "class GXTexture(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<GXTexture, EE::RefObject>("GXTexture")
+			.addFunction("__tostring", &GXTexture::ToString)
+			.addFunction("GetPtrAddr", &GXTexture::GetPtrAddr)
 			.addProperty("marker", &GXTexture::marker)
 			.addProperty("sampler", &GXTexture::sampler)
 			.addProperty("textureView", &GXTexture::textureView)
@@ -17070,10 +17349,14 @@ public:
 	// <float Target, offset 0x4>
 	float Target;
 
+	std::string ToString() const { return "struct rAlphaAnime(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<rAlphaAnime>("rAlphaAnime")
+			.addFunction("__tostring", &rAlphaAnime::ToString)
+			.addFunction("GetPtrAddr", &rAlphaAnime::GetPtrAddr)
 			.addProperty("Add", &rAlphaAnime::Add)
 			.addProperty("Target", &rAlphaAnime::Target)
 		.endClass();
@@ -17096,10 +17379,14 @@ public:
 	// <uint16_t Frame, offset 0x2>
 	uint16_t Frame;
 
+	std::string ToString() const { return "struct rAnimeCounter(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<rAnimeCounter>("rAnimeCounter")
+			.addFunction("__tostring", &rAnimeCounter::ToString)
+			.addFunction("GetPtrAddr", &rAnimeCounter::GetPtrAddr)
 			.addProperty("Count", &rAnimeCounter::Count)
 			.addProperty("Frame", &rAnimeCounter::Frame)
 		.endClass();
@@ -17122,10 +17409,14 @@ public:
 	// <float t, offset 0x4>
 	float t;
 
+	std::string ToString() const { return "struct rST(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<rST>("rST")
+			.addFunction("__tostring", &rST::ToString)
+			.addFunction("GetPtrAddr", &rST::GetPtrAddr)
 			.addProperty("s", &rST::s)
 			.addProperty("t", &rST::t)
 		.endClass();
@@ -17154,10 +17445,14 @@ public:
 	// <float a, offset 0xc>
 	float a;
 
+	std::string ToString() const { return "struct rColor(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<rColor>("rColor")
+			.addFunction("__tostring", &rColor::ToString)
+			.addFunction("GetPtrAddr", &rColor::GetPtrAddr)
 			.addProperty("r", &rColor::r)
 			.addProperty("g", &rColor::g)
 			.addProperty("b", &rColor::b)
@@ -17190,10 +17485,14 @@ public:
 	// <rPrimBase* m_pNext, offset 0xc>
 	rPrimBase* m_pNext;
 
+	std::string ToString() const { return "class rPrimBase(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<rPrimBase>("rPrimBase")
+			.addFunction("__tostring", &rPrimBase::ToString)
+			.addFunction("GetPtrAddr", &rPrimBase::GetPtrAddr)
 			// delegates are not supported in LuaBridge
 			//.addProperty("field_0", &rPrimBase::field_0)
 			.addProperty("m_BitFlag", &rPrimBase::m_BitFlag)
@@ -17233,10 +17532,14 @@ public:
 	// <struct rAlphaAnime m_ColorAnime, offset 0x38>
 	struct rAlphaAnime m_ColorAnime;
 
+	std::string ToString() const { return "class rTriangleList(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<rTriangleList, rPrimBase>("rTriangleList")
+			.addFunction("__tostring", &rTriangleList::ToString)
+			.addFunction("GetPtrAddr", &rTriangleList::GetPtrAddr)
 			.addProperty("m_Position", &rTriangleList::m_Position)
 			.addProperty("m_Color", &rTriangleList::m_Color)
 			.addProperty("m_ST", &rTriangleList::m_ST)
@@ -17272,10 +17575,14 @@ public:
 		// <int32_t m_nSinIndex, offset 0x8>
 		int32_t m_nSinIndex;
 
+		std::string ToString() const { return "class CVertex(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<CVertexAnimation::CVertex>("CVertexAnimation_CVertex")
+				.addFunction("__tostring", &CVertexAnimation::CVertex::ToString)
+				.addFunction("GetPtrAddr", &CVertexAnimation::CVertex::GetPtrAddr)
 				.addProperty("m_nPosiIndex", &CVertexAnimation::CVertex::m_nPosiIndex)
 				.addProperty("m_fCenter", &CVertexAnimation::CVertex::m_fCenter)
 				.addProperty("m_nSinIndex", &CVertexAnimation::CVertex::m_nSinIndex)
@@ -17305,10 +17612,14 @@ public:
 	// <float m_fOfstMax, offset 0x1c>
 	float m_fOfstMax;
 
+	std::string ToString() const { return "class CVertexAnimation(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CVertexAnimation>("CVertexAnimation")
+			.addFunction("__tostring", &CVertexAnimation::ToString)
+			.addFunction("GetPtrAddr", &CVertexAnimation::GetPtrAddr)
 			// native pointer type (uint8_t*) not supported in LuaBridge (needs wrapper function)
 			//.addProperty("m_pbyNewMem", &CVertexAnimation::m_pbyNewMem)
 			// static arrays are not supported in LuaBridge (only std::vector)
@@ -17342,10 +17653,14 @@ public:
 		char _UnidentifiedData[360];
 	public:
 
+		std::string ToString() const { return "struct tagMAIN(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<TFAnmObjF32_3::tagMAIN>("TFAnmObjF32_3_tagMAIN")
+				.addFunction("__tostring", &TFAnmObjF32_3::tagMAIN::ToString)
+				.addFunction("GetPtrAddr", &TFAnmObjF32_3::tagMAIN::GetPtrAddr)
 			.endClass();
 		}
 #endif
@@ -17357,10 +17672,14 @@ public:
 	// <struct TFAnmObjF32_3::tagMAIN dat, offset 0x0>
 	struct TFAnmObjF32_3::tagMAIN dat;
 
+	std::string ToString() const { return "class TFAnmObjF32_3(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<TFAnmObjF32_3>("TFAnmObjF32_3")
+			.addFunction("__tostring", &TFAnmObjF32_3::ToString)
+			.addFunction("GetPtrAddr", &TFAnmObjF32_3::GetPtrAddr)
 			.addProperty("dat", &TFAnmObjF32_3::dat)
 		.endClass();
 	}
@@ -17378,10 +17697,14 @@ public:
 	// <float mFVal, offset 0x0>
 	float mFVal;
 
+	std::string ToString() const { return "union _WFAnmVal(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<_WFAnmVal>("_WFAnmVal")
+			.addFunction("__tostring", &_WFAnmVal::ToString)
+			.addFunction("GetPtrAddr", &_WFAnmVal::GetPtrAddr)
 			.addProperty("mFVal", &_WFAnmVal::mFVal)
 		.endClass();
 	}
@@ -17447,10 +17770,14 @@ public:
 		// <float OutSlope, offset 0x10>
 		float OutSlope;
 
+		std::string ToString() const { return "struct tagGETA(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<TFAnmObj::tagGETA>("TFAnmObj_tagGETA")
+				.addFunction("__tostring", &TFAnmObj::tagGETA::ToString)
+				.addFunction("GetPtrAddr", &TFAnmObj::tagGETA::GetPtrAddr)
 				.addProperty("Value", &TFAnmObj::tagGETA::Value)
 				.addProperty("Wait", &TFAnmObj::tagGETA::Wait)
 				.addProperty("LockWait", &TFAnmObj::tagGETA::LockWait)
@@ -17551,10 +17878,14 @@ public:
 		// <void* pNowKey, offset 0x88>
 		void* pNowKey;
 
+		std::string ToString() const { return "struct tagMAIN(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<TFAnmObj::tagMAIN>("TFAnmObj_tagMAIN")
+				.addFunction("__tostring", &TFAnmObj::tagMAIN::ToString)
+				.addFunction("GetPtrAddr", &TFAnmObj::tagMAIN::GetPtrAddr)
 				.addProperty("pAnmData", &TFAnmObj::tagMAIN::pAnmData)
 				.addProperty("DataType", &TFAnmObj::tagMAIN::DataType)
 				// void type not supported in LuaBridge
@@ -17623,10 +17954,14 @@ public:
 	// <struct TFAnmObj::tagMAIN dat, offset 0x0>
 	struct TFAnmObj::tagMAIN dat;
 
+	std::string ToString() const { return "class TFAnmObj(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<TFAnmObj>("TFAnmObj")
+			.addFunction("__tostring", &TFAnmObj::ToString)
+			.addFunction("GetPtrAddr", &TFAnmObj::GetPtrAddr)
 			.addProperty("dat", &TFAnmObj::dat)
 		.endClass();
 	}
@@ -17646,10 +17981,14 @@ namespace mot
 		// <void* (* field_0)[0x17], offset 0x0>
 		void* (* field_0)[0x17];
 
+		std::string ToString() const { return "class IBoneEffectPJ(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<mot::IBoneEffectPJ>("mot_IBoneEffectPJ")
+				.addFunction("__tostring", &mot::IBoneEffectPJ::ToString)
+				.addFunction("GetPtrAddr", &mot::IBoneEffectPJ::GetPtrAddr)
 				// delegates are not supported in LuaBridge
 				//.addProperty("field_0", &mot::IBoneEffectPJ::field_0)
 			.endClass();
@@ -17717,7 +18056,7 @@ public:
 	// [Function] class CCameraVibTiming* CCameraVibTiming::getTable(int32_t* arg1, class mHRChara& arg2) [?getTable@CCameraVibTiming@@SAPBV1@PAHABVmHRChara@@@Z]
 	static class CCameraVibTiming* getTable(int32_t* arg1, class mHRChara& arg2)
 	{
-		typedef class CCameraVibTiming*(__cdecl* _Func)(int32_t* arg1, class mHRChara& arg2);
+		typedef class CCameraVibTiming*(__fastcall* _Func)(int32_t* arg1, class mHRChara& arg2);
 		_Func mFunc = (_Func)(GameModule + 0x567740);
 		return mFunc(arg1, arg2);
 	}
@@ -17735,16 +18074,20 @@ public:
 	// <float m_fAnimeScale, offset 0xc>
 	float m_fAnimeScale;
 
+	std::string ToString() const { return "class CCameraVibTiming(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraVibTiming>("CCameraVibTiming")
+			.addFunction("__tostring", &CCameraVibTiming::ToString)
+			.addFunction("GetPtrAddr", &CCameraVibTiming::GetPtrAddr)
 			// pointer to const not supported in LuaBridge and needs a getter
 			//.addProperty("m_sMotName", &CCameraVibTiming::m_sMotName)
 			.addProperty("m_fMotFrame", &CCameraVibTiming::m_fMotFrame)
 			.addProperty("m_eAnimeType", &CCameraVibTiming::m_eAnimeType)
 			.addProperty("m_fAnimeScale", &CCameraVibTiming::m_fAnimeScale)
-			// Functions with return values pointing to native types ('class CCameraVibTiming*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Can't export pointer to native type 'int32_t*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("getTable", &CCameraVibTiming::getTable)
 		.endClass();
 	}
@@ -17788,10 +18131,14 @@ public:
 	// <uint32_t FileNameLength, offset 0x8>
 	uint32_t FileNameLength;
 
+	std::string ToString() const { return "struct HRCHARAVOICE(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<HRCHARAVOICE>("HRCHARAVOICE")
+			.addFunction("__tostring", &HRCHARAVOICE::ToString)
+			.addFunction("GetPtrAddr", &HRCHARAVOICE::GetPtrAddr)
 			// pointer to const not supported in LuaBridge and needs a getter
 			//.addProperty("pFileName", &HRCHARAVOICE::pFileName)
 			.addProperty("Voice", &HRCHARAVOICE::Voice)
@@ -17816,10 +18163,14 @@ namespace gameUtil
 		// <class tiVector m_inABCD, offset 0x0>
 		class tiVector m_inABCD;
 
+		std::string ToString() const { return "class CPlane(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<gameUtil::CPlane>("gameUtil_CPlane")
+				.addFunction("__tostring", &gameUtil::CPlane::ToString)
+				.addFunction("GetPtrAddr", &gameUtil::CPlane::GetPtrAddr)
 				.addProperty("m_inABCD", &gameUtil::CPlane::m_inABCD)
 			.endClass();
 		}
@@ -17861,10 +18212,14 @@ private:
 	char _UnidentifiedData[8];
 public:
 
+	std::string ToString() const { return "class CStickShadow(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CStickShadow>("CStickShadow")
+			.addFunction("__tostring", &CStickShadow::ToString)
+			.addFunction("GetPtrAddr", &CStickShadow::GetPtrAddr)
 			.addProperty("m_inProjPlane", &CStickShadow::m_inProjPlane)
 			.addProperty("m_nBoneID", &CStickShadow::m_nBoneID)
 			.addProperty("m_fWidthHalf", &CStickShadow::m_fWidthHalf)
@@ -17963,10 +18318,14 @@ public:
 	// <enum CharController::eChrCntrlMoveMode m_MoveMode, offset 0x58>
 	enum CharController::eChrCntrlMoveMode m_MoveMode;
 
+	std::string ToString() const { return "class CharController(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CharController>("CharController")
+			.addFunction("__tostring", &CharController::ToString)
+			.addFunction("GetPtrAddr", &CharController::GetPtrAddr)
 			.addProperty("m_boNowUnderControl", &CharController::m_boNowUnderControl)
 			.addProperty("m_boEnableControl", &CharController::m_boEnableControl)
 			.addProperty("m_pOwnerChar", &CharController::m_pOwnerChar)
@@ -18033,10 +18392,14 @@ public:
 	// <float m_fAlphaMulCoe, offset 0x6c>
 	float m_fAlphaMulCoe;
 
+	std::string ToString() const { return "class CObjectShadow(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CObjectShadow>("CObjectShadow")
+			.addFunction("__tostring", &CObjectShadow::ToString)
+			.addFunction("GetPtrAddr", &CObjectShadow::GetPtrAddr)
 			.addProperty("m_inUpTex", &CObjectShadow::m_inUpTex)
 			.addProperty("m_inSideTex", &CObjectShadow::m_inSideTex)
 			.addProperty("m_fGroundOfst", &CObjectShadow::m_fGroundOfst)
@@ -18084,10 +18447,14 @@ public:
 	// <class EffectFixFire* pFixFire[0x2], offset 0x20>
 	class EffectFixFire* pFixFire[2];
 
+	std::string ToString() const { return "struct stBikeEffect(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stBikeEffect>("stBikeEffect")
+			.addFunction("__tostring", &stBikeEffect::ToString)
+			.addFunction("GetPtrAddr", &stBikeEffect::GetPtrAddr)
 			.addProperty("pDriftMark", &stBikeEffect::pDriftMark)
 			.addProperty("pKeepSmoke", &stBikeEffect::pKeepSmoke)
 			.addProperty("posTireOldL", &stBikeEffect::posTireOldL)
@@ -18568,10 +18935,14 @@ public:
 	// <float seLoadNoiseVolume, offset 0x4d8>
 	float seLoadNoiseVolume;
 
+	std::string ToString() const { return "struct stBike(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stBike>("stBike")
+			.addFunction("__tostring", &stBike::ToString)
+			.addFunction("GetPtrAddr", &stBike::GetPtrAddr)
 			.addProperty("pGmf", &stBike::pGmf)
 			// pointer to pointer is not supported in LuaBridge
 			//.addProperty("pGan", &stBike::pGan)
@@ -18865,10 +19236,14 @@ public:
 	// <class CObjectShadow m_inObjectShadow, offset 0x53c>
 	class CObjectShadow m_inObjectShadow;
 
+	std::string ToString() const { return "class mHRBike(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<mHRBike>("mHRBike")
+			.addFunction("__tostring", &mHRBike::ToString)
+			.addFunction("GetPtrAddr", &mHRBike::GetPtrAddr)
 			.addProperty("mBike", &mHRBike::mBike)
 			.addProperty("mBikeEffect", &mHRBike::mBikeEffect)
 			.addProperty("mhitStage", &mHRBike::mhitStage)
@@ -19149,10 +19524,14 @@ public:
 	// <uint32_t m_AreaCircleEventHandle, offset 0x12c>
 	uint32_t m_AreaCircleEventHandle;
 
+	std::string ToString() const { return "class EventAreaCircle(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EventAreaCircle, ghmListObj>("EventAreaCircle")
+			.addFunction("__tostring", &EventAreaCircle::ToString)
+			.addFunction("GetPtrAddr", &EventAreaCircle::GetPtrAddr)
 			.addProperty("m_Kind", &EventAreaCircle::m_Kind)
 			.addProperty("m_Center", &EventAreaCircle::m_Center)
 			.addProperty("m_sRadius", &EventAreaCircle::m_sRadius)
@@ -19335,11 +19714,15 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "class ghmScriptVariables(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmScriptVariables>("ghmScriptVariables")
-			// native pointer type (char*) not supported in LuaBridge (needs wrapper function)
+			.addFunction("__tostring", &ghmScriptVariables::ToString)
+			.addFunction("GetPtrAddr", &ghmScriptVariables::GetPtrAddr)
+			// char* type not supported in LuaBridge
 			//.addProperty("mpChar", &ghmScriptVariables::mpChar)
 			.addProperty("mCharNum", &ghmScriptVariables::mCharNum)
 			// native pointer type (int16_t*) not supported in LuaBridge (needs wrapper function)
@@ -19432,10 +19815,14 @@ public:
 	// <class ghmListObj mFuncAnchor, offset 0x8c>
 	class ghmListObj mFuncAnchor;
 
+	std::string ToString() const { return "class ghmScript(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<ghmScript, ghmListObj>("ghmScript")
+			.addFunction("__tostring", &ghmScript::ToString)
+			.addFunction("GetPtrAddr", &ghmScript::GetPtrAddr)
 			.addProperty("mpObjectType", &ghmScript::mpObjectType)
 			.addProperty("mObjectTypeNum", &ghmScript::mObjectTypeNum)
 			.addProperty("mpObject", &ghmScript::mpObject)
@@ -19515,10 +19902,14 @@ public:
 	// <uint32_t mFlag, offset 0xcc>
 	uint32_t mFlag;
 
+	std::string ToString() const { return "class ghmScriptFunc(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<ghmScriptFunc, ghmListObj>("ghmScriptFunc")
+			.addFunction("__tostring", &ghmScriptFunc::ToString)
+			.addFunction("GetPtrAddr", &ghmScriptFunc::GetPtrAddr)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("mName", &ghmScriptFunc::mName)
 			.addProperty("mReturnType", &ghmScriptFunc::mReturnType)
@@ -19590,10 +19981,14 @@ public:
 	// <char m_SubName[0x10], offset 0x178>
 	char m_SubName[16];
 
+	std::string ToString() const { return "class HrScriptFunc(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<HrScriptFunc, ghmScriptFunc>("HrScriptFunc")
+			.addFunction("__tostring", &HrScriptFunc::ToString)
+			.addFunction("GetPtrAddr", &HrScriptFunc::GetPtrAddr)
 			.addProperty("m_Status", &HrScriptFunc::m_Status)
 			.addProperty("m_WaitVsync", &HrScriptFunc::m_WaitVsync)
 			// void type not supported in LuaBridge
@@ -19618,10 +20013,14 @@ class ghmScriptBase
 public:
 	/// Struct member variables
 
+	std::string ToString() const { return "class ghmScriptBase(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmScriptBase>("ghmScriptBase")
+			.addFunction("__tostring", &ghmScriptBase::ToString)
+			.addFunction("GetPtrAddr", &ghmScriptBase::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -19634,10 +20033,14 @@ class CCameraCollision
 public:
 	/// Struct member variables
 
+	std::string ToString() const { return "class CCameraCollision(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraCollision>("CCameraCollision")
+			.addFunction("__tostring", &CCameraCollision::ToString)
+			.addFunction("GetPtrAddr", &CCameraCollision::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -19651,45 +20054,45 @@ public:
 	// [Function] float FkPjLib::GetCharaNowPlayMotionTick(class mHRChara* arg1) [?GetCharaNowPlayMotionTick@FkPjLib@@SAMPAVmHRChara@@@Z]
 	static float GetCharaNowPlayMotionTick(class mHRChara* arg1)
 	{
-		typedef float(__cdecl* _Func)(class mHRChara* arg1);
+		typedef float(__fastcall* _Func)(class mHRChara* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x4bca80);
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t FkPjLib::CheckValidCharaPtr(class mHRChara* arg1) [?CheckValidCharaPtr@FkPjLib@@SA_NPAVmHRChara@@@Z]
 	static uint8_t CheckValidCharaPtr(class mHRChara* arg1)
 	{
-		typedef uint8_t(__cdecl* _Func)(class mHRChara* arg1);
+		typedef uint8_t(__fastcall* _Func)(class mHRChara* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x4bd1a0);
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t FkPjLib::CheckCharSurroundStageCollisionAndAdjustSafetyPos(class mHRChara* arg1, float arg2, float arg3) [?CheckCharSurroundStageCollisionAndAdjustSafetyPos@FkPjLib@@SA_NPAVmHRChara@@MM@Z]
 	static uint8_t CheckCharSurroundStageCollisionAndAdjustSafetyPos(class mHRChara* arg1, float arg2, float arg3)
 	{
-		typedef uint8_t(__cdecl* _Func)(class mHRChara* arg1, float arg2, float arg3);
+		typedef uint8_t(__fastcall* _Func)(class mHRChara* arg1, float arg2, float arg3);
 		_Func mFunc = (_Func)(GameModule + 0x4bd530);
 		return mFunc(arg1, arg2, arg3);
 	}
 	// [Function] class mHRChara* FkPjLib::GetCharaPtrByNpcID(int32_t const arg1, uint8_t const arg2) [?GetCharaPtrByNpcID@FkPjLib@@SAPAVmHRChara@@H_N@Z]
 	static class mHRChara* GetCharaPtrByNpcID(int32_t const arg1, uint8_t const arg2)
 	{
-		typedef class mHRChara*(__cdecl* _Func)(int32_t const arg1, uint8_t const arg2);
+		typedef class mHRChara*(__fastcall* _Func)(int32_t const arg1, uint8_t const arg2);
 		_Func mFunc = (_Func)(GameModule + 0x4bdf20);
 		return mFunc(arg1, arg2);
 	}
 	/// Struct member variables
 
+	std::string ToString() const { return "class FkPjLib(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<FkPjLib>("FkPjLib")
-			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
-			//.addStaticFunction("GetCharaNowPlayMotionTick", &FkPjLib::GetCharaNowPlayMotionTick)
-			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
-			//.addStaticFunction("CheckValidCharaPtr", &FkPjLib::CheckValidCharaPtr)
-			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
-			//.addStaticFunction("CheckCharSurroundStageCollisionAndAdjustSafetyPos", &FkPjLib::CheckCharSurroundStageCollisionAndAdjustSafetyPos)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addStaticFunction("GetCharaPtrByNpcID", &FkPjLib::GetCharaPtrByNpcID)
+			.addFunction("__tostring", &FkPjLib::ToString)
+			.addFunction("GetPtrAddr", &FkPjLib::GetPtrAddr)
+			.addStaticFunction("GetCharaNowPlayMotionTick", &FkPjLib::GetCharaNowPlayMotionTick)
+			.addStaticFunction("CheckValidCharaPtr", &FkPjLib::CheckValidCharaPtr)
+			.addStaticFunction("CheckCharSurroundStageCollisionAndAdjustSafetyPos", &FkPjLib::CheckCharSurroundStageCollisionAndAdjustSafetyPos)
+			.addStaticFunction("GetCharaPtrByNpcID", &FkPjLib::GetCharaPtrByNpcID)
 		.endClass();
 	}
 #endif
@@ -19705,10 +20108,14 @@ public:
 	// <void* (* field_0)[0xe], offset 0x0>
 	void* (* field_0)[0xe];
 
+	std::string ToString() const { return "class ghmScriptFuncArgBase(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmScriptFuncArgBase>("ghmScriptFuncArgBase")
+			.addFunction("__tostring", &ghmScriptFuncArgBase::ToString)
+			.addFunction("GetPtrAddr", &ghmScriptFuncArgBase::GetPtrAddr)
 			// delegates are not supported in LuaBridge
 			//.addProperty("field_0", &ghmScriptFuncArgBase::field_0)
 		.endClass();
@@ -19745,10 +20152,14 @@ public:
 	// <int32_t mPropFloatNum, offset 0x18>
 	int32_t mPropFloatNum;
 
+	std::string ToString() const { return "struct ghmScriptObjectType(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmScriptObjectType>("ghmScriptObjectType")
+			.addFunction("__tostring", &ghmScriptObjectType::ToString)
+			.addFunction("GetPtrAddr", &ghmScriptObjectType::GetPtrAddr)
 			// delegates are not supported in LuaBridge
 			//.addProperty("mpMethod", &ghmScriptObjectType::mpMethod)
 			.addProperty("mObjectNum", &ghmScriptObjectType::mObjectNum)
@@ -19782,10 +20193,14 @@ public:
 	// <struct ghmScriptObjectType* mpType, offset 0x4>
 	struct ghmScriptObjectType* mpType;
 
+	std::string ToString() const { return "class ghmScriptObject(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmScriptObject>("ghmScriptObject")
+			.addFunction("__tostring", &ghmScriptObject::ToString)
+			.addFunction("GetPtrAddr", &ghmScriptObject::GetPtrAddr)
 			.addProperty("mpProperty", &ghmScriptObject::mpProperty)
 			.addProperty("mpType", &ghmScriptObject::mpType)
 		.endClass();
@@ -19814,13 +20229,17 @@ public:
 	// <int32_t mLength, offset 0xc>
 	int32_t mLength;
 
+	std::string ToString() const { return "class ghmString(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmString>("ghmString")
+			.addFunction("__tostring", &ghmString::ToString)
+			.addFunction("GetPtrAddr", &ghmString::GetPtrAddr)
 			// delegates are not supported in LuaBridge
 			//.addProperty("field_0", &ghmString::field_0)
-			// native pointer type (char*) not supported in LuaBridge (needs wrapper function)
+			// char* type not supported in LuaBridge
 			//.addProperty("mpBuff", &ghmString::mpBuff)
 			.addProperty("mAllocSize", &ghmString::mAllocSize)
 			.addProperty("mLength", &ghmString::mLength)
@@ -19870,10 +20289,14 @@ public:
 	// <uint32_t mPad[0x1], offset 0x1c>
 	uint32_t mPad[1];
 
+	std::string ToString() const { return "struct ghmScrHeader(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmScrHeader>("ghmScrHeader")
+			.addFunction("__tostring", &ghmScrHeader::ToString)
+			.addFunction("GetPtrAddr", &ghmScrHeader::GetPtrAddr)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("mMagicNoStr", &ghmScrHeader::mMagicNoStr)
 			.addProperty("mFlag", &ghmScrHeader::mFlag)
@@ -19935,10 +20358,14 @@ public:
 	// <uint32_t mPad[0x2], offset 0x18>
 	uint32_t mPad[2];
 
+	std::string ToString() const { return "struct ghmScrFuncHeader(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmScrFuncHeader>("ghmScrFuncHeader")
+			.addFunction("__tostring", &ghmScrFuncHeader::ToString)
+			.addFunction("GetPtrAddr", &ghmScrFuncHeader::GetPtrAddr)
 			// pointer to const not supported in LuaBridge and needs a getter
 			//.addProperty("mpName", &ghmScrFuncHeader::mpName)
 			.addProperty("mReturnType", &ghmScrFuncHeader::mReturnType)
@@ -19983,10 +20410,14 @@ public:
 	// <uint32_t mHashKey, offset 0xe4>
 	uint32_t mHashKey;
 
+	std::string ToString() const { return "class ghmScriptProgFunc(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<ghmScriptProgFunc, ghmListObj>("ghmScriptProgFunc")
+			.addFunction("__tostring", &ghmScriptProgFunc::ToString)
+			.addFunction("GetPtrAddr", &ghmScriptProgFunc::GetPtrAddr)
 			.addProperty("mFunc", &ghmScriptProgFunc::mFunc)
 			// delegates are not supported in LuaBridge
 			//.addProperty("mpCallback", &ghmScriptProgFunc::mpCallback)
@@ -20031,10 +20462,14 @@ public:
 	// <class ghmString mString, offset 0x18>
 	class ghmString mString;
 
+	std::string ToString() const { return "struct ghmScriptStackData(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmScriptStackData>("ghmScriptStackData")
+			.addFunction("__tostring", &ghmScriptStackData::ToString)
+			.addFunction("GetPtrAddr", &ghmScriptStackData::GetPtrAddr)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("mData", &ghmScriptStackData::mData)
 			.addProperty("mSize", &ghmScriptStackData::mSize)
@@ -20063,10 +20498,14 @@ private:
 	char _UnidentifiedData[744];
 public:
 
+	std::string ToString() const { return "class ghmScriptStack(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmScriptStack>("ghmScriptStack")
+			.addFunction("__tostring", &ghmScriptStack::ToString)
+			.addFunction("GetPtrAddr", &ghmScriptStack::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -20106,10 +20545,14 @@ public:
 	// <struct ghmScriptStackData mReturnData, offset 0x340>
 	struct ghmScriptStackData mReturnData;
 
+	std::string ToString() const { return "class ghmScriptContext(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<ghmScriptContext, ghmListObj>("ghmScriptContext")
+			.addFunction("__tostring", &ghmScriptContext::ToString)
+			.addFunction("GetPtrAddr", &ghmScriptContext::GetPtrAddr)
 			.addProperty("mpContainer", &ghmScriptContext::mpContainer)
 			.addProperty("mpDataSource", &ghmScriptContext::mpDataSource)
 			.addProperty("mAutoVariables", &ghmScriptContext::mAutoVariables)
@@ -20168,10 +20611,14 @@ public:
 	// <int32_t mMakerType, offset 0x24>
 	int32_t mMakerType;
 
+	std::string ToString() const { return "class EveCorn(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<EveCorn>("EveCorn")
+			.addFunction("__tostring", &EveCorn::ToString)
+			.addFunction("GetPtrAddr", &EveCorn::GetPtrAddr)
 			.addProperty("flag", &EveCorn::flag)
 			.addProperty("mScale", &EveCorn::mScale)
 			.addProperty("mColor", &EveCorn::mColor)
@@ -20206,10 +20653,14 @@ public:
 	// <struct EVENTAREACAMERA_DATA* pd, offset 0x10>
 	struct EVENTAREACAMERA_DATA* pd;
 
+	std::string ToString() const { return "class EventAreaCamera(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EventAreaCamera, ghmListObj>("EventAreaCamera")
+			.addFunction("__tostring", &EventAreaCamera::ToString)
+			.addFunction("GetPtrAddr", &EventAreaCamera::GetPtrAddr)
 			.addProperty("pd", &EventAreaCamera::pd)
 		.endClass();
 	}
@@ -20311,10 +20762,14 @@ private:
 	char _UnidentifiedData[2];
 public:
 
+	std::string ToString() const { return "struct EVENTAREACAMERA_DATA(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<EVENTAREACAMERA_DATA>("EVENTAREACAMERA_DATA")
+			.addFunction("__tostring", &EVENTAREACAMERA_DATA::ToString)
+			.addFunction("GetPtrAddr", &EVENTAREACAMERA_DATA::GetPtrAddr)
 			.addProperty("mCenter", &EVENTAREACAMERA_DATA::mCenter)
 			.addProperty("mCameraPos", &EVENTAREACAMERA_DATA::mCameraPos)
 			.addProperty("mTargetPos", &EVENTAREACAMERA_DATA::mTargetPos)
@@ -20369,10 +20824,14 @@ private:
 	char _UnidentifiedData[388];
 public:
 
+	std::string ToString() const { return "class EffectDriftMark(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<EffectDriftMark>("EffectDriftMark")
+			.addFunction("__tostring", &EffectDriftMark::ToString)
+			.addFunction("GetPtrAddr", &EffectDriftMark::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -20435,10 +20894,14 @@ public:
 	// <float m_TimeRate, offset 0xc4>
 	float m_TimeRate;
 
+	std::string ToString() const { return "class EffectKeepSmoke(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EffectKeepSmoke, HrTask>("EffectKeepSmoke")
+			.addFunction("__tostring", &EffectKeepSmoke::ToString)
+			.addFunction("GetPtrAddr", &EffectKeepSmoke::GetPtrAddr)
 			.addProperty("m_Flag", &EffectKeepSmoke::m_Flag)
 			.addProperty("m_QuadUni", &EffectKeepSmoke::m_QuadUni)
 			.addProperty("m_pQuadArray", &EffectKeepSmoke::m_pQuadArray)
@@ -20487,10 +20950,14 @@ private:
 	char _UnidentifiedData[172];
 public:
 
+	std::string ToString() const { return "class rQuad(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<rQuad>("rQuad")
+			.addFunction("__tostring", &rQuad::ToString)
+			.addFunction("GetPtrAddr", &rQuad::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -20562,10 +21029,14 @@ public:
 		// <int32_t m_Alpha, offset 0x30>
 		int32_t m_Alpha;
 
+		std::string ToString() const { return "struct Object(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<EffectFixFire::Object>("EffectFixFire_Object")
+				.addFunction("__tostring", &EffectFixFire::Object::ToString)
+				.addFunction("GetPtrAddr", &EffectFixFire::Object::GetPtrAddr)
 				.addProperty("m_pNext", &EffectFixFire::Object::m_pNext)
 				.addProperty("m_pPrev", &EffectFixFire::Object::m_pPrev)
 				.addProperty("m_Fade", &EffectFixFire::Object::m_Fade)
@@ -20663,10 +21134,14 @@ public:
 	// <float m_TimeRate, offset 0x19c>
 	float m_TimeRate;
 
+	std::string ToString() const { return "class EffectFixFire(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EffectFixFire, HrTask>("EffectFixFire")
+			.addFunction("__tostring", &EffectFixFire::ToString)
+			.addFunction("GetPtrAddr", &EffectFixFire::GetPtrAddr)
 			.addProperty("m_Flag", &EffectFixFire::m_Flag)
 			.addProperty("m_pObject", &EffectFixFire::m_pObject)
 			.addProperty("m_ValidFirst", &EffectFixFire::m_ValidFirst)
@@ -20749,10 +21224,14 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "class HrOverLap(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<HrOverLap>("HrOverLap")
+			.addFunction("__tostring", &HrOverLap::ToString)
+			.addFunction("GetPtrAddr", &HrOverLap::GetPtrAddr)
 			.addProperty("mAlloc", &HrOverLap::mAlloc)
 			.addProperty("mStatus", &HrOverLap::mStatus)
 			.addProperty("mAlpha", &HrOverLap::mAlpha)
@@ -20782,10 +21261,14 @@ private:
 	char _UnidentifiedData[14448];
 public:
 
+	std::string ToString() const { return "class HrScreenStatus(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<HrScreenStatus>("HrScreenStatus")
+			.addFunction("__tostring", &HrScreenStatus::ToString)
+			.addFunction("GetPtrAddr", &HrScreenStatus::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -20838,10 +21321,14 @@ private:
 	char _UnidentifiedData[2];
 public:
 
+	std::string ToString() const { return "class HrEffectShutter(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<HrEffectShutter, HrTask>("HrEffectShutter")
+			.addFunction("__tostring", &HrEffectShutter::ToString)
+			.addFunction("GetPtrAddr", &HrEffectShutter::GetPtrAddr)
 			.addProperty("m_Stat", &HrEffectShutter::m_Stat)
 			.addProperty("m_Counter", &HrEffectShutter::m_Counter)
 			.addProperty("m_OpenTime", &HrEffectShutter::m_OpenTime)
@@ -20911,10 +21398,14 @@ public:
 		// <EfSmoke::SmokePrim* pPrev, offset 0x48>
 		SmokePrim* pPrev;
 
+		std::string ToString() const { return "struct SmokePrim(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<EfSmoke::SmokePrim>("EfSmoke_SmokePrim")
+				.addFunction("__tostring", &EfSmoke::SmokePrim::ToString)
+				.addFunction("GetPtrAddr", &EfSmoke::SmokePrim::GetPtrAddr)
 				.addProperty("Pos", &EfSmoke::SmokePrim::Pos)
 				.addProperty("Mov", &EfSmoke::SmokePrim::Mov)
 				.addProperty("Color", &EfSmoke::SmokePrim::Color)
@@ -20977,10 +21468,14 @@ public:
 	// <enum GHMR_BLEND mBlendMode, offset 0x7c>
 	enum GHMR_BLEND mBlendMode;
 
+	std::string ToString() const { return "class EfSmoke(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EfSmoke, HrTask>("EfSmoke")
+			.addFunction("__tostring", &EfSmoke::ToString)
+			.addFunction("GetPtrAddr", &EfSmoke::GetPtrAddr)
 			.addProperty("field_50", &EfSmoke::field_50)
 			.addProperty("mpPrimAry", &EfSmoke::mpPrimAry)
 			.addProperty("mpValidList", &EfSmoke::mpValidList)
@@ -21021,10 +21516,14 @@ public:
 	// <int32_t CatMood, offset 0xc>
 	int32_t CatMood;
 
+	std::string ToString() const { return "struct HRSAVEDATA_DEBUNEKO(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<HRSAVEDATA_DEBUNEKO>("HRSAVEDATA_DEBUNEKO")
+			.addFunction("__tostring", &HRSAVEDATA_DEBUNEKO::ToString)
+			.addFunction("GetPtrAddr", &HRSAVEDATA_DEBUNEKO::GetPtrAddr)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("boEndTraining", &HRSAVEDATA_DEBUNEKO::boEndTraining)
 			.addProperty("CatWeight", &HRSAVEDATA_DEBUNEKO::CatWeight)
@@ -21071,10 +21570,14 @@ public:
 	// <float mRootMatrix[0x3][0x4], offset 0x3c>
 	float mRootMatrix[3][4];
 
+	std::string ToString() const { return "class WGcl(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<WGcl, ghmListObj>("WGcl")
+			.addFunction("__tostring", &WGcl::ToString)
+			.addFunction("GetPtrAddr", &WGcl::GetPtrAddr)
 			.addProperty("mState", &WGcl::mState)
 			.addProperty("mFlag", &WGcl::mFlag)
 			.addProperty("mpSpec", &WGcl::mpSpec)
@@ -21218,10 +21721,14 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "class commonObj(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<commonObj, mHRChara>("commonObj")
+			.addFunction("__tostring", &commonObj::ToString)
+			.addFunction("GetPtrAddr", &commonObj::GetPtrAddr)
 			.addProperty("mCallMotionProcFlag", &commonObj::mCallMotionProcFlag)
 			.addProperty("mGcl", &commonObj::mGcl)
 			.addProperty("m_bIsGclExist", &commonObj::m_bIsGclExist)
@@ -21245,7 +21752,7 @@ public:
 			.addProperty("m_bIsSetGroundColPlane", &commonObj::m_bIsSetGroundColPlane)
 			.addProperty("m_inGroundColPlane", &commonObj::m_inGroundColPlane)
 			.addProperty("mbDistEraseDisable", &commonObj::mbDistEraseDisable)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &commonObj::mSetDamage)
 			// Function overloading not supported in LuaBridge.
 			//.addFunction("mSetDamage", &commonObj::mSetDamage)
@@ -21304,17 +21811,20 @@ public:
 	// <class ghmGcCollObjCapsule* capsuleCollider, offset 0x64c>
 	class ghmGcCollObjCapsule* capsuleCollider;
 
+	std::string ToString() const { return "class CustomColliderObj(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<CustomColliderObj, commonObj>("CustomColliderObj")
+			.addFunction("__tostring", &CustomColliderObj::ToString)
+			.addFunction("GetPtrAddr", &CustomColliderObj::GetPtrAddr)
 			.addProperty("capsuleCollider", &CustomColliderObj::capsuleCollider)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &CustomColliderObj::mSetDamage)
 			// Function overloading not supported in LuaBridge.
 			//.addFunction("mSetDamage", &CustomColliderObj::mSetDamage)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mHitCheck", &CustomColliderObj::mHitCheck)
+			.addFunction("mHitCheck", &CustomColliderObj::mHitCheck)
 		.endClass();
 	}
 #endif
@@ -21355,10 +21865,14 @@ public:
 	// <uint32_t mPad[0x5], offset 0x1c>
 	uint32_t mPad[5];
 
+	std::string ToString() const { return "struct WGclSpec(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<WGclSpec>("WGclSpec")
+			.addFunction("__tostring", &WGclSpec::ToString)
+			.addFunction("GetPtrAddr", &WGclSpec::GetPtrAddr)
 			.addProperty("mID", &WGclSpec::mID)
 			.addProperty("mVersion", &WGclSpec::mVersion)
 			.addProperty("mFlag", &WGclSpec::mFlag)
@@ -21423,10 +21937,14 @@ public:
 	// <uint32_t mPad[0x5], offset 0x3c>
 	uint32_t mPad[5];
 
+	std::string ToString() const { return "struct WGclNodeSpec(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<WGclNodeSpec>("WGclNodeSpec")
+			.addFunction("__tostring", &WGclNodeSpec::ToString)
+			.addFunction("GetPtrAddr", &WGclNodeSpec::GetPtrAddr)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("mIDStr", &WGclNodeSpec::mIDStr)
 			.addProperty("mFlag", &WGclNodeSpec::mFlag)
@@ -21481,10 +21999,14 @@ public:
 	// <struct Vec mBoundingBoxExtent, offset 0x1c>
 	struct Vec mBoundingBoxExtent;
 
+	std::string ToString() const { return "struct WGclNodeShapeMeshSpec(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<WGclNodeShapeMeshSpec>("WGclNodeShapeMeshSpec")
+			.addFunction("__tostring", &WGclNodeShapeMeshSpec::ToString)
+			.addFunction("GetPtrAddr", &WGclNodeShapeMeshSpec::GetPtrAddr)
 			.addProperty("mpBspTree", &WGclNodeShapeMeshSpec::mpBspTree)
 			.addProperty("mpTriangles", &WGclNodeShapeMeshSpec::mpTriangles)
 			.addProperty("mNodeCount", &WGclNodeShapeMeshSpec::mNodeCount)
@@ -21530,10 +22052,14 @@ public:
 	// <float mDist, offset 0x1c>
 	float mDist;
 
+	std::string ToString() const { return "struct WGclNodeShapeMeshBspNodeSpec(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<WGclNodeShapeMeshBspNodeSpec>("WGclNodeShapeMeshBspNodeSpec")
+			.addFunction("__tostring", &WGclNodeShapeMeshBspNodeSpec::ToString)
+			.addFunction("GetPtrAddr", &WGclNodeShapeMeshBspNodeSpec::GetPtrAddr)
 			.addProperty("mpFront", &WGclNodeShapeMeshBspNodeSpec::mpFront)
 			.addProperty("mpBack", &WGclNodeShapeMeshBspNodeSpec::mpBack)
 			.addProperty("mpTriangle", &WGclNodeShapeMeshBspNodeSpec::mpTriangle)
@@ -21565,10 +22091,14 @@ private:
 	char _UnidentifiedData[48];
 public:
 
+	std::string ToString() const { return "struct WGclNodeShapeTriangleSpec(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<WGclNodeShapeTriangleSpec>("WGclNodeShapeTriangleSpec")
+			.addFunction("__tostring", &WGclNodeShapeTriangleSpec::ToString)
+			.addFunction("GetPtrAddr", &WGclNodeShapeTriangleSpec::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -21587,10 +22117,14 @@ public:
 	// <class ghmGcOctTree mOctTree, offset 0x4>
 	class ghmGcOctTree mOctTree;
 
+	std::string ToString() const { return "class ghmGcColl(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmGcColl>("ghmGcColl")
+			.addFunction("__tostring", &ghmGcColl::ToString)
+			.addFunction("GetPtrAddr", &ghmGcColl::GetPtrAddr)
 			// delegates are not supported in LuaBridge
 			//.addProperty("field_0", &ghmGcColl::field_0)
 			.addProperty("mOctTree", &ghmGcColl::mOctTree)
@@ -21655,10 +22189,14 @@ public:
 	// <uint32_t mFlag, offset 0xa4>
 	uint32_t mFlag;
 
+	std::string ToString() const { return "class WGclNode(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<WGclNode>("WGclNode")
+			.addFunction("__tostring", &WGclNode::ToString)
+			.addFunction("GetPtrAddr", &WGclNode::GetPtrAddr)
 			// delegates are not supported in LuaBridge
 			//.addProperty("field_0", &WGclNode::field_0)
 			// static arrays are not supported in LuaBridge (only std::vector)
@@ -21734,10 +22272,14 @@ public:
 	// <class tiVector m_inValue, offset 0x20>
 	class tiVector m_inValue;
 
+	std::string ToString() const { return "class CSpringInterpolate3D(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CSpringInterpolate3D>("CSpringInterpolate3D")
+			.addFunction("__tostring", &CSpringInterpolate3D::ToString)
+			.addFunction("GetPtrAddr", &CSpringInterpolate3D::GetPtrAddr)
 			.addProperty("m_fSpringCoe", &CSpringInterpolate3D::m_fSpringCoe)
 			.addProperty("m_fMaxVel", &CSpringInterpolate3D::m_fMaxVel)
 			.addProperty("m_fMinVel", &CSpringInterpolate3D::m_fMinVel)
@@ -21770,10 +22312,14 @@ public:
 	// <class CSpringInterpolate3D m_inCurInterp, offset 0x30>
 	class CSpringInterpolate3D m_inCurInterp;
 
+	std::string ToString() const { return "class CDoubleSpringInterpolate3D(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CDoubleSpringInterpolate3D>("CDoubleSpringInterpolate3D")
+			.addFunction("__tostring", &CDoubleSpringInterpolate3D::ToString)
+			.addFunction("GetPtrAddr", &CDoubleSpringInterpolate3D::GetPtrAddr)
 			.addProperty("m_inHopeInterp", &CDoubleSpringInterpolate3D::m_inHopeInterp)
 			.addProperty("m_inCurInterp", &CDoubleSpringInterpolate3D::m_inCurInterp)
 		.endClass();
@@ -21877,18 +22423,21 @@ namespace mot
 		// <enum mot::CBoneEffectDamageData::EAttackPart m_eAttackPart, offset 0xc>
 		enum CBoneEffectDamageData::EAttackPart m_eAttackPart;
 
+		std::string ToString() const { return "class CBoneEffectDamageData(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<mot::CBoneEffectDamageData>("mot_CBoneEffectDamageData")
+				.addFunction("__tostring", &mot::CBoneEffectDamageData::ToString)
+				.addFunction("GetPtrAddr", &mot::CBoneEffectDamageData::GetPtrAddr)
 				.addProperty("m_bIsHit", &mot::CBoneEffectDamageData::m_bIsHit)
 				.addProperty("m_bIsSuccessDefense", &mot::CBoneEffectDamageData::m_bIsSuccessDefense)
 				.addProperty("m_bIsKeepMyAttack", &mot::CBoneEffectDamageData::m_bIsKeepMyAttack)
 				.addProperty("m_pAttackChara", &mot::CBoneEffectDamageData::m_pAttackChara)
 				.addProperty("m_eAttackType", &mot::CBoneEffectDamageData::m_eAttackType)
 				.addProperty("m_eAttackPart", &mot::CBoneEffectDamageData::m_eAttackPart)
-				// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-				//.addFunction("setup", &mot::CBoneEffectDamageData::setup)
+				.addFunction("setup", &mot::CBoneEffectDamageData::setup)
 			.endClass();
 		}
 #endif
@@ -21917,10 +22466,14 @@ public:
 	// <class CGameDataManager* m_pDataManager, offset 0x8>
 	class CGameDataManager* m_pDataManager;
 
+	std::string ToString() const { return "class CGameDataLink(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CGameDataLink>("CGameDataLink")
+			.addFunction("__tostring", &CGameDataLink::ToString)
+			.addFunction("GetPtrAddr", &CGameDataLink::GetPtrAddr)
 			.addProperty("m_pData", &CGameDataLink::m_pData)
 			.addProperty("m_nDataIndex", &CGameDataLink::m_nDataIndex)
 			.addProperty("m_pDataManager", &CGameDataLink::m_pDataManager)
@@ -21953,10 +22506,14 @@ namespace mot
 		// <class mot::CYuremonoManager* m_pYuremono, offset 0x1c>
 		class CYuremonoManager* m_pYuremono;
 
+		std::string ToString() const { return "class CBoneEffectManager(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<mot::CBoneEffectManager>("mot_CBoneEffectManager")
+				.addFunction("__tostring", &mot::CBoneEffectManager::ToString)
+				.addFunction("GetPtrAddr", &mot::CBoneEffectManager::GetPtrAddr)
 				.addProperty("m_inDataLink", &mot::CBoneEffectManager::m_inDataLink)
 				.addProperty("m_apBoneEffect", &mot::CBoneEffectManager::m_apBoneEffect)
 				.addProperty("m_pIK", &mot::CBoneEffectManager::m_pIK)
@@ -22030,10 +22587,14 @@ namespace mot
 		// <class CDoubleSpringInterpolate3D m_inInterpMove, offset 0xa0>
 		class CDoubleSpringInterpolate3D m_inInterpMove;
 
+		std::string ToString() const { return "class CBoneEffectPJ(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.deriveClass<mot::CBoneEffectPJ, mot::IBoneEffectPJ>("mot_CBoneEffectPJ")
+				.addFunction("__tostring", &mot::CBoneEffectPJ::ToString)
+				.addFunction("GetPtrAddr", &mot::CBoneEffectPJ::GetPtrAddr)
 				.addProperty("m_inManager", &mot::CBoneEffectPJ::m_inManager)
 				.addProperty("m_bIsYuremonoExist", &mot::CBoneEffectPJ::m_bIsYuremonoExist)
 				.addProperty("m_bActedWarp", &mot::CBoneEffectPJ::m_bActedWarp)
@@ -22044,8 +22605,7 @@ namespace mot
 				.addProperty("m_bIsAttackDirSide", &mot::CBoneEffectPJ::m_bIsAttackDirSide)
 				.addProperty("m_bIsNeedMoveInterp", &mot::CBoneEffectPJ::m_bIsNeedMoveInterp)
 				.addProperty("m_inInterpMove", &mot::CBoneEffectPJ::m_inInterpMove)
-				// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-				//.addFunction("getAttackType", &mot::CBoneEffectPJ::getAttackType)
+				.addFunction("getAttackType", &mot::CBoneEffectPJ::getAttackType)
 			.endClass();
 		}
 #endif
@@ -22084,10 +22644,14 @@ public:
 	// <int32_t m_nTotalDataClass, offset 0x10>
 	int32_t m_nTotalDataClass;
 
+	std::string ToString() const { return "class CGameData(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CGameData>("CGameData")
+			.addFunction("__tostring", &CGameData::ToString)
+			.addFunction("GetPtrAddr", &CGameData::GetPtrAddr)
 			.addProperty("m_nID", &CGameData::m_nID)
 			.addProperty("m_nRefCounter", &CGameData::m_nRefCounter)
 			.addProperty("m_pData", &CGameData::m_pData)
@@ -22127,10 +22691,14 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "class CPackFileDataElement(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CPackFileDataElement>("CPackFileDataElement")
+			.addFunction("__tostring", &CPackFileDataElement::ToString)
+			.addFunction("GetPtrAddr", &CPackFileDataElement::GetPtrAddr)
 			// pointer to const not supported in LuaBridge and needs a getter
 			//.addProperty("m_sName", &CPackFileDataElement::m_sName)
 			.addProperty("m_nSize", &CPackFileDataElement::m_nSize)
@@ -22162,10 +22730,14 @@ public:
 	// <class CStlVector<unsigned char> m_abyData, offset 0x8>
 	class std::vector<unsigned char> m_abyData;
 
+	std::string ToString() const { return "class CFileData(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CFileData>("CFileData")
+			.addFunction("__tostring", &CFileData::ToString)
+			.addFunction("GetPtrAddr", &CFileData::GetPtrAddr)
 			.addProperty("m_nSize", &CFileData::m_nSize)
 			// void type not supported in LuaBridge
 			//.addProperty("m_pData", &CFileData::m_pData)
@@ -22191,10 +22763,14 @@ public:
 	// <class CStlVector<CPackFileDataElement> m_ainElement, offset 0x14>
 	class std::vector<CPackFileDataElement> m_ainElement;
 
+	std::string ToString() const { return "class CPackFileData(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CPackFileData>("CPackFileData")
+			.addFunction("__tostring", &CPackFileData::ToString)
+			.addFunction("GetPtrAddr", &CPackFileData::GetPtrAddr)
 			.addProperty("m_inPackData", &CPackFileData::m_inPackData)
 			.addProperty("m_ainElement", &CPackFileData::m_ainElement)
 		.endClass();
@@ -22217,10 +22793,14 @@ public:
 	// <class CStlVector<CGameData> m_ainData, offset 0x20>
 	class std::vector<CGameData> m_ainData;
 
+	std::string ToString() const { return "class CGameDataManager(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CGameDataManager>("CGameDataManager")
+			.addFunction("__tostring", &CGameDataManager::ToString)
+			.addFunction("GetPtrAddr", &CGameDataManager::GetPtrAddr)
 			.addProperty("m_inGDPackData", &CGameDataManager::m_inGDPackData)
 			.addProperty("m_ainData", &CGameDataManager::m_ainData)
 		.endClass();
@@ -22242,10 +22822,14 @@ namespace mot
 		// <void* (* field_0)[0xa], offset 0x0>
 		void* (* field_0)[0xa];
 
+		std::string ToString() const { return "class IBoneEffect(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<mot::IBoneEffect>("mot_IBoneEffect")
+				.addFunction("__tostring", &mot::IBoneEffect::ToString)
+				.addFunction("GetPtrAddr", &mot::IBoneEffect::GetPtrAddr)
 				// delegates are not supported in LuaBridge
 				//.addProperty("field_0", &mot::IBoneEffect::field_0)
 			.endClass();
@@ -22270,10 +22854,14 @@ namespace mot
 		// <class CGameDataLink m_inDamagePartDataLink, offset 0x4>
 		class CGameDataLink m_inDamagePartDataLink;
 
+		std::string ToString() const { return "class CIKManager(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<mot::CIKManager>("mot_CIKManager")
+				.addFunction("__tostring", &mot::CIKManager::ToString)
+				.addFunction("GetPtrAddr", &mot::CIKManager::GetPtrAddr)
 				.addProperty("m_pBoneEffectManager", &mot::CIKManager::m_pBoneEffectManager)
 				.addProperty("m_inDamagePartDataLink", &mot::CIKManager::m_inDamagePartDataLink)
 			.endClass();
@@ -22296,10 +22884,14 @@ namespace mot
 		// <class mot::CBoneEffectManager* m_pBoneEffectManager, offset 0x0>
 		class CBoneEffectManager* m_pBoneEffectManager;
 
+		std::string ToString() const { return "class CYuremonoManager(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<mot::CYuremonoManager>("mot_CYuremonoManager")
+				.addFunction("__tostring", &mot::CYuremonoManager::ToString)
+				.addFunction("GetPtrAddr", &mot::CYuremonoManager::GetPtrAddr)
 				.addProperty("m_pBoneEffectManager", &mot::CYuremonoManager::m_pBoneEffectManager)
 			.endClass();
 		}
@@ -22323,28 +22915,28 @@ public:
 	// [Function] uint8_t mHRLockOnList::mCheckEntry(class mHRChara* arg1) [?mCheckEntry@mHRLockOnList@@SA_NPAVmHRChara@@@Z]
 	static uint8_t mCheckEntry(class mHRChara* arg1)
 	{
-		typedef uint8_t(__cdecl* _Func)(class mHRChara* arg1);
+		typedef uint8_t(__fastcall* _Func)(class mHRChara* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x567850);
 		return mFunc(arg1);
 	}
 	// [Function] void mHRLockOnList::mAddList(class mHRChara* arg1) [?mAddList@mHRLockOnList@@SAXPAVmHRChara@@@Z]
 	static void mAddList(class mHRChara* arg1)
 	{
-		typedef void(__cdecl* _Func)(class mHRChara* arg1);
+		typedef void(__fastcall* _Func)(class mHRChara* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x567880);
 		return mFunc(arg1);
 	}
 	// [Function] void mHRLockOnList::mDelList(class mHRChara* arg1) [?mDelList@mHRLockOnList@@SAXPAVmHRChara@@@Z]
 	static void mDelList(class mHRChara* arg1)
 	{
-		typedef void(__cdecl* _Func)(class mHRChara* arg1);
+		typedef void(__fastcall* _Func)(class mHRChara* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x567910);
 		return mFunc(arg1);
 	}
 	// [Function] class mHRLockOnList* mHRLockOnList::mGetNextTatget(class mHRChara* arg1) [?mGetNextTatget@mHRLockOnList@@SAPAV1@PAVmHRChara@@@Z]
 	static class mHRLockOnList* mGetNextTatget(class mHRChara* arg1)
 	{
-		typedef class mHRLockOnList*(__cdecl* _Func)(class mHRChara* arg1);
+		typedef class mHRLockOnList*(__fastcall* _Func)(class mHRChara* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x567940);
 		return mFunc(arg1);
 	}
@@ -22356,21 +22948,20 @@ public:
 	// <class mHRChara* mpChara, offset 0x10>
 	class mHRChara* mpChara;
 
+	std::string ToString() const { return "class mHRLockOnList(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<mHRLockOnList, ghmListObj>("mHRLockOnList")
+			.addFunction("__tostring", &mHRLockOnList::ToString)
+			.addFunction("GetPtrAddr", &mHRLockOnList::GetPtrAddr)
 			.addProperty("mpChara", &mHRLockOnList::mpChara)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetCharaPtr", &mHRLockOnList::mGetCharaPtr)
-			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
-			//.addStaticFunction("mCheckEntry", &mHRLockOnList::mCheckEntry)
-			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
-			//.addStaticFunction("mAddList", &mHRLockOnList::mAddList)
-			// Functions with parameters pointing to native types (class mHRChara* arg1) not supported in LuaBridge.
-			//.addStaticFunction("mDelList", &mHRLockOnList::mDelList)
-			// Functions with return values pointing to native types ('class mHRLockOnList*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addStaticFunction("mGetNextTatget", &mHRLockOnList::mGetNextTatget)
+			.addFunction("mGetCharaPtr", &mHRLockOnList::mGetCharaPtr)
+			.addStaticFunction("mCheckEntry", &mHRLockOnList::mCheckEntry)
+			.addStaticFunction("mAddList", &mHRLockOnList::mAddList)
+			.addStaticFunction("mDelList", &mHRLockOnList::mDelList)
+			.addStaticFunction("mGetNextTatget", &mHRLockOnList::mGetNextTatget)
 		.endClass();
 	}
 #endif
@@ -22385,7 +22976,7 @@ public:
 	// [Function] class EffectEnemyDamage* EffectEnemyDamage::Create(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4) [?Create@EffectEnemyDamage@@SAPAV1@PAVmHRChara@@PAVTGmf@@HI@Z]
 	static class EffectEnemyDamage* Create(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4)
 	{
-		typedef class EffectEnemyDamage*(__cdecl* _Func)(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4);
+		typedef class EffectEnemyDamage*(__fastcall* _Func)(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4);
 		_Func mFunc = (_Func)(GameModule + 0x585710);
 		return mFunc(arg1, arg2, arg3, arg4);
 	}
@@ -22409,17 +23000,20 @@ public:
 	// <int32_t m_nBright, offset 0x60>
 	int32_t m_nBright;
 
+	std::string ToString() const { return "class EffectEnemyDamage(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EffectEnemyDamage, HrTask>("EffectEnemyDamage")
+			.addFunction("__tostring", &EffectEnemyDamage::ToString)
+			.addFunction("GetPtrAddr", &EffectEnemyDamage::GetPtrAddr)
 			.addProperty("m_pChara", &EffectEnemyDamage::m_pChara)
 			.addProperty("m_pGmf", &EffectEnemyDamage::m_pGmf)
 			.addProperty("m_nUpSpeed", &EffectEnemyDamage::m_nUpSpeed)
 			.addProperty("m_nColorMin", &EffectEnemyDamage::m_nColorMin)
 			.addProperty("m_nBright", &EffectEnemyDamage::m_nBright)
-			// Functions with return values pointing to native types ('class EffectEnemyDamage*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addStaticFunction("Create", &EffectEnemyDamage::Create)
+			.addStaticFunction("Create", &EffectEnemyDamage::Create)
 		.endClass();
 	}
 #endif
@@ -22449,12 +23043,15 @@ private:
 	char _UnidentifiedData[7844];
 public:
 
+	std::string ToString() const { return "class HrMap(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<HrMap>("HrMap")
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("IsDied", &HrMap::IsDied)
+			.addFunction("__tostring", &HrMap::ToString)
+			.addFunction("GetPtrAddr", &HrMap::GetPtrAddr)
+			.addFunction("IsDied", &HrMap::IsDied)
 		.endClass();
 	}
 #endif
@@ -22496,10 +23093,14 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "struct stThrowInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<stThrowInfo>("stThrowInfo")
+			.addFunction("__tostring", &stThrowInfo::ToString)
+			.addFunction("GetPtrAddr", &stThrowInfo::GetPtrAddr)
 			.addProperty("targetRotation", &stThrowInfo::targetRotation)
 			.addProperty("basePosition", &stThrowInfo::basePosition)
 			.addProperty("targetPosition", &stThrowInfo::targetPosition)
@@ -22587,14 +23188,14 @@ public:
 	// [Function] void HrMessage::StartMessage(uint32_t arg1, int32_t arg2, uint32_t arg3, uint8_t arg4) [?StartMessage@HrMessage@@SAXIHI_N@Z]
 	static void StartMessage(uint32_t arg1, int32_t arg2, uint32_t arg3, uint8_t arg4)
 	{
-		typedef void(__cdecl* _Func)(uint32_t arg1, int32_t arg2, uint32_t arg3, uint8_t arg4);
+		typedef void(__fastcall* _Func)(uint32_t arg1, int32_t arg2, uint32_t arg3, uint8_t arg4);
 		_Func mFunc = (_Func)(GameModule + 0x4896f0);
 		return mFunc(arg1, arg2, arg3, arg4);
 	}
 	// [Function] void HrMessage::RenderProcess(void* arg1) [?RenderProcess@HrMessage@@SAXPAX@Z]
 	static void RenderProcess(void* arg1)
 	{
-		typedef void(__cdecl* _Func)(void* arg1);
+		typedef void(__fastcall* _Func)(void* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x489810);
 		return mFunc(arg1);
 	}
@@ -22634,25 +23235,28 @@ public:
 		return mFunc(this);
 	}
 	// [Function] void HrMessage::GetStrLengthW(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6) [?GetStrLengthW@HrMessage@@SAXIPBDHHAAM1@Z]
-	static void GetStrLengthW(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6)
+	static void GetStrLengthW(uint32_t arg1, std::string arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6)
 	{
-		typedef void(__cdecl* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6);
+		char const* arg2_c_str = arg2.c_str();
+		typedef void(__fastcall* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6);
 		_Func mFunc = (_Func)(GameModule + 0x489a60);
-		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6);
+		return mFunc(arg1, arg2_c_str, arg3, arg4, arg5, arg6);
 	}
 	// [Function] void HrMessage::GetStrLength(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6) [?GetStrLength@HrMessage@@SAXIPBDHHAAM1@Z]
-	static void GetStrLength(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6)
+	static void GetStrLength(uint32_t arg1, std::string arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6)
 	{
-		typedef void(__cdecl* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6);
+		char const* arg2_c_str = arg2.c_str();
+		typedef void(__fastcall* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6);
 		_Func mFunc = (_Func)(GameModule + 0x489c60);
-		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6);
+		return mFunc(arg1, arg2_c_str, arg3, arg4, arg5, arg6);
 	}
 	// [Function] void HrMessage::GetTick(uint32_t arg1, char const* arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5) [?GetTick@HrMessage@@SAXIPBDHAAI1@Z]
-	static void GetTick(uint32_t arg1, char const* arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5)
+	static void GetTick(uint32_t arg1, std::string arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5)
 	{
-		typedef void(__cdecl* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5);
+		char const* arg2_c_str = arg2.c_str();
+		typedef void(__fastcall* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5);
 		_Func mFunc = (_Func)(GameModule + 0x489e90);
-		return mFunc(arg1, arg2, arg3, arg4, arg5);
+		return mFunc(arg1, arg2_c_str, arg3, arg4, arg5);
 	}
 	// [Function] void __convention("thiscall") HrMessage::_GetTick(class HrMessage* const this, int32_t arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5) [?_GetTick@HrMessage@@IAEXHHAAI0@Z]
 	void _GetTick(int32_t arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5)
@@ -22664,7 +23268,7 @@ public:
 	// [Function] void HrMessage::SetFontFuti(uint32_t arg1, int32_t arg2, struct GXColor arg3) [?SetFontFuti@HrMessage@@SAXIHUGXColor@@@Z]
 	static void SetFontFuti(uint32_t arg1, int32_t arg2, struct GXColor arg3)
 	{
-		typedef void(__cdecl* _Func)(uint32_t arg1, int32_t arg2, struct GXColor arg3);
+		typedef void(__fastcall* _Func)(uint32_t arg1, int32_t arg2, struct GXColor arg3);
 		_Func mFunc = (_Func)(GameModule + 0x489fd0);
 		return mFunc(arg1, arg2, arg3);
 	}
@@ -22678,7 +23282,7 @@ public:
 	// [Function] void HrMessage::SetFontEx(uint32_t arg1, float arg2) [?SetFontEx@HrMessage@@SAXIM@Z]
 	static void SetFontEx(uint32_t arg1, float arg2)
 	{
-		typedef void(__cdecl* _Func)(uint32_t arg1, float arg2);
+		typedef void(__fastcall* _Func)(uint32_t arg1, float arg2);
 		_Func mFunc = (_Func)(GameModule + 0x48a040);
 		return mFunc(arg1, arg2);
 	}
@@ -22690,67 +23294,76 @@ public:
 		return mFunc(this, arg2);
 	}
 	// [Function] int16_t const* HrMessage::GetStringsW(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4) [?GetStringsW@HrMessage@@SAPB_SIPBDHH@Z]
-	static int16_t const* GetStringsW(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4)
+	// Can't export pointer to native type 'int16_t const*' [TypeClass.PointerTypeClass] in LuaBridge
+	static void GetStringsW(uint32_t arg1, std::string arg2, int32_t arg3, int32_t arg4)
 	{
-		typedef int16_t const*(__cdecl* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4);
+		char const* arg2_c_str = arg2.c_str();
+		typedef int16_t const*(__fastcall* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4);
 		_Func mFunc = (_Func)(GameModule + 0x48a0a0);
-		return mFunc(arg1, arg2, arg3, arg4);
+		mFunc(arg1, arg2_c_str, arg3, arg4);
 	}
 	// [Function] char const* HrMessage::GetStrings(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4) [?GetStrings@HrMessage@@SAPBDIPBDHH@Z]
-	static char const* GetStrings(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4)
+	// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
+	static void GetStrings(uint32_t arg1, std::string arg2, int32_t arg3, int32_t arg4)
 	{
-		typedef char const*(__cdecl* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4);
+		char const* arg2_c_str = arg2.c_str();
+		typedef char const*(__fastcall* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4);
 		_Func mFunc = (_Func)(GameModule + 0x48a120);
-		return mFunc(arg1, arg2, arg3, arg4);
+		mFunc(arg1, arg2_c_str, arg3, arg4);
 	}
 	// [Function] int16_t const* __convention("thiscall") HrMessage::_GetStringsW(class HrMessage* const this, int32_t arg2, int32_t arg3, int32_t arg4) [?_GetStringsW@HrMessage@@IAEPB_SHHH@Z]
-	int16_t const* _GetStringsW(int32_t arg2, int32_t arg3, int32_t arg4)
+	// Can't export pointer to native type 'int16_t const*' [TypeClass.PointerTypeClass] in LuaBridge
+	void _GetStringsW(int32_t arg2, int32_t arg3, int32_t arg4)
 	{
 		typedef int16_t const*(__thiscall* _Func)(class HrMessage* const thisPtr, int32_t arg2, int32_t arg3, int32_t arg4);
 		_Func mFunc = (_Func)(GameModule + 0x48a1a0);
-		return mFunc(this, arg2, arg3, arg4);
+		mFunc(this, arg2, arg3, arg4);
 	}
 	// [Function] char const* __convention("thiscall") HrMessage::_GetStrings(class HrMessage* const this, int32_t arg2, int32_t arg3, int32_t arg4) [?_GetStrings@HrMessage@@IAEPBDHHH@Z]
-	char const* _GetStrings(int32_t arg2, int32_t arg3, int32_t arg4)
+	// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
+	void _GetStrings(int32_t arg2, int32_t arg3, int32_t arg4)
 	{
 		typedef char const*(__thiscall* _Func)(class HrMessage* const thisPtr, int32_t arg2, int32_t arg3, int32_t arg4);
 		_Func mFunc = (_Func)(GameModule + 0x48a210);
-		return mFunc(this, arg2, arg3, arg4);
+		mFunc(this, arg2, arg3, arg4);
 	}
 	// [Function] float HrMessage::DispMessage(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10) [?DispMessage@HrMessage@@SAMIPBDHHMMUGXColor@@HH_N@Z]
-	static float DispMessage(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10)
+	static float DispMessage(uint32_t arg1, std::string arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10)
 	{
-		typedef float(__cdecl* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10);
+		char const* arg2_c_str = arg2.c_str();
+		typedef float(__fastcall* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10);
 		_Func mFunc = (_Func)(GameModule + 0x48a280);
-		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+		return mFunc(arg1, arg2_c_str, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
 	// [Function] class ghmGcFont* HrMessage::GetFont(uint32_t arg1) [?GetFont@HrMessage@@SAPAVghmGcFont@@I@Z]
 	static class ghmGcFont* GetFont(uint32_t arg1)
 	{
-		typedef class ghmGcFont*(__cdecl* _Func)(uint32_t arg1);
+		typedef class ghmGcFont*(__fastcall* _Func)(uint32_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0x48a360);
 		return mFunc(arg1);
 	}
 	// [Function] class WGdl* HrMessage::GetGdl(uint32_t arg1) [?GetGdl@HrMessage@@SAPAVWGdl@@I@Z]
 	static class WGdl* GetGdl(uint32_t arg1)
 	{
-		typedef class WGdl*(__cdecl* _Func)(uint32_t arg1);
+		typedef class WGdl*(__fastcall* _Func)(uint32_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0x48a390);
 		return mFunc(arg1);
 	}
 	// [Function] int32_t HrMessage::GetSentenceNum(uint32_t arg1, char const* arg2, int32_t arg3) [?GetSentenceNum@HrMessage@@SAHIPBDH@Z]
-	static int32_t GetSentenceNum(uint32_t arg1, char const* arg2, int32_t arg3)
+	static int32_t GetSentenceNum(uint32_t arg1, std::string arg2, int32_t arg3)
 	{
-		typedef int32_t(__cdecl* _Func)(uint32_t arg1, char const* arg2, int32_t arg3);
+		char const* arg2_c_str = arg2.c_str();
+		typedef int32_t(__fastcall* _Func)(uint32_t arg1, char const* arg2, int32_t arg3);
 		_Func mFunc = (_Func)(GameModule + 0x48a3c0);
-		return mFunc(arg1, arg2, arg3);
+		return mFunc(arg1, arg2_c_str, arg3);
 	}
 	// [Function] int32_t HrMessage::GetLineNum(uint32_t arg1, char const* arg2) [?GetLineNum@HrMessage@@SAHIPBD@Z]
-	static int32_t GetLineNum(uint32_t arg1, char const* arg2)
+	static int32_t GetLineNum(uint32_t arg1, std::string arg2)
 	{
-		typedef int32_t(__cdecl* _Func)(uint32_t arg1, char const* arg2);
+		char const* arg2_c_str = arg2.c_str();
+		typedef int32_t(__fastcall* _Func)(uint32_t arg1, char const* arg2);
 		_Func mFunc = (_Func)(GameModule + 0x48a450);
-		return mFunc(arg1, arg2);
+		return mFunc(arg1, arg2_c_str);
 	}
 	// [Function] int32_t __convention("thiscall") HrMessage::_GetSentenceNum(class HrMessage* const this, int32_t arg2, int32_t arg3) [?_GetSentenceNum@HrMessage@@IAEHHH@Z]
 	int32_t _GetSentenceNum(int32_t arg2, int32_t arg3)
@@ -22788,11 +23401,12 @@ public:
 		return mFunc(this);
 	}
 	// [Function] uint8_t __convention("thiscall") HrMessage::SetMessage(class HrMessage* const this, char const* arg2, uint32_t arg3, uint8_t arg4) [?SetMessage@HrMessage@@QAE_NPBDI_N@Z]
-	uint8_t SetMessage(char const* arg2, uint32_t arg3, uint8_t arg4)
+	uint8_t SetMessage(std::string arg2, uint32_t arg3, uint8_t arg4)
 	{
+		char const* arg2_c_str = arg2.c_str();
 		typedef uint8_t(__thiscall* _Func)(class HrMessage* const thisPtr, char const* arg2, uint32_t arg3, uint8_t arg4);
 		_Func mFunc = (_Func)(GameModule + 0x48aaa0);
-		return mFunc(this, arg2, arg3, arg4);
+		return mFunc(this, arg2_c_str, arg3, arg4);
 	}
 	// [Function] void __convention("thiscall") HrMessage::_DePause(class HrMessage* const this) [?_DePause@HrMessage@@IAEXXZ]
 	void _DePause()
@@ -22825,77 +23439,77 @@ public:
 	// [Function] int32_t HrMessage::GetDialogoNum(uint32_t arg1) [?GetDialogoNum@HrMessage@@SAHI@Z]
 	static int32_t GetDialogoNum(uint32_t arg1)
 	{
-		typedef int32_t(__cdecl* _Func)(uint32_t arg1);
+		typedef int32_t(__fastcall* _Func)(uint32_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0x48ad90);
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t HrMessage::IsMessage() [?IsMessage@HrMessage@@SA_NXZ]
 	static uint8_t IsMessage()
 	{
-		typedef uint8_t(__cdecl* _Func)();
+		typedef uint8_t(__fastcall* _Func)();
 		_Func mFunc = (_Func)(GameModule + 0x48b0c0);
 		return mFunc();
 	}
 	// [Function] void HrMessage::SetPlayTick(float arg1) [?SetPlayTick@HrMessage@@SAXM@Z]
 	static void SetPlayTick(float arg1)
 	{
-		typedef void(__cdecl* _Func)(float arg1);
+		typedef void(__fastcall* _Func)(float arg1);
 		_Func mFunc = (_Func)(GameModule + 0x48b0f0);
 		return mFunc(arg1);
 	}
 	// [Function] void HrMessage::Pause(uint32_t arg1) [?Pause@HrMessage@@SAXI@Z]
 	static void Pause(uint32_t arg1)
 	{
-		typedef void(__cdecl* _Func)(uint32_t arg1);
+		typedef void(__fastcall* _Func)(uint32_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0x48b110);
 		return mFunc(arg1);
 	}
 	// [Function] void HrMessage::DePause(uint32_t arg1) [?DePause@HrMessage@@SAXI@Z]
 	static void DePause(uint32_t arg1)
 	{
-		typedef void(__cdecl* _Func)(uint32_t arg1);
+		typedef void(__fastcall* _Func)(uint32_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0x48b140);
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t HrMessage::IsMessageEnd(uint32_t arg1) [?IsMessageEnd@HrMessage@@SA_NI@Z]
 	static uint8_t IsMessageEnd(uint32_t arg1)
 	{
-		typedef uint8_t(__cdecl* _Func)(uint32_t arg1);
+		typedef uint8_t(__fastcall* _Func)(uint32_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0x48b170);
 		return mFunc(arg1);
 	}
 	// [Function] uint32_t HrMessage::Create(void* arg1) [?Create@HrMessage@@SAIPAX@Z]
 	static uint32_t Create(void* arg1)
 	{
-		typedef uint32_t(__cdecl* _Func)(void* arg1);
+		typedef uint32_t(__fastcall* _Func)(void* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x48b1b0);
 		return mFunc(arg1);
 	}
 	// [Function] class HrMessage* HrMessage::GetObjectA(uint32_t arg1) [?GetObjectA@HrMessage@@SAPAV1@I@Z]
 	static class HrMessage* GetObjectA(uint32_t arg1)
 	{
-		typedef class HrMessage*(__cdecl* _Func)(uint32_t arg1);
+		typedef class HrMessage*(__fastcall* _Func)(uint32_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0x48b220);
 		return mFunc(arg1);
 	}
 	// [Function] void HrMessage::Stop(uint32_t arg1) [?Stop@HrMessage@@SAXI@Z]
 	static void Stop(uint32_t arg1)
 	{
-		typedef void(__cdecl* _Func)(uint32_t arg1);
+		typedef void(__fastcall* _Func)(uint32_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0x48b2d0);
 		return mFunc(arg1);
 	}
 	// [Function] void HrMessage::Delete(uint32_t arg1) [?Delete@HrMessage@@SAXI@Z]
 	static void Delete(uint32_t arg1)
 	{
-		typedef void(__cdecl* _Func)(uint32_t arg1);
+		typedef void(__fastcall* _Func)(uint32_t arg1);
 		_Func mFunc = (_Func)(GameModule + 0x48b310);
 		return mFunc(arg1);
 	}
 	// [Function] class ghmResGroup* HrMessage::GetLangageGroup(class ghmResGroup* arg1) [?GetLangageGroup@HrMessage@@SAPAVghmResGroup@@PAV2@@Z]
 	static class ghmResGroup* GetLangageGroup(class ghmResGroup* arg1)
 	{
-		typedef class ghmResGroup*(__cdecl* _Func)(class ghmResGroup* arg1);
+		typedef class ghmResGroup*(__fastcall* _Func)(class ghmResGroup* arg1);
 		_Func mFunc = (_Func)(GameModule + 0x48b490);
 		return mFunc(arg1);
 	}
@@ -22928,10 +23542,14 @@ public:
 	// <struct GdlDialog* m_pCurrentDialog, offset 0x38>
 	struct GdlDialog* m_pCurrentDialog;
 
+	std::string ToString() const { return "class HrMessage(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<HrMessage, ghmListObj>("HrMessage")
+			.addFunction("__tostring", &HrMessage::ToString)
+			.addFunction("GetPtrAddr", &HrMessage::GetPtrAddr)
 			.addProperty("m_Anchor", &HrMessage::m_Anchor)
 			.addProperty("m_Handle", &HrMessage::m_Handle)
 			.addProperty("m_Status", &HrMessage::m_Status)
@@ -22940,84 +23558,77 @@ public:
 			.addProperty("mp_Gdl", &HrMessage::mp_Gdl)
 			.addProperty("m_NowTick", &HrMessage::m_NowTick)
 			.addProperty("m_pCurrentDialog", &HrMessage::m_pCurrentDialog)
-			// Functions with return values pointing to native types ('class ghmGcFont*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("_GetFont", &HrMessage::_GetFont)
+			.addFunction("_GetFont", &HrMessage::_GetFont)
 			.addFunction("_GetStatus", &HrMessage::_GetStatus)
-			// Functions with return values pointing to native types ('class HrMessage*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("GetNext", &HrMessage::GetNext)
-			// Functions with return values pointing to native types ('class WGdl*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("_GetGdl", &HrMessage::_GetGdl)
+			.addFunction("GetNext", &HrMessage::GetNext)
+			.addFunction("_GetGdl", &HrMessage::_GetGdl)
 			.addFunction("GetHandle", &HrMessage::GetHandle)
 			.addStaticFunction("StartMessage", &HrMessage::StartMessage)
-			// Functions with parameters pointing to native types (void* arg1) not supported in LuaBridge.
+			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("RenderProcess", &HrMessage::RenderProcess)
 			.addFunction("Render", &HrMessage::Render)
-			// Functions with return values pointing to native types ('struct GdlDialog*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("GetDialog", &HrMessage::GetDialog)
+			.addFunction("GetDialog", &HrMessage::GetDialog)
 			.addFunction("Frame", &HrMessage::Frame)
 			.addFunction("DispLine_RenderProcess", &HrMessage::DispLine_RenderProcess)
 			.addFunction("DispLine_FrameProcess", &HrMessage::DispLine_FrameProcess)
-			// Functions with parameters pointing to native types (float& arg6) not supported in LuaBridge.
+			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("GetStrLengthW", &HrMessage::GetStrLengthW)
 			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("GetStrLengthW", &HrMessage::GetStrLengthW)
 			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("GetStrLengthW", &HrMessage::GetStrLengthW)
-			// Functions with parameters pointing to native types (float& arg6) not supported in LuaBridge.
+			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("GetStrLength", &HrMessage::GetStrLength)
 			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("GetStrLength", &HrMessage::GetStrLength)
-			// Functions with parameters pointing to native types (uint32_t& arg5) not supported in LuaBridge.
+			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("GetTick", &HrMessage::GetTick)
 			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("GetTick", &HrMessage::GetTick)
-			// Functions with parameters pointing to native types (uint32_t& arg5) not supported in LuaBridge.
+			// Can't export pointer to native type 'uint32_t&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("_GetTick", &HrMessage::_GetTick)
 			.addStaticFunction("SetFontFuti", &HrMessage::SetFontFuti)
 			.addFunction("_SetFontFuti", &HrMessage::_SetFontFuti)
 			.addStaticFunction("SetFontEx", &HrMessage::SetFontEx)
 			.addFunction("_SetFontEx", &HrMessage::_SetFontEx)
-			// Functions with return values pointing to native types ('int16_t const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("GetStringsW", &HrMessage::GetStringsW)
 			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("GetStringsW", &HrMessage::GetStringsW)
-			// Functions with return values pointing to native types ('char const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("GetStrings", &HrMessage::GetStrings)
 			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("GetStrings", &HrMessage::GetStrings)
-			// Functions with return values pointing to native types ('int16_t const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("_GetStringsW", &HrMessage::_GetStringsW)
-			// Functions with return values pointing to native types ('char const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("_GetStrings", &HrMessage::_GetStrings)
-			// Functions with parameters pointing to native types (char const* arg2) not supported in LuaBridge.
+			.addFunction("_GetStringsW", &HrMessage::_GetStringsW)
+			.addFunction("_GetStrings", &HrMessage::_GetStrings)
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addStaticFunction("DispMessage", &HrMessage::DispMessage)
 			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("DispMessage", &HrMessage::DispMessage)
-			// Functions with return values pointing to native types ('class ghmGcFont*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addStaticFunction("GetFont", &HrMessage::GetFont)
-			// Functions with return values pointing to native types ('class WGdl*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addStaticFunction("GetGdl", &HrMessage::GetGdl)
-			// Functions with parameters pointing to native types (char const* arg2) not supported in LuaBridge.
+			.addStaticFunction("GetFont", &HrMessage::GetFont)
+			.addStaticFunction("GetGdl", &HrMessage::GetGdl)
+			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("GetSentenceNum", &HrMessage::GetSentenceNum)
 			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("GetSentenceNum", &HrMessage::GetSentenceNum)
-			// Functions with parameters pointing to native types (char const* arg2) not supported in LuaBridge.
+			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("GetLineNum", &HrMessage::GetLineNum)
 			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("GetLineNum", &HrMessage::GetLineNum)
 			.addFunction("_GetSentenceNum", &HrMessage::_GetSentenceNum)
 			.addFunction("_GetLineNum", &HrMessage::_GetLineNum)
-			.addFunction("_DispChar", &HrMessage::_DispChar)
-			.addFunction("_DispMessage", &HrMessage::_DispMessage)
+			// Can't export functions with more than 8 parameters to LuaBridge.
+			//.addFunction("_DispChar", &HrMessage::_DispChar)
+			// Can't export functions with more than 8 parameters to LuaBridge.
+			//.addFunction("_DispMessage", &HrMessage::_DispMessage)
 			.addFunction("_Stop", &HrMessage::_Stop)
-			// Functions with parameters pointing to native types (char const* arg2) not supported in LuaBridge.
+			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("SetMessage", &HrMessage::SetMessage)
 			// Function overloading not supported in LuaBridge.
 			//.addFunction("SetMessage", &HrMessage::SetMessage)
 			.addFunction("_DePause", &HrMessage::_DePause)
 			.addFunction("_Pause", &HrMessage::_Pause)
-			// Functions with parameters pointing to native types (class ghmGcFont* arg2) not supported in LuaBridge.
-			//.addFunction("SetFont", &HrMessage::SetFont)
+			.addFunction("SetFont", &HrMessage::SetFont)
 			.addFunction("_SetPlayTick", &HrMessage::_SetPlayTick)
 			.addStaticFunction("GetDialogoNum", &HrMessage::GetDialogoNum)
 			.addStaticFunction("IsMessage", &HrMessage::IsMessage)
@@ -23025,18 +23636,17 @@ public:
 			.addStaticFunction("Pause", &HrMessage::Pause)
 			.addStaticFunction("DePause", &HrMessage::DePause)
 			.addStaticFunction("IsMessageEnd", &HrMessage::IsMessageEnd)
-			// Functions with parameters pointing to native types (void* arg1) not supported in LuaBridge.
+			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("Create", &HrMessage::Create)
-			// Functions with return values pointing to native types ('class HrMessage*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addStaticFunction("GetObjectA", &HrMessage::GetObjectA)
+			.addStaticFunction("GetObjectA", &HrMessage::GetObjectA)
 			// Function overloading not supported in LuaBridge.
 			//.addFunction("SetFont", &HrMessage::SetFont)
 			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("StartMessage", &HrMessage::StartMessage)
 			.addStaticFunction("Stop", &HrMessage::Stop)
 			.addStaticFunction("Delete", &HrMessage::Delete)
-			// Functions with return values pointing to native types ('class ghmResGroup*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addStaticFunction("GetLangageGroup", &HrMessage::GetLangageGroup)
+			//.addStaticFunction("FrameProcess", &HrMessage::FrameProcess)
+			.addStaticFunction("GetLangageGroup", &HrMessage::GetLangageGroup)
 		.endClass();
 	}
 #endif
@@ -23062,10 +23672,14 @@ private:
 	char _UnidentifiedData[2616];
 public:
 
+	std::string ToString() const { return "class ghmGcFont(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmGcFont>("ghmGcFont")
+			.addFunction("__tostring", &ghmGcFont::ToString)
+			.addFunction("GetPtrAddr", &ghmGcFont::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -23125,10 +23739,14 @@ public:
 	// <struct GdlLines* mpLines, offset 0x40>
 	struct GdlLines* mpLines;
 
+	std::string ToString() const { return "class WGdl(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<WGdl, ghmListObj>("WGdl")
+			.addFunction("__tostring", &WGdl::ToString)
+			.addFunction("GetPtrAddr", &WGdl::GetPtrAddr)
 			.addProperty("mState", &WGdl::mState)
 			.addProperty("mLoadState", &WGdl::mLoadState)
 			.addProperty("mFlag", &WGdl::mFlag)
@@ -23215,10 +23833,14 @@ public:
 	// <uint32_t mPad[0x3], offset 0x34>
 	uint32_t mPad[3];
 
+	std::string ToString() const { return "struct GdlHeader(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GdlHeader>("GdlHeader")
+			.addFunction("__tostring", &GdlHeader::ToString)
+			.addFunction("GetPtrAddr", &GdlHeader::GetPtrAddr)
 			.addProperty("mID", &GdlHeader::mID)
 			.addProperty("mVersion", &GdlHeader::mVersion)
 			.addProperty("mDialogCount", &GdlHeader::mDialogCount)
@@ -23286,10 +23908,14 @@ public:
 	// <uint32_t mPad[0x4], offset 0x10>
 	uint32_t mPad[4];
 
+	std::string ToString() const { return "struct GdlDialog(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GdlDialog>("GdlDialog")
+			.addFunction("__tostring", &GdlDialog::ToString)
+			.addFunction("GetPtrAddr", &GdlDialog::GetPtrAddr)
 			// pointer to const not supported in LuaBridge and needs a getter
 			//.addProperty("mpName", &GdlDialog::mpName)
 			.addProperty("mLinesCount", &GdlDialog::mLinesCount)
@@ -23344,10 +23970,14 @@ public:
 	// <uint32_t mPad[0x1], offset 0x1c>
 	uint32_t mPad[1];
 
+	std::string ToString() const { return "struct GdlLines(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GdlLines>("GdlLines")
+			.addFunction("__tostring", &GdlLines::ToString)
+			.addFunction("GetPtrAddr", &GdlLines::GetPtrAddr)
 			.addProperty("mVoiceID", &GdlLines::mVoiceID)
 			.addProperty("mSentenceCount", &GdlLines::mSentenceCount)
 			// pointer to pointer is not supported in LuaBridge
@@ -23391,10 +24021,14 @@ public:
 	// <uint32_t mPad[0x2], offset 0x8>
 	uint32_t mPad[2];
 
+	std::string ToString() const { return "struct GdlSentence(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GdlSentence>("GdlSentence")
+			.addFunction("__tostring", &GdlSentence::ToString)
+			.addFunction("GetPtrAddr", &GdlSentence::GetPtrAddr)
 			// pointer to const not supported in LuaBridge and needs a getter
 			//.addProperty("mpLettersUc", &GdlSentence::mpLettersUc)
 			.addProperty("mFlag", &GdlSentence::mFlag)
@@ -23429,10 +24063,14 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "class ACameraModeBase(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ACameraModeBase>("ACameraModeBase")
+			.addFunction("__tostring", &ACameraModeBase::ToString)
+			.addFunction("GetPtrAddr", &ACameraModeBase::GetPtrAddr)
 			// delegates are not supported in LuaBridge
 			//.addProperty("field_0", &ACameraModeBase::field_0)
 			.addProperty("m_inRatio", &ACameraModeBase::m_inRatio)
@@ -23507,10 +24145,14 @@ private:
 	char _UnidentifiedData[15];
 public:
 
+	std::string ToString() const { return "class CCameraModeLockOn(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<CCameraModeLockOn, ACameraModeBase>("CCameraModeLockOn")
+			.addFunction("__tostring", &CCameraModeLockOn::ToString)
+			.addFunction("GetPtrAddr", &CCameraModeLockOn::GetPtrAddr)
 			.addProperty("m_inYaw", &CCameraModeLockOn::m_inYaw)
 			.addProperty("m_inPitch", &CCameraModeLockOn::m_inPitch)
 			.addProperty("m_fHopeYaw", &CCameraModeLockOn::m_fHopeYaw)
@@ -23521,8 +24163,7 @@ public:
 			.addProperty("m_bIsChangeLockOnChara", &CCameraModeLockOn::m_bIsChangeLockOnChara)
 			.addProperty("m_pLockOnChara", &CCameraModeLockOn::m_pLockOnChara)
 			.addProperty("m_bStgHit", &CCameraModeLockOn::m_bStgHit)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("getLockOnCharacter", &CCameraModeLockOn::getLockOnCharacter)
+			.addFunction("getLockOnCharacter", &CCameraModeLockOn::getLockOnCharacter)
 		.endClass();
 	}
 #endif
@@ -23548,10 +24189,14 @@ public:
 	// <uint32_t m_checkedFlag[0xd], offset 0x0>
 	uint32_t m_checkedFlag[13];
 
+	std::string ToString() const { return "struct HRSAVEDATA_SHOP(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<HRSAVEDATA_SHOP>("HRSAVEDATA_SHOP")
+			.addFunction("__tostring", &HRSAVEDATA_SHOP::ToString)
+			.addFunction("GetPtrAddr", &HRSAVEDATA_SHOP::GetPtrAddr)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("m_checkedFlag", &HRSAVEDATA_SHOP::m_checkedFlag)
 		.endClass();
@@ -23572,10 +24217,14 @@ private:
 	char _UnidentifiedData[576];
 public:
 
+	std::string ToString() const { return "class CCameraVibManager(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraVibManager>("CCameraVibManager")
+			.addFunction("__tostring", &CCameraVibManager::ToString)
+			.addFunction("GetPtrAddr", &CCameraVibManager::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -23591,10 +24240,14 @@ public:
 	// <class CDoubleSpringInterpolate m_inOfst, offset 0x0>
 	class CDoubleSpringInterpolate m_inOfst;
 
+	std::string ToString() const { return "class CCameraBank(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraBank>("CCameraBank")
+			.addFunction("__tostring", &CCameraBank::ToString)
+			.addFunction("GetPtrAddr", &CCameraBank::GetPtrAddr)
 			.addProperty("m_inOfst", &CCameraBank::m_inOfst)
 		.endClass();
 	}
@@ -23649,10 +24302,14 @@ private:
 	char _UnidentifiedData[12];
 public:
 
+	std::string ToString() const { return "class CCameraModeSubjective(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<CCameraModeSubjective, ACameraModeBase>("CCameraModeSubjective")
+			.addFunction("__tostring", &CCameraModeSubjective::ToString)
+			.addFunction("GetPtrAddr", &CCameraModeSubjective::GetPtrAddr)
 			.addProperty("m_fTimer", &CCameraModeSubjective::m_fTimer)
 			.addProperty("m_fDisappearTimer", &CCameraModeSubjective::m_fDisappearTimer)
 			.addProperty("m_inSrcLookAtPosi", &CCameraModeSubjective::m_inSrcLookAtPosi)
@@ -23722,10 +24379,14 @@ private:
 	char _UnidentifiedData[8];
 public:
 
+	std::string ToString() const { return "class CCameraModePetitMovie(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<CCameraModePetitMovie, ACameraModeBase>("CCameraModePetitMovie")
+			.addFunction("__tostring", &CCameraModePetitMovie::ToString)
+			.addFunction("GetPtrAddr", &CCameraModePetitMovie::GetPtrAddr)
 			.addProperty("m_inAngle", &CCameraModePetitMovie::m_inAngle)
 			.addProperty("m_bAct", &CCameraModePetitMovie::m_bAct)
 			.addProperty("m_fLookAtOfstX", &CCameraModePetitMovie::m_fLookAtOfstX)
@@ -23766,10 +24427,14 @@ public:
 	// <float m_fRotVel, offset 0x18>
 	float m_fRotVel;
 
+	std::string ToString() const { return "class CCameraModeCircle(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<CCameraModeCircle, ACameraModeBase>("CCameraModeCircle")
+			.addFunction("__tostring", &CCameraModeCircle::ToString)
+			.addFunction("GetPtrAddr", &CCameraModeCircle::GetPtrAddr)
 			.addProperty("m_bIsPlusRot", &CCameraModeCircle::m_bIsPlusRot)
 			.addProperty("m_fRotVel", &CCameraModeCircle::m_fRotVel)
 		.endClass();
@@ -23808,10 +24473,14 @@ private:
 	char _UnidentifiedData[15];
 public:
 
+	std::string ToString() const { return "class CCameraModeDefaultAngle(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<CCameraModeDefaultAngle, ACameraModeBase>("CCameraModeDefaultAngle")
+			.addFunction("__tostring", &CCameraModeDefaultAngle::ToString)
+			.addFunction("GetPtrAddr", &CCameraModeDefaultAngle::GetPtrAddr)
 			.addProperty("m_inAngle", &CCameraModeDefaultAngle::m_inAngle)
 			.addProperty("m_inHopeAngle", &CCameraModeDefaultAngle::m_inHopeAngle)
 			.addProperty("m_bIsInputButton", &CCameraModeDefaultAngle::m_bIsInputButton)
@@ -23845,10 +24514,14 @@ public:
 	// <class CDoubleSpringInterpolate3D m_inAddYP, offset 0x20>
 	class CDoubleSpringInterpolate3D m_inAddYP;
 
+	std::string ToString() const { return "class CCameraModeFree(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<CCameraModeFree, ACameraModeBase>("CCameraModeFree")
+			.addFunction("__tostring", &CCameraModeFree::ToString)
+			.addFunction("GetPtrAddr", &CCameraModeFree::GetPtrAddr)
 			.addProperty("m_fInputYaw", &CCameraModeFree::m_fInputYaw)
 			.addProperty("m_fInputPitch", &CCameraModeFree::m_fInputPitch)
 			.addProperty("m_fKeepTimer", &CCameraModeFree::m_fKeepTimer)
@@ -23884,10 +24557,14 @@ public:
 	// <class CTimeRatioInterpolate m_inYawRatio, offset 0x78>
 	class CTimeRatioInterpolate m_inYawRatio;
 
+	std::string ToString() const { return "class CCameraModeNormal(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<CCameraModeNormal, ACameraModeBase>("CCameraModeNormal")
+			.addFunction("__tostring", &CCameraModeNormal::ToString)
+			.addFunction("GetPtrAddr", &CCameraModeNormal::GetPtrAddr)
 			.addProperty("m_inYaw", &CCameraModeNormal::m_inYaw)
 			.addProperty("m_inPitch", &CCameraModeNormal::m_inPitch)
 			.addProperty("m_fHopeYaw", &CCameraModeNormal::m_fHopeYaw)
@@ -23922,10 +24599,14 @@ public:
 	// <float m_fResetYaw, offset 0x18>
 	float m_fResetYaw;
 
+	std::string ToString() const { return "class CCameraModeReset(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<CCameraModeReset, ACameraModeBase>("CCameraModeReset")
+			.addFunction("__tostring", &CCameraModeReset::ToString)
+			.addFunction("GetPtrAddr", &CCameraModeReset::GetPtrAddr)
 			.addProperty("m_bIsSetResetYaw", &CCameraModeReset::m_bIsSetResetYaw)
 			.addProperty("m_fResetYaw", &CCameraModeReset::m_fResetYaw)
 		.endClass();
@@ -23945,10 +24626,14 @@ public:
 	// <class CDoubleSpringInterpolate m_inDistToLookAt, offset 0x0>
 	class CDoubleSpringInterpolate m_inDistToLookAt;
 
+	std::string ToString() const { return "class CCameraDistToLookAt(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraDistToLookAt>("CCameraDistToLookAt")
+			.addFunction("__tostring", &CCameraDistToLookAt::ToString)
+			.addFunction("GetPtrAddr", &CCameraDistToLookAt::GetPtrAddr)
 			.addProperty("m_inDistToLookAt", &CCameraDistToLookAt::m_inDistToLookAt)
 		.endClass();
 	}
@@ -23966,10 +24651,14 @@ public:
 	// <class CDoubleSpringInterpolate3D m_inMove, offset 0x0>
 	class CDoubleSpringInterpolate3D m_inMove;
 
+	std::string ToString() const { return "class CCameraFollowRot(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraFollowRot>("CCameraFollowRot")
+			.addFunction("__tostring", &CCameraFollowRot::ToString)
+			.addFunction("GetPtrAddr", &CCameraFollowRot::GetPtrAddr)
 			.addProperty("m_inMove", &CCameraFollowRot::m_inMove)
 		.endClass();
 	}
@@ -24024,10 +24713,14 @@ public:
 	// <class tiVector m_inCamAxisZ, offset 0xb0>
 	class tiVector m_inCamAxisZ;
 
+	std::string ToString() const { return "class CCameraLookAtOffset(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraLookAtOffset>("CCameraLookAtOffset")
+			.addFunction("__tostring", &CCameraLookAtOffset::ToString)
+			.addFunction("GetPtrAddr", &CCameraLookAtOffset::GetPtrAddr)
 			.addProperty("m_inInterpCoeRatio", &CCameraLookAtOffset::m_inInterpCoeRatio)
 			.addProperty("m_inLocalOfst", &CCameraLookAtOffset::m_inLocalOfst)
 			.addProperty("m_inHopeLocalOfst", &CCameraLookAtOffset::m_inHopeLocalOfst)
@@ -24072,10 +24765,14 @@ public:
 	// <class CDoubleSpringInterpolate3D m_inSpringCoe, offset 0x30>
 	class CDoubleSpringInterpolate3D m_inSpringCoe;
 
+	std::string ToString() const { return "class CCameraLookAtBase(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraLookAtBase>("CCameraLookAtBase")
+			.addFunction("__tostring", &CCameraLookAtBase::ToString)
+			.addFunction("GetPtrAddr", &CCameraLookAtBase::GetPtrAddr)
 			.addProperty("m_inPosi", &CCameraLookAtBase::m_inPosi)
 			.addProperty("m_inPrePosi", &CCameraLookAtBase::m_inPrePosi)
 			.addProperty("m_inPreHopePosi", &CCameraLookAtBase::m_inPreHopePosi)
@@ -24136,10 +24833,14 @@ public:
 	// <class tiVector m_inSlopeCheckTopPosi, offset 0x50>
 	class tiVector m_inSlopeCheckTopPosi;
 
+	std::string ToString() const { return "class CCameraDefaultAngle(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraDefaultAngle>("CCameraDefaultAngle")
+			.addFunction("__tostring", &CCameraDefaultAngle::ToString)
+			.addFunction("GetPtrAddr", &CCameraDefaultAngle::GetPtrAddr)
 			.addProperty("m_inDefaultYP", &CCameraDefaultAngle::m_inDefaultYP)
 			.addProperty("m_bActYawRot", &CCameraDefaultAngle::m_bActYawRot)
 			.addProperty("m_bIsDownAttackPitchUp", &CCameraDefaultAngle::m_bIsDownAttackPitchUp)
@@ -24202,10 +24903,14 @@ public:
 	// <float m_fDistToLookAtMax, offset 0x24>
 	float m_fDistToLookAtMax;
 
+	std::string ToString() const { return "class CCameraLockOnModeData(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraLockOnModeData>("CCameraLockOnModeData")
+			.addFunction("__tostring", &CCameraLockOnModeData::ToString)
+			.addFunction("GetPtrAddr", &CCameraLockOnModeData::GetPtrAddr)
 			.addProperty("m_fLookAtOfstMinX", &CCameraLockOnModeData::m_fLookAtOfstMinX)
 			.addProperty("m_fLookAtOfstRatioX", &CCameraLockOnModeData::m_fLookAtOfstRatioX)
 			.addProperty("m_fLookAtOfstMinY", &CCameraLockOnModeData::m_fLookAtOfstMinY)
@@ -24241,10 +24946,14 @@ public:
 	// <float m_fFollowRotCoe, offset 0x0>
 	float m_fFollowRotCoe;
 
+	std::string ToString() const { return "class CCameraNormalModeData(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraNormalModeData>("CCameraNormalModeData")
+			.addFunction("__tostring", &CCameraNormalModeData::ToString)
+			.addFunction("GetPtrAddr", &CCameraNormalModeData::GetPtrAddr)
 			.addProperty("m_fFollowRotCoe", &CCameraNormalModeData::m_fFollowRotCoe)
 		.endClass();
 	}
@@ -24283,10 +24992,14 @@ public:
 	// <float m_fDistToLookAt, offset 0x1c>
 	float m_fDistToLookAt;
 
+	std::string ToString() const { return "class CCameraModeCommonData(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraModeCommonData>("CCameraModeCommonData")
+			.addFunction("__tostring", &CCameraModeCommonData::ToString)
+			.addFunction("GetPtrAddr", &CCameraModeCommonData::GetPtrAddr)
 			.addProperty("m_fLookAtOfstMinX", &CCameraModeCommonData::m_fLookAtOfstMinX)
 			.addProperty("m_fLookAtOfstRatioX", &CCameraModeCommonData::m_fLookAtOfstRatioX)
 			.addProperty("m_fLookAtOfstMinY", &CCameraModeCommonData::m_fLookAtOfstMinY)
@@ -24339,10 +25052,14 @@ public:
 	// <class CCameraLockOnModeData m_inLockOnModeData, offset 0x58>
 	class CCameraLockOnModeData m_inLockOnModeData;
 
+	std::string ToString() const { return "class CCameraDataManager(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraDataManager>("CCameraDataManager")
+			.addFunction("__tostring", &CCameraDataManager::ToString)
+			.addFunction("GetPtrAddr", &CCameraDataManager::GetPtrAddr)
 			.addProperty("m_eEventCond", &CCameraDataManager::m_eEventCond)
 			.addProperty("m_inModeManagerDataLink", &CCameraDataManager::m_inModeManagerDataLink)
 			.addProperty("m_inModeCommonDataLink", &CCameraDataManager::m_inModeCommonDataLink)
@@ -24376,10 +25093,14 @@ private:
 	char _UnidentifiedData[4336];
 public:
 
+	std::string ToString() const { return "class CCameraAreaManager(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraAreaManager>("CCameraAreaManager")
+			.addFunction("__tostring", &CCameraAreaManager::ToString)
+			.addFunction("GetPtrAddr", &CCameraAreaManager::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -24405,10 +25126,14 @@ namespace gameUtil
 		char _UnidentifiedData[12];
 	public:
 
+		std::string ToString() const { return "class CPositionControl(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<gameUtil::CPositionControl>("gameUtil_CPositionControl")
+				.addFunction("__tostring", &gameUtil::CPositionControl::ToString)
+				.addFunction("GetPtrAddr", &gameUtil::CPositionControl::GetPtrAddr)
 				.addProperty("m_inPosi", &gameUtil::CPositionControl::m_inPosi)
 				.addProperty("m_fUpdateDistSqu", &gameUtil::CPositionControl::m_fUpdateDistSqu)
 			.endClass();
@@ -24471,10 +25196,14 @@ private:
 	char _UnidentifiedData[12];
 public:
 
+	std::string ToString() const { return "class CCameraTarget(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraTarget>("CCameraTarget")
+			.addFunction("__tostring", &CCameraTarget::ToString)
+			.addFunction("GetPtrAddr", &CCameraTarget::GetPtrAddr)
 			.addProperty("m_pModel", &CCameraTarget::m_pModel)
 			.addProperty("m_inCenterPosi", &CCameraTarget::m_inCenterPosi)
 			.addProperty("m_fYaw", &CCameraTarget::m_fYaw)
@@ -24579,10 +25308,14 @@ namespace ti
 		// <class tiMatrix m_inWorldMat, offset 0x60>
 		class tiMatrix m_inWorldMat;
 
+		std::string ToString() const { return "class CCamera(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<ti::CCamera>("ti_CCamera")
+				.addFunction("__tostring", &ti::CCamera::ToString)
+				.addFunction("GetPtrAddr", &ti::CCamera::GetPtrAddr)
 				.addProperty("m_inPosi", &ti::CCamera::m_inPosi)
 				.addProperty("m_inDir", &ti::CCamera::m_inDir)
 				.addProperty("m_inUpDir", &ti::CCamera::m_inUpDir)
@@ -24718,10 +25451,14 @@ public:
 	// <class CCameraVibManager m_inVibManager, offset 0x18a0>
 	class CCameraVibManager m_inVibManager;
 
+	std::string ToString() const { return "class CGameCamera(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CGameCamera>("CGameCamera")
+			.addFunction("__tostring", &CGameCamera::ToString)
+			.addFunction("GetPtrAddr", &CGameCamera::GetPtrAddr)
 			.addProperty("m_inCamera", &CGameCamera::m_inCamera)
 			.addProperty("m_fYawVel", &CGameCamera::m_fYawVel)
 			.addProperty("m_eMode", &CGameCamera::m_eMode)
@@ -24875,10 +25612,14 @@ private:
 	char _UnidentifiedData[12];
 public:
 
+	std::string ToString() const { return "class CCameraman(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraman>("CCameraman")
+			.addFunction("__tostring", &CCameraman::ToString)
+			.addFunction("GetPtrAddr", &CCameraman::GetPtrAddr)
 			.addProperty("m_inCamera", &CCameraman::m_inCamera)
 			.addProperty("m_bIsCalledOnUpdate", &CCameraman::m_bIsCalledOnUpdate)
 			.addProperty("m_eResetType", &CCameraman::m_eResetType)
@@ -24890,8 +25631,7 @@ public:
 			.addProperty("m_fTsubaSuperiorRatio", &CCameraman::m_fTsubaSuperiorRatio)
 			.addProperty("m_bIsTsubaYawPlus", &CCameraman::m_bIsTsubaYawPlus)
 			.addProperty("m_nTsubaCamVibID", &CCameraman::m_nTsubaCamVibID)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("beginTsubazeriai", &CCameraman::beginTsubazeriai)
+			.addFunction("beginTsubazeriai", &CCameraman::beginTsubazeriai)
 		.endClass();
 	}
 #endif
@@ -25027,10 +25767,14 @@ private:
 	char _UnidentifiedData[6];
 public:
 
+	std::string ToString() const { return "class HrMiniDemoObj(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<HrMiniDemoObj, ghmListObj>("HrMiniDemoObj")
+			.addFunction("__tostring", &HrMiniDemoObj::ToString)
+			.addFunction("GetPtrAddr", &HrMiniDemoObj::GetPtrAddr)
 			.addProperty("mKind", &HrMiniDemoObj::mKind)
 			.addProperty("mpGan", &HrMiniDemoObj::mpGan)
 			.addProperty("mStartTick", &HrMiniDemoObj::mStartTick)
@@ -25096,10 +25840,14 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "class HrMiniDemoModel(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<HrMiniDemoModel, HrMiniDemoObj>("HrMiniDemoModel")
+			.addFunction("__tostring", &HrMiniDemoModel::ToString)
+			.addFunction("GetPtrAddr", &HrMiniDemoModel::GetPtrAddr)
 			.addProperty("mpGanNodeSpec", &HrMiniDemoModel::mpGanNodeSpec)
 			.addProperty("mpGmf", &HrMiniDemoModel::mpGmf)
 			.addProperty("mpChara", &HrMiniDemoModel::mpChara)
@@ -25128,7 +25876,7 @@ int32_t j_sub_849ca0(class mHRPc* const thisPtr)
 // [Function] int32_t sub_4467e6(int32_t* arg1 @ ebp, class mHRPc* arg2 @ esi, class mHRChara* arg3 @ edi) [sub_4467e6]
 int32_t sub_4467e6(int32_t* arg1, class mHRPc* arg2, class mHRChara* arg3)
 {
-	typedef int32_t(__cdecl* _Func)(int32_t* arg1, class mHRPc* arg2, class mHRChara* arg3);
+	typedef int32_t(__fastcall* _Func)(int32_t* arg1, class mHRPc* arg2, class mHRChara* arg3);
 	_Func mFunc = (_Func)(GameModule + 0x4467e6);
 	return mFunc(arg1, arg2, arg3);
 }
@@ -25150,12 +25898,15 @@ private:
 	char _UnidentifiedData[96];
 public:
 
+	std::string ToString() const { return "class STG0202(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<STG0202>("STG0202")
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("CharMoveByConbeyor", &STG0202::CharMoveByConbeyor)
+			.addFunction("__tostring", &STG0202::ToString)
+			.addFunction("GetPtrAddr", &STG0202::GetPtrAddr)
+			.addFunction("CharMoveByConbeyor", &STG0202::CharMoveByConbeyor)
 		.endClass();
 	}
 #endif
@@ -25174,10 +25925,14 @@ public:
 	// <uint32_t MagicNumber, offset 0x4>
 	uint32_t MagicNumber;
 
+	std::string ToString() const { return "struct tagHRTASKCHECK(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<tagHRTASKCHECK>("tagHRTASKCHECK")
+			.addFunction("__tostring", &tagHRTASKCHECK::ToString)
+			.addFunction("GetPtrAddr", &tagHRTASKCHECK::GetPtrAddr)
 			.addProperty("Task", &tagHRTASKCHECK::Task)
 			.addProperty("MagicNumber", &tagHRTASKCHECK::MagicNumber)
 		.endClass();
@@ -25218,10 +25973,14 @@ public:
 	// <class mHRChara* m_pTargetChara, offset 0x70>
 	class mHRChara* m_pTargetChara;
 
+	std::string ToString() const { return "class EffectBoneElect(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EffectBoneElect, HrTask>("EffectBoneElect")
+			.addFunction("__tostring", &EffectBoneElect::ToString)
+			.addFunction("GetPtrAddr", &EffectBoneElect::GetPtrAddr)
 			.addProperty("m_pGmf", &EffectBoneElect::m_pGmf)
 			.addProperty("m_Color", &EffectBoneElect::m_Color)
 			.addProperty("m_BoneStrmObjPtrList", &EffectBoneElect::m_BoneStrmObjPtrList)
@@ -25253,10 +26012,14 @@ private:
 	char _UnidentifiedData[220];
 public:
 
+	std::string ToString() const { return "class BoneStreamObj(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<BoneStreamObj>("BoneStreamObj")
+			.addFunction("__tostring", &BoneStreamObj::ToString)
+			.addFunction("GetPtrAddr", &BoneStreamObj::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25274,10 +26037,14 @@ private:
 	char _UnidentifiedData[226464];
 public:
 
+	std::string ToString() const { return "class EffectMetalElect(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<EffectMetalElect>("EffectMetalElect")
+			.addFunction("__tostring", &EffectMetalElect::ToString)
+			.addFunction("GetPtrAddr", &EffectMetalElect::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25308,7 +26075,7 @@ public:
 	// [Function] class EffectCutMark* EffectCutMark::Create(class TGmf* arg1, class mHRChara* arg2, struct Vec* arg3, uint32_t const arg4, enum eEfDmgLevel& arg5, enum EffectCutMark::eCutMarkType& arg6, float const arg7) [?Create@EffectCutMark@@SAPAV1@PAVTGmf@@PAVmHRChara@@PBUVec@@IABW4eEfDmgLevel@@ABW4eCutMarkType@1@M@Z]
 	static class EffectCutMark* Create(class TGmf* arg1, class mHRChara* arg2, struct Vec* arg3, uint32_t const arg4, enum eEfDmgLevel& arg5, enum EffectCutMark::eCutMarkType& arg6, float const arg7)
 	{
-		typedef class EffectCutMark*(__cdecl* _Func)(class TGmf* arg1, class mHRChara* arg2, struct Vec* arg3, uint32_t const arg4, enum eEfDmgLevel& arg5, enum EffectCutMark::eCutMarkType& arg6, float const arg7);
+		typedef class EffectCutMark*(__fastcall* _Func)(class TGmf* arg1, class mHRChara* arg2, struct Vec* arg3, uint32_t const arg4, enum eEfDmgLevel& arg5, enum EffectCutMark::eCutMarkType& arg6, float const arg7);
 		_Func mFunc = (_Func)(GameModule + 0x56f2c0);
 		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 	}
@@ -25319,11 +26086,15 @@ private:
 	char _UnidentifiedData[21812];
 public:
 
+	std::string ToString() const { return "class EffectCutMark(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<EffectCutMark>("EffectCutMark")
-			// Functions with return values pointing to native types ('class EffectCutMark*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			.addFunction("__tostring", &EffectCutMark::ToString)
+			.addFunction("GetPtrAddr", &EffectCutMark::GetPtrAddr)
+			// Can't export & pointer 'enum eEfDmgLevel&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("Create", &EffectCutMark::Create)
 		.endClass();
 	}
@@ -25356,14 +26127,16 @@ private:
 	char _UnidentifiedData[492];
 public:
 
+	std::string ToString() const { return "class PJTateshi(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<PJTateshi>("PJTateshi")
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("SetZakoAllFuttobiFromPc", &PJTateshi::SetZakoAllFuttobiFromPc)
-			// Functions with parameters pointing to native types (class mHRChara* arg3) not supported in LuaBridge.
-			//.addFunction("SetDemoDamage2PC", &PJTateshi::SetDemoDamage2PC)
+			.addFunction("__tostring", &PJTateshi::ToString)
+			.addFunction("GetPtrAddr", &PJTateshi::GetPtrAddr)
+			.addFunction("SetZakoAllFuttobiFromPc", &PJTateshi::SetZakoAllFuttobiFromPc)
+			.addFunction("SetDemoDamage2PC", &PJTateshi::SetDemoDamage2PC)
 		.endClass();
 	}
 #endif
@@ -25379,10 +26152,14 @@ public:
 	// <void* (* field_0)[0x5], offset 0x0>
 	void* (* field_0)[0x5];
 
+	std::string ToString() const { return "class PJState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<PJState>("PJState")
+			.addFunction("__tostring", &PJState::ToString)
+			.addFunction("GetPtrAddr", &PJState::GetPtrAddr)
 			// delegates are not supported in LuaBridge
 			//.addProperty("field_0", &PJState::field_0)
 		.endClass();
@@ -25415,10 +26192,14 @@ public:
 	// <enum ZkState_DownAttack::eStat m_eStat, offset 0x4>
 	enum ZkState_DownAttack::eStat m_eStat;
 
+	std::string ToString() const { return "class ZkState_DownAttack(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<ZkState_DownAttack, PJState>("ZkState_DownAttack")
+			.addFunction("__tostring", &ZkState_DownAttack::ToString)
+			.addFunction("GetPtrAddr", &ZkState_DownAttack::GetPtrAddr)
 			.addProperty("m_eStat", &ZkState_DownAttack::m_eStat)
 		.endClass();
 	}
@@ -25436,10 +26217,14 @@ public:
 	// <class PJState field_0, offset 0x0>
 	// class PJState Super;
 
+	std::string ToString() const { return "class State_AwayAfterAttack(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_AwayAfterAttack, PJState>("State_AwayAfterAttack")
+			.addFunction("__tostring", &State_AwayAfterAttack::ToString)
+			.addFunction("GetPtrAddr", &State_AwayAfterAttack::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25455,10 +26240,14 @@ public:
 	// <class PJState field_0, offset 0x0>
 	// class PJState Super;
 
+	std::string ToString() const { return "class State_CloseBeforeAttack(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_CloseBeforeAttack, PJState>("State_CloseBeforeAttack")
+			.addFunction("__tostring", &State_CloseBeforeAttack::ToString)
+			.addFunction("GetPtrAddr", &State_CloseBeforeAttack::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25474,10 +26263,14 @@ public:
 	// <class PJState field_0, offset 0x0>
 	// class PJState Super;
 
+	std::string ToString() const { return "class State_StepInAttack(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_StepInAttack, PJState>("State_StepInAttack")
+			.addFunction("__tostring", &State_StepInAttack::ToString)
+			.addFunction("GetPtrAddr", &State_StepInAttack::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25493,10 +26286,14 @@ public:
 	// <class PJState field_0, offset 0x0>
 	// class PJState Super;
 
+	std::string ToString() const { return "class State_DownDamage(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_DownDamage, PJState>("State_DownDamage")
+			.addFunction("__tostring", &State_DownDamage::ToString)
+			.addFunction("GetPtrAddr", &State_DownDamage::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25512,10 +26309,14 @@ public:
 	// <class PJState field_0, offset 0x0>
 	// class PJState Super;
 
+	std::string ToString() const { return "class State_TojoBaseState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_TojoBaseState, PJState>("State_TojoBaseState")
+			.addFunction("__tostring", &State_TojoBaseState::ToString)
+			.addFunction("GetPtrAddr", &State_TojoBaseState::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25531,10 +26332,14 @@ public:
 	// <class PJState field_0, offset 0x0>
 	// class PJState Super;
 
+	std::string ToString() const { return "class State_LeadPcWayPointMove(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_LeadPcWayPointMove, PJState>("State_LeadPcWayPointMove")
+			.addFunction("__tostring", &State_LeadPcWayPointMove::ToString)
+			.addFunction("GetPtrAddr", &State_LeadPcWayPointMove::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25550,10 +26355,14 @@ public:
 	// <class PJState field_0, offset 0x0>
 	// class PJState Super;
 
+	std::string ToString() const { return "class State_FixTurret(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_FixTurret, PJState>("State_FixTurret")
+			.addFunction("__tostring", &State_FixTurret::ToString)
+			.addFunction("GetPtrAddr", &State_FixTurret::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25569,10 +26378,14 @@ public:
 	// <class PJState field_0, offset 0x0>
 	// class PJState Super;
 
+	std::string ToString() const { return "class State_WayPointMoveAfterPop(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_WayPointMoveAfterPop, PJState>("State_WayPointMoveAfterPop")
+			.addFunction("__tostring", &State_WayPointMoveAfterPop::ToString)
+			.addFunction("GetPtrAddr", &State_WayPointMoveAfterPop::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25602,10 +26415,14 @@ public:
 	// <enum State_Tojo_RoomRunner::eStat m_eStat, offset 0x4>
 	enum State_Tojo_RoomRunner::eStat m_eStat;
 
+	std::string ToString() const { return "class State_Tojo_RoomRunner(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Tojo_RoomRunner, State_TojoBaseState>("State_Tojo_RoomRunner")
+			.addFunction("__tostring", &State_Tojo_RoomRunner::ToString)
+			.addFunction("GetPtrAddr", &State_Tojo_RoomRunner::GetPtrAddr)
 			.addProperty("m_eStat", &State_Tojo_RoomRunner::m_eStat)
 		.endClass();
 	}
@@ -25637,10 +26454,14 @@ public:
 	// <enum State_Tojo_AeroBike::eStat m_eStat, offset 0x4>
 	enum State_Tojo_AeroBike::eStat m_eStat;
 
+	std::string ToString() const { return "class State_Tojo_AeroBike(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Tojo_AeroBike, State_TojoBaseState>("State_Tojo_AeroBike")
+			.addFunction("__tostring", &State_Tojo_AeroBike::ToString)
+			.addFunction("GetPtrAddr", &State_Tojo_AeroBike::GetPtrAddr)
 			.addProperty("m_eStat", &State_Tojo_AeroBike::m_eStat)
 		.endClass();
 	}
@@ -25680,10 +26501,14 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "class State_Tojo_BreakCmnObj(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Tojo_BreakCmnObj, State_TojoBaseState>("State_Tojo_BreakCmnObj")
+			.addFunction("__tostring", &State_Tojo_BreakCmnObj::ToString)
+			.addFunction("GetPtrAddr", &State_Tojo_BreakCmnObj::GetPtrAddr)
 			.addProperty("m_eStat", &State_Tojo_BreakCmnObj::m_eStat)
 			.addProperty("m_boAttacked", &State_Tojo_BreakCmnObj::m_boAttacked)
 		.endClass();
@@ -25706,10 +26531,14 @@ public:
 	// <float m_fSpdY, offset 0x4>
 	float m_fSpdY;
 
+	std::string ToString() const { return "class State_Tojo_JumpOff(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Tojo_JumpOff, State_TojoBaseState>("State_Tojo_JumpOff")
+			.addFunction("__tostring", &State_Tojo_JumpOff::ToString)
+			.addFunction("GetPtrAddr", &State_Tojo_JumpOff::GetPtrAddr)
 			.addProperty("m_fSpdY", &State_Tojo_JumpOff::m_fSpdY)
 		.endClass();
 	}
@@ -25741,10 +26570,14 @@ public:
 	// <enum State_Tojo_Car::eStat m_eStat, offset 0x4>
 	enum State_Tojo_Car::eStat m_eStat;
 
+	std::string ToString() const { return "class State_Tojo_Car(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Tojo_Car, State_TojoBaseState>("State_Tojo_Car")
+			.addFunction("__tostring", &State_Tojo_Car::ToString)
+			.addFunction("GetPtrAddr", &State_Tojo_Car::GetPtrAddr)
 			.addProperty("m_eStat", &State_Tojo_Car::m_eStat)
 		.endClass();
 	}
@@ -25762,10 +26595,14 @@ public:
 	// <class State_TojoBaseState field_0, offset 0x0>
 	// class State_TojoBaseState Super;
 
+	std::string ToString() const { return "class State_Tojo_RunAndTurnPc(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Tojo_RunAndTurnPc, State_TojoBaseState>("State_Tojo_RunAndTurnPc")
+			.addFunction("__tostring", &State_Tojo_RunAndTurnPc::ToString)
+			.addFunction("GetPtrAddr", &State_Tojo_RunAndTurnPc::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25781,10 +26618,14 @@ public:
 	// <class State_TojoBaseState field_0, offset 0x0>
 	// class State_TojoBaseState Super;
 
+	std::string ToString() const { return "class State_Idle(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Idle, State_TojoBaseState>("State_Idle")
+			.addFunction("__tostring", &State_Idle::ToString)
+			.addFunction("GetPtrAddr", &State_Idle::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25800,10 +26641,14 @@ public:
 	// <class State_TojoBaseState field_0, offset 0x0>
 	// class State_TojoBaseState Super;
 
+	std::string ToString() const { return "class State_Tojo_AgainstWall(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Tojo_AgainstWall, State_TojoBaseState>("State_Tojo_AgainstWall")
+			.addFunction("__tostring", &State_Tojo_AgainstWall::ToString)
+			.addFunction("GetPtrAddr", &State_Tojo_AgainstWall::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25819,10 +26664,14 @@ public:
 	// <class State_TojoBaseState field_0, offset 0x0>
 	// class State_TojoBaseState Super;
 
+	std::string ToString() const { return "class State_Tojo_LookAround(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Tojo_LookAround, State_TojoBaseState>("State_Tojo_LookAround")
+			.addFunction("__tostring", &State_Tojo_LookAround::ToString)
+			.addFunction("GetPtrAddr", &State_Tojo_LookAround::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25838,10 +26687,14 @@ public:
 	// <class State_TojoBaseState field_0, offset 0x0>
 	// class State_TojoBaseState Super;
 
+	std::string ToString() const { return "class State_Tojo_Stand(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Tojo_Stand, State_TojoBaseState>("State_Tojo_Stand")
+			.addFunction("__tostring", &State_Tojo_Stand::ToString)
+			.addFunction("GetPtrAddr", &State_Tojo_Stand::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25857,10 +26710,14 @@ public:
 	// <class State_TojoBaseState field_0, offset 0x0>
 	// class State_TojoBaseState Super;
 
+	std::string ToString() const { return "class State_Tojo_Bench(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Tojo_Bench, State_TojoBaseState>("State_Tojo_Bench")
+			.addFunction("__tostring", &State_Tojo_Bench::ToString)
+			.addFunction("GetPtrAddr", &State_Tojo_Bench::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25876,10 +26733,14 @@ public:
 	// <class State_TojoBaseState field_0, offset 0x0>
 	// class State_TojoBaseState Super;
 
+	std::string ToString() const { return "class State_Tojo_Sit(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Tojo_Sit, State_TojoBaseState>("State_Tojo_Sit")
+			.addFunction("__tostring", &State_Tojo_Sit::ToString)
+			.addFunction("GetPtrAddr", &State_Tojo_Sit::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25895,10 +26756,14 @@ public:
 	// <class State_TojoBaseState field_0, offset 0x0>
 	// class State_TojoBaseState Super;
 
+	std::string ToString() const { return "class State_Tojo_SuddenAttack(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Tojo_SuddenAttack, State_TojoBaseState>("State_Tojo_SuddenAttack")
+			.addFunction("__tostring", &State_Tojo_SuddenAttack::ToString)
+			.addFunction("GetPtrAddr", &State_Tojo_SuddenAttack::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25914,10 +26779,14 @@ public:
 	// <class State_Idle field_0, offset 0x0>
 	// class State_Idle Super;
 
+	std::string ToString() const { return "class State_ReleaseWaitIdle(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_ReleaseWaitIdle, State_Idle>("State_ReleaseWaitIdle")
+			.addFunction("__tostring", &State_ReleaseWaitIdle::ToString)
+			.addFunction("GetPtrAddr", &State_ReleaseWaitIdle::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25936,10 +26805,14 @@ public:
 	// <int32_t m_Cnt, offset 0x4>
 	int32_t m_Cnt;
 
+	std::string ToString() const { return "class State_Scare_Base(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Scare_Base, PJState>("State_Scare_Base")
+			.addFunction("__tostring", &State_Scare_Base::ToString)
+			.addFunction("GetPtrAddr", &State_Scare_Base::GetPtrAddr)
 			.addProperty("m_Cnt", &State_Scare_Base::m_Cnt)
 		.endClass();
 	}
@@ -25957,10 +26830,14 @@ public:
 	// <class State_Scare_Base field_0, offset 0x0>
 	// class State_Scare_Base Super;
 
+	std::string ToString() const { return "class State_Scare_Kosinukasi(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Scare_Kosinukasi, State_Scare_Base>("State_Scare_Kosinukasi")
+			.addFunction("__tostring", &State_Scare_Kosinukasi::ToString)
+			.addFunction("GetPtrAddr", &State_Scare_Kosinukasi::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -25976,10 +26853,14 @@ public:
 	// <class State_Scare_Base field_0, offset 0x0>
 	// class State_Scare_Base Super;
 
+	std::string ToString() const { return "class State_Scare_Run(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Scare_Run, State_Scare_Base>("State_Scare_Run")
+			.addFunction("__tostring", &State_Scare_Run::ToString)
+			.addFunction("GetPtrAddr", &State_Scare_Run::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -26012,10 +26893,14 @@ public:
 	// <enum State_WayPointMove::eWaypointSbSt m_eStat, offset 0x4>
 	enum State_WayPointMove::eWaypointSbSt m_eStat;
 
+	std::string ToString() const { return "class State_WayPointMove(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_WayPointMove, PJState>("State_WayPointMove")
+			.addFunction("__tostring", &State_WayPointMove::ToString)
+			.addFunction("GetPtrAddr", &State_WayPointMove::GetPtrAddr)
 			.addProperty("m_eStat", &State_WayPointMove::m_eStat)
 		.endClass();
 	}
@@ -26053,10 +26938,14 @@ public:
 	// <int32_t m_WaitCnt, offset 0x8>
 	int32_t m_WaitCnt;
 
+	std::string ToString() const { return "class State_Pressure(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Pressure, PJState>("State_Pressure")
+			.addFunction("__tostring", &State_Pressure::ToString)
+			.addFunction("GetPtrAddr", &State_Pressure::GetPtrAddr)
 			.addProperty("m_eStat", &State_Pressure::m_eStat)
 			.addProperty("m_WaitCnt", &State_Pressure::m_WaitCnt)
 		.endClass();
@@ -26084,10 +26973,14 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "class State_ThroughDamage(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_ThroughDamage, PJState>("State_ThroughDamage")
+			.addFunction("__tostring", &State_ThroughDamage::ToString)
+			.addFunction("GetPtrAddr", &State_ThroughDamage::GetPtrAddr)
 			.addProperty("m_boHitSword", &State_ThroughDamage::m_boHitSword)
 		.endClass();
 	}
@@ -26131,10 +27024,14 @@ public:
 	// <enum eMoveDir m_eStateMovDir, offset 0x4>
 	enum eMoveDir m_eStateMovDir;
 
+	std::string ToString() const { return "class State_Defence(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Defence, PJState>("State_Defence")
+			.addFunction("__tostring", &State_Defence::ToString)
+			.addFunction("GetPtrAddr", &State_Defence::GetPtrAddr)
 			.addProperty("m_eStateMovDir", &State_Defence::m_eStateMovDir)
 		.endClass();
 	}
@@ -26155,10 +27052,14 @@ public:
 	// <int32_t m_nContinueEvacuate, offset 0x4>
 	int32_t m_nContinueEvacuate;
 
+	std::string ToString() const { return "class State_Evacuate(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Evacuate, PJState>("State_Evacuate")
+			.addFunction("__tostring", &State_Evacuate::ToString)
+			.addFunction("GetPtrAddr", &State_Evacuate::GetPtrAddr)
 			.addProperty("m_nContinueEvacuate", &State_Evacuate::m_nContinueEvacuate)
 		.endClass();
 	}
@@ -26198,10 +27099,14 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "class State_ComboAttack(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_ComboAttack, PJState>("State_ComboAttack")
+			.addFunction("__tostring", &State_ComboAttack::ToString)
+			.addFunction("GetPtrAddr", &State_ComboAttack::GetPtrAddr)
 			.addProperty("m_eStat", &State_ComboAttack::m_eStat)
 			.addProperty("m_ComboRequest", &State_ComboAttack::m_ComboRequest)
 		.endClass();
@@ -26256,10 +27161,14 @@ public:
 	// <enum State_Damage::eStat m_eStat, offset 0x8>
 	enum State_Damage::eStat m_eStat;
 
+	std::string ToString() const { return "class State_Damage(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Damage, PJState>("State_Damage")
+			.addFunction("__tostring", &State_Damage::ToString)
+			.addFunction("GetPtrAddr", &State_Damage::GetPtrAddr)
 			.addProperty("m_DownCnt", &State_Damage::m_DownCnt)
 			.addProperty("m_eStat", &State_Damage::m_eStat)
 		.endClass();
@@ -26285,10 +27194,14 @@ public:
 	// <float fDistBack, offset 0x8>
 	float fDistBack;
 
+	std::string ToString() const { return "struct CollInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CollInfo>("CollInfo")
+			.addFunction("__tostring", &CollInfo::ToString)
+			.addFunction("GetPtrAddr", &CollInfo::GetPtrAddr)
 			.addProperty("fDistLeft", &CollInfo::fDistLeft)
 			.addProperty("fDistRight", &CollInfo::fDistRight)
 			.addProperty("fDistBack", &CollInfo::fDistBack)
@@ -26545,10 +27458,14 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "struct ZkGuardParam(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ZkGuardParam>("ZkGuardParam")
+			.addFunction("__tostring", &ZkGuardParam::ToString)
+			.addFunction("GetPtrAddr", &ZkGuardParam::GetPtrAddr)
 			.addProperty("GrdCnt", &ZkGuardParam::GrdCnt)
 			.addProperty("nGrdCombo", &ZkGuardParam::nGrdCombo)
 			.addProperty("GrdStiffCnt", &ZkGuardParam::GrdStiffCnt)
@@ -26575,10 +27492,14 @@ public:
 	// <int32_t nEvcCombo, offset 0x4>
 	int32_t nEvcCombo;
 
+	std::string ToString() const { return "struct ZkEvacuateParam(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ZkEvacuateParam>("ZkEvacuateParam")
+			.addFunction("__tostring", &ZkEvacuateParam::ToString)
+			.addFunction("GetPtrAddr", &ZkEvacuateParam::GetPtrAddr)
 			.addProperty("EvcCnt", &ZkEvacuateParam::EvcCnt)
 			.addProperty("nEvcCombo", &ZkEvacuateParam::nEvcCombo)
 		.endClass();
@@ -26641,10 +27562,14 @@ public:
 	// <int32_t MaxCnt, offset 0x4>
 	int32_t MaxCnt;
 
+	std::string ToString() const { return "class FkCounter(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<FkCounter>("FkCounter")
+			.addFunction("__tostring", &FkCounter::ToString)
+			.addFunction("GetPtrAddr", &FkCounter::GetPtrAddr)
 			.addProperty("NowCnt", &FkCounter::NowCnt)
 			.addProperty("MaxCnt", &FkCounter::MaxCnt)
 		.endClass();
@@ -26698,10 +27623,14 @@ public:
 	// <uint8_t boGuard, offset 0x3>
 	uint8_t boGuard;
 
+	std::string ToString() const { return "struct ZkSetDamageInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ZkSetDamageInfo>("ZkSetDamageInfo")
+			.addFunction("__tostring", &ZkSetDamageInfo::ToString)
+			.addFunction("GetPtrAddr", &ZkSetDamageInfo::GetPtrAddr)
 			.addProperty("boCounterHit", &ZkSetDamageInfo::boCounterHit)
 			.addProperty("boFollowThroughHit", &ZkSetDamageInfo::boFollowThroughHit)
 			.addProperty("boNoConvertMotionTypeDamage", &ZkSetDamageInfo::boNoConvertMotionTypeDamage)
@@ -26751,10 +27680,14 @@ public:
 	// <class State_Scare_Base field_0, offset 0x0>
 	// class State_Scare_Base Super;
 
+	std::string ToString() const { return "class State_Scare_Yotunbai(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Scare_Yotunbai, State_Scare_Base>("State_Scare_Yotunbai")
+			.addFunction("__tostring", &State_Scare_Yotunbai::ToString)
+			.addFunction("GetPtrAddr", &State_Scare_Yotunbai::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -26770,10 +27703,14 @@ public:
 	// <class State_Scare_Base field_0, offset 0x0>
 	// class State_Scare_Base Super;
 
+	std::string ToString() const { return "class State_Scare_Stand(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Scare_Stand, State_Scare_Base>("State_Scare_Stand")
+			.addFunction("__tostring", &State_Scare_Stand::ToString)
+			.addFunction("GetPtrAddr", &State_Scare_Stand::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -26792,10 +27729,14 @@ public:
 	// <enum eMoveDir m_eStateMovDir, offset 0x4>
 	enum eMoveDir m_eStateMovDir;
 
+	std::string ToString() const { return "class State_RandomMove(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_RandomMove, PJState>("State_RandomMove")
+			.addFunction("__tostring", &State_RandomMove::ToString)
+			.addFunction("GetPtrAddr", &State_RandomMove::GetPtrAddr)
 			.addProperty("m_eStateMovDir", &State_RandomMove::m_eStateMovDir)
 		.endClass();
 	}
@@ -26813,10 +27754,14 @@ public:
 	// <class State_Scare_Base field_0, offset 0x0>
 	// class State_Scare_Base Super;
 
+	std::string ToString() const { return "class State_PerformIll(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_PerformIll, State_Scare_Base>("State_PerformIll")
+			.addFunction("__tostring", &State_PerformIll::ToString)
+			.addFunction("GetPtrAddr", &State_PerformIll::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -26915,10 +27860,14 @@ public:
 		char _UnidentifiedData[3];
 	public:
 
+		std::string ToString() const { return "struct ZakoInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<PJZAKO::ZakoInfo>("PJZAKO_ZakoInfo")
+				.addFunction("__tostring", &PJZAKO::ZakoInfo::ToString)
+				.addFunction("GetPtrAddr", &PJZAKO::ZakoInfo::GetPtrAddr)
 				// static arrays are not supported in LuaBridge (only std::vector)
 				//.addProperty("m_ComboAtkTbl", &PJZAKO::ZakoInfo::m_ComboAtkTbl)
 				.addProperty("m_NowComboAtkNo", &PJZAKO::ZakoInfo::m_NowComboAtkNo)
@@ -26986,10 +27935,14 @@ public:
 		// <int32_t m_nMaxWepMot, offset 0xc>
 		int32_t m_nMaxWepMot;
 
+		std::string ToString() const { return "struct MotionInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<PJZAKO::MotionInfo>("PJZAKO_MotionInfo")
+				.addFunction("__tostring", &PJZAKO::MotionInfo::ToString)
+				.addFunction("GetPtrAddr", &PJZAKO::MotionInfo::GetPtrAddr)
 				.addProperty("m_MotionFrame", &PJZAKO::MotionInfo::m_MotionFrame)
 				.addProperty("m_fMotSpd", &PJZAKO::MotionInfo::m_fMotSpd)
 				.addProperty("m_nMaxCommonMot", &PJZAKO::MotionInfo::m_nMaxCommonMot)
@@ -27040,10 +27993,14 @@ public:
 		char _UnidentifiedData[3];
 	public:
 
+		std::string ToString() const { return "struct TojoInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<PJZAKO::TojoInfo>("PJZAKO_TojoInfo")
+				.addFunction("__tostring", &PJZAKO::TojoInfo::ToString)
+				.addFunction("GetPtrAddr", &PJZAKO::TojoInfo::GetPtrAddr)
 				.addProperty("m_boWaitReleaseIdleState", &PJZAKO::TojoInfo::m_boWaitReleaseIdleState)
 				.addProperty("m_pSyncStgObj", &PJZAKO::TojoInfo::m_pSyncStgObj)
 				.addProperty("m_boGetOffCar", &PJZAKO::TojoInfo::m_boGetOffCar)
@@ -27098,10 +28055,14 @@ public:
 		char _UnidentifiedData[2];
 	public:
 
+		std::string ToString() const { return "struct PcInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<PJZAKO::PcInfo>("PJZAKO_PcInfo")
+				.addFunction("__tostring", &PJZAKO::PcInfo::ToString)
+				.addFunction("GetPtrAddr", &PJZAKO::PcInfo::GetPtrAddr)
 				.addProperty("m_PcPosition", &PJZAKO::PcInfo::m_PcPosition)
 				.addProperty("m_PcDirection", &PJZAKO::PcInfo::m_PcDirection)
 				.addProperty("m_PcNavel", &PJZAKO::PcInfo::m_PcNavel)
@@ -27187,10 +28148,14 @@ public:
 		char _UnidentifiedData[3];
 	public:
 
+		std::string ToString() const { return "struct DmgInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<PJZAKO::DmgInfo>("PJZAKO_DmgInfo")
+				.addFunction("__tostring", &PJZAKO::DmgInfo::ToString)
+				.addFunction("GetPtrAddr", &PJZAKO::DmgInfo::GetPtrAddr)
 				.addProperty("mLoseSightTick", &PJZAKO::DmgInfo::mLoseSightTick)
 				.addProperty("m_PiyoDuration", &PJZAKO::DmgInfo::m_PiyoDuration)
 				.addProperty("m_mSetDmgDir", &PJZAKO::DmgInfo::m_mSetDmgDir)
@@ -27277,10 +28242,14 @@ public:
 		// <int32_t m_PathFindIntervalCnt, offset 0x48>
 		int32_t m_PathFindIntervalCnt;
 
+		std::string ToString() const { return "struct AiInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<PJZAKO::AiInfo>("PJZAKO_AiInfo")
+				.addFunction("__tostring", &PJZAKO::AiInfo::ToString)
+				.addFunction("GetPtrAddr", &PJZAKO::AiInfo::GetPtrAddr)
 				.addProperty("m_boCutAi", &PJZAKO::AiInfo::m_boCutAi)
 				.addProperty("m_ThinkCnt", &PJZAKO::AiInfo::m_ThinkCnt)
 				.addProperty("m_EvacuateParam", &PJZAKO::AiInfo::m_EvacuateParam)
@@ -27325,10 +28294,14 @@ public:
 		// <struct tagHRTASKCHECK taskCheck, offset 0x4>
 		struct tagHRTASKCHECK taskCheck;
 
+		std::string ToString() const { return "struct EfDanmen(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<PJZAKO::EfDanmen>("PJZAKO_EfDanmen")
+				.addFunction("__tostring", &PJZAKO::EfDanmen::ToString)
+				.addFunction("GetPtrAddr", &PJZAKO::EfDanmen::GetPtrAddr)
 				.addProperty("pEf", &PJZAKO::EfDanmen::pEf)
 				.addProperty("taskCheck", &PJZAKO::EfDanmen::taskCheck)
 			.endClass();
@@ -27780,10 +28753,14 @@ public:
 	// <class ZkState_DownAttack m_State_DownAttack, offset 0x9dc>
 	class ZkState_DownAttack m_State_DownAttack;
 
+	std::string ToString() const { return "class PJZAKO(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<PJZAKO, mHRChara>("PJZAKO")
+			.addFunction("__tostring", &PJZAKO::ToString)
+			.addFunction("GetPtrAddr", &PJZAKO::GetPtrAddr)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("m_StatePtrArr", &PJZAKO::m_StatePtrArr)
 			.addProperty("m_BoneScale", &PJZAKO::m_BoneScale)
@@ -27878,30 +28855,21 @@ public:
 			.addProperty("m_State_FixTurret", &PJZAKO::m_State_FixTurret)
 			.addProperty("m_State_WayPointMoveAfterPop", &PJZAKO::m_State_WayPointMoveAfterPop)
 			.addProperty("m_State_DownAttack", &PJZAKO::m_State_DownAttack)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("IsAtkObj", &PJZAKO::IsAtkObj)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("IsSetDamageFromPcThroughAttack", &PJZAKO::IsSetDamageFromPcThroughAttack)
-			// Functions with parameters pointing to native types (class mHRChara* arg4) not supported in LuaBridge.
-			//.addFunction("mSetDamage_Dead", &PJZAKO::mSetDamage_Dead)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mSetDamage_CutDamage", &PJZAKO::mSetDamage_CutDamage)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mSetDamage_NoStateChangeDamage", &PJZAKO::mSetDamage_NoStateChangeDamage)
-			// Functions with parameters pointing to native types (class mHRChara* arg3) not supported in LuaBridge.
+			.addFunction("IsAtkObj", &PJZAKO::IsAtkObj)
+			.addFunction("IsSetDamageFromPcThroughAttack", &PJZAKO::IsSetDamageFromPcThroughAttack)
+			.addFunction("mSetDamage_Dead", &PJZAKO::mSetDamage_Dead)
+			.addFunction("mSetDamage_CutDamage", &PJZAKO::mSetDamage_CutDamage)
+			.addFunction("mSetDamage_NoStateChangeDamage", &PJZAKO::mSetDamage_NoStateChangeDamage)
+			// Can't export pointer to native type 'int32_t*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetDamage_DamageCounterProc", &PJZAKO::mSetDamage_DamageCounterProc)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mSetDamage_InitDamageReaction", &PJZAKO::mSetDamage_InitDamageReaction)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("mSetDamage_Initialize", &PJZAKO::mSetDamage_Initialize)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			.addFunction("mSetDamage_InitDamageReaction", &PJZAKO::mSetDamage_InitDamageReaction)
+			.addFunction("mSetDamage_Initialize", &PJZAKO::mSetDamage_Initialize)
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &PJZAKO::mSetDamage)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("CheckSetDmgFuncGarbageInData", &PJZAKO::CheckSetDmgFuncGarbageInData)
-			// Functions with parameters pointing to native types (class mHRChara* arg4) not supported in LuaBridge.
-			//.addFunction("ConvertDmgMot", &PJZAKO::ConvertDmgMot)
-			// Functions with parameters pointing to native types (class mHRBattle* arg1) not supported in LuaBridge.
-			//.addStaticFunction("StaticProc", &PJZAKO::StaticProc)
+			.addFunction("ConvertDmgMot", &PJZAKO::ConvertDmgMot)
+			.addStaticFunction("StaticProc", &PJZAKO::StaticProc)
 		.endClass();
 	}
 #endif
@@ -28022,10 +28990,14 @@ public:
 	// <class PJState* m_pGlobalState, offset 0x10>
 	class PJState* m_pGlobalState;
 
+	std::string ToString() const { return "class PJStateMachine(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<PJStateMachine>("PJStateMachine")
+			.addFunction("__tostring", &PJStateMachine::ToString)
+			.addFunction("GetPtrAddr", &PJStateMachine::GetPtrAddr)
 			// delegates are not supported in LuaBridge
 			//.addProperty("field_0", &PJStateMachine::field_0)
 			.addProperty("m_pOwner", &PJStateMachine::m_pOwner)
@@ -28054,10 +29026,14 @@ private:
 	char _UnidentifiedData[604];
 public:
 
+	std::string ToString() const { return "class EffectDanmenFlash(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<EffectDanmenFlash>("EffectDanmenFlash")
+			.addFunction("__tostring", &EffectDanmenFlash::ToString)
+			.addFunction("GetPtrAddr", &EffectDanmenFlash::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -28111,10 +29087,14 @@ public:
 	// <float m_TimeRate, offset 0x168>
 	float m_TimeRate;
 
+	std::string ToString() const { return "class EffectQuestion(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EffectQuestion, HrTask>("EffectQuestion")
+			.addFunction("__tostring", &EffectQuestion::ToString)
+			.addFunction("GetPtrAddr", &EffectQuestion::GetPtrAddr)
 			.addProperty("m_Flag", &EffectQuestion::m_Flag)
 			.addProperty("m_StarUni", &EffectQuestion::m_StarUni)
 			.addProperty("m_Star", &EffectQuestion::m_Star)
@@ -28205,10 +29185,14 @@ public:
 	// <enum eMoveDir m_MoveDir, offset 0x20>
 	enum eMoveDir m_MoveDir;
 
+	std::string ToString() const { return "class PJZakoMotMng(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<PJZakoMotMng>("PJZakoMotMng")
+			.addFunction("__tostring", &PJZakoMotMng::ToString)
+			.addFunction("GetPtrAddr", &PJZakoMotMng::GetPtrAddr)
 			.addProperty("m_MoveVec", &PJZakoMotMng::m_MoveVec)
 			.addProperty("m_fCharRotY", &PJZakoMotMng::m_fCharRotY)
 			.addProperty("m_fMoveSpd", &PJZakoMotMng::m_fMoveSpd)
@@ -28240,10 +29224,14 @@ private:
 	char _UnidentifiedData[1220];
 public:
 
+	std::string ToString() const { return "class PathPlanner(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<PathPlanner>("PathPlanner")
+			.addFunction("__tostring", &PathPlanner::ToString)
+			.addFunction("GetPtrAddr", &PathPlanner::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -28266,11 +29254,15 @@ public:
 		// <float fParam, offset 0x4>
 		float fParam;
 
+		std::string ToString() const { return "struct DynamicParam(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<FkDynamicParam::DynamicParam>("FkDynamicParam_DynamicParam")
-				// native pointer type (char*) not supported in LuaBridge (needs wrapper function)
+				.addFunction("__tostring", &FkDynamicParam::DynamicParam::ToString)
+				.addFunction("GetPtrAddr", &FkDynamicParam::DynamicParam::GetPtrAddr)
+				// char* type not supported in LuaBridge
 				//.addProperty("strParamName", &FkDynamicParam::DynamicParam::strParamName)
 				.addProperty("fParam", &FkDynamicParam::DynamicParam::fParam)
 			.endClass();
@@ -28326,18 +29318,22 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "class FkDynamicParam(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<FkDynamicParam>("FkDynamicParam")
+			.addFunction("__tostring", &FkDynamicParam::ToString)
+			.addFunction("GetPtrAddr", &FkDynamicParam::GetPtrAddr)
 			.addProperty("m_DP", &FkDynamicParam::m_DP)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("m_StrFilePath", &FkDynamicParam::m_StrFilePath)
 			.addProperty("m_nParam", &FkDynamicParam::m_nParam)
 			.addProperty("m_Stat", &FkDynamicParam::m_Stat)
-			// native pointer type (char*) not supported in LuaBridge (needs wrapper function)
+			// char* type not supported in LuaBridge
 			//.addProperty("m_pReadBuffer", &FkDynamicParam::m_pReadBuffer)
-			// native pointer type (char*) not supported in LuaBridge (needs wrapper function)
+			// char* type not supported in LuaBridge
 			//.addProperty("m_pReadHead", &FkDynamicParam::m_pReadHead)
 			.addProperty("m_BufferSize", &FkDynamicParam::m_BufferSize)
 			.addProperty("m_HeadSize", &FkDynamicParam::m_HeadSize)
@@ -28368,10 +29364,14 @@ private:
 	char _UnidentifiedData[52];
 public:
 
+	std::string ToString() const { return "class FkObstacleSensor(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<FkObstacleSensor>("FkObstacleSensor")
+			.addFunction("__tostring", &FkObstacleSensor::ToString)
+			.addFunction("GetPtrAddr", &FkObstacleSensor::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -28405,10 +29405,14 @@ public:
 		// <class EffectFkTobiDoguBase* pTobiDoguBase, offset 0x10>
 		class EffectFkTobiDoguBase* pTobiDoguBase;
 
+		std::string ToString() const { return "struct stEfBullet(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<FkBulletManager::stEfBullet>("FkBulletManager_stEfBullet")
+				.addFunction("__tostring", &FkBulletManager::stEfBullet::ToString)
+				.addFunction("GetPtrAddr", &FkBulletManager::stEfBullet::GetPtrAddr)
 				.addProperty("fireFlag", &FkBulletManager::stEfBullet::fireFlag)
 				.addProperty("pTask", &FkBulletManager::stEfBullet::pTask)
 				.addProperty("taskCheckBullet", &FkBulletManager::stEfBullet::taskCheckBullet)
@@ -28455,10 +29459,14 @@ public:
 		// <int32_t CharaHitSeID, offset 0x18>
 		int32_t CharaHitSeID;
 
+		std::string ToString() const { return "struct DmgInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<FkBulletManager::DmgInfo>("FkBulletManager_DmgInfo")
+				.addFunction("__tostring", &FkBulletManager::DmgInfo::ToString)
+				.addFunction("GetPtrAddr", &FkBulletManager::DmgInfo::GetPtrAddr)
 				.addProperty("fDmg", &FkBulletManager::DmgInfo::fDmg)
 				.addProperty("fKnockBack", &FkBulletManager::DmgInfo::fKnockBack)
 				.addProperty("AtkKind", &FkBulletManager::DmgInfo::AtkKind)
@@ -28497,14 +29505,18 @@ public:
 	// <struct FkBulletManager::DmgInfo m_DmgInfo, offset 0x18>
 	struct FkBulletManager::DmgInfo m_DmgInfo;
 
+	std::string ToString() const { return "class FkBulletManager(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<FkBulletManager>("FkBulletManager")
+			.addFunction("__tostring", &FkBulletManager::ToString)
+			.addFunction("GetPtrAddr", &FkBulletManager::GetPtrAddr)
 			.addProperty("mEfBulletArr", &FkBulletManager::mEfBulletArr)
 			.addProperty("m_nBulletMax", &FkBulletManager::m_nBulletMax)
 			.addProperty("m_DmgInfo", &FkBulletManager::m_DmgInfo)
-			// Functions with parameters pointing to native types (class mHRChara* arg4) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("AddManageBullet", &FkBulletManager::AddManageBullet)
 		.endClass();
 	}
@@ -28531,10 +29543,14 @@ public:
 		// <struct Vec* pTgtPos, offset 0x4>
 		struct Vec* pTgtPos;
 
+		std::string ToString() const { return "struct strHitCheck(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<EffectFkTobiDoguBase::strHitCheck>("EffectFkTobiDoguBase_strHitCheck")
+				.addFunction("__tostring", &EffectFkTobiDoguBase::strHitCheck::ToString)
+				.addFunction("GetPtrAddr", &EffectFkTobiDoguBase::strHitCheck::GetPtrAddr)
 				.addProperty("fTgtRadius", &EffectFkTobiDoguBase::strHitCheck::fTgtRadius)
 				.addProperty("pTgtPos", &EffectFkTobiDoguBase::strHitCheck::pTgtPos)
 			.endClass();
@@ -28582,10 +29598,14 @@ public:
 		// <float fSqDistFromLaunch, offset 0x14>
 		float fSqDistFromLaunch;
 
+		std::string ToString() const { return "struct HitObjInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<EffectFkTobiDoguBase::HitObjInfo>("EffectFkTobiDoguBase_HitObjInfo")
+				.addFunction("__tostring", &EffectFkTobiDoguBase::HitObjInfo::ToString)
+				.addFunction("GetPtrAddr", &EffectFkTobiDoguBase::HitObjInfo::GetPtrAddr)
 				.addProperty("boHit", &EffectFkTobiDoguBase::HitObjInfo::boHit)
 				.addProperty("eHitObjType", &EffectFkTobiDoguBase::HitObjInfo::eHitObjType)
 				.addProperty("HitPos", &EffectFkTobiDoguBase::HitObjInfo::HitPos)
@@ -28696,10 +29716,14 @@ public:
 	// <struct EffectFkTobiDoguBase::HitObjInfo m_HitInfo, offset 0xac>
 	struct EffectFkTobiDoguBase::HitObjInfo m_HitInfo;
 
+	std::string ToString() const { return "class EffectFkTobiDoguBase(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<EffectFkTobiDoguBase>("EffectFkTobiDoguBase")
+			.addFunction("__tostring", &EffectFkTobiDoguBase::ToString)
+			.addFunction("GetPtrAddr", &EffectFkTobiDoguBase::GetPtrAddr)
 			// delegates are not supported in LuaBridge
 			//.addProperty("field_0", &EffectFkTobiDoguBase::field_0)
 			.addProperty("m_Flag", &EffectFkTobiDoguBase::m_Flag)
@@ -28774,10 +29798,14 @@ private:
 	char _UnidentifiedData[220];
 public:
 
+	std::string ToString() const { return "class rQuadEx(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<rQuadEx>("rQuadEx")
+			.addFunction("__tostring", &rQuadEx::ToString)
+			.addFunction("GetPtrAddr", &rQuadEx::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -28858,10 +29886,14 @@ public:
 	// <float m_TimeRate, offset 0x284>
 	float m_TimeRate;
 
+	std::string ToString() const { return "class EffectGunTrack(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EffectGunTrack, HrTask>("EffectGunTrack")
+			.addFunction("__tostring", &EffectGunTrack::ToString)
+			.addFunction("GetPtrAddr", &EffectGunTrack::GetPtrAddr)
 			.addProperty("m_Flag", &EffectGunTrack::m_Flag)
 			.addProperty("m_SmokeUni", &EffectGunTrack::m_SmokeUni)
 			.addProperty("m_pWidth", &EffectGunTrack::m_pWidth)
@@ -28927,12 +29959,15 @@ private:
 	char _UnidentifiedData[8252];
 public:
 
+	std::string ToString() const { return "class pcSNB(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<pcSNB>("pcSNB")
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addFunction("mGetSerchNearJumpAttackTarget", &pcSNB::mGetSerchNearJumpAttackTarget)
+			.addFunction("__tostring", &pcSNB::ToString)
+			.addFunction("GetPtrAddr", &pcSNB::GetPtrAddr)
+			.addFunction("mGetSerchNearJumpAttackTarget", &pcSNB::mGetSerchNearJumpAttackTarget)
 		.endClass();
 	}
 #endif
@@ -28968,10 +30003,14 @@ public:
 	// <struct Vec m_TrapPos, offset 0x8>
 	struct Vec m_TrapPos;
 
+	std::string ToString() const { return "class State_Tojo_Knife_SuddenAttack(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<State_Tojo_Knife_SuddenAttack, State_Tojo_SuddenAttack>("State_Tojo_Knife_SuddenAttack")
+			.addFunction("__tostring", &State_Tojo_Knife_SuddenAttack::ToString)
+			.addFunction("GetPtrAddr", &State_Tojo_Knife_SuddenAttack::GetPtrAddr)
 			.addProperty("m_eStat", &State_Tojo_Knife_SuddenAttack::m_eStat)
 			.addProperty("m_TrapPos", &State_Tojo_Knife_SuddenAttack::m_TrapPos)
 		.endClass();
@@ -28999,10 +30038,14 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "class ZkKnifeState_ThroughKnife(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<ZkKnifeState_ThroughKnife, PJState>("ZkKnifeState_ThroughKnife")
+			.addFunction("__tostring", &ZkKnifeState_ThroughKnife::ToString)
+			.addFunction("GetPtrAddr", &ZkKnifeState_ThroughKnife::GetPtrAddr)
 			.addProperty("m_boTrigger", &ZkKnifeState_ThroughKnife::m_boTrigger)
 		.endClass();
 	}
@@ -29020,10 +30063,14 @@ public:
 	// <class PJZAKO field_0, offset 0x0>
 	// class PJZAKO Super;
 
+	std::string ToString() const { return "class PJZAKOBoneB(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<PJZAKOBoneB, PJZAKO>("PJZAKOBoneB")
+			.addFunction("__tostring", &PJZAKOBoneB::ToString)
+			.addFunction("GetPtrAddr", &PJZAKOBoneB::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -29052,14 +30099,17 @@ public:
 	// <class State_Tojo_Knife_SuddenAttack m_State_SdnAtk, offset 0x9ec>
 	class State_Tojo_Knife_SuddenAttack m_State_SdnAtk;
 
+	std::string ToString() const { return "class PJZakoKnife(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<PJZakoKnife, PJZAKOBoneB>("PJZakoKnife")
+			.addFunction("__tostring", &PJZakoKnife::ToString)
+			.addFunction("GetPtrAddr", &PJZakoKnife::GetPtrAddr)
 			.addProperty("m_State_ThroughKnife", &PJZakoKnife::m_State_ThroughKnife)
 			.addProperty("m_State_SdnAtk", &PJZakoKnife::m_State_SdnAtk)
-			// Functions with parameters pointing to native types (class mHRChara* arg4) not supported in LuaBridge.
-			//.addFunction("ConvertDmgMot", &PJZakoKnife::ConvertDmgMot)
+			.addFunction("ConvertDmgMot", &PJZakoKnife::ConvertDmgMot)
 		.endClass();
 	}
 #endif
@@ -29086,11 +30136,15 @@ private:
 	char _UnidentifiedData[3684];
 public:
 
+	std::string ToString() const { return "class bsSKE(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<bsSKE>("bsSKE")
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			.addFunction("__tostring", &bsSKE::ToString)
+			.addFunction("GetPtrAddr", &bsSKE::GetPtrAddr)
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &bsSKE::mSetDamage)
 		.endClass();
 	}
@@ -29116,11 +30170,15 @@ private:
 	char _UnidentifiedData[4412];
 public:
 
+	std::string ToString() const { return "class bsLEZ(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<bsLEZ>("bsLEZ")
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			.addFunction("__tostring", &bsLEZ::ToString)
+			.addFunction("GetPtrAddr", &bsLEZ::GetPtrAddr)
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &bsLEZ::mSetDamage)
 		.endClass();
 	}
@@ -29146,11 +30204,15 @@ private:
 	char _UnidentifiedData[4232];
 public:
 
+	std::string ToString() const { return "class bsCEW(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<bsCEW>("bsCEW")
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			.addFunction("__tostring", &bsCEW::ToString)
+			.addFunction("GetPtrAddr", &bsCEW::GetPtrAddr)
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &bsCEW::mSetDamage)
 		.endClass();
 	}
@@ -29176,11 +30238,15 @@ private:
 	char _UnidentifiedData[4352];
 public:
 
+	std::string ToString() const { return "class bsAST(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<bsAST>("bsAST")
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			.addFunction("__tostring", &bsAST::ToString)
+			.addFunction("GetPtrAddr", &bsAST::GetPtrAddr)
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &bsAST::mSetDamage)
 		.endClass();
 	}
@@ -29206,11 +30272,15 @@ private:
 	char _UnidentifiedData[4672];
 public:
 
+	std::string ToString() const { return "class bsRKT(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<bsRKT>("bsRKT")
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			.addFunction("__tostring", &bsRKT::ToString)
+			.addFunction("GetPtrAddr", &bsRKT::GetPtrAddr)
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &bsRKT::mSetDamage)
 		.endClass();
 	}
@@ -29228,6 +30298,8 @@ public:
 	// <void* (* field_0)[0x7], offset 0x0>
 	void* (* field_0)[0x7];
 
+	std::string ToString() const { return "class KrBaseState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 	// Exporting templated types to Lua currently not supported.
 	// static void BindLua(luabridge::Namespace& NS)
 };
@@ -29246,10 +30318,14 @@ public:
 	// <int32_t mExpCnt, offset 0x4>
 	int32_t mExpCnt;
 
+	std::string ToString() const { return "class GLBDeathState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GLBDeathState>("GLBDeathState")
+			.addFunction("__tostring", &GLBDeathState::ToString)
+			.addFunction("GetPtrAddr", &GLBDeathState::GetPtrAddr)
 			.addProperty("mExpCnt", &GLBDeathState::mExpCnt)
 		.endClass();
 	}
@@ -29267,10 +30343,14 @@ public:
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
 	// class KrBaseState<pcGLB> Super;
 
+	std::string ToString() const { return "class GLBWalkState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GLBWalkState>("GLBWalkState")
+			.addFunction("__tostring", &GLBWalkState::ToString)
+			.addFunction("GetPtrAddr", &GLBWalkState::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -29294,10 +30374,14 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "class GLBComboState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GLBComboState>("GLBComboState")
+			.addFunction("__tostring", &GLBComboState::ToString)
+			.addFunction("GetPtrAddr", &GLBComboState::GetPtrAddr)
 			.addProperty("mbCancel", &GLBComboState::mbCancel)
 		.endClass();
 	}
@@ -29315,10 +30399,14 @@ public:
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
 	// class KrBaseState<pcGLB> Super;
 
+	std::string ToString() const { return "class GLBIdleState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GLBIdleState>("GLBIdleState")
+			.addFunction("__tostring", &GLBIdleState::ToString)
+			.addFunction("GetPtrAddr", &GLBIdleState::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -29337,10 +30425,14 @@ public:
 	// <int32_t JumpTick, offset 0x4>
 	int32_t JumpTick;
 
+	std::string ToString() const { return "class GLBJampState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GLBJampState>("GLBJampState")
+			.addFunction("__tostring", &GLBJampState::ToString)
+			.addFunction("GetPtrAddr", &GLBJampState::GetPtrAddr)
 			.addProperty("JumpTick", &GLBJampState::JumpTick)
 		.endClass();
 	}
@@ -29371,6 +30463,8 @@ public:
 	// <class KrBaseState<pcGLB>* mpState[0x20], offset 0x10>
 	class KrBaseState<T1>* mpState[T2];
 
+	std::string ToString() const { return "class KrStateMachine(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 	// Exporting templated types to Lua currently not supported.
 	// static void BindLua(luabridge::Namespace& NS)
 };
@@ -29428,10 +30522,14 @@ public:
 	// <struct Vec mZoomDirec, offset 0x3c>
 	struct Vec mZoomDirec;
 
+	std::string ToString() const { return "class rSideScrollCamera(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<rSideScrollCamera>("rSideScrollCamera")
+			.addFunction("__tostring", &rSideScrollCamera::ToString)
+			.addFunction("GetPtrAddr", &rSideScrollCamera::GetPtrAddr)
 			// delegates are not supported in LuaBridge
 			//.addProperty("field_0", &rSideScrollCamera::field_0)
 			.addProperty("mPos", &rSideScrollCamera::mPos)
@@ -29472,10 +30570,14 @@ public:
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
 	// class KrBaseState<pcGLB> Super;
 
+	std::string ToString() const { return "class GLBDamageState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GLBDamageState>("GLBDamageState")
+			.addFunction("__tostring", &GLBDamageState::ToString)
+			.addFunction("GetPtrAddr", &GLBDamageState::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -29491,10 +30593,14 @@ public:
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
 	// class KrBaseState<pcGLB> Super;
 
+	std::string ToString() const { return "class GLBGuardState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GLBGuardState>("GLBGuardState")
+			.addFunction("__tostring", &GLBGuardState::ToString)
+			.addFunction("GetPtrAddr", &GLBGuardState::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -29510,10 +30616,14 @@ public:
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
 	// class KrBaseState<pcGLB> Super;
 
+	std::string ToString() const { return "class GLBAirKickState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GLBAirKickState>("GLBAirKickState")
+			.addFunction("__tostring", &GLBAirKickState::ToString)
+			.addFunction("GetPtrAddr", &GLBAirKickState::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -29570,10 +30680,14 @@ public:
 		// <float GroggyRecovery, offset 0x28>
 		float GroggyRecovery;
 
+		std::string ToString() const { return "struct DmgInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<pcGLB::DmgInfo>("pcGLB_DmgInfo")
+				.addFunction("__tostring", &pcGLB::DmgInfo::ToString)
+				.addFunction("GetPtrAddr", &pcGLB::DmgInfo::GetPtrAddr)
 				.addProperty("Kind", &pcGLB::DmgInfo::Kind)
 				.addProperty("DirecKind", &pcGLB::DmgInfo::DirecKind)
 				.addProperty("Direc", &pcGLB::DmgInfo::Direc)
@@ -29626,10 +30740,14 @@ public:
 		// <int32_t DmgPlayAccept, offset 0x14>
 		int32_t DmgPlayAccept;
 
+		std::string ToString() const { return "struct TickCnt(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<pcGLB::TickCnt>("pcGLB_TickCnt")
+				.addFunction("__tostring", &pcGLB::TickCnt::ToString)
+				.addFunction("GetPtrAddr", &pcGLB::TickCnt::GetPtrAddr)
 				.addProperty("Motion", &pcGLB::TickCnt::Motion)
 				.addProperty("AtkWait", &pcGLB::TickCnt::AtkWait)
 				.addProperty("Loop", &pcGLB::TickCnt::Loop)
@@ -29794,10 +30912,14 @@ public:
 	// <int32_t mMDFlag, offset 0x710>
 	int32_t mMDFlag;
 
+	std::string ToString() const { return "class pcGLB(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<pcGLB, mHRChara>("pcGLB")
+			.addFunction("__tostring", &pcGLB::ToString)
+			.addFunction("GetPtrAddr", &pcGLB::GetPtrAddr)
 			.addProperty("mCanOperate", &pcGLB::mCanOperate)
 			.addProperty("mTestOnCanOperate", &pcGLB::mTestOnCanOperate)
 			.addProperty("mSideCamera", &pcGLB::mSideCamera)
@@ -29828,11 +30950,9 @@ public:
 			.addProperty("mbCanKick", &pcGLB::mbCanKick)
 			.addProperty("mhVernierSE", &pcGLB::mhVernierSE)
 			.addProperty("mMDFlag", &pcGLB::mMDFlag)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("IsAtkObj", &pcGLB::IsAtkObj)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("SetDamageIK", &pcGLB::SetDamageIK)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			.addFunction("IsAtkObj", &pcGLB::IsAtkObj)
+			.addFunction("SetDamageIK", &pcGLB::SetDamageIK)
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &pcGLB::mSetDamage)
 		.endClass();
 	}
@@ -30081,10 +31201,14 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "class EfRoboInterface(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EfRoboInterface, HrTask>("EfRoboInterface")
+			.addFunction("__tostring", &EfRoboInterface::ToString)
+			.addFunction("GetPtrAddr", &EfRoboInterface::GetPtrAddr)
 			.addProperty("field_50", &EfRoboInterface::field_50)
 			.addProperty("mpBlur", &EfRoboInterface::mpBlur)
 			.addProperty("mInputCZTex", &EfRoboInterface::mInputCZTex)
@@ -30235,10 +31359,14 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "class EffectSpeedBlur(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EffectSpeedBlur, HrTask>("EffectSpeedBlur")
+			.addFunction("__tostring", &EffectSpeedBlur::ToString)
+			.addFunction("GetPtrAddr", &EffectSpeedBlur::GetPtrAddr)
 			.addProperty("m_Flag", &EffectSpeedBlur::m_Flag)
 			.addProperty("m_BlurValue", &EffectSpeedBlur::m_BlurValue)
 			.addProperty("m_Scale", &EffectSpeedBlur::m_Scale)
@@ -30272,10 +31400,14 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "class CmDeathState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CmDeathState>("CmDeathState")
+			.addFunction("__tostring", &CmDeathState::ToString)
+			.addFunction("GetPtrAddr", &CmDeathState::GetPtrAddr)
 			.addProperty("mbDeadScriptCall", &CmDeathState::mbDeadScriptCall)
 		.endClass();
 	}
@@ -30293,10 +31425,14 @@ public:
 	// <class CmDeathState field_0, offset 0x0>
 	// class CmDeathState Super;
 
+	std::string ToString() const { return "class SDPDeathState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<SDPDeathState, CmDeathState>("SDPDeathState")
+			.addFunction("__tostring", &SDPDeathState::ToString)
+			.addFunction("GetPtrAddr", &SDPDeathState::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -30312,10 +31448,14 @@ public:
 	// <class KrBaseState<bsBasic> field_0, offset 0x0>
 	// class KrBaseState<bsBasic> Super;
 
+	std::string ToString() const { return "class SDPComboState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<SDPComboState>("SDPComboState")
+			.addFunction("__tostring", &SDPComboState::ToString)
+			.addFunction("GetPtrAddr", &SDPComboState::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -30334,10 +31474,14 @@ public:
 	// <int32_t mDownTick, offset 0x4>
 	int32_t mDownTick;
 
+	std::string ToString() const { return "class CmDamageState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CmDamageState>("CmDamageState")
+			.addFunction("__tostring", &CmDamageState::ToString)
+			.addFunction("GetPtrAddr", &CmDamageState::GetPtrAddr)
 			.addProperty("mDownTick", &CmDamageState::mDownTick)
 		.endClass();
 	}
@@ -30355,10 +31499,14 @@ public:
 	// <class CmDamageState field_0, offset 0x0>
 	// class CmDamageState Super;
 
+	std::string ToString() const { return "class SDPDamageState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<SDPDamageState, CmDamageState>("SDPDamageState")
+			.addFunction("__tostring", &SDPDamageState::ToString)
+			.addFunction("GetPtrAddr", &SDPDamageState::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -30374,10 +31522,14 @@ public:
 	// <class KrBaseState<bsBasic> field_0, offset 0x0>
 	// class KrBaseState<bsBasic> Super;
 
+	std::string ToString() const { return "class SDPBeamState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<SDPBeamState>("SDPBeamState")
+			.addFunction("__tostring", &SDPBeamState::ToString)
+			.addFunction("GetPtrAddr", &SDPBeamState::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -30396,10 +31548,14 @@ public:
 	// <int32_t mContinuTick, offset 0x4>
 	int32_t mContinuTick;
 
+	std::string ToString() const { return "class CmIdleState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CmIdleState>("CmIdleState")
+			.addFunction("__tostring", &CmIdleState::ToString)
+			.addFunction("GetPtrAddr", &CmIdleState::GetPtrAddr)
 			.addProperty("mContinuTick", &CmIdleState::mContinuTick)
 		.endClass();
 	}
@@ -30417,10 +31573,14 @@ public:
 	// <class CmIdleState field_0, offset 0x0>
 	// class CmIdleState Super;
 
+	std::string ToString() const { return "class SDPIdleState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<SDPIdleState, CmIdleState>("SDPIdleState")
+			.addFunction("__tostring", &SDPIdleState::ToString)
+			.addFunction("GetPtrAddr", &SDPIdleState::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -30466,10 +31626,14 @@ public:
 		char _UnidentifiedData[3];
 	public:
 
+		std::string ToString() const { return "struct PcInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<bsBasic::PcInfo>("bsBasic_PcInfo")
+				.addFunction("__tostring", &bsBasic::PcInfo::ToString)
+				.addFunction("GetPtrAddr", &bsBasic::PcInfo::GetPtrAddr)
 				.addProperty("Pos", &bsBasic::PcInfo::Pos)
 				.addProperty("NavelPos", &bsBasic::PcInfo::NavelPos)
 				.addProperty("Direc", &bsBasic::PcInfo::Direc)
@@ -30576,10 +31740,14 @@ public:
 		// <float TargetDist, offset 0xc4>
 		float TargetDist;
 
+		std::string ToString() const { return "struct SurroundInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<bsBasic::SurroundInfo>("bsBasic_SurroundInfo")
+				.addFunction("__tostring", &bsBasic::SurroundInfo::ToString)
+				.addFunction("GetPtrAddr", &bsBasic::SurroundInfo::GetPtrAddr)
 				.addProperty("SearchDist", &bsBasic::SurroundInfo::SearchDist)
 				.addProperty("FrontDist", &bsBasic::SurroundInfo::FrontDist)
 				.addProperty("BackDist", &bsBasic::SurroundInfo::BackDist)
@@ -30659,10 +31827,14 @@ public:
 		// <float Allowance, offset 0x10>
 		float Allowance;
 
+		std::string ToString() const { return "struct DistSense(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<bsBasic::DistSense>("bsBasic_DistSense")
+				.addFunction("__tostring", &bsBasic::DistSense::ToString)
+				.addFunction("GetPtrAddr", &bsBasic::DistSense::GetPtrAddr)
 				.addProperty("Base", &bsBasic::DistSense::Base)
 				.addProperty("Small", &bsBasic::DistSense::Small)
 				.addProperty("Middle", &bsBasic::DistSense::Middle)
@@ -30709,10 +31881,14 @@ public:
 		// <int32_t Piyori, offset 0x1c>
 		int32_t Piyori;
 
+		std::string ToString() const { return "struct TickCnt(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<bsBasic::TickCnt>("bsBasic_TickCnt")
+				.addFunction("__tostring", &bsBasic::TickCnt::ToString)
+				.addFunction("GetPtrAddr", &bsBasic::TickCnt::GetPtrAddr)
 				.addProperty("Motion", &bsBasic::TickCnt::Motion)
 				.addProperty("AtkWait", &bsBasic::TickCnt::AtkWait)
 				.addProperty("Loop", &bsBasic::TickCnt::Loop)
@@ -30764,10 +31940,14 @@ public:
 		// <int32_t HpPhase, offset 0x1c>
 		int32_t HpPhase;
 
+		std::string ToString() const { return "struct BattleParam(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<bsBasic::BattleParam>("bsBasic_BattleParam")
+				.addFunction("__tostring", &bsBasic::BattleParam::ToString)
+				.addFunction("GetPtrAddr", &bsBasic::BattleParam::GetPtrAddr)
 				.addProperty("TargetPos", &bsBasic::BattleParam::TargetPos)
 				.addProperty("AtkPercent", &bsBasic::BattleParam::AtkPercent)
 				.addProperty("GrdPercent", &bsBasic::BattleParam::GrdPercent)
@@ -30831,10 +32011,14 @@ public:
 		// <float DamagePower, offset 0x30>
 		float DamagePower;
 
+		std::string ToString() const { return "struct DmgInfo(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<bsBasic::DmgInfo>("bsBasic_DmgInfo")
+				.addFunction("__tostring", &bsBasic::DmgInfo::ToString)
+				.addFunction("GetPtrAddr", &bsBasic::DmgInfo::GetPtrAddr)
 				.addProperty("Kind", &bsBasic::DmgInfo::Kind)
 				.addProperty("DirecKind", &bsBasic::DmgInfo::DirecKind)
 				.addProperty("Direc", &bsBasic::DmgInfo::Direc)
@@ -30960,10 +32144,14 @@ public:
 	// <uint32_t mFlag, offset 0xc80>
 	uint32_t mFlag;
 
+	std::string ToString() const { return "class bsBasic(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<bsBasic, mHRChara>("bsBasic")
+			.addFunction("__tostring", &bsBasic::ToString)
+			.addFunction("GetPtrAddr", &bsBasic::GetPtrAddr)
 			.addProperty("mRotSpeed", &bsBasic::mRotSpeed)
 			.addProperty("mPcInfo", &bsBasic::mPcInfo)
 			.addProperty("mSurroundInfo", &bsBasic::mSurroundInfo)
@@ -30983,12 +32171,10 @@ public:
 			.addProperty("m_boCalledNoGuardEfOnce", &bsBasic::m_boCalledNoGuardEfOnce)
 			.addProperty("m_fCheckSrroundHeight", &bsBasic::m_fCheckSrroundHeight)
 			.addProperty("mFlag", &bsBasic::mFlag)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("SetDamageIK", &bsBasic::SetDamageIK)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			.addFunction("SetDamageIK", &bsBasic::SetDamageIK)
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &bsBasic::mSetDamage)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("IsAtkObj", &bsBasic::IsAtkObj)
+			.addFunction("IsAtkObj", &bsBasic::IsAtkObj)
 		.endClass();
 	}
 #endif
@@ -31023,10 +32209,14 @@ public:
 	// <class KrBaseState<bsBasic> field_0, offset 0x0>
 	// class KrBaseState<bsBasic> Super;
 
+	std::string ToString() const { return "class SDPMoveState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<SDPMoveState>("SDPMoveState")
+			.addFunction("__tostring", &SDPMoveState::ToString)
+			.addFunction("GetPtrAddr", &SDPMoveState::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -31042,10 +32232,14 @@ public:
 	// <class KrBaseState<bsBasic> field_0, offset 0x0>
 	// class KrBaseState<bsBasic> Super;
 
+	std::string ToString() const { return "class SDPGuardState(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<SDPGuardState>("SDPGuardState")
+			.addFunction("__tostring", &SDPGuardState::ToString)
+			.addFunction("GetPtrAddr", &SDPGuardState::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -31129,10 +32323,14 @@ public:
 	// <uint8_t mbGLBSE, offset 0xcd3>
 	uint8_t mbGLBSE;
 
+	std::string ToString() const { return "class bsSDP(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<bsSDP, bsBasic>("bsSDP")
+			.addFunction("__tostring", &bsSDP::ToString)
+			.addFunction("GetPtrAddr", &bsSDP::GetPtrAddr)
 			.addProperty("mpIntarface", &bsSDP::mpIntarface)
 			.addProperty("mpGLB", &bsSDP::mpGLB)
 			.addProperty("mpGeneralBeam", &bsSDP::mpGeneralBeam)
@@ -31151,9 +32349,8 @@ public:
 			.addProperty("mbDeadScriptCall", &bsSDP::mbDeadScriptCall)
 			.addProperty("mbFirstSE", &bsSDP::mbFirstSE)
 			.addProperty("mbGLBSE", &bsSDP::mbGLBSE)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("IsAtkObj", &bsSDP::IsAtkObj)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			.addFunction("IsAtkObj", &bsSDP::IsAtkObj)
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &bsSDP::mSetDamage)
 		.endClass();
 	}
@@ -31188,10 +32385,14 @@ public:
 	// <class FkStlVector<FkVtx> m_VtxArr, offset 0x0>
 	class FkStlVector<FkVtx> m_VtxArr;
 
+	std::string ToString() const { return "class FkTriangleList(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<FkTriangleList>("FkTriangleList")
+			.addFunction("__tostring", &FkTriangleList::ToString)
+			.addFunction("GetPtrAddr", &FkTriangleList::GetPtrAddr)
 			.addProperty("m_VtxArr", &FkTriangleList::m_VtxArr)
 		.endClass();
 	}
@@ -31232,10 +32433,14 @@ public:
 	// <float m_fScale, offset 0x74>
 	float m_fScale;
 
+	std::string ToString() const { return "class EffectModelBeam(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EffectModelBeam, HrTask>("EffectModelBeam")
+			.addFunction("__tostring", &EffectModelBeam::ToString)
+			.addFunction("GetPtrAddr", &EffectModelBeam::GetPtrAddr)
 			.addProperty("m_TriangleList", &EffectModelBeam::m_TriangleList)
 			.addProperty("m_pGmf", &EffectModelBeam::m_pGmf)
 			.addProperty("m_pBeamNode", &EffectModelBeam::m_pBeamNode)
@@ -31266,10 +32471,14 @@ public:
 	// <struct Vec Norm, offset 0xc>
 	struct Vec Norm;
 
+	std::string ToString() const { return "struct FkVtx(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<FkVtx>("FkVtx")
+			.addFunction("__tostring", &FkVtx::ToString)
+			.addFunction("GetPtrAddr", &FkVtx::GetPtrAddr)
 			.addProperty("Pos", &FkVtx::Pos)
 			.addProperty("Norm", &FkVtx::Norm)
 		.endClass();
@@ -31291,10 +32500,14 @@ private:
 	char _UnidentifiedData[54968];
 public:
 
+	std::string ToString() const { return "class EfGeneralBeam(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<EfGeneralBeam>("EfGeneralBeam")
+			.addFunction("__tostring", &EfGeneralBeam::ToString)
+			.addFunction("GetPtrAddr", &EfGeneralBeam::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -31331,14 +32544,18 @@ public:
 	// <float mRadius, offset 0x654>
 	float mRadius;
 
+	std::string ToString() const { return "class PJOBJ0029(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<PJOBJ0029, commonObj>("PJOBJ0029")
+			.addFunction("__tostring", &PJOBJ0029::ToString)
+			.addFunction("GetPtrAddr", &PJOBJ0029::GetPtrAddr)
 			.addProperty("mpTopNode", &PJOBJ0029::mpTopNode)
 			.addProperty("mbBreak", &PJOBJ0029::mbBreak)
 			.addProperty("mRadius", &PJOBJ0029::mRadius)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0029::mSetDamage)
 		.endClass();
 	}
@@ -31422,10 +32639,14 @@ public:
 	// <int32_t m_SeHnd, offset 0x69c>
 	int32_t m_SeHnd;
 
+	std::string ToString() const { return "class PJOBJ0033(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<PJOBJ0033, commonObj>("PJOBJ0033")
+			.addFunction("__tostring", &PJOBJ0033::ToString)
+			.addFunction("GetPtrAddr", &PJOBJ0033::GetPtrAddr)
 			.addProperty("m_BreakCnt", &PJOBJ0033::m_BreakCnt)
 			.addProperty("m_Dead", &PJOBJ0033::m_Dead)
 			.addProperty("m_Motion", &PJOBJ0033::m_Motion)
@@ -31440,7 +32661,7 @@ public:
 			.addProperty("m_apNode", &PJOBJ0033::m_apNode)
 			.addProperty("m_pModelFireArr", &PJOBJ0033::m_pModelFireArr)
 			.addProperty("m_SeHnd", &PJOBJ0033::m_SeHnd)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0033::mSetDamage)
 		.endClass();
 	}
@@ -31528,10 +32749,14 @@ public:
 	// <int32_t TexDivY, offset 0x40>
 	int32_t TexDivY;
 
+	std::string ToString() const { return "struct EFFECTSIMPLEOBJ3PARAM(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<EFFECTSIMPLEOBJ3PARAM>("EFFECTSIMPLEOBJ3PARAM")
+			.addFunction("__tostring", &EFFECTSIMPLEOBJ3PARAM::ToString)
+			.addFunction("GetPtrAddr", &EFFECTSIMPLEOBJ3PARAM::GetPtrAddr)
 			.addProperty("MaxObjNum", &EFFECTSIMPLEOBJ3PARAM::MaxObjNum)
 			.addProperty("SpeedUpSpeed", &EFFECTSIMPLEOBJ3PARAM::SpeedUpSpeed)
 			.addProperty("SideSpeedDownRate", &EFFECTSIMPLEOBJ3PARAM::SideSpeedDownRate)
@@ -31593,10 +32818,14 @@ public:
 	// <struct EFFECTSIMPLEOBJ3PARAM Obj3Param, offset 0x8>
 	struct EFFECTSIMPLEOBJ3PARAM Obj3Param;
 
+	std::string ToString() const { return "struct EFFECTMODELFIREPARAM(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<EFFECTMODELFIREPARAM>("EFFECTMODELFIREPARAM")
+			.addFunction("__tostring", &EFFECTMODELFIREPARAM::ToString)
+			.addFunction("GetPtrAddr", &EFFECTMODELFIREPARAM::GetPtrAddr)
 			.addProperty("CreateRate", &EFFECTMODELFIREPARAM::CreateRate)
 			.addProperty("CreateArea", &EFFECTMODELFIREPARAM::CreateArea)
 			.addProperty("Obj3Param", &EFFECTMODELFIREPARAM::Obj3Param)
@@ -31661,10 +32890,14 @@ public:
 		// <class EffectSimpleObj3* pObj3, offset 0x8c>
 		class EffectSimpleObj3* pObj3;
 
+		std::string ToString() const { return "struct MAIN(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<EffectModelFire::MAIN>("EffectModelFire_MAIN")
+				.addFunction("__tostring", &EffectModelFire::MAIN::ToString)
+				.addFunction("GetPtrAddr", &EffectModelFire::MAIN::GetPtrAddr)
 				.addProperty("pGmf", &EffectModelFire::MAIN::pGmf)
 				.addProperty("pGmfNode", &EffectModelFire::MAIN::pGmfNode)
 				.addProperty("CreateCounter", &EffectModelFire::MAIN::CreateCounter)
@@ -31709,10 +32942,14 @@ public:
 	// <struct EffectModelFire::MAIN dat, offset 0x50>
 	struct EffectModelFire::MAIN dat;
 
+	std::string ToString() const { return "class EffectModelFire(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EffectModelFire, HrTask>("EffectModelFire")
+			.addFunction("__tostring", &EffectModelFire::ToString)
+			.addFunction("GetPtrAddr", &EffectModelFire::GetPtrAddr)
 			.addProperty("dat", &EffectModelFire::dat)
 		.endClass();
 	}
@@ -31746,10 +32983,14 @@ public:
 		// <struct EFFECTSIMPLEOBJ3PARAM Param, offset 0x10>
 		struct EFFECTSIMPLEOBJ3PARAM Param;
 
+		std::string ToString() const { return "struct MAIN(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<EffectSimpleObj3::MAIN>("EffectSimpleObj3_MAIN")
+				.addFunction("__tostring", &EffectSimpleObj3::MAIN::ToString)
+				.addFunction("GetPtrAddr", &EffectSimpleObj3::MAIN::GetPtrAddr)
 				.addProperty("ObjNum", &EffectSimpleObj3::MAIN::ObjNum)
 				.addProperty("Obj", &EffectSimpleObj3::MAIN::Obj)
 				.addProperty("ValidFirstObj", &EffectSimpleObj3::MAIN::ValidFirstObj)
@@ -31777,10 +33018,14 @@ public:
 		char _UnidentifiedData[68];
 	public:
 
+		std::string ToString() const { return "struct OBJECT(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<EffectSimpleObj3::OBJECT>("EffectSimpleObj3_OBJECT")
+				.addFunction("__tostring", &EffectSimpleObj3::OBJECT::ToString)
+				.addFunction("GetPtrAddr", &EffectSimpleObj3::OBJECT::GetPtrAddr)
 			.endClass();
 		}
 #endif
@@ -31795,10 +33040,14 @@ public:
 	// <struct EffectSimpleObj3::MAIN dat, offset 0x50>
 	struct EffectSimpleObj3::MAIN dat;
 
+	std::string ToString() const { return "class EffectSimpleObj3(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EffectSimpleObj3, HrTask>("EffectSimpleObj3")
+			.addFunction("__tostring", &EffectSimpleObj3::ToString)
+			.addFunction("GetPtrAddr", &EffectSimpleObj3::GetPtrAddr)
 			.addProperty("dat", &EffectSimpleObj3::dat)
 		.endClass();
 	}
@@ -31819,10 +33068,14 @@ public:
 	// <tagTLIST* Next, offset 0x4>
 	tagTLIST* Next;
 
+	std::string ToString() const { return "struct tagTLIST(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<tagTLIST>("tagTLIST")
+			.addFunction("__tostring", &tagTLIST::ToString)
+			.addFunction("GetPtrAddr", &tagTLIST::GetPtrAddr)
 			.addProperty("Prev", &tagTLIST::Prev)
 			.addProperty("Next", &tagTLIST::Next)
 		.endClass();
@@ -31889,10 +33142,14 @@ public:
 	// <class FkStlVector<TGmfNode const *> m_apNode, offset 0x694>
 	class FkStlVector<TGmfNode const *> m_apNode;
 
+	std::string ToString() const { return "class PJOBJ0036(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<PJOBJ0036, commonObj>("PJOBJ0036")
+			.addFunction("__tostring", &PJOBJ0036::ToString)
+			.addFunction("GetPtrAddr", &PJOBJ0036::GetPtrAddr)
 			.addProperty("m_Dead", &PJOBJ0036::m_Dead)
 			.addProperty("m_Motion", &PJOBJ0036::m_Motion)
 			.addProperty("m_Off", &PJOBJ0036::m_Off)
@@ -31903,7 +33160,7 @@ public:
 			.addProperty("m_boGetBreakNode", &PJOBJ0036::m_boGetBreakNode)
 			.addProperty("m_Tex", &PJOBJ0036::m_Tex)
 			.addProperty("m_apNode", &PJOBJ0036::m_apNode)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0036::mSetDamage)
 		.endClass();
 	}
@@ -31944,14 +33201,17 @@ public:
 	// <class commonObj field_0, offset 0x0>
 	// class commonObj Super;
 
+	std::string ToString() const { return "class PJOBJ0037(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<PJOBJ0037, commonObj>("PJOBJ0037")
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			.addFunction("__tostring", &PJOBJ0037::ToString)
+			.addFunction("GetPtrAddr", &PJOBJ0037::GetPtrAddr)
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0037::mSetDamage)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("IsHitChar", &PJOBJ0037::IsHitChar)
+			.addFunction("IsHitChar", &PJOBJ0037::IsHitChar)
 		.endClass();
 	}
 #endif
@@ -32003,10 +33263,14 @@ public:
 	// <float m_fMaxAccumDmg, offset 0x670>
 	float m_fMaxAccumDmg;
 
+	std::string ToString() const { return "class PJOBJ0104(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<PJOBJ0104, commonObj>("PJOBJ0104")
+			.addFunction("__tostring", &PJOBJ0104::ToString)
+			.addFunction("GetPtrAddr", &PJOBJ0104::GetPtrAddr)
 			.addProperty("m_Dead", &PJOBJ0104::m_Dead)
 			.addProperty("m_Motion", &PJOBJ0104::m_Motion)
 			.addProperty("m_Off", &PJOBJ0104::m_Off)
@@ -32016,7 +33280,7 @@ public:
 			.addProperty("m_BreakMotion", &PJOBJ0104::m_BreakMotion)
 			.addProperty("m_fAccumDmg", &PJOBJ0104::m_fAccumDmg)
 			.addProperty("m_fMaxAccumDmg", &PJOBJ0104::m_fMaxAccumDmg)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0104::mSetDamage)
 		.endClass();
 	}
@@ -32080,10 +33344,14 @@ public:
 	// <struct tagGHMR_TEX m_Tex, offset 0x66c>
 	struct tagGHMR_TEX m_Tex;
 
+	std::string ToString() const { return "class PJOBJ0155(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<PJOBJ0155, commonObj>("PJOBJ0155")
+			.addFunction("__tostring", &PJOBJ0155::ToString)
+			.addFunction("GetPtrAddr", &PJOBJ0155::GetPtrAddr)
 			.addProperty("m_AlphaVisibleCnt", &PJOBJ0155::m_AlphaVisibleCnt)
 			.addProperty("m_AlphaVisibleFrmMax", &PJOBJ0155::m_AlphaVisibleFrmMax)
 			.addProperty("m_Dead", &PJOBJ0155::m_Dead)
@@ -32093,7 +33361,7 @@ public:
 			.addProperty("m_Counter", &PJOBJ0155::m_Counter)
 			.addProperty("m_nPipe", &PJOBJ0155::m_nPipe)
 			.addProperty("m_Tex", &PJOBJ0155::m_Tex)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0155::mSetDamage)
 		.endClass();
 	}
@@ -32140,14 +33408,18 @@ public:
 	// <float mRadius, offset 0x654>
 	float mRadius;
 
+	std::string ToString() const { return "class PJOBJ0190(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<PJOBJ0190, commonObj>("PJOBJ0190")
+			.addFunction("__tostring", &PJOBJ0190::ToString)
+			.addFunction("GetPtrAddr", &PJOBJ0190::GetPtrAddr)
 			.addProperty("mpTopNode", &PJOBJ0190::mpTopNode)
 			.addProperty("mbBreak", &PJOBJ0190::mbBreak)
 			.addProperty("mRadius", &PJOBJ0190::mRadius)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0190::mSetDamage)
 			// Function overloading not supported in LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0190::mSetDamage)
@@ -32178,11 +33450,15 @@ private:
 	char _UnidentifiedData[1668];
 public:
 
+	std::string ToString() const { return "class PJPTR(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<PJPTR>("PJPTR")
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			.addFunction("__tostring", &PJPTR::ToString)
+			.addFunction("GetPtrAddr", &PJPTR::GetPtrAddr)
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &PJPTR::mSetDamage)
 		.endClass();
 	}
@@ -32193,7 +33469,7 @@ static_assert(sizeof(PJPTR) == 1668, "expected class PJPTR to be size 1668");
 // [Function] void mHRCharaVoiceTable_Initialize() [mHRCharaVoiceTable_Initialize]
 void mHRCharaVoiceTable_Initialize()
 {
-	typedef void(__cdecl* _Func)();
+	typedef void(__fastcall* _Func)();
 	_Func mFunc = (_Func)(GameModule + 0x5b1950);
 	return mFunc();
 }
@@ -32209,10 +33485,14 @@ public:
 	// <struct Vec CenterPos, offset 0x4>
 	struct Vec CenterPos;
 
+	std::string ToString() const { return "struct FkDbgInfo_EventArea(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<FkDbgInfo_EventArea>("FkDbgInfo_EventArea")
+			.addFunction("__tostring", &FkDbgInfo_EventArea::ToString)
+			.addFunction("GetPtrAddr", &FkDbgInfo_EventArea::GetPtrAddr)
 			.addProperty("fRadius", &FkDbgInfo_EventArea::fRadius)
 			.addProperty("CenterPos", &FkDbgInfo_EventArea::CenterPos)
 		.endClass();
@@ -32249,10 +33529,14 @@ public:
 		// <struct Vec SetPos, offset 0x8>
 		struct Vec SetPos;
 
+		std::string ToString() const { return "struct CommonObjSetInf(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<FkGlobalDBG::CommonObjSetInf>("FkGlobalDBG_CommonObjSetInf")
+				.addFunction("__tostring", &FkGlobalDBG::CommonObjSetInf::ToString)
+				.addFunction("GetPtrAddr", &FkGlobalDBG::CommonObjSetInf::GetPtrAddr)
 				.addProperty("iNowCursor", &FkGlobalDBG::CommonObjSetInf::iNowCursor)
 				.addProperty("nObjRegist", &FkGlobalDBG::CommonObjSetInf::nObjRegist)
 				.addProperty("SetPos", &FkGlobalDBG::CommonObjSetInf::SetPos)
@@ -32287,17 +33571,20 @@ public:
 	// <struct FkGlobalDBG::CommonObjSetInf m_CmnObjSetInf, offset 0x24>
 	struct FkGlobalDBG::CommonObjSetInf m_CmnObjSetInf;
 
+	std::string ToString() const { return "class FkGlobalDBG(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<FkGlobalDBG>("FkGlobalDBG")
+			.addFunction("__tostring", &FkGlobalDBG::ToString)
+			.addFunction("GetPtrAddr", &FkGlobalDBG::GetPtrAddr)
 			.addProperty("m_EventAreaDbgInfo", &FkGlobalDBG::m_EventAreaDbgInfo)
 			.addProperty("m_pPathPlanner", &FkGlobalDBG::m_pPathPlanner)
 			.addProperty("m_PathPlanningTime", &FkGlobalDBG::m_PathPlanningTime)
 			.addProperty("m_pCtrlChar", &FkGlobalDBG::m_pCtrlChar)
 			.addProperty("m_CmnObjSetInf", &FkGlobalDBG::m_CmnObjSetInf)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("ReleaseCtrlChar", &FkGlobalDBG::ReleaseCtrlChar)
+			.addFunction("ReleaseCtrlChar", &FkGlobalDBG::ReleaseCtrlChar)
 		.endClass();
 	}
 #endif
@@ -32316,7 +33603,7 @@ public:
 	// [Function] class EffectBloodSplash* EffectBloodSplash::Create(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30) [?Create@EffectBloodSplash@@SAPAV1@PAVTGmfNode@@HHMMMMMMMMMMMHMHMMMMMMMMMMI_NPAVmHRChara@@@Z]
 	static class EffectBloodSplash* Create(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30)
 	{
-		typedef class EffectBloodSplash*(__cdecl* _Func)(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30);
+		typedef class EffectBloodSplash*(__fastcall* _Func)(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30);
 		_Func mFunc = (_Func)(GameModule + 0x5b4ec0);
 		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16, arg17, arg18, arg19, arg20, arg21, arg22, arg23, arg24, arg25, arg26, arg27, arg28, arg29, arg30);
 	}
@@ -32442,10 +33729,14 @@ public:
 		// <class mHRChara* pOwner, offset 0x9c>
 		class mHRChara* pOwner;
 
+		std::string ToString() const { return "struct MAIN(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<EffectBloodSplash::MAIN>("EffectBloodSplash_MAIN")
+				.addFunction("__tostring", &EffectBloodSplash::MAIN::ToString)
+				.addFunction("GetPtrAddr", &EffectBloodSplash::MAIN::GetPtrAddr)
 				.addProperty("Node", &EffectBloodSplash::MAIN::Node)
 				.addProperty("Line", &EffectBloodSplash::MAIN::Line)
 				// pointer to pointer is not supported in LuaBridge
@@ -32530,7 +33821,7 @@ public:
 	// [Function] class EffectBloodSplash* EffectBloodSplash::Create2(class TGmfNode* arg1, float arg2, float arg3, float arg4, float arg5, int32_t arg6, uint8_t arg7, class mHRChara* arg8) [?Create2@EffectBloodSplash@@SAPAV1@PAVTGmfNode@@MMMMH_NPAVmHRChara@@@Z]
 	static class EffectBloodSplash* Create2(class TGmfNode* arg1, float arg2, float arg3, float arg4, float arg5, int32_t arg6, uint8_t arg7, class mHRChara* arg8)
 	{
-		typedef class EffectBloodSplash*(__cdecl* _Func)(class TGmfNode* arg1, float arg2, float arg3, float arg4, float arg5, int32_t arg6, uint8_t arg7, class mHRChara* arg8);
+		typedef class EffectBloodSplash*(__fastcall* _Func)(class TGmfNode* arg1, float arg2, float arg3, float arg4, float arg5, int32_t arg6, uint8_t arg7, class mHRChara* arg8);
 		_Func mFunc = (_Func)(GameModule + 0x5b5410);
 		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
 	}
@@ -32545,16 +33836,19 @@ public:
 	// <struct EffectBloodSplash::MAIN dat, offset 0x54>
 	struct EffectBloodSplash::MAIN dat;
 
+	std::string ToString() const { return "class EffectBloodSplash(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EffectBloodSplash, HrTask>("EffectBloodSplash")
+			.addFunction("__tostring", &EffectBloodSplash::ToString)
+			.addFunction("GetPtrAddr", &EffectBloodSplash::GetPtrAddr)
 			.addProperty("m_fCreateNum", &EffectBloodSplash::m_fCreateNum)
 			.addProperty("dat", &EffectBloodSplash::dat)
-			// Functions with return values pointing to native types ('class EffectBloodSplash*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addStaticFunction("Create", &EffectBloodSplash::Create)
-			// Functions with return values pointing to native types ('class EffectBloodSplash*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addStaticFunction("Create2", &EffectBloodSplash::Create2)
+			.addStaticFunction("Create2", &EffectBloodSplash::Create2)
 		.endClass();
 	}
 #endif
@@ -32578,10 +33872,14 @@ public:
 		char _UnidentifiedData[176];
 	public:
 
+		std::string ToString() const { return "struct MAIN(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<EffectSimpleObj2::MAIN>("EffectSimpleObj2_MAIN")
+				.addFunction("__tostring", &EffectSimpleObj2::MAIN::ToString)
+				.addFunction("GetPtrAddr", &EffectSimpleObj2::MAIN::GetPtrAddr)
 			.endClass();
 		}
 #endif
@@ -32596,10 +33894,14 @@ public:
 	// <struct EffectSimpleObj2::MAIN dat, offset 0x50>
 	struct EffectSimpleObj2::MAIN dat;
 
+	std::string ToString() const { return "class EffectSimpleObj2(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EffectSimpleObj2, HrTask>("EffectSimpleObj2")
+			.addFunction("__tostring", &EffectSimpleObj2::ToString)
+			.addFunction("GetPtrAddr", &EffectSimpleObj2::GetPtrAddr)
 			.addProperty("dat", &EffectSimpleObj2::dat)
 		.endClass();
 	}
@@ -32615,7 +33917,7 @@ public:
 	// [Function] class EffectSlashHit* EffectSlashHit::Create(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4) [?Create@EffectSlashHit@@SAPAV1@ABUVec@@0PBVmHRChara@@M@Z]
 	static class EffectSlashHit* Create(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4)
 	{
-		typedef class EffectSlashHit*(__cdecl* _Func)(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4);
+		typedef class EffectSlashHit*(__fastcall* _Func)(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4);
 		_Func mFunc = (_Func)(GameModule + 0x61f210);
 		return mFunc(arg1, arg2, arg3, arg4);
 	}
@@ -32648,10 +33950,14 @@ public:
 	// <float m_fScale, offset 0x84>
 	float m_fScale;
 
+	std::string ToString() const { return "class EffectSlashHit(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EffectSlashHit, HrTask>("EffectSlashHit")
+			.addFunction("__tostring", &EffectSlashHit::ToString)
+			.addFunction("GetPtrAddr", &EffectSlashHit::GetPtrAddr)
 			.addProperty("m_SlashVec", &EffectSlashHit::m_SlashVec)
 			.addProperty("m_SlashPlnNrm", &EffectSlashHit::m_SlashPlnNrm)
 			.addProperty("m_pChara", &EffectSlashHit::m_pChara)
@@ -32660,7 +33966,7 @@ public:
 			.addProperty("m_nColor", &EffectSlashHit::m_nColor)
 			.addProperty("m_nCounter", &EffectSlashHit::m_nCounter)
 			.addProperty("m_fScale", &EffectSlashHit::m_fScale)
-			// Functions with return values pointing to native types ('class EffectSlashHit*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("Create", &EffectSlashHit::Create)
 		.endClass();
 	}
@@ -32699,10 +34005,14 @@ public:
 		// <int32_t GuardContinueCnt, offset 0x4>
 		int32_t GuardContinueCnt;
 
+		std::string ToString() const { return "struct GuardParam(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<FkBoss::GuardParam>("FkBoss_GuardParam")
+				.addFunction("__tostring", &FkBoss::GuardParam::ToString)
+				.addFunction("GetPtrAddr", &FkBoss::GuardParam::GetPtrAddr)
 				.addProperty("GuardBeginCnt", &FkBoss::GuardParam::GuardBeginCnt)
 				.addProperty("GuardContinueCnt", &FkBoss::GuardParam::GuardContinueCnt)
 			.endClass();
@@ -32788,10 +34098,14 @@ public:
 	// <class EffectSlashTrack* m_pEfSamasoTrack[0x2], offset 0xda4>
 	class EffectSlashTrack* m_pEfSamasoTrack[2];
 
+	std::string ToString() const { return "class FkBoss(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<FkBoss, bsBasic>("FkBoss")
+			.addFunction("__tostring", &FkBoss::ToString)
+			.addFunction("GetPtrAddr", &FkBoss::GetPtrAddr)
 			.addProperty("m_ContinueAvoidNum", &FkBoss::m_ContinueAvoidNum)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("m_GeneralComboAttackArray", &FkBoss::m_GeneralComboAttackArray)
@@ -32812,7 +34126,7 @@ public:
 			//.addProperty("m_apTex", &FkBoss::m_apTex)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("m_pEfSamasoTrack", &FkBoss::m_pEfSamasoTrack)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			// Can't export functions with more than 8 parameters to LuaBridge.
 			//.addFunction("mSetDamage", &FkBoss::mSetDamage)
 		.endClass();
 	}
@@ -32848,10 +34162,14 @@ private:
 	char _UnidentifiedData[944];
 public:
 
+	std::string ToString() const { return "class EffectSlashTrack(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<EffectSlashTrack>("EffectSlashTrack")
+			.addFunction("__tostring", &EffectSlashTrack::ToString)
+			.addFunction("GetPtrAddr", &EffectSlashTrack::GetPtrAddr)
 		.endClass();
 	}
 #endif
@@ -32872,7 +34190,7 @@ public:
 	// [Function] class EffectBeamDragon* EffectBeamDragon::Create(struct Vec* arg1, class mHRChara* arg2) [?Create@EffectBeamDragon@@SAPAV1@PAUVec@@PAVmHRChara@@@Z]
 	static class EffectBeamDragon* Create(struct Vec* arg1, class mHRChara* arg2)
 	{
-		typedef class EffectBeamDragon*(__cdecl* _Func)(struct Vec* arg1, class mHRChara* arg2);
+		typedef class EffectBeamDragon*(__fastcall* _Func)(struct Vec* arg1, class mHRChara* arg2);
 		_Func mFunc = (_Func)(GameModule + 0x644130);
 		return mFunc(arg1, arg2);
 	}
@@ -32883,14 +34201,16 @@ private:
 	char _UnidentifiedData[520];
 public:
 
+	std::string ToString() const { return "class EffectBeamDragon(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<EffectBeamDragon>("EffectBeamDragon")
-			// Functions with parameters pointing to native types (class mHRChara* arg3) not supported in LuaBridge.
-			//.addFunction("Set", &EffectBeamDragon::Set)
-			// Functions with return values pointing to native types ('class EffectBeamDragon*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
-			//.addStaticFunction("Create", &EffectBeamDragon::Create)
+			.addFunction("__tostring", &EffectBeamDragon::ToString)
+			.addFunction("GetPtrAddr", &EffectBeamDragon::GetPtrAddr)
+			.addFunction("Set", &EffectBeamDragon::Set)
+			.addStaticFunction("Create", &EffectBeamDragon::Create)
 		.endClass();
 	}
 #endif
@@ -32911,7 +34231,7 @@ public:
 	// [Function] class EffectGYNMissile* EffectGYNMissile::Create(struct Vec& arg1, float const arg2, class mHRChara* arg3) [?Create@EffectGYNMissile@@SAPAV1@ABUVec@@MPAVmHRChara@@@Z]
 	static class EffectGYNMissile* Create(struct Vec& arg1, float const arg2, class mHRChara* arg3)
 	{
-		typedef class EffectGYNMissile*(__cdecl* _Func)(struct Vec& arg1, float const arg2, class mHRChara* arg3);
+		typedef class EffectGYNMissile*(__fastcall* _Func)(struct Vec& arg1, float const arg2, class mHRChara* arg3);
 		_Func mFunc = (_Func)(GameModule + 0x6467a0);
 		return mFunc(arg1, arg2, arg3);
 	}
@@ -32961,10 +34281,14 @@ private:
 	char _UnidentifiedData[3];
 public:
 
+	std::string ToString() const { return "class EffectGYNMissile(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EffectGYNMissile, HrTask>("EffectGYNMissile")
+			.addFunction("__tostring", &EffectGYNMissile::ToString)
+			.addFunction("GetPtrAddr", &EffectGYNMissile::GetPtrAddr)
 			.addProperty("m_pTgtChar", &EffectGYNMissile::m_pTgtChar)
 			.addProperty("m_pMissileGmf", &EffectGYNMissile::m_pMissileGmf)
 			.addProperty("m_Pos", &EffectGYNMissile::m_Pos)
@@ -32977,9 +34301,9 @@ public:
 			.addProperty("m_Cnt", &EffectGYNMissile::m_Cnt)
 			.addProperty("m_SeHnd", &EffectGYNMissile::m_SeHnd)
 			.addProperty("m_boHoming", &EffectGYNMissile::m_boHoming)
-			// Functions with parameters pointing to native types (class mHRChara* arg4) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("Set", &EffectGYNMissile::Set)
-			// Functions with return values pointing to native types ('class EffectGYNMissile*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("Create", &EffectGYNMissile::Create)
 		.endClass();
 	}
@@ -33013,7 +34337,7 @@ public:
 	// [Function] class EffectMoeMissile* EffectMoeMissile::Create(struct Vec& arg1, float const arg2, class mHRChara* arg3) [?Create@EffectMoeMissile@@SAPAV1@ABUVec@@MPAVmHRChara@@@Z]
 	static class EffectMoeMissile* Create(struct Vec& arg1, float const arg2, class mHRChara* arg3)
 	{
-		typedef class EffectMoeMissile*(__cdecl* _Func)(struct Vec& arg1, float const arg2, class mHRChara* arg3);
+		typedef class EffectMoeMissile*(__fastcall* _Func)(struct Vec& arg1, float const arg2, class mHRChara* arg3);
 		_Func mFunc = (_Func)(GameModule + 0x64a930);
 		return mFunc(arg1, arg2, arg3);
 	}
@@ -33060,10 +34384,14 @@ public:
 	// <class TGmf* m_pMissileGmf, offset 0xcc>
 	class TGmf* m_pMissileGmf;
 
+	std::string ToString() const { return "class EffectMoeMissile(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.deriveClass<EffectMoeMissile, HrTask>("EffectMoeMissile")
+			.addFunction("__tostring", &EffectMoeMissile::ToString)
+			.addFunction("GetPtrAddr", &EffectMoeMissile::GetPtrAddr)
 			.addProperty("m_pTgtChar", &EffectMoeMissile::m_pTgtChar)
 			.addProperty("m_Pos", &EffectMoeMissile::m_Pos)
 			.addProperty("m_BeforePos", &EffectMoeMissile::m_BeforePos)
@@ -33076,9 +34404,9 @@ public:
 			//.addProperty("m_MatRot", &EffectMoeMissile::m_MatRot)
 			.addProperty("m_fSpd", &EffectMoeMissile::m_fSpd)
 			.addProperty("m_pMissileGmf", &EffectMoeMissile::m_pMissileGmf)
-			// Functions with parameters pointing to native types (class mHRChara* arg4) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("Set", &EffectMoeMissile::Set)
-			// Functions with return values pointing to native types ('class EffectMoeMissile*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("Create", &EffectMoeMissile::Create)
 		.endClass();
 	}
@@ -33120,10 +34448,14 @@ public:
 		// <enum HRCAMERA_MODE m_eCamMode, offset 0x4>
 		enum HRCAMERA_MODE m_eCamMode;
 
+		std::string ToString() const { return "class CElement(" + std::to_string(GetPtrAddr()) + ")"; }
+		int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
 			NS = NS.beginClass<CMotionPlayer::CElement>("CMotionPlayer_CElement")
+				.addFunction("__tostring", &CMotionPlayer::CElement::ToString)
+				.addFunction("GetPtrAddr", &CMotionPlayer::CElement::GetPtrAddr)
 				.addProperty("m_nMotIndex", &CMotionPlayer::CElement::m_nMotIndex)
 				.addProperty("m_eCamMode", &CMotionPlayer::CElement::m_eCamMode)
 			.endClass();
@@ -33145,15 +34477,18 @@ public:
 	// <int32_t m_nPlayIndex, offset 0x10>
 	int32_t m_nPlayIndex;
 
+	std::string ToString() const { return "class CMotionPlayer(" + std::to_string(GetPtrAddr()) + ")"; }
+	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CMotionPlayer>("CMotionPlayer")
+			.addFunction("__tostring", &CMotionPlayer::ToString)
+			.addFunction("GetPtrAddr", &CMotionPlayer::GetPtrAddr)
 			.addProperty("m_ainElement", &CMotionPlayer::m_ainElement)
 			.addProperty("m_pChara", &CMotionPlayer::m_pChara)
 			.addProperty("m_nPlayIndex", &CMotionPlayer::m_nPlayIndex)
-			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
-			//.addFunction("begin", &CMotionPlayer::begin)
+			.addFunction("begin", &CMotionPlayer::begin)
 		.endClass();
 	}
 #endif

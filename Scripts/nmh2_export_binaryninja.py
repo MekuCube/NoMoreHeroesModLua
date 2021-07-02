@@ -296,6 +296,40 @@ def FunctionIsStatic(InType):
 		i = i + 1
 	return ParentNameSpaceStr != None and not IsObjectInstance
 
+def IsNativeType(InType):
+	if InType.type_class == TypeClass.IntegerTypeClass:
+		return InType.type_class
+	if InType.type_class == TypeClass.FloatTypeClass:
+		return InType.type_class
+	if InType.type_class == TypeClass.BoolTypeClass:
+		return InType.type_class
+	if InType.type_class == TypeClass.EnumerationTypeClass:
+		return InType.type_class
+	if InType.type_class == TypeClass.VoidTypeClass:
+		return InType.type_class
+	if InType.type_class == TypeClass.PointerTypeClass and InType.element_type != None:
+		return IsNativeType(InType.element_type)
+	return None
+
+# Returns string error
+def CanTypeExportInFunction(InType):
+	if InType == None:
+		return None
+	TypeStr = str(InType)
+	TypeNameStr = "None"
+	if InType.type_class != None:
+		TypeNameStr = str(InType.type_class)
+	# Can't export pointer to native types
+	if InType.type_class != None and InType.type_class == TypeClass.PointerTypeClass and InType.element_type != None and IsNativeType(InType.element_type):
+		return "Can't export pointer to native type '" + TypeStr + "' ["+TypeNameStr+"] in LuaBridge"
+	if TypeStr.endswith("**"):
+		return "Can't export pointer to pointer '" + TypeStr + "' ["+TypeNameStr+"] in LuaBridge"
+	if TypeStr.endswith("&"):
+		return "Can't export & pointer '" + TypeStr + "' ["+TypeNameStr+"] in LuaBridge"
+	if TypeStr == "void*":
+		return "Can't export void pointer '" + TypeStr + "' ["+TypeNameStr+"] in LuaBridge"
+	return None
+
 def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings, file, indent = 0, bFowardDeclare = False):
 	if IsInListPure(InType, ExportedTypes):
 		return
@@ -508,6 +542,13 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 				if "json" in SessionData and "Extend" in SessionData["json"] and TypeStr in SessionData["json"]["Extend"] and "Structure" in SessionData["json"]["Extend"][TypeStr]:
 					for Entry in SessionData["json"]["Extend"][TypeStr]["Structure"]:
 						print("	"*indent + Entry, file=file)
+				# Lua meta functions
+				HasLuaMetaFunctions = True
+				print("	"*indent + "std::string ToString() const", end="", file=file)
+				print(" { return \""+TypeStr + "(\" + std::to_string(GetPtrAddr()) + \")\"; }", file=file)
+				# HACK
+				print("	"*indent + "int GetPtrAddr() const", end="", file=file)
+				print(" { return (int)this; }", file=file)
 				# Expose to Lua (templates not yet supported)
 				if TemplateTypesStr == None:
 					ExportedLuaBindings.append(InType)
@@ -547,15 +588,22 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 						print("	"*indent + "NS = NS.deriveClass<"+TempClassNameC+", "+SuperClassName.replace("struct ", "").replace("class ", "")+">(\""+TempClassNameLua+"\")", end="", file=file)
 					else:
 						print("	"*indent + "NS = NS.beginClass<"+TempClassNameC+">(\""+TempClassNameLua+"\")", end="", file=file)
-					# Members
 					indent = indent+1
+					#ToString
+					if HasLuaMetaFunctions:
+						print("", file=file)
+						print("	"*indent + ".addFunction(\"__tostring\", &"+TypeStrNoPrefix+"::ToString)", file=file)
+						print("	"*indent + ".addFunction(\"GetPtrAddr\", &"+TypeStrNoPrefix+"::GetPtrAddr)", end="", file=file)
+					# Members
 					for MemberIt in GetFlattenedStructMembers(InType, SuperClassType):
 						NotSupportedReason = None
 						MemberTypeStr = str(MemberIt.type)
 						MemberStringAfterName = MemberIt.type.get_string_after_name()
 						if MemberTypeStr.startswith("void"):
 							NotSupportedReason = "void type not supported in LuaBridge"
-						if MemberTypeStr in ["char*", "unsigned char*", "int*", "unsigned int*", "short*", "unsigned short*", "__int64*", "int64_t*", "uint64_t*", "int8_t*", "uint8_t*", "int16_t*", "uint16_t*", "int32_t*", "uint32_t*", "float*"]:
+						if MemberTypeStr == "char*":
+							NotSupportedReason = "char* type not supported in LuaBridge"
+						if MemberTypeStr in ["unsigned char*", "int*", "unsigned int*", "short*", "unsigned short*", "__int64*", "int64_t*", "uint64_t*", "int8_t*", "uint8_t*", "int16_t*", "uint16_t*", "int32_t*", "uint32_t*", "float*"]:
 							NotSupportedReason = "native pointer type ("+MemberTypeStr+") not supported in LuaBridge (needs wrapper function)"
 						if "**" in str(MemberIt.type):
 							NotSupportedReason = "pointer to pointer is not supported in LuaBridge"
@@ -584,21 +632,29 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 					for TypeIt in TypesInNameSpace:
 						if isinstance(TypeIt, binaryninja.function.Function):
 							FunctionName = GetFunctionNameWithoutNameSpace(TypeIt)
-							print("	"*indent, end="", file=file)
+							#print("	"*indent, end="", file=file)
 							HasError = None
 							if FunctionName in ExportedFunctions:
 								HasError = "Function overloading not supported in LuaBridge."
-							else:
-								ExportedFunctions.append(FunctionName)
+							if HasError == None and len(TypeIt.parameter_vars) > 8:
+								HasError = "Can't export functions with more than 8 parameters to LuaBridge."
 							if HasError == None:
 								for VarIt in TypeIt.parameter_vars:
-									if VarIt.type != None and (str(VarIt.type).endswith("*") or str(VarIt.type).endswith("&")) and str(VarIt.type) and VarIt.type.type_class == TypeClass.PointerTypeClass and VarIt.type.element_type != None and VarIt.type.element_type.type_class != TypeClass.StructureTypeClass:
-										HasError = "Functions with parameters pointing to native types ("+str(VarIt.type)+" " + str(VarIt.name) + ") not supported in LuaBridge."
-								if TypeIt.return_type != None and (str(TypeIt.return_type).endswith("*") or str(TypeIt.return_type).endswith("&")) and TypeIt.return_type.type_class == TypeClass.PointerTypeClass and TypeIt.return_type.element_type != None and TypeIt.return_type.element_type.type_class != TypeClass.StructureTypeClass:
-										HasError = "Functions with return values pointing to native types ('"+str(TypeIt.return_type)+"' ["+str(TypeIt.return_type.type_class)+"]) not supported in LuaBridge."
+									VarTypeStr = str(VarIt.type)
+									#print(VarTypeStr + " [" + str(VarIt.type.type_class) + "]")
+									HasError = CanTypeExportInFunction(VarIt.type)
+									if HasError != None:
+										break
+								#print(str(TypeIt.return_type) + "[" + str(TypeIt.return_type.type_class) + "]")
+								#if TypeIt.return_type != None and HasError == None:
+								#		HasError = CanTypeExportInFunction(TypeIt.return_type)
 							if HasError != None:
-								print("// "+HasError, file=file)
+								print("	"*indent + "// "+HasError, file=file)
 								print("	"*indent + "//", end="", file=file)
+							else:
+								print("	"*indent, end="", file=file)
+							# We add this to the export list even if the lua binding failed since we do not export the overloaded functions either.
+							ExportedFunctions.append(FunctionName)
 							if FunctionIsStatic(TypeIt):
 								print(".addStaticFunction", end="", file=file)
 							else:
@@ -711,9 +767,14 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 		if FunctionNameWithNameSpace in SessionData["ExportedFunctions"]:
 			return
 		SessionData["ExportedFunctions"].append(FunctionNameWithNameSpace)
+		# What we pass to the game's function call
 		Inputs = ""
+		# The parameters to this function
 		OuterParameters = ""
+		# The parameters used in the typedef
 		InnerTypeParameters = ""
+		# Additional variables (for std::string)
+		AdditionalVariables = []
 		i = 0
 		IsObjectInstance = False
 		for VarIt in InType.parameter_vars:
@@ -722,7 +783,6 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 			# Untyped arguments not supported
 			if VariableTypeStr == "void":
 				return
-				
 			if VariableName == "":
 				VariableName = "arg"+str(i+1)
 				# TODO: HACK!!!!
@@ -731,7 +791,12 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 			AdjVariableName = VariableName
 			if AdjVariableName == "this":
 				AdjVariableName = "thisPtr"
-			
+			if InnerTypeParameters != "":
+				InnerTypeParameters = InnerTypeParameters + ", "
+			InnerTypeParameters = InnerTypeParameters + VariableTypeStr + " " + AdjVariableName
+			if VariableTypeStr == "char const*":
+				AdditionalVariables.append("char const* " + VariableName + "_c_str = " + VariableName + ".c_str();")
+				VariableTypeStr = "std::string"
 			# Skip if class' "this" pointer
 			if ParentNameSpaceStr != None and VariableName == "this" and i == 0:
 				IsObjectInstance = True
@@ -739,15 +804,14 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 				if OuterParameters != "":
 					OuterParameters = OuterParameters + ", "
 				OuterParameters = OuterParameters + VariableTypeStr + " " + AdjVariableName
-			if InnerTypeParameters != "":
-				InnerTypeParameters = InnerTypeParameters + ", "
-			InnerTypeParameters = InnerTypeParameters + VariableTypeStr + " " + AdjVariableName
 			if Inputs != "":
 				Inputs = Inputs + ", "
 			if IsObjectInstance:
 				Inputs = Inputs + VariableName
 			else:
 				Inputs = Inputs + AdjVariableName
+			if VariableTypeStr == "std::string":
+				Inputs = Inputs + "_c_str"
 			i = i + 1
 		# Raw data as comment
 		print("	"*indent +"// [Function] " + str(InType) + " [" + str(InType.name) + "]", file=file)
@@ -760,21 +824,38 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 			print("	"*indent + "/// " + SessionData["json"]["Comments"][str(InType.name)], file=file)
 			print("	"*indent + "/// </summary>", file=file)
 		# Function
+		ReturnTypeStr = str(InType.return_type)
+		ReturnTypeExportError = None
+		if InType.return_type != None:
+			ReturnTypeExportError = CanTypeExportInFunction(InType.return_type)
+			if ReturnTypeExportError != None:
+				print("	"*indent + "// " + ReturnTypeExportError, file=file)
+				ReturnTypeStr = "void"
 		print("	"*indent, end="", file=file)
 		if ParentNameSpaceStr != None and not IsObjectInstance:
 			print("static ", end="", file=file)
-		print(str(InType.return_type) + " " + FunctionName + "("+OuterParameters+")", end="", file=file)
+		print(ReturnTypeStr + " " + FunctionName + "("+OuterParameters+")", end="", file=file)
 		if InType.function_type.const:
 			print(" const", end="", file=file)
 		print("", file=file)
 		print("	"*indent +"{", file=file)
 		indent = indent + 1
-		print("	"*indent +"typedef " + str(InType.return_type) + "(__"+str(InType.calling_convention)+"* _Func)" + "(", end="", file=file)
+		# AdditionalVariables
+		for AdditionalVariable in AdditionalVariables:
+			print("	"*indent + AdditionalVariable, file=file)
+		CallingConvention = str(InType.calling_convention)
+		if CallingConvention == "cdecl":
+			CallingConvention = "fastcall"
+		print("	"*indent +"typedef " + str(InType.return_type) + "(__"+CallingConvention+"* _Func)" + "(", end="", file=file)
 		#if IsConst and IsObjectInstance:
 		#	print("const ", end="", file=file)
 		print(InnerTypeParameters+");", file=file)
 		print("	"*indent +"_Func mFunc = (_Func)(GameModule + " + str(hex(InType.start)) + ");", file=file)
-		print("	"*indent + "return mFunc" + "("+Inputs+");", file=file)
+		
+		print("	"*indent, end="", file=file)
+		if ReturnTypeExportError == None:
+			print("return ", end="", file=file)
+		print("mFunc" + "("+Inputs+");", file=file)
 		indent = indent - 1
 		print("	"*indent +"}", file=file)
 	else:
@@ -1036,10 +1117,11 @@ with open("E:/C++/NoMoreHeroesModLua/Games/gamecomments.json") as JsonFile:
 	json.load(JsonFile)
 
 AllRelevantTypes = []
+#CollectTypes(AllRelevantTypes, ["mHRChara"])
 CollectTypes(AllRelevantTypes, ["mHRChara", "mHRBattle", "mHRPc", "HrMessage"])
 #CollectTypes(AllRelevantTypes, ["mHRBattle::mSetSlowMotionTick"])
 #CollectTypes(AllRelevantTypes, ["EffectCutMark::Create"])
-#CollectTypes(AllRelevantTypes, ["GLBDeathState"])
+#CollectTypes(AllRelevantTypes, ["HrMessage::Create"])
 print("Collected " + str(len(AllRelevantTypes)) + " types.")
 
 # Only export roots

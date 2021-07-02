@@ -9,7 +9,9 @@
 		"class mHRChara": "Base character (Travis, enemies, etc)",
 		"struct Vec": "3D Vector (x, y, z). Y-up.",
 		"enum enPcKind": "Player character type (Travis, Shinobu, Henry)",
-		"class HrMessage": "Related to the top banner UI messages."
+		"class HrMessage": "Related to the top banner UI messages.",
+		"struct stCharaStatus": "Contains position, rotation, hp, flags, etc",
+		"class ghmListObj": "Linked list object (mpPrev and mpNext)."
 	},
 	"Extend":
 	{
@@ -27,6 +29,17 @@
 			[
 				"Vec() { x = 0; y = 0; z = 0; }",
 				"Vec(float inX, float inY, float inZ) { x = inX; y = inY; z = inZ; }"
+			]
+		},
+		"class ghmListObj":
+		{
+			"LuaBindings":
+			[
+				".addFunction(\"AsHRChara\", &ghmListObj::AsHRChara)"
+			],
+			"Structure":
+			[
+				"mHRChara* AsHRChara() const { return (mHRChara*)this; }"
 			]
 		}
 	}

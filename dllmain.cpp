@@ -69,17 +69,22 @@ DWORD WINAPI HackThread(HMODULE hModule)
 
     luabridge::Namespace GlobalNS = luabridge::getGlobalNamespace(L);
     BindLua_Exported(GlobalNS);
-
-    luabridge::push(L, GetTravis());
-    lua_setglobal(L, "Travis");
 #endif
     std::cout << "It's kill or be killed.\n";
 
     while (true)
     {
+#if WITH_LUA
+        luabridge::push(L, GetAllCharacters());
+        lua_setglobal(L, "Characters");
+
+        luabridge::push(L, GetTravis());
+        lua_setglobal(L, "Travis");
+
         double DeltaTime = 1.0 / 1000.0;
         luabridge::push(L, DeltaTime);
         lua_setglobal(L, "DeltaTime");
+#endif
 
         if (GetAsyncKeyState(VK_END) & 1)
         {
