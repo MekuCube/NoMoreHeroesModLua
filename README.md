@@ -18,3 +18,7 @@ A work-in-progress.
 ## Not started:
 * Hook on game startup
 * Sharing C and Lua namespaces
+
+# Known issues
+* Some function calls are unstable and result in crashing.
+  * This is looks to be primarily an issue for functions taking parameters
