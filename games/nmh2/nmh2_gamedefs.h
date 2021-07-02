@@ -2,11 +2,11 @@
 
 #pragma once
 
-mHRChara* GetTravis()
+mHRPc* GetTravis()
 {
     float* PosX = (float*)mem::FindDMAAddy(GameModule + 0x8EA1BC, { 0x38 });
     stCharaStatus* TravisStatus = (stCharaStatus*)((char*)PosX - 0x28);
-    return (mHRChara*)((char*)TravisStatus - 0x10);
+    return (mHRPc*)((char*)TravisStatus - 0x10);
 }
 unsigned int* GetMoneyPtr()
 {
