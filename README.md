@@ -18,6 +18,8 @@ A work-in-progress.
 ## Not started:
 * Hook on game startup
 * Sharing C and Lua namespaces
+* Hook game events
+* Subclass game classes
 
 # Known issues
 * Some function calls are unstable and result in crashing.
