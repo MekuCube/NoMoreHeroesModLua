@@ -7,12 +7,14 @@ A work-in-progress.
 ## Complete
 * Execute Lua in NMH2
 * Read/write to NMH2 variables
+* Execute functions (static + object instance)
+* Documentation via json
+* Extending classes via json
+* Loading multiple Lua scripts
 
 ## In progress:
-* Execute functions
 * Common iterators (mHRChara / items / etc)
 
 ## Not started:
-* Loading multiple Lua scripts
 * Hook on game startup
 * Sharing C and Lua namespaces
