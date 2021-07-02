@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <fstream>
 #include <sstream>
+#include <filesystem>
 #include <d3d11.h>
 #include "mem.h"
 #include "Games/gamedefs.h"
@@ -58,10 +59,11 @@ DWORD WINAPI HackThread(HMODULE hModule)
 #endif
 
     std::cout << std::setprecision(2) << std::fixed;
-    std::cout << "It's kill or be killed.\n";
+    std::cout << "Init...\n";
 
     bool bIsActive = true;
 
+#if WITH_LUA
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
 
@@ -70,9 +72,15 @@ DWORD WINAPI HackThread(HMODULE hModule)
 
     luabridge::push(L, GetTravis());
     lua_setglobal(L, "Travis");
+#endif
+    std::cout << "It's kill or be killed.\n";
 
     while (true)
     {
+        double DeltaTime = 1.0 / 1000.0;
+        luabridge::push(L, DeltaTime);
+        lua_setglobal(L, "DeltaTime");
+
         if (GetAsyncKeyState(VK_END) & 1)
         {
             bIsActive = !bIsActive;
@@ -86,16 +94,16 @@ DWORD WINAPI HackThread(HMODULE hModule)
         if (bIsActive)
         {
 #if WITH_LUA
-            std::ifstream t("E:/Downloads/Script.lua");
-            if (t.good())
+            for (const std::filesystem::directory_entry &el : std::filesystem::recursive_directory_iterator("D:/Steam/steamapps/common/No More Heroes 2 Desperate Struggle/Mods/", std::filesystem::directory_options::skip_permission_denied))
             {
-                std::stringstream buffer;
-                buffer << t.rdbuf();
-
-                if (!CheckLua(L, luaL_dostring(L, buffer.str().c_str())))
+                if (el.is_directory()) continue;
+                if (!el.path().has_extension()) continue;
+                if (el.path().extension() != ".lua") continue;
+                std::string FilePath = el.path().string();
+                char const* FilePathC = FilePath.c_str();
+                if (!CheckLua(L, luaL_dofile(L, FilePathC)))
                 {
-                    Sleep(500);
-                    continue;
+                    Sleep(5000);
                 }
             }
 #endif

@@ -384,8 +384,6 @@ public:
 	// enum stBtEffect::SlowType
 	enum SlowType : uint32_t
 	{
-		// Enum values
-
 		// <FinishInput = 0x0>
 		FinishInput = 0,
 
@@ -449,8 +447,6 @@ static_assert(sizeof(stBtEffect) == 32, "expected struct stBtEffect to be size 3
 // enum enPopReqType
 enum enPopReqType : uint32_t
 {
-	// Enum values
-
 	// <ePopTypeDistance = 0x0>
 	ePopTypeDistance = 0,
 
@@ -471,8 +467,6 @@ enum enPopReqType : uint32_t
 // enum enCharaType
 enum enCharaType : uint32_t
 {
-	// Enum values
-
 	// <eCharaTypeNone = 0x0>
 	eCharaTypeNone = 0,
 
@@ -673,8 +667,6 @@ enum enCharaType : uint32_t
 // enum eLightRefPriority
 enum eLightRefPriority : uint32_t
 {
-	// Enum values
-
 	// <eLightRefPriority_MostHigh = 0x0>
 	eLightRefPriority_MostHigh = 0,
 
@@ -693,6 +685,9 @@ enum eLightRefPriority : uint32_t
 };
 
 // [Structure] struct Vec
+/// <summary>
+/// 3D Vector (x, y, z). Y-up.
+/// </summary>
 struct Vec
 {
 public:
@@ -707,6 +702,8 @@ public:
 	// <float z, offset 0x8>
 	float z;
 
+	Vec() { x = 0; y = 0; z = 0; }
+	Vec(float inX, float inY, float inZ) { x = inX; y = inY; z = inZ; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
@@ -714,6 +711,11 @@ public:
 			.addProperty("x", &Vec::x)
 			.addProperty("y", &Vec::y)
 			.addProperty("z", &Vec::z)
+			.addConstructor<void (*) (void)>()
+			.addConstructor<void (*) (float, float, float)>()
+			.addProperty("pitch", &Vec::x)
+			.addProperty("yaw", &Vec::y)
+			.addProperty("roll", &Vec::z)
 		.endClass();
 	}
 #endif
@@ -726,8 +728,6 @@ static_assert(sizeof(Vec) == 12, "expected struct Vec to be size 12");
 // enum enBattleFrameProc
 enum enBattleFrameProc : uint32_t
 {
-	// Enum values
-
 	// <eBtlFrameInit = 0x0>
 	eBtlFrameInit = 0,
 
@@ -746,10 +746,11 @@ enum enBattleFrameProc : uint32_t
 };
 
 // enum enPcKind
+/// <summary>
+/// Player character type (Travis, Shinobu, Henry)
+/// </summary>
 enum enPcKind : uint32_t
 {
-	// Enum values
-
 	// <ePcUndefined = 0xffffffffffffffff>
 	ePcUndefined = UINT32_MAX,
 
@@ -1963,9 +1964,9 @@ public:
 	}
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[146492];
+	char _UnidentifiedData[146492];
 public:
 
 #ifdef WITH_LUA
@@ -2189,8 +2190,6 @@ static_assert(sizeof(mHRBattle) == 146492, "expected class mHRBattle to be size 
 // enum enPcAttackEffect
 enum enPcAttackEffect : uint32_t
 {
-	// Enum values
-
 	// <eEfGuard = 0x0>
 	eEfGuard = 0,
 
@@ -2214,8 +2213,6 @@ enum enPcAttackEffect : uint32_t
 // enum enThrowDir
 enum enThrowDir : uint32_t
 {
-	// Enum values
-
 	// <enThrowDirF = 0x0>
 	enThrowDirF = 0,
 
@@ -2236,8 +2233,6 @@ enum enThrowDir : uint32_t
 // enum enScreenChangeStatus
 enum enScreenChangeStatus : uint32_t
 {
-	// Enum values
-
 	// <ScreenChangeStatusStandby = 0x0>
 	ScreenChangeStatusStandby = 0,
 
@@ -2258,8 +2253,6 @@ enum enScreenChangeStatus : uint32_t
 // enum eEfDmgLevel
 enum eEfDmgLevel : uint32_t
 {
-	// Enum values
-
 	// <eEfDmgLevel_UNKNOWN = 0xffffffffffffffff>
 	eEfDmgLevel_UNKNOWN = UINT32_MAX,
 
@@ -2280,8 +2273,6 @@ enum eEfDmgLevel : uint32_t
 // enum enDownStatus
 enum enDownStatus : uint32_t
 {
-	// Enum values
-
 	// <eDownFront = 0x0>
 	eDownFront = 0,
 
@@ -2296,8 +2287,6 @@ enum enDownStatus : uint32_t
 // enum enPcPose
 enum enPcPose : uint32_t
 {
-	// Enum values
-
 	// <ePcPoseUpper = 0x0>
 	ePcPoseUpper = 0,
 
@@ -2312,8 +2301,6 @@ enum enPcPose : uint32_t
 // enum enPcCmbKind
 enum enPcCmbKind : uint32_t
 {
-	// Enum values
-
 	// <ePcAtkFghtCmbUp = 0x0>
 	ePcAtkFghtCmbUp = 0,
 
@@ -2376,8 +2363,6 @@ enum enPcCmbKind : uint32_t
 // enum enShakeDir
 enum enShakeDir : uint32_t
 {
-	// Enum values
-
 	// <eShakeUp2Down = 0x0>
 	eShakeUp2Down = 0,
 
@@ -2407,8 +2392,6 @@ enum enShakeDir : uint32_t
 // enum enEqKind
 enum enEqKind : uint32_t
 {
-	// Enum values
-
 	// <eEqWeaponR = 0x0>
 	eEqWeaponR = 0,
 
@@ -2475,8 +2458,6 @@ static_assert(sizeof(CTimeRatioInterpolate) == 12, "expected class CTimeRatioInt
 // enum enWepChangeProc
 enum enWepChangeProc : uint32_t
 {
-	// Enum values
-
 	// <eWepChangeInit = 0x0>
 	eWepChangeInit = 0,
 
@@ -2512,8 +2493,6 @@ static_assert(sizeof(uniSMflag) == 2, "expected union uniSMflag to be size 2");
 // enum enScreenChangeKind
 enum enScreenChangeKind : uint32_t
 {
-	// Enum values
-
 	// <eScreenChangeStencil = 0x0>
 	eScreenChangeStencil = 0,
 
@@ -2540,9 +2519,9 @@ public:
 	// <uint8_t requestEnd, offset 0x5>
 	uint8_t requestEnd;
 
-	// <Filler, offset 0x6>
+	// <Unidentified data segment, offset 0x6>
 private:
-	char _Filler3[2];
+	char _UnidentifiedData3[2];
 
 public:
 	// <class HrOverLap* pOverLap, offset 0x8>
@@ -2569,8 +2548,6 @@ static_assert(sizeof(stFade) == 12, "expected struct stFade to be size 12");
 // enum enCharaInitProc
 enum enCharaInitProc : uint32_t
 {
-	// Enum values
-
 	// <eCharaInitProcPrepareForReadRsl = 0x0>
 	eCharaInitProcPrepareForReadRsl = 0,
 
@@ -2609,9 +2586,9 @@ public:
 	// <uint8_t m_bIsRadiInterp, offset 0xc>
 	uint8_t m_bIsRadiInterp;
 
-	// <Filler, offset 0xd>
+	// <Unidentified data segment, offset 0xd>
 private:
-	char _Filler4[3];
+	char _UnidentifiedData4[3];
 
 public:
 	// <float m_fEpsilon, offset 0x10>
@@ -2705,9 +2682,9 @@ struct stCharaEffect
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[292];
+	char _UnidentifiedData[292];
 public:
 
 #ifdef WITH_LUA
@@ -2753,9 +2730,9 @@ public:
 	// <uint8_t readyDelete, offset 0x1e>
 	uint8_t readyDelete;
 
-	// <Filler, offset 0x1f>
+	// <Unidentified data segment, offset 0x1f>
 private:
-	char _Filler9[1];
+	char _UnidentifiedData9[1];
 
 public:
 	// <int32_t sndFileHandle, offset 0x20>
@@ -2767,9 +2744,9 @@ public:
 	// <char FileName[0x9], offset 0x28>
 	char FileName[9];
 
-	// <Filler, offset 0x31>
+	// <Unidentified data segment, offset 0x31>
 private:
-	char _Filler12[3];
+	char _UnidentifiedData12[3];
 
 public:
 	// <class TGan** pGan, offset 0x34>
@@ -2920,8 +2897,6 @@ public:
 	// enum ghmGcCollObj::Type
 	enum Type : uint32_t
 	{
-		// Enum values
-
 		// <TYPE_TRIANGLE = 0x0>
 		TYPE_TRIANGLE = 0,
 
@@ -3154,9 +3129,9 @@ public:
 	// <uint8_t upper, offset 0x40>
 	uint8_t upper;
 
-	// <Filler, offset 0x41>
+	// <Unidentified data segment, offset 0x41>
 private:
-	char _Filler15[3];
+	char _UnidentifiedData15[3];
 
 public:
 	// <int32_t tick, offset 0x44>
@@ -3171,9 +3146,9 @@ public:
 	// <uint8_t m_BikeDeadRequest, offset 0x69>
 	uint8_t m_BikeDeadRequest;
 
-	// <Filler, offset 0x6a>
+	// <Unidentified data segment, offset 0x6a>
 private:
-	char _Filler[2];
+	char _UnidentifiedData[2];
 public:
 
 #ifdef WITH_LUA
@@ -3230,9 +3205,9 @@ class ghmTriangle
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[36];
+	char _UnidentifiedData[36];
 public:
 
 #ifdef WITH_LUA
@@ -3320,8 +3295,6 @@ static_assert(sizeof(ghmGcCollObjHitResultObj) == 76, "expected class ghmGcCollO
 // enum enCharaCondition
 enum enCharaCondition : uint32_t
 {
-	// Enum values
-
 	// <eGood = 0x0>
 	eGood = 0,
 
@@ -3430,9 +3403,9 @@ public:
 	// <int16_t zakoWepType, offset 0xc>
 	int16_t zakoWepType;
 
-	// <Filler, offset 0xe>
+	// <Unidentified data segment, offset 0xe>
 private:
-	char _Filler4[2];
+	char _UnidentifiedData4[2];
 
 public:
 	// <float maxHp, offset 0x10>
@@ -3456,9 +3429,9 @@ public:
 	// <uint8_t alwaysCheckHitColl, offset 0x24>
 	uint8_t alwaysCheckHitColl;
 
-	// <Filler, offset 0x25>
+	// <Unidentified data segment, offset 0x25>
 private:
-	char _Filler11[3];
+	char _UnidentifiedData11[3];
 
 public:
 	// <struct Vec pos, offset 0x28>
@@ -3539,9 +3512,9 @@ public:
 	// <char motionBrendNum, offset 0x188>
 	char motionBrendNum;
 
-	// <Filler, offset 0x189>
+	// <Unidentified data segment, offset 0x189>
 private:
-	char _Filler37[3];
+	char _UnidentifiedData37[3];
 
 public:
 	// <float motSpd, offset 0x18c>
@@ -3586,9 +3559,9 @@ public:
 	// <int16_t hitNum, offset 0x2c8>
 	int16_t hitNum;
 
-	// <Filler, offset 0x2ca>
+	// <Unidentified data segment, offset 0x2ca>
 private:
-	char _Filler51[2];
+	char _UnidentifiedData51[2];
 
 public:
 	// <class ghmGcCollObjCapsule hitColl, offset 0x2cc>
@@ -3630,9 +3603,9 @@ public:
 	// <uint8_t JumpBlockHit, offset 0x365>
 	uint8_t JumpBlockHit;
 
-	// <Filler, offset 0x366>
+	// <Unidentified data segment, offset 0x366>
 private:
-	char _Filler64[2];
+	char _UnidentifiedData64[2];
 
 public:
 	// <float AtkDisAdjust, offset 0x368>
@@ -3841,8 +3814,6 @@ static_assert(sizeof(ghmListObj) == 16, "expected class ghmListObj to be size 16
 // enum eUDLR
 enum eUDLR : uint32_t
 {
-	// Enum values
-
 	// <eUp = 0x0>
 	eUp = 0,
 
@@ -3863,8 +3834,6 @@ enum eUDLR : uint32_t
 // enum enWepLeftRight
 enum enWepLeftRight : uint32_t
 {
-	// Enum values
-
 	// <eWepLeft = 0x0>
 	eWepLeft = 0,
 
@@ -3879,8 +3848,6 @@ enum enWepLeftRight : uint32_t
 // enum eDmgCallBackDmgType
 enum eDmgCallBackDmgType : uint32_t
 {
-	// Enum values
-
 	// <eDmgCallBackDmgType_Cut = 0x0>
 	eDmgCallBackDmgType_Cut = 0,
 
@@ -4109,9 +4076,9 @@ namespace mot
 		// <class mot::IBoneEffectModel field_0, offset 0x0>
 		// class IBoneEffectModel Super;
 
-		// <Filler, offset 0x4>
+		// <Unidentified data segment, offset 0x4>
 	private:
-		char _Filler1[12];
+		char _UnidentifiedData1[12];
 
 	public:
 		// <class tiVector m_inYureBonePosiOfst, offset 0x10>
@@ -4140,9 +4107,9 @@ public:
 	public:
 		/// Struct member variables
 
-		// <Filler, offset 0x0>
+		// <Unidentified data segment, offset 0x0>
 	private:
-		char _Filler[2284];
+		char _UnidentifiedData[2284];
 	public:
 
 #ifdef WITH_LUA
@@ -4166,9 +4133,9 @@ public:
 	// <uint8_t mUseLight, offset 0x90c>
 	uint8_t mUseLight;
 
-	// <Filler, offset 0x90d>
+	// <Unidentified data segment, offset 0x90d>
 private:
-	char _Filler3[3];
+	char _UnidentifiedData3[3];
 
 public:
 	// <class TGanPlay* mpFrameInfoPlay, offset 0x910>
@@ -4216,9 +4183,9 @@ public:
 	// <uint8_t mbObj, offset 0x945>
 	uint8_t mbObj;
 
-	// <Filler, offset 0x946>
+	// <Unidentified data segment, offset 0x946>
 private:
-	char _Filler18[2];
+	char _UnidentifiedData18[2];
 
 public:
 	// <float m_fFadeAlpha, offset 0x948>
@@ -4254,9 +4221,9 @@ public:
 	// <uint8_t m_bActBoneEffectOnUpdate, offset 0x96d>
 	uint8_t m_bActBoneEffectOnUpdate;
 
-	// <Filler, offset 0x96e>
+	// <Unidentified data segment, offset 0x96e>
 private:
-	char _Filler29[2];
+	char _UnidentifiedData29[2];
 
 public:
 	// <char const* m_sIDName, offset 0x970>
@@ -4277,9 +4244,9 @@ public:
 	// <uint8_t m_bIsBootCamVib, offset 0x984>
 	uint8_t m_bIsBootCamVib;
 
-	// <Filler, offset 0x985>
+	// <Unidentified data segment, offset 0x985>
 private:
-	char _Filler[11];
+	char _UnidentifiedData[11];
 public:
 
 #ifdef WITH_LUA
@@ -4314,9 +4281,11 @@ public:
 			.addProperty("m_pBoneEffect", &TGmf::m_pBoneEffect)
 			.addProperty("m_bActedBoneEffectInit", &TGmf::m_bActedBoneEffectInit)
 			.addProperty("m_bActBoneEffectOnUpdate", &TGmf::m_bActBoneEffectOnUpdate)
-			.addProperty("m_sIDName", &TGmf::m_sIDName)
+			// pointer to const not supported in LuaBridge and needs a getter
+			//.addProperty("m_sIDName", &TGmf::m_sIDName)
 			.addProperty("m_nIDNum", &TGmf::m_nIDNum)
-			.addProperty("m_sMotName", &TGmf::m_sMotName)
+			// pointer to const not supported in LuaBridge and needs a getter
+			//.addProperty("m_sMotName", &TGmf::m_sMotName)
 			.addProperty("m_nTotalCamVibTiming", &TGmf::m_nTotalCamVibTiming)
 			.addProperty("m_ainCamVibTiming", &TGmf::m_ainCamVibTiming)
 			.addProperty("m_bIsBootCamVib", &TGmf::m_bIsBootCamVib)
@@ -4378,9 +4347,9 @@ public:
 	// <uint8_t m_useNext, offset 0xc>
 	uint8_t m_useNext;
 
-	// <Filler, offset 0xd>
+	// <Unidentified data segment, offset 0xd>
 private:
-	char _Filler4[3];
+	char _UnidentifiedData4[3];
 
 public:
 	// <int32_t m_nextPhase, offset 0x10>
@@ -4423,8 +4392,6 @@ public:
 	// enum NYApproachToTargetVal::CHANGE_TYPE
 	enum CHANGE_TYPE : uint32_t
 	{
-		// Enum values
-
 		// <CHANGE_TYPE_INCREASED = 0x0>
 		CHANGE_TYPE_INCREASED = 0,
 
@@ -4472,9 +4439,9 @@ class HrTask
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[80];
+	char _UnidentifiedData[80];
 public:
 
 #ifdef WITH_LUA
@@ -4490,8 +4457,6 @@ static_assert(sizeof(HrTask) == 80, "expected class HrTask to be size 80");
 // enum
 enum : uint32_t
 {
-	// Enum values
-
 	// <E_CON_ACT_NONE = 0xffffffffffffffff>
 	E_CON_ACT_NONE = UINT32_MAX,
 
@@ -4531,8 +4496,6 @@ public:
 	// enum HrBattleIcon::E_CON_ACT_ID
 	enum E_CON_ACT_ID : uint32_t
 	{
-		// Enum values
-
 		// <E_CON_ACT_NONE = 0xffffffffffffffff>
 		E_CON_ACT_NONE = UINT32_MAX,
 
@@ -4568,8 +4531,6 @@ public:
 	// enum HrBattleIcon::D_BICON_STAT
 	enum D_BICON_STAT : uint32_t
 	{
-		// Enum values
-
 		// <D_BICON_NONE = 0x0>
 		D_BICON_NONE = 0,
 
@@ -4602,8 +4563,6 @@ public:
 	// enum HrBattleIcon::D_TODOME_DIRECT
 	enum D_TODOME_DIRECT : uint32_t
 	{
-		// Enum values
-
 		// <D_TODOME_RIGHT = 0x0>
 		D_TODOME_RIGHT = 0,
 
@@ -4644,23 +4603,23 @@ public:
 		class NYPhase m_Phase;
 
 		// <void (* m_pPhaseProc[0x7][0x2])(HrBattleIcon::CHrHpGauge* const this), offset 0x1c>
-		void (* m_pPhaseProc[0x7][0x2])(HrBattleIcon::CHrHpGauge* const ThisPtr);
+		char m_pPhaseProc[56];
 
 		// <class mHRChara* m_pTargetChara, offset 0x54>
 		class mHRChara* m_pTargetChara;
 
 		// <int16_t const mc_Height, offset 0x58>
-		int16_t const mc_Height;
+		int16_t mc_Height;
 
 		// <int16_t const mc_FrameEdge_Width, offset 0x5a>
-		int16_t const mc_FrameEdge_Width;
+		int16_t mc_FrameEdge_Width;
 
 		// <int16_t const mc_DrawOffsetY, offset 0x5c>
-		int16_t const mc_DrawOffsetY;
+		int16_t mc_DrawOffsetY;
 
-		// <Filler, offset 0x5e>
+		// <Unidentified data segment, offset 0x5e>
 	private:
-		char _Filler6[2];
+		char _UnidentifiedData6[2];
 
 	public:
 		// <float m_DrawWidth, offset 0x60>
@@ -4678,9 +4637,9 @@ public:
 		// <int16_t m_SlashFadeCounter, offset 0x70>
 		int16_t m_SlashFadeCounter;
 
-		// <Filler, offset 0x72>
+		// <Unidentified data segment, offset 0x72>
 	private:
-		char _Filler[2];
+		char _UnidentifiedData[2];
 	public:
 
 #ifdef WITH_LUA
@@ -4800,9 +4759,9 @@ public:
 	// <uint8_t m_DrawHitCmbFlag, offset 0xa1>
 	uint8_t m_DrawHitCmbFlag;
 
-	// <Filler, offset 0xa2>
+	// <Unidentified data segment, offset 0xa2>
 private:
-	char _Filler21[2];
+	char _UnidentifiedData21[2];
 
 public:
 	// <float m_TsubaRatio[0x24], offset 0xa4>
@@ -4823,9 +4782,9 @@ public:
 	// <char m_MeterCounter, offset 0x144>
 	char m_MeterCounter;
 
-	// <Filler, offset 0x145>
+	// <Unidentified data segment, offset 0x145>
 private:
-	char _Filler27[3];
+	char _UnidentifiedData27[3];
 
 public:
 	// <float m_Tension[0x2], offset 0x148>
@@ -4867,9 +4826,9 @@ public:
 	// <uint8_t m_bDemo, offset 0x186>
 	uint8_t m_bDemo;
 
-	// <Filler, offset 0x187>
+	// <Unidentified data segment, offset 0x187>
 private:
-	char _Filler40[1];
+	char _UnidentifiedData40[1];
 
 public:
 	// <class HrBattleIcon::CHrHpGauge m_HpGauge, offset 0x188>
@@ -4932,7 +4891,7 @@ public:
 			.addProperty("m_Soundid", &HrBattleIcon::m_Soundid)
 			.addProperty("flag", &HrBattleIcon::flag)
 			.addProperty("m_bDemo", &HrBattleIcon::m_bDemo)
-			//.addProperty("m_HpGauge", &HrBattleIcon::m_HpGauge)
+			.addProperty("m_HpGauge", &HrBattleIcon::m_HpGauge)
 			.addProperty("m_SlashSEStatus", &HrBattleIcon::m_SlashSEStatus)
 			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("OnCharacterTerminate", &HrBattleIcon::OnCharacterTerminate)
@@ -4986,6 +4945,9 @@ static_assert(sizeof(HrBattleIcon::m_SlashSEStatus) == 4, "expected m_SlashSESta
 static_assert(sizeof(HrBattleIcon) == 512, "expected class HrBattleIcon to be size 512");
 
 // [Structure] class mHRChara
+/// <summary>
+/// Base character (Travis, enemies, etc)
+/// </summary>
 class mHRChara : public ghmListObj
 {
 public:
@@ -6565,6 +6527,9 @@ public:
 		return mFunc(this, arg2, arg3, arg4);
 	}
 	// [Function] void __convention("thiscall") mHRChara::CreateFootSmokeEffect(class mHRChara* const this) [?CreateFootSmokeEffect@mHRChara@@QAEXXZ]
+	/// <summary>
+	/// Creates a dust effect at character feet.
+	/// </summary>
 	void CreateFootSmokeEffect()
 	{
 		typedef void(__thiscall* _Func)(class mHRChara* const thisPtr);
@@ -7356,6 +7321,9 @@ public:
 		return mFunc(this);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRChara::mCreatePiyori(class mHRChara* const this) [?mCreatePiyori@mHRChara@@UAE_NXZ]
+	/// <summary>
+	/// Creates a stun star effect above the character's head.
+	/// </summary>
 	uint8_t mCreatePiyori()
 	{
 		typedef uint8_t(__thiscall* _Func)(class mHRChara* const thisPtr);
@@ -7584,7 +7552,7 @@ public:
 			//.addFunction("mpGetGan", &mHRChara::mpGetGan)
 			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetCurResourceGmfPtr", &mHRChara::mGetCurResourceGmfPtr)
-			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addFunction("mGetCurResourceGmfPtr", &mHRChara::mGetCurResourceGmfPtr)
 			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceGmfWepLPtr", &mHRChara::mGetResourceGmfWepLPtr)
@@ -7594,11 +7562,11 @@ public:
 			//.addFunction("mSetResourceGmfPtr", &mHRChara::mSetResourceGmfPtr)
 			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceGmfDeadPtr", &mHRChara::mGetResourceGmfDeadPtr)
-			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addFunction("mGetResourceGmfDeadPtr", &mHRChara::mGetResourceGmfDeadPtr)
 			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetResourceGmfPtr", &mHRChara::mGetResourceGmfPtr)
-			// Functions with return values pointing to native types ('class TGmf*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addFunction("mGetResourceGmfPtr", &mHRChara::mGetResourceGmfPtr)
 			// Functions with return values pointing to native types ('class ghmGcCollObjCapsule*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mGetCollPtr", &mHRChara::mGetCollPtr)
@@ -7947,7 +7915,7 @@ public:
 			//.addFunction("mSetWarpPos", &mHRChara::mSetWarpPos)
 			// Functions with parameters pointing to native types (uint8_t* arg11) not supported in LuaBridge.
 			//.addFunction("mHitCheckStage", &mHRChara::mHitCheckStage)
-			// Functions with return values pointing to native types ('class TGan*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addFunction("mpGetGan", &mHRChara::mpGetGan)
 			// Functions with return values pointing to native types ('class TGan**' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("mppGetGan", &mHRChara::mppGetGan)
@@ -7978,7 +7946,7 @@ public:
 			// Functions with parameters pointing to native types (struct Vec* arg7) not supported in LuaBridge.
 			//.addFunction("mCheckSegmentHitStage", &mHRChara::mCheckSegmentHitStage)
 			.addFunction("mEraseDispChara", &mHRChara::mEraseDispChara)
-			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("mGetCharaPtr", &mHRChara::mGetCharaPtr)
 			// Functions with return values pointing to native types ('class mHRChara*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addStaticFunction("mAllSearchPiyoZako", &mHRChara::mAllSearchPiyoZako)
@@ -8027,9 +7995,9 @@ public:
 	// <uint8_t visible, offset 0x0>
 	uint8_t visible;
 
-	// <Filler, offset 0x1>
+	// <Unidentified data segment, offset 0x1>
 private:
-	char _Filler1[3];
+	char _UnidentifiedData1[3];
 
 public:
 	// <class TGmf* pGmf, offset 0x4>
@@ -8050,9 +8018,9 @@ public:
 	// <uint8_t dispTiger, offset 0x31>
 	uint8_t dispTiger;
 
-	// <Filler, offset 0x32>
+	// <Unidentified data segment, offset 0x32>
 private:
-	char _Filler7[2];
+	char _UnidentifiedData7[2];
 
 public:
 	// <struct Vec startPos, offset 0x34>
@@ -8073,7 +8041,8 @@ public:
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("pGan", &stTiger::pGan)
 			.addProperty("motNo", &stTiger::motNo)
-			.addProperty("motName", &stTiger::motName)
+			// pointer to const not supported in LuaBridge and needs a getter
+			//.addProperty("motName", &stTiger::motName)
 			.addProperty("dispPc", &stTiger::dispPc)
 			.addProperty("dispTiger", &stTiger::dispTiger)
 			.addProperty("startPos", &stTiger::startPos)
@@ -8133,9 +8102,9 @@ struct stPcEffect
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[656];
+	char _UnidentifiedData[656];
 public:
 
 #ifdef WITH_LUA
@@ -8151,8 +8120,6 @@ static_assert(sizeof(stPcEffect) == 656, "expected struct stPcEffect to be size 
 // enum enPcInputMode
 enum enPcInputMode : uint32_t
 {
-	// Enum values
-
 	// <ePcInputIdle = 0x0>
 	ePcInputIdle = 0,
 
@@ -8203,8 +8170,6 @@ enum enPcInputMode : uint32_t
 // enum enSeReadProc
 enum enSeReadProc : uint32_t
 {
-	// Enum values
-
 	// <eSeRead = 0x0>
 	eSeRead = 0,
 
@@ -8231,9 +8196,9 @@ public:
 	// <uint8_t seDontPlaySeAgainLSReady, offset 0x8>
 	uint8_t seDontPlaySeAgainLSReady;
 
-	// <Filler, offset 0x9>
+	// <Unidentified data segment, offset 0x9>
 private:
-	char _Filler3[3];
+	char _UnidentifiedData3[3];
 
 public:
 	// <int32_t seHdlSlow, offset 0xc>
@@ -8299,9 +8264,9 @@ public:
 	// <uint8_t playBackAttackPullSe, offset 0xad>
 	uint8_t playBackAttackPullSe;
 
-	// <Filler, offset 0xae>
+	// <Unidentified data segment, offset 0xae>
 private:
-	char _Filler[2];
+	char _UnidentifiedData[2];
 public:
 
 #ifdef WITH_LUA
@@ -8368,9 +8333,9 @@ struct stDarkSideInfo
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[52];
+	char _UnidentifiedData[52];
 public:
 
 #ifdef WITH_LUA
@@ -8389,9 +8354,9 @@ struct stPcSaveData
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[1636];
+	char _UnidentifiedData[1636];
 public:
 
 #ifdef WITH_LUA
@@ -8419,9 +8384,9 @@ public:
 	// <uint8_t fadeInPermission, offset 0x2>
 	uint8_t fadeInPermission;
 
-	// <Filler, offset 0x3>
+	// <Unidentified data segment, offset 0x3>
 private:
-	char _Filler3[1];
+	char _UnidentifiedData3[1];
 
 public:
 	// <int32_t warpWaitFrame, offset 0x4>
@@ -8456,9 +8421,9 @@ struct stPcStatus
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[2308];
+	char _UnidentifiedData[2308];
 public:
 
 #ifdef WITH_LUA
@@ -8472,6 +8437,9 @@ public:
 static_assert(sizeof(stPcStatus) == 2308, "expected struct stPcStatus to be size 2308");
 
 // [Structure] class mHRPc
+/// <summary>
+/// Player character (Travis)
+/// </summary>
 class mHRPc : public mHRChara
 {
 public:
@@ -10639,6 +10607,9 @@ public:
 		return mFunc(this, arg2, arg3);
 	}
 	// [Function] void __convention("thiscall") mHRPc::CreateGuardBreakEffect(class mHRPc* const this) [?CreateGuardBreakEffect@mHRPc@@QAEXXZ]
+	/// <summary>
+	/// Creates a spark effect at character torso / head.
+	/// </summary>
 	void CreateGuardBreakEffect()
 	{
 		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr);
@@ -12879,6 +12850,9 @@ public:
 		return mFunc(this);
 	}
 	// [Function] void __convention("thiscall") mHRPc::mStartChangeWeapon(class mHRPc* const this) [?mStartChangeWeapon@mHRPc@@QAEXXZ]
+	/// <summary>
+	/// Makes Travis put away his weapon... and then immediately pull it out again.
+	/// </summary>
 	void mStartChangeWeapon()
 	{
 		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr);
@@ -13638,9 +13612,9 @@ public:
 	// <uint8_t mBanStatusScreen, offset 0x15f8>
 	uint8_t mBanStatusScreen;
 
-	// <Filler, offset 0x15f9>
+	// <Unidentified data segment, offset 0x15f9>
 private:
-	char _Filler24[3];
+	char _UnidentifiedData24[3];
 
 public:
 	// <int32_t mAtkPauseTime, offset 0x15fc>
@@ -13709,9 +13683,9 @@ public:
 	// <uint8_t mSavehitOidashiDisEnable, offset 0x1ee4>
 	uint8_t mSavehitOidashiDisEnable;
 
-	// <Filler, offset 0x1ee5>
+	// <Unidentified data segment, offset 0x1ee5>
 private:
-	char _Filler46[3];
+	char _UnidentifiedData46[3];
 
 public:
 	// <int32_t mSlowMotionSytemMotNo, offset 0x1ee8>
@@ -13735,9 +13709,9 @@ public:
 	// <uint8_t mSubMissionPcPosStoreFlag, offset 0x1f26>
 	uint8_t mSubMissionPcPosStoreFlag;
 
-	// <Filler, offset 0x1f27>
+	// <Unidentified data segment, offset 0x1f27>
 private:
-	char _Filler53[1];
+	char _UnidentifiedData53[1];
 
 public:
 	// <struct Vec mSubMissionStorePos, offset 0x1f28>
@@ -13749,9 +13723,9 @@ public:
 	// <uint8_t mSubMissionBikePosStoreFlag, offset 0x1f40>
 	uint8_t mSubMissionBikePosStoreFlag;
 
-	// <Filler, offset 0x1f41>
+	// <Unidentified data segment, offset 0x1f41>
 private:
-	char _Filler56[3];
+	char _UnidentifiedData56[3];
 
 public:
 	// <struct Vec mSubMissionStoreBikePos, offset 0x1f44>
@@ -13775,9 +13749,9 @@ public:
 	// <uint8_t mTameSe, offset 0x1f66>
 	uint8_t mTameSe;
 
-	// <Filler, offset 0x1f67>
+	// <Unidentified data segment, offset 0x1f67>
 private:
-	char _Filler63[1];
+	char _UnidentifiedData63[1];
 
 public:
 	// <int32_t mDigAction, offset 0x1f68>
@@ -13804,9 +13778,9 @@ public:
 	// <uint8_t m_bIsBootStageHitEffect, offset 0x1f90>
 	uint8_t m_bIsBootStageHitEffect;
 
-	// <Filler, offset 0x1f91>
+	// <Unidentified data segment, offset 0x1f91>
 private:
-	char _Filler71[3];
+	char _UnidentifiedData71[3];
 
 public:
 	// <struct Vec m_inPreWeaponTopPosi, offset 0x1f94>
@@ -13898,8 +13872,10 @@ public:
 			.addProperty("mChangeWepProc", &mHRPc::mChangeWepProc)
 			.addProperty("mChangeWepKind", &mHRPc::mChangeWepKind)
 			.addProperty("mMenuDisEnableFrame", &mHRPc::mMenuDisEnableFrame)
-			.addProperty("m_sMotName", &mHRPc::m_sMotName)
-			.addProperty("m_sPreMotName", &mHRPc::m_sPreMotName)
+			// pointer to const not supported in LuaBridge and needs a getter
+			//.addProperty("m_sMotName", &mHRPc::m_sMotName)
+			// pointer to const not supported in LuaBridge and needs a getter
+			//.addProperty("m_sPreMotName", &mHRPc::m_sPreMotName)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("m_sOutMotName", &mHRPc::m_sOutMotName)
 			.addProperty("m_bIsBootStageHitEffect", &mHRPc::m_bIsBootStageHitEffect)
@@ -14266,7 +14242,7 @@ public:
 			//.addFunction("mCheckFinishNpc", &mHRPc::mCheckFinishNpc)
 			// Functions with parameters pointing to native types (struct Vec* arg2) not supported in LuaBridge.
 			//.addFunction("mGetHitEffectPos", &mHRPc::mGetHitEffectPos)
-			// Functions with parameters pointing to native types (struct Vec& arg3) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addFunction("mGetHitEffectPos", &mHRPc::mGetHitEffectPos)
 			.addFunction("mSetNoutou", &mHRPc::mSetNoutou)
 			.addFunction("mSetBattou", &mHRPc::mSetBattou)
@@ -14947,9 +14923,9 @@ class ghmGcCollObjHitResult
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[48];
+	char _UnidentifiedData[48];
 public:
 
 #ifdef WITH_LUA
@@ -15143,8 +15119,6 @@ public:
 	// enum ghmGcFile::ghmGcFileState
 	enum ghmGcFileState : uint32_t
 	{
-		// Enum values
-
 		// <READFINISH = 0x1>
 		READFINISH = 1,
 
@@ -15195,9 +15169,9 @@ public:
 		// <uint8_t mDivRead, offset 0x58>
 		uint8_t mDivRead;
 
-		// <Filler, offset 0x59>
+		// <Unidentified data segment, offset 0x59>
 	private:
-		char _Filler8[3];
+		char _UnidentifiedData8[3];
 
 	public:
 		// <int32_t mTotalReadLength, offset 0x5c>
@@ -15404,9 +15378,9 @@ namespace EE
 		// <uint8_t endianSwap, offset 0x14>
 		uint8_t endianSwap;
 
-		// <Filler, offset 0x15>
+		// <Unidentified data segment, offset 0x15>
 	private:
-		char _Filler[3];
+		char _UnidentifiedData[3];
 	public:
 
 #ifdef WITH_LUA
@@ -15551,9 +15525,9 @@ public:
 		// <uint8_t PlayFlag, offset 0x1a>
 		uint8_t PlayFlag;
 
-		// <Filler, offset 0x1b>
+		// <Unidentified data segment, offset 0x1b>
 	private:
-		char _Filler9[1];
+		char _UnidentifiedData9[1];
 
 	public:
 		// <float PlayTick, offset 0x1c>
@@ -15614,8 +15588,6 @@ static_assert(sizeof(TGanPlay) == 36, "expected class TGanPlay to be size 36");
 // enum TGAN_STATE
 enum TGAN_STATE : uint32_t
 {
-	// Enum values
-
 	// <TGAN_STATE_INIT = 0x0>
 	TGAN_STATE_INIT = 0,
 
@@ -15643,9 +15615,9 @@ public:
 		// <uint8_t XYZLS16WKFlag, offset 0x1>
 		uint8_t XYZLS16WKFlag;
 
-		// <Filler, offset 0x2>
+		// <Unidentified data segment, offset 0x2>
 	private:
-		char _Filler2[2];
+		char _UnidentifiedData2[2];
 
 	public:
 		// <enum TGAN_STATE State, offset 0x4>
@@ -15921,9 +15893,9 @@ struct _WFAnmObjKeyListHeader
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[20];
+	char _UnidentifiedData[20];
 public:
 
 #ifdef WITH_LUA
@@ -16054,9 +16026,9 @@ public:
 		// <uint8_t ValidAnm, offset 0x0>
 		uint8_t ValidAnm;
 
-		// <Filler, offset 0x1>
+		// <Unidentified data segment, offset 0x1>
 	private:
-		char _Filler1[3];
+		char _UnidentifiedData1[3];
 
 	public:
 		// <class TFAnm* pAnm, offset 0x4>
@@ -16220,9 +16192,9 @@ public:
 	public:
 		/// Struct member variables
 
-		// <Filler, offset 0x0>
+		// <Unidentified data segment, offset 0x0>
 	private:
-		char _Filler[244];
+		char _UnidentifiedData[244];
 	public:
 
 #ifdef WITH_LUA
@@ -16243,9 +16215,9 @@ public:
 	// <uint8_t m_bIsAlwaysSetupMatrix, offset 0xf4>
 	uint8_t m_bIsAlwaysSetupMatrix;
 
-	// <Filler, offset 0xf5>
+	// <Unidentified data segment, offset 0xf5>
 private:
-	char _Filler2[3];
+	char _UnidentifiedData2[3];
 
 public:
 	// <int32_t m_nPolyNum, offset 0xf8>
@@ -16316,9 +16288,9 @@ public:
 	// <float m_fRadius, offset 0x10>
 	float m_fRadius;
 
-	// <Filler, offset 0x14>
+	// <Unidentified data segment, offset 0x14>
 private:
-	char _Filler[12];
+	char _UnidentifiedData[12];
 public:
 
 #ifdef WITH_LUA
@@ -16341,9 +16313,9 @@ class CViewClipObjBox
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[64];
+	char _UnidentifiedData[64];
 public:
 
 #ifdef WITH_LUA
@@ -16359,8 +16331,6 @@ static_assert(sizeof(CViewClipObjBox) == 64, "expected class CViewClipObjBox to 
 // enum GHMR_PRIMTYPE
 enum GHMR_PRIMTYPE : uint32_t
 {
-	// Enum values
-
 	// <GHMR_PRIMTYPE_POINTLIST = 0x0>
 	GHMR_PRIMTYPE_POINTLIST = 0,
 
@@ -16387,8 +16357,6 @@ enum GHMR_PRIMTYPE : uint32_t
 // enum GHMR_PROJECT
 enum GHMR_PROJECT : uint32_t
 {
-	// Enum values
-
 	// <GHMR_PROJECT_PERS = 0x0>
 	GHMR_PROJECT_PERS = 0,
 
@@ -16465,9 +16433,9 @@ public:
 	// <uint8_t mBitFlag, offset 0x0>
 	uint8_t mBitFlag;
 
-	// <Filler, offset 0x1>
+	// <Unidentified data segment, offset 0x1>
 private:
-	char _Filler1[3];
+	char _UnidentifiedData1[3];
 
 public:
 	// <uint32_t mTick, offset 0x4>
@@ -16514,8 +16482,6 @@ public:
 	// enum EfDestortion::UV_Type
 	enum UV_Type : uint32_t
 	{
-		// Enum values
-
 		// <UV_Sin = 0x1>
 		UV_Sin = 1,
 
@@ -16562,9 +16528,9 @@ public:
 	// <uint8_t mbRenderWait, offset 0xa8>
 	uint8_t mbRenderWait;
 
-	// <Filler, offset 0xa9>
+	// <Unidentified data segment, offset 0xa9>
 private:
-	char _Filler12[3];
+	char _UnidentifiedData12[3];
 
 public:
 	// <float mSinCnt[0x64], offset 0xac>
@@ -16700,8 +16666,6 @@ static_assert(sizeof(TGMFMESH) == 424, "expected struct TGMFMESH to be size 424"
 // enum GHMR_TEXDOT_ASPECT
 enum GHMR_TEXDOT_ASPECT : uint32_t
 {
-	// Enum values
-
 	// <GHMR_TEXDOT_ASPECT_1x1 = 0x0>
 	GHMR_TEXDOT_ASPECT_1x1 = 0,
 
@@ -16713,8 +16677,6 @@ enum GHMR_TEXDOT_ASPECT : uint32_t
 // enum _GXTexFmt
 enum _GXTexFmt : uint32_t
 {
-	// Enum values
-
 	// <GX_TF_I4 = 0x0>
 	GX_TF_I4 = 0,
 
@@ -16798,8 +16760,6 @@ enum _GXTexFmt : uint32_t
 // enum GHMR_TEXFILTER
 enum GHMR_TEXFILTER : uint32_t
 {
-	// Enum values
-
 	// <GHMR_TEXFILTER_NEAR = 0x0>
 	GHMR_TEXFILTER_NEAR = 0,
 
@@ -16811,8 +16771,6 @@ enum GHMR_TEXFILTER : uint32_t
 // enum GHMR_TEXADDRESS
 enum GHMR_TEXADDRESS : uint32_t
 {
-	// Enum values
-
 	// <GHMR_TEXADDRESS_CLAMP = 0x0>
 	GHMR_TEXADDRESS_CLAMP = 0,
 
@@ -16866,9 +16824,9 @@ public:
 	// <uint8_t ImageBufferFreeFlag, offset 0x2>
 	uint8_t ImageBufferFreeFlag;
 
-	// <Filler, offset 0x3>
+	// <Unidentified data segment, offset 0x3>
 private:
-	char _Filler3[1];
+	char _UnidentifiedData3[1];
 
 public:
 	// <void* FileImage, offset 0x4>
@@ -16994,9 +16952,9 @@ public:
 		// <uint8_t do_edge_lod, offset 0xe>
 		uint8_t do_edge_lod;
 
-		// <Filler, offset 0xf>
+		// <Unidentified data segment, offset 0xf>
 	private:
-		char _Filler8[1];
+		char _UnidentifiedData8[1];
 
 	public:
 		// <uint32_t hash, offset 0x10>
@@ -17379,9 +17337,9 @@ public:
 	public:
 		/// Struct member variables
 
-		// <Filler, offset 0x0>
+		// <Unidentified data segment, offset 0x0>
 	private:
-		char _Filler[360];
+		char _UnidentifiedData[360];
 	public:
 
 #ifdef WITH_LUA
@@ -17435,8 +17393,6 @@ static_assert(sizeof(_WFAnmVal) == 4, "expected union _WFAnmVal to be size 4");
 // enum TFANMOBJDATATYPE
 enum TFANMOBJDATATYPE : uint32_t
 {
-	// Enum values
-
 	// <TFANMOBJDATATYPE_NONE = 0x0>
 	TFANMOBJDATATYPE_NONE = 0,
 
@@ -17707,8 +17663,6 @@ static_assert(sizeof(mot::IBoneEffectPJ) == 4, "expected class mot::IBoneEffectP
 // enum ECameraVibAnimeType
 enum ECameraVibAnimeType : uint32_t
 {
-	// Enum values
-
 	// <CAMERA_VIB_ANIME_TYPE_DAMAGE_HIT = 0x0>
 	CAMERA_VIB_ANIME_TYPE_DAMAGE_HIT = 0,
 
@@ -17785,7 +17739,8 @@ public:
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CCameraVibTiming>("CCameraVibTiming")
-			.addProperty("m_sMotName", &CCameraVibTiming::m_sMotName)
+			// pointer to const not supported in LuaBridge and needs a getter
+			//.addProperty("m_sMotName", &CCameraVibTiming::m_sMotName)
 			.addProperty("m_fMotFrame", &CCameraVibTiming::m_fMotFrame)
 			.addProperty("m_eAnimeType", &CCameraVibTiming::m_eAnimeType)
 			.addProperty("m_fAnimeScale", &CCameraVibTiming::m_fAnimeScale)
@@ -17804,8 +17759,6 @@ static_assert(sizeof(CCameraVibTiming) == 16, "expected class CCameraVibTiming t
 // enum eENVOICE
 enum eENVOICE : uint32_t
 {
-	// Enum values
-
 	// <eENVOICE_A = 0x0>
 	eENVOICE_A = 0,
 
@@ -17839,7 +17792,8 @@ public:
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<HRCHARAVOICE>("HRCHARAVOICE")
-			.addProperty("pFileName", &HRCHARAVOICE::pFileName)
+			// pointer to const not supported in LuaBridge and needs a getter
+			//.addProperty("pFileName", &HRCHARAVOICE::pFileName)
 			.addProperty("Voice", &HRCHARAVOICE::Voice)
 			.addProperty("FileNameLength", &HRCHARAVOICE::FileNameLength)
 		.endClass();
@@ -17902,9 +17856,9 @@ public:
 	// <float m_fAlphaMinDist, offset 0x24>
 	float m_fAlphaMinDist;
 
-	// <Filler, offset 0x28>
+	// <Unidentified data segment, offset 0x28>
 private:
-	char _Filler[8];
+	char _UnidentifiedData[8];
 public:
 
 #ifdef WITH_LUA
@@ -17938,8 +17892,6 @@ public:
 	// enum CharController::eChrCntrlMoveMode
 	enum eChrCntrlMoveMode : uint32_t
 	{
-		// Enum values
-
 		// <eChrCntrlMoveMode_WalkSideLeft = 0x0>
 		eChrCntrlMoveMode_WalkSideLeft = 0,
 
@@ -17971,9 +17923,9 @@ public:
 	// <uint8_t m_boEnableControl, offset 0x1>
 	uint8_t m_boEnableControl;
 
-	// <Filler, offset 0x2>
+	// <Unidentified data segment, offset 0x2>
 private:
-	char _Filler2[2];
+	char _UnidentifiedData2[2];
 
 public:
 	// <class mHRChara* m_pOwnerChar, offset 0x4>
@@ -17991,9 +17943,9 @@ public:
 	// <uint8_t m_boLockon, offset 0x2e>
 	uint8_t m_boLockon;
 
-	// <Filler, offset 0x2f>
+	// <Unidentified data segment, offset 0x2f>
 private:
-	char _Filler7[1];
+	char _UnidentifiedData7[1];
 
 public:
 	// <struct Vec m_PcDirection, offset 0x30>
@@ -18156,8 +18108,6 @@ static_assert(sizeof(stBikeEffect) == 40, "expected struct stBikeEffect to be si
 // enum enBikeSpinDir
 enum enBikeSpinDir : uint32_t
 {
-	// Enum values
-
 	// <eBikeSpinL = 0x0>
 	eBikeSpinL = 0,
 
@@ -18172,8 +18122,6 @@ enum enBikeSpinDir : uint32_t
 // enum enBikeFallProc
 enum enBikeFallProc : uint32_t
 {
-	// Enum values
-
 	// <eBikeFallSetMotel = 0x0>
 	eBikeFallSetMotel = 0,
 
@@ -18188,8 +18136,6 @@ enum enBikeFallProc : uint32_t
 // enum enBikeProc
 enum enBikeProc : uint32_t
 {
-	// Enum values
-
 	// <eBikeStopIdle = 0x0>
 	eBikeStopIdle = 0,
 
@@ -18396,9 +18342,9 @@ public:
 	// <uint8_t alwaysCheckHitColl, offset 0xf8>
 	uint8_t alwaysCheckHitColl;
 
-	// <Filler, offset 0xf9>
+	// <Unidentified data segment, offset 0xf9>
 private:
-	char _Filler46[3];
+	char _UnidentifiedData46[3];
 
 public:
 	// <int32_t hp, offset 0xfc>
@@ -18458,9 +18404,9 @@ public:
 	// <uint8_t useNitro, offset 0x144>
 	uint8_t useNitro;
 
-	// <Filler, offset 0x145>
+	// <Unidentified data segment, offset 0x145>
 private:
-	char _Filler65[3];
+	char _UnidentifiedData65[3];
 
 public:
 	// <float nitro, offset 0x148>
@@ -18526,9 +18472,9 @@ public:
 	// <uint8_t changeVolEngineIdle, offset 0x171>
 	uint8_t changeVolEngineIdle;
 
-	// <Filler, offset 0x172>
+	// <Unidentified data segment, offset 0x172>
 private:
-	char _Filler86[2];
+	char _UnidentifiedData86[2];
 
 public:
 	// <int32_t startWait, offset 0x174>
@@ -18585,9 +18531,9 @@ public:
 	// <uint8_t crashFlag, offset 0x449>
 	uint8_t crashFlag;
 
-	// <Filler, offset 0x44a>
+	// <Unidentified data segment, offset 0x44a>
 private:
-	char _Filler104[2];
+	char _UnidentifiedData104[2];
 
 public:
 	// <int32_t damageCount, offset 0x44c>
@@ -18605,9 +18551,9 @@ public:
 	// <uint8_t muteSe, offset 0x4c8>
 	uint8_t muteSe;
 
-	// <Filler, offset 0x4c9>
+	// <Unidentified data segment, offset 0x4c9>
 private:
-	char _Filler109[3];
+	char _UnidentifiedData109[3];
 
 public:
 	// <int32_t seLoadNoiseNo, offset 0x4cc>
@@ -18875,9 +18821,9 @@ public:
 	// <uint8_t mhitStage, offset 0x504>
 	uint8_t mhitStage;
 
-	// <Filler, offset 0x505>
+	// <Unidentified data segment, offset 0x505>
 private:
-	char _Filler3[3];
+	char _UnidentifiedData3[3];
 
 public:
 	// <float mWryRate, offset 0x508>
@@ -19018,9 +18964,9 @@ public:
 	// <char m_StageName[0x10], offset 0x61>
 	char m_StageName[16];
 
-	// <Filler, offset 0x71>
+	// <Unidentified data segment, offset 0x71>
 private:
-	char _Filler17[3];
+	char _UnidentifiedData17[3];
 
 public:
 	// <uint32_t m_HrScriptHandle, offset 0x74>
@@ -19029,9 +18975,9 @@ public:
 	// <uint8_t m_PlayBossCornMotionFlag, offset 0x78>
 	uint8_t m_PlayBossCornMotionFlag;
 
-	// <Filler, offset 0x79>
+	// <Unidentified data segment, offset 0x79>
 private:
-	char _Filler19[3];
+	char _UnidentifiedData19[3];
 
 public:
 	// <class TGmf* m_pCornGmf, offset 0x7c>
@@ -19052,9 +18998,9 @@ public:
 	// <uint8_t m_PlaySe[0x2], offset 0x90>
 	uint8_t m_PlaySe[2];
 
-	// <Filler, offset 0x92>
+	// <Unidentified data segment, offset 0x92>
 private:
-	char _Filler25[2];
+	char _UnidentifiedData25[2];
 
 public:
 	// <int32_t m_MakerType, offset 0x94>
@@ -19078,9 +19024,9 @@ public:
 	// <uint8_t m_Visible, offset 0xa9>
 	uint8_t m_Visible;
 
-	// <Filler, offset 0xaa>
+	// <Unidentified data segment, offset 0xaa>
 private:
-	char _Filler32[2];
+	char _UnidentifiedData32[2];
 
 public:
 	// <int32_t m_SleepMessage, offset 0xac>
@@ -19104,9 +19050,9 @@ public:
 	// <uint8_t mCameraPosSetType, offset 0xc1>
 	uint8_t mCameraPosSetType;
 
-	// <Filler, offset 0xc2>
+	// <Unidentified data segment, offset 0xc2>
 private:
-	char _Filler39[2];
+	char _UnidentifiedData39[2];
 
 public:
 	// <struct Vec mCameraPos, offset 0xc4>
@@ -19118,9 +19064,9 @@ public:
 	// <uint8_t mPcPosSetType, offset 0xdc>
 	uint8_t mPcPosSetType;
 
-	// <Filler, offset 0xdd>
+	// <Unidentified data segment, offset 0xdd>
 private:
-	char _Filler42[3];
+	char _UnidentifiedData42[3];
 
 public:
 	// <struct Vec mPcPos, offset 0xe0>
@@ -19150,9 +19096,9 @@ public:
 	// <uint8_t mDelete, offset 0x108>
 	uint8_t mDelete;
 
-	// <Filler, offset 0x109>
+	// <Unidentified data segment, offset 0x109>
 private:
-	char _Filler51[3];
+	char _UnidentifiedData51[3];
 
 public:
 	// <class EveCorn* mpEveCorn, offset 0x10c>
@@ -19161,9 +19107,9 @@ public:
 	// <uint8_t mEveCornVisible, offset 0x110>
 	uint8_t mEveCornVisible;
 
-	// <Filler, offset 0x111>
+	// <Unidentified data segment, offset 0x111>
 private:
-	char _Filler53[3];
+	char _UnidentifiedData53[3];
 
 public:
 	// <int32_t mEveCornRefreshCnt, offset 0x114>
@@ -19178,9 +19124,9 @@ public:
 	// <uint8_t mFlashSE, offset 0x11a>
 	uint8_t mFlashSE;
 
-	// <Filler, offset 0x11b>
+	// <Unidentified data segment, offset 0x11b>
 private:
-	char _Filler57[1];
+	char _UnidentifiedData57[1];
 
 public:
 	// <int32_t mFlashCounter, offset 0x11c>
@@ -19189,9 +19135,9 @@ public:
 	// <uint8_t mBikeRide, offset 0x120>
 	uint8_t mBikeRide;
 
-	// <Filler, offset 0x121>
+	// <Unidentified data segment, offset 0x121>
 private:
-	char _Filler59[3];
+	char _UnidentifiedData59[3];
 
 public:
 	// <class EventAreaCamera* mpEventAreaCamera, offset 0x124>
@@ -19384,9 +19330,9 @@ public:
 	// <uint8_t mAdjustEnable, offset 0x30>
 	uint8_t mAdjustEnable;
 
-	// <Filler, offset 0x31>
+	// <Unidentified data segment, offset 0x31>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -19472,9 +19418,9 @@ public:
 	// <uint8_t mconvendian, offset 0x74>
 	uint8_t mconvendian;
 
-	// <Filler, offset 0x75>
+	// <Unidentified data segment, offset 0x75>
 private:
-	char _Filler12[3];
+	char _UnidentifiedData12[3];
 
 public:
 	// <uint32_t mFlag, offset 0x78>
@@ -19541,9 +19487,9 @@ public:
 	// <uint16_t mReturnType, offset 0x50>
 	uint16_t mReturnType;
 
-	// <Filler, offset 0x52>
+	// <Unidentified data segment, offset 0x52>
 private:
-	char _Filler3[2];
+	char _UnidentifiedData3[2];
 
 public:
 	// <class ghmScriptFuncArgBase* mpReturnValue, offset 0x54>
@@ -19555,9 +19501,9 @@ public:
 	// <uint16_t mArgs[0x12], offset 0x5a>
 	uint16_t mArgs[18];
 
-	// <Filler, offset 0x7e>
+	// <Unidentified data segment, offset 0x7e>
 private:
-	char _Filler6[2];
+	char _UnidentifiedData6[2];
 
 public:
 	// <class ghmScriptFuncArgBase* mpArgs[0x12], offset 0x80>
@@ -19605,8 +19551,6 @@ public:
 	// enum HrScriptFunc::SCRIPTFUNC_STS
 	enum SCRIPTFUNC_STS : uint32_t
 	{
-		// Enum values
-
 		// <SCRIPTFUNC_INIT = 0x0>
 		SCRIPTFUNC_INIT = 0,
 
@@ -19632,9 +19576,9 @@ public:
 	// <uint8_t m_WaitVsync, offset 0xd4>
 	uint8_t m_WaitVsync;
 
-	// <Filler, offset 0xd5>
+	// <Unidentified data segment, offset 0xd5>
 private:
-	char _Filler3[3];
+	char _UnidentifiedData3[3];
 
 public:
 	// <void* m_pScrData, offset 0xd8>
@@ -19995,7 +19939,8 @@ public:
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<ghmScrFuncHeader>("ghmScrFuncHeader")
-			.addProperty("mpName", &ghmScrFuncHeader::mpName)
+			// pointer to const not supported in LuaBridge and needs a getter
+			//.addProperty("mpName", &ghmScrFuncHeader::mpName)
 			.addProperty("mReturnType", &ghmScrFuncHeader::mReturnType)
 			.addProperty("mArgNum", &ghmScrFuncHeader::mArgNum)
 			// native pointer type (uint16_t*) not supported in LuaBridge (needs wrapper function)
@@ -20070,17 +20015,17 @@ public:
 	// <uint8_t mType, offset 0xb>
 	uint8_t mType;
 
-	// <Filler, offset 0xc>
+	// <Unidentified data segment, offset 0xc>
 private:
-	char _Filler3[4];
+	char _UnidentifiedData3[4];
 
 public:
 	// <float mFloat, offset 0x10>
 	float mFloat;
 
-	// <Filler, offset 0x14>
+	// <Unidentified data segment, offset 0x14>
 private:
-	char _Filler4[4];
+	char _UnidentifiedData4[4];
 
 public:
 	// <class ghmString mString, offset 0x18>
@@ -20113,9 +20058,9 @@ class ghmScriptStack
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[744];
+	char _UnidentifiedData[744];
 public:
 
 #ifdef WITH_LUA
@@ -20197,9 +20142,9 @@ public:
 	// <uint8_t flag, offset 0x0>
 	uint8_t flag;
 
-	// <Filler, offset 0x1>
+	// <Unidentified data segment, offset 0x1>
 private:
-	char _Filler1[3];
+	char _UnidentifiedData1[3];
 
 public:
 	// <float mScale, offset 0x4>
@@ -20276,8 +20221,6 @@ static_assert(sizeof(EventAreaCamera) == 20, "expected class EventAreaCamera to 
 // enum HRCAMERA_MODE
 enum HRCAMERA_MODE : uint32_t
 {
-	// Enum values
-
 	// <HRCAMERA_MODE_NONE = 0xffffffffffffffff>
 	HRCAMERA_MODE_NONE = UINT32_MAX,
 
@@ -20337,9 +20280,9 @@ public:
 	// <char mStageName[0x10], offset 0x42>
 	char mStageName[16];
 
-	// <Filler, offset 0x52>
+	// <Unidentified data segment, offset 0x52>
 private:
-	char _Filler11[2];
+	char _UnidentifiedData11[2];
 
 public:
 	// <int32_t mStatus, offset 0x54>
@@ -20363,9 +20306,9 @@ public:
 	// <uint8_t mEventEndPcNoRefresh, offset 0x69>
 	uint8_t mEventEndPcNoRefresh;
 
-	// <Filler, offset 0x6a>
+	// <Unidentified data segment, offset 0x6a>
 private:
-	char _Filler[2];
+	char _UnidentifiedData[2];
 public:
 
 #ifdef WITH_LUA
@@ -20421,9 +20364,9 @@ class EffectDriftMark
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[388];
+	char _UnidentifiedData[388];
 public:
 
 #ifdef WITH_LUA
@@ -20448,9 +20391,9 @@ public:
 	// <uint8_t m_Flag, offset 0x50>
 	uint8_t m_Flag;
 
-	// <Filler, offset 0x51>
+	// <Unidentified data segment, offset 0x51>
 private:
-	char _Filler2[3];
+	char _UnidentifiedData2[3];
 
 public:
 	// <class rPrimUnific m_QuadUni, offset 0x54>
@@ -20539,9 +20482,9 @@ class rQuad
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[172];
+	char _UnidentifiedData[172];
 public:
 
 #ifdef WITH_LUA
@@ -20557,8 +20500,6 @@ static_assert(sizeof(rQuad) == 172, "expected class rQuad to be size 172");
 // enum GHMR_BLEND
 enum GHMR_BLEND : uint32_t
 {
-	// Enum values
-
 	// <GHMR_BLEND_ADD = 0x0>
 	GHMR_BLEND_ADD = 0,
 
@@ -20598,9 +20539,9 @@ public:
 		// <uint8_t m_Fade, offset 0x8>
 		uint8_t m_Fade;
 
-		// <Filler, offset 0x9>
+		// <Unidentified data segment, offset 0x9>
 	private:
-		char _Filler3[3];
+		char _UnidentifiedData3[3];
 
 	public:
 		// <struct Vec m_MoveVec, offset 0xc>
@@ -20657,9 +20598,9 @@ public:
 	// <uint8_t m_Flag, offset 0x50>
 	uint8_t m_Flag;
 
-	// <Filler, offset 0x51>
+	// <Unidentified data segment, offset 0x51>
 private:
-	char _Filler2[3];
+	char _UnidentifiedData2[3];
 
 public:
 	// <struct EffectFixFire::Object* m_pObject, offset 0x54>
@@ -20783,9 +20724,9 @@ public:
 	// <uint8_t mAlloc, offset 0x0>
 	uint8_t mAlloc;
 
-	// <Filler, offset 0x1>
+	// <Unidentified data segment, offset 0x1>
 private:
-	char _Filler1[3];
+	char _UnidentifiedData1[3];
 
 public:
 	// <int32_t mStatus, offset 0x4>
@@ -20803,9 +20744,9 @@ public:
 	// <uint8_t mbVisible, offset 0x38>
 	uint8_t mbVisible;
 
-	// <Filler, offset 0x39>
+	// <Unidentified data segment, offset 0x39>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -20836,9 +20777,9 @@ class HrScreenStatus
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[14448];
+	char _UnidentifiedData[14448];
 public:
 
 #ifdef WITH_LUA
@@ -20858,8 +20799,6 @@ public:
 	// enum HrEffectShutter::D_EFFECTSHUTTER_STAT
 	enum D_EFFECTSHUTTER_STAT : uint32_t
 	{
-		// Enum values
-
 		// <NONE = 0x0>
 		NONE = 0,
 
@@ -20894,9 +20833,9 @@ public:
 	// <int16_t m_CloseTime, offset 0x58>
 	int16_t m_CloseTime;
 
-	// <Filler, offset 0x5a>
+	// <Unidentified data segment, offset 0x5a>
 private:
-	char _Filler[2];
+	char _UnidentifiedData[2];
 public:
 
 #ifdef WITH_LUA
@@ -21071,9 +21010,9 @@ public:
 	// <uint8_t boEndTraining[0x5], offset 0x0>
 	uint8_t boEndTraining[5];
 
-	// <Filler, offset 0x5>
+	// <Unidentified data segment, offset 0x5>
 private:
-	char _Filler1[3];
+	char _UnidentifiedData1[3];
 
 public:
 	// <int32_t CatWeight, offset 0x8>
@@ -21178,9 +21117,9 @@ public:
 	// <uint8_t mCallMotionProcFlag, offset 0x580>
 	uint8_t mCallMotionProcFlag;
 
-	// <Filler, offset 0x581>
+	// <Unidentified data segment, offset 0x581>
 private:
-	char _Filler2[3];
+	char _UnidentifiedData2[3];
 
 public:
 	// <class WGcl mGcl, offset 0x584>
@@ -21204,9 +21143,9 @@ public:
 	// <uint8_t m_bActVisibleFade, offset 0x600>
 	uint8_t m_bActVisibleFade;
 
-	// <Filler, offset 0x601>
+	// <Unidentified data segment, offset 0x601>
 private:
-	char _Filler9[3];
+	char _UnidentifiedData9[3];
 
 public:
 	// <float m_FadeDist, offset 0x604>
@@ -21221,9 +21160,9 @@ public:
 	// <uint8_t m_bIsNeedSetupMatrix, offset 0x60d>
 	uint8_t m_bIsNeedSetupMatrix;
 
-	// <Filler, offset 0x60e>
+	// <Unidentified data segment, offset 0x60e>
 private:
-	char _Filler13[2];
+	char _UnidentifiedData13[2];
 
 public:
 	// <float m_fDestroyTimer, offset 0x610>
@@ -21235,9 +21174,9 @@ public:
 	// <uint8_t m_bIsMiniDemoDamage, offset 0x615>
 	uint8_t m_bIsMiniDemoDamage;
 
-	// <Filler, offset 0x616>
+	// <Unidentified data segment, offset 0x616>
 private:
-	char _Filler16[2];
+	char _UnidentifiedData16[2];
 
 public:
 	// <float m_fDamagePower, offset 0x618>
@@ -21252,9 +21191,9 @@ public:
 	// <uint8_t m_bIsSpreadBreak, offset 0x624>
 	uint8_t m_bIsSpreadBreak;
 
-	// <Filler, offset 0x625>
+	// <Unidentified data segment, offset 0x625>
 private:
-	char _Filler20[3];
+	char _UnidentifiedData20[3];
 
 public:
 	// <struct Vec m_inSpreadBreakSrcPosiOfst, offset 0x628>
@@ -21263,9 +21202,9 @@ public:
 	// <uint8_t m_bIsSetGroundColPlane, offset 0x634>
 	uint8_t m_bIsSetGroundColPlane;
 
-	// <Filler, offset 0x635>
+	// <Unidentified data segment, offset 0x635>
 private:
-	char _Filler22[3];
+	char _UnidentifiedData22[3];
 
 public:
 	// <class ghmPlane m_inGroundColPlane, offset 0x638>
@@ -21274,9 +21213,9 @@ public:
 	// <uint8_t mbDistEraseDisable, offset 0x648>
 	uint8_t mbDistEraseDisable;
 
-	// <Filler, offset 0x649>
+	// <Unidentified data segment, offset 0x649>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -21308,7 +21247,7 @@ public:
 			.addProperty("mbDistEraseDisable", &commonObj::mbDistEraseDisable)
 			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &commonObj::mSetDamage)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addFunction("mSetDamage", &commonObj::mSetDamage)
 		.endClass();
 	}
@@ -21372,7 +21311,7 @@ public:
 			.addProperty("capsuleCollider", &CustomColliderObj::capsuleCollider)
 			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &CustomColliderObj::mSetDamage)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addFunction("mSetDamage", &CustomColliderObj::mSetDamage)
 			// Functions with parameters pointing to native types (class mHRChara* arg2) not supported in LuaBridge.
 			//.addFunction("mHitCheck", &CustomColliderObj::mHitCheck)
@@ -21621,9 +21560,9 @@ struct WGclNodeShapeTriangleSpec
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[48];
+	char _UnidentifiedData[48];
 public:
 
 #ifdef WITH_LUA
@@ -21672,9 +21611,9 @@ public:
 	// <void* (* field_0)[0x1], offset 0x0>
 	void* (* field_0)[0x1];
 
-	// <Filler, offset 0x4>
+	// <Unidentified data segment, offset 0x4>
 private:
-	char _Filler1[4];
+	char _UnidentifiedData1[4];
 
 public:
 	// <char mIDStr[0x8], offset 0x8>
@@ -21776,9 +21715,9 @@ public:
 	// <uint8_t m_bIsRadiInterp, offset 0xc>
 	uint8_t m_bIsRadiInterp;
 
-	// <Filler, offset 0xd>
+	// <Unidentified data segment, offset 0xd>
 private:
-	char _Filler4[3];
+	char _UnidentifiedData4[3];
 
 public:
 	// <float m_fEpsilon, offset 0x10>
@@ -21787,9 +21726,9 @@ public:
 	// <float m_fW, offset 0x14>
 	float m_fW;
 
-	// <Filler, offset 0x18>
+	// <Unidentified data segment, offset 0x18>
 private:
-	char _Filler6[8];
+	char _UnidentifiedData6[8];
 
 public:
 	// <class tiVector m_inValue, offset 0x20>
@@ -21854,8 +21793,6 @@ namespace mot
 		// enum mot::CBoneEffectDamageData::EAttackType
 		enum EAttackType : uint32_t
 		{
-			// Enum values
-
 			// <ATTACK_TYPE_NONE = 0x0>
 			ATTACK_TYPE_NONE = 0,
 
@@ -21897,8 +21834,6 @@ namespace mot
 		// enum mot::CBoneEffectDamageData::EAttackPart
 		enum EAttackPart : uint32_t
 		{
-			// Enum values
-
 			// <ATTACK_PART_FACE = 0x0>
 			ATTACK_PART_FACE = 0,
 
@@ -21928,9 +21863,9 @@ namespace mot
 		// <uint8_t m_bIsKeepMyAttack, offset 0x2>
 		uint8_t m_bIsKeepMyAttack;
 
-		// <Filler, offset 0x3>
+		// <Unidentified data segment, offset 0x3>
 	private:
-		char _Filler3[1];
+		char _UnidentifiedData3[1];
 
 	public:
 		// <class mHRChara* m_pAttackChara, offset 0x4>
@@ -22064,9 +21999,9 @@ namespace mot
 		// <uint8_t m_bActedWarp, offset 0x25>
 		uint8_t m_bActedWarp;
 
-		// <Filler, offset 0x26>
+		// <Unidentified data segment, offset 0x26>
 	private:
-		char _Filler4[10];
+		char _UnidentifiedData4[10];
 
 	public:
 		// <class tiMatrix m_inPreWorldMat, offset 0x30>
@@ -22087,9 +22022,9 @@ namespace mot
 		// <uint8_t m_bIsNeedMoveInterp, offset 0x92>
 		uint8_t m_bIsNeedMoveInterp;
 
-		// <Filler, offset 0x93>
+		// <Unidentified data segment, offset 0x93>
 	private:
-		char _Filler10[13];
+		char _UnidentifiedData10[13];
 
 	public:
 		// <class CDoubleSpringInterpolate3D m_inInterpMove, offset 0xa0>
@@ -22187,18 +22122,19 @@ public:
 	// <uint8_t m_endianSwapped, offset 0xc>
 	uint8_t m_endianSwapped;
 
-	// <Filler, offset 0xd>
+	// <Unidentified data segment, offset 0xd>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<CPackFileDataElement>("CPackFileDataElement")
-			.addProperty("m_sName", &CPackFileDataElement::m_sName)
+			// pointer to const not supported in LuaBridge and needs a getter
+			//.addProperty("m_sName", &CPackFileDataElement::m_sName)
 			.addProperty("m_nSize", &CPackFileDataElement::m_nSize)
-			// void type not supported in LuaBridge
+			// pointer to const not supported in LuaBridge and needs a getter
 			//.addProperty("m_pContent", &CPackFileDataElement::m_pContent)
 			.addProperty("m_endianSwapped", &CPackFileDataElement::m_endianSwapped)
 		.endClass();
@@ -22508,9 +22444,9 @@ public:
 	}
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[7844];
+	char _UnidentifiedData[7844];
 public:
 
 #ifdef WITH_LUA
@@ -22555,9 +22491,9 @@ public:
 	// <uint8_t setThrowDamage, offset 0x3c>
 	uint8_t setThrowDamage;
 
-	// <Filler, offset 0x3d>
+	// <Unidentified data segment, offset 0x3d>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -22587,14 +22523,15 @@ static_assert(sizeof(stThrowInfo::setThrowDamage) == 1, "expected setThrowDamage
 static_assert(sizeof(stThrowInfo) == 64, "expected struct stThrowInfo to be size 64");
 
 // [Structure] class HrMessage
+/// <summary>
+/// Related to the top banner UI messages.
+/// </summary>
 class HrMessage : public ghmListObj
 {
 public:
 	// enum HrMessage::MESS_STATUS_ID
 	enum MESS_STATUS_ID : uint32_t
 	{
-		// Enum values
-
 		// <MESS_STS_IDLE = 0x0>
 		MESS_STS_IDLE = 0,
 
@@ -22781,17 +22718,9 @@ public:
 		return mFunc(this, arg2, arg3, arg4);
 	}
 	// [Function] float HrMessage::DispMessage(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10) [?DispMessage@HrMessage@@SAMIPBDHHMMUGXColor@@HH_N@Z]
-	static float DispMessage2(uint32_t arg1, std::string arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, uint32_t arg7, int32_t arg8)
-	{
-		GXColor Color;
-		Color.PackedValue = arg7;
-		const char* c = arg2.c_str();
-		return DispMessage(arg1, c, arg3, arg4, arg5, arg6, Color, arg8, 0, 0);
-	}
-	// [Function] float HrMessage::DispMessage(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10) [?DispMessage@HrMessage@@SAMIPBDHHMMUGXColor@@HH_N@Z]
 	static float DispMessage(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10)
 	{
-		typedef float(__fastcall* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10);
+		typedef float(__cdecl* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10);
 		_Func mFunc = (_Func)(GameModule + 0x48a280);
 		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
@@ -23030,17 +22959,17 @@ public:
 			.addFunction("DispLine_FrameProcess", &HrMessage::DispLine_FrameProcess)
 			// Functions with parameters pointing to native types (float& arg6) not supported in LuaBridge.
 			//.addStaticFunction("GetStrLengthW", &HrMessage::GetStrLengthW)
-			// Functions with parameters pointing to native types (float& arg4) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("GetStrLengthW", &HrMessage::GetStrLengthW)
-			// Functions with parameters pointing to native types (float& arg6) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("GetStrLengthW", &HrMessage::GetStrLengthW)
 			// Functions with parameters pointing to native types (float& arg6) not supported in LuaBridge.
 			//.addStaticFunction("GetStrLength", &HrMessage::GetStrLength)
-			// Functions with parameters pointing to native types (float& arg6) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("GetStrLength", &HrMessage::GetStrLength)
 			// Functions with parameters pointing to native types (uint32_t& arg5) not supported in LuaBridge.
 			//.addStaticFunction("GetTick", &HrMessage::GetTick)
-			// Functions with parameters pointing to native types (uint32_t& arg5) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("GetTick", &HrMessage::GetTick)
 			// Functions with parameters pointing to native types (uint32_t& arg5) not supported in LuaBridge.
 			//.addFunction("_GetTick", &HrMessage::_GetTick)
@@ -23050,18 +22979,18 @@ public:
 			.addFunction("_SetFontEx", &HrMessage::_SetFontEx)
 			// Functions with return values pointing to native types ('int16_t const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addStaticFunction("GetStringsW", &HrMessage::GetStringsW)
-			// Functions with return values pointing to native types ('int16_t const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("GetStringsW", &HrMessage::GetStringsW)
 			// Functions with return values pointing to native types ('char const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addStaticFunction("GetStrings", &HrMessage::GetStrings)
-			// Functions with return values pointing to native types ('char const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("GetStrings", &HrMessage::GetStrings)
 			// Functions with return values pointing to native types ('int16_t const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("_GetStringsW", &HrMessage::_GetStringsW)
 			// Functions with return values pointing to native types ('char const*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addFunction("_GetStrings", &HrMessage::_GetStrings)
 			// Functions with parameters pointing to native types (char const* arg2) not supported in LuaBridge.
-			.addStaticFunction("DispMessage", &HrMessage::DispMessage2)
+			//.addStaticFunction("DispMessage", &HrMessage::DispMessage)
 			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("DispMessage", &HrMessage::DispMessage)
 			// Functions with return values pointing to native types ('class ghmGcFont*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
@@ -23100,9 +23029,9 @@ public:
 			//.addStaticFunction("Create", &HrMessage::Create)
 			// Functions with return values pointing to native types ('class HrMessage*' [TypeClass.PointerTypeClass]) not supported in LuaBridge.
 			//.addStaticFunction("GetObjectA", &HrMessage::GetObjectA)
-			// Functions with parameters pointing to native types (void* arg2) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addFunction("SetFont", &HrMessage::SetFont)
-			// Functions with parameters pointing to native types (char const* arg2) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addStaticFunction("StartMessage", &HrMessage::StartMessage)
 			.addStaticFunction("Stop", &HrMessage::Stop)
 			.addStaticFunction("Delete", &HrMessage::Delete)
@@ -23128,9 +23057,9 @@ class ghmGcFont
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[2616];
+	char _UnidentifiedData[2616];
 public:
 
 #ifdef WITH_LUA
@@ -23164,9 +23093,9 @@ public:
 	// <uint8_t mEidian, offset 0x1c>
 	uint8_t mEidian;
 
-	// <Filler, offset 0x1d>
+	// <Unidentified data segment, offset 0x1d>
 private:
-	char _Filler5[3];
+	char _UnidentifiedData5[3];
 
 public:
 	// <class ghmGcFile* pLoadFilePtr, offset 0x20>
@@ -23361,7 +23290,8 @@ public:
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GdlDialog>("GdlDialog")
-			.addProperty("mpName", &GdlDialog::mpName)
+			// pointer to const not supported in LuaBridge and needs a getter
+			//.addProperty("mpName", &GdlDialog::mpName)
 			.addProperty("mLinesCount", &GdlDialog::mLinesCount)
 			.addProperty("mPad0", &GdlDialog::mPad0)
 			// pointer to pointer is not supported in LuaBridge
@@ -23425,7 +23355,8 @@ public:
 			.addProperty("mStartTick", &GdlLines::mStartTick)
 			.addProperty("mWaitTick", &GdlLines::mWaitTick)
 			.addProperty("mFlag", &GdlLines::mFlag)
-			.addProperty("mpCharaName", &GdlLines::mpCharaName)
+			// pointer to const not supported in LuaBridge and needs a getter
+			//.addProperty("mpCharaName", &GdlLines::mpCharaName)
 			// void type not supported in LuaBridge
 			//.addProperty("mpFacialAnim", &GdlLines::mpFacialAnim)
 			// static arrays are not supported in LuaBridge (only std::vector)
@@ -23464,6 +23395,7 @@ public:
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GdlSentence>("GdlSentence")
+			// pointer to const not supported in LuaBridge and needs a getter
 			//.addProperty("mpLettersUc", &GdlSentence::mpLettersUc)
 			.addProperty("mFlag", &GdlSentence::mFlag)
 			// static arrays are not supported in LuaBridge (only std::vector)
@@ -23492,9 +23424,9 @@ public:
 	// <uint8_t m_bIsInitRatioOne, offset 0x10>
 	uint8_t m_bIsInitRatioOne;
 
-	// <Filler, offset 0x11>
+	// <Unidentified data segment, offset 0x11>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -23542,9 +23474,9 @@ public:
 	// <float m_fHopePitch, offset 0x78>
 	float m_fHopePitch;
 
-	// <Filler, offset 0x7c>
+	// <Unidentified data segment, offset 0x7c>
 private:
-	char _Filler5[4];
+	char _UnidentifiedData5[4];
 
 public:
 	// <class tiVector m_inLockOnPosi, offset 0x80>
@@ -23559,9 +23491,9 @@ public:
 	// <uint8_t m_bIsChangeLockOnChara, offset 0x98>
 	uint8_t m_bIsChangeLockOnChara;
 
-	// <Filler, offset 0x99>
+	// <Unidentified data segment, offset 0x99>
 private:
-	char _Filler9[3];
+	char _UnidentifiedData9[3];
 
 public:
 	// <class mHRChara* m_pLockOnChara, offset 0x9c>
@@ -23570,9 +23502,9 @@ public:
 	// <uint8_t m_bStgHit, offset 0xa0>
 	uint8_t m_bStgHit;
 
-	// <Filler, offset 0xa1>
+	// <Unidentified data segment, offset 0xa1>
 private:
-	char _Filler[15];
+	char _UnidentifiedData[15];
 public:
 
 #ifdef WITH_LUA
@@ -23635,9 +23567,9 @@ class CCameraVibManager
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[576];
+	char _UnidentifiedData[576];
 public:
 
 #ifdef WITH_LUA
@@ -23686,9 +23618,9 @@ public:
 	// <float m_fDisappearTimer, offset 0x18>
 	float m_fDisappearTimer;
 
-	// <Filler, offset 0x1c>
+	// <Unidentified data segment, offset 0x1c>
 private:
-	char _Filler3[4];
+	char _UnidentifiedData3[4];
 
 public:
 	// <class tiVector m_inSrcLookAtPosi, offset 0x20>
@@ -23712,9 +23644,9 @@ public:
 	// <float m_fPitch, offset 0x50>
 	float m_fPitch;
 
-	// <Filler, offset 0x54>
+	// <Unidentified data segment, offset 0x54>
 private:
-	char _Filler[12];
+	char _UnidentifiedData[12];
 public:
 
 #ifdef WITH_LUA
@@ -23754,9 +23686,9 @@ public:
 	// <class ACameraModeBase field_0, offset 0x0>
 	// class ACameraModeBase Super;
 
-	// <Filler, offset 0x14>
+	// <Unidentified data segment, offset 0x14>
 private:
-	char _Filler1[12];
+	char _UnidentifiedData1[12];
 
 public:
 	// <class CDoubleSpringInterpolate3D m_inAngle, offset 0x20>
@@ -23765,9 +23697,9 @@ public:
 	// <uint8_t m_bAct, offset 0x80>
 	uint8_t m_bAct;
 
-	// <Filler, offset 0x81>
+	// <Unidentified data segment, offset 0x81>
 private:
-	char _Filler3[3];
+	char _UnidentifiedData3[3];
 
 public:
 	// <float m_fLookAtOfstX, offset 0x84>
@@ -23785,9 +23717,9 @@ public:
 	// <float m_fPitchOfst, offset 0x94>
 	float m_fPitchOfst;
 
-	// <Filler, offset 0x98>
+	// <Unidentified data segment, offset 0x98>
 private:
-	char _Filler[8];
+	char _UnidentifiedData[8];
 public:
 
 #ifdef WITH_LUA
@@ -23826,9 +23758,9 @@ public:
 	// <uint8_t m_bIsPlusRot, offset 0x14>
 	uint8_t m_bIsPlusRot;
 
-	// <Filler, offset 0x15>
+	// <Unidentified data segment, offset 0x15>
 private:
-	char _Filler2[3];
+	char _UnidentifiedData2[3];
 
 public:
 	// <float m_fRotVel, offset 0x18>
@@ -23857,9 +23789,9 @@ public:
 	// <class ACameraModeBase field_0, offset 0x0>
 	// class ACameraModeBase Super;
 
-	// <Filler, offset 0x14>
+	// <Unidentified data segment, offset 0x14>
 private:
-	char _Filler1[12];
+	char _UnidentifiedData1[12];
 
 public:
 	// <class CDoubleSpringInterpolate3D m_inAngle, offset 0x20>
@@ -23871,9 +23803,9 @@ public:
 	// <uint8_t m_bIsInputButton, offset 0x90>
 	uint8_t m_bIsInputButton;
 
-	// <Filler, offset 0x91>
+	// <Unidentified data segment, offset 0x91>
 private:
-	char _Filler[15];
+	char _UnidentifiedData[15];
 public:
 
 #ifdef WITH_LUA
@@ -23982,9 +23914,9 @@ public:
 	// <uint8_t m_bIsSetResetYaw, offset 0x14>
 	uint8_t m_bIsSetResetYaw;
 
-	// <Filler, offset 0x15>
+	// <Unidentified data segment, offset 0x15>
 private:
-	char _Filler2[3];
+	char _UnidentifiedData2[3];
 
 public:
 	// <float m_fResetYaw, offset 0x18>
@@ -24055,9 +23987,9 @@ public:
 	// <class CTimeRatioInterpolate m_inInterpCoeRatio, offset 0x0>
 	class CTimeRatioInterpolate m_inInterpCoeRatio;
 
-	// <Filler, offset 0xc>
+	// <Unidentified data segment, offset 0xc>
 private:
-	char _Filler1[4];
+	char _UnidentifiedData1[4];
 
 public:
 	// <class CDoubleSpringInterpolate3D m_inLocalOfst, offset 0x10>
@@ -24072,9 +24004,9 @@ public:
 	// <uint8_t m_bIsOfstRayHit, offset 0x84>
 	uint8_t m_bIsOfstRayHit;
 
-	// <Filler, offset 0x85>
+	// <Unidentified data segment, offset 0x85>
 private:
-	char _Filler5[3];
+	char _UnidentifiedData5[3];
 
 public:
 	// <float m_fOfstRayHitTimer, offset 0x88>
@@ -24173,9 +24105,9 @@ public:
 	// <uint8_t m_bIsDownAttackPitchUp, offset 0x11>
 	uint8_t m_bIsDownAttackPitchUp;
 
-	// <Filler, offset 0x12>
+	// <Unidentified data segment, offset 0x12>
 private:
-	char _Filler3[2];
+	char _UnidentifiedData3[2];
 
 public:
 	// <float m_fSlopeCheckDelayTimer, offset 0x14>
@@ -24193,9 +24125,9 @@ public:
 	// <float m_fSlopeCheckYaw, offset 0x30>
 	float m_fSlopeCheckYaw;
 
-	// <Filler, offset 0x34>
+	// <Unidentified data segment, offset 0x34>
 private:
-	char _Filler8[12];
+	char _UnidentifiedData8[12];
 
 public:
 	// <class tiVector m_inSlopeCheckDir, offset 0x40>
@@ -24439,9 +24371,9 @@ class CCameraAreaManager
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[4336];
+	char _UnidentifiedData[4336];
 public:
 
 #ifdef WITH_LUA
@@ -24468,9 +24400,9 @@ namespace gameUtil
 		// <float m_fUpdateDistSqu, offset 0x10>
 		float m_fUpdateDistSqu;
 
-		// <Filler, offset 0x14>
+		// <Unidentified data segment, offset 0x14>
 	private:
-		char _Filler[12];
+		char _UnidentifiedData[12];
 	public:
 
 #ifdef WITH_LUA
@@ -24497,9 +24429,9 @@ public:
 	// <class mot::IBoneEffectModel* m_pModel, offset 0x0>
 	class mot::IBoneEffectModel* m_pModel;
 
-	// <Filler, offset 0x4>
+	// <Unidentified data segment, offset 0x4>
 private:
-	char _Filler1[12];
+	char _UnidentifiedData1[12];
 
 public:
 	// <class tiVector m_inCenterPosi, offset 0x10>
@@ -24520,9 +24452,9 @@ public:
 	// <uint8_t m_bIsVisibleYawExist, offset 0x2a>
 	uint8_t m_bIsVisibleYawExist;
 
-	// <Filler, offset 0x2b>
+	// <Unidentified data segment, offset 0x2b>
 private:
-	char _Filler7[1];
+	char _UnidentifiedData7[1];
 
 public:
 	// <float m_fVisibleYaw, offset 0x2c>
@@ -24534,9 +24466,9 @@ public:
 	// <float m_fVisiblePosiInterpTimer, offset 0x50>
 	float m_fVisiblePosiInterpTimer;
 
-	// <Filler, offset 0x54>
+	// <Unidentified data segment, offset 0x54>
 private:
-	char _Filler[12];
+	char _UnidentifiedData[12];
 public:
 
 #ifdef WITH_LUA
@@ -24572,8 +24504,6 @@ static_assert(sizeof(CCameraTarget) == 96, "expected class CCameraTarget to be s
 // enum EGameCameraMode
 enum EGameCameraMode : uint32_t
 {
-	// Enum values
-
 	// <GAME_CAMERA_MODE_NONE = 0xffffffffffffffff>
 	GAME_CAMERA_MODE_NONE = UINT32_MAX,
 
@@ -24641,9 +24571,9 @@ namespace ti
 		// <float m_fAspectRatio, offset 0x54>
 		float m_fAspectRatio;
 
-		// <Filler, offset 0x58>
+		// <Unidentified data segment, offset 0x58>
 	private:
-		char _Filler10[8];
+		char _UnidentifiedData10[8];
 
 	public:
 		// <class tiMatrix m_inWorldMat, offset 0x60>
@@ -24703,17 +24633,17 @@ public:
 	// <uint8_t m_bActCircle, offset 0xac>
 	uint8_t m_bActCircle;
 
-	// <Filler, offset 0xad>
+	// <Unidentified data segment, offset 0xad>
 private:
-	char _Filler5[3];
+	char _UnidentifiedData5[3];
 
 public:
 	// <float m_fSearchAreaTimer, offset 0xb0>
 	float m_fSearchAreaTimer;
 
-	// <Filler, offset 0xb4>
+	// <Unidentified data segment, offset 0xb4>
 private:
-	char _Filler6[12];
+	char _UnidentifiedData6[12];
 
 public:
 	// <class CCameraTarget m_inTarget, offset 0xc0>
@@ -24758,9 +24688,9 @@ public:
 	// <class CCameraModeCircle m_inCircleMode, offset 0x1740>
 	class CCameraModeCircle m_inCircleMode;
 
-	// <Filler, offset 0x175c>
+	// <Unidentified data segment, offset 0x175c>
 private:
-	char _Filler20[4];
+	char _UnidentifiedData20[4];
 
 public:
 	// <class CCameraModePetitMovie m_inPetitMovieMode, offset 0x1760>
@@ -24772,17 +24702,17 @@ public:
 	// <class CCameraCollision m_inCollision, offset 0x1860>
 	class CCameraCollision m_inCollision;
 
-	// <Filler, offset 0x1861>
+	// <Unidentified data segment, offset 0x1861>
 private:
-	char _Filler23[3];
+	char _UnidentifiedData23[3];
 
 public:
 	// <class CCameraBank m_inBank, offset 0x1864>
 	class CCameraBank m_inBank;
 
-	// <Filler, offset 0x1894>
+	// <Unidentified data segment, offset 0x1894>
 private:
-	char _Filler24[12];
+	char _UnidentifiedData24[12];
 
 public:
 	// <class CCameraVibManager m_inVibManager, offset 0x18a0>
@@ -24851,8 +24781,6 @@ static_assert(sizeof(CGameCamera) == 6880, "expected class CGameCamera to be siz
 // enum ECameraResetType
 enum ECameraResetType : uint32_t
 {
-	// Enum values
-
 	// <CAMERA_RESET_TYPE_NONE = 0x0>
 	CAMERA_RESET_TYPE_NONE = 0,
 
@@ -24881,8 +24809,6 @@ public:
 	// enum CCameraman::ECameraMode
 	enum ECameraMode : uint32_t
 	{
-		// Enum values
-
 		// <CAMERA_MODE_NONE = 0xffffffffffffffff>
 		CAMERA_MODE_NONE = UINT32_MAX,
 
@@ -24902,9 +24828,9 @@ public:
 	// <uint8_t m_bIsCalledOnUpdate, offset 0xa0>
 	uint8_t m_bIsCalledOnUpdate;
 
-	// <Filler, offset 0xa1>
+	// <Unidentified data segment, offset 0xa1>
 private:
-	char _Filler2[3];
+	char _UnidentifiedData2[3];
 
 public:
 	// <enum ECameraResetType m_eResetType, offset 0xa4>
@@ -24922,9 +24848,9 @@ public:
 	// <uint8_t m_bIsTsubazeriai, offset 0x1b90>
 	uint8_t m_bIsTsubazeriai;
 
-	// <Filler, offset 0x1b91>
+	// <Unidentified data segment, offset 0x1b91>
 private:
-	char _Filler7[3];
+	char _UnidentifiedData7[3];
 
 public:
 	// <enum enCharaType m_eTsubaTarget, offset 0x1b94>
@@ -24936,17 +24862,17 @@ public:
 	// <uint8_t m_bIsTsubaYawPlus, offset 0x1b9c>
 	uint8_t m_bIsTsubaYawPlus;
 
-	// <Filler, offset 0x1b9d>
+	// <Unidentified data segment, offset 0x1b9d>
 private:
-	char _Filler10[3];
+	char _UnidentifiedData10[3];
 
 public:
 	// <int32_t m_nTsubaCamVibID, offset 0x1ba0>
 	int32_t m_nTsubaCamVibID;
 
-	// <Filler, offset 0x1ba4>
+	// <Unidentified data segment, offset 0x1ba4>
 private:
-	char _Filler[12];
+	char _UnidentifiedData[12];
 public:
 
 #ifdef WITH_LUA
@@ -24990,8 +24916,6 @@ public:
 	// enum HrMiniDemoObj::HRMINIDEMOOBJ_KIND_ID
 	enum HRMINIDEMOOBJ_KIND_ID : uint32_t
 	{
-		// Enum values
-
 		// <MDEMO_KIND_TRV = 0x0>
 		MDEMO_KIND_TRV = 0,
 
@@ -25021,8 +24945,6 @@ public:
 	// enum HrMiniDemoObj::MDEMO_OBJ_STS
 	enum MDEMO_OBJ_STS : uint32_t
 	{
-		// Enum values
-
 		// <MDEMO_OBJ_INIT = 0x0>
 		MDEMO_OBJ_INIT = 0,
 
@@ -25072,9 +24994,9 @@ public:
 	// <uint8_t mEndPauseDo, offset 0x22>
 	uint8_t mEndPauseDo;
 
-	// <Filler, offset 0x23>
+	// <Unidentified data segment, offset 0x23>
 private:
-	char _Filler8[5];
+	char _UnidentifiedData8[5];
 
 public:
 	// <uint64_t mName, offset 0x28>
@@ -25086,9 +25008,9 @@ public:
 	// <uint8_t mSHeightflg, offset 0x40>
 	uint8_t mSHeightflg;
 
-	// <Filler, offset 0x41>
+	// <Unidentified data segment, offset 0x41>
 private:
-	char _Filler11[3];
+	char _UnidentifiedData11[3];
 
 public:
 	// <float mSHeight, offset 0x44>
@@ -25100,9 +25022,9 @@ public:
 	// <uint8_t mbShadowDraw, offset 0x49>
 	uint8_t mbShadowDraw;
 
-	// <Filler, offset 0x4a>
+	// <Unidentified data segment, offset 0x4a>
 private:
-	char _Filler[6];
+	char _UnidentifiedData[6];
 public:
 
 #ifdef WITH_LUA
@@ -25169,9 +25091,9 @@ public:
 	// <uint8_t mUseTexShadow, offset 0x74>
 	uint8_t mUseTexShadow;
 
-	// <Filler, offset 0x75>
+	// <Unidentified data segment, offset 0x75>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -25223,9 +25145,9 @@ public:
 	}
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[96];
+	char _UnidentifiedData[96];
 public:
 
 #ifdef WITH_LUA
@@ -25326,9 +25248,9 @@ class BoneStreamObj
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[220];
+	char _UnidentifiedData[220];
 public:
 
 #ifdef WITH_LUA
@@ -25347,9 +25269,9 @@ class EffectMetalElect
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[226464];
+	char _UnidentifiedData[226464];
 public:
 
 #ifdef WITH_LUA
@@ -25369,8 +25291,6 @@ public:
 	// enum EffectCutMark::eCutMarkType
 	enum eCutMarkType : uint32_t
 	{
-		// Enum values
-
 		// <eCutMarkType_UNKNOWN = 0xffffffffffffffff>
 		eCutMarkType_UNKNOWN = UINT32_MAX,
 
@@ -25394,9 +25314,9 @@ public:
 	}
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[21812];
+	char _UnidentifiedData[21812];
 public:
 
 #ifdef WITH_LUA
@@ -25431,9 +25351,9 @@ public:
 	}
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[492];
+	char _UnidentifiedData[492];
 public:
 
 #ifdef WITH_LUA
@@ -25479,8 +25399,6 @@ public:
 	// enum ZkState_DownAttack::eStat
 	enum eStat : uint32_t
 	{
-		// Enum values
-
 		// <eStat_Close = 0x0>
 		eStat_Close = 0,
 
@@ -25668,8 +25586,6 @@ public:
 	// enum State_Tojo_RoomRunner::eStat
 	enum eStat : uint32_t
 	{
-		// Enum values
-
 		// <eStat_Init = 0x0>
 		eStat_Init = 0,
 
@@ -25705,8 +25621,6 @@ public:
 	// enum State_Tojo_AeroBike::eStat
 	enum eStat : uint32_t
 	{
-		// Enum values
-
 		// <eStat_Init = 0x0>
 		eStat_Init = 0,
 
@@ -25742,8 +25656,6 @@ public:
 	// enum State_Tojo_BreakCmnObj::eStat
 	enum eStat : uint32_t
 	{
-		// Enum values
-
 		// <eStat_WaitBreak = 0x0>
 		eStat_WaitBreak = 0,
 
@@ -25763,9 +25675,9 @@ public:
 	// <uint8_t m_boAttacked, offset 0x8>
 	uint8_t m_boAttacked;
 
-	// <Filler, offset 0x9>
+	// <Unidentified data segment, offset 0x9>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -25813,8 +25725,6 @@ public:
 	// enum State_Tojo_Car::eStat
 	enum eStat : uint32_t
 	{
-		// Enum values
-
 		// <eStat_Init = 0x0>
 		eStat_Init = 0,
 
@@ -26083,8 +25993,6 @@ public:
 	// enum State_WayPointMove::eWaypointSbSt
 	enum eWaypointSbSt : uint32_t
 	{
-		// Enum values
-
 		// <eWaypointSbSt_UNKNOWN = 0xffffffffffffffff>
 		eWaypointSbSt_UNKNOWN = UINT32_MAX,
 
@@ -26123,8 +26031,6 @@ public:
 	// enum State_Pressure::eStat
 	enum eStat : uint32_t
 	{
-		// Enum values
-
 		// <eStat_CLOSE = 0x0>
 		eStat_CLOSE = 0,
 
@@ -26173,9 +26079,9 @@ public:
 	// <uint8_t m_boHitSword, offset 0x4>
 	uint8_t m_boHitSword;
 
-	// <Filler, offset 0x5>
+	// <Unidentified data segment, offset 0x5>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -26193,8 +26099,6 @@ static_assert(sizeof(State_ThroughDamage) == 8, "expected class State_ThroughDam
 // enum eMoveDir
 enum eMoveDir : uint32_t
 {
-	// Enum values
-
 	// <eMoveDir_Left = 0x0>
 	eMoveDir_Left = 0,
 
@@ -26270,8 +26174,6 @@ public:
 	// enum State_ComboAttack::eStat
 	enum eStat : uint32_t
 	{
-		// Enum values
-
 		// <eStat_ATTACKSTART = 0x0>
 		eStat_ATTACKSTART = 0,
 
@@ -26291,9 +26193,9 @@ public:
 	// <uint8_t m_ComboRequest, offset 0x8>
 	uint8_t m_ComboRequest;
 
-	// <Filler, offset 0x9>
+	// <Unidentified data segment, offset 0x9>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -26317,8 +26219,6 @@ public:
 	// enum State_Damage::eStat
 	enum eStat : uint32_t
 	{
-		// Enum values
-
 		// <eStat_Init = 0xffffffffffffffff>
 		eStat_Init = UINT32_MAX,
 
@@ -26404,8 +26304,6 @@ static_assert(sizeof(CollInfo) == 12, "expected struct CollInfo to be size 12");
 // enum eScareType
 enum eScareType : uint32_t
 {
-	// Enum values
-
 	// <eScareType_NO_SCARE = 0xffffffffffffffff>
 	eScareType_NO_SCARE = UINT32_MAX,
 
@@ -26420,8 +26318,6 @@ enum eScareType : uint32_t
 // enum eZkStat
 enum eZkStat : uint32_t
 {
-	// Enum values
-
 	// <eZkCmnStat_INVALID = 0xffffffffffffffff>
 	eZkCmnStat_INVALID = UINT32_MAX,
 
@@ -26595,8 +26491,6 @@ enum eZkStat : uint32_t
 // enum FightSpirit
 enum FightSpirit : uint32_t
 {
-	// Enum values
-
 	// <e_Defensive = 0x0>
 	e_Defensive = 0,
 
@@ -26611,8 +26505,6 @@ enum FightSpirit : uint32_t
 // enum eFightLine
 enum eFightLine : uint32_t
 {
-	// Enum values
-
 	// <eFightLine_Init = 0xffffffffffffffff>
 	eFightLine_Init = UINT32_MAX,
 
@@ -26648,9 +26540,9 @@ public:
 	// <uint8_t boGrdStiff, offset 0xc>
 	uint8_t boGrdStiff;
 
-	// <Filler, offset 0xd>
+	// <Unidentified data segment, offset 0xd>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -26700,8 +26592,6 @@ static_assert(sizeof(ZkEvacuateParam) == 8, "expected struct ZkEvacuateParam to 
 // enum eDownDir
 enum eDownDir : uint32_t
 {
-	// Enum values
-
 	// <eDownDir_UNKNOWN = 0xffffffffffffffff>
 	eDownDir_UNKNOWN = UINT32_MAX,
 
@@ -26716,8 +26606,6 @@ enum eDownDir : uint32_t
 // enum eZkCarSheet
 enum eZkCarSheet : uint32_t
 {
-	// Enum values
-
 	// <eZkCarSheet_UNKONOWN = 0xffffffffffffffff>
 	eZkCarSheet_UNKONOWN = UINT32_MAX,
 
@@ -26770,8 +26658,6 @@ static_assert(sizeof(FkCounter) == 8, "expected class FkCounter to be size 8");
 // enum ePcSideFromMe
 enum ePcSideFromMe : uint32_t
 {
-	// Enum values
-
 	// <ePcSideFromMe_Unknown = 0xffffffffffffffff>
 	ePcSideFromMe_Unknown = UINT32_MAX,
 
@@ -26786,8 +26672,6 @@ enum ePcSideFromMe : uint32_t
 // enum eSideFromPc
 enum eSideFromPc : uint32_t
 {
-	// Enum values
-
 	// <eSideFromPC_Left = 0x0>
 	eSideFromPC_Left = 0,
 
@@ -26835,8 +26719,6 @@ static_assert(sizeof(ZkSetDamageInfo) == 4, "expected struct ZkSetDamageInfo to 
 // enum eZkBoneScale
 enum eZkBoneScale : uint32_t
 {
-	// Enum values
-
 	// <eZkBoneScale_UNKNOWN = 0xffffffffffffffff>
 	eZkBoneScale_UNKNOWN = UINT32_MAX,
 
@@ -26967,9 +26849,9 @@ public:
 		// <uint8_t m_ComboAtkReq, offset 0x14>
 		uint8_t m_ComboAtkReq;
 
-		// <Filler, offset 0x15>
+		// <Unidentified data segment, offset 0x15>
 	private:
-		char _Filler3[3];
+		char _UnidentifiedData3[3];
 
 	public:
 		// <int32_t m_nMaxComboAtk, offset 0x18>
@@ -27017,9 +26899,9 @@ public:
 		// <uint8_t m_boWaypointMoveStopping, offset 0x88>
 		uint8_t m_boWaypointMoveStopping;
 
-		// <Filler, offset 0x89>
+		// <Unidentified data segment, offset 0x89>
 	private:
-		char _Filler18[3];
+		char _UnidentifiedData18[3];
 
 	public:
 		// <int32_t m_GoPointKuruKuruCnt, offset 0x8c>
@@ -27028,9 +26910,9 @@ public:
 		// <uint8_t m_boLookPC, offset 0x90>
 		uint8_t m_boLookPC;
 
-		// <Filler, offset 0x91>
+		// <Unidentified data segment, offset 0x91>
 	private:
-		char _Filler[3];
+		char _UnidentifiedData[3];
 	public:
 
 #ifdef WITH_LUA
@@ -27131,9 +27013,9 @@ public:
 		// <uint8_t m_boWaitReleaseIdleState, offset 0x0>
 		uint8_t m_boWaitReleaseIdleState;
 
-		// <Filler, offset 0x1>
+		// <Unidentified data segment, offset 0x1>
 	private:
-		char _Filler1[3];
+		char _UnidentifiedData1[3];
 
 	public:
 		// <class commonObj* m_pSyncStgObj, offset 0x4>
@@ -27142,9 +27024,9 @@ public:
 		// <uint8_t m_boGetOffCar, offset 0x8>
 		uint8_t m_boGetOffCar;
 
-		// <Filler, offset 0x9>
+		// <Unidentified data segment, offset 0x9>
 	private:
-		char _Filler3[3];
+		char _UnidentifiedData3[3];
 
 	public:
 		// <enum eZkCarSheet m_eCarSheet, offset 0xc>
@@ -27153,9 +27035,9 @@ public:
 		// <uint8_t m_boBreakPopCmnObjStart, offset 0x10>
 		uint8_t m_boBreakPopCmnObjStart;
 
-		// <Filler, offset 0x11>
+		// <Unidentified data segment, offset 0x11>
 	private:
-		char _Filler[3];
+		char _UnidentifiedData[3];
 	public:
 
 #ifdef WITH_LUA
@@ -27211,9 +27093,9 @@ public:
 		// <uint8_t m_boPcInSight, offset 0x3d>
 		uint8_t m_boPcInSight;
 
-		// <Filler, offset 0x3e>
+		// <Unidentified data segment, offset 0x3e>
 	private:
-		char _Filler[2];
+		char _UnidentifiedData[2];
 	public:
 
 #ifdef WITH_LUA
@@ -27271,9 +27153,9 @@ public:
 		// <uint8_t m_boDagekiCounterAttack, offset 0x18>
 		uint8_t m_boDagekiCounterAttack;
 
-		// <Filler, offset 0x19>
+		// <Unidentified data segment, offset 0x19>
 	private:
-		char _Filler7[3];
+		char _UnidentifiedData7[3];
 
 	public:
 		// <int32_t m_PiyoTick, offset 0x1c>
@@ -27300,9 +27182,9 @@ public:
 		// <uint8_t m_boCantCreaatedDeadModelByNoMemory, offset 0x40>
 		uint8_t m_boCantCreaatedDeadModelByNoMemory;
 
-		// <Filler, offset 0x41>
+		// <Unidentified data segment, offset 0x41>
 	private:
-		char _Filler[3];
+		char _UnidentifiedData[3];
 	public:
 
 #ifdef WITH_LUA
@@ -27354,9 +27236,9 @@ public:
 		// <uint8_t m_boCutAi, offset 0x0>
 		uint8_t m_boCutAi;
 
-		// <Filler, offset 0x1>
+		// <Unidentified data segment, offset 0x1>
 	private:
-		char _Filler1[3];
+		char _UnidentifiedData1[3];
 
 	public:
 		// <int32_t m_ThinkCnt, offset 0x4>
@@ -27460,8 +27342,6 @@ public:
 	// enum PJZAKO::eSuddenAtkPopDir
 	enum eSuddenAtkPopDir : uint32_t
 	{
-		// Enum values
-
 		// <eSuddenAtkPopDir_UNKNOWN = 0xffffffffffffffff>
 		eSuddenAtkPopDir_UNKNOWN = UINT32_MAX,
 
@@ -27479,8 +27359,6 @@ public:
 	// enum PJZAKO::eTimeShare
 	enum eTimeShare : uint32_t
 	{
-		// Enum values
-
 		// <eTimeShare_Begin = 0x0>
 		eTimeShare_Begin = 0,
 
@@ -27628,9 +27506,9 @@ public:
 	// <uint8_t m_boWayPointMoveAfterPop, offset 0x80e>
 	uint8_t m_boWayPointMoveAfterPop;
 
-	// <Filler, offset 0x80f>
+	// <Unidentified data segment, offset 0x80f>
 private:
-	char _Filler16[1];
+	char _UnidentifiedData16[1];
 
 public:
 	// <class PJStateMachine* m_pStateMachine, offset 0x810>
@@ -27690,9 +27568,9 @@ public:
 	// <uint8_t m_boFirstBombDeadFxPlay, offset 0x864>
 	uint8_t m_boFirstBombDeadFxPlay;
 
-	// <Filler, offset 0x865>
+	// <Unidentified data segment, offset 0x865>
 private:
-	char _Filler35[3];
+	char _UnidentifiedData35[3];
 
 public:
 	// <struct Vec m_JumpOffTojoLandingPos, offset 0x868>
@@ -27701,9 +27579,9 @@ public:
 	// <uint8_t m_boFixTurret, offset 0x874>
 	uint8_t m_boFixTurret;
 
-	// <Filler, offset 0x875>
+	// <Unidentified data segment, offset 0x875>
 private:
-	char _Filler37[3];
+	char _UnidentifiedData37[3];
 
 public:
 	// <enum PJZAKO::eSuddenAtkPopDir m_eSdnAtkPopDir, offset 0x878>
@@ -27721,9 +27599,9 @@ public:
 	// <uint8_t m_boPcDownLaugh, offset 0x888>
 	uint8_t m_boPcDownLaugh;
 
-	// <Filler, offset 0x889>
+	// <Unidentified data segment, offset 0x889>
 private:
-	char _Filler42[3];
+	char _UnidentifiedData42[3];
 
 public:
 	// <class FkBulletManager* m_pBulletManager, offset 0x88c>
@@ -27735,9 +27613,9 @@ public:
 	// <uint8_t m_bIsHeadPhysicsEnd, offset 0x891>
 	uint8_t m_bIsHeadPhysicsEnd;
 
-	// <Filler, offset 0x892>
+	// <Unidentified data segment, offset 0x892>
 private:
-	char _Filler45[2];
+	char _UnidentifiedData45[2];
 
 public:
 	// <class TGmf* m_pPhysicDeadGmf, offset 0x894>
@@ -27749,9 +27627,9 @@ public:
 	// <uint8_t m_boDeadEffectReq, offset 0x899>
 	uint8_t m_boDeadEffectReq;
 
-	// <Filler, offset 0x89a>
+	// <Unidentified data segment, offset 0x89a>
 private:
-	char _Filler48[2];
+	char _UnidentifiedData48[2];
 
 public:
 	// <int32_t m_DeadEffectCountCown, offset 0x89c>
@@ -27766,9 +27644,9 @@ public:
 	// <uint8_t m_boTimeShareUpdate, offset 0x8a8>
 	uint8_t m_boTimeShareUpdate;
 
-	// <Filler, offset 0x8a9>
+	// <Unidentified data segment, offset 0x8a9>
 private:
-	char _Filler52[3];
+	char _UnidentifiedData52[3];
 
 public:
 	// <enum PJZAKO::eTimeShare m_eTimeShareStat, offset 0x8ac>
@@ -27795,9 +27673,9 @@ public:
 	// <uint8_t m_boCalledNoGuardEfOnce, offset 0x8fc>
 	uint8_t m_boCalledNoGuardEfOnce;
 
-	// <Filler, offset 0x8fd>
+	// <Unidentified data segment, offset 0x8fd>
 private:
-	char _Filler60[3];
+	char _UnidentifiedData60[3];
 
 public:
 	// <int32_t m_OutOfCameraIkakuShootTime, offset 0x900>
@@ -28171,9 +28049,9 @@ class EffectDanmenFlash
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[604];
+	char _UnidentifiedData[604];
 public:
 
 #ifdef WITH_LUA
@@ -28198,9 +28076,9 @@ public:
 	// <uint8_t m_Flag, offset 0x50>
 	uint8_t m_Flag;
 
-	// <Filler, offset 0x51>
+	// <Unidentified data segment, offset 0x51>
 private:
-	char _Filler2[3];
+	char _UnidentifiedData2[3];
 
 public:
 	// <class rPrimUnific m_StarUni, offset 0x54>
@@ -28272,8 +28150,6 @@ public:
 	// enum PJZakoMotMng::MotMode
 	enum MotMode : uint32_t
 	{
-		// Enum values
-
 		// <MotMode_Init = 0x0>
 		MotMode_Init = 0,
 
@@ -28359,9 +28235,9 @@ class PathPlanner
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[1220];
+	char _UnidentifiedData[1220];
 public:
 
 #ifdef WITH_LUA
@@ -28408,8 +28284,6 @@ public:
 	// enum FkDynamicParam::DP_STAT
 	enum DP_STAT : uint32_t
 	{
-		// Enum values
-
 		// <eDP_STAT_INIT = 0xffffffffffffffff>
 		eDP_STAT_INIT = UINT32_MAX,
 
@@ -28447,9 +28321,9 @@ public:
 	// <uint8_t m_boEOF, offset 0x130>
 	uint8_t m_boEOF;
 
-	// <Filler, offset 0x131>
+	// <Unidentified data segment, offset 0x131>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -28489,9 +28363,9 @@ class FkObstacleSensor
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[52];
+	char _UnidentifiedData[52];
 public:
 
 #ifdef WITH_LUA
@@ -28517,9 +28391,9 @@ public:
 		// <uint8_t fireFlag, offset 0x0>
 		uint8_t fireFlag;
 
-		// <Filler, offset 0x1>
+		// <Unidentified data segment, offset 0x1>
 	private:
-		char _Filler1[3];
+		char _UnidentifiedData1[3];
 
 	public:
 		// <class HrTask* pTask, offset 0x4>
@@ -28570,9 +28444,9 @@ public:
 		// <uint8_t boDownAtk, offset 0x10>
 		uint8_t boDownAtk;
 
-		// <Filler, offset 0x11>
+		// <Unidentified data segment, offset 0x11>
 	private:
-		char _Filler5[3];
+		char _UnidentifiedData5[3];
 
 	public:
 		// <class mHRChara* pOwner, offset 0x14>
@@ -28674,8 +28548,6 @@ public:
 	// enum EffectFkTobiDoguBase::eHitObjType
 	enum eHitObjType : uint32_t
 	{
-		// Enum values
-
 		// <eHitObjType_Unknown = 0xffffffffffffffff>
 		eHitObjType_Unknown = UINT32_MAX,
 
@@ -28696,9 +28568,9 @@ public:
 		// <uint8_t boHit, offset 0x0>
 		uint8_t boHit;
 
-		// <Filler, offset 0x1>
+		// <Unidentified data segment, offset 0x1>
 	private:
-		char _Filler1[3];
+		char _UnidentifiedData1[3];
 
 	public:
 		// <enum EffectFkTobiDoguBase::eHitObjType eHitObjType, offset 0x4>
@@ -28736,9 +28608,9 @@ public:
 	// <uint8_t m_Flag, offset 0x4>
 	uint8_t m_Flag;
 
-	// <Filler, offset 0x5>
+	// <Unidentified data segment, offset 0x5>
 private:
-	char _Filler2[3];
+	char _UnidentifiedData2[3];
 
 public:
 	// <float m_TimeCount, offset 0x8>
@@ -28780,9 +28652,9 @@ public:
 	// <uint8_t m_boDeleteRequest, offset 0x3a>
 	uint8_t m_boDeleteRequest;
 
-	// <Filler, offset 0x3b>
+	// <Unidentified data segment, offset 0x3b>
 private:
-	char _Filler15[1];
+	char _UnidentifiedData15[1];
 
 public:
 	// <struct Vec m_LancPos, offset 0x3c>
@@ -28897,9 +28769,9 @@ class rQuadEx
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[220];
+	char _UnidentifiedData[220];
 public:
 
 #ifdef WITH_LUA
@@ -28924,9 +28796,9 @@ public:
 	// <uint8_t m_Flag, offset 0x50>
 	uint8_t m_Flag;
 
-	// <Filler, offset 0x51>
+	// <Unidentified data segment, offset 0x51>
 private:
-	char _Filler2[3];
+	char _UnidentifiedData2[3];
 
 public:
 	// <class rPrimUnific m_SmokeUni, offset 0x54>
@@ -29050,9 +28922,9 @@ public:
 	}
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[8252];
+	char _UnidentifiedData[8252];
 public:
 
 #ifdef WITH_LUA
@@ -29074,8 +28946,6 @@ public:
 	// enum State_Tojo_Knife_SuddenAttack::eStat
 	enum eStat : uint32_t
 	{
-		// Enum values
-
 		// <eStat_Init = 0x0>
 		eStat_Init = 0,
 
@@ -29124,9 +28994,9 @@ public:
 	// <uint8_t m_boTrigger, offset 0x4>
 	uint8_t m_boTrigger;
 
-	// <Filler, offset 0x5>
+	// <Unidentified data segment, offset 0x5>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -29211,9 +29081,9 @@ public:
 	}
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[3684];
+	char _UnidentifiedData[3684];
 public:
 
 #ifdef WITH_LUA
@@ -29241,9 +29111,9 @@ public:
 	}
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[4412];
+	char _UnidentifiedData[4412];
 public:
 
 #ifdef WITH_LUA
@@ -29271,9 +29141,9 @@ public:
 	}
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[4232];
+	char _UnidentifiedData[4232];
 public:
 
 #ifdef WITH_LUA
@@ -29301,9 +29171,9 @@ public:
 	}
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[4352];
+	char _UnidentifiedData[4352];
 public:
 
 #ifdef WITH_LUA
@@ -29331,9 +29201,9 @@ public:
 	}
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[4672];
+	char _UnidentifiedData[4672];
 public:
 
 #ifdef WITH_LUA
@@ -29419,9 +29289,9 @@ public:
 	// <uint8_t mbCancel, offset 0x4>
 	uint8_t mbCancel;
 
-	// <Filler, offset 0x5>
+	// <Unidentified data segment, offset 0x5>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -29544,9 +29414,9 @@ public:
 	// <uint8_t mbZoom, offset 0x30>
 	uint8_t mbZoom;
 
-	// <Filler, offset 0x31>
+	// <Unidentified data segment, offset 0x31>
 private:
-	char _Filler9[3];
+	char _UnidentifiedData9[3];
 
 public:
 	// <float mZoomDist, offset 0x34>
@@ -29781,8 +29651,6 @@ public:
 	// enum pcGLB::MiniDemoEnum
 	enum MiniDemoEnum : uint32_t
 	{
-		// Enum values
-
 		// <MD_Init = 0xffffffffffffffff>
 		MD_Init = UINT32_MAX,
 
@@ -29822,9 +29690,9 @@ public:
 	// <uint8_t mTestOnCanOperate, offset 0x581>
 	uint8_t mTestOnCanOperate;
 
-	// <Filler, offset 0x582>
+	// <Unidentified data segment, offset 0x582>
 private:
-	char _Filler3[2];
+	char _UnidentifiedData3[2];
 
 public:
 	// <class rSideScrollCamera mSideCamera, offset 0x584>
@@ -29878,9 +29746,9 @@ public:
 	// <uint8_t mbAir, offset 0x6dc>
 	uint8_t mbAir;
 
-	// <Filler, offset 0x6dd>
+	// <Unidentified data segment, offset 0x6dd>
 private:
-	char _Filler20[3];
+	char _UnidentifiedData20[3];
 
 public:
 	// <float mTension, offset 0x6e0>
@@ -29901,9 +29769,9 @@ public:
 	// <uint8_t mbDemoWait, offset 0x6fc>
 	uint8_t mbDemoWait;
 
-	// <Filler, offset 0x6fd>
+	// <Unidentified data segment, offset 0x6fd>
 private:
-	char _Filler26[3];
+	char _UnidentifiedData26[3];
 
 public:
 	// <class TGmfNode* mpWristLNode, offset 0x700>
@@ -29915,9 +29783,9 @@ public:
 	// <uint8_t mbCanKick, offset 0x708>
 	uint8_t mbCanKick;
 
-	// <Filler, offset 0x709>
+	// <Unidentified data segment, offset 0x709>
 private:
-	char _Filler29[3];
+	char _UnidentifiedData29[3];
 
 public:
 	// <int32_t mhVernierSE, offset 0x70c>
@@ -30009,8 +29877,6 @@ public:
 	// enum EfRoboInterface::InterfaceState
 	enum InterfaceState : uint32_t
 	{
-		// Enum values
-
 		// <State_Init = 0x0>
 		State_Init = 0,
 
@@ -30099,9 +29965,9 @@ public:
 	// <uint8_t mbInputCVisble, offset 0x344>
 	uint8_t mbInputCVisble;
 
-	// <Filler, offset 0x345>
+	// <Unidentified data segment, offset 0x345>
 private:
-	char _Filler24[3];
+	char _UnidentifiedData24[3];
 
 public:
 	// <float mInputCAlpha, offset 0x348>
@@ -30188,9 +30054,9 @@ public:
 	// <uint8_t mbEnemyMaxVisible, offset 0x3b1>
 	uint8_t mbEnemyMaxVisible;
 
-	// <Filler, offset 0x3b2>
+	// <Unidentified data segment, offset 0x3b2>
 private:
-	char _Filler52[2];
+	char _UnidentifiedData52[2];
 
 public:
 	// <uint32_t mDmgAnimeCnt, offset 0x3b4>
@@ -30199,9 +30065,9 @@ public:
 	// <uint8_t mbFinish, offset 0x3b8>
 	uint8_t mbFinish;
 
-	// <Filler, offset 0x3b9>
+	// <Unidentified data segment, offset 0x3b9>
 private:
-	char _Filler54[3];
+	char _UnidentifiedData54[3];
 
 public:
 	// <float mBlurAlpha, offset 0x3bc>
@@ -30210,9 +30076,9 @@ public:
 	// <uint8_t mBlurValid, offset 0x3c0>
 	uint8_t mBlurValid;
 
-	// <Filler, offset 0x3c1>
+	// <Unidentified data segment, offset 0x3c1>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -30347,9 +30213,9 @@ public:
 	// <uint8_t m_Flag, offset 0x50>
 	uint8_t m_Flag;
 
-	// <Filler, offset 0x51>
+	// <Unidentified data segment, offset 0x51>
 private:
-	char _Filler2[3];
+	char _UnidentifiedData2[3];
 
 public:
 	// <float m_BlurValue, offset 0x54>
@@ -30364,9 +30230,9 @@ public:
 	// <uint8_t m_Wait, offset 0x60>
 	uint8_t m_Wait;
 
-	// <Filler, offset 0x61>
+	// <Unidentified data segment, offset 0x61>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -30401,9 +30267,9 @@ public:
 	// <uint8_t mbDeadScriptCall, offset 0x4>
 	uint8_t mbDeadScriptCall;
 
-	// <Filler, offset 0x5>
+	// <Unidentified data segment, offset 0x5>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -30595,9 +30461,9 @@ public:
 		// <uint8_t bObstacle, offset 0x34>
 		uint8_t bObstacle;
 
-		// <Filler, offset 0x35>
+		// <Unidentified data segment, offset 0x35>
 	private:
-		char _Filler[3];
+		char _UnidentifiedData[3];
 	public:
 
 #ifdef WITH_LUA
@@ -30890,9 +30756,9 @@ public:
 		// <uint8_t TsubaRotNum, offset 0x18>
 		uint8_t TsubaRotNum;
 
-		// <Filler, offset 0x19>
+		// <Unidentified data segment, offset 0x19>
 	private:
-		char _Filler5[3];
+		char _UnidentifiedData5[3];
 
 	public:
 		// <int32_t HpPhase, offset 0x1c>
@@ -31060,9 +30926,9 @@ public:
 	// <uint8_t mbDownVoice, offset 0xc64>
 	uint8_t mbDownVoice;
 
-	// <Filler, offset 0xc65>
+	// <Unidentified data segment, offset 0xc65>
 private:
-	char _Filler12[3];
+	char _UnidentifiedData12[3];
 
 public:
 	// <int32_t mMiniDemoNum, offset 0xc68>
@@ -31083,9 +30949,9 @@ public:
 	// <uint8_t m_boCalledNoGuardEfOnce, offset 0xc79>
 	uint8_t m_boCalledNoGuardEfOnce;
 
-	// <Filler, offset 0xc7a>
+	// <Unidentified data segment, offset 0xc7a>
 private:
-	char _Filler18[2];
+	char _UnidentifiedData18[2];
 
 public:
 	// <float m_fCheckSrroundHeight, offset 0xc7c>
@@ -31358,9 +31224,9 @@ public:
 	// <uint8_t m_boVisible, offset 0x70>
 	uint8_t m_boVisible;
 
-	// <Filler, offset 0x71>
+	// <Unidentified data segment, offset 0x71>
 private:
-	char _Filler6[3];
+	char _UnidentifiedData6[3];
 
 public:
 	// <float m_fScale, offset 0x74>
@@ -31420,9 +31286,9 @@ class EfGeneralBeam
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[54968];
+	char _UnidentifiedData[54968];
 public:
 
 #ifdef WITH_LUA
@@ -31457,9 +31323,9 @@ public:
 	// <uint8_t mbBreak, offset 0x650>
 	uint8_t mbBreak;
 
-	// <Filler, offset 0x651>
+	// <Unidentified data segment, offset 0x651>
 private:
-	char _Filler3[3];
+	char _UnidentifiedData3[3];
 
 public:
 	// <float mRadius, offset 0x654>
@@ -31511,9 +31377,9 @@ public:
 	// <uint8_t m_Off, offset 0x652>
 	uint8_t m_Off;
 
-	// <Filler, offset 0x653>
+	// <Unidentified data segment, offset 0x653>
 private:
-	char _Filler5[1];
+	char _UnidentifiedData5[1];
 
 public:
 	// <struct Vec m_CenterPos, offset 0x654>
@@ -31531,9 +31397,9 @@ public:
 	// <uint8_t m_boCreateFire, offset 0x669>
 	uint8_t m_boCreateFire;
 
-	// <Filler, offset 0x66a>
+	// <Unidentified data segment, offset 0x66a>
 private:
-	char _Filler10[2];
+	char _UnidentifiedData10[2];
 
 public:
 	// <int32_t m_BlinkCnt, offset 0x66c>
@@ -31542,9 +31408,9 @@ public:
 	// <uint8_t m_boBlink, offset 0x670>
 	uint8_t m_boBlink;
 
-	// <Filler, offset 0x671>
+	// <Unidentified data segment, offset 0x671>
 private:
-	char _Filler12[3];
+	char _UnidentifiedData12[3];
 
 public:
 	// <class FkStlVector<TGmfNode const *> m_apNode, offset 0x674>
@@ -31906,9 +31772,9 @@ public:
 	public:
 		/// Struct member variables
 
-		// <Filler, offset 0x0>
+		// <Unidentified data segment, offset 0x0>
 	private:
-		char _Filler[68];
+		char _UnidentifiedData[68];
 	public:
 
 #ifdef WITH_LUA
@@ -31992,9 +31858,9 @@ public:
 	// <uint8_t m_Off, offset 0x64e>
 	uint8_t m_Off;
 
-	// <Filler, offset 0x64f>
+	// <Unidentified data segment, offset 0x64f>
 private:
-	char _Filler4[1];
+	char _UnidentifiedData4[1];
 
 public:
 	// <struct Vec m_CenterPos, offset 0x650>
@@ -32012,9 +31878,9 @@ public:
 	// <uint8_t m_boGetBreakNode, offset 0x668>
 	uint8_t m_boGetBreakNode;
 
-	// <Filler, offset 0x669>
+	// <Unidentified data segment, offset 0x669>
 private:
-	char _Filler9[3];
+	char _UnidentifiedData9[3];
 
 public:
 	// <struct tagGHMR_TEX m_Tex, offset 0x66c>
@@ -32117,9 +31983,9 @@ public:
 	// <uint8_t m_Off, offset 0x64e>
 	uint8_t m_Off;
 
-	// <Filler, offset 0x64f>
+	// <Unidentified data segment, offset 0x64f>
 private:
-	char _Filler4[1];
+	char _UnidentifiedData4[1];
 
 public:
 	// <struct Vec m_CenterPos, offset 0x650>
@@ -32197,9 +32063,9 @@ public:
 	// <uint8_t m_Off, offset 0x656>
 	uint8_t m_Off;
 
-	// <Filler, offset 0x657>
+	// <Unidentified data segment, offset 0x657>
 private:
-	char _Filler6[1];
+	char _UnidentifiedData6[1];
 
 public:
 	// <struct Vec m_CenterPos, offset 0x658>
@@ -32266,9 +32132,9 @@ public:
 	// <uint8_t mbBreak, offset 0x650>
 	uint8_t mbBreak;
 
-	// <Filler, offset 0x651>
+	// <Unidentified data segment, offset 0x651>
 private:
-	char _Filler3[3];
+	char _UnidentifiedData3[3];
 
 public:
 	// <float mRadius, offset 0x654>
@@ -32283,7 +32149,7 @@ public:
 			.addProperty("mRadius", &PJOBJ0190::mRadius)
 			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0190::mSetDamage)
-			// Functions with parameters pointing to native types (class mHRChara* arg10) not supported in LuaBridge.
+			// Function overloading not supported in LuaBridge.
 			//.addFunction("mSetDamage", &PJOBJ0190::mSetDamage)
 		.endClass();
 	}
@@ -32307,9 +32173,9 @@ public:
 	}
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[1668];
+	char _UnidentifiedData[1668];
 public:
 
 #ifdef WITH_LUA
@@ -32407,9 +32273,9 @@ public:
 	// <class PathPlanner* m_pPathPlanner, offset 0x10>
 	class PathPlanner* m_pPathPlanner;
 
-	// <Filler, offset 0x14>
+	// <Unidentified data segment, offset 0x14>
 private:
-	char _Filler2[4];
+	char _UnidentifiedData2[4];
 
 public:
 	// <uint64_t m_PathPlanningTime, offset 0x18>
@@ -32565,9 +32431,9 @@ public:
 		// <uint8_t AddStopFlag, offset 0x95>
 		uint8_t AddStopFlag;
 
-		// <Filler, offset 0x96>
+		// <Unidentified data segment, offset 0x96>
 	private:
-		char _Filler35[2];
+		char _UnidentifiedData35[2];
 
 	public:
 		// <int32_t id, offset 0x98>
@@ -32707,9 +32573,9 @@ public:
 	public:
 		/// Struct member variables
 
-		// <Filler, offset 0x0>
+		// <Unidentified data segment, offset 0x0>
 	private:
-		char _Filler[176];
+		char _UnidentifiedData[176];
 	public:
 
 #ifdef WITH_LUA
@@ -32850,8 +32716,6 @@ public:
 	// enum FkBoss::eReqAvoidDir
 	enum eReqAvoidDir : uint32_t
 	{
-		// Enum values
-
 		// <eReqAvoidDir_UNKNOWN = 0xffffffffffffffff>
 		eReqAvoidDir_UNKNOWN = UINT32_MAX,
 
@@ -32898,9 +32762,9 @@ public:
 	// <uint8_t m_boNoEfGuard, offset 0xd70>
 	uint8_t m_boNoEfGuard;
 
-	// <Filler, offset 0xd71>
+	// <Unidentified data segment, offset 0xd71>
 private:
-	char _Filler11[3];
+	char _UnidentifiedData11[3];
 
 public:
 	// <struct Vec m_FrontDir, offset 0xd74>
@@ -32979,9 +32843,9 @@ class EffectSlashTrack
 public:
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[944];
+	char _UnidentifiedData[944];
 public:
 
 #ifdef WITH_LUA
@@ -33014,9 +32878,9 @@ public:
 	}
 	/// Struct member variables
 
-	// <Filler, offset 0x0>
+	// <Unidentified data segment, offset 0x0>
 private:
-	char _Filler[520];
+	char _UnidentifiedData[520];
 public:
 
 #ifdef WITH_LUA
@@ -33092,9 +32956,9 @@ public:
 	// <uint8_t m_boHoming, offset 0xa4>
 	uint8_t m_boHoming;
 
-	// <Filler, offset 0xa5>
+	// <Unidentified data segment, offset 0xa5>
 private:
-	char _Filler[3];
+	char _UnidentifiedData[3];
 public:
 
 #ifdef WITH_LUA
@@ -33179,9 +33043,9 @@ public:
 	// <uint8_t m_boHoming, offset 0x90>
 	uint8_t m_boHoming;
 
-	// <Filler, offset 0x91>
+	// <Unidentified data segment, offset 0x91>
 private:
-	char _Filler8[3];
+	char _UnidentifiedData8[3];
 
 public:
 	// <class EffectFixFire* m_pFire, offset 0x94>

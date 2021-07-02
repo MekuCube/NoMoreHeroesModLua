@@ -1,6 +1,33 @@
 {
-	"?mCreatePiyori@mHRChara@@UAE_NXZ": "Creates a stun star effect above the character's head."
-	"?mStartChangeWeapon@mHRPc@@QAEXXZ": "Makes Travis put away his weapon... and then immediately pull it out again."
-	"?CreateGuardBreakEffect@mHRPc@@QAEXXZ": "Creates a spark effect at character torso / head."
-	"?CreateFootSmokeEffect@mHRChara@@QAEXXZ": "Creates a dust effect at character feet."
+	"Comments":
+	{
+		"?mCreatePiyori@mHRChara@@UAE_NXZ": "Creates a stun star effect above the character's head.",
+		"?mStartChangeWeapon@mHRPc@@QAEXXZ": "Makes Travis put away his weapon... and then immediately pull it out again.",
+		"?CreateGuardBreakEffect@mHRPc@@QAEXXZ": "Creates a spark effect at character torso / head.",
+		"?CreateFootSmokeEffect@mHRChara@@QAEXXZ": "Creates a dust effect at character feet.",
+		"class mHRPc": "Player character (Travis)",
+		"class mHRChara": "Base character (Travis, enemies, etc)",
+		"struct Vec": "3D Vector (x, y, z). Y-up.",
+		"enum enPcKind": "Player character type (Travis, Shinobu, Henry)",
+		"class HrMessage": "Related to the top banner UI messages."
+	},
+	"Extend":
+	{
+		"struct Vec":
+		{
+			"LuaBindings":
+			[
+				".addConstructor<void (*) (void)>()",
+				".addConstructor<void (*) (float, float, float)>()",
+				".addProperty(\"pitch\", &Vec::x)",
+				".addProperty(\"yaw\", &Vec::y)",
+				".addProperty(\"roll\", &Vec::z)"
+			],
+			"Structure":
+			[
+				"Vec() { x = 0; y = 0; z = 0; }",
+				"Vec(float inX, float inY, float inZ) { x = inX; y = inY; z = inZ; }"
+			]
+		}
+	}
 }

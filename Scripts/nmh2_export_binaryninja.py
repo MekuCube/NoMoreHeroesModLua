@@ -2,7 +2,7 @@
 # Operates in 3 steps: Collects all types relevant to a keyword (like 'Travis'), sorts those types based on dependency, and then exports those types to a C header.
 # Tested on Binary Ninja Personal 2.4.2846
 
-import re, inspect, time, cProfile, pstats
+import re, inspect, time, cProfile, pstats, json
 
 def GetTypeByName(InString):
 	if GetTypeByName.cache == None:
@@ -336,8 +336,8 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 				if not "ExportedTemplates" in SessionData:
 					SessionData["ExportedTemplates"] = []
 				if TemplateNameStr in SessionData["ExportedTemplates"]:
+					#print("[Template] '" + TemplateNameStr + "' already exported.")
 					return
-				#print("[Template] '" + TemplateNameStr + "'")
 				SessionData["ExportedTemplates"].append(TemplateNameStr)
 			# Find super class
 			SuperClassType = None
@@ -379,6 +379,11 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 						print("typename "+TemplateNameStr, end="", file=file)
 					i = i + 1
 				print(">", file=file)
+			# Comment
+			if not bFowardDeclare and "json" in SessionData and "Comments" in SessionData["json"] and TypeStr in SessionData["json"]["Comments"]:
+				print("	"*indent + "/// <summary>", file=file)
+				print("	"*indent + "/// " + SessionData["json"]["Comments"][TypeStr], file=file)
+				print("	"*indent + "/// </summary>", file=file)
 			# Structure name
 			print("	"*indent + TypeStr, end="", file=file)
 			if SuperClassType != None and not bFowardDeclare:
@@ -427,9 +432,9 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 					if i > 0:
 						PrevOffset = FlattenMembers[i-1].offset + FlattenMembers[i-1].type.width
 						if MemberIt.offset > PrevOffset:
-							print("	"*indent + "// <Filler, offset "+str(hex(PrevOffset)) + ">", file=file)
+							print("	"*indent + "// <Unidentified data segment, offset "+str(hex(PrevOffset)) + ">", file=file)
 							print("	"*(indent-1) + "private:", file=file)
-							print("	"*indent + "char _Filler"+str(i)+"[" + str(MemberIt.offset - PrevOffset) + "];", file=file)
+							print("	"*indent + "char _UnidentifiedData"+str(i)+"[" + str(MemberIt.offset - PrevOffset) + "];", file=file)
 							print("", file=file)
 							print("	"*(indent-1) + "public:", file=file)
 					print("	"*indent + "// " + str(MemberIt), file=file)
@@ -464,6 +469,9 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 					# If type is literally just enum and nothing else, make it a uint32_t
 					if MemberTypeStr == "enum":
 						MemberTypeStr = "uint32_t"
+					# Const member variables not allowed, so remove const
+					if MemberTypeStr.endswith(" const"):
+						MemberTypeStr = MemberTypeStr[:-6]
 					AfterNameStr = AfterNameStr.replace("* const this", "* const ThisPtr")
 					if ParentNameSpace != None:
 						MemberTypeStr = MemberTypeStr.replace(ParentNameSpace+"::", "")
@@ -491,11 +499,15 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 				if len(InType.structure.members) > 0:
 					MemberWidth = InType.structure.members[-1].offset + InType.structure.members[-1].type.width
 				if MemberWidth < InType.width and not (InType.width <= 1 and MemberWidth <= 0):
-					print("	"*indent + "// <Filler, offset "+str(hex(MemberWidth)) + ">", file=file)
+					print("	"*indent + "// <Unidentified data segment, offset "+str(hex(MemberWidth)) + ">", file=file)
 					print("	"*(indent-1) + "private:", file=file)
-					print("	"*indent + "char _Filler[" + str(InType.width - MemberWidth) + "];", file=file)
+					print("	"*indent + "char _UnidentifiedData[" + str(InType.width - MemberWidth) + "];", file=file)
 					print("	"*(indent-1) + "public:", file=file)
 					print("", file=file)
+				# Allow json to extend
+				if "json" in SessionData and "Extend" in SessionData["json"] and TypeStr in SessionData["json"]["Extend"] and "Structure" in SessionData["json"]["Extend"][TypeStr]:
+					for Entry in SessionData["json"]["Extend"][TypeStr]["Structure"]:
+						print("	"*indent + Entry, file=file)
 				# Expose to Lua (templates not yet supported)
 				if TemplateTypesStr == None:
 					ExportedLuaBindings.append(InType)
@@ -592,6 +604,10 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 							else:
 								print(".addFunction", end="", file=file)
 							print("(\"" + str(FunctionName) + "\", &"+TypeStrNoPrefix+"::"+str(FunctionName) + ")", file=file)
+					# Json
+					if "json" in SessionData and "Extend" in SessionData["json"] and TypeStr in SessionData["json"]["Extend"] and "LuaBindings" in SessionData["json"]["Extend"][TypeStr]:
+						for Entry in SessionData["json"]["Extend"][TypeStr]["LuaBindings"]:
+							print("	"*indent + Entry, file=file)
 					# Lua end func
 					indent = indent-1
 					print("	"*indent + ".endClass();", file=file)
@@ -636,12 +652,17 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 				print("	"*indent + "namespace " + CustomNameSpace, file=file)
 				print("	"*indent + "{", file=file)
 				indent = indent + 1
+			# Comment
+			if not bFowardDeclare and "json" in SessionData and "Comments" in SessionData["json"] and TypeStr in SessionData["json"]["Comments"]:
+				print("	"*indent + "/// <summary>", file=file)
+				print("	"*indent + "/// " + SessionData["json"]["Comments"][TypeStr], file=file)
+				print("	"*indent + "/// </summary>", file=file)
 			print("	"*indent + TypeStr + " : uint32_t", file=file)
 			print("	"*indent + "{", file=file)
 			indent = indent+1
 			# Export enum values
-			print("	"*indent + "// Enum values", file=file)
-			print("", file=file)
+			#print("	"*indent + "// Enum values", file=file)
+			#print("", file=file)
 			IsFirst = True
 			for MemberIt in InType.enumeration.members:
 				if IsFirst == True:
@@ -733,6 +754,11 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 		# DEBUG: print dependencies
 		#if not bFowardDeclare:
 		#	DebugPrintDependencies(InType, AllTypes, "	"*indent + "// ", file)
+		# Comment
+		if not bFowardDeclare and "json" in SessionData and "Comments" in SessionData["json"] and str(InType.name) in SessionData["json"]["Comments"]:
+			print("	"*indent + "/// <summary>", file=file)
+			print("	"*indent + "/// " + SessionData["json"]["Comments"][str(InType.name)], file=file)
+			print("	"*indent + "/// </summary>", file=file)
 		# Function
 		print("	"*indent, end="", file=file)
 		if ParentNameSpaceStr != None and not IsObjectInstance:
@@ -926,22 +952,28 @@ def GetFlattenedStructMembers(InType, InSuperClass = None):
 	return out
 
 # Export
-def DoExport(OutPath, AllRootTypes, AllRelevantTypes):
+def DoExport(OutPath, JsonPath, AllRootTypes, AllRelevantTypes):
+	JsonData = {}
+	# Load json comments
+	with open(JsonPath) as JsonFile:
+		JsonData = json.load(JsonFile)
+	
 	with open(OutPath, "w") as text_file:
 		print("// Exporter by @MekuCube", file=text_file)
 		print("", file=text_file)
 		print("#pragma once", file=text_file)
 		print("", file=text_file)
 		ExportedTypes = []
-		SessionData = {}
 		ExportedLuaBindings = []
+		SessionData = {}
+		SessionData["json"] = JsonData
 		i = 0
 		# Forward declare first
 		print("/// Forward Declaration", file=text_file)
 		print("", file=text_file)
 		for TypeIt in AllRootTypes:
 			NumExportPre = len(ExportedTypes)
-			print("Root " + str(i) + " / " + str(len(AllRootTypes)) + ": " + str(TypeIt))
+			print("Forward declare " + str(i) + " / " + str(len(AllRootTypes)) + ": " + str(TypeIt))
 			#profiler = cProfile.Profile()
 			#profiler.enable()
 			ExportType(TypeIt, AllRelevantTypes, ExportedTypes, SessionData, ExportedLuaBindings, text_file, 0, True)
@@ -951,12 +983,13 @@ def DoExport(OutPath, AllRootTypes, AllRelevantTypes):
 			NumExportPost = len(ExportedTypes)
 			if NumExportPre == NumExportPost:
 				print("Failed to export anything for root '" + str(TypeIt) + "'")
-			else:
-				print("Exported " + str(len(ExportedTypes)) + " / " + str(len(AllRelevantTypes)))
+			#else:
+			#	print("Exported " + str(len(ExportedTypes)) + " / " + str(len(AllRelevantTypes)))
 			i = i + 1
 			#text_file.flush()
 		ExportedTypes = []
 		SessionData = {}
+		SessionData["json"] = JsonData
 		ExportedLuaBindings = []
 		i = 0
 		print("", file=text_file)
@@ -965,7 +998,7 @@ def DoExport(OutPath, AllRootTypes, AllRelevantTypes):
 		# Declaration
 		for TypeIt in AllRootTypes:
 			NumExportPre = len(ExportedTypes)
-			print("Root " + str(i) + " / " + str(len(AllRootTypes)) + ": " + str(TypeIt))
+			print("Export definition " + str(i) + " / " + str(len(AllRootTypes)) + ": " + str(TypeIt))
 			#profiler = cProfile.Profile()
 			#profiler.enable()
 			ExportType(TypeIt, AllRelevantTypes, ExportedTypes, SessionData, ExportedLuaBindings, text_file, 0, False)
@@ -998,6 +1031,10 @@ def DoExport(OutPath, AllRootTypes, AllRelevantTypes):
 			if not TypeIt in ExportedTypes:
 				print("Failed to export: '" + str(TypeIt) + "'")
 
+# Check that json is valid before we begin
+with open("E:/C++/NoMoreHeroesModLua/Games/gamecomments.json") as JsonFile:
+	json.load(JsonFile)
+
 AllRelevantTypes = []
 CollectTypes(AllRelevantTypes, ["mHRChara", "mHRBattle", "mHRPc", "HrMessage"])
 #CollectTypes(AllRelevantTypes, ["mHRBattle::mSetSlowMotionTick"])
@@ -1029,4 +1066,4 @@ print("Root types: " + str(len(AllRootTypes)))
 
 #print("")
 
-DoExport("E:/C++/NoMoreHeroesModLua/Games/NMH2/exported_data_types_new.h", AllRootTypes, AllRelevantTypes)
+DoExport("E:/C++/NoMoreHeroesModLua/Games/NMH2/exported_data_types_new.h", "E:/C++/NoMoreHeroesModLua/Games/gamecomments.json", AllRootTypes, AllRelevantTypes)
