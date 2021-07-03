@@ -13,7 +13,9 @@ A work-in-progress.
 * Loading multiple Lua scripts
 
 ## In progress:
+* Overloaded functions exported to Lua
 * Common iterators (mHRChara / items / etc)
+  * Currently has mHRChara iterator
 
 ## Not started:
 * Hook on game startup
