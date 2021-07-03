@@ -316,6 +316,9 @@ def CanTypeExportInFunction(InType):
 	if InType == None:
 		return None
 	TypeStr = str(InType)
+	# We convert this to std::string so its fine
+	if TypeStr == "char const*":
+		return None
 	TypeNameStr = "None"
 	if InType.type_class != None:
 		TypeNameStr = str(InType.type_class)
@@ -328,6 +331,8 @@ def CanTypeExportInFunction(InType):
 		return "Can't export & pointer '" + TypeStr + "' ["+TypeNameStr+"] in LuaBridge"
 	if TypeStr == "void*":
 		return "Can't export void pointer '" + TypeStr + "' ["+TypeNameStr+"] in LuaBridge"
+	if "(void*)" in TypeStr:
+		return "Can't export delegate '" + TypeStr + "' ["+TypeNameStr+"] in LuaBridge"
 	return None
 
 def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings, file, indent = 0, bFowardDeclare = False):
@@ -628,16 +633,19 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 						print(")", end="", file=file)
 					print("", file=file)
 					# Functions
-					ExportedFunctions = []
+					ExportedFunctions = {}
 					for TypeIt in TypesInNameSpace:
 						if isinstance(TypeIt, binaryninja.function.Function):
 							FunctionName = GetFunctionNameWithoutNameSpace(TypeIt)
 							#print("	"*indent, end="", file=file)
 							HasError = None
 							if FunctionName in ExportedFunctions:
-								HasError = "Function overloading not supported in LuaBridge."
-							if HasError == None and len(TypeIt.parameter_vars) > 8:
-								HasError = "Can't export functions with more than 8 parameters to LuaBridge."
+								ExportedFunctions[FunctionName] = ExportedFunctions[FunctionName] + 1
+								FunctionName = FunctionName + str(ExportedFunctions[FunctionName])
+							else:
+								ExportedFunctions[FunctionName] = 1
+							if HasError == None and len(TypeIt.parameter_vars) > 11:
+								HasError = "Can't export functions with more than 11 parameters to LuaBridge."
 							if HasError == None:
 								for VarIt in TypeIt.parameter_vars:
 									VarTypeStr = str(VarIt.type)
@@ -653,8 +661,6 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 								print("	"*indent + "//", end="", file=file)
 							else:
 								print("	"*indent, end="", file=file)
-							# We add this to the export list even if the lua binding failed since we do not export the overloaded functions either.
-							ExportedFunctions.append(FunctionName)
 							if FunctionIsStatic(TypeIt):
 								print(".addStaticFunction", end="", file=file)
 							else:
@@ -757,7 +763,7 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 		if bFowardDeclare:
 			return
 		if not "ExportedFunctions" in SessionData:
-			SessionData["ExportedFunctions"] = []
+			SessionData["ExportedFunctions"] = {}
 		# Lua bridge does not support function overloading
 		ParentNameSpaceStr = GetParentNameSpaceFromType(InType)
 		FunctionName = GetFunctionNameWithoutNameSpace(InType)
@@ -765,8 +771,10 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 		if ParentNameSpaceStr != None:
 			FunctionNameWithNameSpace = ParentNameSpaceStr + "::" + FunctionName
 		if FunctionNameWithNameSpace in SessionData["ExportedFunctions"]:
-			return
-		SessionData["ExportedFunctions"].append(FunctionNameWithNameSpace)
+			SessionData["ExportedFunctions"][FunctionNameWithNameSpace] = SessionData["ExportedFunctions"][FunctionNameWithNameSpace] + 1
+			FunctionName = FunctionName + str(SessionData["ExportedFunctions"][FunctionNameWithNameSpace])
+		else:
+			SessionData["ExportedFunctions"][FunctionNameWithNameSpace] = 1
 		# What we pass to the game's function call
 		Inputs = ""
 		# The parameters to this function

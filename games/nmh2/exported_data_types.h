@@ -2137,21 +2137,21 @@ public:
 			.addFunction("mGetNpcPtr", &mHRBattle::mGetNpcPtr)
 			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetInitNpcDat", &mHRBattle::mSetInitNpcDat)
-			// Can't export functions with more than 8 parameters to LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetInitObjDat", &mHRBattle::mSetInitObjDat)
 			.addFunction("mSetPopType", &mHRBattle::mSetPopType)
 			.addFunction("mSetPcKind", &mHRBattle::mSetPcKind)
-			// Can't export functions with more than 8 parameters to LuaBridge.
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetInitNpcDat2", &mHRBattle::mSetInitNpcDat2)
-			// Can't export functions with more than 8 parameters to LuaBridge.
+			// Can't export functions with more than 11 parameters to LuaBridge.
 			//.addFunction("mSetInitNpcDat3", &mHRBattle::mSetInitNpcDat3)
-			// Can't export functions with more than 8 parameters to LuaBridge.
+			// Can't export functions with more than 11 parameters to LuaBridge.
 			//.addFunction("mSetInitNpcDat4", &mHRBattle::mSetInitNpcDat4)
-			// Can't export functions with more than 8 parameters to LuaBridge.
+			// Can't export functions with more than 11 parameters to LuaBridge.
 			//.addFunction("mSetInitNpcDat5", &mHRBattle::mSetInitNpcDat5)
-			// Can't export functions with more than 8 parameters to LuaBridge.
+			// Can't export functions with more than 11 parameters to LuaBridge.
 			//.addFunction("mSetInitNpcDat6", &mHRBattle::mSetInitNpcDat6)
-			// Can't export functions with more than 8 parameters to LuaBridge.
+			// Can't export functions with more than 11 parameters to LuaBridge.
 			//.addFunction("mSetInitNpcDat7", &mHRBattle::mSetInitNpcDat7)
 			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetInitNpcDatObj095", &mHRBattle::mSetInitNpcDatObj095)
@@ -4034,12 +4034,17 @@ public:
 	// <uint32_t PackedValue, offset 0x0>
 	uint32_t PackedValue;
 
+	GXColor() { PackedValue = 0; }
+	GXColor(int R, int G, int B) { PackedValue = (255<<24) + (int(R)<<16) + (int(G)<<8) + int(B); }
+
 	std::string ToString() const { return "struct GXColor(" + std::to_string(GetPtrAddr()) + ")"; }
 	int GetPtrAddr() const { return (int)this; }
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
 		NS = NS.beginClass<GXColor>("GXColor")
+			.addConstructor<void (*) (void)>()
+			.addConstructor<void (*) (int, int, int)>()
 			.addFunction("__tostring", &GXColor::ToString)
 			.addFunction("GetPtrAddr", &GXColor::GetPtrAddr)
 			.addProperty("PackedValue", &GXColor::PackedValue)
@@ -5361,12 +5366,11 @@ public:
 		return mFunc(this);
 	}
 	// [Function] char const* __convention("thiscall") mHRChara::getCurMotionName(class mHRChara* const this) [?getCurMotionName@mHRChara@@UBEPBDXZ]
-	// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
-	void getCurMotionName()
+	char const* getCurMotionName()
 	{
 		typedef char const*(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xa4940);
-		mFunc(this);
+		return mFunc(this);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRChara::mTestRunMotion(class mHRChara* const this) [?mTestRunMotion@mHRChara@@UAE_NXZ]
 	uint8_t mTestRunMotion()
@@ -5417,6 +5421,13 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xa49d0);
 		return mFunc(this);
 	}
+	// [Function] class TGmf* __convention("thiscall") mHRChara::mGetCurResourceGmfPtr(class mHRChara* const this) [?mGetCurResourceGmfPtr@mHRChara@@UBEPBVTGmf@@XZ]
+	class TGmf* mGetCurResourceGmfPtr2()
+	{
+		typedef class TGmf*(__thiscall* _Func)(class mHRChara* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xa49f0);
+		return mFunc(this);
+	}
 	// [Function] class TGmf* __convention("thiscall") mHRChara::mGetResourceGmfWepLPtr(class mHRChara* const this) [?mGetResourceGmfWepLPtr@mHRChara@@UAEPAVTGmf@@XZ]
 	class TGmf* mGetResourceGmfWepLPtr()
 	{
@@ -5445,11 +5456,25 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xa4a60);
 		return mFunc(this);
 	}
+	// [Function] class TGmf* __convention("thiscall") mHRChara::mGetResourceGmfDeadPtr(class mHRChara* const this) [?mGetResourceGmfDeadPtr@mHRChara@@UAEPAVTGmf@@XZ]
+	class TGmf* mGetResourceGmfDeadPtr2()
+	{
+		typedef class TGmf*(__thiscall* _Func)(class mHRChara* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xa4a70);
+		return mFunc(this);
+	}
 	// [Function] class TGmf* __convention("thiscall") mHRChara::mGetResourceGmfPtr(class mHRChara* const this) [?mGetResourceGmfPtr@mHRChara@@UBEPBVTGmf@@XZ]
 	class TGmf* mGetResourceGmfPtr()
 	{
 		typedef class TGmf*(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xa4a80);
+		return mFunc(this);
+	}
+	// [Function] class TGmf* __convention("thiscall") mHRChara::mGetResourceGmfPtr(class mHRChara* const this) [?mGetResourceGmfPtr@mHRChara@@UAEPAVTGmf@@XZ]
+	class TGmf* mGetResourceGmfPtr2()
+	{
+		typedef class TGmf*(__thiscall* _Func)(class mHRChara* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xa4a90);
 		return mFunc(this);
 	}
 	// [Function] class ghmGcCollObjCapsule* __convention("thiscall") mHRChara::mGetCollPtr(class mHRChara* const this) [?mGetCollPtr@mHRChara@@UAEPAVghmGcCollObjCapsule@@XZ]
@@ -5889,6 +5914,13 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xa9510);
 		return mFunc(this);
 	}
+	// [Function] void __convention("thiscall") mHRChara::mChgBtlIcnFinishDemo(class mHRChara* const this, enum HrBattleIcon::D_TODOME_DIRECT arg2) [?mChgBtlIcnFinishDemo@mHRChara@@QAEXW4D_TODOME_DIRECT@HrBattleIcon@@@Z]
+	void mChgBtlIcnFinishDemo2(enum HrBattleIcon::D_TODOME_DIRECT arg2)
+	{
+		typedef void(__thiscall* _Func)(class mHRChara* const thisPtr, enum HrBattleIcon::D_TODOME_DIRECT arg2);
+		_Func mFunc = (_Func)(GameModule + 0xa9520);
+		return mFunc(this, arg2);
+	}
 	// [Function] void __convention("thiscall") mHRChara::SetDrawYAdjust(class mHRChara* const this, float arg2) [?SetDrawYAdjust@mHRChara@@QAEXM@Z]
 	void SetDrawYAdjust(float arg2)
 	{
@@ -6001,6 +6033,13 @@ public:
 		typedef void(__thiscall* _Func)(class mHRChara* const thisPtr, enum HrBattleIcon::D_TODOME_DIRECT arg2);
 		_Func mFunc = (_Func)(GameModule + 0xaba80);
 		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") mHRChara::mChgBtlIcnFinish(class mHRChara* const this, enum HrBattleIcon::E_CON_ACT_ID arg2, enum HrBattleIcon::E_CON_ACT_ID arg3, uint8_t arg4) [?mChgBtlIcnFinish@mHRChara@@QAEXW4E_CON_ACT_ID@HrBattleIcon@@0_N@Z]
+	void mChgBtlIcnFinish2(enum HrBattleIcon::E_CON_ACT_ID arg2, enum HrBattleIcon::E_CON_ACT_ID arg3, uint8_t arg4)
+	{
+		typedef void(__thiscall* _Func)(class mHRChara* const thisPtr, enum HrBattleIcon::E_CON_ACT_ID arg2, enum HrBattleIcon::E_CON_ACT_ID arg3, uint8_t arg4);
+		_Func mFunc = (_Func)(GameModule + 0xabaa0);
+		return mFunc(this, arg2, arg3, arg4);
 	}
 	// [Function] void __convention("thiscall") mHRChara::mSetSlowBlow(class mHRChara* const this, uint8_t arg2) [?mSetSlowBlow@mHRChara@@QAEX_N@Z]
 	void mSetSlowBlow(uint8_t arg2)
@@ -7040,6 +7079,13 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x471f80);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6);
 	}
+	// [Function] uint8_t __convention("thiscall") mHRChara::mPlayMotionMov(class mHRChara* const this, int32_t arg2, float arg3, float arg4, uint8_t arg5) [?mPlayMotionMov@mHRChara@@QAE_NHMM_N@Z]
+	uint8_t mPlayMotionMov2(int32_t arg2, float arg3, float arg4, uint8_t arg5)
+	{
+		typedef uint8_t(__thiscall* _Func)(class mHRChara* const thisPtr, int32_t arg2, float arg3, float arg4, uint8_t arg5);
+		_Func mFunc = (_Func)(GameModule + 0x4721d0);
+		return mFunc(this, arg2, arg3, arg4, arg5);
+	}
 	// [Function] void __convention("thiscall") mHRChara::checkDeleteBlackBodyEffect(class mHRChara* const this) [?checkDeleteBlackBodyEffect@mHRChara@@QAEXXZ]
 	void checkDeleteBlackBodyEffect()
 	{
@@ -7307,6 +7353,13 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x475090);
 		return mFunc(this, arg2, arg3);
 	}
+	// [Function] uint8_t __convention("thiscall") mHRChara::mCheckAttack(class mHRChara* const this) [?mCheckAttack@mHRChara@@UAE_NXZ]
+	uint8_t mCheckAttack2()
+	{
+		typedef uint8_t(__thiscall* _Func)(class mHRChara* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x4750e0);
+		return mFunc(this);
+	}
 	// [Function] uint8_t __convention("thiscall") mHRChara::mCheckCanAttack(class mHRChara* const this) [?mCheckCanAttack@mHRChara@@UAE_NXZ]
 	uint8_t mCheckCanAttack()
 	{
@@ -7362,6 +7415,13 @@ public:
 		typedef uint8_t(__thiscall* _Func)(class mHRChara* const thisPtr, class TGan** arg2, char arg3);
 		_Func mFunc = (_Func)(GameModule + 0x4754e0);
 		return mFunc(this, arg2, arg3);
+	}
+	// [Function] uint8_t __convention("thiscall") mHRChara::mPlayMotionBlend(class mHRChara* const this, int32_t arg2, char arg3, uint8_t arg4, uint8_t arg5) [?mPlayMotionBlend@mHRChara@@UAE_NHC_N0@Z]
+	uint8_t mPlayMotionBlend2(int32_t arg2, char arg3, uint8_t arg4, uint8_t arg5)
+	{
+		typedef uint8_t(__thiscall* _Func)(class mHRChara* const thisPtr, int32_t arg2, char arg3, uint8_t arg4, uint8_t arg5);
+		_Func mFunc = (_Func)(GameModule + 0x475630);
+		return mFunc(this, arg2, arg3, arg4, arg5);
 	}
 	// [Function] void __convention("thiscall") mHRChara::mBossDeadCommonProcess(class mHRChara* const this) [?mBossDeadCommonProcess@mHRChara@@UAEXXZ]
 	void mBossDeadCommonProcess()
@@ -7447,6 +7507,13 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x475cc0);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13);
 	}
+	// [Function] class TGan* __convention("thiscall") mHRChara::mpGetGan(class mHRChara* const this, int32_t arg2) [?mpGetGan@mHRChara@@UAEPAVTGan@@H@Z]
+	class TGan* mpGetGan2(int32_t arg2)
+	{
+		typedef class TGan*(__thiscall* _Func)(class mHRChara* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x477960);
+		return mFunc(this, arg2);
+	}
 	// [Function] class TGan** __convention("thiscall") mHRChara::mppGetGan(class mHRChara* const this, int32_t arg2) [?mppGetGan@mHRChara@@UAEPAPAVTGan@@H@Z]
 	// Can't export pointer to pointer 'class TGan**' [TypeClass.PointerTypeClass] in LuaBridge
 	void mppGetGan(int32_t arg2)
@@ -7519,6 +7586,13 @@ public:
 	{
 		typedef uint8_t(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0x477b80);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") mHRChara::mSetDamageAcceptFrame(class mHRChara* const this) [?mSetDamageAcceptFrame@mHRChara@@UAEXXZ]
+	void mSetDamageAcceptFrame2()
+	{
+		typedef void(__thiscall* _Func)(class mHRChara* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x477bd0);
 		return mFunc(this);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRChara::IsMultiStep(class mHRChara* const this) [?IsMultiStep@mHRChara@@UAE_NXZ]
@@ -7611,6 +7685,13 @@ public:
 		typedef void(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0x478340);
 		return mFunc(this);
+	}
+	// [Function] class mHRChara* mHRChara::mGetCharaPtr(enum enCharaType arg1, uint32_t arg2) [?mGetCharaPtr@mHRChara@@SAPAV1@W4enCharaType@@I@Z]
+	static class mHRChara* mGetCharaPtr2(enum enCharaType arg1, uint32_t arg2)
+	{
+		typedef class mHRChara*(__fastcall* _Func)(enum enCharaType arg1, uint32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x478370);
+		return mFunc(arg1, arg2);
 	}
 	// [Function] class mHRChara* mHRChara::mAllSearchPiyoZako() [?mAllSearchPiyoZako@mHRChara@@SAPAV1@XZ]
 	static class mHRChara* mAllSearchPiyoZako()
@@ -7722,18 +7803,15 @@ public:
 			.addFunction("mCheckEnterMotion", &mHRChara::mCheckEnterMotion)
 			.addFunction("mpGetGan", &mHRChara::mpGetGan)
 			.addFunction("mGetCurResourceGmfPtr", &mHRChara::mGetCurResourceGmfPtr)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("mGetCurResourceGmfPtr", &mHRChara::mGetCurResourceGmfPtr)
+			.addFunction("mGetCurResourceGmfPtr2", &mHRChara::mGetCurResourceGmfPtr2)
 			.addFunction("mGetResourceGmfWepLPtr", &mHRChara::mGetResourceGmfWepLPtr)
 			.addFunction("mGetResourceGmfWepRPtr", &mHRChara::mGetResourceGmfWepRPtr)
 			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetResourceGmfPtr", &mHRChara::mSetResourceGmfPtr)
 			.addFunction("mGetResourceGmfDeadPtr", &mHRChara::mGetResourceGmfDeadPtr)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("mGetResourceGmfDeadPtr", &mHRChara::mGetResourceGmfDeadPtr)
+			.addFunction("mGetResourceGmfDeadPtr2", &mHRChara::mGetResourceGmfDeadPtr2)
 			.addFunction("mGetResourceGmfPtr", &mHRChara::mGetResourceGmfPtr)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("mGetResourceGmfPtr", &mHRChara::mGetResourceGmfPtr)
+			.addFunction("mGetResourceGmfPtr2", &mHRChara::mGetResourceGmfPtr2)
 			.addFunction("mGetCollPtr", &mHRChara::mGetCollPtr)
 			.addFunction("mSethitOidashiDisEnable", &mHRChara::mSethitOidashiDisEnable)
 			.addFunction("mGetBrainPos", &mHRChara::mGetBrainPos)
@@ -7798,8 +7876,7 @@ public:
 			.addFunction("mUndispBtlIcn", &mHRChara::mUndispBtlIcn)
 			.addFunction("mChgBtlIcnFinishDemo", &mHRChara::mChgBtlIcnFinishDemo)
 			.addFunction("mChgBtlIcnTb", &mHRChara::mChgBtlIcnTb)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("mChgBtlIcnFinishDemo", &mHRChara::mChgBtlIcnFinishDemo)
+			.addFunction("mChgBtlIcnFinishDemo2", &mHRChara::mChgBtlIcnFinishDemo2)
 			.addFunction("SetDrawYAdjust", &mHRChara::SetDrawYAdjust)
 			.addFunction("mSetDemoCtrl", &mHRChara::mSetDemoCtrl)
 			.addFunction("mGetDemoCtrl", &mHRChara::mGetDemoCtrl)
@@ -7816,8 +7893,7 @@ public:
 			.addFunction("mGetLockOnDistance", &mHRChara::mGetLockOnDistance)
 			.addFunction("mGetAliveBtlIcn", &mHRChara::mGetAliveBtlIcn)
 			.addFunction("mChgBtlIcnFinish", &mHRChara::mChgBtlIcnFinish)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("mChgBtlIcnFinish", &mHRChara::mChgBtlIcnFinish)
+			.addFunction("mChgBtlIcnFinish2", &mHRChara::mChgBtlIcnFinish2)
 			.addFunction("mSetSlowBlow", &mHRChara::mSetSlowBlow)
 			.addFunction("mSetInputFinishReq", &mHRChara::mSetInputFinishReq)
 			.addFunction("mGetResourceGanPtr", &mHRChara::mGetResourceGanPtr)
@@ -7925,8 +8001,7 @@ public:
 			.addFunction("CreateFootSmokeEffect", &mHRChara::CreateFootSmokeEffect)
 			.addFunction("KnockBackProc", &mHRChara::KnockBackProc)
 			.addFunction("GetKnockBackRatio", &mHRChara::GetKnockBackRatio)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &mHRChara::mSetDamage)
+			.addFunction("mSetDamage", &mHRChara::mSetDamage)
 			.addFunction("mInitDamageMotInfo", &mHRChara::mInitDamageMotInfo)
 			.addFunction("mChangeDefAi", &mHRChara::mChangeDefAi)
 			.addFunction("mSetDefAI", &mHRChara::mSetDefAI)
@@ -7952,8 +8027,7 @@ public:
 			.addFunction("mPlayMotionMov", &mHRChara::mPlayMotionMov)
 			.addFunction("mTestMotion", &mHRChara::mTestMotion)
 			.addFunction("mSetDifficultyMotionSpeed", &mHRChara::mSetDifficultyMotionSpeed)
-			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
-			//.addStaticFunction("getCharaByGM2FileName", &mHRChara::getCharaByGM2FileName)
+			.addStaticFunction("getCharaByGM2FileName", &mHRChara::getCharaByGM2FileName)
 			.addFunction("mSetDeath", &mHRChara::mSetDeath)
 			.addFunction("mDamageCallBackForScript", &mHRChara::mDamageCallBackForScript)
 			.addFunction("mGetMotionPlay", &mHRChara::mGetMotionPlay)
@@ -7977,8 +8051,7 @@ public:
 			//.addFunction("mSetPosA", &mHRChara::mSetPosA)
 			.addFunction("mSetSimpleHpBarVisible", &mHRChara::mSetSimpleHpBarVisible)
 			.addFunction("mPlayCamMotFromCharMot", &mHRChara::mPlayCamMotFromCharMot)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("mPlayMotionMov", &mHRChara::mPlayMotionMov)
+			.addFunction("mPlayMotionMov2", &mHRChara::mPlayMotionMov2)
 			.addFunction("checkDeleteBlackBodyEffect", &mHRChara::checkDeleteBlackBodyEffect)
 			.addFunction("mSetHitCounter", &mHRChara::mSetHitCounter)
 			.addFunction("mReleaseBloodSplash", &mHRChara::mReleaseBloodSplash)
@@ -7998,8 +8071,7 @@ public:
 			.addStaticFunction("mTermAllNpcWithoutCmnObj", &mHRChara::mTermAllNpcWithoutCmnObj)
 			.addStaticFunction("mTermAllEnemyNpc", &mHRChara::mTermAllEnemyNpc)
 			.addStaticFunction("mGetNpcTop", &mHRChara::mGetNpcTop)
-			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
-			//.addFunction("SetFileName", &mHRChara::SetFileName)
+			.addFunction("SetFileName", &mHRChara::SetFileName)
 			.addFunction("mSetMaxHp", &mHRChara::mSetMaxHp)
 			.addFunction("mTerm", &mHRChara::mTerm)
 			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
@@ -8023,8 +8095,7 @@ public:
 			.addFunction("mRefreshFloorPosition", &mHRChara::mRefreshFloorPosition)
 			.addFunction("mDamageProc", &mHRChara::mDamageProc)
 			.addFunction("mRestoreDamage", &mHRChara::mRestoreDamage)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("mCheckAttack", &mHRChara::mCheckAttack)
+			.addFunction("mCheckAttack2", &mHRChara::mCheckAttack2)
 			.addFunction("mCheckCanAttack", &mHRChara::mCheckCanAttack)
 			.addFunction("mGetTsubazeriaiPos", &mHRChara::mGetTsubazeriaiPos)
 			.addFunction("mSetPcTsubaOuterMot", &mHRChara::mSetPcTsubaOuterMot)
@@ -8034,8 +8105,7 @@ public:
 			.addFunction("mPlayThrownMotion", &mHRChara::mPlayThrownMotion)
 			// Can't export pointer to pointer 'class TGan**' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mPlayMotionBlend", &mHRChara::mPlayMotionBlend)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("mPlayMotionBlend", &mHRChara::mPlayMotionBlend)
+			.addFunction("mPlayMotionBlend2", &mHRChara::mPlayMotionBlend2)
 			.addFunction("mBossDeadCommonProcess", &mHRChara::mBossDeadCommonProcess)
 			.addFunction("mCheckCanLockOn", &mHRChara::mCheckCanLockOn)
 			.addFunction("getLockOnCursorBasePosition", &mHRChara::getLockOnCursorBasePosition)
@@ -8048,10 +8118,9 @@ public:
 			.addFunction("mSetAiAtk", &mHRChara::mSetAiAtk)
 			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetWarpPos", &mHRChara::mSetWarpPos)
-			// Can't export functions with more than 8 parameters to LuaBridge.
+			// Can't export functions with more than 11 parameters to LuaBridge.
 			//.addFunction("mHitCheckStage", &mHRChara::mHitCheckStage)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("mpGetGan", &mHRChara::mpGetGan)
+			.addFunction("mpGetGan2", &mHRChara::mpGetGan2)
 			.addFunction("mppGetGan", &mHRChara::mppGetGan)
 			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mRequestBloodSplash", &mHRChara::mRequestBloodSplash)
@@ -8063,8 +8132,7 @@ public:
 			.addFunction("mCreatePiyori", &mHRChara::mCreatePiyori)
 			.addFunction("mTermPiyori", &mHRChara::mTermPiyori)
 			.addFunction("mPiyoriProc", &mHRChara::mPiyoriProc)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("mSetDamageAcceptFrame", &mHRChara::mSetDamageAcceptFrame)
+			.addFunction("mSetDamageAcceptFrame2", &mHRChara::mSetDamageAcceptFrame2)
 			.addFunction("IsMultiStep", &mHRChara::IsMultiStep)
 			.addFunction("IsDownAttack", &mHRChara::IsDownAttack)
 			.addFunction("getFootShadowWidthHalf", &mHRChara::getFootShadowWidthHalf)
@@ -8080,8 +8148,7 @@ public:
 			// Can't export pointer to native type 'float*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mCheckSegmentHitStage", &mHRChara::mCheckSegmentHitStage)
 			.addFunction("mEraseDispChara", &mHRChara::mEraseDispChara)
-			// Function overloading not supported in LuaBridge.
-			//.addStaticFunction("mGetCharaPtr", &mHRChara::mGetCharaPtr)
+			.addStaticFunction("mGetCharaPtr2", &mHRChara::mGetCharaPtr2)
 			.addStaticFunction("mAllSearchPiyoZako", &mHRChara::mAllSearchPiyoZako)
 			.addStaticFunction("OnStageUnloadAll", &mHRChara::OnStageUnloadAll)
 		.endClass();
@@ -9888,20 +9955,18 @@ public:
 		return mFunc(this);
 	}
 	// [Function] char const* __convention("thiscall") mHRPc::getCurTigerMotionName(class mHRPc* const this) [?getCurTigerMotionName@mHRPc@@QBEPBDXZ]
-	// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
-	void getCurTigerMotionName()
+	char const* getCurTigerMotionName()
 	{
 		typedef char const*(__thiscall* _Func)(class mHRPc* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xaa5b0);
-		mFunc(this);
+		return mFunc(this);
 	}
 	// [Function] char const* __convention("thiscall") mHRPc::getCurMotionName(class mHRPc* const this) [?getCurMotionName@mHRPc@@UBEPBDXZ]
-	// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
-	void getCurMotionName()
+	char const* getCurMotionName()
 	{
 		typedef char const*(__thiscall* _Func)(class mHRPc* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xaa5c0);
-		mFunc(this);
+		return mFunc(this);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRPc::isOutResourceMotion(class mHRPc* const this) [?isOutResourceMotion@mHRPc@@QBE_NXZ]
 	uint8_t isOutResourceMotion()
@@ -10857,6 +10922,13 @@ public:
 		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, struct Vec* arg2);
 		_Func mFunc = (_Func)(GameModule + 0x41e860);
 		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") mHRPc::mGetHitEffectPos(class mHRPc* const this, struct Vec* arg2, struct Vec& arg3, uint8_t arg4) [?mGetHitEffectPos@mHRPc@@QAEXPAUVec@@ABU2@_N@Z]
+	void mGetHitEffectPos2(struct Vec* arg2, struct Vec& arg3, uint8_t arg4)
+	{
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, struct Vec* arg2, struct Vec& arg3, uint8_t arg4);
+		_Func mFunc = (_Func)(GameModule + 0x41e8c0);
+		return mFunc(this, arg2, arg3, arg4);
 	}
 	// [Function] void __convention("thiscall") mHRPc::mSetNoutou(class mHRPc* const this, uint8_t arg2) [?mSetNoutou@mHRPc@@UAEX_N@Z]
 	void mSetNoutou(uint8_t arg2)
@@ -12098,6 +12170,13 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x432280);
 		return mFunc(this, arg2, arg3);
 	}
+	// [Function] int32_t __convention("thiscall") mHRPc::mGetAtkNo(class mHRPc* const this, int32_t arg2) [?mGetAtkNo@mHRPc@@UAEHH@Z]
+	int32_t mGetAtkNo2(int32_t arg2)
+	{
+		typedef int32_t(__thiscall* _Func)(class mHRPc* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x433080);
+		return mFunc(this, arg2);
+	}
 	// [Function] uint8_t __convention("thiscall") mHRPc::mSideStepProc(class mHRPc* const this, int32_t arg2, int32_t arg3) [?mSideStepProc@mHRPc@@QAE_NHH@Z]
 	uint8_t mSideStepProc(int32_t arg2, int32_t arg3)
 	{
@@ -12812,6 +12891,13 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x43b680);
 		return mFunc(this, arg2, arg3);
 	}
+	// [Function] uint8_t __convention("thiscall") mHRPc::mPlayMotionBlend(class mHRPc* const this, int32_t arg2, char arg3, uint8_t arg4, uint8_t arg5) [?mPlayMotionBlend@mHRPc@@UAE_NHC_N0@Z]
+	uint8_t mPlayMotionBlend2(int32_t arg2, char arg3, uint8_t arg4, uint8_t arg5)
+	{
+		typedef uint8_t(__thiscall* _Func)(class mHRPc* const thisPtr, int32_t arg2, char arg3, uint8_t arg4, uint8_t arg5);
+		_Func mFunc = (_Func)(GameModule + 0x43b7c0);
+		return mFunc(this, arg2, arg3, arg4, arg5);
+	}
 	// [Function] uint8_t __convention("thiscall") mHRPc::mPlayMotion(class mHRPc* const this, int32_t arg2, uint8_t arg3, int32_t arg4, uint8_t arg5, float arg6) [?mPlayMotion@mHRPc@@UAE_NH_NH0M@Z]
 	uint8_t mPlayMotion(int32_t arg2, uint8_t arg3, int32_t arg4, uint8_t arg5, float arg6)
 	{
@@ -13489,6 +13575,13 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x449480);
 		return mFunc(this, arg2, arg3);
 	}
+	// [Function] void __convention("thiscall") mHRPc::StorePcPosForSM(class mHRPc* const this) [?StorePcPosForSM@mHRPc@@QAEXXZ]
+	void StorePcPosForSM2()
+	{
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x4494d0);
+		return mFunc(this);
+	}
 	// [Function] uint8_t __convention("thiscall") mHRPc::StoreBikePosForSM(class mHRPc* const this) [?StoreBikePosForSM@mHRPc@@QAE_NXZ]
 	uint8_t StoreBikePosForSM()
 	{
@@ -14128,8 +14221,7 @@ public:
 			.addFunction("mSetChangeEquipFromScript", &mHRPc::mSetChangeEquipFromScript)
 			.addFunction("mSetForceLoseTsubazeri", &mHRPc::mSetForceLoseTsubazeri)
 			.addFunction("mCheckDeadFukki", &mHRPc::mCheckDeadFukki)
-			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
-			//.addFunction("mPlayMotionFromDatPtrExt", &mHRPc::mPlayMotionFromDatPtrExt)
+			.addFunction("mPlayMotionFromDatPtrExt", &mHRPc::mPlayMotionFromDatPtrExt)
 			.addFunction("mSetPcPower", &mHRPc::mSetPcPower)
 			.addFunction("mGetEquipTexPtr", &mHRPc::mGetEquipTexPtr)
 			.addFunction("mSetRestartBGM", &mHRPc::mSetRestartBGM)
@@ -14386,8 +14478,8 @@ public:
 			.addFunction("mGetPcBtlPoseNowMotion", &mHRPc::mGetPcBtlPoseNowMotion)
 			.addFunction("mCheckFinishNpc", &mHRPc::mCheckFinishNpc)
 			.addFunction("mGetHitEffectPos", &mHRPc::mGetHitEffectPos)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("mGetHitEffectPos", &mHRPc::mGetHitEffectPos)
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("mGetHitEffectPos2", &mHRPc::mGetHitEffectPos2)
 			.addFunction("mSetNoutou", &mHRPc::mSetNoutou)
 			.addFunction("mSetBattou", &mHRPc::mSetBattou)
 			.addFunction("mGetBikeNitro", &mHRPc::mGetBikeNitro)
@@ -14571,8 +14663,7 @@ public:
 			.addFunction("mInitWepStatus", &mHRPc::mInitWepStatus)
 			.addFunction("mGetWepIndex", &mHRPc::mGetWepIndex)
 			.addFunction("mGetAtkNo", &mHRPc::mGetAtkNo)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("mGetAtkNo", &mHRPc::mGetAtkNo)
+			.addFunction("mGetAtkNo2", &mHRPc::mGetAtkNo2)
 			.addFunction("mSideStepProc", &mHRPc::mSideStepProc)
 			.addFunction("mGetRollEscMotNo", &mHRPc::mGetRollEscMotNo)
 			.addFunction("mMoveProc", &mHRPc::mMoveProc)
@@ -14652,10 +14743,8 @@ public:
 			.addFunction("mCheckDamageMotion", &mHRPc::mCheckDamageMotion)
 			.addFunction("mCheckCanHit", &mHRPc::mCheckCanHit)
 			.addFunction("mHitCheck", &mHRPc::mHitCheck)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetElectricDamage", &mHRPc::mSetElectricDamage)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &mHRPc::mSetDamage)
+			.addFunction("mSetElectricDamage", &mHRPc::mSetElectricDamage)
+			.addFunction("mSetDamage", &mHRPc::mSetDamage)
 			.addFunction("mJudgeJustGuardInput", &mHRPc::mJudgeJustGuardInput)
 			.addFunction("mJudgePiyori", &mHRPc::mJudgePiyori)
 			.addFunction("mConvertGuardMotion", &mHRPc::mConvertGuardMotion)
@@ -14678,8 +14767,7 @@ public:
 			.addFunction("mResetValueAtPlayMotion", &mHRPc::mResetValueAtPlayMotion)
 			// Can't export pointer to pointer 'class TGan**' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mPlayMotionBlend", &mHRPc::mPlayMotionBlend)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("mPlayMotionBlend", &mHRPc::mPlayMotionBlend)
+			.addFunction("mPlayMotionBlend2", &mHRPc::mPlayMotionBlend2)
 			.addFunction("mPlayMotion", &mHRPc::mPlayMotion)
 			.addFunction("mGetAtkMotPPtr", &mHRPc::mGetAtkMotPPtr)
 			.addFunction("mGetAtkMotPtr", &mHRPc::mGetAtkMotPtr)
@@ -14783,8 +14871,7 @@ public:
 			.addFunction("mGetBattery", &mHRPc::mGetBattery)
 			.addFunction("mGetBatteryMax", &mHRPc::mGetBatteryMax)
 			.addFunction("mSetBattery", &mHRPc::mSetBattery)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("StorePcPosForSM", &mHRPc::StorePcPosForSM)
+			.addFunction("StorePcPosForSM2", &mHRPc::StorePcPosForSM2)
 			.addFunction("StoreBikePosForSM", &mHRPc::StoreBikePosForSM)
 			.addFunction("mSetBikePos", &mHRPc::mSetBikePos)
 			.addFunction("mSetBikeRot", &mHRPc::mSetBikeRot)
@@ -21612,6 +21699,13 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x3f1e50);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
+	// [Function] uint8_t __convention("thiscall") commonObj::mSetDamage(class commonObj* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11) [?mSetDamage@commonObj@@UAE_NMHHHMHMMPAVmHRChara@@M@Z]
+	uint8_t mSetDamage2(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11)
+	{
+		typedef uint8_t(__thiscall* _Func)(class commonObj* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11);
+		_Func mFunc = (_Func)(GameModule + 0x3f1eb0);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
+	}
 	/// Struct member variables
 
 	// <class mHRChara field_0, offset 0x0>
@@ -21752,10 +21846,8 @@ public:
 			.addProperty("m_bIsSetGroundColPlane", &commonObj::m_bIsSetGroundColPlane)
 			.addProperty("m_inGroundColPlane", &commonObj::m_inGroundColPlane)
 			.addProperty("mbDistEraseDisable", &commonObj::mbDistEraseDisable)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &commonObj::mSetDamage)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("mSetDamage", &commonObj::mSetDamage)
+			.addFunction("mSetDamage", &commonObj::mSetDamage)
+			.addFunction("mSetDamage2", &commonObj::mSetDamage2)
 		.endClass();
 	}
 #endif
@@ -21796,6 +21888,13 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xa57d0);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
 	}
+	// [Function] uint8_t __convention("thiscall") CustomColliderObj::mSetDamage(class CustomColliderObj* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@CustomColliderObj@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage2(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class CustomColliderObj* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0xa57e0);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
 	// [Function] uint8_t __convention("thiscall") CustomColliderObj::mHitCheck(class CustomColliderObj* const this, class mHRChara* arg2) [?mHitCheck@CustomColliderObj@@UAE_NPAVmHRChara@@@Z]
 	uint8_t mHitCheck(class mHRChara* arg2)
 	{
@@ -21820,10 +21919,8 @@ public:
 			.addFunction("__tostring", &CustomColliderObj::ToString)
 			.addFunction("GetPtrAddr", &CustomColliderObj::GetPtrAddr)
 			.addProperty("capsuleCollider", &CustomColliderObj::capsuleCollider)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &CustomColliderObj::mSetDamage)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("mSetDamage", &CustomColliderObj::mSetDamage)
+			.addFunction("mSetDamage", &CustomColliderObj::mSetDamage)
+			.addFunction("mSetDamage2", &CustomColliderObj::mSetDamage2)
 			.addFunction("mHitCheck", &CustomColliderObj::mHitCheck)
 		.endClass();
 	}
@@ -23242,6 +23339,20 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x489a60);
 		return mFunc(arg1, arg2_c_str, arg3, arg4, arg5, arg6);
 	}
+	// [Function] void HrMessage::GetStrLengthW(uint32_t arg1, int16_t const* arg2, float& arg3, float& arg4) [?GetStrLengthW@HrMessage@@SAXIPB_SAAM1@Z]
+	static void GetStrLengthW2(uint32_t arg1, int16_t const* arg2, float& arg3, float& arg4)
+	{
+		typedef void(__fastcall* _Func)(uint32_t arg1, int16_t const* arg2, float& arg3, float& arg4);
+		_Func mFunc = (_Func)(GameModule + 0x489b20);
+		return mFunc(arg1, arg2, arg3, arg4);
+	}
+	// [Function] void HrMessage::GetStrLengthW(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6) [?GetStrLengthW@HrMessage@@SAXIHHHAAM0@Z]
+	static void GetStrLengthW3(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6)
+	{
+		typedef void(__fastcall* _Func)(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6);
+		_Func mFunc = (_Func)(GameModule + 0x489bb0);
+		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6);
+	}
 	// [Function] void HrMessage::GetStrLength(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6) [?GetStrLength@HrMessage@@SAXIPBDHHAAM1@Z]
 	static void GetStrLength(uint32_t arg1, std::string arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6)
 	{
@@ -23250,6 +23361,13 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x489c60);
 		return mFunc(arg1, arg2_c_str, arg3, arg4, arg5, arg6);
 	}
+	// [Function] void HrMessage::GetStrLength(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6) [?GetStrLength@HrMessage@@SAXIHHHAAM0@Z]
+	static void GetStrLength2(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6)
+	{
+		typedef void(__fastcall* _Func)(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6);
+		_Func mFunc = (_Func)(GameModule + 0x489da0);
+		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6);
+	}
 	// [Function] void HrMessage::GetTick(uint32_t arg1, char const* arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5) [?GetTick@HrMessage@@SAXIPBDHAAI1@Z]
 	static void GetTick(uint32_t arg1, std::string arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5)
 	{
@@ -23257,6 +23375,13 @@ public:
 		typedef void(__fastcall* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5);
 		_Func mFunc = (_Func)(GameModule + 0x489e90);
 		return mFunc(arg1, arg2_c_str, arg3, arg4, arg5);
+	}
+	// [Function] void HrMessage::GetTick(uint32_t arg1, int32_t arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5) [?GetTick@HrMessage@@SAXIHHAAI0@Z]
+	static void GetTick2(uint32_t arg1, int32_t arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5)
+	{
+		typedef void(__fastcall* _Func)(uint32_t arg1, int32_t arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5);
+		_Func mFunc = (_Func)(GameModule + 0x489f00);
+		return mFunc(arg1, arg2, arg3, arg4, arg5);
 	}
 	// [Function] void __convention("thiscall") HrMessage::_GetTick(class HrMessage* const this, int32_t arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5) [?_GetTick@HrMessage@@IAEXHHAAI0@Z]
 	void _GetTick(int32_t arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5)
@@ -23302,14 +23427,28 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x48a0a0);
 		mFunc(arg1, arg2_c_str, arg3, arg4);
 	}
+	// [Function] int16_t const* HrMessage::GetStringsW(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4) [?GetStringsW@HrMessage@@SAPB_SIHHH@Z]
+	// Can't export pointer to native type 'int16_t const*' [TypeClass.PointerTypeClass] in LuaBridge
+	static void GetStringsW2(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4)
+	{
+		typedef int16_t const*(__fastcall* _Func)(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4);
+		_Func mFunc = (_Func)(GameModule + 0x48a0f0);
+		mFunc(arg1, arg2, arg3, arg4);
+	}
 	// [Function] char const* HrMessage::GetStrings(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4) [?GetStrings@HrMessage@@SAPBDIPBDHH@Z]
-	// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
-	static void GetStrings(uint32_t arg1, std::string arg2, int32_t arg3, int32_t arg4)
+	static char const* GetStrings(uint32_t arg1, std::string arg2, int32_t arg3, int32_t arg4)
 	{
 		char const* arg2_c_str = arg2.c_str();
 		typedef char const*(__fastcall* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4);
 		_Func mFunc = (_Func)(GameModule + 0x48a120);
-		mFunc(arg1, arg2_c_str, arg3, arg4);
+		return mFunc(arg1, arg2_c_str, arg3, arg4);
+	}
+	// [Function] char const* HrMessage::GetStrings(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4) [?GetStrings@HrMessage@@SAPBDIHHH@Z]
+	static char const* GetStrings2(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4)
+	{
+		typedef char const*(__fastcall* _Func)(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4);
+		_Func mFunc = (_Func)(GameModule + 0x48a170);
+		return mFunc(arg1, arg2, arg3, arg4);
 	}
 	// [Function] int16_t const* __convention("thiscall") HrMessage::_GetStringsW(class HrMessage* const this, int32_t arg2, int32_t arg3, int32_t arg4) [?_GetStringsW@HrMessage@@IAEPB_SHHH@Z]
 	// Can't export pointer to native type 'int16_t const*' [TypeClass.PointerTypeClass] in LuaBridge
@@ -23320,12 +23459,11 @@ public:
 		mFunc(this, arg2, arg3, arg4);
 	}
 	// [Function] char const* __convention("thiscall") HrMessage::_GetStrings(class HrMessage* const this, int32_t arg2, int32_t arg3, int32_t arg4) [?_GetStrings@HrMessage@@IAEPBDHHH@Z]
-	// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
-	void _GetStrings(int32_t arg2, int32_t arg3, int32_t arg4)
+	char const* _GetStrings(int32_t arg2, int32_t arg3, int32_t arg4)
 	{
 		typedef char const*(__thiscall* _Func)(class HrMessage* const thisPtr, int32_t arg2, int32_t arg3, int32_t arg4);
 		_Func mFunc = (_Func)(GameModule + 0x48a210);
-		mFunc(this, arg2, arg3, arg4);
+		return mFunc(this, arg2, arg3, arg4);
 	}
 	// [Function] float HrMessage::DispMessage(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10) [?DispMessage@HrMessage@@SAMIPBDHHMMUGXColor@@HH_N@Z]
 	static float DispMessage(uint32_t arg1, std::string arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10)
@@ -23334,6 +23472,13 @@ public:
 		typedef float(__fastcall* _Func)(uint32_t arg1, char const* arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10);
 		_Func mFunc = (_Func)(GameModule + 0x48a280);
 		return mFunc(arg1, arg2_c_str, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	// [Function] float HrMessage::DispMessage(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10) [?DispMessage@HrMessage@@SAMIHHHMMUGXColor@@HH_N@Z]
+	static float DispMessage2(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10)
+	{
+		typedef float(__fastcall* _Func)(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10);
+		_Func mFunc = (_Func)(GameModule + 0x48a300);
+		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
 	// [Function] class ghmGcFont* HrMessage::GetFont(uint32_t arg1) [?GetFont@HrMessage@@SAPAVghmGcFont@@I@Z]
 	static class ghmGcFont* GetFont(uint32_t arg1)
@@ -23357,6 +23502,13 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x48a3c0);
 		return mFunc(arg1, arg2_c_str, arg3);
 	}
+	// [Function] int32_t HrMessage::GetSentenceNum(uint32_t arg1, int32_t arg2, int32_t arg3) [?GetSentenceNum@HrMessage@@SAHIHH@Z]
+	static int32_t GetSentenceNum2(uint32_t arg1, int32_t arg2, int32_t arg3)
+	{
+		typedef int32_t(__fastcall* _Func)(uint32_t arg1, int32_t arg2, int32_t arg3);
+		_Func mFunc = (_Func)(GameModule + 0x48a420);
+		return mFunc(arg1, arg2, arg3);
+	}
 	// [Function] int32_t HrMessage::GetLineNum(uint32_t arg1, char const* arg2) [?GetLineNum@HrMessage@@SAHIPBD@Z]
 	static int32_t GetLineNum(uint32_t arg1, std::string arg2)
 	{
@@ -23364,6 +23516,13 @@ public:
 		typedef int32_t(__fastcall* _Func)(uint32_t arg1, char const* arg2);
 		_Func mFunc = (_Func)(GameModule + 0x48a450);
 		return mFunc(arg1, arg2_c_str);
+	}
+	// [Function] int32_t HrMessage::GetLineNum(uint32_t arg1, int32_t arg2) [?GetLineNum@HrMessage@@SAHIH@Z]
+	static int32_t GetLineNum2(uint32_t arg1, int32_t arg2)
+	{
+		typedef int32_t(__fastcall* _Func)(uint32_t arg1, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x48a4c0);
+		return mFunc(arg1, arg2);
 	}
 	// [Function] int32_t __convention("thiscall") HrMessage::_GetSentenceNum(class HrMessage* const this, int32_t arg2, int32_t arg3) [?_GetSentenceNum@HrMessage@@IAEHHH@Z]
 	int32_t _GetSentenceNum(int32_t arg2, int32_t arg3)
@@ -23407,6 +23566,13 @@ public:
 		typedef uint8_t(__thiscall* _Func)(class HrMessage* const thisPtr, char const* arg2, uint32_t arg3, uint8_t arg4);
 		_Func mFunc = (_Func)(GameModule + 0x48aaa0);
 		return mFunc(this, arg2_c_str, arg3, arg4);
+	}
+	// [Function] uint8_t __convention("thiscall") HrMessage::SetMessage(class HrMessage* const this, int32_t arg2, uint32_t arg3, uint8_t arg4) [?SetMessage@HrMessage@@QAE_NHI_N@Z]
+	uint8_t SetMessage2(int32_t arg2, uint32_t arg3, uint8_t arg4)
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrMessage* const thisPtr, int32_t arg2, uint32_t arg3, uint8_t arg4);
+		_Func mFunc = (_Func)(GameModule + 0x48ac00);
+		return mFunc(this, arg2, arg3, arg4);
 	}
 	// [Function] void __convention("thiscall") HrMessage::_DePause(class HrMessage* const this) [?_DePause@HrMessage@@IAEXXZ]
 	void _DePause()
@@ -23492,6 +23658,21 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x48b220);
 		return mFunc(arg1);
 	}
+	// [Function] uint8_t __convention("thiscall") HrMessage::SetFont(class HrMessage* const this, void* arg2) [?SetFont@HrMessage@@QAE_NPAX@Z]
+	uint8_t SetFont2(void* arg2)
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrMessage* const thisPtr, void* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x48b240);
+		return mFunc(this, arg2);
+	}
+	// [Function] void HrMessage::StartMessage(uint32_t arg1, char const* arg2, uint32_t arg3, uint8_t arg4) [?StartMessage@HrMessage@@SAXIPBDI_N@Z]
+	static void StartMessage2(uint32_t arg1, std::string arg2, uint32_t arg3, uint8_t arg4)
+	{
+		char const* arg2_c_str = arg2.c_str();
+		typedef void(__fastcall* _Func)(uint32_t arg1, char const* arg2, uint32_t arg3, uint8_t arg4);
+		_Func mFunc = (_Func)(GameModule + 0x48b2a0);
+		return mFunc(arg1, arg2_c_str, arg3, arg4);
+	}
 	// [Function] void HrMessage::Stop(uint32_t arg1) [?Stop@HrMessage@@SAXI@Z]
 	static void Stop(uint32_t arg1)
 	{
@@ -23571,61 +23752,47 @@ public:
 			.addFunction("Frame", &HrMessage::Frame)
 			.addFunction("DispLine_RenderProcess", &HrMessage::DispLine_RenderProcess)
 			.addFunction("DispLine_FrameProcess", &HrMessage::DispLine_FrameProcess)
-			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
+			// Can't export pointer to native type 'float&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("GetStrLengthW", &HrMessage::GetStrLengthW)
-			// Function overloading not supported in LuaBridge.
-			//.addStaticFunction("GetStrLengthW", &HrMessage::GetStrLengthW)
-			// Function overloading not supported in LuaBridge.
-			//.addStaticFunction("GetStrLengthW", &HrMessage::GetStrLengthW)
-			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
+			// Can't export pointer to native type 'int16_t const*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addStaticFunction("GetStrLengthW2", &HrMessage::GetStrLengthW2)
+			// Can't export pointer to native type 'float&' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addStaticFunction("GetStrLengthW3", &HrMessage::GetStrLengthW3)
+			// Can't export pointer to native type 'float&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("GetStrLength", &HrMessage::GetStrLength)
-			// Function overloading not supported in LuaBridge.
-			//.addStaticFunction("GetStrLength", &HrMessage::GetStrLength)
-			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
+			// Can't export pointer to native type 'float&' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addStaticFunction("GetStrLength2", &HrMessage::GetStrLength2)
+			// Can't export pointer to native type 'uint32_t&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("GetTick", &HrMessage::GetTick)
-			// Function overloading not supported in LuaBridge.
-			//.addStaticFunction("GetTick", &HrMessage::GetTick)
+			// Can't export pointer to native type 'uint32_t&' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addStaticFunction("GetTick2", &HrMessage::GetTick2)
 			// Can't export pointer to native type 'uint32_t&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("_GetTick", &HrMessage::_GetTick)
 			.addStaticFunction("SetFontFuti", &HrMessage::SetFontFuti)
 			.addFunction("_SetFontFuti", &HrMessage::_SetFontFuti)
 			.addStaticFunction("SetFontEx", &HrMessage::SetFontEx)
 			.addFunction("_SetFontEx", &HrMessage::_SetFontEx)
-			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
-			//.addStaticFunction("GetStringsW", &HrMessage::GetStringsW)
-			// Function overloading not supported in LuaBridge.
-			//.addStaticFunction("GetStringsW", &HrMessage::GetStringsW)
-			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
-			//.addStaticFunction("GetStrings", &HrMessage::GetStrings)
-			// Function overloading not supported in LuaBridge.
-			//.addStaticFunction("GetStrings", &HrMessage::GetStrings)
+			.addStaticFunction("GetStringsW", &HrMessage::GetStringsW)
+			.addStaticFunction("GetStringsW2", &HrMessage::GetStringsW2)
+			.addStaticFunction("GetStrings", &HrMessage::GetStrings)
+			.addStaticFunction("GetStrings2", &HrMessage::GetStrings2)
 			.addFunction("_GetStringsW", &HrMessage::_GetStringsW)
 			.addFunction("_GetStrings", &HrMessage::_GetStrings)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addStaticFunction("DispMessage", &HrMessage::DispMessage)
-			// Function overloading not supported in LuaBridge.
-			//.addStaticFunction("DispMessage", &HrMessage::DispMessage)
+			.addStaticFunction("DispMessage", &HrMessage::DispMessage)
+			.addStaticFunction("DispMessage2", &HrMessage::DispMessage2)
 			.addStaticFunction("GetFont", &HrMessage::GetFont)
 			.addStaticFunction("GetGdl", &HrMessage::GetGdl)
-			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
-			//.addStaticFunction("GetSentenceNum", &HrMessage::GetSentenceNum)
-			// Function overloading not supported in LuaBridge.
-			//.addStaticFunction("GetSentenceNum", &HrMessage::GetSentenceNum)
-			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
-			//.addStaticFunction("GetLineNum", &HrMessage::GetLineNum)
-			// Function overloading not supported in LuaBridge.
-			//.addStaticFunction("GetLineNum", &HrMessage::GetLineNum)
+			.addStaticFunction("GetSentenceNum", &HrMessage::GetSentenceNum)
+			.addStaticFunction("GetSentenceNum2", &HrMessage::GetSentenceNum2)
+			.addStaticFunction("GetLineNum", &HrMessage::GetLineNum)
+			.addStaticFunction("GetLineNum2", &HrMessage::GetLineNum2)
 			.addFunction("_GetSentenceNum", &HrMessage::_GetSentenceNum)
 			.addFunction("_GetLineNum", &HrMessage::_GetLineNum)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("_DispChar", &HrMessage::_DispChar)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("_DispMessage", &HrMessage::_DispMessage)
+			.addFunction("_DispChar", &HrMessage::_DispChar)
+			.addFunction("_DispMessage", &HrMessage::_DispMessage)
 			.addFunction("_Stop", &HrMessage::_Stop)
-			// Can't export pointer to native type 'char const*' [TypeClass.PointerTypeClass] in LuaBridge
-			//.addFunction("SetMessage", &HrMessage::SetMessage)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("SetMessage", &HrMessage::SetMessage)
+			.addFunction("SetMessage", &HrMessage::SetMessage)
+			.addFunction("SetMessage2", &HrMessage::SetMessage2)
 			.addFunction("_DePause", &HrMessage::_DePause)
 			.addFunction("_Pause", &HrMessage::_Pause)
 			.addFunction("SetFont", &HrMessage::SetFont)
@@ -23639,12 +23806,12 @@ public:
 			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("Create", &HrMessage::Create)
 			.addStaticFunction("GetObjectA", &HrMessage::GetObjectA)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("SetFont", &HrMessage::SetFont)
-			// Function overloading not supported in LuaBridge.
-			//.addStaticFunction("StartMessage", &HrMessage::StartMessage)
+			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("SetFont2", &HrMessage::SetFont2)
+			.addStaticFunction("StartMessage2", &HrMessage::StartMessage2)
 			.addStaticFunction("Stop", &HrMessage::Stop)
 			.addStaticFunction("Delete", &HrMessage::Delete)
+			// Can't export delegate 'void (*)(void*)' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("FrameProcess", &HrMessage::FrameProcess)
 			.addStaticFunction("GetLangageGroup", &HrMessage::GetLangageGroup)
 		.endClass();
@@ -28864,10 +29031,8 @@ public:
 			//.addFunction("mSetDamage_DamageCounterProc", &PJZAKO::mSetDamage_DamageCounterProc)
 			.addFunction("mSetDamage_InitDamageReaction", &PJZAKO::mSetDamage_InitDamageReaction)
 			.addFunction("mSetDamage_Initialize", &PJZAKO::mSetDamage_Initialize)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &PJZAKO::mSetDamage)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("CheckSetDmgFuncGarbageInData", &PJZAKO::CheckSetDmgFuncGarbageInData)
+			.addFunction("mSetDamage", &PJZAKO::mSetDamage)
+			.addFunction("CheckSetDmgFuncGarbageInData", &PJZAKO::CheckSetDmgFuncGarbageInData)
 			.addFunction("ConvertDmgMot", &PJZAKO::ConvertDmgMot)
 			.addStaticFunction("StaticProc", &PJZAKO::StaticProc)
 		.endClass();
@@ -29516,8 +29681,7 @@ public:
 			.addProperty("mEfBulletArr", &FkBulletManager::mEfBulletArr)
 			.addProperty("m_nBulletMax", &FkBulletManager::m_nBulletMax)
 			.addProperty("m_DmgInfo", &FkBulletManager::m_DmgInfo)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("AddManageBullet", &FkBulletManager::AddManageBullet)
+			.addFunction("AddManageBullet", &FkBulletManager::AddManageBullet)
 		.endClass();
 	}
 #endif
@@ -30144,8 +30308,7 @@ public:
 		NS = NS.beginClass<bsSKE>("bsSKE")
 			.addFunction("__tostring", &bsSKE::ToString)
 			.addFunction("GetPtrAddr", &bsSKE::GetPtrAddr)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &bsSKE::mSetDamage)
+			.addFunction("mSetDamage", &bsSKE::mSetDamage)
 		.endClass();
 	}
 #endif
@@ -30178,8 +30341,7 @@ public:
 		NS = NS.beginClass<bsLEZ>("bsLEZ")
 			.addFunction("__tostring", &bsLEZ::ToString)
 			.addFunction("GetPtrAddr", &bsLEZ::GetPtrAddr)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &bsLEZ::mSetDamage)
+			.addFunction("mSetDamage", &bsLEZ::mSetDamage)
 		.endClass();
 	}
 #endif
@@ -30212,8 +30374,7 @@ public:
 		NS = NS.beginClass<bsCEW>("bsCEW")
 			.addFunction("__tostring", &bsCEW::ToString)
 			.addFunction("GetPtrAddr", &bsCEW::GetPtrAddr)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &bsCEW::mSetDamage)
+			.addFunction("mSetDamage", &bsCEW::mSetDamage)
 		.endClass();
 	}
 #endif
@@ -30246,8 +30407,7 @@ public:
 		NS = NS.beginClass<bsAST>("bsAST")
 			.addFunction("__tostring", &bsAST::ToString)
 			.addFunction("GetPtrAddr", &bsAST::GetPtrAddr)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &bsAST::mSetDamage)
+			.addFunction("mSetDamage", &bsAST::mSetDamage)
 		.endClass();
 	}
 #endif
@@ -30280,8 +30440,7 @@ public:
 		NS = NS.beginClass<bsRKT>("bsRKT")
 			.addFunction("__tostring", &bsRKT::ToString)
 			.addFunction("GetPtrAddr", &bsRKT::GetPtrAddr)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &bsRKT::mSetDamage)
+			.addFunction("mSetDamage", &bsRKT::mSetDamage)
 		.endClass();
 	}
 #endif
@@ -30952,8 +31111,7 @@ public:
 			.addProperty("mMDFlag", &pcGLB::mMDFlag)
 			.addFunction("IsAtkObj", &pcGLB::IsAtkObj)
 			.addFunction("SetDamageIK", &pcGLB::SetDamageIK)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &pcGLB::mSetDamage)
+			.addFunction("mSetDamage", &pcGLB::mSetDamage)
 		.endClass();
 	}
 #endif
@@ -32172,8 +32330,7 @@ public:
 			.addProperty("m_fCheckSrroundHeight", &bsBasic::m_fCheckSrroundHeight)
 			.addProperty("mFlag", &bsBasic::mFlag)
 			.addFunction("SetDamageIK", &bsBasic::SetDamageIK)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &bsBasic::mSetDamage)
+			.addFunction("mSetDamage", &bsBasic::mSetDamage)
 			.addFunction("IsAtkObj", &bsBasic::IsAtkObj)
 		.endClass();
 	}
@@ -32350,8 +32507,7 @@ public:
 			.addProperty("mbFirstSE", &bsSDP::mbFirstSE)
 			.addProperty("mbGLBSE", &bsSDP::mbGLBSE)
 			.addFunction("IsAtkObj", &bsSDP::IsAtkObj)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &bsSDP::mSetDamage)
+			.addFunction("mSetDamage", &bsSDP::mSetDamage)
 		.endClass();
 	}
 #endif
@@ -32555,8 +32711,7 @@ public:
 			.addProperty("mpTopNode", &PJOBJ0029::mpTopNode)
 			.addProperty("mbBreak", &PJOBJ0029::mbBreak)
 			.addProperty("mRadius", &PJOBJ0029::mRadius)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &PJOBJ0029::mSetDamage)
+			.addFunction("mSetDamage", &PJOBJ0029::mSetDamage)
 		.endClass();
 	}
 #endif
@@ -32661,8 +32816,7 @@ public:
 			.addProperty("m_apNode", &PJOBJ0033::m_apNode)
 			.addProperty("m_pModelFireArr", &PJOBJ0033::m_pModelFireArr)
 			.addProperty("m_SeHnd", &PJOBJ0033::m_SeHnd)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &PJOBJ0033::mSetDamage)
+			.addFunction("mSetDamage", &PJOBJ0033::mSetDamage)
 		.endClass();
 	}
 #endif
@@ -33160,8 +33314,7 @@ public:
 			.addProperty("m_boGetBreakNode", &PJOBJ0036::m_boGetBreakNode)
 			.addProperty("m_Tex", &PJOBJ0036::m_Tex)
 			.addProperty("m_apNode", &PJOBJ0036::m_apNode)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &PJOBJ0036::mSetDamage)
+			.addFunction("mSetDamage", &PJOBJ0036::mSetDamage)
 		.endClass();
 	}
 #endif
@@ -33209,8 +33362,7 @@ public:
 		NS = NS.deriveClass<PJOBJ0037, commonObj>("PJOBJ0037")
 			.addFunction("__tostring", &PJOBJ0037::ToString)
 			.addFunction("GetPtrAddr", &PJOBJ0037::GetPtrAddr)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &PJOBJ0037::mSetDamage)
+			.addFunction("mSetDamage", &PJOBJ0037::mSetDamage)
 			.addFunction("IsHitChar", &PJOBJ0037::IsHitChar)
 		.endClass();
 	}
@@ -33280,8 +33432,7 @@ public:
 			.addProperty("m_BreakMotion", &PJOBJ0104::m_BreakMotion)
 			.addProperty("m_fAccumDmg", &PJOBJ0104::m_fAccumDmg)
 			.addProperty("m_fMaxAccumDmg", &PJOBJ0104::m_fMaxAccumDmg)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &PJOBJ0104::mSetDamage)
+			.addFunction("mSetDamage", &PJOBJ0104::mSetDamage)
 		.endClass();
 	}
 #endif
@@ -33361,8 +33512,7 @@ public:
 			.addProperty("m_Counter", &PJOBJ0155::m_Counter)
 			.addProperty("m_nPipe", &PJOBJ0155::m_nPipe)
 			.addProperty("m_Tex", &PJOBJ0155::m_Tex)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &PJOBJ0155::mSetDamage)
+			.addFunction("mSetDamage", &PJOBJ0155::mSetDamage)
 		.endClass();
 	}
 #endif
@@ -33388,6 +33538,13 @@ public:
 		typedef uint8_t(__thiscall* _Func)(class PJOBJ0190* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11);
 		_Func mFunc = (_Func)(GameModule + 0x557250);
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
+	}
+	// [Function] uint8_t __convention("thiscall") PJOBJ0190::mSetDamage(class PJOBJ0190* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJOBJ0190@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage2(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class PJOBJ0190* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x557320);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
 	/// Struct member variables
 
@@ -33419,10 +33576,8 @@ public:
 			.addProperty("mpTopNode", &PJOBJ0190::mpTopNode)
 			.addProperty("mbBreak", &PJOBJ0190::mbBreak)
 			.addProperty("mRadius", &PJOBJ0190::mRadius)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &PJOBJ0190::mSetDamage)
-			// Function overloading not supported in LuaBridge.
-			//.addFunction("mSetDamage", &PJOBJ0190::mSetDamage)
+			.addFunction("mSetDamage", &PJOBJ0190::mSetDamage)
+			.addFunction("mSetDamage2", &PJOBJ0190::mSetDamage2)
 		.endClass();
 	}
 #endif
@@ -33458,8 +33613,7 @@ public:
 		NS = NS.beginClass<PJPTR>("PJPTR")
 			.addFunction("__tostring", &PJPTR::ToString)
 			.addFunction("GetPtrAddr", &PJPTR::GetPtrAddr)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &PJPTR::mSetDamage)
+			.addFunction("mSetDamage", &PJPTR::mSetDamage)
 		.endClass();
 	}
 #endif
@@ -33846,7 +34000,7 @@ public:
 			.addFunction("GetPtrAddr", &EffectBloodSplash::GetPtrAddr)
 			.addProperty("m_fCreateNum", &EffectBloodSplash::m_fCreateNum)
 			.addProperty("dat", &EffectBloodSplash::dat)
-			// Can't export functions with more than 8 parameters to LuaBridge.
+			// Can't export functions with more than 11 parameters to LuaBridge.
 			//.addStaticFunction("Create", &EffectBloodSplash::Create)
 			.addStaticFunction("Create2", &EffectBloodSplash::Create2)
 		.endClass();
@@ -34126,8 +34280,7 @@ public:
 			//.addProperty("m_apTex", &FkBoss::m_apTex)
 			// static arrays are not supported in LuaBridge (only std::vector)
 			//.addProperty("m_pEfSamasoTrack", &FkBoss::m_pEfSamasoTrack)
-			// Can't export functions with more than 8 parameters to LuaBridge.
-			//.addFunction("mSetDamage", &FkBoss::mSetDamage)
+			.addFunction("mSetDamage", &FkBoss::mSetDamage)
 		.endClass();
 	}
 #endif

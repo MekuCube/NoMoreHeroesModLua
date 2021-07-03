@@ -220,6 +220,164 @@ struct Constructor<
     }
 };
 
+// @ Extended with >8 parameters
+
+template<class T, class P1, class P2, class P3, class P4, class P5, class P6, class P7, class P8, class P9>
+struct Constructor<
+    T,
+    TypeList<
+        P1,
+        TypeList<
+            P2,
+            TypeList<P3, TypeList<P4, TypeList<P5, TypeList<P6, TypeList<P7,  TypeList<P8, TypeList<P9>>>>>>>>>>
+{
+    static T*
+    call(const TypeListValues<TypeList<
+             P1,
+             TypeList<
+                 P2,
+                 TypeList<P3,
+                          TypeList<P4, TypeList<P5, TypeList<P6, TypeList<P7, TypeList<P8, TypeList<P9>>>>>>>>>>&
+             tvl)
+    {
+        return new T(tvl.hd,
+                     tvl.tl.hd,
+                     tvl.tl.tl.hd,
+                     tvl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.tl.tl.tl.tl.hd);
+    }
+    static T*
+    call(void* mem,
+         const TypeListValues<TypeList<
+             P1,
+             TypeList<
+                 P2,
+                 TypeList<P3,
+                          TypeList<P4, TypeList<P5, TypeList<P6, TypeList<P7, TypeList<P8, TypeList<P9>>>>>>>>>>&
+             tvl)
+    {
+        return new (mem) T(tvl.hd,
+                           tvl.tl.hd,
+                           tvl.tl.tl.hd,
+                           tvl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.tl.tl.tl.tl.hd);
+    }
+};
+
+template<class T, class P1, class P2, class P3, class P4, class P5, class P6, class P7, class P8, class P9, class P10>
+struct Constructor<
+    T,
+    TypeList<
+        P1,
+        TypeList<
+            P2,
+            TypeList<P3, TypeList<P4, TypeList<P5, TypeList<P6, TypeList<P7,  TypeList<P8,  TypeList<P9, TypeList<P10>>>>>>>>>>>
+{
+    static T*
+    call(const TypeListValues<TypeList<
+             P1,
+             TypeList<
+                 P2,
+                 TypeList<P3,
+                          TypeList<P4, TypeList<P5, TypeList<P6, TypeList<P7, TypeList<P8,  TypeList<P9, TypeList<P10>>>>>>>>>>>&
+             tvl)
+    {
+        return new T(tvl.hd,
+                     tvl.tl.hd,
+                     tvl.tl.tl.hd,
+                     tvl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.tl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.tl.tl.tl.tl.tl.hd);
+    }
+    static T*
+    call(void* mem,
+         const TypeListValues<TypeList<
+             P1,
+             TypeList<
+                 P2,
+                 TypeList<P3,
+                          TypeList<P4, TypeList<P5, TypeList<P6, TypeList<P7, TypeList<P8, TypeList<P9, TypeList<P10>>>>>>>>>>>&
+             tvl)
+    {
+        return new (mem) T(tvl.hd,
+                           tvl.tl.hd,
+                           tvl.tl.tl.hd,
+                           tvl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.tl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.tl.tl.tl.tl.tl.hd);
+    }
+};
+
+template<class T, class P1, class P2, class P3, class P4, class P5, class P6, class P7, class P8, class P9, class P10, class P11>
+struct Constructor<
+    T,
+    TypeList<
+        P1,
+        TypeList<
+            P2,
+            TypeList<P3, TypeList<P4, TypeList<P5, TypeList<P6, TypeList<P7,  TypeList<P8,  TypeList<P9,   TypeList<P10, TypeList<P11>>>>>>>>>>>>
+{
+    static T*
+    call(const TypeListValues<TypeList<
+             P1,
+             TypeList<
+                 P2,
+                 TypeList<P3,
+                          TypeList<P4, TypeList<P5, TypeList<P6, TypeList<P7, TypeList<P8,  TypeList<P9, TypeList<P10, TypeList<P11>>>>>>>>>>>>&
+             tvl)
+    {
+        return new T(tvl.hd,
+                     tvl.tl.hd,
+                     tvl.tl.tl.hd,
+                     tvl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.tl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.tl.tl.tl.tl.tl.hd,
+                     tvl.tl.tl.tl.tl.tl.tl.tl.tl.tl.tl.hd);
+    }
+    static T*
+    call(void* mem,
+         const TypeListValues<TypeList<
+             P1,
+             TypeList<
+                 P2,
+                 TypeList<P3,
+                          TypeList<P4, TypeList<P5, TypeList<P6, TypeList<P7, TypeList<P8, TypeList<P9, TypeList<P10, TypeList<P11>>>>>>>>>>>>&
+             tvl)
+    {
+        return new (mem) T(tvl.hd,
+                           tvl.tl.hd,
+                           tvl.tl.tl.hd,
+                           tvl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.tl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.tl.tl.tl.tl.tl.hd,
+                           tvl.tl.tl.tl.tl.tl.tl.tl.tl.tl.tl.hd);
+    }
+};
+
 } // namespace detail
 
 } // namespace luabridge

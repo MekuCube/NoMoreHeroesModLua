@@ -42,5 +42,29 @@
 				"mHRChara* AsHRChara() const { return (mHRChara*)this; }"
 			]
 		}
+		"struct GXColor":
+		{
+			"LuaBindings":
+			[
+				".addConstructor<void (*) (void)>()",
+				".addConstructor<void (*) (int, int, int)>()"
+			],
+			"Structure":
+			[
+				"GXColor() { PackedValue = 0; }",
+				"GXColor(int R, int G, int B) { PackedValue = (255<<24) + (int(R)<<16) + (int(G)<<8) + int(B); }"
+			]
+		},
+		"class ghmListObj":
+		{
+			"LuaBindings":
+			[
+				".addFunction(\"AsHRChara\", &ghmListObj::AsHRChara)"
+			],
+			"Structure":
+			[
+				"mHRChara* AsHRChara() const { return (mHRChara*)this; }"
+			]
+		}
 	}
 }
