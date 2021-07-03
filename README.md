@@ -7,13 +7,12 @@ A work-in-progress.
 ## Complete
 * Execute Lua in NMH2
 * Read/write to NMH2 variables
-* Execute functions (static + object instance)
+* Execute functions (static / overloaded / object instance)
 * Documentation via json
 * Extending classes via json
 * Loading multiple Lua scripts
 
 ## In progress:
-* Overloaded functions exported to Lua
 * Common iterators (mHRChara / items / etc)
   * Currently has mHRChara iterator
 
