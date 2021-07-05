@@ -1,7 +1,7 @@
 # Integrating Lua modding support into No More Heroes 1 + 2.
 
+![nmh](https://user-images.githubusercontent.com/42222519/124508418-2ba37200-ddd0-11eb-9fb5-204542c6d18c.gif)
 ![nmh](https://user-images.githubusercontent.com/42222519/124152059-78671000-da93-11eb-81ec-78e49c51a886.gif)
-![image](https://user-images.githubusercontent.com/42222519/124382736-463ef380-dcc9-11eb-8bed-7f0d5b4c45f9.png)
 
 A work-in-progress.
 
