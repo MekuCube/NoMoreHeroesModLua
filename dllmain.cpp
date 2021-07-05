@@ -30,10 +30,11 @@ uintptr_t GameModule = NULL;
 #ifdef GAME_NMH2
     #include "Games/NMH2/exported_data_types.h"
     #include "Games/NMH2/nmh2_gamedefs.h"
-    #include "GameFunctions.h"
 #else
     #error "No game specified."
 #endif
+
+#include "Games/localization.h"
 
 #if WITH_LUA
 bool CheckLua(lua_State* L, int r)
@@ -69,17 +70,41 @@ DWORD WINAPI HackThread(HMODULE hModule)
 
     luabridge::Namespace GlobalNS = luabridge::getGlobalNamespace(L);
     BindLua_Exported(GlobalNS);
+    GlobalNS = GlobalNS.addFunction("ShowMessage", &ShowMessage);
+    GlobalNS = GlobalNS.addFunction("ExpandWGdl", &ExpandWGdl);
 #endif
-    std::cout << "It's kill or be killed.\n";
+    ShowMessage(std::string("It's kill or be killed!"));
+    ShowMessage(std::string("Mod tools by @MekuCube"));
 
     while (true)
     {
 #if WITH_LUA
         luabridge::push(L, GetAllCharacters());
-        lua_setglobal(L, "Characters");
+        lua_setglobal(L, "AllCharacters");
 
         luabridge::push(L, GetTravis());
         lua_setglobal(L, "Travis");
+
+        luabridge::push(L, GetBattle());
+        lua_setglobal(L, "Battle");
+
+        luabridge::push(L, GetSysMessage());
+        lua_setglobal(L, "SystemMessage");
+
+        luabridge::push(L, GetHrTalk());
+        lua_setglobal(L, "SystemTalk");
+
+        luabridge::push(L, GetScreenStatus());
+        lua_setglobal(L, "ScreenStatus");
+
+        luabridge::push(L, GetHrMessage());
+        lua_setglobal(L, "Message");
+
+        luabridge::push(L, GetGamepad());
+        lua_setglobal(L, "Gamepad");
+
+        luabridge::push(L, GetHrBattleIcon());
+        lua_setglobal(L, "BattleIcon");
 
         double DeltaTime = 1.0 / 1000.0;
         luabridge::push(L, DeltaTime);

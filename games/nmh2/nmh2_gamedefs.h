@@ -2,21 +2,55 @@
 
 #pragma once
 
+mHRPad* GetGamepad()
+{
+    return (mHRPad*)(GameModule + 0x9183a4);
+}
+
+mHRBattle* GetBattle()
+{
+    return (mHRBattle*)(GameModule + 0x9183A8);
+}
+
+HrMessage* GetHrMessage()
+{
+    return (HrMessage*)mem::FindDMAAddy(GameModule + 0x90f1b4, { 0x8, 0x0 });
+}
+
 mHRPc* GetTravis()
 {
-    float* PosX = (float*)mem::FindDMAAddy(GameModule + 0x8EA1BC, { 0x38 });
-    stCharaStatus* TravisStatus = (stCharaStatus*)((char*)PosX - 0x28);
-    return (mHRPc*)((char*)TravisStatus - 0x10);
+    return GetBattle()->mGetPcPtr();
 }
+
+HrScreenStatus* GetScreenStatus()
+{
+    return GetBattle()->mGetBtEffect() ? GetBattle()->mGetBtEffect()->pScreenStatus : nullptr;
+}
+
 mHRChara* GetEnemy()
 {
-    float* HP = (float*)mem::FindDMAAddy(GameModule + 0x9183A8, { 0x1C8, 0x450, 0x20, 0x1DC, 0x24 });
+    float* HP = (float*)mem::FindDMAAddy((uintptr_t)GetBattle(), { 0x1C8, 0x450, 0x20, 0x1DC, 0x24 });
     if (!HP)
         return nullptr;
     stCharaStatus* EnemyStatus = (stCharaStatus*)((char*)HP - 0x14);
     if (!EnemyStatus)
         return nullptr;
     return (mHRChara*)((char*)EnemyStatus - 0x10);
+}
+
+HrSysMessage* GetSysMessage()
+{
+    return (HrSysMessage*)(GameModule + 0x918d34);
+}
+
+HrTalk* GetHrTalk()
+{
+    return (HrTalk*)(GameModule + 0x918d2c);
+}
+
+HrBattleIcon* GetHrBattleIcon()
+{
+    return (HrBattleIcon*)(GameModule + 0x918d80);
 }
 
 std::vector<mHRChara*> GetAllCharacters()
@@ -45,5 +79,5 @@ std::vector<mHRChara*> GetAllCharacters()
 
 unsigned int* GetMoneyPtr()
 {
-    return (unsigned int*)mem::FindDMAAddy(GameModule + 0x9183A8, { 0x190, 0x4, 0x8, 0x8, 0x5B0, 0x624 });
+    return (unsigned int*)mem::FindDMAAddy((uintptr_t)GetBattle(), { 0x190, 0x4, 0x8, 0x8, 0x5B0, 0x624 });
 }

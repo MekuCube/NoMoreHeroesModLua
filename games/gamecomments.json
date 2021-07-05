@@ -5,43 +5,73 @@
 		"?mStartChangeWeapon@mHRPc@@QAEXXZ": "Makes Travis put away his weapon... and then immediately pull it out again.",
 		"?CreateGuardBreakEffect@mHRPc@@QAEXXZ": "Creates a spark effect at character torso / head.",
 		"?CreateFootSmokeEffect@mHRChara@@QAEXXZ": "Creates a dust effect at character feet.",
+		"?dAppearInGameMenu@HrScreenStatus@@QAE_NXZ": "Called when the pause menu is spawned.",
+		"?mAllEnemyDie@mHRBattle@@QAE_NXZ": "Unloads all enemies in the level immediately, without any effect. Note that this does not kill them, and moving away then back will have them re-appear.",
+		"?mReleaseAllEnemy@mHRBattle@@QAE_NXZ": "Calls ::mClearNpcDat on all enemies, destroying them immediately, without triggering any effects or events (like gated doors).",
+		"?mCheckExistEnemy@mHRBattle@@QAE_NXZ": "Returns true if any enemy is still alive.",
+		"?BalloonAppear@HrScreenStatus@@QAEXW4OBJ_ID@HrScreenStatusBalloon@@_N@Z": "Makes a bubble appear above Travis. Bubble is seen in normal play when swapping weapons.",
+		"?BattleSimplMessage@HrScreenStatus@@QAEXH_N@Z": "Displays a small center pop-up. Seen in normal play when picking up items, or standing on interaction circles.",
 		"class mHRPc": "Player character (Travis)",
 		"class mHRChara": "Base character (Travis, enemies, etc)",
 		"struct Vec": "3D Vector (x, y, z). Y-up.",
 		"enum enPcKind": "Player character type (Travis, Shinobu, Henry)",
 		"class HrMessage": "Related to the top banner UI messages.",
+		"class HrSysMessage": "Related to system messages.",
 		"struct stCharaStatus": "Contains position, rotation, hp, flags, etc",
-		"class ghmListObj": "Linked list object (mpPrev and mpNext)."
+		"class ghmListObj": "Linked list object (mpPrev and mpNext).",
+		"class mHRPad": "Gamepad (controller). Handles inputs, rumble, etc.",
+		"struct BATTLESIMPLMESS_SET": "Stores info on simple battle messages."
 	},
 	"Extend":
 	{
 		"struct Vec":
 		{
+			"Structure":
+			[
+				"Vec() { x = 0; y = 0; z = 0; }",
+				"Vec(float inX, float inY, float inZ) { x = inX; y = inY; z = inZ; }",
+				"float Size() const { return sqrtf(x*x + y*y + z*z); }",
+				"float SizeSquared() const { return x*x + y*y + z*z; }"
+			],
 			"LuaBindings":
 			[
 				".addConstructor<void (*) (void)>()",
 				".addConstructor<void (*) (float, float, float)>()",
 				".addProperty(\"pitch\", &Vec::x)",
 				".addProperty(\"yaw\", &Vec::y)",
-				".addProperty(\"roll\", &Vec::z)"
-			],
+				".addProperty(\"roll\", &Vec::z)",
+				".addFunction(\"SizeSquared\", &Vec::SizeSquared)",
+				".addFunction(\"Size\", &Vec::Size)"
+			]
+		},
+		"struct Vec2":
+		{
 			"Structure":
 			[
-				"Vec() { x = 0; y = 0; z = 0; }",
-				"Vec(float inX, float inY, float inZ) { x = inX; y = inY; z = inZ; }"
+				"Vec2() { x = 0; y = 0; }",
+				"Vec2(float inX, float inY) { x = inX; y = inY; }",
+				"float Size() const { return sqrtf(x*x + y*y); }",
+				"float SizeSquared() const { return x*x + y*y; }"
+			],
+			"LuaBindings":
+			[
+				".addConstructor<void (*) (void)>()",
+				".addConstructor<void (*) (float, float)>()",
+				".addFunction(\"SizeSquared\", &Vec2::SizeSquared)",
+				".addFunction(\"Size\", &Vec2::Size)"
 			]
 		},
 		"class ghmListObj":
 		{
-			"LuaBindings":
-			[
-				".addFunction(\"AsHRChara\", &ghmListObj::AsHRChara)"
-			],
 			"Structure":
 			[
 				"mHRChara* AsHRChara() const { return (mHRChara*)this; }"
+			],
+			"LuaBindings":
+			[
+				".addFunction(\"AsHRChara\", &ghmListObj::AsHRChara)"
 			]
-		}
+		},
 		"struct GXColor":
 		{
 			"LuaBindings":
@@ -64,6 +94,106 @@
 			"Structure":
 			[
 				"mHRChara* AsHRChara() const { return (mHRChara*)this; }"
+			]
+		},
+		"class HrSysMessage":
+		{
+			"Structure":
+			[
+				"bool DoAppear(std::string arg2, int32_t arg4, enum HrSysMessage::e_SYSMES_MODE arg5, uint8_t arg6) { return dAppear(arg2, nullptr, arg4, arg5, arg6) != 0; }"
+			],
+			"LuaBindings":
+			[
+				".addFunction(\"DoAppear\", &HrSysMessage::DoAppear)"
+			]
+		},
+		"class mHRPad":
+		{
+			"Structure":
+			[
+				"Vec2 GetLStick() { return mGetPadStatusPtr(0)->ex_status.cl.lstick; }",
+				"Vec2 GetRStick() { return mGetPadStatusPtr(0)->ex_status.cl.rstick; }",
+				"bool IsPressingButton(uint32_t InButton) { return (mGetPadStatusPtr(0)->hold & InButton) != 0; }",
+				"bool IsPressingX() { return IsPressingButton(1 << 9); }",
+				"bool IsPressingRB() { return IsPressingButton(1 << 14); }"
+			],
+			"Dependencies":
+			[
+				"struct Vec2",
+				"struct KPADStatus",
+				"struct KPADEXStatus"
+			],
+			"LuaBindings":
+			[
+				".addFunction(\"GetLStick\", &mHRPad::GetLStick)",
+				".addFunction(\"GetRStick\", &mHRPad::GetRStick)",
+				".addFunction(\"IsPressingButton\", &mHRPad::IsPressingButton)",
+				".addFunction(\"IsPressingX\", &mHRPad::IsPressingX)",
+				".addFunction(\"IsPressingRB\", &mHRPad::IsPressingRB)"
+			]
+		},
+		"struct GdlHeader":
+		{
+			"ToString": "std::stringstream stream; stream << \"struct GdlHeader (\" << mDialogCount << \" dialogues) [0x\" << std::hex << GetPtrAddr() << \"]\"; return stream.str();",
+			"Structure":
+			[
+				"struct GdlDialog* GetDialog(int32_t idx) { return (idx >= 0 && idx < mDialogCount) ? mppDialogPtrTable[idx] : nullptr; }"
+			],
+			"Dependencies":
+			[
+				"struct GdlDialog"
+			],
+			"LuaBindings":
+			[
+				".addFunction(\"GetDialog\", &GdlHeader::GetDialog)"
+			]
+		},
+		"struct GdlDialog":
+		{
+			"ToString": "std::stringstream stream; stream << \"struct GdlDialog (\" << mLinesCount << \" lines) [0x\" << std::hex << GetPtrAddr() << \"]\"; return stream.str();"
+		},
+		"class WGdl":
+		{
+			"ToString": "std::stringstream stream; stream << \"class WGdl (Header: \" << (mpData ? mpData->ToString() : std::string(\"nullptr\")) << \") [0x\" << std::hex << GetPtrAddr() << \"]\"; return stream.str();",
+			"Dependencies":
+			[
+				"struct GdlHeader"
+			],
+			"Structure":
+			[
+				"WGdl()",
+				"{",
+				"LoadFileID = -1;",
+				"LoadID = -1;",
+				"mDialogID = -1;",
+				"mLinesID = -1;",
+				"mLoadState = 2;",
+				"mPriority = 256;",
+				"mState = 1;",
+				"}"
+			]
+		},
+		"struct GdlLines":
+		{
+			"ToString": "std::stringstream stream; stream << \"struct GdlLines (\" << mSentenceCount << \" sentences) [0x\" << std::hex << GetPtrAddr() << \"]\"; return stream.str();",
+			"GdlLines":
+			[
+				"WGdl()",
+				"{",
+				"mVoiceID = -1;",
+				"}"
+			]
+		},
+		"struct GdlSentence":
+		{
+			"ToString": "std::stringstream stream; stream << \"struct GdlSentence (\" << GetLetters() << \") [0x\" << std::hex << GetPtrAddr() << \"]\"; return stream.str();",
+			"Structure":
+			[
+				"std::string GetLetters() const { if (mpLettersUc == nullptr) return std::string(); std::wstring result_wstr(mpLettersUc); std::string result_str(result_wstr.length(), 0); std::transform(result_wstr.begin(), result_wstr.end(), result_str.begin(), [](wchar_t c) { return (char)c; }); return result_str; }"
+			],
+			"LuaBindings":
+			[
+				".addFunction(\"GetLetters\", &GdlSentence::GetLetters)"
 			]
 		}
 	}
