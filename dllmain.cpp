@@ -55,6 +55,8 @@ DWORD WINAPI HackThread(HMODULE hModule)
     FILE* f;
     freopen_s(&f, "CONOUT$", "w", stdout);
 
+    std::filesystem::path LuaScriptPath = std::filesystem::current_path() / "Mods";
+
 #if GAME_NMH2
     GameModule = (uintptr_t)GetModuleHandle(L"nmh2.exe");
 #endif
@@ -124,7 +126,7 @@ DWORD WINAPI HackThread(HMODULE hModule)
         if (bIsActive)
         {
 #if WITH_LUA
-            for (const std::filesystem::directory_entry &el : std::filesystem::recursive_directory_iterator("D:/Steam/steamapps/common/No More Heroes 2 Desperate Struggle/Mods/", std::filesystem::directory_options::skip_permission_denied))
+            for (const std::filesystem::directory_entry &el : std::filesystem::recursive_directory_iterator(LuaScriptPath, std::filesystem::directory_options::skip_permission_denied))
             {
                 if (el.is_directory()) continue;
                 if (!el.path().has_extension()) continue;
