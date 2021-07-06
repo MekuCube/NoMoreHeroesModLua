@@ -12,6 +12,11 @@ mHRBattle* GetBattle()
     return (mHRBattle*)(GameModule + 0x9183A8);
 }
 
+CBgCtrl* GetBackgroundControl()
+{
+    return (CBgCtrl*)(GameModule + 0x915420);
+}
+
 HrMessage* GetHrMessage()
 {
     return (HrMessage*)mem::FindDMAAddy(GameModule + 0x90f1b4, { 0x8, 0x0 });
@@ -55,7 +60,7 @@ HrBattleIcon* GetHrBattleIcon()
 
 std::vector<mHRChara*> GetAllCharacters()
 {
-    mHRChara* Travis = GetTravis();
+    mHRPc* Travis = GetTravis();
     std::vector<mHRChara*> Result;
     if (Travis == nullptr)
         return Result;

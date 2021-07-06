@@ -55,8 +55,6 @@ DWORD WINAPI HackThread(HMODULE hModule)
     FILE* f;
     freopen_s(&f, "CONOUT$", "w", stdout);
 
-    std::filesystem::path LuaScriptPath = std::filesystem::current_path() / "Mods";
-
 #if GAME_NMH2
     GameModule = (uintptr_t)GetModuleHandle(L"nmh2.exe");
 #endif
@@ -69,6 +67,8 @@ DWORD WINAPI HackThread(HMODULE hModule)
 #if WITH_LUA
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
+
+    std::filesystem::path LuaScriptPath = std::filesystem::current_path() / "Mods";
 
     luabridge::Namespace GlobalNS = luabridge::getGlobalNamespace(L);
     BindLua_Exported(GlobalNS);
@@ -104,6 +104,9 @@ DWORD WINAPI HackThread(HMODULE hModule)
 
         luabridge::push(L, GetGamepad());
         lua_setglobal(L, "Gamepad");
+
+        luabridge::push(L, GetBackgroundControl());
+        lua_setglobal(L, "BackgroundControl");
 
         luabridge::push(L, GetHrBattleIcon());
         lua_setglobal(L, "BattleIcon");

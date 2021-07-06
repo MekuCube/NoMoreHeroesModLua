@@ -13,9 +13,12 @@ class HrScreenStatusBalloon;
 struct GXTexObj;
 struct tagGHMR_TEX;
 class HrScreenStatusSlot;
+struct Rectf;
+struct Vec2;
+class CNYDrawStringBase;
+class NYDrawString;
 class HrMap;
 class NYPhase;
-struct Vec2;
 class CHrHUDBase;
 class CHrHUDMoney;
 class CHrHUDTension;
@@ -168,10 +171,13 @@ class EffectKeepSmoke;
 class rQuad;
 class EffectFixFire;
 class HrOverLap;
+class CBgCtrl;
+class rSkyMap;
+class EffectSpeedBlur;
+class rSkyMapMenu;
+class HrStageDraw;
 struct HRSAVEDATA_DEBUNEKO;
 class WGcl;
-class commonObj;
-class CustomColliderObj;
 struct WGclSpec;
 struct WGclNodeSpec;
 struct WGclNodeShapeMeshSpec;
@@ -179,6 +185,8 @@ struct WGclNodeShapeMeshBspNodeSpec;
 struct WGclNodeShapeTriangleSpec;
 class ghmGcColl;
 class WGclNode;
+class commonObj;
+class CustomColliderObj;
 struct KPADEXStatus;
 struct KPADStatus;
 class mHRPad;
@@ -214,6 +222,7 @@ namespace mot
 {
 	class CYuremonoManager;
 }
+class CLensFlare;
 class mHRLockOnList;
 class EffectEnemyDamage;
 struct stThrowInfo;
@@ -232,6 +241,9 @@ class HrSysMessage;
 class CMotionPlayer;
 class CNYShopNPCTalkBase;
 struct HRSAVEDATA_SHOP;
+class HrScript;
+class EveObj;
+class HrMainMissionFax;
 class CCameraVibManager;
 class CCameraBank;
 class CCameraModeSubjective;
@@ -264,7 +276,14 @@ class CGameCamera;
 class CCameraman;
 class HrMiniDemoObj;
 class HrMiniDemoModel;
+struct TGMFLIGHT;
+class Archive;
+struct tagDARC_HEAD;
+struct tagDARC_FILETIME;
+struct tagDARC_FILEHEAD;
+struct tagDARC_DIRECTORY;
 class STG0202;
+struct GTEX_UVSET;
 struct tagHRTASKCHECK;
 class EffectBoneElect;
 class BoneStreamObj;
@@ -352,7 +371,6 @@ class GLBGuardState;
 class GLBAirKickState;
 class pcGLB;
 class EfRoboInterface;
-class EffectSpeedBlur;
 class CmDeathState;
 class SDPDeathState;
 class SDPComboState;
@@ -396,6 +414,20 @@ class EffectMoeMissile;
 
 /// Full Declaration
 
+// Unsupported operator
+//int32_t `dynamic initializer for 'HrMap::s_quickMoveTarget2Name''()
+// Unsupported operator
+//int32_t `dynamic initializer for 'HrScreenStatus::uni''()
+// Unsupported operator
+//int32_t `dynamic initializer for 'mHRChara::mCharaAnchor''()
+// Unsupported operator
+//int32_t `dynamic initializer for 'HrMessage::m_TopNode''()
+// Unsupported operator
+//int32_t `dynamic initializer for 'HrTalk::uni''()
+// Unsupported operator
+//int32_t `dynamic initializer for 'HrSysMessage::uni''()
+// Unsupported operator
+//int32_t `dynamic initializer for 'WGdl::mAnchor''()
 // enum enPopReqType
 enum enPopReqType : uint32_t
 {
@@ -654,6 +686,10 @@ public:
 	// <float z, offset 0x8>
 	float z = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	Vec() { x = 0; y = 0; z = 0; }
 	Vec(float inX, float inY, float inZ) { x = inX; y = inY; z = inZ; }
 	float Size() const { return sqrtf(x*x + y*y + z*z); }
@@ -775,6 +811,10 @@ public:
 	// <int32_t bossBreakSlowTick, offset 0x1c>
 	int32_t bossBreakSlowTick = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct stBtEffect [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(stBtEffect& InObject)
@@ -820,6 +860,104 @@ static_assert(sizeof(stBtEffect) == 32, "expected stBtEffect to be size 32");
 class mHRBattle
 {
 public:
+	/// Struct member variables
+
+	// <Unidentified data segment, offset 0x0>
+private:
+	char _UnidentifiedData_0[12];
+
+public:
+	// <float CameraProjection, offset 0xc>
+	float CameraProjection = 0;
+
+	// <Unidentified data segment, offset 0x10>
+private:
+	char _UnidentifiedData_16[12];
+
+public:
+	// <uint8_t LockNavelPos, offset 0x1c>
+	uint8_t LockNavelPos = 0;
+
+	// <Unidentified data segment, offset 0x1d>
+private:
+	char _UnidentifiedData_29[304];
+
+public:
+	// <uint8_t CameraMotionEndStop, offset 0x14d>
+	uint8_t CameraMotionEndStop = 0;
+
+	// <Unidentified data segment, offset 0x14e>
+private:
+	char _UnidentifiedData_334[2];
+
+public:
+	// <struct stBtEffect btEffect, offset 0x150>
+	struct stBtEffect btEffect;
+
+	// <Unidentified data segment, offset 0x170>
+private:
+	char _UnidentifiedData_368[24];
+
+public:
+	// <enum enPcKind PcKind, offset 0x188>
+	enum enPcKind PcKind;
+
+	// <class mHRPc* PcPtr, offset 0x18c>
+	class mHRPc* PcPtr = nullptr;
+
+	// <Unidentified data segment, offset 0x190>
+private:
+	char _UnidentifiedData_400[1076];
+
+public:
+	// <int32_t WeaponType, offset 0x5c4>
+	int32_t WeaponType = 0;
+
+	// <Unidentified data segment, offset 0x5c8>
+private:
+	char _UnidentifiedData_1480[564];
+
+public:
+	// <void* UnknownWeaponPtr, offset 0x7fc>
+	void* UnknownWeaponPtr = nullptr;
+
+	// <Unidentified data segment, offset 0x800>
+private:
+	char _UnidentifiedData_2048[142760];
+
+public:
+	// <int32_t TotalKillNum, offset 0x235a8>
+	int32_t TotalKillNum = 0;
+
+	// <int32_t KillNum, offset 0x235ac>
+	int32_t KillNum = 0;
+
+	// <int32_t RevengeMissionZakoKillNum, offset 0x235b0>
+	int32_t RevengeMissionZakoKillNum = 0;
+
+	// <Unidentified data segment, offset 0x235b4>
+private:
+	char _UnidentifiedData_144820[16];
+
+public:
+	// <float NpcAttackRate, offset 0x235c4>
+	float NpcAttackRate = 0;
+
+	// <Unidentified data segment, offset 0x235c8>
+private:
+	char _UnidentifiedData_144840[4];
+
+public:
+	// <uint8_t NewGameDataRequest, offset 0x235cc>
+	uint8_t NewGameDataRequest = 0;
+
+	// <Unidentified data segment, offset 0x235cd>
+private:
+	char _UnidentifiedData_144845[1647];
+
+public:
+	/// 170 Functions
+
 	// [Function] class mHRPc* __convention("thiscall") mHRBattle::mGetPcPtr(class mHRBattle* const this) [?mGetPcPtr@mHRBattle@@QAEPAVmHRPc@@XZ]
 	class mHRPc* mGetPcPtr()
 	{
@@ -2026,86 +2164,8 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x3fce60);
 		return mFunc(this, arg2);
 	}
-	/// Struct member variables
+	/// Meta
 
-	// <Unidentified data segment, offset 0x0>
-private:
-	char _UnidentifiedData_0[12];
-
-public:
-	// <float CameraProjection, offset 0xc>
-	float CameraProjection = 0;
-
-	// <Unidentified data segment, offset 0x10>
-private:
-	char _UnidentifiedData_16[12];
-
-public:
-	// <uint8_t LockNavelPos, offset 0x1c>
-	uint8_t LockNavelPos = 0;
-
-	// <Unidentified data segment, offset 0x1d>
-private:
-	char _UnidentifiedData_29[304];
-
-public:
-	// <uint8_t CameraMotionEndStop, offset 0x14d>
-	uint8_t CameraMotionEndStop = 0;
-
-	// <Unidentified data segment, offset 0x14e>
-private:
-	char _UnidentifiedData_334[2];
-
-public:
-	// <struct stBtEffect btEffect, offset 0x150>
-	struct stBtEffect btEffect;
-
-	// <Unidentified data segment, offset 0x170>
-private:
-	char _UnidentifiedData_368[24];
-
-public:
-	// <enum enPcKind PcKind, offset 0x188>
-	enum enPcKind PcKind;
-
-	// <class mHRPc* PcPtr, offset 0x18c>
-	class mHRPc* PcPtr = nullptr;
-
-	// <Unidentified data segment, offset 0x190>
-private:
-	char _UnidentifiedData_400[144408];
-
-public:
-	// <int32_t TotalKillNum, offset 0x235a8>
-	int32_t TotalKillNum = 0;
-
-	// <int32_t KillNum, offset 0x235ac>
-	int32_t KillNum = 0;
-
-	// <int32_t RevengeMissionZakoKillNum, offset 0x235b0>
-	int32_t RevengeMissionZakoKillNum = 0;
-
-	// <Unidentified data segment, offset 0x235b4>
-private:
-	char _UnidentifiedData_144820[16];
-
-public:
-	// <float NpcAttackRate, offset 0x235c4>
-	float NpcAttackRate = 0;
-
-	// <Unidentified data segment, offset 0x235c8>
-private:
-	char _UnidentifiedData_144840[4];
-
-public:
-	// <uint8_t NewGameDataRequest, offset 0x235cc>
-	uint8_t NewGameDataRequest = 0;
-
-	// <Unidentified data segment, offset 0x235cd>
-private:
-	char _UnidentifiedData_144845[1647];
-
-public:
 	std::string ToString() const { std::stringstream stream; stream << "class mHRBattle [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(mHRBattle& InObject)
@@ -2116,6 +2176,8 @@ public:
 		btEffect = InObject.btEffect;
 		PcKind = InObject.PcKind;
 		PcPtr = InObject.PcPtr;
+		WeaponType = InObject.WeaponType;
+		UnknownWeaponPtr = InObject.UnknownWeaponPtr;
 		TotalKillNum = InObject.TotalKillNum;
 		KillNum = InObject.KillNum;
 		RevengeMissionZakoKillNum = InObject.RevengeMissionZakoKillNum;
@@ -2134,6 +2196,9 @@ public:
 			.addProperty("btEffect", &mHRBattle::btEffect)
 			.addProperty("PcKind", &mHRBattle::PcKind)
 			.addProperty("PcPtr", &mHRBattle::PcPtr)
+			.addProperty("WeaponType", &mHRBattle::WeaponType)
+			// void type not supported in LuaBridge
+			//.addProperty("UnknownWeaponPtr", &mHRBattle::UnknownWeaponPtr)
 			.addProperty("TotalKillNum", &mHRBattle::TotalKillNum)
 			.addProperty("KillNum", &mHRBattle::KillNum)
 			.addProperty("RevengeMissionZakoKillNum", &mHRBattle::RevengeMissionZakoKillNum)
@@ -2342,6 +2407,8 @@ static_assert(sizeof(mHRBattle::CameraMotionEndStop) == 1, "expected mHRBattle::
 static_assert(sizeof(mHRBattle::btEffect) == 32, "expected mHRBattle::btEffect to be size 32");
 static_assert(sizeof(mHRBattle::PcKind) == 4, "expected mHRBattle::PcKind to be size 4");
 static_assert(sizeof(mHRBattle::PcPtr) == 4, "expected mHRBattle::PcPtr to be size 4");
+static_assert(sizeof(mHRBattle::WeaponType) == 4, "expected mHRBattle::WeaponType to be size 4");
+static_assert(sizeof(mHRBattle::UnknownWeaponPtr) == 4, "expected mHRBattle::UnknownWeaponPtr to be size 4");
 static_assert(sizeof(mHRBattle::TotalKillNum) == 4, "expected mHRBattle::TotalKillNum to be size 4");
 static_assert(sizeof(mHRBattle::KillNum) == 4, "expected mHRBattle::KillNum to be size 4");
 static_assert(sizeof(mHRBattle::RevengeMissionZakoKillNum) == 4, "expected mHRBattle::RevengeMissionZakoKillNum to be size 4");
@@ -2353,6 +2420,55 @@ static_assert(sizeof(mHRBattle) == 146492, "expected mHRBattle to be size 146492
 class HrMissionResult
 {
 public:
+	// enum HrMissionResult::D_RESULT_TYPE
+	enum D_RESULT_TYPE : uint32_t
+	{
+		// <D_RESULT_TYPE_FAILD = 0x0>
+		D_RESULT_TYPE_FAILD = 0,
+
+		// <XXX_D_RESULT_TYPE_SUCCESS = 0x1>
+		XXX_D_RESULT_TYPE_SUCCESS = 1,
+
+		// <D_RESULT_TYPE_REVENGE_SUCCESS = 0x2>
+		D_RESULT_TYPE_REVENGE_SUCCESS = 2,
+
+		// <D_RESULT_TYPE_RANKING_UP = 0x3>
+		D_RESULT_TYPE_RANKING_UP = 3,
+
+		// <D_RESULT_TYPE_MISSION_START = 0x4>
+		D_RESULT_TYPE_MISSION_START = 4,
+
+		// <D_RESULT_TYPE_MISSION_TIMEUP = 0x5>
+		D_RESULT_TYPE_MISSION_TIMEUP = 5,
+
+		// <D_RESULT_TYPE_SCORPION_TIMEUP = 0x6>
+		D_RESULT_TYPE_SCORPION_TIMEUP = 6,
+
+		// <D_RESULT_TYPE_REVENGE_FAILD = 0x7>
+		D_RESULT_TYPE_REVENGE_FAILD = 7,
+
+		// <D_RESULT_TYPE_REVENGE_TIMEUP = 0x8>
+		D_RESULT_TYPE_REVENGE_TIMEUP = 8
+
+	};
+
+	/// Struct member variables
+
+	// <Unidentified data segment, offset 0x0>
+private:
+	char _UnidentifiedData_0[100];
+
+public:
+	// <int32_t ResultType, offset 0x64>
+	int32_t ResultType = 0;
+
+	// <Unidentified data segment, offset 0x68>
+private:
+	char _UnidentifiedData_104[4504];
+
+public:
+	/// 22 Functions
+
 	// [Function] void __convention("thiscall") HrMissionResult::dSetCameraPos(class HrMissionResult* const this, int32_t arg2, struct Vec& arg3, struct Vec& arg4) [?dSetCameraPos@HrMissionResult@@QAEXHAAUVec@@0@Z]
 	void dSetCameraPos(int32_t arg2, struct Vec& arg3, struct Vec& arg4)
 	{
@@ -2388,38 +2504,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xafba0);
 		return mFunc(this);
 	}
-	// enum HrMissionResult::D_RESULT_TYPE
-	enum D_RESULT_TYPE : uint32_t
-	{
-		// <D_RESULT_TYPE_FAILD = 0x0>
-		D_RESULT_TYPE_FAILD = 0,
-
-		// <XXX_D_RESULT_TYPE_SUCCESS = 0x1>
-		XXX_D_RESULT_TYPE_SUCCESS = 1,
-
-		// <D_RESULT_TYPE_REVENGE_SUCCESS = 0x2>
-		D_RESULT_TYPE_REVENGE_SUCCESS = 2,
-
-		// <D_RESULT_TYPE_RANKING_UP = 0x3>
-		D_RESULT_TYPE_RANKING_UP = 3,
-
-		// <D_RESULT_TYPE_MISSION_START = 0x4>
-		D_RESULT_TYPE_MISSION_START = 4,
-
-		// <D_RESULT_TYPE_MISSION_TIMEUP = 0x5>
-		D_RESULT_TYPE_MISSION_TIMEUP = 5,
-
-		// <D_RESULT_TYPE_SCORPION_TIMEUP = 0x6>
-		D_RESULT_TYPE_SCORPION_TIMEUP = 6,
-
-		// <D_RESULT_TYPE_REVENGE_FAILD = 0x7>
-		D_RESULT_TYPE_REVENGE_FAILD = 7,
-
-		// <D_RESULT_TYPE_REVENGE_TIMEUP = 0x8>
-		D_RESULT_TYPE_REVENGE_TIMEUP = 8
-
-	};
-
 	// [Function] class HrTask* HrMissionResult::TestCreate() [?TestCreate@HrMissionResult@@SAPAVHrTask@@XZ]
 	static class HrTask* TestCreate()
 	{
@@ -2539,21 +2623,8 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x5b0110);
 		return mFunc(this);
 	}
-	/// Struct member variables
+	/// Meta
 
-	// <Unidentified data segment, offset 0x0>
-private:
-	char _UnidentifiedData_0[100];
-
-public:
-	// <int32_t ResultType, offset 0x64>
-	int32_t ResultType = 0;
-
-	// <Unidentified data segment, offset 0x68>
-private:
-	char _UnidentifiedData_104[4504];
-
-public:
 	std::string ToString() const { std::stringstream stream; stream << "class HrMissionResult [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(HrMissionResult& InObject)
@@ -2790,6 +2861,10 @@ private:
 	char _UnidentifiedData_0[432];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CHrHUDDemoButton [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CHrHUDDemoButton& InObject)
@@ -2811,13 +2886,6 @@ static_assert(sizeof(CHrHUDDemoButton) == 432, "expected CHrHUDDemoButton to be 
 class HrScreenStatusBalloon
 {
 public:
-	// [Function] uint8_t __convention("thiscall") HrScreenStatusBalloon::IsActive(class HrScreenStatusBalloon* const this) [?IsActive@HrScreenStatusBalloon@@QAE_NXZ]
-	uint8_t IsActive()
-	{
-		typedef uint8_t(__thiscall* _Func)(class HrScreenStatusBalloon* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0xafbf0);
-		return mFunc(this);
-	}
 	// enum HrScreenStatusBalloon::OBJ_ID
 	enum OBJ_ID : uint32_t
 	{
@@ -2871,6 +2939,22 @@ public:
 
 	};
 
+	/// Struct member variables
+
+	// <Unidentified data segment, offset 0x0>
+private:
+	char _UnidentifiedData_0[1696];
+
+public:
+	/// 8 Functions
+
+	// [Function] uint8_t __convention("thiscall") HrScreenStatusBalloon::IsActive(class HrScreenStatusBalloon* const this) [?IsActive@HrScreenStatusBalloon@@QAE_NXZ]
+	uint8_t IsActive()
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrScreenStatusBalloon* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xafbf0);
+		return mFunc(this);
+	}
 	// [Function] uint8_t __convention("thiscall") HrScreenStatusBalloon::IsAppear(class HrScreenStatusBalloon* const this, enum HrScreenStatusBalloon::OBJ_ID arg2) [?IsAppear@HrScreenStatusBalloon@@QAE_NW4OBJ_ID@1@@Z]
 	uint8_t IsAppear(/* enum HrScreenStatusBalloon::OBJ_ID */ uint32_t arg2)
 	{
@@ -2920,13 +3004,8 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x5a17b0);
 		return mFunc(this, (enum HrScreenStatusBalloon::OBJ_ID)arg2, arg3);
 	}
-	/// Struct member variables
+	/// Meta
 
-	// <Unidentified data segment, offset 0x0>
-private:
-	char _UnidentifiedData_0[1696];
-
-public:
 	std::string ToString() const { std::stringstream stream; stream << "class HrScreenStatusBalloon [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(HrScreenStatusBalloon& InObject)
@@ -3086,6 +3165,10 @@ public:
 	// <class GXTexture* pTex, offset 0x0>
 	class GXTexture* pTex = nullptr;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct GXTexObj [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(GXTexObj& InObject)
@@ -3156,6 +3239,10 @@ public:
 	// <enum GHMR_TEXDOT_ASPECT Aspect, offset 0x24>
 	enum GHMR_TEXDOT_ASPECT Aspect;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct tagGHMR_TEX [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(tagGHMR_TEX& InObject)
@@ -3218,6 +3305,60 @@ static_assert(sizeof(tagGHMR_TEX) == 40, "expected tagGHMR_TEX to be size 40");
 class HrScreenStatusSlot
 {
 public:
+	/// Struct member variables
+
+	// <struct tagGHMR_TEX* m_pTex, offset 0x0>
+	struct tagGHMR_TEX* m_pTex = nullptr;
+
+	// <char m_SlotDeme[0x3], offset 0x4>
+	char m_SlotDeme[3];
+
+	// <Unidentified data segment, offset 0x7>
+private:
+	char _UnidentifiedData_7[1];
+
+public:
+	// <int16_t m_SlotDemeCounter[0x3], offset 0x8>
+	int16_t m_SlotDemeCounter[3];
+
+	// <int16_t m_SlotCounter, offset 0xe>
+	int16_t m_SlotCounter = 0;
+
+	// <int32_t m_zoromeCounter, offset 0x10>
+	int32_t m_zoromeCounter = 0;
+
+	// <uint8_t m_PlayZoroSound, offset 0x14>
+	uint8_t m_PlayZoroSound = 0;
+
+	// <uint8_t m_LeachHazure, offset 0x15>
+	uint8_t m_LeachHazure = 0;
+
+	// <uint8_t m_PlayLeachSound, offset 0x16>
+	uint8_t m_PlayLeachSound = 0;
+
+	// <uint8_t m_bZoromeSorotta, offset 0x17>
+	uint8_t m_bZoromeSorotta = 0;
+
+	// <uint8_t m_SlotZoromeStartToEndFlag, offset 0x18>
+	uint8_t m_SlotZoromeStartToEndFlag = 0;
+
+	// <uint8_t m_SlotSPAttackStartFlag, offset 0x19>
+	uint8_t m_SlotSPAttackStartFlag = 0;
+
+	// <int16_t m_SlotZoromeZOROME, offset 0x1a>
+	int16_t m_SlotZoromeZOROME = 0;
+
+	// <int32_t m_SlotZoroLeaveWaitCnt, offset 0x1c>
+	int32_t m_SlotZoroLeaveWaitCnt = 0;
+
+	// <int32_t m_SprLchSoundID, offset 0x20>
+	int32_t m_SprLchSoundID = 0;
+
+	// <uint32_t flaglmode, offset 0x24>
+	uint32_t flaglmode = 0;
+
+	/// 17 Functions
+
 	// [Function] uint8_t __convention("thiscall") HrScreenStatusSlot::dGetSlotZoromeBeginToEnd(class HrScreenStatusSlot* const this) [?dGetSlotZoromeBeginToEnd@HrScreenStatusSlot@@QAE_NXZ]
 	uint8_t dGetSlotZoromeBeginToEnd()
 	{
@@ -3337,57 +3478,7 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x567650);
 		return mFunc(this, arg2);
 	}
-	/// Struct member variables
-
-	// <struct tagGHMR_TEX* m_pTex, offset 0x0>
-	struct tagGHMR_TEX* m_pTex = nullptr;
-
-	// <char m_SlotDeme[0x3], offset 0x4>
-	char m_SlotDeme[3];
-
-	// <Unidentified data segment, offset 0x7>
-private:
-	char _UnidentifiedData_7[1];
-
-public:
-	// <int16_t m_SlotDemeCounter[0x3], offset 0x8>
-	int16_t m_SlotDemeCounter[3];
-
-	// <int16_t m_SlotCounter, offset 0xe>
-	int16_t m_SlotCounter = 0;
-
-	// <int32_t m_zoromeCounter, offset 0x10>
-	int32_t m_zoromeCounter = 0;
-
-	// <uint8_t m_PlayZoroSound, offset 0x14>
-	uint8_t m_PlayZoroSound = 0;
-
-	// <uint8_t m_LeachHazure, offset 0x15>
-	uint8_t m_LeachHazure = 0;
-
-	// <uint8_t m_PlayLeachSound, offset 0x16>
-	uint8_t m_PlayLeachSound = 0;
-
-	// <uint8_t m_bZoromeSorotta, offset 0x17>
-	uint8_t m_bZoromeSorotta = 0;
-
-	// <uint8_t m_SlotZoromeStartToEndFlag, offset 0x18>
-	uint8_t m_SlotZoromeStartToEndFlag = 0;
-
-	// <uint8_t m_SlotSPAttackStartFlag, offset 0x19>
-	uint8_t m_SlotSPAttackStartFlag = 0;
-
-	// <int16_t m_SlotZoromeZOROME, offset 0x1a>
-	int16_t m_SlotZoromeZOROME = 0;
-
-	// <int32_t m_SlotZoroLeaveWaitCnt, offset 0x1c>
-	int32_t m_SlotZoroLeaveWaitCnt = 0;
-
-	// <int32_t m_SprLchSoundID, offset 0x20>
-	int32_t m_SprLchSoundID = 0;
-
-	// <uint32_t flaglmode, offset 0x24>
-	uint32_t flaglmode = 0;
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class HrScreenStatusSlot [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -3468,17 +3559,551 @@ static_assert(sizeof(HrScreenStatusSlot::m_SprLchSoundID) == 4, "expected HrScre
 static_assert(sizeof(HrScreenStatusSlot::flaglmode) == 4, "expected HrScreenStatusSlot::flaglmode to be size 4");
 static_assert(sizeof(HrScreenStatusSlot) == 40, "expected HrScreenStatusSlot to be size 40");
 
+// [Structure] struct Rectf
+struct Rectf
+{
+public:
+	/// Struct member variables
+
+	// <float left, offset 0x0>
+	float left = 0;
+
+	// <float top, offset 0x4>
+	float top = 0;
+
+	// <float right, offset 0x8>
+	float right = 0;
+
+	// <float bottom, offset 0xc>
+	float bottom = 0;
+
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "struct Rectf [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(Rectf& InObject)
+	{
+		left = InObject.left;
+		top = InObject.top;
+		right = InObject.right;
+		bottom = InObject.bottom;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<Rectf>("Rectf")
+			.addFunction("__tostring", &Rectf::ToString)
+			.addFunction("GetPtrAddr", &Rectf::GetPtrAddr)
+			.addProperty("left", &Rectf::left)
+			.addProperty("top", &Rectf::top)
+			.addProperty("right", &Rectf::right)
+			.addProperty("bottom", &Rectf::bottom)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(Rectf::left) == 4, "expected Rectf::left to be size 4");
+static_assert(sizeof(Rectf::top) == 4, "expected Rectf::top to be size 4");
+static_assert(sizeof(Rectf::right) == 4, "expected Rectf::right to be size 4");
+static_assert(sizeof(Rectf::bottom) == 4, "expected Rectf::bottom to be size 4");
+static_assert(sizeof(Rectf) == 16, "expected Rectf to be size 16");
+
+// enum GFONTTYPE_NUM
+enum GFONTTYPE_NUM : uint32_t
+{
+	// <GFONT_R = 0x0>
+	GFONT_R = 0,
+
+	// <GFONT_S = 0x1>
+	GFONT_S = 1,
+
+	// <GFONT_S_EXPLANATION = 0x2>
+	GFONT_S_EXPLANATION = 2,
+
+	// <GFONT_NUM_MAX = 0x3>
+	GFONT_NUM_MAX = 3
+
+};
+
+// [Structure] struct Vec2
+struct Vec2
+{
+public:
+	/// Struct member variables
+
+	// <float x, offset 0x0>
+	float x = 0;
+
+	// <float y, offset 0x4>
+	float y = 0;
+
+	/// 0 Functions
+
+	/// Meta
+
+	Vec2() { x = 0; y = 0; }
+	Vec2(float inX, float inY) { x = inX; y = inY; }
+	float Size() const { return sqrtf(x*x + y*y); }
+	float SizeSquared() const { return x*x + y*y; }
+	std::string ToString() const { std::stringstream stream; stream << "struct Vec2 [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(Vec2& InObject)
+	{
+		x = InObject.x;
+		y = InObject.y;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<Vec2>("Vec2")
+			.addFunction("__tostring", &Vec2::ToString)
+			.addFunction("GetPtrAddr", &Vec2::GetPtrAddr)
+			.addProperty("x", &Vec2::x)
+			.addProperty("y", &Vec2::y)
+			.addConstructor<void (*) (void)>()
+			.addConstructor<void (*) (float, float)>()
+			.addFunction("SizeSquared", &Vec2::SizeSquared)
+			.addFunction("Size", &Vec2::Size)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(Vec2::x) == 4, "expected Vec2::x to be size 4");
+static_assert(sizeof(Vec2::y) == 4, "expected Vec2::y to be size 4");
+static_assert(sizeof(Vec2) == 8, "expected Vec2 to be size 8");
+
+// [Structure] class CNYDrawStringBase
+class CNYDrawStringBase
+{
+public:
+	// enum CNYDrawStringBase::ALIGNMENT_TYPE_BASE
+	enum ALIGNMENT_TYPE_BASE : uint32_t
+	{
+		// <ALIGNMENT_TYPE_LEFT = 0x0>
+		ALIGNMENT_TYPE_LEFT = 0,
+
+		// <ALIGNMENT_TYPE_MIDDLE = 0x1>
+		ALIGNMENT_TYPE_MIDDLE = 1,
+
+		// <ALIGNMENT_TYPE_RIGHT = 0x2>
+		ALIGNMENT_TYPE_RIGHT = 2
+
+	};
+
+	/// Struct member variables
+
+	// <void* (* field_0)[0x1], offset 0x0>
+	void* (* field_0)[0x1];
+
+	// <int32_t m_mesHandle, offset 0x4>
+	int32_t m_mesHandle = 0;
+
+	// <char* m_pstr, offset 0x8>
+	char* m_pstr = nullptr;
+
+	// <struct Vec2 m_pos, offset 0xc>
+	struct Vec2 m_pos;
+
+	// <struct Vec2 m_realPos, offset 0x14>
+	struct Vec2 m_realPos;
+
+	// <uint32_t m_color, offset 0x1c>
+	uint32_t m_color = 0;
+
+	// <enum GFONTTYPE_NUM m_fontType, offset 0x20>
+	enum GFONTTYPE_NUM m_fontType;
+
+	// <float m_fontSize, offset 0x24>
+	float m_fontSize = 0;
+
+	// <enum CNYDrawStringBase::ALIGNMENT_TYPE_BASE m_alignment, offset 0x28>
+	enum CNYDrawStringBase::ALIGNMENT_TYPE_BASE m_alignment;
+
+	// <uint8_t m_noGSYSMES, offset 0x2c>
+	uint8_t m_noGSYSMES = 0;
+
+	// <uint8_t m_beUpdate, offset 0x2d>
+	uint8_t m_beUpdate = 0;
+
+	// <Unidentified data segment, offset 0x2e>
+private:
+	char _UnidentifiedData_46[2];
+
+public:
+	// <struct Rectf m_WindowRect, offset 0x30>
+	struct Rectf m_WindowRect;
+
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "class CNYDrawStringBase [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(CNYDrawStringBase& InObject)
+	{
+		m_mesHandle = InObject.m_mesHandle;
+		m_pstr = InObject.m_pstr;
+		m_pos = InObject.m_pos;
+		m_realPos = InObject.m_realPos;
+		m_color = InObject.m_color;
+		m_fontType = InObject.m_fontType;
+		m_fontSize = InObject.m_fontSize;
+		m_alignment = InObject.m_alignment;
+		m_noGSYSMES = InObject.m_noGSYSMES;
+		m_beUpdate = InObject.m_beUpdate;
+		m_WindowRect = InObject.m_WindowRect;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<CNYDrawStringBase>("CNYDrawStringBase")
+			.addFunction("__tostring", &CNYDrawStringBase::ToString)
+			.addFunction("GetPtrAddr", &CNYDrawStringBase::GetPtrAddr)
+			// delegates are not supported in LuaBridge
+			//.addProperty("field_0", &CNYDrawStringBase::field_0)
+			.addProperty("m_mesHandle", &CNYDrawStringBase::m_mesHandle)
+			// char* type not supported in LuaBridge
+			//.addProperty("m_pstr", &CNYDrawStringBase::m_pstr)
+			.addProperty("m_pos", &CNYDrawStringBase::m_pos)
+			.addProperty("m_realPos", &CNYDrawStringBase::m_realPos)
+			.addProperty("m_color", &CNYDrawStringBase::m_color)
+			.addProperty("m_fontType", &CNYDrawStringBase::m_fontType)
+			.addProperty("m_fontSize", &CNYDrawStringBase::m_fontSize)
+			.addProperty("m_alignment", &CNYDrawStringBase::m_alignment)
+			.addProperty("m_noGSYSMES", &CNYDrawStringBase::m_noGSYSMES)
+			.addProperty("m_beUpdate", &CNYDrawStringBase::m_beUpdate)
+			.addProperty("m_WindowRect", &CNYDrawStringBase::m_WindowRect)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(CNYDrawStringBase::field_0) == 4, "expected CNYDrawStringBase::field_0 to be size 4");
+static_assert(sizeof(CNYDrawStringBase::m_mesHandle) == 4, "expected CNYDrawStringBase::m_mesHandle to be size 4");
+static_assert(sizeof(CNYDrawStringBase::m_pstr) == 4, "expected CNYDrawStringBase::m_pstr to be size 4");
+static_assert(sizeof(CNYDrawStringBase::m_pos) == 8, "expected CNYDrawStringBase::m_pos to be size 8");
+static_assert(sizeof(CNYDrawStringBase::m_realPos) == 8, "expected CNYDrawStringBase::m_realPos to be size 8");
+static_assert(sizeof(CNYDrawStringBase::m_color) == 4, "expected CNYDrawStringBase::m_color to be size 4");
+static_assert(sizeof(CNYDrawStringBase::m_fontType) == 4, "expected CNYDrawStringBase::m_fontType to be size 4");
+static_assert(sizeof(CNYDrawStringBase::m_fontSize) == 4, "expected CNYDrawStringBase::m_fontSize to be size 4");
+static_assert(sizeof(CNYDrawStringBase::m_alignment) == 4, "expected CNYDrawStringBase::m_alignment to be size 4");
+static_assert(sizeof(CNYDrawStringBase::m_noGSYSMES) == 1, "expected CNYDrawStringBase::m_noGSYSMES to be size 1");
+static_assert(sizeof(CNYDrawStringBase::m_beUpdate) == 1, "expected CNYDrawStringBase::m_beUpdate to be size 1");
+static_assert(sizeof(CNYDrawStringBase::m_WindowRect) == 16, "expected CNYDrawStringBase::m_WindowRect to be size 16");
+static_assert(sizeof(CNYDrawStringBase) == 64, "expected CNYDrawStringBase to be size 64");
+
+// [Structure] class NYDrawString
+class NYDrawString : public CNYDrawStringBase
+{
+public:
+	// enum NYDrawString::ALIGNMENT_TYPE
+	enum ALIGNMENT_TYPE : uint32_t
+	{
+		// <ALIGNMENT_TYPE_LEFT = 0x0>
+		ALIGNMENT_TYPE_LEFT = 0,
+
+		// <ALIGNMENT_TYPE_MIDDLE = 0x1>
+		ALIGNMENT_TYPE_MIDDLE = 1,
+
+		// <ALIGNMENT_TYPE_RIGHT = 0x2>
+		ALIGNMENT_TYPE_RIGHT = 2
+
+	};
+
+	/// Struct member variables
+
+	// <class CNYDrawStringBase field_0, offset 0x0>
+	// class CNYDrawStringBase Super;
+
+	// <char m_str[0x40], offset 0x40>
+	char m_str[64];
+
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "class NYDrawString [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(NYDrawString& InObject)
+	{
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.deriveClass<NYDrawString, CNYDrawStringBase>("NYDrawString")
+			.addFunction("__tostring", &NYDrawString::ToString)
+			.addFunction("GetPtrAddr", &NYDrawString::GetPtrAddr)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("m_str", &NYDrawString::m_str)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(NYDrawString::m_str) == 64, "expected NYDrawString::m_str to be size 64");
+static_assert(sizeof(NYDrawString) == 128, "expected NYDrawString to be size 128");
+
+// enum PJ_QUICK_MOVE_TARGET
+enum PJ_QUICK_MOVE_TARGET : uint32_t
+{
+	// <PJ_QUICK_MOVE_TARGET_NONE = 0xffffffffffffffff>
+	PJ_QUICK_MOVE_TARGET_NONE = UINT32_MAX,
+
+	// <PJ_QUICK_MOVE_TARGET_MOTEL = 0x0>
+	PJ_QUICK_MOVE_TARGET_MOTEL = 0,
+
+	// <PJ_QUICK_MOVE_TARGET_NAOMIS_LAB = 0x1>
+	PJ_QUICK_MOVE_TARGET_NAOMIS_LAB = 1,
+
+	// <PJ_QUICK_MOVE_TARGET_AIRPORT51 = 0x2>
+	PJ_QUICK_MOVE_TARGET_AIRPORT51 = 2,
+
+	// <PJ_QUICK_MOVE_TARGET_TRAINING_GYM = 0x3>
+	PJ_QUICK_MOVE_TARGET_TRAINING_GYM = 3,
+
+	// <PJ_QUICK_MOVE_TARGET_THUNDER_RYU = 0x4>
+	PJ_QUICK_MOVE_TARGET_THUNDER_RYU = 4,
+
+	// <PJ_QUICK_MOVE_TARGET_BUG_BUSTER = 0x5>
+	PJ_QUICK_MOVE_TARGET_BUG_BUSTER = 5,
+
+	// <PJ_QUICK_MOVE_TARGET_PIPE_FITTER = 0x6>
+	PJ_QUICK_MOVE_TARGET_PIPE_FITTER = 6,
+
+	// <PJ_QUICK_MOVE_TARGET_COCONUT_COLLECTOR = 0x7>
+	PJ_QUICK_MOVE_TARGET_COCONUT_COLLECTOR = 7,
+
+	// <PJ_QUICK_MOVE_TARGET_SPACE_GARBAGE = 0x8>
+	PJ_QUICK_MOVE_TARGET_SPACE_GARBAGE = 8,
+
+	// <PJ_QUICK_MOVE_TARGET_PIZZA_DELIVER = 0x9>
+	PJ_QUICK_MOVE_TARGET_PIZZA_DELIVER = 9,
+
+	// <PJ_QUICK_MOVE_TARGET_TILE_PUZZLE = 0xa>
+	PJ_QUICK_MOVE_TARGET_TILE_PUZZLE = 10,
+
+	// <PJ_QUICK_MOVE_TARGET_STEAK_HOUSE = 0xb>
+	PJ_QUICK_MOVE_TARGET_STEAK_HOUSE = 11,
+
+	// <PJ_QUICK_MOVE_TARGET_BACK_ALLEY_1 = 0xc>
+	PJ_QUICK_MOVE_TARGET_BACK_ALLEY_1 = 12,
+
+	// <PJ_QUICK_MOVE_TARGET_BACK_ALLEY_2 = 0xd>
+	PJ_QUICK_MOVE_TARGET_BACK_ALLEY_2 = 13,
+
+	// <PJ_QUICK_MOVE_TARGET_CONSTRUCTION_FIELD_1 = 0xe>
+	PJ_QUICK_MOVE_TARGET_CONSTRUCTION_FIELD_1 = 14,
+
+	// <PJ_QUICK_MOVE_TARGET_CONSTRUCTION_FIELD_2 = 0xf>
+	PJ_QUICK_MOVE_TARGET_CONSTRUCTION_FIELD_2 = 15,
+
+	// <PJ_QUICK_MOVE_TARGET_UNDER_ELEVATED_1 = 0x10>
+	PJ_QUICK_MOVE_TARGET_UNDER_ELEVATED_1 = 16,
+
+	// <PJ_QUICK_MOVE_TARGET_UNDER_ELEVATED_2 = 0x11>
+	PJ_QUICK_MOVE_TARGET_UNDER_ELEVATED_2 = 17,
+
+	// <PJ_QUICK_MOVE_TARGET_RESTAURANT_1 = 0x12>
+	PJ_QUICK_MOVE_TARGET_RESTAURANT_1 = 18,
+
+	// <PJ_QUICK_MOVE_TARGET_RESTAURANT_2 = 0x13>
+	PJ_QUICK_MOVE_TARGET_RESTAURANT_2 = 19,
+
+	// <PJ_QUICK_MOVE_TARGET_BAR_1 = 0x14>
+	PJ_QUICK_MOVE_TARGET_BAR_1 = 20,
+
+	// <PJ_QUICK_MOVE_TARGET_BAR_2 = 0x15>
+	PJ_QUICK_MOVE_TARGET_BAR_2 = 21,
+
+	// <PJ_QUICK_MOVE_TARGET_MAX = 0x16>
+	PJ_QUICK_MOVE_TARGET_MAX = 22
+
+};
+
 // [Structure] class HrMap
 class HrMap
 {
 public:
-	// [Function] uint8_t __convention("thiscall") HrMap::IsDied(class HrMap* const this, class mHRChara* arg2) [?IsDied@HrMap@@IAE_NPAVmHRChara@@@Z]
-	uint8_t IsDied(class mHRChara* arg2)
+	// enum HrMap::ICON_TYPE
+	enum ICON_TYPE : uint32_t
 	{
-		typedef uint8_t(__thiscall* _Func)(class HrMap* const thisPtr, class mHRChara* arg2);
-		_Func mFunc = (_Func)(GameModule + 0xaceb0);
-		return mFunc(this, arg2);
-	}
+		// <ICON_TYPE_PC = 0x0>
+		ICON_TYPE_PC = 0,
+
+		// <ICON_TYPE_ENEMY = 0x1>
+		ICON_TYPE_ENEMY = 1,
+
+		// <ICON_TYPE_BOSS = 0x2>
+		ICON_TYPE_BOSS = 2,
+
+		// <ICON_TYPE_SAVE_POINT = 0x3>
+		ICON_TYPE_SAVE_POINT = 3,
+
+		// <ICON_TYPE_ACCESS_POINT_ON = 0x4>
+		ICON_TYPE_ACCESS_POINT_ON = 4,
+
+		// <ICON_TYPE_ACCESS_POINT_OFF = 0x5>
+		ICON_TYPE_ACCESS_POINT_OFF = 5,
+
+		// <ICON_TYPE_BOSS_POINT = 0x6>
+		ICON_TYPE_BOSS_POINT = 6,
+
+		// <ICON_TYPE_TREASURE_BOX = 0x7>
+		ICON_TYPE_TREASURE_BOX = 7,
+
+		// <ICON_TYPE_SNEAK_ENEMY = 0x8>
+		ICON_TYPE_SNEAK_ENEMY = 8,
+
+		// <ICON_TYPE_SHOOTER_ENEMY = 0x9>
+		ICON_TYPE_SHOOTER_ENEMY = 9,
+
+		// <ICON_TYPE_BIKE = 0xa>
+		ICON_TYPE_BIKE = 10,
+
+		// <ICON_TYPE_MOTEL = 0xb>
+		ICON_TYPE_MOTEL = 11,
+
+		// <ICON_TYPE_AIRPORT51 = 0xc>
+		ICON_TYPE_AIRPORT51 = 12,
+
+		// <ICON_TYPE_NAOMIS_LAB = 0xd>
+		ICON_TYPE_NAOMIS_LAB = 13,
+
+		// <ICON_TYPE_TRAINING_GYM = 0xe>
+		ICON_TYPE_TRAINING_GYM = 14,
+
+		// <ICON_TYPE_THUNDER_RYU = 0xf>
+		ICON_TYPE_THUNDER_RYU = 15,
+
+		// <ICON_TYPE_JOB_MISSION = 0x10>
+		ICON_TYPE_JOB_MISSION = 16,
+
+		// <ICON_TYPE_KILL_MISSION = 0x11>
+		ICON_TYPE_KILL_MISSION = 17,
+
+		// <ICON_TYPE_MAX = 0x12>
+		ICON_TYPE_MAX = 18
+
+	};
+
+	// [Structure] struct HrMap::DrawData
+	struct DrawData
+	{
+	public:
+		/// Struct member variables
+
+		// <enum HrMap::ICON_TYPE m_iconType, offset 0x0>
+		enum ICON_TYPE m_iconType;
+
+		// <struct Vec m_pos3D, offset 0x4>
+		struct Vec m_pos3D;
+
+		// <struct Vec2 m_pos, offset 0x10>
+		struct Vec2 m_pos;
+
+		// <struct Vec2 m_wh, offset 0x18>
+		struct Vec2 m_wh;
+
+		// <float m_rotAngle, offset 0x20>
+		float m_rotAngle = 0;
+
+		// <float m_scale, offset 0x24>
+		float m_scale = 0;
+
+		// <struct tagGHMR_TEX* m_pTex, offset 0x28>
+		struct tagGHMR_TEX* m_pTex = nullptr;
+
+		// <uint32_t m_color, offset 0x2c>
+		uint32_t m_color = 0;
+
+		/// 0 Functions
+
+		/// Meta
+
+		std::string ToString() const { std::stringstream stream; stream << "struct DrawData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		int GetPtrAddr() const { return (int)this; }
+		void CopyFrom(HrMap::DrawData& InObject)
+		{
+			m_iconType = InObject.m_iconType;
+			m_pos3D = InObject.m_pos3D;
+			m_pos = InObject.m_pos;
+			m_wh = InObject.m_wh;
+			m_rotAngle = InObject.m_rotAngle;
+			m_scale = InObject.m_scale;
+			m_pTex = InObject.m_pTex;
+			m_color = InObject.m_color;
+		}
+#ifdef WITH_LUA
+		static void BindLua(luabridge::Namespace& NS)
+		{
+			NS = NS.beginClass<HrMap::DrawData>("HrMap_DrawData")
+				.addFunction("__tostring", &HrMap::DrawData::ToString)
+				.addFunction("GetPtrAddr", &HrMap::DrawData::GetPtrAddr)
+				.addProperty("m_iconType", &HrMap::DrawData::m_iconType)
+				.addProperty("m_pos3D", &HrMap::DrawData::m_pos3D)
+				.addProperty("m_pos", &HrMap::DrawData::m_pos)
+				.addProperty("m_wh", &HrMap::DrawData::m_wh)
+				.addProperty("m_rotAngle", &HrMap::DrawData::m_rotAngle)
+				.addProperty("m_scale", &HrMap::DrawData::m_scale)
+				.addProperty("m_pTex", &HrMap::DrawData::m_pTex)
+				.addProperty("m_color", &HrMap::DrawData::m_color)
+			.endClass();
+		}
+#endif
+	};
+	static_assert(sizeof(HrMap::DrawData::m_iconType) == 4, "expected HrMap::DrawData::m_iconType to be size 4");
+	static_assert(sizeof(HrMap::DrawData::m_pos3D) == 12, "expected HrMap::DrawData::m_pos3D to be size 12");
+	static_assert(sizeof(HrMap::DrawData::m_pos) == 8, "expected HrMap::DrawData::m_pos to be size 8");
+	static_assert(sizeof(HrMap::DrawData::m_wh) == 8, "expected HrMap::DrawData::m_wh to be size 8");
+	static_assert(sizeof(HrMap::DrawData::m_rotAngle) == 4, "expected HrMap::DrawData::m_rotAngle to be size 4");
+	static_assert(sizeof(HrMap::DrawData::m_scale) == 4, "expected HrMap::DrawData::m_scale to be size 4");
+	static_assert(sizeof(HrMap::DrawData::m_pTex) == 4, "expected HrMap::DrawData::m_pTex to be size 4");
+	static_assert(sizeof(HrMap::DrawData::m_color) == 4, "expected HrMap::DrawData::m_color to be size 4");
+	static_assert(sizeof(HrMap::DrawData) == 48, "expected HrMap::DrawData to be size 48");
+
+	// enum HrMap::SCALE_TYPE
+	enum SCALE_TYPE : uint32_t
+	{
+		// <SCALE_TYPE_SMALL = 0x0>
+		SCALE_TYPE_SMALL = 0,
+
+		// <SCALE_TYPE_MEDIUM = 0x1>
+		SCALE_TYPE_MEDIUM = 1,
+
+		// <SCALE_TYPE_LARGE = 0x2>
+		SCALE_TYPE_LARGE = 2,
+
+		// <SCALE_TYPE_ALL = 0x3>
+		SCALE_TYPE_ALL = 3
+
+	};
+
+	// enum HrMap::TYPE
+	enum TYPE : uint32_t
+	{
+		// <TYPE_PREV = 0x0>
+		TYPE_PREV = 0,
+
+		// <TYPE_VIEW = 0x1>
+		TYPE_VIEW = 1,
+
+		// <TYPE_MINI = 0x2>
+		TYPE_MINI = 2,
+
+		// <TYPE_MINI_ROT = 0x3>
+		TYPE_MINI_ROT = 3,
+
+		// <TYPE_MINI_TILTED = 0x4>
+		TYPE_MINI_TILTED = 4,
+
+		// <TYPE_MINI_ROT_TILTED = 0x5>
+		TYPE_MINI_ROT_TILTED = 5,
+
+		// <TYPE_MAX = 0x6>
+		TYPE_MAX = 6
+
+	};
+
 	/// Struct member variables
 
 	// <Unidentified data segment, offset 0x0>
@@ -3502,6 +4127,229 @@ private:
 	char _UnidentifiedData_7081[763];
 
 public:
+	/// 31 Functions
+
+	// [Function] int32_t __convention("thiscall") HrMap::SetIconPos(class HrMap* const this, struct Vec& arg2) [?SetIconPos@HrMap@@QAEHABUVec@@@Z]
+	int32_t SetIconPos(struct Vec& arg2)
+	{
+		typedef int32_t(__thiscall* _Func)(class HrMap* const thisPtr, struct Vec& arg2);
+		_Func mFunc = (_Func)(GameModule + 0xa21e0);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") HrMap::ClearIcon(class HrMap* const this, int32_t arg2) [?ClearIcon@HrMap@@QAEXH@Z]
+	void ClearIcon(int32_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class HrMap* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0xa21f0);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") HrMap::SetFlashATMicon(class HrMap* const this, uint8_t arg2) [?SetFlashATMicon@HrMap@@QAEX_N@Z]
+	void SetFlashATMicon(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class HrMap* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0xa2200);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") HrMap::IsMiniMap(class HrMap* const this) [?IsMiniMap@HrMap@@QBE_NXZ]
+	uint8_t IsMiniMap()
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xacdf0);
+		return mFunc(this);
+	}
+	// [Function] float __convention("thiscall") HrMap::GetWidth3D(class HrMap* const this) [?GetWidth3D@HrMap@@QBEMXZ]
+	float GetWidth3D()
+	{
+		typedef float(__thiscall* _Func)(class HrMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xace00);
+		return mFunc(this);
+	}
+	// [Function] float __convention("thiscall") HrMap::GetHeight3D(class HrMap* const this) [?GetHeight3D@HrMap@@QBEMXZ]
+	float GetHeight3D()
+	{
+		typedef float(__thiscall* _Func)(class HrMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xace30);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") HrMap::SetScissorRect(class HrMap* const this, float arg2, float arg3, float arg4, float arg5) [?SetScissorRect@HrMap@@QAEXMMMM@Z]
+	void SetScissorRect(float arg2, float arg3, float arg4, float arg5)
+	{
+		typedef void(__thiscall* _Func)(class HrMap* const thisPtr, float arg2, float arg3, float arg4, float arg5);
+		_Func mFunc = (_Func)(GameModule + 0xace60);
+		return mFunc(this, arg2, arg3, arg4, arg5);
+	}
+	// [Function] struct Vec __convention("thiscall") HrMap::GetMapOffset(class HrMap* const this) [?GetMapOffset@HrMap@@IAE?BUVec@@XZ]
+	struct Vec GetMapOffset()
+	{
+		typedef struct Vec(__thiscall* _Func)(class HrMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xace90);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") HrMap::IsDied(class HrMap* const this, class mHRChara* Character) [?IsDied@HrMap@@IAE_NPAVmHRChara@@@Z]
+	uint8_t IsDied(class mHRChara* Character)
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrMap* const thisPtr, class mHRChara* Character);
+		_Func mFunc = (_Func)(GameModule + 0xaceb0);
+		return mFunc(this, Character);
+	}
+	// [Function] uint8_t __convention("thiscall") HrMap::GetIsDisp(class HrMap* const this) [?GetIsDisp@HrMap@@QAE_NXZ]
+	uint8_t GetIsDisp()
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xafa70);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") HrMap::SetFlashIconSE(class HrMap* const this, uint8_t arg2) [?SetFlashIconSE@HrMap@@QAEX_N@Z]
+	void SetFlashIconSE(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class HrMap* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0xba4a0);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") HrMap::IsInitialized(class HrMap* const this) [?IsInitialized@HrMap@@QAE_NXZ]
+	uint8_t IsInitialized()
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xd3e30);
+		return mFunc(this);
+	}
+	// [Function] struct tagGHMR_TEX __convention("thiscall") HrMap::GetMapFrameTex(class HrMap* const this) [?GetMapFrameTex@HrMap@@QAE?AUtagGHMR_TEX@@XZ]
+	struct tagGHMR_TEX GetMapFrameTex()
+	{
+		typedef struct tagGHMR_TEX(__thiscall* _Func)(class HrMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xd3e40);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") HrMap::InitTextMessage(class HrMap* const this) [?InitTextMessage@HrMap@@IAEXXZ]
+	void InitTextMessage()
+	{
+		typedef void(__thiscall* _Func)(class HrMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x450b80);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") HrMap::IsOneFloor(class HrMap* const this) [?IsOneFloor@HrMap@@IAE_NXZ]
+	uint8_t IsOneFloor()
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x450cc0);
+		return mFunc(this);
+	}
+	// [Function] int32_t __convention("thiscall") HrMap::GetIconFloor(class HrMap* const this, float arg2) [?GetIconFloor@HrMap@@IAEHM@Z]
+	int32_t GetIconFloor(float arg2)
+	{
+		typedef int32_t(__thiscall* _Func)(class HrMap* const thisPtr, float arg2);
+		_Func mFunc = (_Func)(GameModule + 0x450cf0);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") HrMap::IsNowFloor(class HrMap* const this, float arg2) [?IsNowFloor@HrMap@@IAE_NM@Z]
+	uint8_t IsNowFloor(float arg2)
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrMap* const thisPtr, float arg2);
+		_Func mFunc = (_Func)(GameModule + 0x450d80);
+		return mFunc(this, arg2);
+	}
+	// [Function] enum PJ_QUICK_MOVE_TARGET __convention("thiscall") HrMap::IconDrawDataToQMT(class HrMap* const this, struct HrMap::DrawData& arg2) [?IconDrawDataToQMT@HrMap@@IAE?AW4PJ_QUICK_MOVE_TARGET@@ABUDrawData@1@@Z]
+	/* enum PJ_QUICK_MOVE_TARGET */ uint32_t IconDrawDataToQMT(struct HrMap::DrawData& arg2)
+	{
+		typedef enum PJ_QUICK_MOVE_TARGET(__thiscall* _Func)(class HrMap* const thisPtr, struct HrMap::DrawData& arg2);
+		_Func mFunc = (_Func)(GameModule + 0x450e20);
+		return (uint32_t)mFunc(this, arg2);
+	}
+	// [Function] class NYDrawString* __convention("thiscall") HrMap::AddDrawString(class HrMap* const this, char const* arg2, struct Vec2& arg3, uint32_t arg4, enum GFONTTYPE_NUM arg5, enum NYDrawString::ALIGNMENT_TYPE arg6) [?AddDrawString@HrMap@@IAEPAVNYDrawString@@PBDABUVec2@@IW4GFONTTYPE_NUM@@W4ALIGNMENT_TYPE@2@@Z]
+	class NYDrawString* AddDrawString(std::string arg2, struct Vec2& arg3, uint32_t arg4, /* enum GFONTTYPE_NUM */ uint32_t arg5, /* enum NYDrawString::ALIGNMENT_TYPE */ uint32_t arg6)
+	{
+		char const* arg2_c_str = arg2.c_str();
+		typedef class NYDrawString*(__thiscall* _Func)(class HrMap* const thisPtr, char const* arg2, struct Vec2& arg3, uint32_t arg4, enum GFONTTYPE_NUM arg5, enum NYDrawString::ALIGNMENT_TYPE arg6);
+		_Func mFunc = (_Func)(GameModule + 0x450ef0);
+		return mFunc(this, arg2_c_str, arg3, arg4, (enum GFONTTYPE_NUM)arg5, (enum NYDrawString::ALIGNMENT_TYPE)arg6);
+	}
+	// [Function] struct tagGHMR_TEX& __convention("thiscall") HrMap::IconType2TexR(class HrMap* const this, enum HrMap::ICON_TYPE arg2) [?IconType2TexR@HrMap@@IAEAAUtagGHMR_TEX@@W4ICON_TYPE@1@@Z]
+	// Can't export & pointer 'struct tagGHMR_TEX&' [TypeClass.PointerTypeClass] in LuaBridge
+	void IconType2TexR(/* enum HrMap::ICON_TYPE */ uint32_t arg2)
+	{
+		typedef struct tagGHMR_TEX&(__thiscall* _Func)(class HrMap* const thisPtr, enum HrMap::ICON_TYPE arg2);
+		_Func mFunc = (_Func)(GameModule + 0x450fa0);
+		mFunc(this, (enum HrMap::ICON_TYPE)arg2);
+	}
+	// [Function] void __convention("thiscall") HrMap::IconRegistClear(class HrMap* const this) [?IconRegistClear@HrMap@@IAEXXZ]
+	void IconRegistClear()
+	{
+		typedef void(__thiscall* _Func)(class HrMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x450fd0);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") HrMap::IconRegist(class HrMap* const this, enum HrMap::ICON_TYPE arg2, struct Vec& arg3, float arg4, uint8_t arg5) [?IconRegist@HrMap@@IAEXW4ICON_TYPE@1@ABUVec@@M_N@Z]
+	void IconRegist(/* enum HrMap::ICON_TYPE */ uint32_t arg2, struct Vec& arg3, float arg4, uint8_t arg5)
+	{
+		typedef void(__thiscall* _Func)(class HrMap* const thisPtr, enum HrMap::ICON_TYPE arg2, struct Vec& arg3, float arg4, uint8_t arg5);
+		_Func mFunc = (_Func)(GameModule + 0x450ff0);
+		return mFunc(this, (enum HrMap::ICON_TYPE)arg2, arg3, arg4, arg5);
+	}
+	// [Function] void __convention("thiscall") HrMap::IconRegistEventArea(class HrMap* const this) [?IconRegistEventArea@HrMap@@IAEXXZ]
+	void IconRegistEventArea()
+	{
+		typedef void(__thiscall* _Func)(class HrMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x451400);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") HrMap::SetScaleType(class HrMap* const this, enum HrMap::SCALE_TYPE arg2) [?SetScaleType@HrMap@@QAEXW4SCALE_TYPE@1@@Z]
+	void SetScaleType(/* enum HrMap::SCALE_TYPE */ uint32_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class HrMap* const thisPtr, enum HrMap::SCALE_TYPE arg2);
+		_Func mFunc = (_Func)(GameModule + 0x451570);
+		return mFunc(this, (enum HrMap::SCALE_TYPE)arg2);
+	}
+	// [Function] void __convention("thiscall") HrMap::Leave(class HrMap* const this, uint8_t arg2) [?Leave@HrMap@@QAEX_N@Z]
+	void Leave(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class HrMap* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x451700);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") HrMap::Appear(class HrMap* const this, enum HrMap::TYPE arg2, enum HrMap::SCALE_TYPE arg3, uint8_t arg4) [?Appear@HrMap@@QAE_NW4TYPE@1@W4SCALE_TYPE@1@_N@Z]
+	uint8_t Appear(/* enum HrMap::TYPE */ uint32_t arg2, /* enum HrMap::SCALE_TYPE */ uint32_t arg3, uint8_t arg4)
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrMap* const thisPtr, enum HrMap::TYPE arg2, enum HrMap::SCALE_TYPE arg3, uint8_t arg4);
+		_Func mFunc = (_Func)(GameModule + 0x4517e0);
+		return mFunc(this, (enum HrMap::TYPE)arg2, (enum HrMap::SCALE_TYPE)arg3, arg4);
+	}
+	// [Function] void __convention("thiscall") HrMap::SetType(class HrMap* const this, enum HrMap::TYPE arg2) [?SetType@HrMap@@QAEXW4TYPE@1@@Z]
+	void SetType(/* enum HrMap::TYPE */ uint32_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class HrMap* const thisPtr, enum HrMap::TYPE arg2);
+		_Func mFunc = (_Func)(GameModule + 0x4518d0);
+		return mFunc(this, (enum HrMap::TYPE)arg2);
+	}
+	// [Function] void __convention("thiscall") HrMap::RenderProcess(class HrMap* const this) [?RenderProcess@HrMap@@QAEXXZ]
+	void RenderProcess()
+	{
+		typedef void(__thiscall* _Func)(class HrMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x4519f0);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") HrMap::FrameProcess(class HrMap* const this) [?FrameProcess@HrMap@@QAEXXZ]
+	void FrameProcess()
+	{
+		typedef void(__thiscall* _Func)(class HrMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x452350);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") HrMap::Terminate(class HrMap* const this) [?Terminate@HrMap@@QAEXXZ]
+	void Terminate()
+	{
+		typedef void(__thiscall* _Func)(class HrMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x453ae0);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") HrMap::InitializeStage(class HrMap* const this, class ghmResGroup* arg2, struct Vec& arg3) [?InitializeStage@HrMap@@QAE_NPAVghmResGroup@@ABUVec@@@Z]
+	uint8_t InitializeStage(class ghmResGroup* arg2, struct Vec& arg3)
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrMap* const thisPtr, class ghmResGroup* arg2, struct Vec& arg3);
+		_Func mFunc = (_Func)(GameModule + 0x453cd0);
+		return mFunc(this, arg2, arg3);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class HrMap [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(HrMap& InObject)
@@ -3517,7 +4365,42 @@ public:
 			.addFunction("GetPtrAddr", &HrMap::GetPtrAddr)
 			.addProperty("FlashIconSEFlag", &HrMap::FlashIconSEFlag)
 			.addProperty("FlashATMicon", &HrMap::FlashATMicon)
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("SetIconPos", &HrMap::SetIconPos)
+			.addFunction("ClearIcon", &HrMap::ClearIcon)
+			.addFunction("SetFlashATMicon", &HrMap::SetFlashATMicon)
+			.addFunction("IsMiniMap", &HrMap::IsMiniMap)
+			.addFunction("GetWidth3D", &HrMap::GetWidth3D)
+			.addFunction("GetHeight3D", &HrMap::GetHeight3D)
+			.addFunction("SetScissorRect", &HrMap::SetScissorRect)
+			.addFunction("GetMapOffset", &HrMap::GetMapOffset)
 			.addFunction("IsDied", &HrMap::IsDied)
+			.addFunction("GetIsDisp", &HrMap::GetIsDisp)
+			.addFunction("SetFlashIconSE", &HrMap::SetFlashIconSE)
+			.addFunction("IsInitialized", &HrMap::IsInitialized)
+			.addFunction("GetMapFrameTex", &HrMap::GetMapFrameTex)
+			.addFunction("InitTextMessage", &HrMap::InitTextMessage)
+			.addFunction("IsOneFloor", &HrMap::IsOneFloor)
+			.addFunction("GetIconFloor", &HrMap::GetIconFloor)
+			.addFunction("IsNowFloor", &HrMap::IsNowFloor)
+			// Can't export & pointer 'struct HrMap::DrawData&' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("IconDrawDataToQMT", &HrMap::IconDrawDataToQMT)
+			// Can't export & pointer 'struct Vec2&' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("AddDrawString", &HrMap::AddDrawString)
+			.addFunction("IconType2TexR", &HrMap::IconType2TexR)
+			.addFunction("IconRegistClear", &HrMap::IconRegistClear)
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("IconRegist", &HrMap::IconRegist)
+			.addFunction("IconRegistEventArea", &HrMap::IconRegistEventArea)
+			.addFunction("SetScaleType", &HrMap::SetScaleType)
+			.addFunction("Leave", &HrMap::Leave)
+			.addFunction("Appear", &HrMap::Appear)
+			.addFunction("SetType", &HrMap::SetType)
+			.addFunction("RenderProcess", &HrMap::RenderProcess)
+			.addFunction("FrameProcess", &HrMap::FrameProcess)
+			.addFunction("Terminate", &HrMap::Terminate)
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("InitializeStage", &HrMap::InitializeStage)
 		.endClass();
 	}
 #endif
@@ -3558,6 +4441,10 @@ public:
 	// <float m_nextFrameMax, offset 0x18>
 	float m_nextFrameMax = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class NYPhase [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(NYPhase& InObject)
@@ -3596,49 +4483,6 @@ static_assert(sizeof(NYPhase::m_nextFrame) == 4, "expected NYPhase::m_nextFrame 
 static_assert(sizeof(NYPhase::m_nextFrameMax) == 4, "expected NYPhase::m_nextFrameMax to be size 4");
 static_assert(sizeof(NYPhase) == 28, "expected NYPhase to be size 28");
 
-// [Structure] struct Vec2
-struct Vec2
-{
-public:
-	/// Struct member variables
-
-	// <float x, offset 0x0>
-	float x = 0;
-
-	// <float y, offset 0x4>
-	float y = 0;
-
-	Vec2() { x = 0; y = 0; }
-	Vec2(float inX, float inY) { x = inX; y = inY; }
-	float Size() const { return sqrtf(x*x + y*y); }
-	float SizeSquared() const { return x*x + y*y; }
-	std::string ToString() const { std::stringstream stream; stream << "struct Vec2 [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
-	int GetPtrAddr() const { return (int)this; }
-	void CopyFrom(Vec2& InObject)
-	{
-		x = InObject.x;
-		y = InObject.y;
-	}
-#ifdef WITH_LUA
-	static void BindLua(luabridge::Namespace& NS)
-	{
-		NS = NS.beginClass<Vec2>("Vec2")
-			.addFunction("__tostring", &Vec2::ToString)
-			.addFunction("GetPtrAddr", &Vec2::GetPtrAddr)
-			.addProperty("x", &Vec2::x)
-			.addProperty("y", &Vec2::y)
-			.addConstructor<void (*) (void)>()
-			.addConstructor<void (*) (float, float)>()
-			.addFunction("SizeSquared", &Vec2::SizeSquared)
-			.addFunction("Size", &Vec2::Size)
-		.endClass();
-	}
-#endif
-};
-static_assert(sizeof(Vec2::x) == 4, "expected Vec2::x to be size 4");
-static_assert(sizeof(Vec2::y) == 4, "expected Vec2::y to be size 4");
-static_assert(sizeof(Vec2) == 8, "expected Vec2 to be size 8");
-
 // [Structure] class CHrHUDBase
 class CHrHUDBase
 {
@@ -3667,6 +4511,10 @@ public:
 
 	// <float m_PhaseTime[0x3], offset 0x5c>
 	float m_PhaseTime[3];
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class CHrHUDBase [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -3704,13 +4552,13 @@ static_assert(sizeof(CHrHUDBase::m_PhaseTime) == 12, "expected CHrHUDBase::m_Pha
 static_assert(sizeof(CHrHUDBase) == 104, "expected CHrHUDBase to be size 104");
 
 // [Structure] class CHrHUDMoney
-class CHrHUDMoney
+class CHrHUDMoney : public CHrHUDBase
 {
 public:
 	/// Struct member variables
 
 	// <class CHrHUDBase Super, offset 0x0>
-	class CHrHUDBase Super;
+	// class CHrHUDBase Super;
 
 	// <Unidentified data segment, offset 0x68>
 private:
@@ -3725,67 +4573,374 @@ private:
 	char _UnidentifiedData_112[556];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CHrHUDMoney [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CHrHUDMoney& InObject)
 	{
-		Super = InObject.Super;
 		AppearOffsetY = InObject.AppearOffsetY;
 	}
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<CHrHUDMoney>("CHrHUDMoney")
+		NS = NS.deriveClass<CHrHUDMoney, CHrHUDBase>("CHrHUDMoney")
 			.addFunction("__tostring", &CHrHUDMoney::ToString)
 			.addFunction("GetPtrAddr", &CHrHUDMoney::GetPtrAddr)
-			.addProperty("Super", &CHrHUDMoney::Super)
 			.addProperty("AppearOffsetY", &CHrHUDMoney::AppearOffsetY)
 		.endClass();
 	}
 #endif
 };
-static_assert(sizeof(CHrHUDMoney::Super) == 104, "expected CHrHUDMoney::Super to be size 104");
 static_assert(sizeof(CHrHUDMoney::AppearOffsetY) == 4, "expected CHrHUDMoney::AppearOffsetY to be size 4");
 static_assert(sizeof(CHrHUDMoney) == 668, "expected CHrHUDMoney to be size 668");
 
 // [Structure] class CHrHUDTension
-class CHrHUDTension
+class CHrHUDTension : public CHrHUDBase
 {
 public:
 	/// Struct member variables
 
 	// <class CHrHUDBase Super, offset 0x0>
-	class CHrHUDBase Super;
+	// class CHrHUDBase Super;
 
 	// <Unidentified data segment, offset 0x68>
 private:
 	char _UnidentifiedData_104[328];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CHrHUDTension [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CHrHUDTension& InObject)
 	{
-		Super = InObject.Super;
 	}
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<CHrHUDTension>("CHrHUDTension")
+		NS = NS.deriveClass<CHrHUDTension, CHrHUDBase>("CHrHUDTension")
 			.addFunction("__tostring", &CHrHUDTension::ToString)
 			.addFunction("GetPtrAddr", &CHrHUDTension::GetPtrAddr)
-			.addProperty("Super", &CHrHUDTension::Super)
 		.endClass();
 	}
 #endif
 };
-static_assert(sizeof(CHrHUDTension::Super) == 104, "expected CHrHUDTension::Super to be size 104");
 static_assert(sizeof(CHrHUDTension) == 432, "expected CHrHUDTension to be size 432");
 
 // [Structure] class HrScreenStatus
 class HrScreenStatus
 {
 public:
+	// enum HrScreenStatus::STAT_DRAW_TYPE
+	enum STAT_DRAW_TYPE : uint32_t
+	{
+		// <SCREEN_STAT_BATTLE = 0x0>
+		SCREEN_STAT_BATTLE = 0,
+
+		// <SCREEN_STAT_NATURAL = 0x1>
+		SCREEN_STAT_NATURAL = 1,
+
+		// <SCREEN_STAT_TOURING = 0x2>
+		SCREEN_STAT_TOURING = 2
+
+	};
+
+	// enum HrScreenStatus::D_STATVAL_TYPE
+	enum D_STATVAL_TYPE : uint32_t
+	{
+		// <D_STATVAL_HP = 0x0>
+		D_STATVAL_HP = 0,
+
+		// <D_STATVAL_TENSION = 0x1>
+		D_STATVAL_TENSION = 1,
+
+		// <D_STATVAL_BATTERY = 0x2>
+		D_STATVAL_BATTERY = 2,
+
+		// <D_STATVAL_MAP = 0x3>
+		D_STATVAL_MAP = 3,
+
+		// <D_STATVAL_MONEY = 0x4>
+		D_STATVAL_MONEY = 4,
+
+		// <D_STATVAL_SPEEDMETER = 0x5>
+		D_STATVAL_SPEEDMETER = 5,
+
+		// <D_STATVAL_KEYGUIDE = 0x6>
+		D_STATVAL_KEYGUIDE = 6,
+
+		// <D_STATVAL_CHECKPOINT = 0x7>
+		D_STATVAL_CHECKPOINT = 7,
+
+		// <D_STATVAL_BOSSHP = 0x8>
+		D_STATVAL_BOSSHP = 8,
+
+		// <D_STATVAL_LOG = 0x9>
+		D_STATVAL_LOG = 9,
+
+		// <D_STATVAL_COMBO = 0xa>
+		D_STATVAL_COMBO = 10,
+
+		// <D_STATVAL_SLOT = 0xb>
+		D_STATVAL_SLOT = 11,
+
+		// <D_STATVAL_TYPENUM = 0xc>
+		D_STATVAL_TYPENUM = 12
+
+	};
+
+	// enum HrScreenStatus::E_LOG_DOID
+	enum E_LOG_DOID : uint32_t
+	{
+		// <E_LOG_DOID_PICKUP = 0x0>
+		E_LOG_DOID_PICKUP = 0,
+
+		// <E_LOG_DOID_KABUTTA = 0x1>
+		E_LOG_DOID_KABUTTA = 1,
+
+		// <E_LOG_DOID_NAKATTA = 0x2>
+		E_LOG_DOID_NAKATTA = 2,
+
+		// <E_LOG_DOID_HORENAKATTA = 0x3>
+		E_LOG_DOID_HORENAKATTA = 3,
+
+		// <E_LOG_DOID_DIG_MONEY = 0x4>
+		E_LOG_DOID_DIG_MONEY = 4,
+
+		// <E_LOG_DOID_GET_MONEY = 0x5>
+		E_LOG_DOID_GET_MONEY = 5,
+
+		// <E_LOG_DOID_DIG_TSHIRT = 0x6>
+		E_LOG_DOID_DIG_TSHIRT = 6,
+
+		// <E_LOG_DOID_GET_TSHIRT = 0x7>
+		E_LOG_DOID_GET_TSHIRT = 7,
+
+		// <E_LOG_DOID_DIG = 0x8>
+		E_LOG_DOID_DIG = 8,
+
+		// <E_LOG_DOID_GET = 0x9>
+		E_LOG_DOID_GET = 9,
+
+		// <E_LOG_DOID_MAXHP_UP = 0xa>
+		E_LOG_DOID_MAXHP_UP = 10,
+
+		// <E_LOG_DOID_USAARE_GET = 0xb>
+		E_LOG_DOID_USAARE_GET = 11,
+
+		// <E_LOG_DOID_NIHONTO_GET = 0xc>
+		E_LOG_DOID_NIHONTO_GET = 12,
+
+		// <E_LOG_DOID_KAIFUKU = 0xd>
+		E_LOG_DOID_KAIFUKU = 13,
+
+		// <E_LOG_DOID_NUM = 0xe>
+		E_LOG_DOID_NUM = 14
+
+	};
+
+	// enum HrScreenStatus::D_CHECKPOINT_TYPE
+	enum D_CHECKPOINT_TYPE : uint32_t
+	{
+		// <D_CECKPO_CHECKPOINT = 0x0>
+		D_CECKPO_CHECKPOINT = 0,
+
+		// <D_CECKPO_STANDBY = 0x1>
+		D_CECKPO_STANDBY = 1,
+
+		// <D_CECKPO_ZENMETU = 0x2>
+		D_CECKPO_ZENMETU = 2,
+
+		// <D_CECKPO_CANTRIDE = 0x3>
+		D_CECKPO_CANTRIDE = 3,
+
+		// <D_CECKPO_PHONE = 0x4>
+		D_CECKPO_PHONE = 4,
+
+		// <D_CECKPO_NEWMASK = 0x5>
+		D_CECKPO_NEWMASK = 5,
+
+		// <D_CECKPO_SENRIHIN = 0x6>
+		D_CECKPO_SENRIHIN = 6,
+
+		// <D_CECKPO_TYPENUM = 0x7>
+		D_CECKPO_TYPENUM = 7
+
+	};
+
+	/// Struct member variables
+
+	// <Unidentified data segment, offset 0x0>
+private:
+	char _UnidentifiedData_0[184];
+
+public:
+	// <uint32_t State, offset 0xb8>
+	uint32_t State = 0;
+
+	// <Unidentified data segment, offset 0xbc>
+private:
+	char _UnidentifiedData_188[28];
+
+public:
+	// <class HrMap* Map, offset 0xd8>
+	class HrMap* Map = nullptr;
+
+	// <Unidentified data segment, offset 0xdc>
+private:
+	char _UnidentifiedData_220[7840];
+
+public:
+	// <int32_t MapScaleType, offset 0x1f7c>
+	int32_t MapScaleType = 0;
+
+	// <Unidentified data segment, offset 0x1f80>
+private:
+	char _UnidentifiedData_8064[12];
+
+public:
+	// <class HrScreenStatusBalloon* ScreenStatusBalloon, offset 0x1f8c>
+	class HrScreenStatusBalloon* ScreenStatusBalloon = nullptr;
+
+	// <Unidentified data segment, offset 0x1f90>
+private:
+	char _UnidentifiedData_8080[1692];
+
+public:
+	// <uint32_t UnknownLanguageGroupResources, offset 0x262c>
+	uint32_t UnknownLanguageGroupResources = 0;
+
+	// <char UnknownBalloonInitializeStageFlag, offset 0x2630>
+	char UnknownBalloonInitializeStageFlag;
+
+	// <Unidentified data segment, offset 0x2631>
+private:
+	char _UnidentifiedData_9777[935];
+
+public:
+	// <class HrTask* UnknownMissionTaskPointer, offset 0x29d8>
+	class HrTask* UnknownMissionTaskPointer = nullptr;
+
+	// <Unidentified data segment, offset 0x29dc>
+private:
+	char _UnidentifiedData_10716[908];
+
+public:
+	// <class HrScreenStatusSlot* ScreenStatusSlot, offset 0x2d68>
+	class HrScreenStatusSlot* ScreenStatusSlot = nullptr;
+
+	// <Unidentified data segment, offset 0x2d6c>
+private:
+	char _UnidentifiedData_11628[36];
+
+public:
+	// <class GtSimplMes* SimpleMessage, offset 0x2d90>
+	class GtSimplMes* SimpleMessage = nullptr;
+
+	// <Unidentified data segment, offset 0x2d94>
+private:
+	char _UnidentifiedData_11668[16];
+
+public:
+	// <struct BATTLESIMPLMESS_SET* BattleSimpleMessagePtr, offset 0x2da4>
+	struct BATTLESIMPLMESS_SET* BattleSimpleMessagePtr = nullptr;
+
+	// <Unidentified data segment, offset 0x2da8>
+private:
+	char _UnidentifiedData_11688[8];
+
+public:
+	// <int16_t DrawFlag, offset 0x2db0>
+	int16_t DrawFlag = 0;
+
+	// <Unidentified data segment, offset 0x2db2>
+private:
+	char _UnidentifiedData_11698[21];
+
+public:
+	// <uint8_t BusFight, offset 0x2dc7>
+	uint8_t BusFight = 0;
+
+	// <Unidentified data segment, offset 0x2dc8>
+private:
+	char _UnidentifiedData_11720[7];
+
+public:
+	// <uint8_t MiniMapVisible, offset 0x2dcf>
+	uint8_t MiniMapVisible = 0;
+
+	// <Unidentified data segment, offset 0x2dd0>
+private:
+	char _UnidentifiedData_11728[4];
+
+public:
+	// <int32_t RevengeMissionAllEnmNum, offset 0x2dd4>
+	int32_t RevengeMissionAllEnmNum = 0;
+
+	// <Unidentified data segment, offset 0x2dd8>
+private:
+	char _UnidentifiedData_11736[60];
+
+public:
+	// <char HealthFlag, offset 0x2e14>
+	char HealthFlag;
+
+	// <Unidentified data segment, offset 0x2e15>
+private:
+	char _UnidentifiedData_11797[131];
+
+public:
+	// <char BatteryFlag, offset 0x2e98>
+	char BatteryFlag;
+
+	// <Unidentified data segment, offset 0x2e99>
+private:
+	char _UnidentifiedData_11929[751];
+
+public:
+	// <class CHrHUDTension TensionHud, offset 0x3188>
+	class CHrHUDTension TensionHud;
+
+	// <class CHrHUDMoney MoneyHud, offset 0x3338>
+	class CHrHUDMoney MoneyHud;
+
+	// <Unidentified data segment, offset 0x35d4>
+private:
+	char _UnidentifiedData_13780[52];
+
+public:
+	// <char SpeedMeterFlag, offset 0x3608>
+	char SpeedMeterFlag;
+
+	// <Unidentified data segment, offset 0x3609>
+private:
+	char _UnidentifiedData_13833[599];
+
+public:
+	// <uint32_t SettingBGMVolume, offset 0x3860>
+	uint32_t SettingBGMVolume = 0;
+
+	// <uint32_t SettingSEVolume, offset 0x3864>
+	uint32_t SettingSEVolume = 0;
+
+	// <uint8_t SettingMiniMap, offset 0x3868>
+	uint8_t SettingMiniMap = 0;
+
+	// <Unidentified data segment, offset 0x3869>
+private:
+	char _UnidentifiedData_14441[3];
+
+public:
+	// <float SettingPower, offset 0x386c>
+	float SettingPower = 0;
+
+	/// 66 Functions
+
 	// [Function] class HrMap& __convention("thiscall") HrScreenStatus::GetMap(class HrScreenStatus* const this) [?GetMap@HrScreenStatus@@QAEAAVHrMap@@XZ]
 	// Can't export & pointer 'class HrMap&' [TypeClass.PointerTypeClass] in LuaBridge
 	void GetMap()
@@ -4078,20 +5233,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x46c5d0);
 		return mFunc();
 	}
-	// enum HrScreenStatus::STAT_DRAW_TYPE
-	enum STAT_DRAW_TYPE : uint32_t
-	{
-		// <SCREEN_STAT_BATTLE = 0x0>
-		SCREEN_STAT_BATTLE = 0,
-
-		// <SCREEN_STAT_NATURAL = 0x1>
-		SCREEN_STAT_NATURAL = 1,
-
-		// <SCREEN_STAT_TOURING = 0x2>
-		SCREEN_STAT_TOURING = 2
-
-	};
-
 	// [Function] void __convention("thiscall") HrScreenStatus::dSetType(class HrScreenStatus* const this, enum HrScreenStatus::STAT_DRAW_TYPE arg2) [?dSetType@HrScreenStatus@@QAEXW4STAT_DRAW_TYPE@1@@Z]
 	void dSetType(/* enum HrScreenStatus::STAT_DRAW_TYPE */ uint32_t arg2)
 	{
@@ -4106,50 +5247,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x46c850);
 		return mFunc(this);
 	}
-	// enum HrScreenStatus::D_STATVAL_TYPE
-	enum D_STATVAL_TYPE : uint32_t
-	{
-		// <D_STATVAL_HP = 0x0>
-		D_STATVAL_HP = 0,
-
-		// <D_STATVAL_TENSION = 0x1>
-		D_STATVAL_TENSION = 1,
-
-		// <D_STATVAL_BATTERY = 0x2>
-		D_STATVAL_BATTERY = 2,
-
-		// <D_STATVAL_MAP = 0x3>
-		D_STATVAL_MAP = 3,
-
-		// <D_STATVAL_MONEY = 0x4>
-		D_STATVAL_MONEY = 4,
-
-		// <D_STATVAL_SPEEDMETER = 0x5>
-		D_STATVAL_SPEEDMETER = 5,
-
-		// <D_STATVAL_KEYGUIDE = 0x6>
-		D_STATVAL_KEYGUIDE = 6,
-
-		// <D_STATVAL_CHECKPOINT = 0x7>
-		D_STATVAL_CHECKPOINT = 7,
-
-		// <D_STATVAL_BOSSHP = 0x8>
-		D_STATVAL_BOSSHP = 8,
-
-		// <D_STATVAL_LOG = 0x9>
-		D_STATVAL_LOG = 9,
-
-		// <D_STATVAL_COMBO = 0xa>
-		D_STATVAL_COMBO = 10,
-
-		// <D_STATVAL_SLOT = 0xb>
-		D_STATVAL_SLOT = 11,
-
-		// <D_STATVAL_TYPENUM = 0xc>
-		D_STATVAL_TYPENUM = 12
-
-	};
-
 	// [Function] uint8_t __convention("thiscall") HrScreenStatus::dCheckDraw(class HrScreenStatus* const this, enum HrScreenStatus::D_STATVAL_TYPE arg2) [?dCheckDraw@HrScreenStatus@@QAE_NW4D_STATVAL_TYPE@1@@Z]
 	uint8_t dCheckDraw(/* enum HrScreenStatus::D_STATVAL_TYPE */ uint32_t arg2)
 	{
@@ -4268,56 +5365,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x46d3b0);
 		return mFunc(this, arg2, (enum HrScreenStatus::D_STATVAL_TYPE)arg3);
 	}
-	// enum HrScreenStatus::E_LOG_DOID
-	enum E_LOG_DOID : uint32_t
-	{
-		// <E_LOG_DOID_PICKUP = 0x0>
-		E_LOG_DOID_PICKUP = 0,
-
-		// <E_LOG_DOID_KABUTTA = 0x1>
-		E_LOG_DOID_KABUTTA = 1,
-
-		// <E_LOG_DOID_NAKATTA = 0x2>
-		E_LOG_DOID_NAKATTA = 2,
-
-		// <E_LOG_DOID_HORENAKATTA = 0x3>
-		E_LOG_DOID_HORENAKATTA = 3,
-
-		// <E_LOG_DOID_DIG_MONEY = 0x4>
-		E_LOG_DOID_DIG_MONEY = 4,
-
-		// <E_LOG_DOID_GET_MONEY = 0x5>
-		E_LOG_DOID_GET_MONEY = 5,
-
-		// <E_LOG_DOID_DIG_TSHIRT = 0x6>
-		E_LOG_DOID_DIG_TSHIRT = 6,
-
-		// <E_LOG_DOID_GET_TSHIRT = 0x7>
-		E_LOG_DOID_GET_TSHIRT = 7,
-
-		// <E_LOG_DOID_DIG = 0x8>
-		E_LOG_DOID_DIG = 8,
-
-		// <E_LOG_DOID_GET = 0x9>
-		E_LOG_DOID_GET = 9,
-
-		// <E_LOG_DOID_MAXHP_UP = 0xa>
-		E_LOG_DOID_MAXHP_UP = 10,
-
-		// <E_LOG_DOID_USAARE_GET = 0xb>
-		E_LOG_DOID_USAARE_GET = 11,
-
-		// <E_LOG_DOID_NIHONTO_GET = 0xc>
-		E_LOG_DOID_NIHONTO_GET = 12,
-
-		// <E_LOG_DOID_KAIFUKU = 0xd>
-		E_LOG_DOID_KAIFUKU = 13,
-
-		// <E_LOG_DOID_NUM = 0xe>
-		E_LOG_DOID_NUM = 14
-
-	};
-
 	// [Function] uint8_t __convention("thiscall") HrScreenStatus::dAppearLog(class HrScreenStatus* const this, int32_t arg2, enum HrScreenStatus::E_LOG_DOID arg3) [?dAppearLog@HrScreenStatus@@QAE_NHW4E_LOG_DOID@1@@Z]
 	uint8_t dAppearLog(int32_t arg2, /* enum HrScreenStatus::E_LOG_DOID */ uint32_t arg3)
 	{
@@ -4332,35 +5379,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x46d770);
 		return mFunc(this);
 	}
-	// enum HrScreenStatus::D_CHECKPOINT_TYPE
-	enum D_CHECKPOINT_TYPE : uint32_t
-	{
-		// <D_CECKPO_CHECKPOINT = 0x0>
-		D_CECKPO_CHECKPOINT = 0,
-
-		// <D_CECKPO_STANDBY = 0x1>
-		D_CECKPO_STANDBY = 1,
-
-		// <D_CECKPO_ZENMETU = 0x2>
-		D_CECKPO_ZENMETU = 2,
-
-		// <D_CECKPO_CANTRIDE = 0x3>
-		D_CECKPO_CANTRIDE = 3,
-
-		// <D_CECKPO_PHONE = 0x4>
-		D_CECKPO_PHONE = 4,
-
-		// <D_CECKPO_NEWMASK = 0x5>
-		D_CECKPO_NEWMASK = 5,
-
-		// <D_CECKPO_SENRIHIN = 0x6>
-		D_CECKPO_SENRIHIN = 6,
-
-		// <D_CECKPO_TYPENUM = 0x7>
-		D_CECKPO_TYPENUM = 7
-
-	};
-
 	// [Function] void __convention("thiscall") HrScreenStatus::dAppearSelect(class HrScreenStatus* const this, enum HrScreenStatus::D_STATVAL_TYPE arg2, uint8_t arg3, enum HrScreenStatus::D_CHECKPOINT_TYPE arg4) [?dAppearSelect@HrScreenStatus@@QAEXW4D_STATVAL_TYPE@1@_NW4D_CHECKPOINT_TYPE@1@@Z]
 	void dAppearSelect(/* enum HrScreenStatus::D_STATVAL_TYPE */ uint32_t arg2, uint8_t arg3, /* enum HrScreenStatus::D_CHECKPOINT_TYPE */ uint32_t arg4)
 	{
@@ -4396,171 +5414,7 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x46dcc0);
 		return mFunc(this);
 	}
-	/// Struct member variables
-
-	// <Unidentified data segment, offset 0x0>
-private:
-	char _UnidentifiedData_0[184];
-
-public:
-	// <uint32_t State, offset 0xb8>
-	uint32_t State = 0;
-
-	// <Unidentified data segment, offset 0xbc>
-private:
-	char _UnidentifiedData_188[28];
-
-public:
-	// <class HrMap* Map, offset 0xd8>
-	class HrMap* Map = nullptr;
-
-	// <Unidentified data segment, offset 0xdc>
-private:
-	char _UnidentifiedData_220[7840];
-
-public:
-	// <int32_t MapScaleType, offset 0x1f7c>
-	int32_t MapScaleType = 0;
-
-	// <Unidentified data segment, offset 0x1f80>
-private:
-	char _UnidentifiedData_8064[12];
-
-public:
-	// <class HrScreenStatusBalloon* ScreenStatusBalloon, offset 0x1f8c>
-	class HrScreenStatusBalloon* ScreenStatusBalloon = nullptr;
-
-	// <Unidentified data segment, offset 0x1f90>
-private:
-	char _UnidentifiedData_8080[1692];
-
-public:
-	// <uint32_t UnknownLanguageGroupResources, offset 0x262c>
-	uint32_t UnknownLanguageGroupResources = 0;
-
-	// <char UnknownBalloonInitializeStageFlag, offset 0x2630>
-	char UnknownBalloonInitializeStageFlag;
-
-	// <Unidentified data segment, offset 0x2631>
-private:
-	char _UnidentifiedData_9777[935];
-
-public:
-	// <class HrTask* UnknownMissionTaskPointer, offset 0x29d8>
-	class HrTask* UnknownMissionTaskPointer = nullptr;
-
-	// <Unidentified data segment, offset 0x29dc>
-private:
-	char _UnidentifiedData_10716[908];
-
-public:
-	// <class HrScreenStatusSlot* ScreenStatusSlot, offset 0x2d68>
-	class HrScreenStatusSlot* ScreenStatusSlot = nullptr;
-
-	// <Unidentified data segment, offset 0x2d6c>
-private:
-	char _UnidentifiedData_11628[36];
-
-public:
-	// <class GtSimplMes* SimpleMessage, offset 0x2d90>
-	class GtSimplMes* SimpleMessage = nullptr;
-
-	// <Unidentified data segment, offset 0x2d94>
-private:
-	char _UnidentifiedData_11668[16];
-
-public:
-	// <struct BATTLESIMPLMESS_SET* BattleSimpleMessagePtr, offset 0x2da4>
-	struct BATTLESIMPLMESS_SET* BattleSimpleMessagePtr = nullptr;
-
-	// <Unidentified data segment, offset 0x2da8>
-private:
-	char _UnidentifiedData_11688[8];
-
-public:
-	// <int16_t DrawFlag, offset 0x2db0>
-	int16_t DrawFlag = 0;
-
-	// <Unidentified data segment, offset 0x2db2>
-private:
-	char _UnidentifiedData_11698[21];
-
-public:
-	// <uint8_t BusFight, offset 0x2dc7>
-	uint8_t BusFight = 0;
-
-	// <Unidentified data segment, offset 0x2dc8>
-private:
-	char _UnidentifiedData_11720[7];
-
-public:
-	// <uint8_t MiniMapVisible, offset 0x2dcf>
-	uint8_t MiniMapVisible = 0;
-
-	// <Unidentified data segment, offset 0x2dd0>
-private:
-	char _UnidentifiedData_11728[4];
-
-public:
-	// <int32_t RevengeMissionAllEnmNum, offset 0x2dd4>
-	int32_t RevengeMissionAllEnmNum = 0;
-
-	// <Unidentified data segment, offset 0x2dd8>
-private:
-	char _UnidentifiedData_11736[60];
-
-public:
-	// <char HealthFlag, offset 0x2e14>
-	char HealthFlag;
-
-	// <Unidentified data segment, offset 0x2e15>
-private:
-	char _UnidentifiedData_11797[131];
-
-public:
-	// <char BatteryFlag, offset 0x2e98>
-	char BatteryFlag;
-
-	// <Unidentified data segment, offset 0x2e99>
-private:
-	char _UnidentifiedData_11929[751];
-
-public:
-	// <class CHrHUDTension TensionHud, offset 0x3188>
-	class CHrHUDTension TensionHud;
-
-	// <class CHrHUDMoney MoneyHud, offset 0x3338>
-	class CHrHUDMoney MoneyHud;
-
-	// <Unidentified data segment, offset 0x35d4>
-private:
-	char _UnidentifiedData_13780[52];
-
-public:
-	// <char SpeedMeterFlag, offset 0x3608>
-	char SpeedMeterFlag;
-
-	// <Unidentified data segment, offset 0x3609>
-private:
-	char _UnidentifiedData_13833[599];
-
-public:
-	// <uint32_t SettingBGMVolume, offset 0x3860>
-	uint32_t SettingBGMVolume = 0;
-
-	// <uint32_t SettingSEVolume, offset 0x3864>
-	uint32_t SettingSEVolume = 0;
-
-	// <uint8_t SettingMiniMap, offset 0x3868>
-	uint8_t SettingMiniMap = 0;
-
-	// <Unidentified data segment, offset 0x3869>
-private:
-	char _UnidentifiedData_14441[3];
-
-public:
-	// <float SettingPower, offset 0x386c>
-	float SettingPower = 0;
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class HrScreenStatus [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -4728,6 +5582,10 @@ private:
 	char _UnidentifiedData_0[80];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class HrTask [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(HrTask& InObject)
@@ -4757,6 +5615,10 @@ namespace EE
 		// <struct ID3D11DepthStencilView* m_pObject, offset 0x0>
 		T* m_pObject = nullptr;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "class SmartPtr [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EE::SmartPtr<ID3D11DepthStencilView>& InObject)
@@ -4778,6 +5640,10 @@ public:
 
 	// <uint32_t wrapS, offset 0x0>
 	uint32_t wrapS = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "union GXSamplerStuff [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -4812,6 +5678,10 @@ namespace EE
 
 		// <int32_t volatile refCount, offset 0x4>
 		int32_t volatile refCount;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "class RefObject [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -4879,6 +5749,10 @@ public:
 	public:
 		// <uint32_t hash, offset 0x10>
 		uint32_t hash = 0;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "struct GXSpecs [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -4962,6 +5836,10 @@ public:
 	// <struct EE::OptListNode<GXTexture *> renderTargetListNode, offset 0x48>
 	struct EE::OptListNode<GXTexture *> renderTargetListNode;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class GXTexture [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(GXTexture& InObject)
@@ -5041,6 +5919,10 @@ public:
 	// <struct BATTLESIMPLMESS_SET* mpMessTop, offset 0x14>
 	struct BATTLESIMPLMESS_SET* mpMessTop = nullptr;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class GtSimplMes [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(GtSimplMes& InObject)
@@ -5119,6 +6001,10 @@ public:
 	// <void* userData, offset 0x2c>
 	void* userData = nullptr;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct DVDCommandBlock [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(DVDCommandBlock& InObject)
@@ -5195,6 +6081,10 @@ public:
 
 	// <class EE::SmartPtr<EE::IFile> file, offset 0x3c>
 	class EE::SmartPtr<EE::IFile> file;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct DVDFileInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -5308,6 +6198,10 @@ public:
 		// <int32_t mDivNum, offset 0x70>
 		int32_t mDivNum = 0;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct ghmGcFileInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(ghmGcFile::ghmGcFileInfo& InObject)
@@ -5384,6 +6278,10 @@ public:
 	// <char mFileName[0x40], offset 0x7c>
 	char mFileName[64];
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ghmGcFile [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmGcFile& InObject)
@@ -5445,6 +6343,10 @@ public:
 
 	// <uint32_t gcMagic, offset 0x1c>
 	uint32_t gcMagic = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct DVDDiskID [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -5512,6 +6414,10 @@ namespace EE
 		char _UnidentifiedData_21[3];
 
 	public:
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "class IFile [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EE::IFile& InObject)
@@ -5575,6 +6481,10 @@ public:
 
 	// <BATTLESIMPLMESS_SET* pNext, offset 0x14>
 	BATTLESIMPLMESS_SET* pNext = nullptr;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct BATTLESIMPLMESS_SET [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -5660,6 +6570,10 @@ private:
 	char _UnidentifiedData_90[2];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class HrEffectShutter [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(HrEffectShutter& InObject)
@@ -5740,6 +6654,10 @@ public:
 
 	// <uint32_t mKeyWait, offset 0x14>
 	uint32_t mKeyWait = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class EfBase [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -5831,6 +6749,10 @@ public:
 		// <EfSmoke::SmokePrim* pPrev, offset 0x48>
 		SmokePrim* pPrev = nullptr;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct SmokePrim [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EfSmoke::SmokePrim& InObject)
@@ -5918,6 +6840,10 @@ public:
 
 	// <enum GHMR_BLEND mBlendMode, offset 0x7c>
 	enum GHMR_BLEND mBlendMode;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class EfSmoke [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -6068,68 +6994,6 @@ enum enPcPose : uint32_t
 
 };
 
-// enum enPcCmbKind
-enum enPcCmbKind : uint32_t
-{
-	// <ePcAtkFghtCmbUp = 0x0>
-	ePcAtkFghtCmbUp = 0,
-
-	// <ePcAtkFghtCmbDw = 0x1>
-	ePcAtkFghtCmbDw = 1,
-
-	// <ePcAtkCmb01Up = 0x2>
-	ePcAtkCmb01Up = 2,
-
-	// <ePcAtkCmb01Btm = 0x3>
-	ePcAtkCmb01Btm = 3,
-
-	// <ePcAtkCmb02Up = 0x4>
-	ePcAtkCmb02Up = 4,
-
-	// <ePcAtkCmb02Btm = 0x5>
-	ePcAtkCmb02Btm = 5,
-
-	// <ePcAtkCmb03Up = 0x6>
-	ePcAtkCmb03Up = 6,
-
-	// <ePcAtkCmb03Btm = 0x7>
-	ePcAtkCmb03Btm = 7,
-
-	// <ePcAtkCmb04Up = 0x8>
-	ePcAtkCmb04Up = 8,
-
-	// <ePcAtkCmb04Btm = 0x9>
-	ePcAtkCmb04Btm = 9,
-
-	// <ePcAtkCmb01Dncng = 0xa>
-	ePcAtkCmb01Dncng = 10,
-
-	// <ePcAtkCmb02Dncng = 0xb>
-	ePcAtkCmb02Dncng = 11,
-
-	// <ePcAtkCmb03Dncng = 0xc>
-	ePcAtkCmb03Dncng = 12,
-
-	// <ePcAtkCmb04Dncng = 0xd>
-	ePcAtkCmb04Dncng = 13,
-
-	// <eSNBAtkCmb01Up = 0xe>
-	eSNBAtkCmb01Up = 14,
-
-	// <eSNBAtkCmb01Btm = 0xf>
-	eSNBAtkCmb01Btm = 15,
-
-	// <eHENAtkCmb01Up = 0x10>
-	eHENAtkCmb01Up = 16,
-
-	// <eHENAtkCmb01Btm = 0x11>
-	eHENAtkCmb01Btm = 17,
-
-	// <ePcAtkCmbKindMax = 0x12>
-	ePcAtkCmbKindMax = 18
-
-};
-
 // enum enShakeDir
 enum enShakeDir : uint32_t
 {
@@ -6209,6 +7073,10 @@ public:
 	// <float m_fTimer, offset 0x8>
 	float m_fTimer = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CTimeRatioInterpolate [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CTimeRatioInterpolate& InObject)
@@ -6257,6 +7125,10 @@ public:
 
 	// <uint16_t smBaceActivSubMission, offset 0x0>
 	uint16_t smBaceActivSubMission = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "union uniSMflag [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -6314,6 +7186,10 @@ private:
 public:
 	// <class HrOverLap* pOverLap, offset 0x8>
 	class HrOverLap* pOverLap = nullptr;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct stFade [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -6396,6 +7272,10 @@ public:
 	// <float m_fValue, offset 0x14>
 	float m_fValue = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CSpringInterpolate [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CSpringInterpolate& InObject)
@@ -6443,6 +7323,10 @@ public:
 	// <class CSpringInterpolate m_inCurInterp, offset 0x18>
 	class CSpringInterpolate m_inCurInterp;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CDoubleSpringInterpolate [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CDoubleSpringInterpolate& InObject)
@@ -6481,6 +7365,10 @@ public:
 	// <class TGmf* m_pPreGmf, offset 0x34>
 	class TGmf* m_pPreGmf = nullptr;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CAmbientShadow [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CAmbientShadow& InObject)
@@ -6518,6 +7406,10 @@ private:
 	char _UnidentifiedData_0[292];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct stCharaEffect [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(stCharaEffect& InObject)
@@ -6589,6 +7481,10 @@ private:
 public:
 	// <class TGan** pGan, offset 0x34>
 	class TGan** pGan = nullptr;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class stCharaFileData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -6663,6 +7559,10 @@ public:
 	// <float mExtent, offset 0x18>
 	float mExtent = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ghmSegment [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmSegment& InObject)
@@ -6700,6 +7600,10 @@ public:
 
 	// <float mRadius, offset 0x1c>
 	float mRadius = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class ghmCapsule [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -6744,6 +7648,10 @@ public:
 
 	// <uint32_t mUserData, offset 0x10>
 	uint32_t mUserData = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class ghmGcOctTreeNodeObj [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -6836,6 +7744,10 @@ public:
 	// <uint32_t mParam[0x2], offset 0x38>
 	uint32_t mParam[2];
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ghmGcCollObj [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmGcCollObj& InObject)
@@ -6889,6 +7801,10 @@ public:
 	// <class ghmCapsule mShape, offset 0x40>
 	class ghmCapsule mShape;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ghmGcCollObjCapsule [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmGcCollObjCapsule& InObject)
@@ -6917,6 +7833,10 @@ public:
 
 	// <void* (* field_0)[0x1], offset 0x0>
 	void* (* field_0)[0x1];
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class WAnim [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -6967,6 +7887,10 @@ public:
 
 	// <float mMotionRate, offset 0x1c>
 	float mMotionRate = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class WAnimF [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -7079,6 +8003,10 @@ private:
 	char _UnidentifiedData_106[2];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct stDamageInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(stDamageInfo& InObject)
@@ -7164,6 +8092,10 @@ private:
 	char _UnidentifiedData_0[36];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ghmTriangle [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmTriangle& InObject)
@@ -7192,6 +8124,10 @@ public:
 
 	// <float mDist, offset 0xc>
 	float mDist = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class ghmPlane [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -7239,6 +8175,10 @@ public:
 
 	// <class ghmGcCollObj* mpObj, offset 0x48>
 	class ghmGcCollObj* mpObj = nullptr;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class ghmGcCollObjHitResultObj [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -7316,6 +8256,10 @@ public:
 	// <class WAnimF z, offset 0x40>
 	class WAnimF z;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct stVec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(stVec& InObject)
@@ -7359,6 +8303,10 @@ public:
 
 	// <float w, offset 0xc>
 	float w = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct Quaternion [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -7630,6 +8578,10 @@ public:
 	// <uint32_t flag[0x2], offset 0x394>
 	uint32_t flag[2];
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct stCharaStatus [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(stCharaStatus& InObject)
@@ -7876,6 +8828,10 @@ public:
 	// <int32_t mPriority, offset 0xc>
 	int32_t mPriority = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	mHRChara* AsHRChara() const { return (mHRChara*)this; }
 	std::string ToString() const { std::stringstream stream; stream << "class ghmListObj [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -7985,6 +8941,10 @@ public:
 	// <int32_t EvacuateRight, offset 0x20>
 	int32_t EvacuateRight = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct CharControlMotID [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CharControlMotID& InObject)
@@ -8038,6 +8998,10 @@ public:
 	// <uint32_t PackedValue, offset 0x0>
 	uint32_t PackedValue = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	GXColor() { PackedValue = 0; }
 	GXColor(int R, int G, int B) { PackedValue = (255<<24) + (int(R)<<16) + (int(G)<<8) + int(B); }
 	std::string ToString() const { std::stringstream stream; stream << "struct GXColor [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
@@ -8071,6 +9035,10 @@ public:
 	// <float m128_f32[0x4], offset 0x0>
 	float m128_f32[4];
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "union __m128 [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(__m128& InObject)
@@ -8100,6 +9068,10 @@ public:
 	// <uint32_t u[0x4], offset 0x0>
 	uint32_t u[4];
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class vector4f [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(vector4f& InObject)
@@ -8128,6 +9100,10 @@ public:
 
 	// <double sd[0x2], offset 0x0>
 	double sd[2];
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class vector4x [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -8166,6 +9142,10 @@ public:
 
 	// <float w, offset 0xc>
 	float w = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class tiVector [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -8207,6 +9187,10 @@ namespace mot
 		// <void* (* field_0)[0x1f], offset 0x0>
 		void* (* field_0)[0x1f];
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "class IBoneEffectModel [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(mot::IBoneEffectModel& InObject)
@@ -8247,6 +9231,10 @@ namespace mot
 		// <class tiVector m_inYureBonePosiOfst, offset 0x10>
 		class tiVector m_inYureBonePosiOfst;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "class IBoneEffectModelPJ [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(mot::IBoneEffectModelPJ& InObject)
@@ -8283,6 +9271,10 @@ public:
 		char _UnidentifiedData_0[2284];
 
 	public:
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TGmf::tagMAIN& InObject)
@@ -8427,6 +9419,10 @@ private:
 	char _UnidentifiedData_2437[11];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class TGmf [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(TGmf& InObject)
@@ -8579,6 +9575,10 @@ public:
 
 	// <enum NYApproachToTargetVal::CHANGE_TYPE m_lastChangeType, offset 0x8>
 	enum NYApproachToTargetVal::CHANGE_TYPE m_lastChangeType;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class NYApproachToTargetVal [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -8742,13 +9742,6 @@ public:
 	class CHrHpGauge
 	{
 	public:
-		// [Function] void __convention("thiscall") HrBattleIcon::CHrHpGauge::Initialize(class HrBattleIcon::CHrHpGauge* const this, class mHRChara* arg2) [?Initialize@CHrHpGauge@HrBattleIcon@@QAEXPAVmHRChara@@@Z]
-		void Initialize(class mHRChara* arg2)
-		{
-			typedef void(__thiscall* _Func)(class HrBattleIcon::CHrHpGauge* const thisPtr, class mHRChara* arg2);
-			_Func mFunc = (_Func)(GameModule + 0x4ca550);
-			return mFunc(this, arg2);
-		}
 		/// Struct member variables
 
 		// <class NYPhase m_Phase, offset 0x0>
@@ -8794,6 +9787,17 @@ public:
 		char _UnidentifiedData_114[2];
 
 	public:
+		/// 1 Functions
+
+		// [Function] void __convention("thiscall") HrBattleIcon::CHrHpGauge::Initialize(class HrBattleIcon::CHrHpGauge* const this, class mHRChara* arg2) [?Initialize@CHrHpGauge@HrBattleIcon@@QAEXPAVmHRChara@@@Z]
+		void Initialize(class mHRChara* arg2)
+		{
+			typedef void(__thiscall* _Func)(class HrBattleIcon::CHrHpGauge* const thisPtr, class mHRChara* arg2);
+			_Func mFunc = (_Func)(GameModule + 0x4ca550);
+			return mFunc(this, arg2);
+		}
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "class CHrHpGauge [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(HrBattleIcon::CHrHpGauge& InObject)
@@ -8848,20 +9852,6 @@ public:
 	static_assert(sizeof(HrBattleIcon::CHrHpGauge::m_SlashFadeCounter) == 2, "expected HrBattleIcon::CHrHpGauge::m_SlashFadeCounter to be size 2");
 	static_assert(sizeof(HrBattleIcon::CHrHpGauge) == 116, "expected HrBattleIcon::CHrHpGauge to be size 116");
 
-	// [Function] void __convention("thiscall") HrBattleIcon::OnCharacterTerminate(class HrBattleIcon* const this, class mHRChara* arg2) [?OnCharacterTerminate@HrBattleIcon@@QAEXPAVmHRChara@@@Z]
-	void OnCharacterTerminate(class mHRChara* arg2)
-	{
-		typedef void(__thiscall* _Func)(class HrBattleIcon* const thisPtr, class mHRChara* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x4cdbf0);
-		return mFunc(this, arg2);
-	}
-	// [Function] void __convention("thiscall") HrBattleIcon::Initialize(class HrBattleIcon* const this, class mHRChara* arg2, uint8_t arg3) [?Initialize@HrBattleIcon@@QAEXPAVmHRChara@@_N@Z]
-	void Initialize(class mHRChara* arg2, uint8_t arg3)
-	{
-		typedef void(__thiscall* _Func)(class HrBattleIcon* const thisPtr, class mHRChara* arg2, uint8_t arg3);
-		_Func mFunc = (_Func)(GameModule + 0x4ce4b0);
-		return mFunc(this, arg2, arg3);
-	}
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -9004,6 +9994,24 @@ public:
 
 	// <int32_t m_SlashSEStatus, offset 0x1fc>
 	int32_t m_SlashSEStatus = 0;
+
+	/// 2 Functions
+
+	// [Function] void __convention("thiscall") HrBattleIcon::OnCharacterTerminate(class HrBattleIcon* const this, class mHRChara* arg2) [?OnCharacterTerminate@HrBattleIcon@@QAEXPAVmHRChara@@@Z]
+	void OnCharacterTerminate(class mHRChara* arg2)
+	{
+		typedef void(__thiscall* _Func)(class HrBattleIcon* const thisPtr, class mHRChara* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x4cdbf0);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") HrBattleIcon::Initialize(class HrBattleIcon* const this, class mHRChara* arg2, uint8_t arg3) [?Initialize@HrBattleIcon@@QAEXPAVmHRChara@@_N@Z]
+	void Initialize(class mHRChara* arg2, uint8_t arg3)
+	{
+		typedef void(__thiscall* _Func)(class HrBattleIcon* const thisPtr, class mHRChara* arg2, uint8_t arg3);
+		_Func mFunc = (_Func)(GameModule + 0x4ce4b0);
+		return mFunc(this, arg2, arg3);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class HrBattleIcon [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -9154,6 +10162,43 @@ static_assert(sizeof(HrBattleIcon) == 512, "expected HrBattleIcon to be size 512
 class mHRChara : public ghmListObj
 {
 public:
+	/// Struct member variables
+
+	// <class ghmListObj field_0, offset 0x0>
+	// class ghmListObj Super;
+
+	// <struct stCharaStatus mStatus, offset 0x10>
+	struct stCharaStatus mStatus;
+
+	// <class stCharaFileData mResource, offset 0x3ac>
+	class stCharaFileData mResource;
+
+	// <struct stCharaEffect mEffect, offset 0x3e4>
+	struct stCharaEffect mEffect;
+
+	// <class CAmbientShadow m_inAmbientShadow, offset 0x508>
+	class CAmbientShadow m_inAmbientShadow;
+
+	// <class CStlVector<CStickShadow> m_ainFootShadow, offset 0x540>
+	class std::vector<CStickShadow> m_ainFootShadow;
+
+	// <enum enCharaInitProc mInitProc, offset 0x54c>
+	enum enCharaInitProc mInitProc;
+
+	// <class CharController* m_pCharController, offset 0x550>
+	class CharController* m_pCharController = nullptr;
+
+	// <class ghmTriangle mWepColl, offset 0x554>
+	class ghmTriangle mWepColl;
+
+	// <int32_t motionInvincibilityFrames, offset 0x578>
+	int32_t motionInvincibilityFrames = 0;
+
+	// <int32_t invincibileMotion, offset 0x57c>
+	int32_t invincibileMotion = 0;
+
+	/// 367 Functions
+
 	// [Function] enum enCharaType __convention("thiscall") mHRChara::mGetCharaType(class mHRChara* const this) [?mGetCharaType@mHRChara@@QBE?AW4enCharaType@@XZ]
 	/* enum enCharaType */ uint32_t mGetCharaType()
 	{
@@ -9462,7 +10507,7 @@ public:
 		return mFunc(this);
 	}
 	// [Function] class TGmf* __convention("thiscall") mHRChara::mGetCurResourceGmfPtr(class mHRChara* const this) [?mGetCurResourceGmfPtr@mHRChara@@UBEPBVTGmf@@XZ]
-	class TGmf* mGetCurResourceGmfPtr2()
+	class TGmf* mGetCurResourceGmfPtr_2()
 	{
 		typedef class TGmf*(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xa49f0);
@@ -9497,7 +10542,7 @@ public:
 		return mFunc(this);
 	}
 	// [Function] class TGmf* __convention("thiscall") mHRChara::mGetResourceGmfDeadPtr(class mHRChara* const this) [?mGetResourceGmfDeadPtr@mHRChara@@UAEPAVTGmf@@XZ]
-	class TGmf* mGetResourceGmfDeadPtr2()
+	class TGmf* mGetResourceGmfDeadPtr_2()
 	{
 		typedef class TGmf*(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xa4a70);
@@ -9511,7 +10556,7 @@ public:
 		return mFunc(this);
 	}
 	// [Function] class TGmf* __convention("thiscall") mHRChara::mGetResourceGmfPtr(class mHRChara* const this) [?mGetResourceGmfPtr@mHRChara@@UAEPAVTGmf@@XZ]
-	class TGmf* mGetResourceGmfPtr2()
+	class TGmf* mGetResourceGmfPtr_2()
 	{
 		typedef class TGmf*(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xa4a90);
@@ -9955,7 +11000,7 @@ public:
 		return mFunc(this);
 	}
 	// [Function] void __convention("thiscall") mHRChara::mChgBtlIcnFinishDemo(class mHRChara* const this, enum HrBattleIcon::D_TODOME_DIRECT arg2) [?mChgBtlIcnFinishDemo@mHRChara@@QAEXW4D_TODOME_DIRECT@HrBattleIcon@@@Z]
-	void mChgBtlIcnFinishDemo2(/* enum HrBattleIcon::D_TODOME_DIRECT */ uint32_t arg2)
+	void mChgBtlIcnFinishDemo_2(/* enum HrBattleIcon::D_TODOME_DIRECT */ uint32_t arg2)
 	{
 		typedef void(__thiscall* _Func)(class mHRChara* const thisPtr, enum HrBattleIcon::D_TODOME_DIRECT arg2);
 		_Func mFunc = (_Func)(GameModule + 0xa9520);
@@ -10075,7 +11120,7 @@ public:
 		return mFunc(this, (enum HrBattleIcon::D_TODOME_DIRECT)arg2);
 	}
 	// [Function] void __convention("thiscall") mHRChara::mChgBtlIcnFinish(class mHRChara* const this, enum HrBattleIcon::E_CON_ACT_ID arg2, enum HrBattleIcon::E_CON_ACT_ID arg3, uint8_t arg4) [?mChgBtlIcnFinish@mHRChara@@QAEXW4E_CON_ACT_ID@HrBattleIcon@@0_N@Z]
-	void mChgBtlIcnFinish2(/* enum HrBattleIcon::E_CON_ACT_ID */ uint32_t arg2, /* enum HrBattleIcon::E_CON_ACT_ID */ uint32_t arg3, uint8_t arg4)
+	void mChgBtlIcnFinish_2(/* enum HrBattleIcon::E_CON_ACT_ID */ uint32_t arg2, /* enum HrBattleIcon::E_CON_ACT_ID */ uint32_t arg3, uint8_t arg4)
 	{
 		typedef void(__thiscall* _Func)(class mHRChara* const thisPtr, enum HrBattleIcon::E_CON_ACT_ID arg2, enum HrBattleIcon::E_CON_ACT_ID arg3, uint8_t arg4);
 		_Func mFunc = (_Func)(GameModule + 0xabaa0);
@@ -11120,7 +12165,7 @@ public:
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRChara::mPlayMotionMov(class mHRChara* const this, int32_t arg2, float arg3, float arg4, uint8_t arg5) [?mPlayMotionMov@mHRChara@@QAE_NHMM_N@Z]
-	uint8_t mPlayMotionMov2(int32_t arg2, float arg3, float arg4, uint8_t arg5)
+	uint8_t mPlayMotionMov_2(int32_t arg2, float arg3, float arg4, uint8_t arg5)
 	{
 		typedef uint8_t(__thiscall* _Func)(class mHRChara* const thisPtr, int32_t arg2, float arg3, float arg4, uint8_t arg5);
 		_Func mFunc = (_Func)(GameModule + 0x4721d0);
@@ -11394,7 +12439,7 @@ public:
 		return mFunc(this, arg2, arg3);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRChara::mCheckAttack(class mHRChara* const this) [?mCheckAttack@mHRChara@@UAE_NXZ]
-	uint8_t mCheckAttack2()
+	uint8_t mCheckAttack_2()
 	{
 		typedef uint8_t(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0x4750e0);
@@ -11457,7 +12502,7 @@ public:
 		return mFunc(this, arg2, arg3);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRChara::mPlayMotionBlend(class mHRChara* const this, int32_t arg2, char arg3, uint8_t arg4, uint8_t arg5) [?mPlayMotionBlend@mHRChara@@UAE_NHC_N0@Z]
-	uint8_t mPlayMotionBlend2(int32_t arg2, char arg3, uint8_t arg4, uint8_t arg5)
+	uint8_t mPlayMotionBlend_2(int32_t arg2, char arg3, uint8_t arg4, uint8_t arg5)
 	{
 		typedef uint8_t(__thiscall* _Func)(class mHRChara* const thisPtr, int32_t arg2, char arg3, uint8_t arg4, uint8_t arg5);
 		_Func mFunc = (_Func)(GameModule + 0x475630);
@@ -11548,7 +12593,7 @@ public:
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13);
 	}
 	// [Function] class TGan* __convention("thiscall") mHRChara::mpGetGan(class mHRChara* const this, int32_t arg2) [?mpGetGan@mHRChara@@UAEPAVTGan@@H@Z]
-	class TGan* mpGetGan2(int32_t arg2)
+	class TGan* mpGetGan_2(int32_t arg2)
 	{
 		typedef class TGan*(__thiscall* _Func)(class mHRChara* const thisPtr, int32_t arg2);
 		_Func mFunc = (_Func)(GameModule + 0x477960);
@@ -11629,7 +12674,7 @@ public:
 		return mFunc(this);
 	}
 	// [Function] void __convention("thiscall") mHRChara::mSetDamageAcceptFrame(class mHRChara* const this) [?mSetDamageAcceptFrame@mHRChara@@UAEXXZ]
-	void mSetDamageAcceptFrame2()
+	void mSetDamageAcceptFrame_2()
 	{
 		typedef void(__thiscall* _Func)(class mHRChara* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0x477bd0);
@@ -11727,7 +12772,7 @@ public:
 		return mFunc(this);
 	}
 	// [Function] class mHRChara* mHRChara::mGetCharaPtr(enum enCharaType arg1, uint32_t arg2) [?mGetCharaPtr@mHRChara@@SAPAV1@W4enCharaType@@I@Z]
-	static class mHRChara* mGetCharaPtr2(/* enum enCharaType */ uint32_t arg1, uint32_t arg2)
+	static class mHRChara* mGetCharaPtr_2(/* enum enCharaType */ uint32_t arg1, uint32_t arg2)
 	{
 		typedef class mHRChara*(__fastcall* _Func)(enum enCharaType arg1, uint32_t arg2);
 		_Func mFunc = (_Func)(GameModule + 0x478370);
@@ -11747,40 +12792,7 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x4783e0);
 		return mFunc();
 	}
-	/// Struct member variables
-
-	// <class ghmListObj field_0, offset 0x0>
-	// class ghmListObj Super;
-
-	// <struct stCharaStatus mStatus, offset 0x10>
-	struct stCharaStatus mStatus;
-
-	// <class stCharaFileData mResource, offset 0x3ac>
-	class stCharaFileData mResource;
-
-	// <struct stCharaEffect mEffect, offset 0x3e4>
-	struct stCharaEffect mEffect;
-
-	// <class CAmbientShadow m_inAmbientShadow, offset 0x508>
-	class CAmbientShadow m_inAmbientShadow;
-
-	// <class CStlVector<CStickShadow> m_ainFootShadow, offset 0x540>
-	class std::vector<CStickShadow> m_ainFootShadow;
-
-	// <enum enCharaInitProc mInitProc, offset 0x54c>
-	enum enCharaInitProc mInitProc;
-
-	// <class CharController* m_pCharController, offset 0x550>
-	class CharController* m_pCharController = nullptr;
-
-	// <class ghmTriangle mWepColl, offset 0x554>
-	class ghmTriangle mWepColl;
-
-	// <int32_t motionInvincibilityFrames, offset 0x578>
-	int32_t motionInvincibilityFrames = 0;
-
-	// <int32_t invincibileMotion, offset 0x57c>
-	int32_t invincibileMotion = 0;
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class mHRChara [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -11856,15 +12868,15 @@ public:
 			.addFunction("mCheckEnterMotion", &mHRChara::mCheckEnterMotion)
 			.addFunction("mpGetGan", &mHRChara::mpGetGan)
 			.addFunction("mGetCurResourceGmfPtr", &mHRChara::mGetCurResourceGmfPtr)
-			.addFunction("mGetCurResourceGmfPtr2", &mHRChara::mGetCurResourceGmfPtr2)
+			.addFunction("mGetCurResourceGmfPtr_2", &mHRChara::mGetCurResourceGmfPtr_2)
 			.addFunction("mGetResourceGmfWepLPtr", &mHRChara::mGetResourceGmfWepLPtr)
 			.addFunction("mGetResourceGmfWepRPtr", &mHRChara::mGetResourceGmfWepRPtr)
 			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mSetResourceGmfPtr", &mHRChara::mSetResourceGmfPtr)
 			.addFunction("mGetResourceGmfDeadPtr", &mHRChara::mGetResourceGmfDeadPtr)
-			.addFunction("mGetResourceGmfDeadPtr2", &mHRChara::mGetResourceGmfDeadPtr2)
+			.addFunction("mGetResourceGmfDeadPtr_2", &mHRChara::mGetResourceGmfDeadPtr_2)
 			.addFunction("mGetResourceGmfPtr", &mHRChara::mGetResourceGmfPtr)
-			.addFunction("mGetResourceGmfPtr2", &mHRChara::mGetResourceGmfPtr2)
+			.addFunction("mGetResourceGmfPtr_2", &mHRChara::mGetResourceGmfPtr_2)
 			.addFunction("mGetCollPtr", &mHRChara::mGetCollPtr)
 			.addFunction("mSethitOidashiDisEnable", &mHRChara::mSethitOidashiDisEnable)
 			.addFunction("mGetBrainPos", &mHRChara::mGetBrainPos)
@@ -11929,7 +12941,7 @@ public:
 			.addFunction("mUndispBtlIcn", &mHRChara::mUndispBtlIcn)
 			.addFunction("mChgBtlIcnFinishDemo", &mHRChara::mChgBtlIcnFinishDemo)
 			.addFunction("mChgBtlIcnTb", &mHRChara::mChgBtlIcnTb)
-			.addFunction("mChgBtlIcnFinishDemo2", &mHRChara::mChgBtlIcnFinishDemo2)
+			.addFunction("mChgBtlIcnFinishDemo_2", &mHRChara::mChgBtlIcnFinishDemo_2)
 			.addFunction("SetDrawYAdjust", &mHRChara::SetDrawYAdjust)
 			.addFunction("mSetDemoCtrl", &mHRChara::mSetDemoCtrl)
 			.addFunction("mGetDemoCtrl", &mHRChara::mGetDemoCtrl)
@@ -11946,7 +12958,7 @@ public:
 			.addFunction("mGetLockOnDistance", &mHRChara::mGetLockOnDistance)
 			.addFunction("mGetAliveBtlIcn", &mHRChara::mGetAliveBtlIcn)
 			.addFunction("mChgBtlIcnFinish", &mHRChara::mChgBtlIcnFinish)
-			.addFunction("mChgBtlIcnFinish2", &mHRChara::mChgBtlIcnFinish2)
+			.addFunction("mChgBtlIcnFinish_2", &mHRChara::mChgBtlIcnFinish_2)
 			.addFunction("mSetSlowBlow", &mHRChara::mSetSlowBlow)
 			.addFunction("mSetInputFinishReq", &mHRChara::mSetInputFinishReq)
 			.addFunction("mGetResourceGanPtr", &mHRChara::mGetResourceGanPtr)
@@ -12104,7 +13116,7 @@ public:
 			//.addFunction("mSetPosA", &mHRChara::mSetPosA)
 			.addFunction("mSetSimpleHpBarVisible", &mHRChara::mSetSimpleHpBarVisible)
 			.addFunction("mPlayCamMotFromCharMot", &mHRChara::mPlayCamMotFromCharMot)
-			.addFunction("mPlayMotionMov2", &mHRChara::mPlayMotionMov2)
+			.addFunction("mPlayMotionMov_2", &mHRChara::mPlayMotionMov_2)
 			.addFunction("checkDeleteBlackBodyEffect", &mHRChara::checkDeleteBlackBodyEffect)
 			.addFunction("mSetHitCounter", &mHRChara::mSetHitCounter)
 			.addFunction("mReleaseBloodSplash", &mHRChara::mReleaseBloodSplash)
@@ -12148,7 +13160,7 @@ public:
 			.addFunction("mRefreshFloorPosition", &mHRChara::mRefreshFloorPosition)
 			.addFunction("mDamageProc", &mHRChara::mDamageProc)
 			.addFunction("mRestoreDamage", &mHRChara::mRestoreDamage)
-			.addFunction("mCheckAttack2", &mHRChara::mCheckAttack2)
+			.addFunction("mCheckAttack_2", &mHRChara::mCheckAttack_2)
 			.addFunction("mCheckCanAttack", &mHRChara::mCheckCanAttack)
 			.addFunction("mGetTsubazeriaiPos", &mHRChara::mGetTsubazeriaiPos)
 			.addFunction("mSetPcTsubaOuterMot", &mHRChara::mSetPcTsubaOuterMot)
@@ -12158,7 +13170,7 @@ public:
 			.addFunction("mPlayThrownMotion", &mHRChara::mPlayThrownMotion)
 			// Can't export pointer to pointer 'class TGan**' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mPlayMotionBlend", &mHRChara::mPlayMotionBlend)
-			.addFunction("mPlayMotionBlend2", &mHRChara::mPlayMotionBlend2)
+			.addFunction("mPlayMotionBlend_2", &mHRChara::mPlayMotionBlend_2)
 			.addFunction("mBossDeadCommonProcess", &mHRChara::mBossDeadCommonProcess)
 			.addFunction("mCheckCanLockOn", &mHRChara::mCheckCanLockOn)
 			.addFunction("getLockOnCursorBasePosition", &mHRChara::getLockOnCursorBasePosition)
@@ -12173,7 +13185,7 @@ public:
 			//.addFunction("mSetWarpPos", &mHRChara::mSetWarpPos)
 			// Can't export functions with more than 11 parameters to LuaBridge.
 			//.addFunction("mHitCheckStage", &mHRChara::mHitCheckStage)
-			.addFunction("mpGetGan2", &mHRChara::mpGetGan2)
+			.addFunction("mpGetGan_2", &mHRChara::mpGetGan_2)
 			.addFunction("mppGetGan", &mHRChara::mppGetGan)
 			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mRequestBloodSplash", &mHRChara::mRequestBloodSplash)
@@ -12185,7 +13197,7 @@ public:
 			.addFunction("mCreatePiyori", &mHRChara::mCreatePiyori)
 			.addFunction("mTermPiyori", &mHRChara::mTermPiyori)
 			.addFunction("mPiyoriProc", &mHRChara::mPiyoriProc)
-			.addFunction("mSetDamageAcceptFrame2", &mHRChara::mSetDamageAcceptFrame2)
+			.addFunction("mSetDamageAcceptFrame_2", &mHRChara::mSetDamageAcceptFrame_2)
 			.addFunction("IsMultiStep", &mHRChara::IsMultiStep)
 			.addFunction("IsDownAttack", &mHRChara::IsDownAttack)
 			.addFunction("getFootShadowWidthHalf", &mHRChara::getFootShadowWidthHalf)
@@ -12201,7 +13213,7 @@ public:
 			// Can't export pointer to native type 'float*' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mCheckSegmentHitStage", &mHRChara::mCheckSegmentHitStage)
 			.addFunction("mEraseDispChara", &mHRChara::mEraseDispChara)
-			.addStaticFunction("mGetCharaPtr2", &mHRChara::mGetCharaPtr2)
+			.addStaticFunction("mGetCharaPtr_2", &mHRChara::mGetCharaPtr_2)
 			.addStaticFunction("mAllSearchPiyoZako", &mHRChara::mAllSearchPiyoZako)
 			.addStaticFunction("OnStageUnloadAll", &mHRChara::OnStageUnloadAll)
 		.endClass();
@@ -12228,6 +13240,10 @@ public:
 
 	// <class mHRChara field_0, offset 0x0>
 	// class mHRChara Super;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class HROBJDummy [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -12292,6 +13308,10 @@ public:
 	// <int32_t endFadeTick, offset 0x4c>
 	int32_t endFadeTick = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct stTiger [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(stTiger& InObject)
@@ -12355,6 +13375,10 @@ public:
 	// <int32_t motNo, offset 0x1c>
 	int32_t motNo = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct stHugWalk [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(stHugWalk& InObject)
@@ -12392,6 +13416,10 @@ private:
 	char _UnidentifiedData_0[656];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct stPcEffect [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(stPcEffect& InObject)
@@ -12561,6 +13589,10 @@ private:
 	char _UnidentifiedData_174[2];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct stPcSndData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(stPcSndData& InObject)
@@ -12658,13 +13690,35 @@ public:
 
 	// <Unidentified data segment, offset 0x0>
 private:
-	char _UnidentifiedData_0[52];
+	char _UnidentifiedData_0[4];
 
 public:
+	// <uint8_t TestBullet, offset 0x4>
+	uint8_t TestBullet = 0;
+
+	// <Unidentified data segment, offset 0x5>
+private:
+	char _UnidentifiedData_5[3];
+
+public:
+	// <uint8_t TestFire, offset 0x8>
+	uint8_t TestFire = 0;
+
+	// <Unidentified data segment, offset 0x9>
+private:
+	char _UnidentifiedData_9[43];
+
+public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct stDarkSideInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(stDarkSideInfo& InObject)
 	{
+		TestBullet = InObject.TestBullet;
+		TestFire = InObject.TestFire;
 	}
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -12672,10 +13726,14 @@ public:
 		NS = NS.beginClass<stDarkSideInfo>("stDarkSideInfo")
 			.addFunction("__tostring", &stDarkSideInfo::ToString)
 			.addFunction("GetPtrAddr", &stDarkSideInfo::GetPtrAddr)
+			.addProperty("TestBullet", &stDarkSideInfo::TestBullet)
+			.addProperty("TestFire", &stDarkSideInfo::TestFire)
 		.endClass();
 	}
 #endif
 };
+static_assert(sizeof(stDarkSideInfo::TestBullet) == 1, "expected stDarkSideInfo::TestBullet to be size 1");
+static_assert(sizeof(stDarkSideInfo::TestFire) == 1, "expected stDarkSideInfo::TestFire to be size 1");
 static_assert(sizeof(stDarkSideInfo) == 52, "expected stDarkSideInfo to be size 52");
 
 // [Structure] struct stPcSaveData
@@ -12689,6 +13747,10 @@ private:
 	char _UnidentifiedData_0[1636];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct stPcSaveData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(stPcSaveData& InObject)
@@ -12732,6 +13794,10 @@ public:
 	// <int32_t warpTargetIndex, offset 0x8>
 	int32_t warpTargetIndex = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct stMiniDemo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(stMiniDemo& InObject)
@@ -12764,6 +13830,68 @@ static_assert(sizeof(stMiniDemo::warpWaitFrame) == 4, "expected stMiniDemo::warp
 static_assert(sizeof(stMiniDemo::warpTargetIndex) == 4, "expected stMiniDemo::warpTargetIndex to be size 4");
 static_assert(sizeof(stMiniDemo) == 12, "expected stMiniDemo to be size 12");
 
+// enum enPcCmbKind
+enum enPcCmbKind : uint32_t
+{
+	// <ePcAtkFghtCmbUp = 0x0>
+	ePcAtkFghtCmbUp = 0,
+
+	// <ePcAtkFghtCmbDw = 0x1>
+	ePcAtkFghtCmbDw = 1,
+
+	// <ePcAtkCmb01Up = 0x2>
+	ePcAtkCmb01Up = 2,
+
+	// <ePcAtkCmb01Btm = 0x3>
+	ePcAtkCmb01Btm = 3,
+
+	// <ePcAtkCmb02Up = 0x4>
+	ePcAtkCmb02Up = 4,
+
+	// <ePcAtkCmb02Btm = 0x5>
+	ePcAtkCmb02Btm = 5,
+
+	// <ePcAtkCmb03Up = 0x6>
+	ePcAtkCmb03Up = 6,
+
+	// <ePcAtkCmb03Btm = 0x7>
+	ePcAtkCmb03Btm = 7,
+
+	// <ePcAtkCmb04Up = 0x8>
+	ePcAtkCmb04Up = 8,
+
+	// <ePcAtkCmb04Btm = 0x9>
+	ePcAtkCmb04Btm = 9,
+
+	// <ePcAtkCmb01Dncng = 0xa>
+	ePcAtkCmb01Dncng = 10,
+
+	// <ePcAtkCmb02Dncng = 0xb>
+	ePcAtkCmb02Dncng = 11,
+
+	// <ePcAtkCmb03Dncng = 0xc>
+	ePcAtkCmb03Dncng = 12,
+
+	// <ePcAtkCmb04Dncng = 0xd>
+	ePcAtkCmb04Dncng = 13,
+
+	// <eSNBAtkCmb01Up = 0xe>
+	eSNBAtkCmb01Up = 14,
+
+	// <eSNBAtkCmb01Btm = 0xf>
+	eSNBAtkCmb01Btm = 15,
+
+	// <eHENAtkCmb01Up = 0x10>
+	eHENAtkCmb01Up = 16,
+
+	// <eHENAtkCmb01Btm = 0x11>
+	eHENAtkCmb01Btm = 17,
+
+	// <ePcAtkCmbKindMax = 0x12>
+	ePcAtkCmbKindMax = 18
+
+};
+
 // [Structure] struct stPcStatus
 struct stPcStatus
 {
@@ -12772,7 +13900,121 @@ public:
 
 	// <Unidentified data segment, offset 0x0>
 private:
-	char _UnidentifiedData_0[1717];
+	char _UnidentifiedData_0[12];
+
+public:
+	// <int32_t UnknownAtkMot, offset 0xc>
+	int32_t UnknownAtkMot = 0;
+
+	// <Unidentified data segment, offset 0x10>
+private:
+	char _UnidentifiedData_16[24];
+
+public:
+	// <class TGmf* MotionTGmf, offset 0x28>
+	class TGmf* MotionTGmf = nullptr;
+
+	// <Unidentified data segment, offset 0x2c>
+private:
+	char _UnidentifiedData_44[20];
+
+public:
+	// <int32_t EqWepID, offset 0x40>
+	int32_t EqWepID = 0;
+
+	// <Unidentified data segment, offset 0x44>
+private:
+	char _UnidentifiedData_68[260];
+
+public:
+	// <struct tagGHMR_TEX* EquipTexPtr, offset 0x148>
+	struct tagGHMR_TEX* EquipTexPtr = nullptr;
+
+	// <Unidentified data segment, offset 0x14c>
+private:
+	char _UnidentifiedData_332[276];
+
+public:
+	// <uint32_t WeaponID, offset 0x260>
+	uint32_t WeaponID = 0;
+
+	// <Unidentified data segment, offset 0x264>
+private:
+	char _UnidentifiedData_612[20];
+
+public:
+	// <int32_t UnknownWeaponValue, offset 0x278>
+	int32_t UnknownWeaponValue = 0;
+
+	// <int16_t CurBattery1, offset 0x27c>
+	int16_t CurBattery1 = 0;
+
+	// <int16_t MaxBattery1, offset 0x27e>
+	int16_t MaxBattery1 = 0;
+
+	// <Unidentified data segment, offset 0x280>
+private:
+	char _UnidentifiedData_640[12];
+
+public:
+	// <int16_t CurBattery2, offset 0x28c>
+	int16_t CurBattery2 = 0;
+
+	// <int16_t MaxBattery2, offset 0x28e>
+	int16_t MaxBattery2 = 0;
+
+	// <Unidentified data segment, offset 0x290>
+private:
+	char _UnidentifiedData_656[12];
+
+public:
+	// <int16_t CurBattery3, offset 0x29c>
+	int16_t CurBattery3 = 0;
+
+	// <int16_t MaxBattery3, offset 0x29e>
+	int16_t MaxBattery3 = 0;
+
+	// <Unidentified data segment, offset 0x2a0>
+private:
+	char _UnidentifiedData_672[12];
+
+public:
+	// <int16_t CurBattery4, offset 0x2ac>
+	int16_t CurBattery4 = 0;
+
+	// <int16_t MaxBattery4, offset 0x2ae>
+	int16_t MaxBattery4 = 0;
+
+	// <Unidentified data segment, offset 0x2b0>
+private:
+	char _UnidentifiedData_688[8];
+
+public:
+	// <void* UnknownWeaponPtr, offset 0x2b8>
+	void* UnknownWeaponPtr = nullptr;
+
+	// <Unidentified data segment, offset 0x2bc>
+private:
+	char _UnidentifiedData_700[824];
+
+public:
+	// <int32_t CurMoney, offset 0x5f4>
+	int32_t CurMoney = 0;
+
+	// <int32_t MaxMoney, offset 0x5f8>
+	int32_t MaxMoney = 0;
+
+	// <Unidentified data segment, offset 0x5fc>
+private:
+	char _UnidentifiedData_1532[140];
+
+public:
+	// <enum enPcCmbKind CmbKind, offset 0x688>
+	enum enPcCmbKind CmbKind;
+
+	// <Unidentified data segment, offset 0x68c>
+private:
+	char _UnidentifiedData_1676[41];
 
 public:
 	// <char FinishNpcNum, offset 0x6b5>
@@ -12780,15 +14022,129 @@ public:
 
 	// <Unidentified data segment, offset 0x6b6>
 private:
-	char _UnidentifiedData_1718[133];
+	char _UnidentifiedData_1718[95];
 
 public:
+	// <uint8_t AtkMode, offset 0x715>
+	uint8_t AtkMode = 0;
+
+	// <uint8_t EqWepLaser, offset 0x716>
+	uint8_t EqWepLaser = 0;
+
+	// <Unidentified data segment, offset 0x717>
+private:
+	char _UnidentifiedData_1815[9];
+
+public:
+	// <uint8_t TsubaDisEnable, offset 0x720>
+	uint8_t TsubaDisEnable = 0;
+
+	// <Unidentified data segment, offset 0x721>
+private:
+	char _UnidentifiedData_1825[6];
+
+public:
+	// <bool ElectroShockWalk, offset 0x727>
+	bool ElectroShockWalk;
+
+	// <bool HugWalk, offset 0x728>
+	bool HugWalk;
+
+	// <Unidentified data segment, offset 0x729>
+private:
+	char _UnidentifiedData_1833[3];
+
+public:
+	// <bool AlwaysEmptyBattery, offset 0x72c>
+	bool AlwaysEmptyBattery;
+
+	// <bool CantChargeBattery, offset 0x72d>
+	bool CantChargeBattery;
+
+	// <Unidentified data segment, offset 0x72e>
+private:
+	char _UnidentifiedData_1838[3];
+
+public:
+	// <byte WeaponEquipFlag, offset 0x731>
+	byte WeaponEquipFlag;
+
+	// <Unidentified data segment, offset 0x732>
+private:
+	char _UnidentifiedData_1842[4];
+
+public:
+	// <bool CantCallBikeFlag, offset 0x736>
+	bool CantCallBikeFlag;
+
+	// <Unidentified data segment, offset 0x737>
+private:
+	char _UnidentifiedData_1847[3];
+
+public:
+	// <bool LostBikeFlag, offset 0x73a>
+	bool LostBikeFlag;
+
 	// <char BikeVisible, offset 0x73b>
 	char BikeVisible;
 
 	// <Unidentified data segment, offset 0x73c>
 private:
-	char _UnidentifiedData_1852[272];
+	char _UnidentifiedData_1852[20];
+
+public:
+	// <int32_t SwingCount, offset 0x750>
+	int32_t SwingCount = 0;
+
+	// <Unidentified data segment, offset 0x754>
+private:
+	char _UnidentifiedData_1876[52];
+
+public:
+	// <uint8_t PuppetMode, offset 0x788>
+	uint8_t PuppetMode = 0;
+
+	// <uint8_t UseWeaponEffect, offset 0x789>
+	uint8_t UseWeaponEffect = 0;
+
+	// <Unidentified data segment, offset 0x78a>
+private:
+	char _UnidentifiedData_1930[122];
+
+public:
+	// <bool BanSlotCry, offset 0x804>
+	bool BanSlotCry;
+
+	// <bool BanSlotBel, offset 0x805>
+	bool BanSlotBel;
+
+	// <bool BanSlotBar, offset 0x806>
+	bool BanSlotBar;
+
+	// <bool BanSlot777, offset 0x807>
+	bool BanSlot777;
+
+	// <bool BanRollEscape, offset 0x808>
+	bool BanRollEscape;
+
+	// <bool BanJump, offset 0x809>
+	bool BanJump;
+
+	// <bool BanDeadFukki, offset 0x80a>
+	bool BanDeadFukki;
+
+	// <bool BanJustGuard, offset 0x80b>
+	bool BanJustGuard;
+
+	// <bool BanWinTsubazeri, offset 0x80c>
+	bool BanWinTsubazeri;
+
+	// <uint8_t WepStick, offset 0x80d>
+	uint8_t WepStick = 0;
+
+	// <Unidentified data segment, offset 0x80e>
+private:
+	char _UnidentifiedData_2062[62];
 
 public:
 	// <uint32_t DeadBossNum, offset 0x84c>
@@ -12796,16 +14152,208 @@ public:
 
 	// <Unidentified data segment, offset 0x850>
 private:
-	char _UnidentifiedData_2128[180];
+	char _UnidentifiedData_2128[16];
 
 public:
+	// <bool DontSubBattery, offset 0x860>
+	bool DontSubBattery;
+
+	// <bool AutoSubBatteryDisEnable, offset 0x861>
+	bool AutoSubBatteryDisEnable;
+
+	// <Unidentified data segment, offset 0x862>
+private:
+	char _UnidentifiedData_2146[2];
+
+public:
+	// <bool DontRestoreMotion, offset 0x864>
+	bool DontRestoreMotion;
+
+	// <uint8_t BikeClash2battou, offset 0x865>
+	uint8_t BikeClash2battou = 0;
+
+	// <Unidentified data segment, offset 0x866>
+private:
+	char _UnidentifiedData_2150[10];
+
+public:
+	// <bool JustGuardDisEnable, offset 0x870>
+	bool JustGuardDisEnable;
+
+	// <Unidentified data segment, offset 0x871>
+private:
+	char _UnidentifiedData_2161[1];
+
+public:
+	// <uint8_t DashAtkExec, offset 0x872>
+	uint8_t DashAtkExec = 0;
+
+	// <bool JustEscapeDisEnable, offset 0x873>
+	bool JustEscapeDisEnable;
+
+	// <Unidentified data segment, offset 0x874>
+private:
+	char _UnidentifiedData_2164[36];
+
+public:
+	// <bool BanPiyori, offset 0x898>
+	bool BanPiyori;
+
+	// <Unidentified data segment, offset 0x899>
+private:
+	char _UnidentifiedData_2201[7];
+
+public:
+	// <uint8_t CancelSetPadOffset, offset 0x8a0>
+	uint8_t CancelSetPadOffset = 0;
+
+	// <Unidentified data segment, offset 0x8a1>
+private:
+	char _UnidentifiedData_2209[3];
+
+public:
+	// <float UnknownAttackRotationYaw, offset 0x8a4>
+	float UnknownAttackRotationYaw = 0;
+
+	// <Unidentified data segment, offset 0x8a8>
+private:
+	char _UnidentifiedData_2216[60];
+
+public:
+	// <uint8_t ChangeEquipFromScript, offset 0x8e4>
+	uint8_t ChangeEquipFromScript = 0;
+
+	// <bool NoBatteryThrow, offset 0x8e5>
+	bool NoBatteryThrow;
+
+	// <uint8_t ChangeWeaponEffectVisible, offset 0x8e6>
+	uint8_t ChangeWeaponEffectVisible = 0;
+
+	// <uint8_t LockOnNockDown, offset 0x8e7>
+	uint8_t LockOnNockDown = 0;
+
+	// <uint8_t AttackHajiki, offset 0x8e8>
+	uint8_t AttackHajiki = 0;
+
+	// <uint8_t DontPlayLoseTsubazeriMotion, offset 0x8e9>
+	uint8_t DontPlayLoseTsubazeriMotion = 0;
+
+	// <Unidentified data segment, offset 0x8ea>
+private:
+	char _UnidentifiedData_2282[6];
+
+public:
+	// <bool NoWearJacket, offset 0x8f0>
+	bool NoWearJacket;
+
+	// <Unidentified data segment, offset 0x8f1>
+private:
+	char _UnidentifiedData_2289[7];
+
+public:
+	// <bool DispChangeWeaponIcon, offset 0x8f8>
+	bool DispChangeWeaponIcon;
+
+	// <uint8_t StandUpAttack, offset 0x8f9>
+	uint8_t StandUpAttack = 0;
+
+	// <bool PushingBatteryChargeButton, offset 0x8fa>
+	bool PushingBatteryChargeButton;
+
+	// <uint8_t HitBigConsumeBattertAttack, offset 0x8fb>
+	uint8_t HitBigConsumeBattertAttack = 0;
+
+	// <Unidentified data segment, offset 0x8fc>
+private:
+	char _UnidentifiedData_2300[4];
+
+public:
+	// <uint8_t StartThrowSlow, offset 0x900>
+	uint8_t StartThrowSlow = 0;
+
+	// <uint8_t ForceLoseTsubazeri, offset 0x901>
+	uint8_t ForceLoseTsubazeri = 0;
+
+	// <Unidentified data segment, offset 0x902>
+private:
+	char _UnidentifiedData_2306[2];
+
+public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct stPcStatus [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(stPcStatus& InObject)
 	{
+		UnknownAtkMot = InObject.UnknownAtkMot;
+		MotionTGmf = InObject.MotionTGmf;
+		EqWepID = InObject.EqWepID;
+		EquipTexPtr = InObject.EquipTexPtr;
+		WeaponID = InObject.WeaponID;
+		UnknownWeaponValue = InObject.UnknownWeaponValue;
+		CurBattery1 = InObject.CurBattery1;
+		MaxBattery1 = InObject.MaxBattery1;
+		CurBattery2 = InObject.CurBattery2;
+		MaxBattery2 = InObject.MaxBattery2;
+		CurBattery3 = InObject.CurBattery3;
+		MaxBattery3 = InObject.MaxBattery3;
+		CurBattery4 = InObject.CurBattery4;
+		MaxBattery4 = InObject.MaxBattery4;
+		UnknownWeaponPtr = InObject.UnknownWeaponPtr;
+		CurMoney = InObject.CurMoney;
+		MaxMoney = InObject.MaxMoney;
+		CmbKind = InObject.CmbKind;
 		FinishNpcNum = InObject.FinishNpcNum;
+		AtkMode = InObject.AtkMode;
+		EqWepLaser = InObject.EqWepLaser;
+		TsubaDisEnable = InObject.TsubaDisEnable;
+		ElectroShockWalk = InObject.ElectroShockWalk;
+		HugWalk = InObject.HugWalk;
+		AlwaysEmptyBattery = InObject.AlwaysEmptyBattery;
+		CantChargeBattery = InObject.CantChargeBattery;
+		WeaponEquipFlag = InObject.WeaponEquipFlag;
+		CantCallBikeFlag = InObject.CantCallBikeFlag;
+		LostBikeFlag = InObject.LostBikeFlag;
 		BikeVisible = InObject.BikeVisible;
+		SwingCount = InObject.SwingCount;
+		PuppetMode = InObject.PuppetMode;
+		UseWeaponEffect = InObject.UseWeaponEffect;
+		BanSlotCry = InObject.BanSlotCry;
+		BanSlotBel = InObject.BanSlotBel;
+		BanSlotBar = InObject.BanSlotBar;
+		BanSlot777 = InObject.BanSlot777;
+		BanRollEscape = InObject.BanRollEscape;
+		BanJump = InObject.BanJump;
+		BanDeadFukki = InObject.BanDeadFukki;
+		BanJustGuard = InObject.BanJustGuard;
+		BanWinTsubazeri = InObject.BanWinTsubazeri;
+		WepStick = InObject.WepStick;
 		DeadBossNum = InObject.DeadBossNum;
+		DontSubBattery = InObject.DontSubBattery;
+		AutoSubBatteryDisEnable = InObject.AutoSubBatteryDisEnable;
+		DontRestoreMotion = InObject.DontRestoreMotion;
+		BikeClash2battou = InObject.BikeClash2battou;
+		JustGuardDisEnable = InObject.JustGuardDisEnable;
+		DashAtkExec = InObject.DashAtkExec;
+		JustEscapeDisEnable = InObject.JustEscapeDisEnable;
+		BanPiyori = InObject.BanPiyori;
+		CancelSetPadOffset = InObject.CancelSetPadOffset;
+		UnknownAttackRotationYaw = InObject.UnknownAttackRotationYaw;
+		ChangeEquipFromScript = InObject.ChangeEquipFromScript;
+		NoBatteryThrow = InObject.NoBatteryThrow;
+		ChangeWeaponEffectVisible = InObject.ChangeWeaponEffectVisible;
+		LockOnNockDown = InObject.LockOnNockDown;
+		AttackHajiki = InObject.AttackHajiki;
+		DontPlayLoseTsubazeriMotion = InObject.DontPlayLoseTsubazeriMotion;
+		NoWearJacket = InObject.NoWearJacket;
+		DispChangeWeaponIcon = InObject.DispChangeWeaponIcon;
+		StandUpAttack = InObject.StandUpAttack;
+		PushingBatteryChargeButton = InObject.PushingBatteryChargeButton;
+		HitBigConsumeBattertAttack = InObject.HitBigConsumeBattertAttack;
+		StartThrowSlow = InObject.StartThrowSlow;
+		ForceLoseTsubazeri = InObject.ForceLoseTsubazeri;
 	}
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -12813,16 +14361,145 @@ public:
 		NS = NS.beginClass<stPcStatus>("stPcStatus")
 			.addFunction("__tostring", &stPcStatus::ToString)
 			.addFunction("GetPtrAddr", &stPcStatus::GetPtrAddr)
+			.addProperty("UnknownAtkMot", &stPcStatus::UnknownAtkMot)
+			.addProperty("MotionTGmf", &stPcStatus::MotionTGmf)
+			.addProperty("EqWepID", &stPcStatus::EqWepID)
+			.addProperty("EquipTexPtr", &stPcStatus::EquipTexPtr)
+			.addProperty("WeaponID", &stPcStatus::WeaponID)
+			.addProperty("UnknownWeaponValue", &stPcStatus::UnknownWeaponValue)
+			.addProperty("CurBattery1", &stPcStatus::CurBattery1)
+			.addProperty("MaxBattery1", &stPcStatus::MaxBattery1)
+			.addProperty("CurBattery2", &stPcStatus::CurBattery2)
+			.addProperty("MaxBattery2", &stPcStatus::MaxBattery2)
+			.addProperty("CurBattery3", &stPcStatus::CurBattery3)
+			.addProperty("MaxBattery3", &stPcStatus::MaxBattery3)
+			.addProperty("CurBattery4", &stPcStatus::CurBattery4)
+			.addProperty("MaxBattery4", &stPcStatus::MaxBattery4)
+			// void type not supported in LuaBridge
+			//.addProperty("UnknownWeaponPtr", &stPcStatus::UnknownWeaponPtr)
+			.addProperty("CurMoney", &stPcStatus::CurMoney)
+			.addProperty("MaxMoney", &stPcStatus::MaxMoney)
+			.addProperty("CmbKind", &stPcStatus::CmbKind)
 			.addProperty("FinishNpcNum", &stPcStatus::FinishNpcNum)
+			.addProperty("AtkMode", &stPcStatus::AtkMode)
+			.addProperty("EqWepLaser", &stPcStatus::EqWepLaser)
+			.addProperty("TsubaDisEnable", &stPcStatus::TsubaDisEnable)
+			.addProperty("ElectroShockWalk", &stPcStatus::ElectroShockWalk)
+			.addProperty("HugWalk", &stPcStatus::HugWalk)
+			.addProperty("AlwaysEmptyBattery", &stPcStatus::AlwaysEmptyBattery)
+			.addProperty("CantChargeBattery", &stPcStatus::CantChargeBattery)
+			.addProperty("WeaponEquipFlag", &stPcStatus::WeaponEquipFlag)
+			.addProperty("CantCallBikeFlag", &stPcStatus::CantCallBikeFlag)
+			.addProperty("LostBikeFlag", &stPcStatus::LostBikeFlag)
 			.addProperty("BikeVisible", &stPcStatus::BikeVisible)
+			.addProperty("SwingCount", &stPcStatus::SwingCount)
+			.addProperty("PuppetMode", &stPcStatus::PuppetMode)
+			.addProperty("UseWeaponEffect", &stPcStatus::UseWeaponEffect)
+			.addProperty("BanSlotCry", &stPcStatus::BanSlotCry)
+			.addProperty("BanSlotBel", &stPcStatus::BanSlotBel)
+			.addProperty("BanSlotBar", &stPcStatus::BanSlotBar)
+			.addProperty("BanSlot777", &stPcStatus::BanSlot777)
+			.addProperty("BanRollEscape", &stPcStatus::BanRollEscape)
+			.addProperty("BanJump", &stPcStatus::BanJump)
+			.addProperty("BanDeadFukki", &stPcStatus::BanDeadFukki)
+			.addProperty("BanJustGuard", &stPcStatus::BanJustGuard)
+			.addProperty("BanWinTsubazeri", &stPcStatus::BanWinTsubazeri)
+			.addProperty("WepStick", &stPcStatus::WepStick)
 			.addProperty("DeadBossNum", &stPcStatus::DeadBossNum)
+			.addProperty("DontSubBattery", &stPcStatus::DontSubBattery)
+			.addProperty("AutoSubBatteryDisEnable", &stPcStatus::AutoSubBatteryDisEnable)
+			.addProperty("DontRestoreMotion", &stPcStatus::DontRestoreMotion)
+			.addProperty("BikeClash2battou", &stPcStatus::BikeClash2battou)
+			.addProperty("JustGuardDisEnable", &stPcStatus::JustGuardDisEnable)
+			.addProperty("DashAtkExec", &stPcStatus::DashAtkExec)
+			.addProperty("JustEscapeDisEnable", &stPcStatus::JustEscapeDisEnable)
+			.addProperty("BanPiyori", &stPcStatus::BanPiyori)
+			.addProperty("CancelSetPadOffset", &stPcStatus::CancelSetPadOffset)
+			.addProperty("UnknownAttackRotationYaw", &stPcStatus::UnknownAttackRotationYaw)
+			.addProperty("ChangeEquipFromScript", &stPcStatus::ChangeEquipFromScript)
+			.addProperty("NoBatteryThrow", &stPcStatus::NoBatteryThrow)
+			.addProperty("ChangeWeaponEffectVisible", &stPcStatus::ChangeWeaponEffectVisible)
+			.addProperty("LockOnNockDown", &stPcStatus::LockOnNockDown)
+			.addProperty("AttackHajiki", &stPcStatus::AttackHajiki)
+			.addProperty("DontPlayLoseTsubazeriMotion", &stPcStatus::DontPlayLoseTsubazeriMotion)
+			.addProperty("NoWearJacket", &stPcStatus::NoWearJacket)
+			.addProperty("DispChangeWeaponIcon", &stPcStatus::DispChangeWeaponIcon)
+			.addProperty("StandUpAttack", &stPcStatus::StandUpAttack)
+			.addProperty("PushingBatteryChargeButton", &stPcStatus::PushingBatteryChargeButton)
+			.addProperty("HitBigConsumeBattertAttack", &stPcStatus::HitBigConsumeBattertAttack)
+			.addProperty("StartThrowSlow", &stPcStatus::StartThrowSlow)
+			.addProperty("ForceLoseTsubazeri", &stPcStatus::ForceLoseTsubazeri)
 		.endClass();
 	}
 #endif
 };
+static_assert(sizeof(stPcStatus::UnknownAtkMot) == 4, "expected stPcStatus::UnknownAtkMot to be size 4");
+static_assert(sizeof(stPcStatus::MotionTGmf) == 4, "expected stPcStatus::MotionTGmf to be size 4");
+static_assert(sizeof(stPcStatus::EqWepID) == 4, "expected stPcStatus::EqWepID to be size 4");
+static_assert(sizeof(stPcStatus::EquipTexPtr) == 4, "expected stPcStatus::EquipTexPtr to be size 4");
+static_assert(sizeof(stPcStatus::WeaponID) == 4, "expected stPcStatus::WeaponID to be size 4");
+static_assert(sizeof(stPcStatus::UnknownWeaponValue) == 4, "expected stPcStatus::UnknownWeaponValue to be size 4");
+static_assert(sizeof(stPcStatus::CurBattery1) == 2, "expected stPcStatus::CurBattery1 to be size 2");
+static_assert(sizeof(stPcStatus::MaxBattery1) == 2, "expected stPcStatus::MaxBattery1 to be size 2");
+static_assert(sizeof(stPcStatus::CurBattery2) == 2, "expected stPcStatus::CurBattery2 to be size 2");
+static_assert(sizeof(stPcStatus::MaxBattery2) == 2, "expected stPcStatus::MaxBattery2 to be size 2");
+static_assert(sizeof(stPcStatus::CurBattery3) == 2, "expected stPcStatus::CurBattery3 to be size 2");
+static_assert(sizeof(stPcStatus::MaxBattery3) == 2, "expected stPcStatus::MaxBattery3 to be size 2");
+static_assert(sizeof(stPcStatus::CurBattery4) == 2, "expected stPcStatus::CurBattery4 to be size 2");
+static_assert(sizeof(stPcStatus::MaxBattery4) == 2, "expected stPcStatus::MaxBattery4 to be size 2");
+static_assert(sizeof(stPcStatus::UnknownWeaponPtr) == 4, "expected stPcStatus::UnknownWeaponPtr to be size 4");
+static_assert(sizeof(stPcStatus::CurMoney) == 4, "expected stPcStatus::CurMoney to be size 4");
+static_assert(sizeof(stPcStatus::MaxMoney) == 4, "expected stPcStatus::MaxMoney to be size 4");
+static_assert(sizeof(stPcStatus::CmbKind) == 4, "expected stPcStatus::CmbKind to be size 4");
 static_assert(sizeof(stPcStatus::FinishNpcNum) == 1, "expected stPcStatus::FinishNpcNum to be size 1");
+static_assert(sizeof(stPcStatus::AtkMode) == 1, "expected stPcStatus::AtkMode to be size 1");
+static_assert(sizeof(stPcStatus::EqWepLaser) == 1, "expected stPcStatus::EqWepLaser to be size 1");
+static_assert(sizeof(stPcStatus::TsubaDisEnable) == 1, "expected stPcStatus::TsubaDisEnable to be size 1");
+static_assert(sizeof(stPcStatus::ElectroShockWalk) == 1, "expected stPcStatus::ElectroShockWalk to be size 1");
+static_assert(sizeof(stPcStatus::HugWalk) == 1, "expected stPcStatus::HugWalk to be size 1");
+static_assert(sizeof(stPcStatus::AlwaysEmptyBattery) == 1, "expected stPcStatus::AlwaysEmptyBattery to be size 1");
+static_assert(sizeof(stPcStatus::CantChargeBattery) == 1, "expected stPcStatus::CantChargeBattery to be size 1");
+static_assert(sizeof(stPcStatus::WeaponEquipFlag) == 1, "expected stPcStatus::WeaponEquipFlag to be size 1");
+static_assert(sizeof(stPcStatus::CantCallBikeFlag) == 1, "expected stPcStatus::CantCallBikeFlag to be size 1");
+static_assert(sizeof(stPcStatus::LostBikeFlag) == 1, "expected stPcStatus::LostBikeFlag to be size 1");
 static_assert(sizeof(stPcStatus::BikeVisible) == 1, "expected stPcStatus::BikeVisible to be size 1");
+static_assert(sizeof(stPcStatus::SwingCount) == 4, "expected stPcStatus::SwingCount to be size 4");
+static_assert(sizeof(stPcStatus::PuppetMode) == 1, "expected stPcStatus::PuppetMode to be size 1");
+static_assert(sizeof(stPcStatus::UseWeaponEffect) == 1, "expected stPcStatus::UseWeaponEffect to be size 1");
+static_assert(sizeof(stPcStatus::BanSlotCry) == 1, "expected stPcStatus::BanSlotCry to be size 1");
+static_assert(sizeof(stPcStatus::BanSlotBel) == 1, "expected stPcStatus::BanSlotBel to be size 1");
+static_assert(sizeof(stPcStatus::BanSlotBar) == 1, "expected stPcStatus::BanSlotBar to be size 1");
+static_assert(sizeof(stPcStatus::BanSlot777) == 1, "expected stPcStatus::BanSlot777 to be size 1");
+static_assert(sizeof(stPcStatus::BanRollEscape) == 1, "expected stPcStatus::BanRollEscape to be size 1");
+static_assert(sizeof(stPcStatus::BanJump) == 1, "expected stPcStatus::BanJump to be size 1");
+static_assert(sizeof(stPcStatus::BanDeadFukki) == 1, "expected stPcStatus::BanDeadFukki to be size 1");
+static_assert(sizeof(stPcStatus::BanJustGuard) == 1, "expected stPcStatus::BanJustGuard to be size 1");
+static_assert(sizeof(stPcStatus::BanWinTsubazeri) == 1, "expected stPcStatus::BanWinTsubazeri to be size 1");
+static_assert(sizeof(stPcStatus::WepStick) == 1, "expected stPcStatus::WepStick to be size 1");
 static_assert(sizeof(stPcStatus::DeadBossNum) == 4, "expected stPcStatus::DeadBossNum to be size 4");
+static_assert(sizeof(stPcStatus::DontSubBattery) == 1, "expected stPcStatus::DontSubBattery to be size 1");
+static_assert(sizeof(stPcStatus::AutoSubBatteryDisEnable) == 1, "expected stPcStatus::AutoSubBatteryDisEnable to be size 1");
+static_assert(sizeof(stPcStatus::DontRestoreMotion) == 1, "expected stPcStatus::DontRestoreMotion to be size 1");
+static_assert(sizeof(stPcStatus::BikeClash2battou) == 1, "expected stPcStatus::BikeClash2battou to be size 1");
+static_assert(sizeof(stPcStatus::JustGuardDisEnable) == 1, "expected stPcStatus::JustGuardDisEnable to be size 1");
+static_assert(sizeof(stPcStatus::DashAtkExec) == 1, "expected stPcStatus::DashAtkExec to be size 1");
+static_assert(sizeof(stPcStatus::JustEscapeDisEnable) == 1, "expected stPcStatus::JustEscapeDisEnable to be size 1");
+static_assert(sizeof(stPcStatus::BanPiyori) == 1, "expected stPcStatus::BanPiyori to be size 1");
+static_assert(sizeof(stPcStatus::CancelSetPadOffset) == 1, "expected stPcStatus::CancelSetPadOffset to be size 1");
+static_assert(sizeof(stPcStatus::UnknownAttackRotationYaw) == 4, "expected stPcStatus::UnknownAttackRotationYaw to be size 4");
+static_assert(sizeof(stPcStatus::ChangeEquipFromScript) == 1, "expected stPcStatus::ChangeEquipFromScript to be size 1");
+static_assert(sizeof(stPcStatus::NoBatteryThrow) == 1, "expected stPcStatus::NoBatteryThrow to be size 1");
+static_assert(sizeof(stPcStatus::ChangeWeaponEffectVisible) == 1, "expected stPcStatus::ChangeWeaponEffectVisible to be size 1");
+static_assert(sizeof(stPcStatus::LockOnNockDown) == 1, "expected stPcStatus::LockOnNockDown to be size 1");
+static_assert(sizeof(stPcStatus::AttackHajiki) == 1, "expected stPcStatus::AttackHajiki to be size 1");
+static_assert(sizeof(stPcStatus::DontPlayLoseTsubazeriMotion) == 1, "expected stPcStatus::DontPlayLoseTsubazeriMotion to be size 1");
+static_assert(sizeof(stPcStatus::NoWearJacket) == 1, "expected stPcStatus::NoWearJacket to be size 1");
+static_assert(sizeof(stPcStatus::DispChangeWeaponIcon) == 1, "expected stPcStatus::DispChangeWeaponIcon to be size 1");
+static_assert(sizeof(stPcStatus::StandUpAttack) == 1, "expected stPcStatus::StandUpAttack to be size 1");
+static_assert(sizeof(stPcStatus::PushingBatteryChargeButton) == 1, "expected stPcStatus::PushingBatteryChargeButton to be size 1");
+static_assert(sizeof(stPcStatus::HitBigConsumeBattertAttack) == 1, "expected stPcStatus::HitBigConsumeBattertAttack to be size 1");
+static_assert(sizeof(stPcStatus::StartThrowSlow) == 1, "expected stPcStatus::StartThrowSlow to be size 1");
+static_assert(sizeof(stPcStatus::ForceLoseTsubazeri) == 1, "expected stPcStatus::ForceLoseTsubazeri to be size 1");
 static_assert(sizeof(stPcStatus) == 2308, "expected stPcStatus to be size 2308");
 
 // [Structure] class mHRPc
@@ -12832,6 +14509,271 @@ static_assert(sizeof(stPcStatus) == 2308, "expected stPcStatus to be size 2308")
 class mHRPc : public mHRChara
 {
 public:
+	/// Struct member variables
+
+	// <class mHRChara Super, offset 0x0>
+	// class mHRChara Super;
+
+	// <int32_t mEscapeActionInit, offset 0x580>
+	int32_t mEscapeActionInit = 0;
+
+	// <struct stPcStatus mPcStatus, offset 0x584>
+	struct stPcStatus mPcStatus;
+
+	// <struct stMiniDemo mMiniDemo, offset 0xe88>
+	struct stMiniDemo mMiniDemo;
+
+	// <struct stPcSaveData mPcSaveData, offset 0xe94>
+	struct stPcSaveData mPcSaveData;
+
+	// <struct stDarkSideInfo mDarkSideInfo, offset 0x14f8>
+	struct stDarkSideInfo mDarkSideInfo;
+
+	// <class mHRBike* mpBike, offset 0x152c>
+	class mHRBike* mpBike = nullptr;
+
+	// <struct stPcSndData mSnd, offset 0x1530>
+	struct stPcSndData mSnd;
+
+	// <enum enPcInputMode mInputMode, offset 0x15e0>
+	enum enPcInputMode mInputMode;
+
+	// <enum enPcInputMode mInputModeOld, offset 0x15e4>
+	enum enPcInputMode mInputModeOld;
+
+	// <enum enPcInputMode mInputModeBefore, offset 0x15e8>
+	enum enPcInputMode mInputModeBefore;
+
+	// <uint8_t mPauseAll, offset 0x15ec>
+	uint8_t mPauseAll = 0;
+
+	// <uint8_t mPauseNpc, offset 0x15ed>
+	uint8_t mPauseNpc = 0;
+
+	// <uint8_t mOperate, offset 0x15ee>
+	uint8_t mOperate = 0;
+
+	// <uint8_t mOnlyMove, offset 0x15ef>
+	uint8_t mOnlyMove = 0;
+
+	// <uint8_t mMotSpdAdj, offset 0x15f0>
+	uint8_t mMotSpdAdj = 0;
+
+	// <uint8_t mDead, offset 0x15f1>
+	uint8_t mDead = 0;
+
+	// <uint8_t mDeadPause, offset 0x15f2>
+	uint8_t mDeadPause = 0;
+
+	// <uint8_t mCameraOperate, offset 0x15f3>
+	uint8_t mCameraOperate = 0;
+
+	// <uint8_t mBattouDemoRequest, offset 0x15f4>
+	uint8_t mBattouDemoRequest = 0;
+
+	// <uint8_t mStageChangeInitEnd, offset 0x15f5>
+	uint8_t mStageChangeInitEnd = 0;
+
+	// <uint8_t mStageChangeTermEnd, offset 0x15f6>
+	uint8_t mStageChangeTermEnd = 0;
+
+	// <uint8_t mStageChangeMuteki, offset 0x15f7>
+	uint8_t mStageChangeMuteki = 0;
+
+	// <uint8_t mBanStatusScreen, offset 0x15f8>
+	uint8_t mBanStatusScreen = 0;
+
+	// <Unidentified data segment, offset 0x15f9>
+private:
+	char _UnidentifiedData_5625[3];
+
+public:
+	// <int32_t mAtkPauseTime, offset 0x15fc>
+	int32_t mAtkPauseTime = 0;
+
+	// <int32_t mStopRenderFrameNum, offset 0x1600>
+	int32_t mStopRenderFrameNum = 0;
+
+	// <int32_t mWait1Frame, offset 0x1604>
+	int32_t mWait1Frame = 0;
+
+	// <struct stPcEffect mPcEffect, offset 0x1608>
+	struct stPcEffect mPcEffect;
+
+	// <struct stHugWalk mPcHug, offset 0x1898>
+	struct stHugWalk mPcHug;
+
+	// <struct stTiger mTiger, offset 0x18b8>
+	struct stTiger mTiger;
+
+	// <struct Vec mLockOnPos, offset 0x1908>
+	struct Vec mLockOnPos;
+
+	// <class mHRChara* mpLockOnNpc, offset 0x1914>
+	class mHRChara* mpLockOnNpc = nullptr;
+
+	// <class mHRChara* mpTsubaNpc, offset 0x1918>
+	class mHRChara* mpTsubaNpc = nullptr;
+
+	// <class mHRChara* mpCatchNpc, offset 0x191c>
+	class mHRChara* mpCatchNpc = nullptr;
+
+	// <class mHRChara* mpCatchReserveNpc, offset 0x1920>
+	class mHRChara* mpCatchReserveNpc = nullptr;
+
+	// <class mHRChara* mpEscapeNpc, offset 0x1924>
+	class mHRChara* mpEscapeNpc = nullptr;
+
+	// <class mHRChara* mpInitFinishNpc, offset 0x1928>
+	class mHRChara* mpInitFinishNpc = nullptr;
+
+	// <class mHRChara* mpNextFinishNpc, offset 0x192c>
+	class mHRChara* mpNextFinishNpc = nullptr;
+
+	// <class mHRChara* mpFinishNpc[0x8], offset 0x1930>
+	class mHRChara* mpFinishNpc[8];
+
+	// <class mHRChara* mpFinishReserveNpc, offset 0x1950>
+	class mHRChara* mpFinishReserveNpc = nullptr;
+
+	// <class mHRChara* mpDSTargetNpc, offset 0x1954>
+	class mHRChara* mpDSTargetNpc = nullptr;
+
+	// <class mHRChara* mpDwnAtkNpc, offset 0x1958>
+	class mHRChara* mpDwnAtkNpc = nullptr;
+
+	// <class mHRChara* mpLastAtkNpc, offset 0x195c>
+	class mHRChara* mpLastAtkNpc = nullptr;
+
+	// <class mHRChara* mpAttackFromBackNpc, offset 0x1960>
+	class mHRChara* mpAttackFromBackNpc = nullptr;
+
+	// <class HROBJDummy mLockOnDummy, offset 0x1964>
+	class HROBJDummy mLockOnDummy;
+
+	// <uint8_t mSavehitOidashiDisEnable, offset 0x1ee4>
+	uint8_t mSavehitOidashiDisEnable = 0;
+
+	// <Unidentified data segment, offset 0x1ee5>
+private:
+	char _UnidentifiedData_7909[3];
+
+public:
+	// <int32_t mSlowMotionSytemMotNo, offset 0x1ee8>
+	int32_t mSlowMotionSytemMotNo = 0;
+
+	// <int32_t mSlowMotionSytemButton, offset 0x1eec>
+	int32_t mSlowMotionSytemButton = 0;
+
+	// <class ghmTriangle mWepCollL, offset 0x1ef0>
+	class ghmTriangle mWepCollL;
+
+	// <class ghmTriangle* m_pAttackHitTriangle, offset 0x1f14>
+	class ghmTriangle* m_pAttackHitTriangle = nullptr;
+
+	// <struct stFade mFade, offset 0x1f18>
+	struct stFade mFade;
+
+	// <union uniSMflag mSubMissionflag, offset 0x1f24>
+	union uniSMflag mSubMissionflag;
+
+	// <uint8_t mSubMissionPcPosStoreFlag, offset 0x1f26>
+	uint8_t mSubMissionPcPosStoreFlag = 0;
+
+	// <Unidentified data segment, offset 0x1f27>
+private:
+	char _UnidentifiedData_7975[1];
+
+public:
+	// <struct Vec mSubMissionStorePos, offset 0x1f28>
+	struct Vec mSubMissionStorePos;
+
+	// <struct Vec mSubMissionStoreRot, offset 0x1f34>
+	struct Vec mSubMissionStoreRot;
+
+	// <uint8_t mSubMissionBikePosStoreFlag, offset 0x1f40>
+	uint8_t mSubMissionBikePosStoreFlag = 0;
+
+	// <Unidentified data segment, offset 0x1f41>
+private:
+	char _UnidentifiedData_8001[3];
+
+public:
+	// <struct Vec mSubMissionStoreBikePos, offset 0x1f44>
+	struct Vec mSubMissionStoreBikePos;
+
+	// <struct Vec mSubMissionStoreBikeRot, offset 0x1f50>
+	struct Vec mSubMissionStoreBikeRot;
+
+	// <class EventAreaCamera* mpSubMissionJumpCameraHandle, offset 0x1f5c>
+	class EventAreaCamera* mpSubMissionJumpCameraHandle = nullptr;
+
+	// <int32_t mDisEnableBtlPoseCalc, offset 0x1f60>
+	int32_t mDisEnableBtlPoseCalc = 0;
+
+	// <uint8_t mTamePush, offset 0x1f64>
+	uint8_t mTamePush = 0;
+
+	// <uint8_t mTameMax, offset 0x1f65>
+	uint8_t mTameMax = 0;
+
+	// <uint8_t mTameSe, offset 0x1f66>
+	uint8_t mTameSe = 0;
+
+	// <Unidentified data segment, offset 0x1f67>
+private:
+	char _UnidentifiedData_8039[1];
+
+public:
+	// <int32_t mDigAction, offset 0x1f68>
+	int32_t mDigAction = 0;
+
+	// <enum enWepChangeProc mChangeWepProc, offset 0x1f6c>
+	enum enWepChangeProc mChangeWepProc;
+
+	// <int32_t mChangeWepKind, offset 0x1f70>
+	int32_t mChangeWepKind = 0;
+
+	// <int32_t mMenuDisEnableFrame, offset 0x1f74>
+	int32_t mMenuDisEnableFrame = 0;
+
+	// <char const* m_sMotName, offset 0x1f78>
+	char const* m_sMotName = nullptr;
+
+	// <char const* m_sPreMotName, offset 0x1f7c>
+	char const* m_sPreMotName = nullptr;
+
+	// <char m_sOutMotName[0x10], offset 0x1f80>
+	char m_sOutMotName[16];
+
+	// <uint8_t m_bIsBootStageHitEffect, offset 0x1f90>
+	uint8_t m_bIsBootStageHitEffect = 0;
+
+	// <Unidentified data segment, offset 0x1f91>
+private:
+	char _UnidentifiedData_8081[3];
+
+public:
+	// <struct Vec m_inPreWeaponTopPosi, offset 0x1f94>
+	struct Vec m_inPreWeaponTopPosi;
+
+	// <uint8_t m_bIsPreTigerVisible, offset 0x1fa0>
+	uint8_t m_bIsPreTigerVisible = 0;
+
+	// <uint8_t m_bIsPreFinishAttack, offset 0x1fa1>
+	uint8_t m_bIsPreFinishAttack = 0;
+
+	// <uint8_t m_bIsBeginFinishAttack, offset 0x1fa2>
+	uint8_t m_bIsBeginFinishAttack = 0;
+
+	// <uint8_t m_bIsPlayCamBankMotion, offset 0x1fa3>
+	uint8_t m_bIsPlayCamBankMotion = 0;
+
+	// <class CTimeRatioInterpolate m_inWeaponLengthRatio, offset 0x1fa4>
+	class CTimeRatioInterpolate m_inWeaponLengthRatio;
+
+	/// 731 Functions
+
 	// [Function] uint8_t __convention("thiscall") mHRPc::mGetEventWalk(class mHRPc* const this) [?mGetEventWalk@mHRPc@@QAE_NXZ]
 	uint8_t mGetEventWalk()
 	{
@@ -12867,12 +14809,12 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xa1b10);
 		return (uint32_t)mFunc(this);
 	}
-	// [Function] void __convention("thiscall") mHRPc::mSetPcMoney(class mHRPc* const this, int32_t arg2) [?mSetPcMoney@mHRPc@@QAEXH@Z]
-	void mSetPcMoney(int32_t arg2)
+	// [Function] void __convention("thiscall") mHRPc::mSetPcMoney(class mHRPc* const this, int32_t NewAmount) [?mSetPcMoney@mHRPc@@QAEXH@Z]
+	void mSetPcMoney(int32_t NewAmount)
 	{
-		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, int32_t arg2);
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, int32_t NewAmount);
 		_Func mFunc = (_Func)(GameModule + 0xa1b20);
-		return mFunc(this, arg2);
+		return mFunc(this, NewAmount);
 	}
 	// [Function] void __convention("thiscall") mHRPc::mSubPcMoney(class mHRPc* const this, int32_t arg2) [?mSubPcMoney@mHRPc@@QAEXH@Z]
 	void mSubPcMoney(int32_t arg2)
@@ -13792,12 +15734,12 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xaa2c0);
 		return mFunc(this);
 	}
-	// [Function] void __convention("thiscall") mHRPc::mSetLastAttackNpc(class mHRPc* const this, class mHRChara* arg2) [?mSetLastAttackNpc@mHRPc@@QAEXPAVmHRChara@@@Z]
-	void mSetLastAttackNpc(class mHRChara* arg2)
+	// [Function] void __convention("thiscall") mHRPc::mSetLastAttackNpc(class mHRPc* const this, class mHRChara* Npc) [?mSetLastAttackNpc@mHRPc@@QAEXPAVmHRChara@@@Z]
+	void mSetLastAttackNpc(class mHRChara* Npc)
 	{
-		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, class mHRChara* arg2);
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, class mHRChara* Npc);
 		_Func mFunc = (_Func)(GameModule + 0xaa2d0);
-		return mFunc(this, arg2);
+		return mFunc(this, Npc);
 	}
 	// [Function] class mHRChara* __convention("thiscall") mHRPc::mGetLastAttackNpc(class mHRPc* const this) [?mGetLastAttackNpc@mHRPc@@QAEPAVmHRChara@@XZ]
 	class mHRChara* mGetLastAttackNpc()
@@ -13806,12 +15748,12 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xaa2e0);
 		return mFunc(this);
 	}
-	// [Function] void __convention("thiscall") mHRPc::mSetAttackFromBackNpc(class mHRPc* const this, class mHRChara* arg2) [?mSetAttackFromBackNpc@mHRPc@@QAEXPAVmHRChara@@@Z]
-	void mSetAttackFromBackNpc(class mHRChara* arg2)
+	// [Function] void __convention("thiscall") mHRPc::mSetAttackFromBackNpc(class mHRPc* const this, class mHRChara* Npc) [?mSetAttackFromBackNpc@mHRPc@@QAEXPAVmHRChara@@@Z]
+	void mSetAttackFromBackNpc(class mHRChara* Npc)
 	{
-		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, class mHRChara* arg2);
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, class mHRChara* Npc);
 		_Func mFunc = (_Func)(GameModule + 0xaa2f0);
-		return mFunc(this, arg2);
+		return mFunc(this, Npc);
 	}
 	// [Function] class mHRChara* __convention("thiscall") mHRPc::mGetAttackFromBackNpc(class mHRPc* const this) [?mGetAttackFromBackNpc@mHRPc@@QAEPAVmHRChara@@XZ]
 	class mHRChara* mGetAttackFromBackNpc()
@@ -13827,47 +15769,47 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xaa310);
 		return mFunc(this);
 	}
-	// [Function] void __convention("thiscall") mHRPc::mSetBanRollEscape(class mHRPc* const this, uint8_t arg2) [?mSetBanRollEscape@mHRPc@@QAEX_N@Z]
-	void mSetBanRollEscape(uint8_t arg2)
+	// [Function] void __convention("thiscall") mHRPc::mSetBanRollEscape(class mHRPc* const this, bool Ban) [?mSetBanRollEscape@mHRPc@@QAEX_N@Z]
+	void mSetBanRollEscape(bool Ban)
 	{
-		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, uint8_t arg2);
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, bool Ban);
 		_Func mFunc = (_Func)(GameModule + 0xaa320);
-		return mFunc(this, arg2);
+		return mFunc(this, Ban);
 	}
-	// [Function] void __convention("thiscall") mHRPc::mSetBanJump(class mHRPc* const this, uint8_t arg2) [?mSetBanJump@mHRPc@@QAEX_N@Z]
-	void mSetBanJump(uint8_t arg2)
+	// [Function] void __convention("thiscall") mHRPc::mSetBanJump(class mHRPc* const this, bool Ban) [?mSetBanJump@mHRPc@@QAEX_N@Z]
+	void mSetBanJump(bool Ban)
 	{
-		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, uint8_t arg2);
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, bool Ban);
 		_Func mFunc = (_Func)(GameModule + 0xaa330);
-		return mFunc(this, arg2);
+		return mFunc(this, Ban);
 	}
-	// [Function] void __convention("thiscall") mHRPc::mSetBanPiyori(class mHRPc* const this, uint8_t arg2) [?mSetBanPiyori@mHRPc@@QAEX_N@Z]
-	void mSetBanPiyori(uint8_t arg2)
+	// [Function] void __convention("thiscall") mHRPc::mSetBanPiyori(class mHRPc* const this, bool Ban) [?mSetBanPiyori@mHRPc@@QAEX_N@Z]
+	void mSetBanPiyori(bool Ban)
 	{
-		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, uint8_t arg2);
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, bool Ban);
 		_Func mFunc = (_Func)(GameModule + 0xaa340);
-		return mFunc(this, arg2);
+		return mFunc(this, Ban);
 	}
-	// [Function] void __convention("thiscall") mHRPc::mSetBanDeadFukki(class mHRPc* const this, uint8_t arg2) [?mSetBanDeadFukki@mHRPc@@QAEX_N@Z]
-	void mSetBanDeadFukki(uint8_t arg2)
+	// [Function] void __convention("thiscall") mHRPc::mSetBanDeadFukki(class mHRPc* const this, bool Ban) [?mSetBanDeadFukki@mHRPc@@QAEX_N@Z]
+	void mSetBanDeadFukki(bool Ban)
 	{
-		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, uint8_t arg2);
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, bool Ban);
 		_Func mFunc = (_Func)(GameModule + 0xaa350);
-		return mFunc(this, arg2);
+		return mFunc(this, Ban);
 	}
-	// [Function] void __convention("thiscall") mHRPc::mSetBanJustGuard(class mHRPc* const this, uint8_t arg2) [?mSetBanJustGuard@mHRPc@@QAEX_N@Z]
-	void mSetBanJustGuard(uint8_t arg2)
+	// [Function] void __convention("thiscall") mHRPc::mSetBanJustGuard(class mHRPc* const this, bool Ban) [?mSetBanJustGuard@mHRPc@@QAEX_N@Z]
+	void mSetBanJustGuard(bool Ban)
 	{
-		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, uint8_t arg2);
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, bool Ban);
 		_Func mFunc = (_Func)(GameModule + 0xaa360);
-		return mFunc(this, arg2);
+		return mFunc(this, Ban);
 	}
-	// [Function] void __convention("thiscall") mHRPc::mSetBanWinTsubazeri(class mHRPc* const this, uint8_t arg2) [?mSetBanWinTsubazeri@mHRPc@@QAEX_N@Z]
-	void mSetBanWinTsubazeri(uint8_t arg2)
+	// [Function] void __convention("thiscall") mHRPc::mSetBanWinTsubazeri(class mHRPc* const this, bool Ban) [?mSetBanWinTsubazeri@mHRPc@@QAEX_N@Z]
+	void mSetBanWinTsubazeri(bool Ban)
 	{
-		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, uint8_t arg2);
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, bool Ban);
 		_Func mFunc = (_Func)(GameModule + 0xaa370);
-		return mFunc(this, arg2);
+		return mFunc(this, Ban);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRPc::mGetBanSlotCry(class mHRPc* const this) [?mGetBanSlotCry@mHRPc@@QAE_NXZ]
 	uint8_t mGetBanSlotCry()
@@ -13876,10 +15818,10 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xaa380);
 		return mFunc(this);
 	}
-	// [Function] uint8_t __convention("thiscall") mHRPc::mGetBanSlotBel(class mHRPc* const this) [?mGetBanSlotBel@mHRPc@@QAE_NXZ]
-	uint8_t mGetBanSlotBel()
+	// [Function] bool __convention("thiscall") mHRPc::mGetBanSlotBel(class mHRPc* const this) [?mGetBanSlotBel@mHRPc@@QAE_NXZ]
+	bool mGetBanSlotBel()
 	{
-		typedef uint8_t(__thiscall* _Func)(class mHRPc* const thisPtr);
+		typedef bool(__thiscall* _Func)(class mHRPc* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xaa390);
 		return mFunc(this);
 	}
@@ -13939,17 +15881,17 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xaa410);
 		return mFunc(this);
 	}
-	// [Function] uint8_t __convention("thiscall") mHRPc::mGetDontSubBattery(class mHRPc* const this) [?mGetDontSubBattery@mHRPc@@QAE_NXZ]
-	uint8_t mGetDontSubBattery()
+	// [Function] bool __convention("thiscall") mHRPc::mGetDontSubBattery(class mHRPc* const this) [?mGetDontSubBattery@mHRPc@@QAE_NXZ]
+	bool mGetDontSubBattery()
 	{
-		typedef uint8_t(__thiscall* _Func)(class mHRPc* const thisPtr);
+		typedef bool(__thiscall* _Func)(class mHRPc* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xaa420);
 		return mFunc(this);
 	}
-	// [Function] uint8_t __convention("thiscall") mHRPc::mGetAutoSubBatteryDisEnable(class mHRPc* const this) [?mGetAutoSubBatteryDisEnable@mHRPc@@QAE_NXZ]
-	uint8_t mGetAutoSubBatteryDisEnable()
+	// [Function] bool __convention("thiscall") mHRPc::mGetAutoSubBatteryDisEnable(class mHRPc* const this) [?mGetAutoSubBatteryDisEnable@mHRPc@@QAE_NXZ]
+	bool mGetAutoSubBatteryDisEnable()
 	{
-		typedef uint8_t(__thiscall* _Func)(class mHRPc* const thisPtr);
+		typedef bool(__thiscall* _Func)(class mHRPc* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xaa430);
 		return mFunc(this);
 	}
@@ -13974,10 +15916,10 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xaa460);
 		return mFunc(this);
 	}
-	// [Function] uint8_t __convention("thiscall") mHRPc::mGetJustEscapeDisEnable(class mHRPc* const this) [?mGetJustEscapeDisEnable@mHRPc@@QAE_NXZ]
-	uint8_t mGetJustEscapeDisEnable()
+	// [Function] bool __convention("thiscall") mHRPc::mGetJustEscapeDisEnable(class mHRPc* const this) [?mGetJustEscapeDisEnable@mHRPc@@QAE_NXZ]
+	bool mGetJustEscapeDisEnable()
 	{
-		typedef uint8_t(__thiscall* _Func)(class mHRPc* const thisPtr);
+		typedef bool(__thiscall* _Func)(class mHRPc* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xaa470);
 		return mFunc(this);
 	}
@@ -13988,12 +15930,12 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xaa480);
 		return mFunc(this);
 	}
-	// [Function] void __convention("thiscall") mHRPc::mSetDontRestoreMotion(class mHRPc* const this, uint8_t arg2) [?mSetDontRestoreMotion@mHRPc@@QAEX_N@Z]
-	void mSetDontRestoreMotion(uint8_t arg2)
+	// [Function] void __convention("thiscall") mHRPc::mSetDontRestoreMotion(class mHRPc* const this, bool Input) [?mSetDontRestoreMotion@mHRPc@@QAEX_N@Z]
+	void mSetDontRestoreMotion(bool Input)
 	{
-		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, uint8_t arg2);
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, bool Input);
 		_Func mFunc = (_Func)(GameModule + 0xaa490);
-		return mFunc(this, arg2);
+		return mFunc(this, Input);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRPc::mGetDontRestoreMotion(class mHRPc* const this) [?mGetDontRestoreMotion@mHRPc@@QAE_NXZ]
 	uint8_t mGetDontRestoreMotion()
@@ -14148,17 +16090,17 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xaa600);
 		return mFunc(this);
 	}
-	// [Function] void __convention("thiscall") mHRPc::mSetNoBatteryThrow(class mHRPc* const this, uint8_t arg2) [?mSetNoBatteryThrow@mHRPc@@QAEX_N@Z]
-	void mSetNoBatteryThrow(uint8_t arg2)
+	// [Function] void __convention("thiscall") mHRPc::mSetNoBatteryThrow(class mHRPc* const this, bool input) [?mSetNoBatteryThrow@mHRPc@@QAEX_N@Z]
+	void mSetNoBatteryThrow(bool input)
 	{
-		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, uint8_t arg2);
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, bool input);
 		_Func mFunc = (_Func)(GameModule + 0xaa610);
-		return mFunc(this, arg2);
+		return mFunc(this, input);
 	}
-	// [Function] uint8_t __convention("thiscall") mHRPc::mGetNoBatteryThrow(class mHRPc* const this) [?mGetNoBatteryThrow@mHRPc@@QAE_NXZ]
-	uint8_t mGetNoBatteryThrow()
+	// [Function] bool __convention("thiscall") mHRPc::mGetNoBatteryThrow(class mHRPc* const this) [?mGetNoBatteryThrow@mHRPc@@QAE_NXZ]
+	bool mGetNoBatteryThrow()
 	{
-		typedef uint8_t(__thiscall* _Func)(class mHRPc* const thisPtr);
+		typedef bool(__thiscall* _Func)(class mHRPc* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xaa620);
 		return mFunc(this);
 	}
@@ -14218,24 +16160,24 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xaa6a0);
 		return mFunc(this);
 	}
-	// [Function] uint8_t __convention("thiscall") mHRPc::mGetNoWearJacket(class mHRPc* const this) [?mGetNoWearJacket@mHRPc@@QAE_NXZ]
-	uint8_t mGetNoWearJacket()
+	// [Function] bool __convention("thiscall") mHRPc::mGetNoWearJacket(class mHRPc* const this) [?mGetNoWearJacket@mHRPc@@QAE_NXZ]
+	bool mGetNoWearJacket()
 	{
-		typedef uint8_t(__thiscall* _Func)(class mHRPc* const thisPtr);
+		typedef bool(__thiscall* _Func)(class mHRPc* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xaa6b0);
 		return mFunc(this);
 	}
-	// [Function] void __convention("thiscall") mHRPc::mSetDispChangeWeaponIcon(class mHRPc* const this, uint8_t arg2) [?mSetDispChangeWeaponIcon@mHRPc@@QAEX_N@Z]
-	void mSetDispChangeWeaponIcon(uint8_t arg2)
+	// [Function] void __convention("thiscall") mHRPc::mSetDispChangeWeaponIcon(class mHRPc* const this, bool Input) [?mSetDispChangeWeaponIcon@mHRPc@@QAEX_N@Z]
+	void mSetDispChangeWeaponIcon(bool Input)
 	{
-		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, uint8_t arg2);
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, bool Input);
 		_Func mFunc = (_Func)(GameModule + 0xaa6c0);
-		return mFunc(this, arg2);
+		return mFunc(this, Input);
 	}
-	// [Function] uint8_t __convention("thiscall") mHRPc::mGetDispChangeWeaponIcon(class mHRPc* const this) [?mGetDispChangeWeaponIcon@mHRPc@@QAE_NXZ]
-	uint8_t mGetDispChangeWeaponIcon()
+	// [Function] bool __convention("thiscall") mHRPc::mGetDispChangeWeaponIcon(class mHRPc* const this) [?mGetDispChangeWeaponIcon@mHRPc@@QAE_NXZ]
+	bool mGetDispChangeWeaponIcon()
 	{
-		typedef uint8_t(__thiscall* _Func)(class mHRPc* const thisPtr);
+		typedef bool(__thiscall* _Func)(class mHRPc* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xaa6d0);
 		return mFunc(this);
 	}
@@ -14253,17 +16195,17 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0xaa6f0);
 		return mFunc(this);
 	}
-	// [Function] void __convention("thiscall") mHRPc::mSetPushingBatteryChargeButton(class mHRPc* const this, uint8_t arg2) [?mSetPushingBatteryChargeButton@mHRPc@@QAEX_N@Z]
-	void mSetPushingBatteryChargeButton(uint8_t arg2)
+	// [Function] void __convention("thiscall") mHRPc::mSetPushingBatteryChargeButton(class mHRPc* const this, bool Input) [?mSetPushingBatteryChargeButton@mHRPc@@QAEX_N@Z]
+	void mSetPushingBatteryChargeButton(bool Input)
 	{
-		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, uint8_t arg2);
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, bool Input);
 		_Func mFunc = (_Func)(GameModule + 0xaa700);
-		return mFunc(this, arg2);
+		return mFunc(this, Input);
 	}
-	// [Function] uint8_t __convention("thiscall") mHRPc::mGetPushingBatteryChargeButton(class mHRPc* const this) [?mGetPushingBatteryChargeButton@mHRPc@@QAE_NXZ]
-	uint8_t mGetPushingBatteryChargeButton()
+	// [Function] bool __convention("thiscall") mHRPc::mGetPushingBatteryChargeButton(class mHRPc* const this) [?mGetPushingBatteryChargeButton@mHRPc@@QAE_NXZ]
+	bool mGetPushingBatteryChargeButton()
 	{
-		typedef uint8_t(__thiscall* _Func)(class mHRPc* const thisPtr);
+		typedef bool(__thiscall* _Func)(class mHRPc* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0xaa710);
 		return mFunc(this);
 	}
@@ -15082,12 +17024,12 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x41e860);
 		return mFunc(this, arg2);
 	}
-	// [Function] void __convention("thiscall") mHRPc::mGetHitEffectPos(class mHRPc* const this, struct Vec* arg2, struct Vec& arg3, uint8_t arg4) [?mGetHitEffectPos@mHRPc@@QAEXPAUVec@@ABU2@_N@Z]
-	void mGetHitEffectPos2(struct Vec* arg2, struct Vec& arg3, uint8_t arg4)
+	// [Function] void __convention("thiscall") mHRPc::mGetHitEffectPos(class mHRPc* const this, struct Vec* OutPos, struct Vec& arg3, uint8_t arg4) [?mGetHitEffectPos@mHRPc@@QAEXPAUVec@@ABU2@_N@Z]
+	void mGetHitEffectPos_2(struct Vec* OutPos, struct Vec& arg3, uint8_t arg4)
 	{
-		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, struct Vec* arg2, struct Vec& arg3, uint8_t arg4);
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, struct Vec* OutPos, struct Vec& arg3, uint8_t arg4);
 		_Func mFunc = (_Func)(GameModule + 0x41e8c0);
-		return mFunc(this, arg2, arg3, arg4);
+		return mFunc(this, OutPos, arg3, arg4);
 	}
 	// [Function] void __convention("thiscall") mHRPc::mSetNoutou(class mHRPc* const this, uint8_t arg2) [?mSetNoutou@mHRPc@@UAEX_N@Z]
 	void mSetNoutou(uint8_t arg2)
@@ -15139,12 +17081,15 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x41ed60);
 		return mFunc(this, arg2, arg3);
 	}
-	// [Function] void __convention("thiscall") mHRPc::mChangeWeapon4Debug(class mHRPc* const this, int32_t arg2) [?mChangeWeapon4Debug@mHRPc@@QAEXH@Z]
-	void mChangeWeapon4Debug(int32_t arg2)
+	// [Function] void __convention("thiscall") mHRPc::mChangeWeapon4Debug(class mHRPc* const this, int32_t WeaponKind) [?mChangeWeapon4Debug@mHRPc@@QAEXH@Z]
+	/// <summary>
+	/// Swaps player weapon.
+	/// </summary>
+	void mChangeWeapon4Debug(int32_t WeaponKind)
 	{
-		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, int32_t arg2);
+		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr, int32_t WeaponKind);
 		_Func mFunc = (_Func)(GameModule + 0x41ede0);
-		return mFunc(this, arg2);
+		return mFunc(this, WeaponKind);
 	}
 	// [Function] int32_t __convention("thiscall") mHRPc::mChangeEquipID2KindIndex(class mHRPc* const this, int32_t arg2) [?mChangeEquipID2KindIndex@mHRPc@@QAEHH@Z]
 	int32_t mChangeEquipID2KindIndex(int32_t arg2)
@@ -16330,7 +18275,7 @@ public:
 		return mFunc(this, arg2, arg3);
 	}
 	// [Function] int32_t __convention("thiscall") mHRPc::mGetAtkNo(class mHRPc* const this, int32_t arg2) [?mGetAtkNo@mHRPc@@UAEHH@Z]
-	int32_t mGetAtkNo2(int32_t arg2)
+	int32_t mGetAtkNo_2(int32_t arg2)
 	{
 		typedef int32_t(__thiscall* _Func)(class mHRPc* const thisPtr, int32_t arg2);
 		_Func mFunc = (_Func)(GameModule + 0x433080);
@@ -17051,7 +18996,7 @@ public:
 		return mFunc(this, arg2, arg3);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRPc::mPlayMotionBlend(class mHRPc* const this, int32_t arg2, char arg3, uint8_t arg4, uint8_t arg5) [?mPlayMotionBlend@mHRPc@@UAE_NHC_N0@Z]
-	uint8_t mPlayMotionBlend2(int32_t arg2, char arg3, uint8_t arg4, uint8_t arg5)
+	uint8_t mPlayMotionBlend_2(int32_t arg2, char arg3, uint8_t arg4, uint8_t arg5)
 	{
 		typedef uint8_t(__thiscall* _Func)(class mHRPc* const thisPtr, int32_t arg2, char arg3, uint8_t arg4, uint8_t arg5);
 		_Func mFunc = (_Func)(GameModule + 0x43b7c0);
@@ -17390,10 +19335,10 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x446500);
 		return mFunc(this, arg2);
 	}
-	// [Function] uint8_t __convention("thiscall") mHRPc::mCheckCatchAttack(class mHRPc* const this, int32_t arg2) [?mCheckCatchAttack@mHRPc@@QAE_NH@Z]
-	uint8_t mCheckCatchAttack(int32_t arg2)
+	// [Function] bool __convention("thiscall") mHRPc::mCheckCatchAttack(class mHRPc* const this, int32_t arg2) [?mCheckCatchAttack@mHRPc@@QAE_NH@Z]
+	bool mCheckCatchAttack(int32_t arg2)
 	{
-		typedef uint8_t(__thiscall* _Func)(class mHRPc* const thisPtr, int32_t arg2);
+		typedef bool(__thiscall* _Func)(class mHRPc* const thisPtr, int32_t arg2);
 		_Func mFunc = (_Func)(GameModule + 0x446570);
 		return mFunc(this, arg2);
 	}
@@ -17615,12 +19560,12 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x448b70);
 		return mFunc(this);
 	}
-	// [Function] uint8_t __convention("thiscall") mHRPc::mAddLocker(class mHRPc* const this, int32_t arg2, int16_t arg3, float arg4, uint8_t arg5) [?mAddLocker@mHRPc@@QAE_NHFM_N@Z]
-	uint8_t mAddLocker(int32_t arg2, int16_t arg3, float arg4, uint8_t arg5)
+	// [Function] uint8_t __convention("thiscall") mHRPc::mAddLocker(class mHRPc* const this, int32_t WeaponKind, int16_t arg3, float arg4, uint8_t arg5) [?mAddLocker@mHRPc@@QAE_NHFM_N@Z]
+	uint8_t mAddLocker(int32_t WeaponKind, int16_t arg3, float arg4, uint8_t arg5)
 	{
-		typedef uint8_t(__thiscall* _Func)(class mHRPc* const thisPtr, int32_t arg2, int16_t arg3, float arg4, uint8_t arg5);
+		typedef uint8_t(__thiscall* _Func)(class mHRPc* const thisPtr, int32_t WeaponKind, int16_t arg3, float arg4, uint8_t arg5);
 		_Func mFunc = (_Func)(GameModule + 0x448b80);
-		return mFunc(this, arg2, arg3, arg4, arg5);
+		return mFunc(this, WeaponKind, arg3, arg4, arg5);
 	}
 	// [Function] uint8_t __convention("thiscall") mHRPc::mChkLocker(class mHRPc* const this, int32_t arg2) [?mChkLocker@mHRPc@@QAE_NH@Z]
 	uint8_t mChkLocker(int32_t arg2)
@@ -17629,12 +19574,12 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x448bf0);
 		return mFunc(this, arg2);
 	}
-	// [Function] uint8_t __convention("thiscall") mHRPc::mSetEquip(class mHRPc* const this, int32_t arg2, uint8_t arg3, uint8_t arg4) [?mSetEquip@mHRPc@@QAE_NH_N0@Z]
-	uint8_t mSetEquip(int32_t arg2, uint8_t arg3, uint8_t arg4)
+	// [Function] uint8_t __convention("thiscall") mHRPc::mSetEquip(class mHRPc* const this, uint32_t WeaponID, uint8_t arg3, uint8_t arg4) [?mSetEquip@mHRPc@@QAE_NH_N0@Z]
+	uint8_t mSetEquip(uint32_t WeaponID, uint8_t arg3, uint8_t arg4)
 	{
-		typedef uint8_t(__thiscall* _Func)(class mHRPc* const thisPtr, int32_t arg2, uint8_t arg3, uint8_t arg4);
+		typedef uint8_t(__thiscall* _Func)(class mHRPc* const thisPtr, uint32_t WeaponID, uint8_t arg3, uint8_t arg4);
 		_Func mFunc = (_Func)(GameModule + 0x448c20);
-		return mFunc(this, arg2, arg3, arg4);
+		return mFunc(this, WeaponID, arg3, arg4);
 	}
 	// [Function] void __convention("thiscall") mHRPc::mControlDispWestWeapons(class mHRPc* const this) [?mControlDispWestWeapons@mHRPc@@QAEXXZ]
 	void mControlDispWestWeapons()
@@ -17735,7 +19680,7 @@ public:
 		return mFunc(this, arg2, arg3);
 	}
 	// [Function] void __convention("thiscall") mHRPc::StorePcPosForSM(class mHRPc* const this) [?StorePcPosForSM@mHRPc@@QAEXXZ]
-	void StorePcPosForSM2()
+	void StorePcPosForSM_2()
 	{
 		typedef void(__thiscall* _Func)(class mHRPc* const thisPtr);
 		_Func mFunc = (_Func)(GameModule + 0x4494d0);
@@ -17965,268 +19910,7 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x44b240);
 		return mFunc(this);
 	}
-	/// Struct member variables
-
-	// <class mHRChara field_0, offset 0x0>
-	// class mHRChara Super;
-
-	// <int32_t mEscapeActionInit, offset 0x580>
-	int32_t mEscapeActionInit = 0;
-
-	// <struct stPcStatus mPcStatus, offset 0x584>
-	struct stPcStatus mPcStatus;
-
-	// <struct stMiniDemo mMiniDemo, offset 0xe88>
-	struct stMiniDemo mMiniDemo;
-
-	// <struct stPcSaveData mPcSaveData, offset 0xe94>
-	struct stPcSaveData mPcSaveData;
-
-	// <struct stDarkSideInfo mDarkSideInfo, offset 0x14f8>
-	struct stDarkSideInfo mDarkSideInfo;
-
-	// <class mHRBike* mpBike, offset 0x152c>
-	class mHRBike* mpBike = nullptr;
-
-	// <struct stPcSndData mSnd, offset 0x1530>
-	struct stPcSndData mSnd;
-
-	// <enum enPcInputMode mInputMode, offset 0x15e0>
-	enum enPcInputMode mInputMode;
-
-	// <enum enPcInputMode mInputModeOld, offset 0x15e4>
-	enum enPcInputMode mInputModeOld;
-
-	// <enum enPcInputMode mInputModeBefore, offset 0x15e8>
-	enum enPcInputMode mInputModeBefore;
-
-	// <uint8_t mPauseAll, offset 0x15ec>
-	uint8_t mPauseAll = 0;
-
-	// <uint8_t mPauseNpc, offset 0x15ed>
-	uint8_t mPauseNpc = 0;
-
-	// <uint8_t mOperate, offset 0x15ee>
-	uint8_t mOperate = 0;
-
-	// <uint8_t mOnlyMove, offset 0x15ef>
-	uint8_t mOnlyMove = 0;
-
-	// <uint8_t mMotSpdAdj, offset 0x15f0>
-	uint8_t mMotSpdAdj = 0;
-
-	// <uint8_t mDead, offset 0x15f1>
-	uint8_t mDead = 0;
-
-	// <uint8_t mDeadPause, offset 0x15f2>
-	uint8_t mDeadPause = 0;
-
-	// <uint8_t mCameraOperate, offset 0x15f3>
-	uint8_t mCameraOperate = 0;
-
-	// <uint8_t mBattouDemoRequest, offset 0x15f4>
-	uint8_t mBattouDemoRequest = 0;
-
-	// <uint8_t mStageChangeInitEnd, offset 0x15f5>
-	uint8_t mStageChangeInitEnd = 0;
-
-	// <uint8_t mStageChangeTermEnd, offset 0x15f6>
-	uint8_t mStageChangeTermEnd = 0;
-
-	// <uint8_t mStageChangeMuteki, offset 0x15f7>
-	uint8_t mStageChangeMuteki = 0;
-
-	// <uint8_t mBanStatusScreen, offset 0x15f8>
-	uint8_t mBanStatusScreen = 0;
-
-	// <Unidentified data segment, offset 0x15f9>
-private:
-	char _UnidentifiedData_5625[3];
-
-public:
-	// <int32_t mAtkPauseTime, offset 0x15fc>
-	int32_t mAtkPauseTime = 0;
-
-	// <int32_t mStopRenderFrameNum, offset 0x1600>
-	int32_t mStopRenderFrameNum = 0;
-
-	// <int32_t mWait1Frame, offset 0x1604>
-	int32_t mWait1Frame = 0;
-
-	// <struct stPcEffect mPcEffect, offset 0x1608>
-	struct stPcEffect mPcEffect;
-
-	// <struct stHugWalk mPcHug, offset 0x1898>
-	struct stHugWalk mPcHug;
-
-	// <struct stTiger mTiger, offset 0x18b8>
-	struct stTiger mTiger;
-
-	// <struct Vec mLockOnPos, offset 0x1908>
-	struct Vec mLockOnPos;
-
-	// <class mHRChara* mpLockOnNpc, offset 0x1914>
-	class mHRChara* mpLockOnNpc = nullptr;
-
-	// <class mHRChara* mpTsubaNpc, offset 0x1918>
-	class mHRChara* mpTsubaNpc = nullptr;
-
-	// <class mHRChara* mpCatchNpc, offset 0x191c>
-	class mHRChara* mpCatchNpc = nullptr;
-
-	// <class mHRChara* mpCatchReserveNpc, offset 0x1920>
-	class mHRChara* mpCatchReserveNpc = nullptr;
-
-	// <class mHRChara* mpEscapeNpc, offset 0x1924>
-	class mHRChara* mpEscapeNpc = nullptr;
-
-	// <class mHRChara* mpInitFinishNpc, offset 0x1928>
-	class mHRChara* mpInitFinishNpc = nullptr;
-
-	// <class mHRChara* mpNextFinishNpc, offset 0x192c>
-	class mHRChara* mpNextFinishNpc = nullptr;
-
-	// <class mHRChara* mpFinishNpc[0x8], offset 0x1930>
-	class mHRChara* mpFinishNpc[8];
-
-	// <class mHRChara* mpFinishReserveNpc, offset 0x1950>
-	class mHRChara* mpFinishReserveNpc = nullptr;
-
-	// <class mHRChara* mpDSTargetNpc, offset 0x1954>
-	class mHRChara* mpDSTargetNpc = nullptr;
-
-	// <class mHRChara* mpDwnAtkNpc, offset 0x1958>
-	class mHRChara* mpDwnAtkNpc = nullptr;
-
-	// <class mHRChara* mpLastAtkNpc, offset 0x195c>
-	class mHRChara* mpLastAtkNpc = nullptr;
-
-	// <class mHRChara* mpAttackFromBackNpc, offset 0x1960>
-	class mHRChara* mpAttackFromBackNpc = nullptr;
-
-	// <class HROBJDummy mLockOnDummy, offset 0x1964>
-	class HROBJDummy mLockOnDummy;
-
-	// <uint8_t mSavehitOidashiDisEnable, offset 0x1ee4>
-	uint8_t mSavehitOidashiDisEnable = 0;
-
-	// <Unidentified data segment, offset 0x1ee5>
-private:
-	char _UnidentifiedData_7909[3];
-
-public:
-	// <int32_t mSlowMotionSytemMotNo, offset 0x1ee8>
-	int32_t mSlowMotionSytemMotNo = 0;
-
-	// <int32_t mSlowMotionSytemButton, offset 0x1eec>
-	int32_t mSlowMotionSytemButton = 0;
-
-	// <class ghmTriangle mWepCollL, offset 0x1ef0>
-	class ghmTriangle mWepCollL;
-
-	// <class ghmTriangle* m_pAttackHitTriangle, offset 0x1f14>
-	class ghmTriangle* m_pAttackHitTriangle = nullptr;
-
-	// <struct stFade mFade, offset 0x1f18>
-	struct stFade mFade;
-
-	// <union uniSMflag mSubMissionflag, offset 0x1f24>
-	union uniSMflag mSubMissionflag;
-
-	// <uint8_t mSubMissionPcPosStoreFlag, offset 0x1f26>
-	uint8_t mSubMissionPcPosStoreFlag = 0;
-
-	// <Unidentified data segment, offset 0x1f27>
-private:
-	char _UnidentifiedData_7975[1];
-
-public:
-	// <struct Vec mSubMissionStorePos, offset 0x1f28>
-	struct Vec mSubMissionStorePos;
-
-	// <struct Vec mSubMissionStoreRot, offset 0x1f34>
-	struct Vec mSubMissionStoreRot;
-
-	// <uint8_t mSubMissionBikePosStoreFlag, offset 0x1f40>
-	uint8_t mSubMissionBikePosStoreFlag = 0;
-
-	// <Unidentified data segment, offset 0x1f41>
-private:
-	char _UnidentifiedData_8001[3];
-
-public:
-	// <struct Vec mSubMissionStoreBikePos, offset 0x1f44>
-	struct Vec mSubMissionStoreBikePos;
-
-	// <struct Vec mSubMissionStoreBikeRot, offset 0x1f50>
-	struct Vec mSubMissionStoreBikeRot;
-
-	// <class EventAreaCamera* mpSubMissionJumpCameraHandle, offset 0x1f5c>
-	class EventAreaCamera* mpSubMissionJumpCameraHandle = nullptr;
-
-	// <int32_t mDisEnableBtlPoseCalc, offset 0x1f60>
-	int32_t mDisEnableBtlPoseCalc = 0;
-
-	// <uint8_t mTamePush, offset 0x1f64>
-	uint8_t mTamePush = 0;
-
-	// <uint8_t mTameMax, offset 0x1f65>
-	uint8_t mTameMax = 0;
-
-	// <uint8_t mTameSe, offset 0x1f66>
-	uint8_t mTameSe = 0;
-
-	// <Unidentified data segment, offset 0x1f67>
-private:
-	char _UnidentifiedData_8039[1];
-
-public:
-	// <int32_t mDigAction, offset 0x1f68>
-	int32_t mDigAction = 0;
-
-	// <enum enWepChangeProc mChangeWepProc, offset 0x1f6c>
-	enum enWepChangeProc mChangeWepProc;
-
-	// <int32_t mChangeWepKind, offset 0x1f70>
-	int32_t mChangeWepKind = 0;
-
-	// <int32_t mMenuDisEnableFrame, offset 0x1f74>
-	int32_t mMenuDisEnableFrame = 0;
-
-	// <char const* m_sMotName, offset 0x1f78>
-	char const* m_sMotName = nullptr;
-
-	// <char const* m_sPreMotName, offset 0x1f7c>
-	char const* m_sPreMotName = nullptr;
-
-	// <char m_sOutMotName[0x10], offset 0x1f80>
-	char m_sOutMotName[16];
-
-	// <uint8_t m_bIsBootStageHitEffect, offset 0x1f90>
-	uint8_t m_bIsBootStageHitEffect = 0;
-
-	// <Unidentified data segment, offset 0x1f91>
-private:
-	char _UnidentifiedData_8081[3];
-
-public:
-	// <struct Vec m_inPreWeaponTopPosi, offset 0x1f94>
-	struct Vec m_inPreWeaponTopPosi;
-
-	// <uint8_t m_bIsPreTigerVisible, offset 0x1fa0>
-	uint8_t m_bIsPreTigerVisible = 0;
-
-	// <uint8_t m_bIsPreFinishAttack, offset 0x1fa1>
-	uint8_t m_bIsPreFinishAttack = 0;
-
-	// <uint8_t m_bIsBeginFinishAttack, offset 0x1fa2>
-	uint8_t m_bIsBeginFinishAttack = 0;
-
-	// <uint8_t m_bIsPlayCamBankMotion, offset 0x1fa3>
-	uint8_t m_bIsPlayCamBankMotion = 0;
-
-	// <class CTimeRatioInterpolate m_inWeaponLengthRatio, offset 0x1fa4>
-	class CTimeRatioInterpolate m_inWeaponLengthRatio;
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class mHRPc [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -18715,7 +20399,7 @@ public:
 			.addFunction("mCheckFinishNpc", &mHRPc::mCheckFinishNpc)
 			.addFunction("mGetHitEffectPos", &mHRPc::mGetHitEffectPos)
 			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
-			//.addFunction("mGetHitEffectPos2", &mHRPc::mGetHitEffectPos2)
+			//.addFunction("mGetHitEffectPos_2", &mHRPc::mGetHitEffectPos_2)
 			.addFunction("mSetNoutou", &mHRPc::mSetNoutou)
 			.addFunction("mSetBattou", &mHRPc::mSetBattou)
 			.addFunction("mGetBikeNitro", &mHRPc::mGetBikeNitro)
@@ -18899,7 +20583,7 @@ public:
 			.addFunction("mInitWepStatus", &mHRPc::mInitWepStatus)
 			.addFunction("mGetWepIndex", &mHRPc::mGetWepIndex)
 			.addFunction("mGetAtkNo", &mHRPc::mGetAtkNo)
-			.addFunction("mGetAtkNo2", &mHRPc::mGetAtkNo2)
+			.addFunction("mGetAtkNo_2", &mHRPc::mGetAtkNo_2)
 			.addFunction("mSideStepProc", &mHRPc::mSideStepProc)
 			.addFunction("mGetRollEscMotNo", &mHRPc::mGetRollEscMotNo)
 			.addFunction("mMoveProc", &mHRPc::mMoveProc)
@@ -19003,7 +20687,7 @@ public:
 			.addFunction("mResetValueAtPlayMotion", &mHRPc::mResetValueAtPlayMotion)
 			// Can't export pointer to pointer 'class TGan**' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("mPlayMotionBlend", &mHRPc::mPlayMotionBlend)
-			.addFunction("mPlayMotionBlend2", &mHRPc::mPlayMotionBlend2)
+			.addFunction("mPlayMotionBlend_2", &mHRPc::mPlayMotionBlend_2)
 			.addFunction("mPlayMotion", &mHRPc::mPlayMotion)
 			.addFunction("mGetAtkMotPPtr", &mHRPc::mGetAtkMotPPtr)
 			.addFunction("mGetAtkMotPtr", &mHRPc::mGetAtkMotPtr)
@@ -19107,7 +20791,7 @@ public:
 			.addFunction("mGetBattery", &mHRPc::mGetBattery)
 			.addFunction("mGetBatteryMax", &mHRPc::mGetBatteryMax)
 			.addFunction("mSetBattery", &mHRPc::mSetBattery)
-			.addFunction("StorePcPosForSM2", &mHRPc::StorePcPosForSM2)
+			.addFunction("StorePcPosForSM_2", &mHRPc::StorePcPosForSM_2)
 			.addFunction("StoreBikePosForSM", &mHRPc::StoreBikePosForSM)
 			.addFunction("mSetBikePos", &mHRPc::mSetBikePos)
 			.addFunction("mSetBikeRot", &mHRPc::mSetBikeRot)
@@ -19234,6 +20918,10 @@ public:
 	// <struct Vec mExtent, offset 0xc>
 	struct Vec mExtent;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ghmAABB [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmAABB& InObject)
@@ -19292,6 +20980,10 @@ public:
 
 	// <uint32_t mVisible, offset 0x68>
 	uint32_t mVisible = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class ghmGcOctTreeNode [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -19355,6 +21047,10 @@ public:
 	// <class ghmGcOctTreeNode* mpRootNode, offset 0x8>
 	class ghmGcOctTreeNode* mpRootNode = nullptr;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ghmGcOctTree [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmGcOctTree& InObject)
@@ -19392,6 +21088,10 @@ private:
 	char _UnidentifiedData_0[48];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ghmGcCollObjHitResult [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmGcCollObjHitResult& InObject)
@@ -19423,6 +21123,10 @@ public:
 
 	// <uint32_t mPad[0x5], offset 0xc>
 	uint32_t mPad[5];
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct WGclMaterialSpec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -19476,6 +21180,10 @@ public:
 
 	// <uint32_t mPad[0x3], offset 0x18>
 	uint32_t mPad[3];
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class ghmResGroup [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -19532,6 +21240,10 @@ public:
 
 	// <uint32_t mPad[0x1], offset 0xc>
 	uint32_t mPad[1];
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class ghmResStrTable [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -19611,6 +21323,10 @@ public:
 		// <float Rate, offset 0x20>
 		float Rate = 0;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TGanPlay::MAIN& InObject)
@@ -19665,6 +21381,10 @@ public:
 
 	// <struct TGanPlay::MAIN dat, offset 0x0>
 	struct TGanPlay::MAIN dat;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class TGanPlay [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -19730,6 +21450,10 @@ public:
 		// <int32_t TimingSoundDataIndex, offset 0xc>
 		int32_t TimingSoundDataIndex = 0;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TGan::tagMAIN& InObject)
@@ -19766,6 +21490,10 @@ public:
 
 	// <struct TGan::tagMAIN dat, offset 0x0>
 	struct TGan::tagMAIN dat;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class TGan [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -19825,6 +21553,10 @@ public:
 
 	// <uint32_t mPad1[0x3], offset 0x24>
 	uint32_t mPad1[3];
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct WGanSpec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -19906,6 +21638,10 @@ public:
 	// <uint32_t mPad1[0x4], offset 0x20>
 	uint32_t mPad1[4];
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct WGanMaterialSpec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(WGanMaterialSpec& InObject)
@@ -19974,6 +21710,10 @@ public:
 	// <struct _WFAnmObjHeader** mppHeader, offset 0x1c>
 	struct _WFAnmObjHeader** mppHeader = nullptr;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct WGanFAnmSpec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(WGanFAnmSpec& InObject)
@@ -20031,6 +21771,10 @@ public:
 	// <struct _WFAnmObjKeyListHeader* mpListHeader[0x1], offset 0x8>
 	struct _WFAnmObjKeyListHeader* mpListHeader[1];
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct _WFAnmObjHeader [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(_WFAnmObjHeader& InObject)
@@ -20071,6 +21815,10 @@ private:
 	char _UnidentifiedData_0[20];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct _WFAnmObjKeyListHeader [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(_WFAnmObjKeyListHeader& InObject)
@@ -20108,6 +21856,10 @@ public:
 
 	// <uint32_t mPad[0x4], offset 0x10>
 	uint32_t mPad[4];
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct WGanMaterialLayerSpec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -20173,6 +21925,10 @@ public:
 
 	// <uint32_t mPad1[0x3], offset 0x24>
 	uint32_t mPad1[3];
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct WGanNodeSpec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -20257,6 +22013,10 @@ public:
 		// <class TGanPlayNode* pParent, offset 0x1c>
 		class TGanPlayNode* pParent = nullptr;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TGanPlayNode::MAIN& InObject)
@@ -20302,6 +22062,10 @@ public:
 
 	// <struct TGanPlayNode::MAIN dat, offset 0x0>
 	struct TGanPlayNode::MAIN dat;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class TGanPlayNode [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -20363,6 +22127,10 @@ public:
 		// <float EndTick, offset 0x24>
 		float EndTick = 0;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TFAnm::tagMAIN& InObject)
@@ -20415,6 +22183,10 @@ public:
 	// <struct TFAnm::tagMAIN dat, offset 0x0>
 	struct TFAnm::tagMAIN dat;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class TFAnm [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(TFAnm& InObject)
@@ -20450,6 +22222,10 @@ public:
 		char _UnidentifiedData_0[244];
 
 	public:
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TGmfNode::tagMAIN& InObject)
@@ -20503,6 +22279,10 @@ public:
 
 	// <class CVertexAnimation* m_pVertexAnime, offset 0x16c>
 	class CVertexAnimation* m_pVertexAnime = nullptr;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class TGmfNode [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -20568,6 +22348,10 @@ private:
 	char _UnidentifiedData_20[12];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CViewClipObjSphere [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CViewClipObjSphere& InObject)
@@ -20602,6 +22386,10 @@ private:
 	char _UnidentifiedData_0[64];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CViewClipObjBox [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CViewClipObjBox& InObject)
@@ -20688,6 +22476,10 @@ public:
 
 	// <uint32_t m_BitFlag, offset 0x1c>
 	uint32_t m_BitFlag = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class rPrimUnific [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -20790,6 +22582,10 @@ private:
 public:
 	// <float mSinCnt[0x64], offset 0xac>
 	float mSinCnt[100];
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class EfDestortion [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -20894,6 +22690,10 @@ public:
 	// <uint32_t* PolyList, offset 0x1a4>
 	uint32_t* PolyList = nullptr;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct TGMFMESH [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(TGMFMESH& InObject)
@@ -20968,6 +22768,10 @@ public:
 	// <float Target, offset 0x4>
 	float Target = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct rAlphaAnime [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(rAlphaAnime& InObject)
@@ -21003,6 +22807,10 @@ public:
 	// <uint16_t Frame, offset 0x2>
 	uint16_t Frame = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct rAnimeCounter [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(rAnimeCounter& InObject)
@@ -21037,6 +22845,10 @@ public:
 
 	// <float t, offset 0x4>
 	float t = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct rST [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -21078,6 +22890,10 @@ public:
 
 	// <float a, offset 0xc>
 	float a = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct rColor [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -21125,6 +22941,10 @@ public:
 
 	// <rPrimBase* m_pNext, offset 0xc>
 	rPrimBase* m_pNext = nullptr;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class rPrimBase [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -21179,6 +22999,10 @@ public:
 	// <struct rAlphaAnime m_ColorAnime, offset 0x38>
 	struct rAlphaAnime m_ColorAnime;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class rTriangleList [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(rTriangleList& InObject)
@@ -21230,6 +23054,10 @@ public:
 		// <int32_t m_nSinIndex, offset 0x8>
 		int32_t m_nSinIndex = 0;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "class CVertex [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(CVertexAnimation::CVertex& InObject)
@@ -21272,6 +23100,10 @@ public:
 
 	// <float m_fOfstMax, offset 0x1c>
 	float m_fOfstMax = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class CVertexAnimation [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -21321,6 +23153,10 @@ public:
 		char _UnidentifiedData_0[360];
 
 	public:
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TFAnmObjF32_3::tagMAIN& InObject)
@@ -21342,6 +23178,10 @@ public:
 
 	// <struct TFAnmObjF32_3::tagMAIN dat, offset 0x0>
 	struct TFAnmObjF32_3::tagMAIN dat;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class TFAnmObjF32_3 [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -21371,6 +23211,10 @@ public:
 
 	// <float mFVal, offset 0x0>
 	float mFVal = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "union _WFAnmVal [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -21448,6 +23292,10 @@ public:
 
 		// <float OutSlope, offset 0x10>
 		float OutSlope = 0;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "struct tagGETA [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -21565,6 +23413,10 @@ public:
 		// <void* pNowKey, offset 0x88>
 		void* pNowKey = nullptr;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TFAnmObj::tagMAIN& InObject)
@@ -21669,6 +23521,10 @@ public:
 	// <struct TFAnmObj::tagMAIN dat, offset 0x0>
 	struct TFAnmObj::tagMAIN dat;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class TFAnmObj [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(TFAnmObj& InObject)
@@ -21699,6 +23555,10 @@ namespace mot
 
 		// <void* (* field_0)[0x17], offset 0x0>
 		void* (* field_0)[0x17];
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "class IBoneEffectPJ [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -21775,13 +23635,6 @@ enum ECameraVibAnimeType : uint32_t
 class CCameraVibTiming
 {
 public:
-	// [Function] class CCameraVibTiming* CCameraVibTiming::getTable(int32_t* arg1, class mHRChara& arg2) [?getTable@CCameraVibTiming@@SAPBV1@PAHABVmHRChara@@@Z]
-	static class CCameraVibTiming* getTable(int32_t* arg1, class mHRChara& arg2)
-	{
-		typedef class CCameraVibTiming*(__fastcall* _Func)(int32_t* arg1, class mHRChara& arg2);
-		_Func mFunc = (_Func)(GameModule + 0x567740);
-		return mFunc(arg1, arg2);
-	}
 	/// Struct member variables
 
 	// <char const* m_sMotName, offset 0x0>
@@ -21795,6 +23648,17 @@ public:
 
 	// <float m_fAnimeScale, offset 0xc>
 	float m_fAnimeScale = 0;
+
+	/// 1 Functions
+
+	// [Function] class CCameraVibTiming* CCameraVibTiming::getTable(int32_t* arg1, class mHRChara& arg2) [?getTable@CCameraVibTiming@@SAPBV1@PAHABVmHRChara@@@Z]
+	static class CCameraVibTiming* getTable(int32_t* arg1, class mHRChara& arg2)
+	{
+		typedef class CCameraVibTiming*(__fastcall* _Func)(int32_t* arg1, class mHRChara& arg2);
+		_Func mFunc = (_Func)(GameModule + 0x567740);
+		return mFunc(arg1, arg2);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraVibTiming [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -21860,6 +23724,10 @@ public:
 	// <uint32_t FileNameLength, offset 0x8>
 	uint32_t FileNameLength = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct HRCHARAVOICE [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(HRCHARAVOICE& InObject)
@@ -21897,6 +23765,10 @@ namespace gameUtil
 
 		// <class tiVector m_inABCD, offset 0x0>
 		class tiVector m_inABCD;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "class CPlane [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -21951,6 +23823,10 @@ private:
 	char _UnidentifiedData_40[8];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CStickShadow [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CStickShadow& InObject)
@@ -22067,6 +23943,10 @@ public:
 	// <enum CharController::eChrCntrlMoveMode m_MoveMode, offset 0x58>
 	enum CharController::eChrCntrlMoveMode m_MoveMode;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CharController [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CharController& InObject)
@@ -22156,6 +24036,10 @@ public:
 	// <float m_fAlphaMulCoe, offset 0x6c>
 	float m_fAlphaMulCoe = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CObjectShadow [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CObjectShadow& InObject)
@@ -22223,6 +24107,10 @@ public:
 
 	// <class EffectFixFire* pFixFire[0x2], offset 0x20>
 	class EffectFixFire* pFixFire[2];
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct stBikeEffect [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -22719,6 +24607,10 @@ public:
 	// <float seLoadNoiseVolume, offset 0x4d8>
 	float seLoadNoiseVolume = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct stBike [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(stBike& InObject)
@@ -23135,6 +25027,10 @@ public:
 	// <class CObjectShadow m_inObjectShadow, offset 0x53c>
 	class CObjectShadow m_inObjectShadow;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class mHRBike [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(mHRBike& InObject)
@@ -23442,6 +25338,10 @@ public:
 	// <uint32_t m_AreaCircleEventHandle, offset 0x12c>
 	uint32_t m_AreaCircleEventHandle = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class EventAreaCircle [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EventAreaCircle& InObject)
@@ -23693,6 +25593,10 @@ private:
 	char _UnidentifiedData_49[3];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ghmScriptVariables [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmScriptVariables& InObject)
@@ -23810,6 +25714,10 @@ public:
 	// <class ghmListObj mFuncAnchor, offset 0x8c>
 	class ghmListObj mFuncAnchor;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ghmScript [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmScript& InObject)
@@ -23913,6 +25821,10 @@ public:
 	// <uint32_t mFlag, offset 0xcc>
 	uint32_t mFlag = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ghmScriptFunc [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmScriptFunc& InObject)
@@ -24000,6 +25912,10 @@ public:
 	// <char m_SubName[0x10], offset 0x178>
 	char m_SubName[16];
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class HrScriptFunc [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(HrScriptFunc& InObject)
@@ -24039,6 +25955,10 @@ class ghmScriptBase
 public:
 	/// Struct member variables
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ghmScriptBase [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmScriptBase& InObject)
@@ -24062,6 +25982,10 @@ class CCameraCollision
 public:
 	/// Struct member variables
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraCollision [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraCollision& InObject)
@@ -24083,6 +26007,10 @@ static_assert(sizeof(CCameraCollision) == 1, "expected CCameraCollision to be si
 class FkPjLib
 {
 public:
+	/// Struct member variables
+
+	/// 5 Functions
+
 	// [Function] float FkPjLib::GetCharaNowPlayMotionTick(class mHRChara* arg1) [?GetCharaNowPlayMotionTick@FkPjLib@@SAMPAVmHRChara@@@Z]
 	static float GetCharaNowPlayMotionTick(class mHRChara* arg1)
 	{
@@ -24120,7 +26048,7 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x4bdf20);
 		return mFunc(arg1, arg2);
 	}
-	/// Struct member variables
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class FkPjLib [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -24152,6 +26080,10 @@ public:
 
 	// <void* (* field_0)[0xe], offset 0x0>
 	void* (* field_0)[0xe];
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class ghmScriptFuncArgBase [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -24199,6 +26131,10 @@ public:
 
 	// <int32_t mPropFloatNum, offset 0x18>
 	int32_t mPropFloatNum = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct ghmScriptObjectType [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -24250,6 +26186,10 @@ public:
 	// <struct ghmScriptObjectType* mpType, offset 0x4>
 	struct ghmScriptObjectType* mpType = nullptr;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ghmScriptObject [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmScriptObject& InObject)
@@ -24290,6 +26230,10 @@ public:
 
 	// <int32_t mLength, offset 0xc>
 	int32_t mLength = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class ghmString [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -24356,6 +26300,10 @@ public:
 
 	// <uint32_t mPad[0x1], offset 0x1c>
 	uint32_t mPad[1];
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct ghmScrHeader [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -24437,6 +26385,10 @@ public:
 	// <uint32_t mPad[0x2], offset 0x18>
 	uint32_t mPad[2];
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct ghmScrFuncHeader [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmScrFuncHeader& InObject)
@@ -24499,6 +26451,10 @@ public:
 	// <uint32_t mHashKey, offset 0xe4>
 	uint32_t mHashKey = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ghmScriptProgFunc [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmScriptProgFunc& InObject)
@@ -24556,6 +26512,10 @@ public:
 	// <class ghmString mString, offset 0x18>
 	class ghmString mString;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct ghmScriptStackData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmScriptStackData& InObject)
@@ -24599,6 +26559,10 @@ private:
 	char _UnidentifiedData_0[744];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ghmScriptStack [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ghmScriptStack& InObject)
@@ -24648,6 +26612,10 @@ public:
 
 	// <struct ghmScriptStackData mReturnData, offset 0x340>
 	struct ghmScriptStackData mReturnData;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class ghmScriptContext [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -24726,6 +26694,10 @@ public:
 	// <int32_t mMakerType, offset 0x24>
 	int32_t mMakerType = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class EveCorn [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EveCorn& InObject)
@@ -24778,6 +26750,10 @@ public:
 
 	// <struct EVENTAREACAMERA_DATA* pd, offset 0x10>
 	struct EVENTAREACAMERA_DATA* pd = nullptr;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class EventAreaCamera [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -24892,6 +26868,10 @@ private:
 	char _UnidentifiedData_106[2];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct EVENTAREACAMERA_DATA [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EVENTAREACAMERA_DATA& InObject)
@@ -24974,6 +26954,10 @@ private:
 	char _UnidentifiedData_0[388];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class EffectDriftMark [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EffectDriftMark& InObject)
@@ -25046,6 +27030,10 @@ public:
 
 	// <float m_TimeRate, offset 0xc4>
 	float m_TimeRate = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class EffectKeepSmoke [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -25120,6 +27108,10 @@ private:
 	char _UnidentifiedData_0[172];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class rQuad [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(rQuad& InObject)
@@ -25178,6 +27170,10 @@ public:
 
 		// <int32_t m_Alpha, offset 0x30>
 		int32_t m_Alpha = 0;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "struct Object [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -25296,6 +27292,10 @@ public:
 	// <float m_TimeRate, offset 0x19c>
 	float m_TimeRate = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class EffectFixFire [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EffectFixFire& InObject)
@@ -25410,6 +27410,10 @@ private:
 	char _UnidentifiedData_57[3];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class HrOverLap [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(HrOverLap& InObject)
@@ -25445,6 +27449,2559 @@ static_assert(sizeof(HrOverLap::mTex) == 40, "expected HrOverLap::mTex to be siz
 static_assert(sizeof(HrOverLap::mbVisible) == 1, "expected HrOverLap::mbVisible to be size 1");
 static_assert(sizeof(HrOverLap) == 60, "expected HrOverLap to be size 60");
 
+// [Structure] class CBgCtrl
+class CBgCtrl
+{
+public:
+	// enum CBgCtrl::CBGCTRL_LOADSTATUS
+	enum CBGCTRL_LOADSTATUS : uint32_t
+	{
+		// <CBGCTRL_LOADSTATUS_SETUP = 0x0>
+		CBGCTRL_LOADSTATUS_SETUP = 0,
+
+		// <CBGCTRL_LOADSTATUS_LOADING = 0x1>
+		CBGCTRL_LOADSTATUS_LOADING = 1,
+
+		// <CBGCTRL_LOADSTATUS_SCR_POOL = 0x2>
+		CBGCTRL_LOADSTATUS_SCR_POOL = 2,
+
+		// <CBGCTRL_LOADSTATUS_SUBMISSIONSTATICSOUND_SET = 0x3>
+		CBGCTRL_LOADSTATUS_SUBMISSIONSTATICSOUND_SET = 3,
+
+		// <CBGCTRL_LOADSTATUS_SUBMISSIONSTATICSOUND_POOL = 0x4>
+		CBGCTRL_LOADSTATUS_SUBMISSIONSTATICSOUND_POOL = 4,
+
+		// <CBGCTRL_LOADSTATUS_RESULTSOUND_SET = 0x5>
+		CBGCTRL_LOADSTATUS_RESULTSOUND_SET = 5,
+
+		// <CBGCTRL_LOADSTATUS_RESULTSOUND_POOL = 0x6>
+		CBGCTRL_LOADSTATUS_RESULTSOUND_POOL = 6,
+
+		// <CBGCTRL_LOADSTATUS_SUBMISSIONSOUND_SET = 0x7>
+		CBGCTRL_LOADSTATUS_SUBMISSIONSOUND_SET = 7,
+
+		// <CBGCTRL_LOADSTATUS_SUBMISSIONSOUND_POOL = 0x8>
+		CBGCTRL_LOADSTATUS_SUBMISSIONSOUND_POOL = 8,
+
+		// <CBGCTRL_LOADSTATUS_SOUND_SET = 0x9>
+		CBGCTRL_LOADSTATUS_SOUND_SET = 9,
+
+		// <CBGCTRL_LOADSTATUS_SOUND_POOL = 0xa>
+		CBGCTRL_LOADSTATUS_SOUND_POOL = 10,
+
+		// <CBGCTRL_LOADSTATUS_SUB_SOUND_SET = 0xb>
+		CBGCTRL_LOADSTATUS_SUB_SOUND_SET = 11,
+
+		// <CBGCTRL_LOADSTATUS_SUB_SOUND_POOL = 0xc>
+		CBGCTRL_LOADSTATUS_SUB_SOUND_POOL = 12,
+
+		// <CBGCTRL_LOADSTATUS_ENB_SOUND_SET = 0xd>
+		CBGCTRL_LOADSTATUS_ENB_SOUND_SET = 13,
+
+		// <CBGCTRL_LOADSTATUS_ENB_SOUND_POOL = 0xe>
+		CBGCTRL_LOADSTATUS_ENB_SOUND_POOL = 14,
+
+		// <CBGCTRL_LOADSTATUS_SOUND_SETOK = 0xf>
+		CBGCTRL_LOADSTATUS_SOUND_SETOK = 15,
+
+		// <CBGCTRL_LOADSTATUS_STG_PG_LOAD = 0x10>
+		CBGCTRL_LOADSTATUS_STG_PG_LOAD = 16,
+
+		// <CBGCTRL_LOADSTATUS_READY = 0x11>
+		CBGCTRL_LOADSTATUS_READY = 17,
+
+		// <CBGCTRL_LOADSTATUS_REQUEST = 0x12>
+		CBGCTRL_LOADSTATUS_REQUEST = 18,
+
+		// <CBGCTRL_LOADSTATUS_NPCLOADREQUEST = 0x13>
+		CBGCTRL_LOADSTATUS_NPCLOADREQUEST = 19,
+
+		// <CBGCTRL_LOADSTATUS_NPCLOADING = 0x14>
+		CBGCTRL_LOADSTATUS_NPCLOADING = 20,
+
+		// <CBGCTRL_LOADSTATUS_MAX = 0x15>
+		CBGCTRL_LOADSTATUS_MAX = 21
+
+	};
+
+	// enum CBgCtrl::CBGCTRL_STATUS
+	enum CBGCTRL_STATUS : uint32_t
+	{
+		// <CBGCTRL_STATUS_NO_DATA = 0x0>
+		CBGCTRL_STATUS_NO_DATA = 0,
+
+		// <CBGCTRL_STATUS_LOAD = 0x1>
+		CBGCTRL_STATUS_LOAD = 1,
+
+		// <CBGCTRL_STATUS_INIT = 0x2>
+		CBGCTRL_STATUS_INIT = 2,
+
+		// <CBGCTRL_STATUS_IDLE = 0x3>
+		CBGCTRL_STATUS_IDLE = 3,
+
+		// <CBGCTRL_STATUS_RELEASESETUP = 0x4>
+		CBGCTRL_STATUS_RELEASESETUP = 4,
+
+		// <CBGCTRL_STATUS_NPCRELEASE = 0x5>
+		CBGCTRL_STATUS_NPCRELEASE = 5,
+
+		// <CBGCTRL_STATUS_RELEASE = 0x6>
+		CBGCTRL_STATUS_RELEASE = 6,
+
+		// <CBGCTRL_STATUS_SNDGROUPRELEASE = 0x7>
+		CBGCTRL_STATUS_SNDGROUPRELEASE = 7,
+
+		// <CBGCTRL_STATUS_TESTDEMO = 0x8>
+		CBGCTRL_STATUS_TESTDEMO = 8,
+
+		// <CBGCTRL_STATUS_DEMOSETUP = 0x9>
+		CBGCTRL_STATUS_DEMOSETUP = 9,
+
+		// <CBGCTRL_STATUS_DEMOPLAY = 0xa>
+		CBGCTRL_STATUS_DEMOPLAY = 10,
+
+		// <CBGCTRL_STATUS_BOSSRESULTWAIT = 0xb>
+		CBGCTRL_STATUS_BOSSRESULTWAIT = 11,
+
+		// <CBGCTRL_STATUS_STAFF1WAIT = 0xc>
+		CBGCTRL_STATUS_STAFF1WAIT = 12,
+
+		// <CBGCTRL_STATUS_STAFF2WAIT = 0xd>
+		CBGCTRL_STATUS_STAFF2WAIT = 13,
+
+		// <CBGCTRL_STATUS_SHOOTINGWAIT = 0xe>
+		CBGCTRL_STATUS_SHOOTINGWAIT = 14,
+
+		// <CBGCTRL_STATUS_CHANGESTAGE = 0xf>
+		CBGCTRL_STATUS_CHANGESTAGE = 15,
+
+		// <CBGCTRL_STATUS_NPCRSLLOAD = 0x10>
+		CBGCTRL_STATUS_NPCRSLLOAD = 16,
+
+		// <CBGCTRL_STATUS_DEMO_WAIT = 0x11>
+		CBGCTRL_STATUS_DEMO_WAIT = 17,
+
+		// <CBGCTRL_STATUS_LOADTOILETEFC = 0x12>
+		CBGCTRL_STATUS_LOADTOILETEFC = 18,
+
+		// <CBGCTRL_STATUS_LOADINGTOILETEFC = 0x13>
+		CBGCTRL_STATUS_LOADINGTOILETEFC = 19,
+
+		// <CBGCTRL_STATUS_FILLINTOILETEFC = 0x14>
+		CBGCTRL_STATUS_FILLINTOILETEFC = 20,
+
+		// <CBGCTRL_STATUS_FILLINOUTTOILETEFC = 0x15>
+		CBGCTRL_STATUS_FILLINOUTTOILETEFC = 21,
+
+		// <CBGCTRL_STATUS_TESTMOVIE = 0x16>
+		CBGCTRL_STATUS_TESTMOVIE = 22,
+
+		// <CBGCTRL_STATUS_MOVIESETUP = 0x17>
+		CBGCTRL_STATUS_MOVIESETUP = 23,
+
+		// <CBGCTRL_STATUS_MOVIEPLAY = 0x18>
+		CBGCTRL_STATUS_MOVIEPLAY = 24,
+
+		// <CBGCTRL_STATUS_MAX = 0x19>
+		CBGCTRL_STATUS_MAX = 25
+
+	};
+
+	/// Struct member variables
+
+	// <Unidentified data segment, offset 0x0>
+private:
+	char _UnidentifiedData_0[2866];
+
+public:
+	// <bool IsDarkStage, offset 0xb32>
+	bool IsDarkStage;
+
+	// <Unidentified data segment, offset 0xb33>
+private:
+	char _UnidentifiedData_2867[5];
+
+public:
+	// <char* StageName, offset 0xb38>
+	char* StageName = nullptr;
+
+	// <Unidentified data segment, offset 0xb3c>
+private:
+	char _UnidentifiedData_2876[60];
+
+public:
+	// <int32_t StageID, offset 0xb78>
+	int32_t StageID = 0;
+
+	// <Unidentified data segment, offset 0xb7c>
+private:
+	char _UnidentifiedData_2940[191];
+
+public:
+	// <bool ToneMapEnabled, offset 0xc3b>
+	bool ToneMapEnabled;
+
+	// <Unidentified data segment, offset 0xc3c>
+private:
+	char _UnidentifiedData_3132[4];
+
+public:
+	// <class rSkyMap* SkyMap, offset 0xc40>
+	class rSkyMap* SkyMap = nullptr;
+
+	// <Unidentified data segment, offset 0xc44>
+private:
+	char _UnidentifiedData_3140[496];
+
+public:
+	// <uint32_t Status, offset 0xe34>
+	uint32_t Status = 0;
+
+	// <Unidentified data segment, offset 0xe38>
+private:
+	char _UnidentifiedData_3640[16];
+
+public:
+	/// 123 Functions
+
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::IsVisible(class CBgCtrl* const this) [?IsVisible@CBgCtrl@@QAE_NXZ]
+	uint8_t IsVisible()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x9cd70);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetDarkStage(class CBgCtrl* const this, uint8_t arg2) [?SetDarkStage@CBgCtrl@@QAEX_N@Z]
+	void SetDarkStage(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x9cd80);
+		return mFunc(this, arg2);
+	}
+	// [Function] int32_t __convention("thiscall") CBgCtrl::GetStageID(class CBgCtrl* const this) [?GetStageID@CBgCtrl@@QBEHXZ]
+	int32_t GetStageID()
+	{
+		typedef int32_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x9cd90);
+		return mFunc(this);
+	}
+	// [Function] uint32_t __convention("thiscall") CBgCtrl::GetScrHandle(class CBgCtrl* const this) [?GetScrHandle@CBgCtrl@@QAEIXZ]
+	uint32_t GetScrHandle()
+	{
+		typedef uint32_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xa2260);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetPositionChange(class CBgCtrl* const this) [?SetPositionChange@CBgCtrl@@QAEXXZ]
+	void SetPositionChange()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xa2270);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetNpcVisible(class CBgCtrl* const this, uint8_t arg2) [?SetNpcVisible@CBgCtrl@@QAEX_N@Z]
+	void SetNpcVisible(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0xa2280);
+		return mFunc(this, arg2);
+	}
+	// [Function] class TGmf* __convention("thiscall") CBgCtrl::GetStageGmfPtr(class CBgCtrl* const this) [?GetStageGmfPtr@CBgCtrl@@QAEPAVTGmf@@XZ]
+	class TGmf* GetStageGmfPtr()
+	{
+		typedef class TGmf*(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xa3970);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetDisEnableLoadingEffect(class CBgCtrl* const this, uint8_t arg2) [?SetDisEnableLoadingEffect@CBgCtrl@@QAEX_N@Z]
+	void SetDisEnableLoadingEffect(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0xa3980);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetFarBloomEnable(class CBgCtrl* const this, uint8_t arg2) [?SetFarBloomEnable@CBgCtrl@@QAEX_N@Z]
+	void SetFarBloomEnable(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0xa39a0);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetThresholdEnable(class CBgCtrl* const this, uint8_t arg2) [?SetThresholdEnable@CBgCtrl@@QAEX_N@Z]
+	void SetThresholdEnable(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0xa39c0);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::IsRailData(class CBgCtrl* const this) [?IsRailData@CBgCtrl@@QAE_NXZ]
+	uint8_t IsRailData()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xa5330);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::isSantaDestroyStage(class CBgCtrl* const this) [?isSantaDestroyStage@CBgCtrl@@QBE_NXZ]
+	uint8_t isSantaDestroyStage()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xa5340);
+		return mFunc(this);
+	}
+	// [Function] class CLensFlare* __convention("thiscall") CBgCtrl::getLensFlare(class CBgCtrl* const this) [?getLensFlare@CBgCtrl@@QAEPAVCLensFlare@@XZ]
+	class CLensFlare* getLensFlare()
+	{
+		typedef class CLensFlare*(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xa8f40);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::GetRankingUpRequest(class CBgCtrl* const this) [?GetRankingUpRequest@CBgCtrl@@QAE_NXZ]
+	uint8_t GetRankingUpRequest()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xa8f50);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetFarBloomColor(class CBgCtrl* const this, struct GXColor arg2) [?SetFarBloomColor@CBgCtrl@@QAEXUGXColor@@@Z]
+	void SetFarBloomColor(struct GXColor arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, struct GXColor arg2);
+		_Func mFunc = (_Func)(GameModule + 0xa8f60);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetThresholdColor(class CBgCtrl* const this, struct GXColor arg2) [?SetThresholdColor@CBgCtrl@@QAEXUGXColor@@@Z]
+	void SetThresholdColor(struct GXColor arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, struct GXColor arg2);
+		_Func mFunc = (_Func)(GameModule + 0xa8f80);
+		return mFunc(this, arg2);
+	}
+	// [Function] class ghmResGroup* __convention("thiscall") CBgCtrl::getTopResourceGroup(class CBgCtrl* const this) [?getTopResourceGroup@CBgCtrl@@QAEPAVghmResGroup@@XZ]
+	class ghmResGroup* getTopResourceGroup()
+	{
+		typedef class ghmResGroup*(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xa9be0);
+		return mFunc(this);
+	}
+	// [Function] uint8_t CBgCtrl::IsCBgCtrl() [?IsCBgCtrl@CBgCtrl@@SA_NXZ]
+	static uint8_t IsCBgCtrl()
+	{
+		typedef uint8_t(__fastcall* _Func)();
+		_Func mFunc = (_Func)(GameModule + 0xaa8a0);
+		return mFunc();
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::checkAndUpdateFarGmfPosition(class CBgCtrl* const this, struct Vec& arg2) [?checkAndUpdateFarGmfPosition@CBgCtrl@@QAEXABUVec@@@Z]
+	void checkAndUpdateFarGmfPosition(struct Vec& arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, struct Vec& arg2);
+		_Func mFunc = (_Func)(GameModule + 0xac290);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::GetDrawStageDraw(class CBgCtrl* const this) [?GetDrawStageDraw@CBgCtrl@@QAE_NXZ]
+	uint8_t GetDrawStageDraw()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xad680);
+		return mFunc(this);
+	}
+	// [Function] struct GXColor __convention("thiscall") CBgCtrl::GetFarBloomColor(class CBgCtrl* const this) [?GetFarBloomColor@CBgCtrl@@QAE?AUGXColor@@XZ]
+	struct GXColor GetFarBloomColor()
+	{
+		typedef struct GXColor(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xadbd0);
+		return mFunc(this);
+	}
+	// [Function] class TGmf* __convention("thiscall") CBgCtrl::GetFarGmfPtr(class CBgCtrl* const this) [?GetFarGmfPtr@CBgCtrl@@QAEPAVTGmf@@XZ]
+	class TGmf* GetFarGmfPtr()
+	{
+		typedef class TGmf*(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xadbf0);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetDrawStageDraw(class CBgCtrl* const this, uint8_t arg2) [?SetDrawStageDraw@CBgCtrl@@QAEX_N@Z]
+	void SetDrawStageDraw(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0xadce0);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetVisible(class CBgCtrl* const this, uint8_t arg2) [?SetVisible@CBgCtrl@@QAEX_N@Z]
+	void SetVisible(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0xadd00);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::getFarGmfTransformPosition(class CBgCtrl* const this, struct Vec* arg2, struct Vec& arg3) [?getFarGmfTransformPosition@CBgCtrl@@QBEXPAUVec@@ABU2@@Z]
+	void getFarGmfTransformPosition(struct Vec* arg2, struct Vec& arg3)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, struct Vec* arg2, struct Vec& arg3);
+		_Func mFunc = (_Func)(GameModule + 0xaea40);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetStgFuncOnlyVisible(class CBgCtrl* const this, uint8_t arg2) [?SetStgFuncOnlyVisible@CBgCtrl@@QAEX_N@Z]
+	void SetStgFuncOnlyVisible(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0xaf310);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::IsStgFuncOnlyVisible(class CBgCtrl* const this) [?IsStgFuncOnlyVisible@CBgCtrl@@QAE_NXZ]
+	uint8_t IsStgFuncOnlyVisible()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xaf340);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetDontExecNpcProcess(class CBgCtrl* const this, uint8_t arg2) [?SetDontExecNpcProcess@CBgCtrl@@QAEX_N@Z]
+	void SetDontExecNpcProcess(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0xbd230);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetFarVisible(class CBgCtrl* const this, uint8_t arg2) [?SetFarVisible@CBgCtrl@@QAEX_N@Z]
+	void SetFarVisible(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0xbe200);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetToneMapEnable(class CBgCtrl* const this, uint8_t arg2) [?SetToneMapEnable@CBgCtrl@@QAEX_N@Z]
+	void SetToneMapEnable(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0xbe220);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::GetFarBloomEnable(class CBgCtrl* const this) [?GetFarBloomEnable@CBgCtrl@@QAE_NXZ]
+	uint8_t GetFarBloomEnable()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xd4f50);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::GetThresholdEnable(class CBgCtrl* const this) [?GetThresholdEnable@CBgCtrl@@QAE_NXZ]
+	uint8_t GetThresholdEnable()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xd4f60);
+		return mFunc(this);
+	}
+	// [Function] class rSkyMap* __convention("thiscall") CBgCtrl::GetSkyMap(class CBgCtrl* const this) [?GetSkyMap@CBgCtrl@@QAEPAVrSkyMap@@XZ]
+	class rSkyMap* GetSkyMap()
+	{
+		typedef class rSkyMap*(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38b570);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::IsTermToiletEffect(class CBgCtrl* const this) [?IsTermToiletEffect@CBgCtrl@@QAE_NXZ]
+	uint8_t IsTermToiletEffect()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38b580);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::TermToiletEffect(class CBgCtrl* const this) [?TermToiletEffect@CBgCtrl@@QAE_NXZ]
+	uint8_t TermToiletEffect()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38b600);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::TermTutoResult(class CBgCtrl* const this) [?TermTutoResult@CBgCtrl@@QAE_NXZ]
+	uint8_t TermTutoResult()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38b620);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::IsDispTutoResult(class CBgCtrl* const this, int32_t arg2) [?IsDispTutoResult@CBgCtrl@@QAE_NH@Z]
+	uint8_t IsDispTutoResult(int32_t arg2)
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x38b680);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::DispTutoResult(class CBgCtrl* const this, int32_t arg2) [?DispTutoResult@CBgCtrl@@QAE_NH@Z]
+	uint8_t DispTutoResult(int32_t arg2)
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x38b690);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetStaffRoll2Request(class CBgCtrl* const this) [?SetStaffRoll2Request@CBgCtrl@@QAEXXZ]
+	void SetStaffRoll2Request()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38b780);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetStaffRoll1Request(class CBgCtrl* const this) [?SetStaffRoll1Request@CBgCtrl@@QAEXXZ]
+	void SetStaffRoll1Request()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38b790);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetDemoToDemoStgRequest(class CBgCtrl* const this, char* arg2, int32_t arg3, int32_t arg4) [?SetDemoToDemoStgRequest@CBgCtrl@@QAEXPADHH@Z]
+	void SetDemoToDemoStgRequest(char* arg2, int32_t arg3, int32_t arg4)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, char* arg2, int32_t arg3, int32_t arg4);
+		_Func mFunc = (_Func)(GameModule + 0x38b7a0);
+		return mFunc(this, arg2, arg3, arg4);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetDemoToDemoRequest(class CBgCtrl* const this, int32_t arg2) [?SetDemoToDemoRequest@CBgCtrl@@QAEXH@Z]
+	void SetDemoToDemoRequest(int32_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x38b7e0);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetBossResultRequest(class CBgCtrl* const this, int32_t arg2) [?SetBossResultRequest@CBgCtrl@@QAEXH@Z]
+	void SetBossResultRequest(int32_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x38b800);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetRankingUpRequest(class CBgCtrl* const this) [?SetRankingUpRequest@CBgCtrl@@QAEXXZ]
+	void SetRankingUpRequest()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38b820);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::ClearDisEnableLoadingEffect(class CBgCtrl* const this) [?ClearDisEnableLoadingEffect@CBgCtrl@@QAEXXZ]
+	void ClearDisEnableLoadingEffect()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38b830);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::TestDisEnableLoadingEffect(class CBgCtrl* const this) [?TestDisEnableLoadingEffect@CBgCtrl@@QAE_NXZ]
+	uint8_t TestDisEnableLoadingEffect()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38b840);
+		return mFunc(this);
+	}
+	// [Function] class ghmResGroup* __convention("thiscall") CBgCtrl::GetNpcResLink(class CBgCtrl* const this) [?GetNpcResLink@CBgCtrl@@QAEPAVghmResGroup@@XZ]
+	class ghmResGroup* GetNpcResLink()
+	{
+		typedef class ghmResGroup*(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38b850);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::TestNpcRslRead(class CBgCtrl* const this) [?TestNpcRslRead@CBgCtrl@@QAE_NXZ]
+	uint8_t TestNpcRslRead()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38b860);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::IsNpcRslRead(class CBgCtrl* const this) [?IsNpcRslRead@CBgCtrl@@QAE_NXZ]
+	uint8_t IsNpcRslRead()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38b870);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::NpcRslRead(class CBgCtrl* const this, char* arg2) [?NpcRslRead@CBgCtrl@@QAE_NPAD@Z]
+	uint8_t NpcRslRead(char* arg2)
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr, char* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x38b880);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::StageGayaStopSE(class CBgCtrl* const this) [?StageGayaStopSE@CBgCtrl@@QAEXXZ]
+	void StageGayaStopSE()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d040);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetGayaVolume(class CBgCtrl* const this, float arg2) [?SetGayaVolume@CBgCtrl@@QAEXM@Z]
+	void SetGayaVolume(float arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, float arg2);
+		_Func mFunc = (_Func)(GameModule + 0x38d070);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::StageGayaPlaySE(class CBgCtrl* const this, int32_t arg2) [?StageGayaPlaySE@CBgCtrl@@QAE_NH@Z]
+	uint8_t StageGayaPlaySE(int32_t arg2)
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x38d0e0);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::SubMissionSndGroupReleaseReq(class CBgCtrl* const this) [?SubMissionSndGroupReleaseReq@CBgCtrl@@QAE_NXZ]
+	uint8_t SubMissionSndGroupReleaseReq()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d120);
+		return mFunc(this);
+	}
+	// [Function] char* __convention("thiscall") CBgCtrl::GetStageName(class CBgCtrl* const this) [?GetStageName@CBgCtrl@@QAEPADXZ]
+	// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
+	void GetStageName()
+	{
+		typedef char*(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d170);
+		mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::DebugRelayPoint(class CBgCtrl* const this) [?DebugRelayPoint@CBgCtrl@@QAEXXZ]
+	void DebugRelayPoint()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d180);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::PlayMotion(class CBgCtrl* const this, class TGan* arg2, uint8_t arg3) [?PlayMotion@CBgCtrl@@QAE_NPAVTGan@@_N@Z]
+	uint8_t PlayMotion(class TGan* arg2, uint8_t arg3)
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr, class TGan* arg2, uint8_t arg3);
+		_Func mFunc = (_Func)(GameModule + 0x38d190);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::AttachBgMotion(class CBgCtrl* const this, int32_t arg2, float arg3) [?AttachBgMotion@CBgCtrl@@QAE_NHM@Z]
+	uint8_t AttachBgMotion(int32_t arg2, float arg3)
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr, int32_t arg2, float arg3);
+		_Func mFunc = (_Func)(GameModule + 0x38d210);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::CmnObjProFrame(class CBgCtrl* const this) [?CmnObjProFrame@CBgCtrl@@AAEXXZ]
+	void CmnObjProFrame()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d220);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::IsColliData(class CBgCtrl* const this) [?IsColliData@CBgCtrl@@QAE_NXZ]
+	uint8_t IsColliData()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d230);
+		return mFunc(this);
+	}
+	// [Function] class TGmf* __convention("thiscall") CBgCtrl::GetGmf(class CBgCtrl* const this) [?GetGmf@CBgCtrl@@QAEPAVTGmf@@XZ]
+	class TGmf* GetGmf()
+	{
+		typedef class TGmf*(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d260);
+		return mFunc(this);
+	}
+	// [Function] class HrScript* __convention("thiscall") CBgCtrl::GetScript(class CBgCtrl* const this) [?GetScript@CBgCtrl@@QAEPAVHrScript@@XZ]
+	class HrScript* GetScript()
+	{
+		typedef class HrScript*(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d270);
+		return mFunc(this);
+	}
+	// [Function] class HrStageDraw* __convention("thiscall") CBgCtrl::GetStageDraw(class CBgCtrl* const this) [?GetStageDraw@CBgCtrl@@QAEPAVHrStageDraw@@XZ]
+	class HrStageDraw* GetStageDraw()
+	{
+		typedef class HrStageDraw*(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d2a0);
+		return mFunc(this);
+	}
+	// [Function] uint8_t CBgCtrl::IsCollisionData() [?IsCollisionData@CBgCtrl@@SA_NXZ]
+	static uint8_t IsCollisionData()
+	{
+		typedef uint8_t(__fastcall* _Func)();
+		_Func mFunc = (_Func)(GameModule + 0x38d2b0);
+		return mFunc();
+	}
+	// [Function] uint32_t __convention("thiscall") CBgCtrl::GetResourceNum(class CBgCtrl* const this, char* arg2) [?GetResourceNum@CBgCtrl@@QAEIPAD@Z]
+	uint32_t GetResourceNum(char* arg2)
+	{
+		typedef uint32_t(__thiscall* _Func)(class CBgCtrl* const thisPtr, char* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x38d2e0);
+		return mFunc(this, arg2);
+	}
+	// [Function] class ghmResGroup* __convention("thiscall") CBgCtrl::GetResourceGroup(class CBgCtrl* const this, char const* arg2) [?GetResourceGroup@CBgCtrl@@QAEPAVghmResGroup@@PBD@Z]
+	class ghmResGroup* GetResourceGroup(std::string arg2)
+	{
+		char const* arg2_c_str = arg2.c_str();
+		typedef class ghmResGroup*(__thiscall* _Func)(class CBgCtrl* const thisPtr, char const* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x38d320);
+		return mFunc(this, arg2_c_str);
+	}
+	// [Function] void* __convention("thiscall") CBgCtrl::GetResource(class CBgCtrl* const this, char* arg2, char* arg3) [?GetResource@CBgCtrl@@QAEPAXPAD0@Z]
+	// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+	void GetResource(char* arg2, char* arg3)
+	{
+		typedef void*(__thiscall* _Func)(class CBgCtrl* const thisPtr, char* arg2, char* arg3);
+		_Func mFunc = (_Func)(GameModule + 0x38d340);
+		mFunc(this, arg2, arg3);
+	}
+	// [Function] void* __convention("thiscall") CBgCtrl::GetResource4LoadingTex(class CBgCtrl* const this, char* arg2, int32_t arg3) [?GetResource4LoadingTex@CBgCtrl@@QAEPAXPADH@Z]
+	// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+	void GetResource4LoadingTex(char* arg2, int32_t arg3)
+	{
+		typedef void*(__thiscall* _Func)(class CBgCtrl* const thisPtr, char* arg2, int32_t arg3);
+		_Func mFunc = (_Func)(GameModule + 0x38d380);
+		mFunc(this, arg2, arg3);
+	}
+	// [Function] void* __convention("thiscall") CBgCtrl::GetResource(class CBgCtrl* const this, char* arg2, int32_t arg3) [?GetResource@CBgCtrl@@QAEPAXPADH@Z]
+	// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+	void GetResource_2(char* arg2, int32_t arg3)
+	{
+		typedef void*(__thiscall* _Func)(class CBgCtrl* const thisPtr, char* arg2, int32_t arg3);
+		_Func mFunc = (_Func)(GameModule + 0x38d3e0);
+		mFunc(this, arg2, arg3);
+	}
+	// [Function] char const* __convention("thiscall") CBgCtrl::GetFileName(class CBgCtrl* const this) [?GetFileName@CBgCtrl@@QAEPBDXZ]
+	std::string GetFileName()
+	{
+		typedef char const*(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d420);
+		char const* OutResult = mFunc(this);
+		if (OutResult == nullptr) return std::string();
+		std::string result_str(OutResult);
+		return result_str;
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::CancelRequestStage(class CBgCtrl* const this) [?CancelRequestStage@CBgCtrl@@QAE_NXZ]
+	uint8_t CancelRequestStage()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d450);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::IsRequestStage(class CBgCtrl* const this) [?IsRequestStage@CBgCtrl@@QAE_NXZ]
+	uint8_t IsRequestStage()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d480);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::IsRequestStageLoaded(class CBgCtrl* const this) [?IsRequestStageLoaded@CBgCtrl@@QAE_NXZ]
+	uint8_t IsRequestStageLoaded()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d490);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::IsReleased(class CBgCtrl* const this) [?IsReleased@CBgCtrl@@QAE_NXZ]
+	uint8_t IsReleased()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d4c0);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::IsLoaded(class CBgCtrl* const this) [?IsLoaded@CBgCtrl@@QAE_NXZ]
+	uint8_t IsLoaded()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d4d0);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::BgLoad(class CBgCtrl* const this, int32_t arg2, int32_t arg3) [?BgLoad@CBgCtrl@@AAE_NHH@Z]
+	uint8_t BgLoad(int32_t arg2, int32_t arg3)
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr, int32_t arg2, int32_t arg3);
+		_Func mFunc = (_Func)(GameModule + 0x38d4e0);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] uint32_t __convention("thiscall") CBgCtrl::SearchBg(class CBgCtrl* const this) [?SearchBg@CBgCtrl@@AAEIXZ]
+	uint32_t SearchBg()
+	{
+		typedef uint32_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d4f0);
+		return mFunc(this);
+	}
+	// [Function] void CBgCtrl::prPostBGDraw(void* arg1) [?prPostBGDraw@CBgCtrl@@CAXPAX@Z]
+	static void prPostBGDraw(void* arg1)
+	{
+		typedef void(__fastcall* _Func)(void* arg1);
+		_Func mFunc = (_Func)(GameModule + 0x38d500);
+		return mFunc(arg1);
+	}
+	// [Function] void CBgCtrl::prDrawTutoResultFadeTile(void* arg1) [?prDrawTutoResultFadeTile@CBgCtrl@@SAXPAX@Z]
+	static void prDrawTutoResultFadeTile(void* arg1)
+	{
+		typedef void(__fastcall* _Func)(void* arg1);
+		_Func mFunc = (_Func)(GameModule + 0x38d510);
+		return mFunc(arg1);
+	}
+	// [Function] void CBgCtrl::prDrawTutoResult(void* arg1) [?prDrawTutoResult@CBgCtrl@@SAXPAX@Z]
+	static void prDrawTutoResult(void* arg1)
+	{
+		typedef void(__fastcall* _Func)(void* arg1);
+		_Func mFunc = (_Func)(GameModule + 0x38d580);
+		return mFunc(arg1);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::beginThresholdBloomEffect(class CBgCtrl* const this, struct GXColor& arg2, float const arg3, float const arg4, float const arg5, uint8_t const arg6) [?beginThresholdBloomEffect@CBgCtrl@@QAE_NABUGXColor@@MMM_N@Z]
+	uint8_t beginThresholdBloomEffect(struct GXColor& arg2, float const arg3, float const arg4, float const arg5, uint8_t const arg6)
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr, struct GXColor& arg2, float const arg3, float const arg4, float const arg5, uint8_t const arg6);
+		_Func mFunc = (_Func)(GameModule + 0x38d930);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::BloomRender(class CBgCtrl* const this) [?BloomRender@CBgCtrl@@QAEXXZ]
+	void BloomRender()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38d9c0);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::CreateThesholdBloom(class CBgCtrl* const this) [?CreateThesholdBloom@CBgCtrl@@QAEXXZ]
+	void CreateThesholdBloom()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38dd30);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::CreateFarBloom(class CBgCtrl* const this) [?CreateFarBloom@CBgCtrl@@QAEXXZ]
+	void CreateFarBloom()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38e740);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::RenderIdle(class CBgCtrl* const this) [?RenderIdle@CBgCtrl@@AAEXXZ]
+	void RenderIdle()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38ed30);
+		return mFunc(this);
+	}
+	// [Function] void* __convention("thiscall") CBgCtrl::GetMessageGroup(class CBgCtrl* const this, char* arg2) [?GetMessageGroup@CBgCtrl@@QAEPAXPAD@Z]
+	// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+	void GetMessageGroup(char* arg2)
+	{
+		typedef void*(__thiscall* _Func)(class CBgCtrl* const thisPtr, char* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x38f010);
+		mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::FarModelRender(class CBgCtrl* const this) [?FarModelRender@CBgCtrl@@QAEXXZ]
+	void FarModelRender()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38f040);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetVisibleLensFlare(class CBgCtrl* const this, uint8_t arg2) [?SetVisibleLensFlare@CBgCtrl@@QAEX_N@Z]
+	void SetVisibleLensFlare(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x38f170);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::FrameIdle(class CBgCtrl* const this) [?FrameIdle@CBgCtrl@@AAEXXZ]
+	void FrameIdle()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38f190);
+		return mFunc(this);
+	}
+	// [Function] enum CBgCtrl::CBGCTRL_LOADSTATUS __convention("thiscall") CBgCtrl::SetLDstatus(class CBgCtrl* const this, enum CBgCtrl::CBGCTRL_LOADSTATUS arg2) [?SetLDstatus@CBgCtrl@@AAE?AW4CBGCTRL_LOADSTATUS@1@W421@@Z]
+	/* enum CBgCtrl::CBGCTRL_LOADSTATUS */ uint32_t SetLDstatus(/* enum CBgCtrl::CBGCTRL_LOADSTATUS */ uint32_t arg2)
+	{
+		typedef enum CBgCtrl::CBGCTRL_LOADSTATUS(__thiscall* _Func)(class CBgCtrl* const thisPtr, enum CBgCtrl::CBGCTRL_LOADSTATUS arg2);
+		_Func mFunc = (_Func)(GameModule + 0x38f340);
+		return (uint32_t)mFunc(this, (enum CBgCtrl::CBGCTRL_LOADSTATUS)arg2);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::InitStage(class CBgCtrl* const this) [?InitStage@CBgCtrl@@AAEXXZ]
+	void InitStage()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38f360);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::SetupSignalOnly(class CBgCtrl* const this) [?SetupSignalOnly@CBgCtrl@@AAE_NXZ]
+	uint8_t SetupSignalOnly()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38f940);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::FrameLoad(class CBgCtrl* const this) [?FrameLoad@CBgCtrl@@AAE_NXZ]
+	uint8_t FrameLoad()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x38f950);
+		return mFunc(this);
+	}
+	// [Function] enum CBgCtrl::CBGCTRL_STATUS __convention("thiscall") CBgCtrl::SetStatus(class CBgCtrl* const this, enum CBgCtrl::CBGCTRL_STATUS arg2) [?SetStatus@CBgCtrl@@AAE?AW4CBGCTRL_STATUS@1@W421@@Z]
+	/* enum CBgCtrl::CBGCTRL_STATUS */ uint32_t SetStatus(/* enum CBgCtrl::CBGCTRL_STATUS */ uint32_t arg2)
+	{
+		typedef enum CBgCtrl::CBGCTRL_STATUS(__thiscall* _Func)(class CBgCtrl* const thisPtr, enum CBgCtrl::CBGCTRL_STATUS arg2);
+		_Func mFunc = (_Func)(GameModule + 0x390d50);
+		return (uint32_t)mFunc(this, (enum CBgCtrl::CBGCTRL_STATUS)arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::StageSetUp(class CBgCtrl* const this) [?StageSetUp@CBgCtrl@@AAE_NXZ]
+	uint8_t StageSetUp()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x390d70);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::IsReleaseSetUp(class CBgCtrl* const this) [?IsReleaseSetUp@CBgCtrl@@AAE_NXZ]
+	uint8_t IsReleaseSetUp()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x390f80);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::SetReleaseSetUp(class CBgCtrl* const this, char const* arg2, int32_t arg3, int32_t arg4, uint8_t arg5, float arg6, int32_t arg7, uint8_t arg8, int32_t arg9, uint32_t arg10, uint8_t arg11) [?SetReleaseSetUp@CBgCtrl@@AAE_NPBDHH_NMH1HI1@Z]
+	uint8_t SetReleaseSetUp(std::string arg2, int32_t arg3, int32_t arg4, uint8_t arg5, float arg6, int32_t arg7, uint8_t arg8, int32_t arg9, uint32_t arg10, uint8_t arg11)
+	{
+		char const* arg2_c_str = arg2.c_str();
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr, char const* arg2, int32_t arg3, int32_t arg4, uint8_t arg5, float arg6, int32_t arg7, uint8_t arg8, int32_t arg9, uint32_t arg10, uint8_t arg11);
+		_Func mFunc = (_Func)(GameModule + 0x390ff0);
+		return mFunc(this, arg2_c_str, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::RequestReleaseStage(class CBgCtrl* const this, int32_t arg2, int32_t arg3, uint8_t arg4, int32_t arg5, uint32_t arg6, uint8_t arg7) [?RequestReleaseStage@CBgCtrl@@QAE_NHH_NHI0@Z]
+	uint8_t RequestReleaseStage(int32_t arg2, int32_t arg3, uint8_t arg4, int32_t arg5, uint32_t arg6, uint8_t arg7)
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr, int32_t arg2, int32_t arg3, uint8_t arg4, int32_t arg5, uint32_t arg6, uint8_t arg7);
+		_Func mFunc = (_Func)(GameModule + 0x3910f0);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::SetStageRequestRun(class CBgCtrl* const this) [?SetStageRequestRun@CBgCtrl@@QAE_NXZ]
+	uint8_t SetStageRequestRun()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x391130);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::SetStageRequestParam(class CBgCtrl* const this, char* arg2, int32_t arg3, int32_t arg4, int32_t arg5, uint8_t arg6) [?SetStageRequestParam@CBgCtrl@@QAEXPADHHH_N@Z]
+	void SetStageRequestParam(char* arg2, int32_t arg3, int32_t arg4, int32_t arg5, uint8_t arg6)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, char* arg2, int32_t arg3, int32_t arg4, int32_t arg5, uint8_t arg6);
+		_Func mFunc = (_Func)(GameModule + 0x391170);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::SetStage(class CBgCtrl* const this, char const* arg2, int32_t arg3, int32_t arg4, int32_t arg5, uint8_t arg6, int32_t arg7, float arg8, int32_t arg9, uint8_t arg10, uint32_t arg11) [?SetStage@CBgCtrl@@QAE_NPBDHHH_NHMH1I@Z]
+	uint8_t SetStage(std::string arg2, int32_t arg3, int32_t arg4, int32_t arg5, uint8_t arg6, int32_t arg7, float arg8, int32_t arg9, uint8_t arg10, uint32_t arg11)
+	{
+		char const* arg2_c_str = arg2.c_str();
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr, char const* arg2, int32_t arg3, int32_t arg4, int32_t arg5, uint8_t arg6, int32_t arg7, float arg8, int32_t arg9, uint8_t arg10, uint32_t arg11);
+		_Func mFunc = (_Func)(GameModule + 0x3911d0);
+		return mFunc(this, arg2_c_str, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::SetStage(class CBgCtrl* const this, uint32_t arg2, int32_t arg3, int32_t arg4, int32_t arg5, uint8_t arg6, int32_t arg7, float arg8, int32_t arg9, uint8_t arg10, uint32_t arg11) [?SetStage@CBgCtrl@@QAE_NIHHH_NHMH0I@Z]
+	uint8_t SetStage_2(uint32_t arg2, int32_t arg3, int32_t arg4, int32_t arg5, uint8_t arg6, int32_t arg7, float arg8, int32_t arg9, uint8_t arg10, uint32_t arg11)
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr, uint32_t arg2, int32_t arg3, int32_t arg4, int32_t arg5, uint8_t arg6, int32_t arg7, float arg8, int32_t arg9, uint8_t arg10, uint32_t arg11);
+		_Func mFunc = (_Func)(GameModule + 0x3913b0);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::SetPlayDemoStatus(class CBgCtrl* const this) [?SetPlayDemoStatus@CBgCtrl@@QAE_NXZ]
+	uint8_t SetPlayDemoStatus()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x3913f0);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::TestDemoSetUp(class CBgCtrl* const this) [?TestDemoSetUp@CBgCtrl@@QAE_NXZ]
+	uint8_t TestDemoSetUp()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x391430);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::TestLoadStageStatus(class CBgCtrl* const this) [?TestLoadStageStatus@CBgCtrl@@QAE_NXZ]
+	uint8_t TestLoadStageStatus()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x391450);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::TestDemo(class CBgCtrl* const this) [?TestDemo@CBgCtrl@@AAE_NXZ]
+	uint8_t TestDemo()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x391470);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::EndMovie(class CBgCtrl* const this) [?EndMovie@CBgCtrl@@QAE_NXZ]
+	uint8_t EndMovie()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x391490);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::TestMovie(class CBgCtrl* const this) [?TestMovie@CBgCtrl@@AAE_NXZ]
+	uint8_t TestMovie()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x3914c0);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::RequestMovie(class CBgCtrl* const this) [?RequestMovie@CBgCtrl@@QAE_NXZ]
+	uint8_t RequestMovie()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x3914d0);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::onDrawShadow(class CBgCtrl* const this) [?onDrawShadow@CBgCtrl@@UAEXXZ]
+	void onDrawShadow()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x391500);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::RenderProcess(class CBgCtrl* const this) [?RenderProcess@CBgCtrl@@UAEXXZ]
+	void RenderProcess()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x391510);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::FrameProcess(class CBgCtrl* const this) [?FrameProcess@CBgCtrl@@UAEXXZ]
+	void FrameProcess()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x3915a0);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::ClearStageName(class CBgCtrl* const this) [?ClearStageName@CBgCtrl@@QAEXXZ]
+	void ClearStageName()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x391dc0);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::Terminate(class CBgCtrl* const this) [?Terminate@CBgCtrl@@UAEXXZ]
+	void Terminate()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x391df0);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::Release(class CBgCtrl* const this) [?Release@CBgCtrl@@AAE_NXZ]
+	uint8_t Release()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x392010);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::Initialize(class CBgCtrl* const this) [?Initialize@CBgCtrl@@UAEXXZ]
+	void Initialize()
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x392600);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::ReleaseRequest(class CBgCtrl* const this) [?ReleaseRequest@CBgCtrl@@QAE_NXZ]
+	uint8_t ReleaseRequest()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x392630);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") CBgCtrl::LoadRequest(class CBgCtrl* const this) [?LoadRequest@CBgCtrl@@QAE_NXZ]
+	uint8_t LoadRequest()
+	{
+		typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x392650);
+		return mFunc(this);
+	}
+	// [Function] class CBgCtrl* CBgCtrl::Create() [?Create@CBgCtrl@@SAPAV1@XZ]
+	static class CBgCtrl* Create()
+	{
+		typedef class CBgCtrl*(__fastcall* _Func)();
+		_Func mFunc = (_Func)(GameModule + 0x392670);
+		return mFunc();
+	}
+	// [Function] void __convention("thiscall") CBgCtrl::ReadParam(class CBgCtrl* const this, void* arg2) [?ReadParam@CBgCtrl@@QAEXPAX@Z]
+	void ReadParam(void* arg2)
+	{
+		typedef void(__thiscall* _Func)(class CBgCtrl* const thisPtr, void* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x393bc0);
+		return mFunc(this, arg2);
+	}
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "class CBgCtrl [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(CBgCtrl& InObject)
+	{
+		IsDarkStage = InObject.IsDarkStage;
+		StageName = InObject.StageName;
+		StageID = InObject.StageID;
+		ToneMapEnabled = InObject.ToneMapEnabled;
+		SkyMap = InObject.SkyMap;
+		Status = InObject.Status;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<CBgCtrl>("CBgCtrl")
+			.addFunction("__tostring", &CBgCtrl::ToString)
+			.addFunction("GetPtrAddr", &CBgCtrl::GetPtrAddr)
+			.addProperty("IsDarkStage", &CBgCtrl::IsDarkStage)
+			// char* type not supported in LuaBridge
+			//.addProperty("StageName", &CBgCtrl::StageName)
+			.addProperty("StageID", &CBgCtrl::StageID)
+			.addProperty("ToneMapEnabled", &CBgCtrl::ToneMapEnabled)
+			.addProperty("SkyMap", &CBgCtrl::SkyMap)
+			.addProperty("Status", &CBgCtrl::Status)
+			.addFunction("IsVisible", &CBgCtrl::IsVisible)
+			.addFunction("SetDarkStage", &CBgCtrl::SetDarkStage)
+			.addFunction("GetStageID", &CBgCtrl::GetStageID)
+			.addFunction("GetScrHandle", &CBgCtrl::GetScrHandle)
+			.addFunction("SetPositionChange", &CBgCtrl::SetPositionChange)
+			.addFunction("SetNpcVisible", &CBgCtrl::SetNpcVisible)
+			.addFunction("GetStageGmfPtr", &CBgCtrl::GetStageGmfPtr)
+			.addFunction("SetDisEnableLoadingEffect", &CBgCtrl::SetDisEnableLoadingEffect)
+			.addFunction("SetFarBloomEnable", &CBgCtrl::SetFarBloomEnable)
+			.addFunction("SetThresholdEnable", &CBgCtrl::SetThresholdEnable)
+			.addFunction("IsRailData", &CBgCtrl::IsRailData)
+			.addFunction("isSantaDestroyStage", &CBgCtrl::isSantaDestroyStage)
+			.addFunction("getLensFlare", &CBgCtrl::getLensFlare)
+			.addFunction("GetRankingUpRequest", &CBgCtrl::GetRankingUpRequest)
+			.addFunction("SetFarBloomColor", &CBgCtrl::SetFarBloomColor)
+			.addFunction("SetThresholdColor", &CBgCtrl::SetThresholdColor)
+			.addFunction("getTopResourceGroup", &CBgCtrl::getTopResourceGroup)
+			.addStaticFunction("IsCBgCtrl", &CBgCtrl::IsCBgCtrl)
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("checkAndUpdateFarGmfPosition", &CBgCtrl::checkAndUpdateFarGmfPosition)
+			.addFunction("GetDrawStageDraw", &CBgCtrl::GetDrawStageDraw)
+			.addFunction("GetFarBloomColor", &CBgCtrl::GetFarBloomColor)
+			.addFunction("GetFarGmfPtr", &CBgCtrl::GetFarGmfPtr)
+			.addFunction("SetDrawStageDraw", &CBgCtrl::SetDrawStageDraw)
+			.addFunction("SetVisible", &CBgCtrl::SetVisible)
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("getFarGmfTransformPosition", &CBgCtrl::getFarGmfTransformPosition)
+			.addFunction("SetStgFuncOnlyVisible", &CBgCtrl::SetStgFuncOnlyVisible)
+			.addFunction("IsStgFuncOnlyVisible", &CBgCtrl::IsStgFuncOnlyVisible)
+			.addFunction("SetDontExecNpcProcess", &CBgCtrl::SetDontExecNpcProcess)
+			.addFunction("SetFarVisible", &CBgCtrl::SetFarVisible)
+			.addFunction("SetToneMapEnable", &CBgCtrl::SetToneMapEnable)
+			.addFunction("GetFarBloomEnable", &CBgCtrl::GetFarBloomEnable)
+			.addFunction("GetThresholdEnable", &CBgCtrl::GetThresholdEnable)
+			.addFunction("GetSkyMap", &CBgCtrl::GetSkyMap)
+			.addFunction("IsTermToiletEffect", &CBgCtrl::IsTermToiletEffect)
+			.addFunction("TermToiletEffect", &CBgCtrl::TermToiletEffect)
+			.addFunction("TermTutoResult", &CBgCtrl::TermTutoResult)
+			.addFunction("IsDispTutoResult", &CBgCtrl::IsDispTutoResult)
+			.addFunction("DispTutoResult", &CBgCtrl::DispTutoResult)
+			.addFunction("SetStaffRoll2Request", &CBgCtrl::SetStaffRoll2Request)
+			.addFunction("SetStaffRoll1Request", &CBgCtrl::SetStaffRoll1Request)
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("SetDemoToDemoStgRequest", &CBgCtrl::SetDemoToDemoStgRequest)
+			.addFunction("SetDemoToDemoRequest", &CBgCtrl::SetDemoToDemoRequest)
+			.addFunction("SetBossResultRequest", &CBgCtrl::SetBossResultRequest)
+			.addFunction("SetRankingUpRequest", &CBgCtrl::SetRankingUpRequest)
+			.addFunction("ClearDisEnableLoadingEffect", &CBgCtrl::ClearDisEnableLoadingEffect)
+			.addFunction("TestDisEnableLoadingEffect", &CBgCtrl::TestDisEnableLoadingEffect)
+			.addFunction("GetNpcResLink", &CBgCtrl::GetNpcResLink)
+			.addFunction("TestNpcRslRead", &CBgCtrl::TestNpcRslRead)
+			.addFunction("IsNpcRslRead", &CBgCtrl::IsNpcRslRead)
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("NpcRslRead", &CBgCtrl::NpcRslRead)
+			.addFunction("StageGayaStopSE", &CBgCtrl::StageGayaStopSE)
+			.addFunction("SetGayaVolume", &CBgCtrl::SetGayaVolume)
+			.addFunction("StageGayaPlaySE", &CBgCtrl::StageGayaPlaySE)
+			.addFunction("SubMissionSndGroupReleaseReq", &CBgCtrl::SubMissionSndGroupReleaseReq)
+			.addFunction("GetStageName", &CBgCtrl::GetStageName)
+			.addFunction("DebugRelayPoint", &CBgCtrl::DebugRelayPoint)
+			.addFunction("PlayMotion", &CBgCtrl::PlayMotion)
+			.addFunction("AttachBgMotion", &CBgCtrl::AttachBgMotion)
+			.addFunction("CmnObjProFrame", &CBgCtrl::CmnObjProFrame)
+			.addFunction("IsColliData", &CBgCtrl::IsColliData)
+			.addFunction("GetGmf", &CBgCtrl::GetGmf)
+			.addFunction("GetScript", &CBgCtrl::GetScript)
+			.addFunction("GetStageDraw", &CBgCtrl::GetStageDraw)
+			.addStaticFunction("IsCollisionData", &CBgCtrl::IsCollisionData)
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("GetResourceNum", &CBgCtrl::GetResourceNum)
+			.addFunction("GetResourceGroup", &CBgCtrl::GetResourceGroup)
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("GetResource", &CBgCtrl::GetResource)
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("GetResource4LoadingTex", &CBgCtrl::GetResource4LoadingTex)
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("GetResource_2", &CBgCtrl::GetResource_2)
+			.addFunction("GetFileName", &CBgCtrl::GetFileName)
+			.addFunction("CancelRequestStage", &CBgCtrl::CancelRequestStage)
+			.addFunction("IsRequestStage", &CBgCtrl::IsRequestStage)
+			.addFunction("IsRequestStageLoaded", &CBgCtrl::IsRequestStageLoaded)
+			.addFunction("IsReleased", &CBgCtrl::IsReleased)
+			.addFunction("IsLoaded", &CBgCtrl::IsLoaded)
+			.addFunction("BgLoad", &CBgCtrl::BgLoad)
+			.addFunction("SearchBg", &CBgCtrl::SearchBg)
+			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addStaticFunction("prPostBGDraw", &CBgCtrl::prPostBGDraw)
+			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addStaticFunction("prDrawTutoResultFadeTile", &CBgCtrl::prDrawTutoResultFadeTile)
+			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addStaticFunction("prDrawTutoResult", &CBgCtrl::prDrawTutoResult)
+			// Can't export & pointer 'struct GXColor&' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("beginThresholdBloomEffect", &CBgCtrl::beginThresholdBloomEffect)
+			.addFunction("BloomRender", &CBgCtrl::BloomRender)
+			.addFunction("CreateThesholdBloom", &CBgCtrl::CreateThesholdBloom)
+			.addFunction("CreateFarBloom", &CBgCtrl::CreateFarBloom)
+			.addFunction("RenderIdle", &CBgCtrl::RenderIdle)
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("GetMessageGroup", &CBgCtrl::GetMessageGroup)
+			.addFunction("FarModelRender", &CBgCtrl::FarModelRender)
+			.addFunction("SetVisibleLensFlare", &CBgCtrl::SetVisibleLensFlare)
+			.addFunction("FrameIdle", &CBgCtrl::FrameIdle)
+			.addFunction("SetLDstatus", &CBgCtrl::SetLDstatus)
+			.addFunction("InitStage", &CBgCtrl::InitStage)
+			.addFunction("SetupSignalOnly", &CBgCtrl::SetupSignalOnly)
+			.addFunction("FrameLoad", &CBgCtrl::FrameLoad)
+			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addStaticFunction("FenseCallBackPost", &CBgCtrl::FenseCallBackPost)
+			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addStaticFunction("FenseCallBack", &CBgCtrl::FenseCallBack)
+			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addStaticFunction("DenseCallBack", &CBgCtrl::DenseCallBack)
+			.addFunction("SetStatus", &CBgCtrl::SetStatus)
+			.addFunction("StageSetUp", &CBgCtrl::StageSetUp)
+			.addFunction("IsReleaseSetUp", &CBgCtrl::IsReleaseSetUp)
+			.addFunction("SetReleaseSetUp", &CBgCtrl::SetReleaseSetUp)
+			.addFunction("RequestReleaseStage", &CBgCtrl::RequestReleaseStage)
+			.addFunction("SetStageRequestRun", &CBgCtrl::SetStageRequestRun)
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("SetStageRequestParam", &CBgCtrl::SetStageRequestParam)
+			.addFunction("SetStage", &CBgCtrl::SetStage)
+			.addFunction("SetStage_2", &CBgCtrl::SetStage_2)
+			.addFunction("SetPlayDemoStatus", &CBgCtrl::SetPlayDemoStatus)
+			.addFunction("TestDemoSetUp", &CBgCtrl::TestDemoSetUp)
+			.addFunction("TestLoadStageStatus", &CBgCtrl::TestLoadStageStatus)
+			.addFunction("TestDemo", &CBgCtrl::TestDemo)
+			.addFunction("EndMovie", &CBgCtrl::EndMovie)
+			.addFunction("TestMovie", &CBgCtrl::TestMovie)
+			.addFunction("RequestMovie", &CBgCtrl::RequestMovie)
+			.addFunction("onDrawShadow", &CBgCtrl::onDrawShadow)
+			.addFunction("RenderProcess", &CBgCtrl::RenderProcess)
+			.addFunction("FrameProcess", &CBgCtrl::FrameProcess)
+			.addFunction("ClearStageName", &CBgCtrl::ClearStageName)
+			.addFunction("Terminate", &CBgCtrl::Terminate)
+			.addFunction("Release", &CBgCtrl::Release)
+			.addFunction("Initialize", &CBgCtrl::Initialize)
+			.addFunction("ReleaseRequest", &CBgCtrl::ReleaseRequest)
+			.addFunction("LoadRequest", &CBgCtrl::LoadRequest)
+			.addStaticFunction("Create", &CBgCtrl::Create)
+			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("ReadParam", &CBgCtrl::ReadParam)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(CBgCtrl::IsDarkStage) == 1, "expected CBgCtrl::IsDarkStage to be size 1");
+static_assert(sizeof(CBgCtrl::StageName) == 4, "expected CBgCtrl::StageName to be size 4");
+static_assert(sizeof(CBgCtrl::StageID) == 4, "expected CBgCtrl::StageID to be size 4");
+static_assert(sizeof(CBgCtrl::ToneMapEnabled) == 1, "expected CBgCtrl::ToneMapEnabled to be size 1");
+static_assert(sizeof(CBgCtrl::SkyMap) == 4, "expected CBgCtrl::SkyMap to be size 4");
+static_assert(sizeof(CBgCtrl::Status) == 4, "expected CBgCtrl::Status to be size 4");
+static_assert(sizeof(CBgCtrl) == 3656, "expected CBgCtrl to be size 3656");
+
+// enum MapAreaID
+enum MapAreaID : uint32_t
+{
+	// <MapID_Init = 0x0>
+	MapID_Init = 0,
+
+	// <MapID_ResortHotel = 0x1>
+	MapID_ResortHotel = 1,
+
+	// <MapID_UniversityCanvas_Charlie = 0x2>
+	MapID_UniversityCanvas_Charlie = 2,
+
+	// <MapID_UniversityCanvas_Kimmy = 0x3>
+	MapID_UniversityCanvas_Kimmy = 3,
+
+	// <MapID_DesertedHouse = 0x4>
+	MapID_DesertedHouse = 4,
+
+	// <MapID_PrisonIsland = 0x5>
+	MapID_PrisonIsland = 5,
+
+	// <MapID_Stadium = 0x6>
+	MapID_Stadium = 6,
+
+	// <MapID_Cliff = 0x7>
+	MapID_Cliff = 7,
+
+	// <MapID_Supermarket = 0x8>
+	MapID_Supermarket = 8,
+
+	// <MapID_Highway = 0x9>
+	MapID_Highway = 9,
+
+	// <MapID_ApartmentHouse = 0xa>
+	MapID_ApartmentHouse = 10,
+
+	// <MapID_PizzaBatHeadquarters = 0xb>
+	MapID_PizzaBatHeadquarters = 11,
+
+	// <MapID_OfficeUAA_Chapter3 = 0xc>
+	MapID_OfficeUAA_Chapter3 = 12,
+
+	// <MapID_OfficeUAA_Chapter7 = 0xd>
+	MapID_OfficeUAA_Chapter7 = 13,
+
+	// <MapID_OfficeUAA_Chapter12 = 0xe>
+	MapID_OfficeUAA_Chapter12 = 14,
+
+	// <MapID_PizzaSuplex = 0xf>
+	MapID_PizzaSuplex = 15,
+
+	// <MapID_Motel = 0x10>
+	MapID_Motel = 16,
+
+	// <MapID_Area51 = 0x11>
+	MapID_Area51 = 17,
+
+	// <MapID_NaomiRabo = 0x12>
+	MapID_NaomiRabo = 18,
+
+	// <MapID_TrainingGym = 0x13>
+	MapID_TrainingGym = 19,
+
+	// <MapID_BugExtermi = 0x14>
+	MapID_BugExtermi = 20,
+
+	// <MapID_PipeRepair = 0x15>
+	MapID_PipeRepair = 21,
+
+	// <MapID_CoconutCollector = 0x16>
+	MapID_CoconutCollector = 22,
+
+	// <MapID_PizzaDeli = 0x17>
+	MapID_PizzaDeli = 23,
+
+	// <MapID_SteakHouse = 0x18>
+	MapID_SteakHouse = 24,
+
+	// <MapID_TilePuzzle = 0x19>
+	MapID_TilePuzzle = 25,
+
+	// <MapID_GettinggTrashed = 0x1a>
+	MapID_GettinggTrashed = 26,
+
+	// <MapID_ScorpionEexterm = 0x1b>
+	MapID_ScorpionEexterm = 27,
+
+	// <MapID_RevengeMission1 = 0x1c>
+	MapID_RevengeMission1 = 28,
+
+	// <MapID_RevengeMission2 = 0x1d>
+	MapID_RevengeMission2 = 29,
+
+	// <MapID_RevengeMission3 = 0x1e>
+	MapID_RevengeMission3 = 30,
+
+	// <MapID_RevengeMission4 = 0x1f>
+	MapID_RevengeMission4 = 31,
+
+	// <MapID_RevengeMission5 = 0x20>
+	MapID_RevengeMission5 = 32,
+
+	// <MapID_RevengeMission6 = 0x21>
+	MapID_RevengeMission6 = 33,
+
+	// <MapID_RevengeMission7 = 0x22>
+	MapID_RevengeMission7 = 34,
+
+	// <MapID_RevengeMission8 = 0x23>
+	MapID_RevengeMission8 = 35,
+
+	// <MapID_RevengeMission9 = 0x24>
+	MapID_RevengeMission9 = 36,
+
+	// <MapID_RevengeMission10 = 0x25>
+	MapID_RevengeMission10 = 37,
+
+	// <MapID_Max = 0x26>
+	MapID_Max = 38
+
+};
+
+// [Structure] class rSkyMap
+class rSkyMap
+{
+public:
+	// enum rSkyMap::SkyMapState
+	enum SkyMapState : uint32_t
+	{
+		// <State_Init = 0x0>
+		State_Init = 0,
+
+		// <State_MoveSky = 0x1>
+		State_MoveSky = 1,
+
+		// <State_Select = 0x2>
+		State_Select = 2,
+
+		// <State_Enter = 0x3>
+		State_Enter = 3,
+
+		// <State_MoveGround = 0x4>
+		State_MoveGround = 4,
+
+		// <State_End = 0x5>
+		State_End = 5
+
+	};
+
+	/// Struct member variables
+
+	// <void* (* field_0)[0x1], offset 0x0>
+	void* (* field_0)[0x1];
+
+	// <enum rSkyMap::SkyMapState mState, offset 0x4>
+	enum rSkyMap::SkyMapState mState;
+
+	// <class TGmf* mpLowModel, offset 0x8>
+	class TGmf* mpLowModel = nullptr;
+
+	// <class TGmfNode* mpLowNode, offset 0xc>
+	class TGmfNode* mpLowNode = nullptr;
+
+	// <class TGmfNode* mpSuperLowNode, offset 0x10>
+	class TGmfNode* mpSuperLowNode = nullptr;
+
+	// <uint8_t mbHiModelLoad, offset 0x14>
+	uint8_t mbHiModelLoad = 0;
+
+	// <Unidentified data segment, offset 0x15>
+private:
+	char _UnidentifiedData_21[3];
+
+public:
+	// <float mChangeRate, offset 0x18>
+	float mChangeRate = 0;
+
+	// <float mChangeSpeed, offset 0x1c>
+	float mChangeSpeed = 0;
+
+	// <struct Vec mCamPos, offset 0x20>
+	struct Vec mCamPos;
+
+	// <struct Vec mCamTarget, offset 0x2c>
+	struct Vec mCamTarget;
+
+	// <struct Vec mCamAttainPos, offset 0x38>
+	struct Vec mCamAttainPos;
+
+	// <struct Vec mCamAttainTarget, offset 0x44>
+	struct Vec mCamAttainTarget;
+
+	// <struct Vec mCamAngleDirec, offset 0x50>
+	struct Vec mCamAngleDirec;
+
+	// <struct Vec mBefCamAngleDirec, offset 0x5c>
+	struct Vec mBefCamAngleDirec;
+
+	// <struct Vec mCamStartPos, offset 0x68>
+	struct Vec mCamStartPos;
+
+	// <struct Vec mCamStartTarget, offset 0x74>
+	struct Vec mCamStartTarget;
+
+	// <struct Vec mCamEndPos, offset 0x80>
+	struct Vec mCamEndPos;
+
+	// <struct Vec mCamEndTarget, offset 0x8c>
+	struct Vec mCamEndTarget;
+
+	// <float mCamBaseHeight, offset 0x98>
+	float mCamBaseHeight = 0;
+
+	// <float mCamZoomRange, offset 0x9c>
+	float mCamZoomRange = 0;
+
+	// <float mCamZoomRate, offset 0xa0>
+	float mCamZoomRate = 0;
+
+	// <float mCamAngleRate, offset 0xa4>
+	float mCamAngleRate = 0;
+
+	// <float mCamMoveLen, offset 0xa8>
+	float mCamMoveLen = 0;
+
+	// <uint8_t mbCamMove, offset 0xac>
+	uint8_t mbCamMove = 0;
+
+	// <Unidentified data segment, offset 0xad>
+private:
+	char _UnidentifiedData_173[3];
+
+public:
+	// <float mChangeHeight, offset 0xb0>
+	float mChangeHeight = 0;
+
+	// <class EffectSpeedBlur* mpBlur, offset 0xb4>
+	class EffectSpeedBlur* mpBlur = nullptr;
+
+	// <float mBlurScale, offset 0xb8>
+	float mBlurScale = 0;
+
+	// <int32_t mBlurRep, offset 0xbc>
+	int32_t mBlurRep = 0;
+
+	// <float mBlurAlpha, offset 0xc0>
+	float mBlurAlpha = 0;
+
+	// <float mBlurRange, offset 0xc4>
+	float mBlurRange = 0;
+
+	// <enum MapAreaID mSelectMapID, offset 0xc8>
+	enum MapAreaID mSelectMapID;
+
+	// <class TGmfNode* mSelectNode, offset 0xcc>
+	class TGmfNode* mSelectNode = nullptr;
+
+	// <class TGmfNode* mBefSelectNode, offset 0xd0>
+	class TGmfNode* mBefSelectNode = nullptr;
+
+	// <class TGmfNode* mSelectIconNode, offset 0xd4>
+	class TGmfNode* mSelectIconNode = nullptr;
+
+	// <int32_t mSelectWait, offset 0xd8>
+	int32_t mSelectWait = 0;
+
+	// <class rSkyMapMenu* mpMenu, offset 0xdc>
+	class rSkyMapMenu* mpMenu = nullptr;
+
+	// <int32_t mBokashiRez, offset 0xe0>
+	int32_t mBokashiRez = 0;
+
+	// <int32_t mBokashiKosa, offset 0xe4>
+	int32_t mBokashiKosa = 0;
+
+	// <int32_t mNoizeKosa, offset 0xe8>
+	int32_t mNoizeKosa = 0;
+
+	// <int32_t mNoizeAnimWait, offset 0xec>
+	int32_t mNoizeAnimWait = 0;
+
+	// <int32_t mBokashi_R, offset 0xf0>
+	int32_t mBokashi_R = 0;
+
+	// <int32_t mBokashi_G, offset 0xf4>
+	int32_t mBokashi_G = 0;
+
+	// <int32_t mBokashi_B, offset 0xf8>
+	int32_t mBokashi_B = 0;
+
+	// <int32_t mLoadWaitSE, offset 0xfc>
+	int32_t mLoadWaitSE = 0;
+
+	// <int32_t mhSkyMapBgm, offset 0x100>
+	int32_t mhSkyMapBgm = 0;
+
+	// <float mMarkScale, offset 0x104>
+	float mMarkScale = 0;
+
+	// <float mMarkSin, offset 0x108>
+	float mMarkSin = 0;
+
+	/// 17 Functions
+
+	// [Function] int32_t __convention("thiscall") rSkyMap::GetSelectMapID(class rSkyMap* const this) [?GetSelectMapID@rSkyMap@@QAEHXZ]
+	int32_t GetSelectMapID()
+	{
+		typedef int32_t(__thiscall* _Func)(class rSkyMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xa2430);
+		return mFunc(this);
+	}
+	// [Function] int32_t __convention("thiscall") rSkyMap::GetState(class rSkyMap* const this) [?GetState@rSkyMap@@QAEHXZ]
+	int32_t GetState()
+	{
+		typedef int32_t(__thiscall* _Func)(class rSkyMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xa2440);
+		return mFunc(this);
+	}
+	// [Function] class TGmfNode* __convention("thiscall") rSkyMap::GetSuperLowNode(class rSkyMap* const this) [?GetSuperLowNode@rSkyMap@@QAEPAVTGmfNode@@XZ]
+	class TGmfNode* GetSuperLowNode()
+	{
+		typedef class TGmfNode*(__thiscall* _Func)(class rSkyMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xaf300);
+		return mFunc(this);
+	}
+	// [Function] uint32_t __convention("thiscall") rSkyMap::GetMulColor(class rSkyMap* const this, float arg2) [?GetMulColor@rSkyMap@@AAEIM@Z]
+	uint32_t GetMulColor(float arg2)
+	{
+		typedef uint32_t(__thiscall* _Func)(class rSkyMap* const thisPtr, float arg2);
+		_Func mFunc = (_Func)(GameModule + 0x466680);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") rSkyMap::SetCamAngleDirec(class rSkyMap* const this) [?SetCamAngleDirec@rSkyMap@@AAEXXZ]
+	void SetCamAngleDirec()
+	{
+		typedef void(__thiscall* _Func)(class rSkyMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x466690);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") rSkyMap::AddNodeVisible(class rSkyMap* const this, uint8_t arg2) [?AddNodeVisible@rSkyMap@@AAEX_N@Z]
+	void AddNodeVisible(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class rSkyMap* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x4666f0);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") rSkyMap::ResetNoizeParam(class rSkyMap* const this) [?ResetNoizeParam@rSkyMap@@AAEXXZ]
+	void ResetNoizeParam()
+	{
+		typedef void(__thiscall* _Func)(class rSkyMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x466740);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") rSkyMap::SetSuperLowNoizeParam(class rSkyMap* const this) [?SetSuperLowNoizeParam@rSkyMap@@AAEXXZ]
+	void SetSuperLowNoizeParam()
+	{
+		typedef void(__thiscall* _Func)(class rSkyMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x466790);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") rSkyMap::SetState(class rSkyMap* const this, enum rSkyMap::SkyMapState arg2) [?SetState@rSkyMap@@QAEXW4SkyMapState@1@@Z]
+	void SetState(/* enum rSkyMap::SkyMapState */ uint32_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class rSkyMap* const thisPtr, enum rSkyMap::SkyMapState arg2);
+		_Func mFunc = (_Func)(GameModule + 0x4667c0);
+		return mFunc(this, (enum rSkyMap::SkyMapState)arg2);
+	}
+	// [Function] void __convention("thiscall") rSkyMap::AreaSelect(class rSkyMap* const this, int32_t arg2) [?AreaSelect@rSkyMap@@QAEXH@Z]
+	void AreaSelect(int32_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class rSkyMap* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x4667e0);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") rSkyMap::MoveSky(class rSkyMap* const this, int32_t arg2) [?MoveSky@rSkyMap@@QAE_NH@Z]
+	uint8_t MoveSky(int32_t arg2)
+	{
+		typedef uint8_t(__thiscall* _Func)(class rSkyMap* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x4689b0);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") rSkyMap::MoveGround(class rSkyMap* const this, struct Vec& arg2, struct Vec& arg3) [?MoveGround@rSkyMap@@QAE_NABUVec@@0@Z]
+	uint8_t MoveGround(struct Vec& arg2, struct Vec& arg3)
+	{
+		typedef uint8_t(__thiscall* _Func)(class rSkyMap* const thisPtr, struct Vec& arg2, struct Vec& arg3);
+		_Func mFunc = (_Func)(GameModule + 0x468d10);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] uint8_t __convention("thiscall") rSkyMap::IsEnter(class rSkyMap* const this) [?IsEnter@rSkyMap@@QAE_NXZ]
+	uint8_t IsEnter()
+	{
+		typedef uint8_t(__thiscall* _Func)(class rSkyMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x468dd0);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") rSkyMap::Terminate(class rSkyMap* const this) [?Terminate@rSkyMap@@QAE_NXZ]
+	uint8_t Terminate()
+	{
+		typedef uint8_t(__thiscall* _Func)(class rSkyMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x468df0);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") rSkyMap::Initialize(class rSkyMap* const this) [?Initialize@rSkyMap@@QAE_NXZ]
+	uint8_t Initialize()
+	{
+		typedef uint8_t(__thiscall* _Func)(class rSkyMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x468ed0);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") rSkyMap::FrameProc(class rSkyMap* const this) [?FrameProc@rSkyMap@@QAEXXZ]
+	void FrameProc()
+	{
+		typedef void(__thiscall* _Func)(class rSkyMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x4690b0);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") rSkyMap::RenderProc(class rSkyMap* const this) [?RenderProc@rSkyMap@@QAEXXZ]
+	void RenderProc()
+	{
+		typedef void(__thiscall* _Func)(class rSkyMap* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x469c60);
+		return mFunc(this);
+	}
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "class rSkyMap [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(rSkyMap& InObject)
+	{
+		mState = InObject.mState;
+		mpLowModel = InObject.mpLowModel;
+		mpLowNode = InObject.mpLowNode;
+		mpSuperLowNode = InObject.mpSuperLowNode;
+		mbHiModelLoad = InObject.mbHiModelLoad;
+		mChangeRate = InObject.mChangeRate;
+		mChangeSpeed = InObject.mChangeSpeed;
+		mCamPos = InObject.mCamPos;
+		mCamTarget = InObject.mCamTarget;
+		mCamAttainPos = InObject.mCamAttainPos;
+		mCamAttainTarget = InObject.mCamAttainTarget;
+		mCamAngleDirec = InObject.mCamAngleDirec;
+		mBefCamAngleDirec = InObject.mBefCamAngleDirec;
+		mCamStartPos = InObject.mCamStartPos;
+		mCamStartTarget = InObject.mCamStartTarget;
+		mCamEndPos = InObject.mCamEndPos;
+		mCamEndTarget = InObject.mCamEndTarget;
+		mCamBaseHeight = InObject.mCamBaseHeight;
+		mCamZoomRange = InObject.mCamZoomRange;
+		mCamZoomRate = InObject.mCamZoomRate;
+		mCamAngleRate = InObject.mCamAngleRate;
+		mCamMoveLen = InObject.mCamMoveLen;
+		mbCamMove = InObject.mbCamMove;
+		mChangeHeight = InObject.mChangeHeight;
+		mpBlur = InObject.mpBlur;
+		mBlurScale = InObject.mBlurScale;
+		mBlurRep = InObject.mBlurRep;
+		mBlurAlpha = InObject.mBlurAlpha;
+		mBlurRange = InObject.mBlurRange;
+		mSelectMapID = InObject.mSelectMapID;
+		mSelectNode = InObject.mSelectNode;
+		mBefSelectNode = InObject.mBefSelectNode;
+		mSelectIconNode = InObject.mSelectIconNode;
+		mSelectWait = InObject.mSelectWait;
+		mpMenu = InObject.mpMenu;
+		mBokashiRez = InObject.mBokashiRez;
+		mBokashiKosa = InObject.mBokashiKosa;
+		mNoizeKosa = InObject.mNoizeKosa;
+		mNoizeAnimWait = InObject.mNoizeAnimWait;
+		mBokashi_R = InObject.mBokashi_R;
+		mBokashi_G = InObject.mBokashi_G;
+		mBokashi_B = InObject.mBokashi_B;
+		mLoadWaitSE = InObject.mLoadWaitSE;
+		mhSkyMapBgm = InObject.mhSkyMapBgm;
+		mMarkScale = InObject.mMarkScale;
+		mMarkSin = InObject.mMarkSin;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<rSkyMap>("rSkyMap")
+			.addFunction("__tostring", &rSkyMap::ToString)
+			.addFunction("GetPtrAddr", &rSkyMap::GetPtrAddr)
+			// delegates are not supported in LuaBridge
+			//.addProperty("field_0", &rSkyMap::field_0)
+			.addProperty("mState", &rSkyMap::mState)
+			.addProperty("mpLowModel", &rSkyMap::mpLowModel)
+			.addProperty("mpLowNode", &rSkyMap::mpLowNode)
+			.addProperty("mpSuperLowNode", &rSkyMap::mpSuperLowNode)
+			.addProperty("mbHiModelLoad", &rSkyMap::mbHiModelLoad)
+			.addProperty("mChangeRate", &rSkyMap::mChangeRate)
+			.addProperty("mChangeSpeed", &rSkyMap::mChangeSpeed)
+			.addProperty("mCamPos", &rSkyMap::mCamPos)
+			.addProperty("mCamTarget", &rSkyMap::mCamTarget)
+			.addProperty("mCamAttainPos", &rSkyMap::mCamAttainPos)
+			.addProperty("mCamAttainTarget", &rSkyMap::mCamAttainTarget)
+			.addProperty("mCamAngleDirec", &rSkyMap::mCamAngleDirec)
+			.addProperty("mBefCamAngleDirec", &rSkyMap::mBefCamAngleDirec)
+			.addProperty("mCamStartPos", &rSkyMap::mCamStartPos)
+			.addProperty("mCamStartTarget", &rSkyMap::mCamStartTarget)
+			.addProperty("mCamEndPos", &rSkyMap::mCamEndPos)
+			.addProperty("mCamEndTarget", &rSkyMap::mCamEndTarget)
+			.addProperty("mCamBaseHeight", &rSkyMap::mCamBaseHeight)
+			.addProperty("mCamZoomRange", &rSkyMap::mCamZoomRange)
+			.addProperty("mCamZoomRate", &rSkyMap::mCamZoomRate)
+			.addProperty("mCamAngleRate", &rSkyMap::mCamAngleRate)
+			.addProperty("mCamMoveLen", &rSkyMap::mCamMoveLen)
+			.addProperty("mbCamMove", &rSkyMap::mbCamMove)
+			.addProperty("mChangeHeight", &rSkyMap::mChangeHeight)
+			.addProperty("mpBlur", &rSkyMap::mpBlur)
+			.addProperty("mBlurScale", &rSkyMap::mBlurScale)
+			.addProperty("mBlurRep", &rSkyMap::mBlurRep)
+			.addProperty("mBlurAlpha", &rSkyMap::mBlurAlpha)
+			.addProperty("mBlurRange", &rSkyMap::mBlurRange)
+			.addProperty("mSelectMapID", &rSkyMap::mSelectMapID)
+			.addProperty("mSelectNode", &rSkyMap::mSelectNode)
+			.addProperty("mBefSelectNode", &rSkyMap::mBefSelectNode)
+			.addProperty("mSelectIconNode", &rSkyMap::mSelectIconNode)
+			.addProperty("mSelectWait", &rSkyMap::mSelectWait)
+			.addProperty("mpMenu", &rSkyMap::mpMenu)
+			.addProperty("mBokashiRez", &rSkyMap::mBokashiRez)
+			.addProperty("mBokashiKosa", &rSkyMap::mBokashiKosa)
+			.addProperty("mNoizeKosa", &rSkyMap::mNoizeKosa)
+			.addProperty("mNoizeAnimWait", &rSkyMap::mNoizeAnimWait)
+			.addProperty("mBokashi_R", &rSkyMap::mBokashi_R)
+			.addProperty("mBokashi_G", &rSkyMap::mBokashi_G)
+			.addProperty("mBokashi_B", &rSkyMap::mBokashi_B)
+			.addProperty("mLoadWaitSE", &rSkyMap::mLoadWaitSE)
+			.addProperty("mhSkyMapBgm", &rSkyMap::mhSkyMapBgm)
+			.addProperty("mMarkScale", &rSkyMap::mMarkScale)
+			.addProperty("mMarkSin", &rSkyMap::mMarkSin)
+			.addFunction("GetSelectMapID", &rSkyMap::GetSelectMapID)
+			.addFunction("GetState", &rSkyMap::GetState)
+			.addFunction("GetSuperLowNode", &rSkyMap::GetSuperLowNode)
+			.addFunction("GetMulColor", &rSkyMap::GetMulColor)
+			.addFunction("SetCamAngleDirec", &rSkyMap::SetCamAngleDirec)
+			.addFunction("AddNodeVisible", &rSkyMap::AddNodeVisible)
+			.addFunction("ResetNoizeParam", &rSkyMap::ResetNoizeParam)
+			.addFunction("SetSuperLowNoizeParam", &rSkyMap::SetSuperLowNoizeParam)
+			.addFunction("SetState", &rSkyMap::SetState)
+			.addFunction("AreaSelect", &rSkyMap::AreaSelect)
+			.addFunction("MoveSky", &rSkyMap::MoveSky)
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("MoveGround", &rSkyMap::MoveGround)
+			.addFunction("IsEnter", &rSkyMap::IsEnter)
+			.addFunction("Terminate", &rSkyMap::Terminate)
+			.addFunction("Initialize", &rSkyMap::Initialize)
+			.addFunction("FrameProc", &rSkyMap::FrameProc)
+			.addFunction("RenderProc", &rSkyMap::RenderProc)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(rSkyMap::field_0) == 4, "expected rSkyMap::field_0 to be size 4");
+static_assert(sizeof(rSkyMap::mState) == 4, "expected rSkyMap::mState to be size 4");
+static_assert(sizeof(rSkyMap::mpLowModel) == 4, "expected rSkyMap::mpLowModel to be size 4");
+static_assert(sizeof(rSkyMap::mpLowNode) == 4, "expected rSkyMap::mpLowNode to be size 4");
+static_assert(sizeof(rSkyMap::mpSuperLowNode) == 4, "expected rSkyMap::mpSuperLowNode to be size 4");
+static_assert(sizeof(rSkyMap::mbHiModelLoad) == 1, "expected rSkyMap::mbHiModelLoad to be size 1");
+static_assert(sizeof(rSkyMap::mChangeRate) == 4, "expected rSkyMap::mChangeRate to be size 4");
+static_assert(sizeof(rSkyMap::mChangeSpeed) == 4, "expected rSkyMap::mChangeSpeed to be size 4");
+static_assert(sizeof(rSkyMap::mCamPos) == 12, "expected rSkyMap::mCamPos to be size 12");
+static_assert(sizeof(rSkyMap::mCamTarget) == 12, "expected rSkyMap::mCamTarget to be size 12");
+static_assert(sizeof(rSkyMap::mCamAttainPos) == 12, "expected rSkyMap::mCamAttainPos to be size 12");
+static_assert(sizeof(rSkyMap::mCamAttainTarget) == 12, "expected rSkyMap::mCamAttainTarget to be size 12");
+static_assert(sizeof(rSkyMap::mCamAngleDirec) == 12, "expected rSkyMap::mCamAngleDirec to be size 12");
+static_assert(sizeof(rSkyMap::mBefCamAngleDirec) == 12, "expected rSkyMap::mBefCamAngleDirec to be size 12");
+static_assert(sizeof(rSkyMap::mCamStartPos) == 12, "expected rSkyMap::mCamStartPos to be size 12");
+static_assert(sizeof(rSkyMap::mCamStartTarget) == 12, "expected rSkyMap::mCamStartTarget to be size 12");
+static_assert(sizeof(rSkyMap::mCamEndPos) == 12, "expected rSkyMap::mCamEndPos to be size 12");
+static_assert(sizeof(rSkyMap::mCamEndTarget) == 12, "expected rSkyMap::mCamEndTarget to be size 12");
+static_assert(sizeof(rSkyMap::mCamBaseHeight) == 4, "expected rSkyMap::mCamBaseHeight to be size 4");
+static_assert(sizeof(rSkyMap::mCamZoomRange) == 4, "expected rSkyMap::mCamZoomRange to be size 4");
+static_assert(sizeof(rSkyMap::mCamZoomRate) == 4, "expected rSkyMap::mCamZoomRate to be size 4");
+static_assert(sizeof(rSkyMap::mCamAngleRate) == 4, "expected rSkyMap::mCamAngleRate to be size 4");
+static_assert(sizeof(rSkyMap::mCamMoveLen) == 4, "expected rSkyMap::mCamMoveLen to be size 4");
+static_assert(sizeof(rSkyMap::mbCamMove) == 1, "expected rSkyMap::mbCamMove to be size 1");
+static_assert(sizeof(rSkyMap::mChangeHeight) == 4, "expected rSkyMap::mChangeHeight to be size 4");
+static_assert(sizeof(rSkyMap::mpBlur) == 4, "expected rSkyMap::mpBlur to be size 4");
+static_assert(sizeof(rSkyMap::mBlurScale) == 4, "expected rSkyMap::mBlurScale to be size 4");
+static_assert(sizeof(rSkyMap::mBlurRep) == 4, "expected rSkyMap::mBlurRep to be size 4");
+static_assert(sizeof(rSkyMap::mBlurAlpha) == 4, "expected rSkyMap::mBlurAlpha to be size 4");
+static_assert(sizeof(rSkyMap::mBlurRange) == 4, "expected rSkyMap::mBlurRange to be size 4");
+static_assert(sizeof(rSkyMap::mSelectMapID) == 4, "expected rSkyMap::mSelectMapID to be size 4");
+static_assert(sizeof(rSkyMap::mSelectNode) == 4, "expected rSkyMap::mSelectNode to be size 4");
+static_assert(sizeof(rSkyMap::mBefSelectNode) == 4, "expected rSkyMap::mBefSelectNode to be size 4");
+static_assert(sizeof(rSkyMap::mSelectIconNode) == 4, "expected rSkyMap::mSelectIconNode to be size 4");
+static_assert(sizeof(rSkyMap::mSelectWait) == 4, "expected rSkyMap::mSelectWait to be size 4");
+static_assert(sizeof(rSkyMap::mpMenu) == 4, "expected rSkyMap::mpMenu to be size 4");
+static_assert(sizeof(rSkyMap::mBokashiRez) == 4, "expected rSkyMap::mBokashiRez to be size 4");
+static_assert(sizeof(rSkyMap::mBokashiKosa) == 4, "expected rSkyMap::mBokashiKosa to be size 4");
+static_assert(sizeof(rSkyMap::mNoizeKosa) == 4, "expected rSkyMap::mNoizeKosa to be size 4");
+static_assert(sizeof(rSkyMap::mNoizeAnimWait) == 4, "expected rSkyMap::mNoizeAnimWait to be size 4");
+static_assert(sizeof(rSkyMap::mBokashi_R) == 4, "expected rSkyMap::mBokashi_R to be size 4");
+static_assert(sizeof(rSkyMap::mBokashi_G) == 4, "expected rSkyMap::mBokashi_G to be size 4");
+static_assert(sizeof(rSkyMap::mBokashi_B) == 4, "expected rSkyMap::mBokashi_B to be size 4");
+static_assert(sizeof(rSkyMap::mLoadWaitSE) == 4, "expected rSkyMap::mLoadWaitSE to be size 4");
+static_assert(sizeof(rSkyMap::mhSkyMapBgm) == 4, "expected rSkyMap::mhSkyMapBgm to be size 4");
+static_assert(sizeof(rSkyMap::mMarkScale) == 4, "expected rSkyMap::mMarkScale to be size 4");
+static_assert(sizeof(rSkyMap::mMarkSin) == 4, "expected rSkyMap::mMarkSin to be size 4");
+static_assert(sizeof(rSkyMap) == 268, "expected rSkyMap to be size 268");
+
+// [Structure] class EffectSpeedBlur
+class EffectSpeedBlur : public HrTask
+{
+public:
+	/// Struct member variables
+
+	// <class HrTask field_0, offset 0x0>
+	// class HrTask Super;
+
+	// <uint8_t m_Flag, offset 0x50>
+	uint8_t m_Flag = 0;
+
+	// <Unidentified data segment, offset 0x51>
+private:
+	char _UnidentifiedData_81[3];
+
+public:
+	// <float m_BlurValue, offset 0x54>
+	float m_BlurValue = 0;
+
+	// <float m_Scale, offset 0x58>
+	float m_Scale = 0;
+
+	// <int32_t m_RepNum, offset 0x5c>
+	int32_t m_RepNum = 0;
+
+	// <uint8_t m_Wait, offset 0x60>
+	uint8_t m_Wait = 0;
+
+	// <Unidentified data segment, offset 0x61>
+private:
+	char _UnidentifiedData_97[3];
+
+public:
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "class EffectSpeedBlur [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(EffectSpeedBlur& InObject)
+	{
+		m_Flag = InObject.m_Flag;
+		m_BlurValue = InObject.m_BlurValue;
+		m_Scale = InObject.m_Scale;
+		m_RepNum = InObject.m_RepNum;
+		m_Wait = InObject.m_Wait;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.deriveClass<EffectSpeedBlur, HrTask>("EffectSpeedBlur")
+			.addFunction("__tostring", &EffectSpeedBlur::ToString)
+			.addFunction("GetPtrAddr", &EffectSpeedBlur::GetPtrAddr)
+			.addProperty("m_Flag", &EffectSpeedBlur::m_Flag)
+			.addProperty("m_BlurValue", &EffectSpeedBlur::m_BlurValue)
+			.addProperty("m_Scale", &EffectSpeedBlur::m_Scale)
+			.addProperty("m_RepNum", &EffectSpeedBlur::m_RepNum)
+			.addProperty("m_Wait", &EffectSpeedBlur::m_Wait)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(EffectSpeedBlur::m_Flag) == 1, "expected EffectSpeedBlur::m_Flag to be size 1");
+static_assert(sizeof(EffectSpeedBlur::m_BlurValue) == 4, "expected EffectSpeedBlur::m_BlurValue to be size 4");
+static_assert(sizeof(EffectSpeedBlur::m_Scale) == 4, "expected EffectSpeedBlur::m_Scale to be size 4");
+static_assert(sizeof(EffectSpeedBlur::m_RepNum) == 4, "expected EffectSpeedBlur::m_RepNum to be size 4");
+static_assert(sizeof(EffectSpeedBlur::m_Wait) == 1, "expected EffectSpeedBlur::m_Wait to be size 1");
+static_assert(sizeof(EffectSpeedBlur) == 100, "expected EffectSpeedBlur to be size 100");
+
+// [Structure] class rSkyMapMenu
+class rSkyMapMenu
+{
+public:
+	// enum rSkyMapMenu::MenuState
+	enum MenuState : uint32_t
+	{
+		// <State_Init = 0x0>
+		State_Init = 0,
+
+		// <State_FadeIn = 0x1>
+		State_FadeIn = 1,
+
+		// <State_Select = 0x2>
+		State_Select = 2,
+
+		// <State_FadeOut = 0x3>
+		State_FadeOut = 3
+
+	};
+
+	/// Struct member variables
+
+	// <Unidentified data segment, offset 0x0>
+private:
+	char _UnidentifiedData_0[8304];
+
+public:
+	/// 17 Functions
+
+	// [Function] void __convention("thiscall") rSkyMapMenu::SetSkyMap(class rSkyMapMenu* const this, class rSkyMap* arg2) [?SetSkyMap@rSkyMapMenu@@QAEXPAVrSkyMap@@@Z]
+	void SetSkyMap(class rSkyMap* arg2)
+	{
+		typedef void(__thiscall* _Func)(class rSkyMapMenu* const thisPtr, class rSkyMap* arg2);
+		_Func mFunc = (_Func)(GameModule + 0xaf2e0);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") rSkyMapMenu::onClickCallback(class rSkyMapMenu* const this, int32_t arg2) [?onClickCallback@rSkyMapMenu@@AAEXH@Z]
+	void onClickCallback(int32_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class rSkyMapMenu* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x4669d0);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") rSkyMapMenu::onHoverCallback(class rSkyMapMenu* const this, int32_t arg2) [?onHoverCallback@rSkyMapMenu@@AAEXH@Z]
+	void onHoverCallback(int32_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class rSkyMapMenu* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x466a50);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") rSkyMapMenu::InitMouseInteractions(class rSkyMapMenu* const this) [?InitMouseInteractions@rSkyMapMenu@@AAEXXZ]
+	void InitMouseInteractions()
+	{
+		typedef void(__thiscall* _Func)(class rSkyMapMenu* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x466ad0);
+		return mFunc(this);
+	}
+	// [Function] int32_t __convention("thiscall") rSkyMapMenu::GetFontData(class rSkyMapMenu* const this, char* arg2, struct GTEX_UVSET* arg3, enum GFONTTYPE_NUM arg4) [?GetFontData@rSkyMapMenu@@AAEHPADPAUGTEX_UVSET@@W4GFONTTYPE_NUM@@@Z]
+	int32_t GetFontData(char* arg2, struct GTEX_UVSET* arg3, /* enum GFONTTYPE_NUM */ uint32_t arg4)
+	{
+		typedef int32_t(__thiscall* _Func)(class rSkyMapMenu* const thisPtr, char* arg2, struct GTEX_UVSET* arg3, enum GFONTTYPE_NUM arg4);
+		_Func mFunc = (_Func)(GameModule + 0x466dc0);
+		return mFunc(this, arg2, arg3, (enum GFONTTYPE_NUM)arg4);
+	}
+	// [Function] int32_t __convention("thiscall") rSkyMapMenu::DrawMes(class rSkyMapMenu* const this, float arg2, float arg3, char* arg4, enum GFONTTYPE_NUM arg5, uint32_t arg6, float arg7, uint8_t arg8, uint8_t arg9) [?DrawMes@rSkyMapMenu@@AAEHMMPADW4GFONTTYPE_NUM@@IM_N2@Z]
+	int32_t DrawMes(float arg2, float arg3, char* arg4, /* enum GFONTTYPE_NUM */ uint32_t arg5, uint32_t arg6, float arg7, uint8_t arg8, uint8_t arg9)
+	{
+		typedef int32_t(__thiscall* _Func)(class rSkyMapMenu* const thisPtr, float arg2, float arg3, char* arg4, enum GFONTTYPE_NUM arg5, uint32_t arg6, float arg7, uint8_t arg8, uint8_t arg9);
+		_Func mFunc = (_Func)(GameModule + 0x466e60);
+		return mFunc(this, arg2, arg3, arg4, (enum GFONTTYPE_NUM)arg5, arg6, arg7, arg8, arg9);
+	}
+	// [Function] void __convention("thiscall") rSkyMapMenu::SetPolaroid(class rSkyMapMenu* const this) [?SetPolaroid@rSkyMapMenu@@AAEXXZ]
+	void SetPolaroid()
+	{
+		typedef void(__thiscall* _Func)(class rSkyMapMenu* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x467200);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") rSkyMapMenu::ListCreate(class rSkyMapMenu* const this) [?ListCreate@rSkyMapMenu@@AAEXXZ]
+	void ListCreate()
+	{
+		typedef void(__thiscall* _Func)(class rSkyMapMenu* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x4672a0);
+		return mFunc(this);
+	}
+	// [Function] int32_t __convention("thiscall") rSkyMapMenu::GetSelectMapID(class rSkyMapMenu* const this) [?GetSelectMapID@rSkyMapMenu@@QAEHXZ]
+	int32_t GetSelectMapID()
+	{
+		typedef int32_t(__thiscall* _Func)(class rSkyMapMenu* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x467630);
+		return mFunc(this);
+	}
+	// [Function] class TGmfNode* __convention("thiscall") rSkyMapMenu::GetSelectIconNode(class rSkyMapMenu* const this) [?GetSelectIconNode@rSkyMapMenu@@QAEPAVTGmfNode@@XZ]
+	class TGmfNode* GetSelectIconNode()
+	{
+		typedef class TGmfNode*(__thiscall* _Func)(class rSkyMapMenu* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x467640);
+		return mFunc(this);
+	}
+	// [Function] class TGmfNode* __convention("thiscall") rSkyMapMenu::GetSelectNode(class rSkyMapMenu* const this) [?GetSelectNode@rSkyMapMenu@@QAEPAVTGmfNode@@XZ]
+	class TGmfNode* GetSelectNode()
+	{
+		typedef class TGmfNode*(__thiscall* _Func)(class rSkyMapMenu* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x467660);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") rSkyMapMenu::SetState(class rSkyMapMenu* const this, enum rSkyMapMenu::MenuState arg2) [?SetState@rSkyMapMenu@@QAEXW4MenuState@1@@Z]
+	void SetState(/* enum rSkyMapMenu::MenuState */ uint32_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class rSkyMapMenu* const thisPtr, enum rSkyMapMenu::MenuState arg2);
+		_Func mFunc = (_Func)(GameModule + 0x467670);
+		return mFunc(this, (enum rSkyMapMenu::MenuState)arg2);
+	}
+	// [Function] void __convention("thiscall") rSkyMapMenu::RenderProcess(class rSkyMapMenu* const this) [?RenderProcess@rSkyMapMenu@@EAEXXZ]
+	void RenderProcess()
+	{
+		typedef void(__thiscall* _Func)(class rSkyMapMenu* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x467730);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") rSkyMapMenu::FrameProcess(class rSkyMapMenu* const this) [?FrameProcess@rSkyMapMenu@@EAEXXZ]
+	void FrameProcess()
+	{
+		typedef void(__thiscall* _Func)(class rSkyMapMenu* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x467b70);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") rSkyMapMenu::Terminate(class rSkyMapMenu* const this) [?Terminate@rSkyMapMenu@@EAEXXZ]
+	void Terminate()
+	{
+		typedef void(__thiscall* _Func)(class rSkyMapMenu* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x468000);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") rSkyMapMenu::Initialize(class rSkyMapMenu* const this) [?Initialize@rSkyMapMenu@@AAE_NXZ]
+	uint8_t Initialize()
+	{
+		typedef uint8_t(__thiscall* _Func)(class rSkyMapMenu* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x4681a0);
+		return mFunc(this);
+	}
+	// [Function] class rSkyMapMenu* rSkyMapMenu::Create() [?Create@rSkyMapMenu@@SAPAV1@XZ]
+	static class rSkyMapMenu* Create()
+	{
+		typedef class rSkyMapMenu*(__fastcall* _Func)();
+		_Func mFunc = (_Func)(GameModule + 0x4688b0);
+		return mFunc();
+	}
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "class rSkyMapMenu [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(rSkyMapMenu& InObject)
+	{
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<rSkyMapMenu>("rSkyMapMenu")
+			.addFunction("__tostring", &rSkyMapMenu::ToString)
+			.addFunction("GetPtrAddr", &rSkyMapMenu::GetPtrAddr)
+			.addFunction("SetSkyMap", &rSkyMapMenu::SetSkyMap)
+			.addFunction("onClickCallback", &rSkyMapMenu::onClickCallback)
+			.addFunction("onHoverCallback", &rSkyMapMenu::onHoverCallback)
+			.addFunction("InitMouseInteractions", &rSkyMapMenu::InitMouseInteractions)
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("GetFontData", &rSkyMapMenu::GetFontData)
+			// Can't export pointer to native type 'char*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("DrawMes", &rSkyMapMenu::DrawMes)
+			.addFunction("SetPolaroid", &rSkyMapMenu::SetPolaroid)
+			.addFunction("ListCreate", &rSkyMapMenu::ListCreate)
+			.addFunction("GetSelectMapID", &rSkyMapMenu::GetSelectMapID)
+			.addFunction("GetSelectIconNode", &rSkyMapMenu::GetSelectIconNode)
+			.addFunction("GetSelectNode", &rSkyMapMenu::GetSelectNode)
+			.addFunction("SetState", &rSkyMapMenu::SetState)
+			.addFunction("RenderProcess", &rSkyMapMenu::RenderProcess)
+			.addFunction("FrameProcess", &rSkyMapMenu::FrameProcess)
+			.addFunction("Terminate", &rSkyMapMenu::Terminate)
+			.addFunction("Initialize", &rSkyMapMenu::Initialize)
+			.addStaticFunction("Create", &rSkyMapMenu::Create)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(rSkyMapMenu) == 8304, "expected rSkyMapMenu to be size 8304");
+
+// [Structure] class HrStageDraw
+class HrStageDraw
+{
+public:
+	// [Structure] struct HrStageDraw::MAIN
+	struct MAIN
+	{
+	public:
+		/// Struct member variables
+
+		// <Unidentified data segment, offset 0x0>
+	private:
+		char _UnidentifiedData_0[20728];
+
+	public:
+		/// 0 Functions
+
+		/// Meta
+
+		std::string ToString() const { std::stringstream stream; stream << "struct MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		int GetPtrAddr() const { return (int)this; }
+		void CopyFrom(HrStageDraw::MAIN& InObject)
+		{
+		}
+#ifdef WITH_LUA
+		static void BindLua(luabridge::Namespace& NS)
+		{
+			NS = NS.beginClass<HrStageDraw::MAIN>("HrStageDraw_MAIN")
+				.addFunction("__tostring", &HrStageDraw::MAIN::ToString)
+				.addFunction("GetPtrAddr", &HrStageDraw::MAIN::GetPtrAddr)
+			.endClass();
+		}
+#endif
+	};
+	static_assert(sizeof(HrStageDraw::MAIN) == 20728, "expected HrStageDraw::MAIN to be size 20728");
+
+	// [Structure] struct HrStageDraw::AREA
+	struct AREA
+	{
+	public:
+		/// Struct member variables
+
+		// <Unidentified data segment, offset 0x0>
+	private:
+		char _UnidentifiedData_0[388];
+
+	public:
+		/// 0 Functions
+
+		/// Meta
+
+		std::string ToString() const { std::stringstream stream; stream << "struct AREA [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		int GetPtrAddr() const { return (int)this; }
+		void CopyFrom(HrStageDraw::AREA& InObject)
+		{
+		}
+#ifdef WITH_LUA
+		static void BindLua(luabridge::Namespace& NS)
+		{
+			NS = NS.beginClass<HrStageDraw::AREA>("HrStageDraw_AREA")
+				.addFunction("__tostring", &HrStageDraw::AREA::ToString)
+				.addFunction("GetPtrAddr", &HrStageDraw::AREA::GetPtrAddr)
+			.endClass();
+		}
+#endif
+	};
+	static_assert(sizeof(HrStageDraw::AREA) == 388, "expected HrStageDraw::AREA to be size 388");
+
+	/// Struct member variables
+
+	// <void* pAreaBuffer, offset 0x0>
+	void* pAreaBuffer = nullptr;
+
+	// <Unidentified data segment, offset 0x4>
+private:
+	char _UnidentifiedData_4[4];
+
+public:
+	// <struct HrStageDraw::MAIN dat, offset 0x8>
+	struct HrStageDraw::MAIN dat;
+
+	/// 40 Functions
+
+	// [Function] class TGmf* __convention("thiscall") HrStageDraw::GetGmf(class HrStageDraw* const this) [?GetGmf@HrStageDraw@@QAEPAVTGmf@@XZ]
+	class TGmf* GetGmf()
+	{
+		typedef class TGmf*(__thiscall* _Func)(class HrStageDraw* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x9dd00);
+		return mFunc(this);
+	}
+	// [Function] class WGcl* __convention("thiscall") HrStageDraw::GetGcl(class HrStageDraw* const this) [?GetGcl@HrStageDraw@@QAEPAVWGcl@@XZ]
+	class WGcl* GetGcl()
+	{
+		typedef class WGcl*(__thiscall* _Func)(class HrStageDraw* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xa2eb0);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") HrStageDraw::IsGcl(class HrStageDraw* const this) [?IsGcl@HrStageDraw@@QAE_NXZ]
+	uint8_t IsGcl()
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrStageDraw* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xa2ec0);
+		return mFunc(this);
+	}
+	// [Function] int32_t __convention("thiscall") HrStageDraw::GetDrawOrderType(class HrStageDraw* const this) [?GetDrawOrderType@HrStageDraw@@QAEHXZ]
+	int32_t GetDrawOrderType()
+	{
+		typedef int32_t(__thiscall* _Func)(class HrStageDraw* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xa3ab0);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::SetClipCheckPos(class HrStageDraw* const this, struct Vec& arg2) [?SetClipCheckPos@HrStageDraw@@QAEXABUVec@@@Z]
+	void SetClipCheckPos(struct Vec& arg2)
+	{
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr, struct Vec& arg2);
+		_Func mFunc = (_Func)(GameModule + 0xa9b40);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::SetLoadAreaPos(class HrStageDraw* const this, uint8_t arg2, struct Vec& arg3, struct Vec& arg4) [?SetLoadAreaPos@HrStageDraw@@QAEX_NABUVec@@1@Z]
+	void SetLoadAreaPos(uint8_t arg2, struct Vec& arg3, struct Vec& arg4)
+	{
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr, uint8_t arg2, struct Vec& arg3, struct Vec& arg4);
+		_Func mFunc = (_Func)(GameModule + 0xaf950);
+		return mFunc(this, arg2, arg3, arg4);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::setCollisionValidFlag(class HrStageDraw* const this, uint8_t const arg2, uint8_t const arg3) [?setCollisionValidFlag@HrStageDraw@@QAEX_N0@Z]
+	void setCollisionValidFlag(uint8_t const arg2, uint8_t const arg3)
+	{
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr, uint8_t const arg2, uint8_t const arg3);
+		_Func mFunc = (_Func)(GameModule + 0x416290);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] int32_t __convention("thiscall") HrStageDraw::GetLoadCompleteAreaNum(class HrStageDraw* const this) [?GetLoadCompleteAreaNum@HrStageDraw@@QBEHXZ]
+	int32_t GetLoadCompleteAreaNum()
+	{
+		typedef int32_t(__thiscall* _Func)(class HrStageDraw* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x416440);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::prReleaseArea(class HrStageDraw* const this, struct HrStageDraw::AREA* arg2) [?prReleaseArea@HrStageDraw@@IAEXPAUAREA@1@@Z]
+	void prReleaseArea(struct HrStageDraw::AREA* arg2)
+	{
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr, struct HrStageDraw::AREA* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x416490);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::AreaNodeVisibleRefresh(class HrStageDraw* const this, int32_t arg2) [?AreaNodeVisibleRefresh@HrStageDraw@@IAEXH@Z]
+	void AreaNodeVisibleRefresh(int32_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x4166a0);
+		return mFunc(this, arg2);
+	}
+	// [Function] void HrStageDraw::AreaSelectDraw(void* arg1) [?AreaSelectDraw@HrStageDraw@@KAXPAX@Z]
+	static void AreaSelectDraw(void* arg1)
+	{
+		typedef void(__fastcall* _Func)(void* arg1);
+		_Func mFunc = (_Func)(GameModule + 0x416780);
+		return mFunc(arg1);
+	}
+	// [Function] void HrStageDraw::SetAmbLight(int32_t arg1, uint8_t arg2, uint32_t arg3) [?SetAmbLight@HrStageDraw@@SAXH_NI@Z]
+	static void SetAmbLight(int32_t arg1, uint8_t arg2, uint32_t arg3)
+	{
+		typedef void(__fastcall* _Func)(int32_t arg1, uint8_t arg2, uint32_t arg3);
+		_Func mFunc = (_Func)(GameModule + 0x416790);
+		return mFunc(arg1, arg2, arg3);
+	}
+	// [Function] void HrStageDraw::SetToonModelMulColor(int32_t arg1, uint8_t arg2, uint32_t arg3) [?SetToonModelMulColor@HrStageDraw@@SAXH_NI@Z]
+	static void SetToonModelMulColor(int32_t arg1, uint8_t arg2, uint32_t arg3)
+	{
+		typedef void(__fastcall* _Func)(int32_t arg1, uint8_t arg2, uint32_t arg3);
+		_Func mFunc = (_Func)(GameModule + 0x4167b0);
+		return mFunc(arg1, arg2, arg3);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::DrawColl(class HrStageDraw* const this) [?DrawColl@HrStageDraw@@QAEXXZ]
+	void DrawColl()
+	{
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x4167d0);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::ClipNodeColision(class HrStageDraw* const this) [?ClipNodeColision@HrStageDraw@@QAEXXZ]
+	void ClipNodeColision()
+	{
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x4167e0);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::SetBikeCollisionEnable(class HrStageDraw* const this, int32_t arg2, uint8_t arg3) [?SetBikeCollisionEnable@HrStageDraw@@QAEXH_N@Z]
+	void SetBikeCollisionEnable(int32_t arg2, uint8_t arg3)
+	{
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr, int32_t arg2, uint8_t arg3);
+		_Func mFunc = (_Func)(GameModule + 0x416b40);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::SetAreaBikeCollisionEnable(class HrStageDraw* const this, uint8_t arg2) [?SetAreaBikeCollisionEnable@HrStageDraw@@QAEX_N@Z]
+	void SetAreaBikeCollisionEnable(uint8_t arg2)
+	{
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x416b90);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::initVertexAnimation(class HrStageDraw* const this, class TGmf* arg2, uint8_t const arg3) [?initVertexAnimation@HrStageDraw@@AAEXPAVTGmf@@_N@Z]
+	void initVertexAnimation(class TGmf* arg2, uint8_t const arg3)
+	{
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr, class TGmf* arg2, uint8_t const arg3);
+		_Func mFunc = (_Func)(GameModule + 0x416bf0);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::AddNodeMotion(class HrStageDraw* const this, class TGan* arg2) [?AddNodeMotion@HrStageDraw@@QAEXPAVTGan@@@Z]
+	void AddNodeMotion(class TGan* arg2)
+	{
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr, class TGan* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x4170a0);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::AddNodeModel(class HrStageDraw* const this, class TGmf* arg2, char const* arg3) [?AddNodeModel@HrStageDraw@@QAEXPAVTGmf@@PBD@Z]
+	void AddNodeModel(class TGmf* arg2, std::string arg3)
+	{
+		char const* arg3_c_str = arg3.c_str();
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr, class TGmf* arg2, char const* arg3);
+		_Func mFunc = (_Func)(GameModule + 0x4170d0);
+		return mFunc(this, arg2, arg3_c_str);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::LightSetup(class HrStageDraw* const this) [?LightSetup@HrStageDraw@@QAEXXZ]
+	void LightSetup()
+	{
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x417130);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::AreaAllRelease(class HrStageDraw* const this) [?AreaAllRelease@HrStageDraw@@QAEXXZ]
+	void AreaAllRelease()
+	{
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x417240);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") HrStageDraw::IsAreaLoading(class HrStageDraw* const this) [?IsAreaLoading@HrStageDraw@@QAE_NXZ]
+	uint8_t IsAreaLoading()
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrStageDraw* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x417250);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") HrStageDraw::IsDoneLoading(class HrStageDraw* const this) [?IsDoneLoading@HrStageDraw@@QBE_NXZ]
+	uint8_t IsDoneLoading()
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrStageDraw* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x4172a0);
+		return mFunc(this);
+	}
+	// [Function] int32_t __convention("thiscall") HrStageDraw::GetAreaNumberToPos(class HrStageDraw* const this, struct Vec* arg2) [?GetAreaNumberToPos@HrStageDraw@@QAEHPAUVec@@@Z]
+	int32_t GetAreaNumberToPos(struct Vec* arg2)
+	{
+		typedef int32_t(__thiscall* _Func)(class HrStageDraw* const thisPtr, struct Vec* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x4172f0);
+		return mFunc(this, arg2);
+	}
+	// [Function] class WGcl* __convention("thiscall") HrStageDraw::GetHiModelGclToPos(class HrStageDraw* const this, struct Vec* arg2) [?GetHiModelGclToPos@HrStageDraw@@QAEPAVWGcl@@PAUVec@@@Z]
+	class WGcl* GetHiModelGclToPos(struct Vec* arg2)
+	{
+		typedef class WGcl*(__thiscall* _Func)(class HrStageDraw* const thisPtr, struct Vec* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x417360);
+		return mFunc(this, arg2);
+	}
+	// [Function] class TGmf* __convention("thiscall") HrStageDraw::GetNodeModel(class HrStageDraw* const this, char const* arg2) [?GetNodeModel@HrStageDraw@@QAEPAVTGmf@@PBD@Z]
+	class TGmf* GetNodeModel(std::string arg2)
+	{
+		char const* arg2_c_str = arg2.c_str();
+		typedef class TGmf*(__thiscall* _Func)(class HrStageDraw* const thisPtr, char const* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x4173e0);
+		return mFunc(this, arg2_c_str);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::SetAreaNodeVisible(class HrStageDraw* const this, int32_t arg2, char const* arg3, uint8_t arg4) [?SetAreaNodeVisible@HrStageDraw@@QAEXHPBD_N@Z]
+	void SetAreaNodeVisible(int32_t arg2, std::string arg3, uint8_t arg4)
+	{
+		char const* arg3_c_str = arg3.c_str();
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr, int32_t arg2, char const* arg3, uint8_t arg4);
+		_Func mFunc = (_Func)(GameModule + 0x417450);
+		return mFunc(this, arg2, arg3_c_str, arg4);
+	}
+	// [Function] void HrStageDraw::SetToonModelMulColorValidFlag(int32_t arg1, uint8_t arg2) [?SetToonModelMulColorValidFlag@HrStageDraw@@SAXH_N@Z]
+	static void SetToonModelMulColorValidFlag(int32_t arg1, uint8_t arg2)
+	{
+		typedef void(__fastcall* _Func)(int32_t arg1, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x417610);
+		return mFunc(arg1, arg2);
+	}
+	// [Function] void HrStageDraw::SetAmbLightValidFlag(int32_t arg1, uint8_t arg2) [?SetAmbLightValidFlag@HrStageDraw@@SAXH_N@Z]
+	static void SetAmbLightValidFlag(int32_t arg1, uint8_t arg2)
+	{
+		typedef void(__fastcall* _Func)(int32_t arg1, uint8_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x417620);
+		return mFunc(arg1, arg2);
+	}
+	// [Function] void HrStageDraw::GetLight(uint32_t arg1, int32_t arg2, struct TGMFLIGHT* arg3) [?GetLight@HrStageDraw@@SAXIHPAUTGMFLIGHT@@@Z]
+	static void GetLight(uint32_t arg1, int32_t arg2, struct TGMFLIGHT* arg3)
+	{
+		typedef void(__fastcall* _Func)(uint32_t arg1, int32_t arg2, struct TGMFLIGHT* arg3);
+		_Func mFunc = (_Func)(GameModule + 0x417630);
+		return mFunc(arg1, arg2, arg3);
+	}
+	// [Function] void HrStageDraw::SetLight(uint32_t arg1, int32_t arg2, struct TGMFLIGHT* arg3) [?SetLight@HrStageDraw@@SAXIHPAUTGMFLIGHT@@@Z]
+	static void SetLight(uint32_t arg1, int32_t arg2, struct TGMFLIGHT* arg3)
+	{
+		typedef void(__fastcall* _Func)(uint32_t arg1, int32_t arg2, struct TGMFLIGHT* arg3);
+		_Func mFunc = (_Func)(GameModule + 0x417680);
+		return mFunc(arg1, arg2, arg3);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::RefreshLight(class HrStageDraw* const this) [?RefreshLight@HrStageDraw@@QAEXXZ]
+	void RefreshLight()
+	{
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x4176d0);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") HrStageDraw::Terminate(class HrStageDraw* const this) [?Terminate@HrStageDraw@@QAE_NXZ]
+	uint8_t Terminate()
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrStageDraw* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x417aa0);
+		return mFunc(this);
+	}
+	// [Function] void HrStageDraw::ReadParam2(void* arg1) [?ReadParam2@HrStageDraw@@SAXPAX@Z]
+	static void ReadParam2(void* arg1)
+	{
+		typedef void(__fastcall* _Func)(void* arg1);
+		_Func mFunc = (_Func)(GameModule + 0x417e10);
+		return mFunc(arg1);
+	}
+	// [Function] uint8_t __convention("thiscall") HrStageDraw::Setup(class HrStageDraw* const this, void* arg2, class ghmResGroup* arg3, class ghmResGroup* arg4, class ghmResGroup* arg5, class Archive* arg6, int32_t arg7, void* arg8, void* arg9, void* arg10) [?Setup@HrStageDraw@@QAE_NPAXPAVghmResGroup@@11PAVArchive@@H000@Z]
+	uint8_t Setup(void* arg2, class ghmResGroup* arg3, class ghmResGroup* arg4, class ghmResGroup* arg5, class Archive* arg6, int32_t arg7, void* arg8, void* arg9, void* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrStageDraw* const thisPtr, void* arg2, class ghmResGroup* arg3, class ghmResGroup* arg4, class ghmResGroup* arg5, class Archive* arg6, int32_t arg7, void* arg8, void* arg9, void* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x417eb0);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::FrameProcess(class HrStageDraw* const this) [?FrameProcess@HrStageDraw@@QAEXXZ]
+	void FrameProcess()
+	{
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x418e10);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") HrStageDraw::Draw(class HrStageDraw* const this) [?Draw@HrStageDraw@@QAEXXZ]
+	void Draw()
+	{
+		typedef void(__thiscall* _Func)(class HrStageDraw* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x419b80);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") HrStageDraw::PlayMotion(class HrStageDraw* const this, class TGan* arg2, uint8_t arg3) [?PlayMotion@HrStageDraw@@QAE_NPAVTGan@@_N@Z]
+	uint8_t PlayMotion(class TGan* arg2, uint8_t arg3)
+	{
+		typedef uint8_t(__thiscall* _Func)(class HrStageDraw* const thisPtr, class TGan* arg2, uint8_t arg3);
+		_Func mFunc = (_Func)(GameModule + 0x419d30);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] void HrStageDraw::ReadParam(void* arg1, int32_t* arg2) [?ReadParam@HrStageDraw@@SAXPAXPAH@Z]
+	static void ReadParam(void* arg1, int32_t* arg2)
+	{
+		typedef void(__fastcall* _Func)(void* arg1, int32_t* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x419da0);
+		return mFunc(arg1, arg2);
+	}
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "class HrStageDraw [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(HrStageDraw& InObject)
+	{
+		pAreaBuffer = InObject.pAreaBuffer;
+		dat = InObject.dat;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<HrStageDraw>("HrStageDraw")
+			.addFunction("__tostring", &HrStageDraw::ToString)
+			.addFunction("GetPtrAddr", &HrStageDraw::GetPtrAddr)
+			// void type not supported in LuaBridge
+			//.addProperty("pAreaBuffer", &HrStageDraw::pAreaBuffer)
+			.addProperty("dat", &HrStageDraw::dat)
+			.addFunction("GetGmf", &HrStageDraw::GetGmf)
+			.addFunction("GetGcl", &HrStageDraw::GetGcl)
+			.addFunction("IsGcl", &HrStageDraw::IsGcl)
+			.addFunction("GetDrawOrderType", &HrStageDraw::GetDrawOrderType)
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("SetClipCheckPos", &HrStageDraw::SetClipCheckPos)
+			// Can't export & pointer 'struct Vec&' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("SetLoadAreaPos", &HrStageDraw::SetLoadAreaPos)
+			.addFunction("setCollisionValidFlag", &HrStageDraw::setCollisionValidFlag)
+			.addFunction("GetLoadCompleteAreaNum", &HrStageDraw::GetLoadCompleteAreaNum)
+			.addFunction("prReleaseArea", &HrStageDraw::prReleaseArea)
+			.addFunction("AreaNodeVisibleRefresh", &HrStageDraw::AreaNodeVisibleRefresh)
+			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addStaticFunction("AreaSelectDraw", &HrStageDraw::AreaSelectDraw)
+			.addStaticFunction("SetAmbLight", &HrStageDraw::SetAmbLight)
+			.addStaticFunction("SetToonModelMulColor", &HrStageDraw::SetToonModelMulColor)
+			.addFunction("DrawColl", &HrStageDraw::DrawColl)
+			.addFunction("ClipNodeColision", &HrStageDraw::ClipNodeColision)
+			.addFunction("SetBikeCollisionEnable", &HrStageDraw::SetBikeCollisionEnable)
+			.addFunction("SetAreaBikeCollisionEnable", &HrStageDraw::SetAreaBikeCollisionEnable)
+			.addFunction("initVertexAnimation", &HrStageDraw::initVertexAnimation)
+			.addFunction("AddNodeMotion", &HrStageDraw::AddNodeMotion)
+			.addFunction("AddNodeModel", &HrStageDraw::AddNodeModel)
+			.addFunction("LightSetup", &HrStageDraw::LightSetup)
+			.addFunction("AreaAllRelease", &HrStageDraw::AreaAllRelease)
+			.addFunction("IsAreaLoading", &HrStageDraw::IsAreaLoading)
+			.addFunction("IsDoneLoading", &HrStageDraw::IsDoneLoading)
+			.addFunction("GetAreaNumberToPos", &HrStageDraw::GetAreaNumberToPos)
+			.addFunction("GetHiModelGclToPos", &HrStageDraw::GetHiModelGclToPos)
+			.addFunction("GetNodeModel", &HrStageDraw::GetNodeModel)
+			.addFunction("SetAreaNodeVisible", &HrStageDraw::SetAreaNodeVisible)
+			.addStaticFunction("SetToonModelMulColorValidFlag", &HrStageDraw::SetToonModelMulColorValidFlag)
+			.addStaticFunction("SetAmbLightValidFlag", &HrStageDraw::SetAmbLightValidFlag)
+			.addStaticFunction("GetLight", &HrStageDraw::GetLight)
+			.addStaticFunction("SetLight", &HrStageDraw::SetLight)
+			.addFunction("RefreshLight", &HrStageDraw::RefreshLight)
+			.addFunction("Terminate", &HrStageDraw::Terminate)
+			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addStaticFunction("ReadParam2", &HrStageDraw::ReadParam2)
+			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addFunction("Setup", &HrStageDraw::Setup)
+			.addFunction("FrameProcess", &HrStageDraw::FrameProcess)
+			.addFunction("Draw", &HrStageDraw::Draw)
+			.addFunction("PlayMotion", &HrStageDraw::PlayMotion)
+			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
+			//.addStaticFunction("ReadParam", &HrStageDraw::ReadParam)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(HrStageDraw::pAreaBuffer) == 4, "expected HrStageDraw::pAreaBuffer to be size 4");
+static_assert(sizeof(HrStageDraw::dat) == 20728, "expected HrStageDraw::dat to be size 20728");
+static_assert(sizeof(HrStageDraw) == 20736, "expected HrStageDraw to be size 20736");
+
+// Unsupported operator
+//void* __convention("thiscall") HrStageDraw::`scalar deleting destructor'(class HrStageDraw* const this, uint32_t arg2)
+// Unsupported operator
+//void __convention("thiscall") <lambda_bf30f43eadff87346257660a44fab5ac>::operator()(class CBgCtrl::Release::__l47::<lambda_bf30f43eadff87346257660a44fab5ac>* const this, void* arg2)
+// Unsupported operator
+//void (*)(void*) __convention("thiscall") <lambda_bf30f43eadff87346257660a44fab5ac>::operator void (__cdecl*)(void *)(class CBgCtrl::Release::__l47::<lambda_bf30f43eadff87346257660a44fab5ac>* const this)
+// Unsupported operator
+//void __convention("thiscall") <lambda_6bb7992eea8bcffc29a6b7bd191d7095>::operator()(class CBgCtrl::Release::__l50::<lambda_6bb7992eea8bcffc29a6b7bd191d7095>* const this, void* arg2)
+// Unsupported operator
+//void (*)(void*) __convention("thiscall") <lambda_6bb7992eea8bcffc29a6b7bd191d7095>::operator void (__cdecl*)(void *)(class CBgCtrl::Release::__l50::<lambda_6bb7992eea8bcffc29a6b7bd191d7095>* const this)
+// Unsupported operator
+//void* __convention("thiscall") CBgCtrl::`scalar deleting destructor'(class CBgCtrl* const this, uint32_t arg2)
 // [Structure] struct HRSAVEDATA_DEBUNEKO
 struct HRSAVEDATA_DEBUNEKO
 {
@@ -25464,6 +30021,10 @@ public:
 
 	// <int32_t CatMood, offset 0xc>
 	int32_t CatMood = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct HRSAVEDATA_DEBUNEKO [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -25524,6 +30085,10 @@ public:
 	// <float mRootMatrix[0x3][0x4], offset 0x3c>
 	float mRootMatrix[3][4];
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class WGcl [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(WGcl& InObject)
@@ -25565,24 +30130,505 @@ static_assert(sizeof(WGcl::mRootRotation) == 12, "expected WGcl::mRootRotation t
 static_assert(sizeof(WGcl::mRootMatrix) == 48, "expected WGcl::mRootMatrix to be size 48");
 static_assert(sizeof(WGcl) == 108, "expected WGcl to be size 108");
 
+// [Structure] struct WGclSpec
+struct WGclSpec
+{
+public:
+	/// Struct member variables
+
+	// <uint32_t mID, offset 0x0>
+	uint32_t mID = 0;
+
+	// <uint32_t mVersion, offset 0x4>
+	uint32_t mVersion = 0;
+
+	// <uint32_t mFlag, offset 0x8>
+	uint32_t mFlag = 0;
+
+	// <uint16_t mNodeCount, offset 0xc>
+	uint16_t mNodeCount = 0;
+
+	// <uint16_t mMaterialCount, offset 0xe>
+	uint16_t mMaterialCount = 0;
+
+	// <struct WGclNodeSpec* mpTopNode, offset 0x10>
+	struct WGclNodeSpec* mpTopNode = nullptr;
+
+	// <struct WGclMaterialSpec* mpTopMaterial, offset 0x14>
+	struct WGclMaterialSpec* mpTopMaterial = nullptr;
+
+	// <uint32_t mConvVersion, offset 0x18>
+	uint32_t mConvVersion = 0;
+
+	// <uint32_t mPad[0x5], offset 0x1c>
+	uint32_t mPad[5];
+
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "struct WGclSpec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(WGclSpec& InObject)
+	{
+		mID = InObject.mID;
+		mVersion = InObject.mVersion;
+		mFlag = InObject.mFlag;
+		mNodeCount = InObject.mNodeCount;
+		mMaterialCount = InObject.mMaterialCount;
+		mpTopNode = InObject.mpTopNode;
+		mpTopMaterial = InObject.mpTopMaterial;
+		mConvVersion = InObject.mConvVersion;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<WGclSpec>("WGclSpec")
+			.addFunction("__tostring", &WGclSpec::ToString)
+			.addFunction("GetPtrAddr", &WGclSpec::GetPtrAddr)
+			.addProperty("mID", &WGclSpec::mID)
+			.addProperty("mVersion", &WGclSpec::mVersion)
+			.addProperty("mFlag", &WGclSpec::mFlag)
+			.addProperty("mNodeCount", &WGclSpec::mNodeCount)
+			.addProperty("mMaterialCount", &WGclSpec::mMaterialCount)
+			.addProperty("mpTopNode", &WGclSpec::mpTopNode)
+			.addProperty("mpTopMaterial", &WGclSpec::mpTopMaterial)
+			.addProperty("mConvVersion", &WGclSpec::mConvVersion)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("mPad", &WGclSpec::mPad)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(WGclSpec::mID) == 4, "expected WGclSpec::mID to be size 4");
+static_assert(sizeof(WGclSpec::mVersion) == 4, "expected WGclSpec::mVersion to be size 4");
+static_assert(sizeof(WGclSpec::mFlag) == 4, "expected WGclSpec::mFlag to be size 4");
+static_assert(sizeof(WGclSpec::mNodeCount) == 2, "expected WGclSpec::mNodeCount to be size 2");
+static_assert(sizeof(WGclSpec::mMaterialCount) == 2, "expected WGclSpec::mMaterialCount to be size 2");
+static_assert(sizeof(WGclSpec::mpTopNode) == 4, "expected WGclSpec::mpTopNode to be size 4");
+static_assert(sizeof(WGclSpec::mpTopMaterial) == 4, "expected WGclSpec::mpTopMaterial to be size 4");
+static_assert(sizeof(WGclSpec::mConvVersion) == 4, "expected WGclSpec::mConvVersion to be size 4");
+static_assert(sizeof(WGclSpec::mPad) == 20, "expected WGclSpec::mPad to be size 20");
+static_assert(sizeof(WGclSpec) == 48, "expected WGclSpec to be size 48");
+
+// [Structure] struct WGclNodeSpec
+struct WGclNodeSpec
+{
+public:
+	/// Struct member variables
+
+	// <char mIDStr[0x8], offset 0x0>
+	char mIDStr[8];
+
+	// <uint32_t mFlag, offset 0x8>
+	uint32_t mFlag = 0;
+
+	// <uint32_t mType, offset 0xc>
+	uint32_t mType = 0;
+
+	// <WGclNodeSpec* mpParent, offset 0x10>
+	WGclNodeSpec* mpParent = nullptr;
+
+	// <WGclNodeSpec* mpChild, offset 0x14>
+	WGclNodeSpec* mpChild = nullptr;
+
+	// <WGclNodeSpec* mpPrev, offset 0x18>
+	WGclNodeSpec* mpPrev = nullptr;
+
+	// <WGclNodeSpec* mpNext, offset 0x1c>
+	WGclNodeSpec* mpNext = nullptr;
+
+	// <struct Vec mPosition, offset 0x20>
+	struct Vec mPosition;
+
+	// <struct Vec mRotation, offset 0x2c>
+	struct Vec mRotation;
+
+	// <struct WGclNodeShapeMeshSpec* mpMesh, offset 0x38>
+	struct WGclNodeShapeMeshSpec* mpMesh = nullptr;
+
+	// <uint32_t mPad[0x5], offset 0x3c>
+	uint32_t mPad[5];
+
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "struct WGclNodeSpec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(WGclNodeSpec& InObject)
+	{
+		mFlag = InObject.mFlag;
+		mType = InObject.mType;
+		mpParent = InObject.mpParent;
+		mpChild = InObject.mpChild;
+		mpPrev = InObject.mpPrev;
+		mpNext = InObject.mpNext;
+		mPosition = InObject.mPosition;
+		mRotation = InObject.mRotation;
+		mpMesh = InObject.mpMesh;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<WGclNodeSpec>("WGclNodeSpec")
+			.addFunction("__tostring", &WGclNodeSpec::ToString)
+			.addFunction("GetPtrAddr", &WGclNodeSpec::GetPtrAddr)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("mIDStr", &WGclNodeSpec::mIDStr)
+			.addProperty("mFlag", &WGclNodeSpec::mFlag)
+			.addProperty("mType", &WGclNodeSpec::mType)
+			.addProperty("mpParent", &WGclNodeSpec::mpParent)
+			.addProperty("mpChild", &WGclNodeSpec::mpChild)
+			.addProperty("mpPrev", &WGclNodeSpec::mpPrev)
+			.addProperty("mpNext", &WGclNodeSpec::mpNext)
+			.addProperty("mPosition", &WGclNodeSpec::mPosition)
+			.addProperty("mRotation", &WGclNodeSpec::mRotation)
+			.addProperty("mpMesh", &WGclNodeSpec::mpMesh)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("mPad", &WGclNodeSpec::mPad)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(WGclNodeSpec::mIDStr) == 8, "expected WGclNodeSpec::mIDStr to be size 8");
+static_assert(sizeof(WGclNodeSpec::mFlag) == 4, "expected WGclNodeSpec::mFlag to be size 4");
+static_assert(sizeof(WGclNodeSpec::mType) == 4, "expected WGclNodeSpec::mType to be size 4");
+static_assert(sizeof(WGclNodeSpec::mpParent) == 4, "expected WGclNodeSpec::mpParent to be size 4");
+static_assert(sizeof(WGclNodeSpec::mpChild) == 4, "expected WGclNodeSpec::mpChild to be size 4");
+static_assert(sizeof(WGclNodeSpec::mpPrev) == 4, "expected WGclNodeSpec::mpPrev to be size 4");
+static_assert(sizeof(WGclNodeSpec::mpNext) == 4, "expected WGclNodeSpec::mpNext to be size 4");
+static_assert(sizeof(WGclNodeSpec::mPosition) == 12, "expected WGclNodeSpec::mPosition to be size 12");
+static_assert(sizeof(WGclNodeSpec::mRotation) == 12, "expected WGclNodeSpec::mRotation to be size 12");
+static_assert(sizeof(WGclNodeSpec::mpMesh) == 4, "expected WGclNodeSpec::mpMesh to be size 4");
+static_assert(sizeof(WGclNodeSpec::mPad) == 20, "expected WGclNodeSpec::mPad to be size 20");
+static_assert(sizeof(WGclNodeSpec) == 80, "expected WGclNodeSpec to be size 80");
+
+// [Structure] struct WGclNodeShapeMeshSpec
+struct WGclNodeShapeMeshSpec
+{
+public:
+	/// Struct member variables
+
+	// <struct WGclNodeShapeMeshBspNodeSpec* mpBspTree, offset 0x0>
+	struct WGclNodeShapeMeshBspNodeSpec* mpBspTree = nullptr;
+
+	// <struct WGclNodeShapeTriangleSpec* mpTriangles, offset 0x4>
+	struct WGclNodeShapeTriangleSpec* mpTriangles = nullptr;
+
+	// <int32_t mNodeCount, offset 0x8>
+	int32_t mNodeCount = 0;
+
+	// <int32_t mTriangleCount, offset 0xc>
+	int32_t mTriangleCount = 0;
+
+	// <struct Vec mBoundingBoxCenter, offset 0x10>
+	struct Vec mBoundingBoxCenter;
+
+	// <struct Vec mBoundingBoxExtent, offset 0x1c>
+	struct Vec mBoundingBoxExtent;
+
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "struct WGclNodeShapeMeshSpec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(WGclNodeShapeMeshSpec& InObject)
+	{
+		mpBspTree = InObject.mpBspTree;
+		mpTriangles = InObject.mpTriangles;
+		mNodeCount = InObject.mNodeCount;
+		mTriangleCount = InObject.mTriangleCount;
+		mBoundingBoxCenter = InObject.mBoundingBoxCenter;
+		mBoundingBoxExtent = InObject.mBoundingBoxExtent;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<WGclNodeShapeMeshSpec>("WGclNodeShapeMeshSpec")
+			.addFunction("__tostring", &WGclNodeShapeMeshSpec::ToString)
+			.addFunction("GetPtrAddr", &WGclNodeShapeMeshSpec::GetPtrAddr)
+			.addProperty("mpBspTree", &WGclNodeShapeMeshSpec::mpBspTree)
+			.addProperty("mpTriangles", &WGclNodeShapeMeshSpec::mpTriangles)
+			.addProperty("mNodeCount", &WGclNodeShapeMeshSpec::mNodeCount)
+			.addProperty("mTriangleCount", &WGclNodeShapeMeshSpec::mTriangleCount)
+			.addProperty("mBoundingBoxCenter", &WGclNodeShapeMeshSpec::mBoundingBoxCenter)
+			.addProperty("mBoundingBoxExtent", &WGclNodeShapeMeshSpec::mBoundingBoxExtent)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(WGclNodeShapeMeshSpec::mpBspTree) == 4, "expected WGclNodeShapeMeshSpec::mpBspTree to be size 4");
+static_assert(sizeof(WGclNodeShapeMeshSpec::mpTriangles) == 4, "expected WGclNodeShapeMeshSpec::mpTriangles to be size 4");
+static_assert(sizeof(WGclNodeShapeMeshSpec::mNodeCount) == 4, "expected WGclNodeShapeMeshSpec::mNodeCount to be size 4");
+static_assert(sizeof(WGclNodeShapeMeshSpec::mTriangleCount) == 4, "expected WGclNodeShapeMeshSpec::mTriangleCount to be size 4");
+static_assert(sizeof(WGclNodeShapeMeshSpec::mBoundingBoxCenter) == 12, "expected WGclNodeShapeMeshSpec::mBoundingBoxCenter to be size 12");
+static_assert(sizeof(WGclNodeShapeMeshSpec::mBoundingBoxExtent) == 12, "expected WGclNodeShapeMeshSpec::mBoundingBoxExtent to be size 12");
+static_assert(sizeof(WGclNodeShapeMeshSpec) == 40, "expected WGclNodeShapeMeshSpec to be size 40");
+
+// [Structure] struct WGclNodeShapeMeshBspNodeSpec
+struct WGclNodeShapeMeshBspNodeSpec
+{
+public:
+	/// Struct member variables
+
+	// <WGclNodeShapeMeshBspNodeSpec* mpFront, offset 0x0>
+	WGclNodeShapeMeshBspNodeSpec* mpFront = nullptr;
+
+	// <WGclNodeShapeMeshBspNodeSpec* mpBack, offset 0x4>
+	WGclNodeShapeMeshBspNodeSpec* mpBack = nullptr;
+
+	// <struct WGclNodeShapeTriangleSpec* mpTriangle, offset 0x8>
+	struct WGclNodeShapeTriangleSpec* mpTriangle = nullptr;
+
+	// <uint16_t mTriangleCount, offset 0xc>
+	uint16_t mTriangleCount = 0;
+
+	// <uint16_t mFlag, offset 0xe>
+	uint16_t mFlag = 0;
+
+	// <struct Vec mNormal, offset 0x10>
+	struct Vec mNormal;
+
+	// <float mDist, offset 0x1c>
+	float mDist = 0;
+
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "struct WGclNodeShapeMeshBspNodeSpec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(WGclNodeShapeMeshBspNodeSpec& InObject)
+	{
+		mpFront = InObject.mpFront;
+		mpBack = InObject.mpBack;
+		mpTriangle = InObject.mpTriangle;
+		mTriangleCount = InObject.mTriangleCount;
+		mFlag = InObject.mFlag;
+		mNormal = InObject.mNormal;
+		mDist = InObject.mDist;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<WGclNodeShapeMeshBspNodeSpec>("WGclNodeShapeMeshBspNodeSpec")
+			.addFunction("__tostring", &WGclNodeShapeMeshBspNodeSpec::ToString)
+			.addFunction("GetPtrAddr", &WGclNodeShapeMeshBspNodeSpec::GetPtrAddr)
+			.addProperty("mpFront", &WGclNodeShapeMeshBspNodeSpec::mpFront)
+			.addProperty("mpBack", &WGclNodeShapeMeshBspNodeSpec::mpBack)
+			.addProperty("mpTriangle", &WGclNodeShapeMeshBspNodeSpec::mpTriangle)
+			.addProperty("mTriangleCount", &WGclNodeShapeMeshBspNodeSpec::mTriangleCount)
+			.addProperty("mFlag", &WGclNodeShapeMeshBspNodeSpec::mFlag)
+			.addProperty("mNormal", &WGclNodeShapeMeshBspNodeSpec::mNormal)
+			.addProperty("mDist", &WGclNodeShapeMeshBspNodeSpec::mDist)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec::mpFront) == 4, "expected WGclNodeShapeMeshBspNodeSpec::mpFront to be size 4");
+static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec::mpBack) == 4, "expected WGclNodeShapeMeshBspNodeSpec::mpBack to be size 4");
+static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec::mpTriangle) == 4, "expected WGclNodeShapeMeshBspNodeSpec::mpTriangle to be size 4");
+static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec::mTriangleCount) == 2, "expected WGclNodeShapeMeshBspNodeSpec::mTriangleCount to be size 2");
+static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec::mFlag) == 2, "expected WGclNodeShapeMeshBspNodeSpec::mFlag to be size 2");
+static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec::mNormal) == 12, "expected WGclNodeShapeMeshBspNodeSpec::mNormal to be size 12");
+static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec::mDist) == 4, "expected WGclNodeShapeMeshBspNodeSpec::mDist to be size 4");
+static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec) == 32, "expected WGclNodeShapeMeshBspNodeSpec to be size 32");
+
+// [Structure] struct WGclNodeShapeTriangleSpec
+struct WGclNodeShapeTriangleSpec
+{
+public:
+	/// Struct member variables
+
+	// <Unidentified data segment, offset 0x0>
+private:
+	char _UnidentifiedData_0[48];
+
+public:
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "struct WGclNodeShapeTriangleSpec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(WGclNodeShapeTriangleSpec& InObject)
+	{
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<WGclNodeShapeTriangleSpec>("WGclNodeShapeTriangleSpec")
+			.addFunction("__tostring", &WGclNodeShapeTriangleSpec::ToString)
+			.addFunction("GetPtrAddr", &WGclNodeShapeTriangleSpec::GetPtrAddr)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(WGclNodeShapeTriangleSpec) == 48, "expected WGclNodeShapeTriangleSpec to be size 48");
+
+// [Structure] class ghmGcColl
+class ghmGcColl
+{
+public:
+	/// Struct member variables
+
+	// <void* (* field_0)[0x1], offset 0x0>
+	void* (* field_0)[0x1];
+
+	// <class ghmGcOctTree mOctTree, offset 0x4>
+	class ghmGcOctTree mOctTree;
+
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "class ghmGcColl [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(ghmGcColl& InObject)
+	{
+		mOctTree = InObject.mOctTree;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<ghmGcColl>("ghmGcColl")
+			.addFunction("__tostring", &ghmGcColl::ToString)
+			.addFunction("GetPtrAddr", &ghmGcColl::GetPtrAddr)
+			// delegates are not supported in LuaBridge
+			//.addProperty("field_0", &ghmGcColl::field_0)
+			.addProperty("mOctTree", &ghmGcColl::mOctTree)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(ghmGcColl::field_0) == 4, "expected ghmGcColl::field_0 to be size 4");
+static_assert(sizeof(ghmGcColl::mOctTree) == 12, "expected ghmGcColl::mOctTree to be size 12");
+static_assert(sizeof(ghmGcColl) == 16, "expected ghmGcColl to be size 16");
+
+// [Structure] class WGclNode
+class WGclNode
+{
+public:
+	/// Struct member variables
+
+	// <void* (* field_0)[0x1], offset 0x0>
+	void* (* field_0)[0x1];
+
+	// <Unidentified data segment, offset 0x4>
+private:
+	char _UnidentifiedData_4[4];
+
+public:
+	// <char mIDStr[0x8], offset 0x8>
+	char mIDStr[8];
+
+	// <class WGcl* mpContainer, offset 0x10>
+	class WGcl* mpContainer = nullptr;
+
+	// <struct WGclNodeSpec* mpSpec, offset 0x14>
+	struct WGclNodeSpec* mpSpec = nullptr;
+
+	// <class ghmGcCollObj* mpCollObj, offset 0x18>
+	class ghmGcCollObj* mpCollObj = nullptr;
+
+	// <WGclNode* mpParent, offset 0x1c>
+	WGclNode* mpParent = nullptr;
+
+	// <WGclNode* mpChild, offset 0x20>
+	WGclNode* mpChild = nullptr;
+
+	// <WGclNode* mpNext, offset 0x24>
+	WGclNode* mpNext = nullptr;
+
+	// <WGclNode* mpPrev, offset 0x28>
+	WGclNode* mpPrev = nullptr;
+
+	// <struct Vec mPosition, offset 0x2c>
+	struct Vec mPosition;
+
+	// <struct Vec mRotation, offset 0x38>
+	struct Vec mRotation;
+
+	// <float mLocalWorldMatrix[0x3][0x4], offset 0x44>
+	float mLocalWorldMatrix[3][4];
+
+	// <float mWorldLocalMatrix[0x3][0x4], offset 0x74>
+	float mWorldLocalMatrix[3][4];
+
+	// <uint32_t mFlag, offset 0xa4>
+	uint32_t mFlag = 0;
+
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "class WGclNode [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(WGclNode& InObject)
+	{
+		mpContainer = InObject.mpContainer;
+		mpSpec = InObject.mpSpec;
+		mpCollObj = InObject.mpCollObj;
+		mpParent = InObject.mpParent;
+		mpChild = InObject.mpChild;
+		mpNext = InObject.mpNext;
+		mpPrev = InObject.mpPrev;
+		mPosition = InObject.mPosition;
+		mRotation = InObject.mRotation;
+		mFlag = InObject.mFlag;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<WGclNode>("WGclNode")
+			.addFunction("__tostring", &WGclNode::ToString)
+			.addFunction("GetPtrAddr", &WGclNode::GetPtrAddr)
+			// delegates are not supported in LuaBridge
+			//.addProperty("field_0", &WGclNode::field_0)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("mIDStr", &WGclNode::mIDStr)
+			.addProperty("mpContainer", &WGclNode::mpContainer)
+			.addProperty("mpSpec", &WGclNode::mpSpec)
+			.addProperty("mpCollObj", &WGclNode::mpCollObj)
+			.addProperty("mpParent", &WGclNode::mpParent)
+			.addProperty("mpChild", &WGclNode::mpChild)
+			.addProperty("mpNext", &WGclNode::mpNext)
+			.addProperty("mpPrev", &WGclNode::mpPrev)
+			.addProperty("mPosition", &WGclNode::mPosition)
+			.addProperty("mRotation", &WGclNode::mRotation)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("mLocalWorldMatrix", &WGclNode::mLocalWorldMatrix)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("mWorldLocalMatrix", &WGclNode::mWorldLocalMatrix)
+			.addProperty("mFlag", &WGclNode::mFlag)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(WGclNode::field_0) == 4, "expected WGclNode::field_0 to be size 4");
+static_assert(sizeof(WGclNode::mIDStr) == 8, "expected WGclNode::mIDStr to be size 8");
+static_assert(sizeof(WGclNode::mpContainer) == 4, "expected WGclNode::mpContainer to be size 4");
+static_assert(sizeof(WGclNode::mpSpec) == 4, "expected WGclNode::mpSpec to be size 4");
+static_assert(sizeof(WGclNode::mpCollObj) == 4, "expected WGclNode::mpCollObj to be size 4");
+static_assert(sizeof(WGclNode::mpParent) == 4, "expected WGclNode::mpParent to be size 4");
+static_assert(sizeof(WGclNode::mpChild) == 4, "expected WGclNode::mpChild to be size 4");
+static_assert(sizeof(WGclNode::mpNext) == 4, "expected WGclNode::mpNext to be size 4");
+static_assert(sizeof(WGclNode::mpPrev) == 4, "expected WGclNode::mpPrev to be size 4");
+static_assert(sizeof(WGclNode::mPosition) == 12, "expected WGclNode::mPosition to be size 12");
+static_assert(sizeof(WGclNode::mRotation) == 12, "expected WGclNode::mRotation to be size 12");
+static_assert(sizeof(WGclNode::mLocalWorldMatrix) == 48, "expected WGclNode::mLocalWorldMatrix to be size 48");
+static_assert(sizeof(WGclNode::mWorldLocalMatrix) == 48, "expected WGclNode::mWorldLocalMatrix to be size 48");
+static_assert(sizeof(WGclNode::mFlag) == 4, "expected WGclNode::mFlag to be size 4");
+static_assert(sizeof(WGclNode) == 168, "expected WGclNode to be size 168");
+
+// Unsupported operator
+//void* __convention("thiscall") mHRBattle::`scalar deleting destructor'(class mHRBattle* const this, uint32_t arg2)
 // [Structure] class commonObj
 class commonObj : public mHRChara
 {
 public:
-	// [Function] uint8_t __convention("thiscall") commonObj::mSetDamage(class commonObj* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@commonObj@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef uint8_t(__thiscall* _Func)(class commonObj* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x3f1e50);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
-	// [Function] uint8_t __convention("thiscall") commonObj::mSetDamage(class commonObj* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11) [?mSetDamage@commonObj@@UAE_NMHHHMHMMPAVmHRChara@@M@Z]
-	uint8_t mSetDamage2(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11)
-	{
-		typedef uint8_t(__thiscall* _Func)(class commonObj* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11);
-		_Func mFunc = (_Func)(GameModule + 0x3f1eb0);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
-	}
 	/// Struct member variables
 
 	// <class mHRChara field_0, offset 0x0>
@@ -25692,6 +30738,24 @@ private:
 	char _UnidentifiedData_1609[3];
 
 public:
+	/// 2 Functions
+
+	// [Function] uint8_t __convention("thiscall") commonObj::mSetDamage(class commonObj* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@commonObj@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class commonObj* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x3f1e50);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	// [Function] uint8_t __convention("thiscall") commonObj::mSetDamage(class commonObj* const this, float InDmg, int32_t InDmgMot, int32_t InGrdMot, int32_t InAtkMot, float InNockBackDst, int32_t InAtkKind, float InAtkRotY, float InTamePow, class mHRChara* Attacker, float RotX) [?mSetDamage@commonObj@@UAE_NMHHHMHMMPAVmHRChara@@M@Z]
+	uint8_t mSetDamage_2(float InDmg, int32_t InDmgMot, int32_t InGrdMot, int32_t InAtkMot, float InNockBackDst, int32_t InAtkKind, float InAtkRotY, float InTamePow, class mHRChara* Attacker, float RotX)
+	{
+		typedef uint8_t(__thiscall* _Func)(class commonObj* const thisPtr, float InDmg, int32_t InDmgMot, int32_t InGrdMot, int32_t InAtkMot, float InNockBackDst, int32_t InAtkKind, float InAtkRotY, float InTamePow, class mHRChara* Attacker, float RotX);
+		_Func mFunc = (_Func)(GameModule + 0x3f1eb0);
+		return mFunc(this, InDmg, InDmgMot, InGrdMot, InAtkMot, InNockBackDst, InAtkKind, InAtkRotY, InTamePow, Attacker, RotX);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class commonObj [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(commonObj& InObject)
@@ -25750,7 +30814,7 @@ public:
 			.addProperty("m_inGroundColPlane", &commonObj::m_inGroundColPlane)
 			.addProperty("mbDistEraseDisable", &commonObj::mbDistEraseDisable)
 			.addFunction("mSetDamage", &commonObj::mSetDamage)
-			.addFunction("mSetDamage2", &commonObj::mSetDamage2)
+			.addFunction("mSetDamage_2", &commonObj::mSetDamage_2)
 		.endClass();
 	}
 #endif
@@ -25784,6 +30848,16 @@ static_assert(sizeof(commonObj) == 1612, "expected commonObj to be size 1612");
 class CustomColliderObj : public commonObj
 {
 public:
+	/// Struct member variables
+
+	// <class commonObj field_0, offset 0x0>
+	// class commonObj Super;
+
+	// <class ghmGcCollObjCapsule* capsuleCollider, offset 0x64c>
+	class ghmGcCollObjCapsule* capsuleCollider = nullptr;
+
+	/// 3 Functions
+
 	// [Function] uint8_t __convention("thiscall") CustomColliderObj::mSetDamage(class CustomColliderObj* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11) [?mSetDamage@CustomColliderObj@@UAE_NMHHHMHMMPAVmHRChara@@M@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11)
 	{
@@ -25792,7 +30866,7 @@ public:
 		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
 	}
 	// [Function] uint8_t __convention("thiscall") CustomColliderObj::mSetDamage(class CustomColliderObj* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@CustomColliderObj@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage2(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	uint8_t mSetDamage_2(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
 	{
 		typedef uint8_t(__thiscall* _Func)(class CustomColliderObj* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
 		_Func mFunc = (_Func)(GameModule + 0xa57e0);
@@ -25805,13 +30879,7 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x5596a0);
 		return mFunc(this, arg2);
 	}
-	/// Struct member variables
-
-	// <class commonObj field_0, offset 0x0>
-	// class commonObj Super;
-
-	// <class ghmGcCollObjCapsule* capsuleCollider, offset 0x64c>
-	class ghmGcCollObjCapsule* capsuleCollider = nullptr;
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class CustomColliderObj [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -25827,7 +30895,7 @@ public:
 			.addFunction("GetPtrAddr", &CustomColliderObj::GetPtrAddr)
 			.addProperty("capsuleCollider", &CustomColliderObj::capsuleCollider)
 			.addFunction("mSetDamage", &CustomColliderObj::mSetDamage)
-			.addFunction("mSetDamage2", &CustomColliderObj::mSetDamage2)
+			.addFunction("mSetDamage_2", &CustomColliderObj::mSetDamage_2)
 			.addFunction("mHitCheck", &CustomColliderObj::mHitCheck)
 		.endClass();
 	}
@@ -25835,471 +30903,6 @@ public:
 };
 static_assert(sizeof(CustomColliderObj::capsuleCollider) == 4, "expected CustomColliderObj::capsuleCollider to be size 4");
 static_assert(sizeof(CustomColliderObj) == 1616, "expected CustomColliderObj to be size 1616");
-
-// [Structure] struct WGclSpec
-struct WGclSpec
-{
-public:
-	/// Struct member variables
-
-	// <uint32_t mID, offset 0x0>
-	uint32_t mID = 0;
-
-	// <uint32_t mVersion, offset 0x4>
-	uint32_t mVersion = 0;
-
-	// <uint32_t mFlag, offset 0x8>
-	uint32_t mFlag = 0;
-
-	// <uint16_t mNodeCount, offset 0xc>
-	uint16_t mNodeCount = 0;
-
-	// <uint16_t mMaterialCount, offset 0xe>
-	uint16_t mMaterialCount = 0;
-
-	// <struct WGclNodeSpec* mpTopNode, offset 0x10>
-	struct WGclNodeSpec* mpTopNode = nullptr;
-
-	// <struct WGclMaterialSpec* mpTopMaterial, offset 0x14>
-	struct WGclMaterialSpec* mpTopMaterial = nullptr;
-
-	// <uint32_t mConvVersion, offset 0x18>
-	uint32_t mConvVersion = 0;
-
-	// <uint32_t mPad[0x5], offset 0x1c>
-	uint32_t mPad[5];
-
-	std::string ToString() const { std::stringstream stream; stream << "struct WGclSpec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
-	int GetPtrAddr() const { return (int)this; }
-	void CopyFrom(WGclSpec& InObject)
-	{
-		mID = InObject.mID;
-		mVersion = InObject.mVersion;
-		mFlag = InObject.mFlag;
-		mNodeCount = InObject.mNodeCount;
-		mMaterialCount = InObject.mMaterialCount;
-		mpTopNode = InObject.mpTopNode;
-		mpTopMaterial = InObject.mpTopMaterial;
-		mConvVersion = InObject.mConvVersion;
-	}
-#ifdef WITH_LUA
-	static void BindLua(luabridge::Namespace& NS)
-	{
-		NS = NS.beginClass<WGclSpec>("WGclSpec")
-			.addFunction("__tostring", &WGclSpec::ToString)
-			.addFunction("GetPtrAddr", &WGclSpec::GetPtrAddr)
-			.addProperty("mID", &WGclSpec::mID)
-			.addProperty("mVersion", &WGclSpec::mVersion)
-			.addProperty("mFlag", &WGclSpec::mFlag)
-			.addProperty("mNodeCount", &WGclSpec::mNodeCount)
-			.addProperty("mMaterialCount", &WGclSpec::mMaterialCount)
-			.addProperty("mpTopNode", &WGclSpec::mpTopNode)
-			.addProperty("mpTopMaterial", &WGclSpec::mpTopMaterial)
-			.addProperty("mConvVersion", &WGclSpec::mConvVersion)
-			// static arrays are not supported in LuaBridge (only std::vector)
-			//.addProperty("mPad", &WGclSpec::mPad)
-		.endClass();
-	}
-#endif
-};
-static_assert(sizeof(WGclSpec::mID) == 4, "expected WGclSpec::mID to be size 4");
-static_assert(sizeof(WGclSpec::mVersion) == 4, "expected WGclSpec::mVersion to be size 4");
-static_assert(sizeof(WGclSpec::mFlag) == 4, "expected WGclSpec::mFlag to be size 4");
-static_assert(sizeof(WGclSpec::mNodeCount) == 2, "expected WGclSpec::mNodeCount to be size 2");
-static_assert(sizeof(WGclSpec::mMaterialCount) == 2, "expected WGclSpec::mMaterialCount to be size 2");
-static_assert(sizeof(WGclSpec::mpTopNode) == 4, "expected WGclSpec::mpTopNode to be size 4");
-static_assert(sizeof(WGclSpec::mpTopMaterial) == 4, "expected WGclSpec::mpTopMaterial to be size 4");
-static_assert(sizeof(WGclSpec::mConvVersion) == 4, "expected WGclSpec::mConvVersion to be size 4");
-static_assert(sizeof(WGclSpec::mPad) == 20, "expected WGclSpec::mPad to be size 20");
-static_assert(sizeof(WGclSpec) == 48, "expected WGclSpec to be size 48");
-
-// [Structure] struct WGclNodeSpec
-struct WGclNodeSpec
-{
-public:
-	/// Struct member variables
-
-	// <char mIDStr[0x8], offset 0x0>
-	char mIDStr[8];
-
-	// <uint32_t mFlag, offset 0x8>
-	uint32_t mFlag = 0;
-
-	// <uint32_t mType, offset 0xc>
-	uint32_t mType = 0;
-
-	// <WGclNodeSpec* mpParent, offset 0x10>
-	WGclNodeSpec* mpParent = nullptr;
-
-	// <WGclNodeSpec* mpChild, offset 0x14>
-	WGclNodeSpec* mpChild = nullptr;
-
-	// <WGclNodeSpec* mpPrev, offset 0x18>
-	WGclNodeSpec* mpPrev = nullptr;
-
-	// <WGclNodeSpec* mpNext, offset 0x1c>
-	WGclNodeSpec* mpNext = nullptr;
-
-	// <struct Vec mPosition, offset 0x20>
-	struct Vec mPosition;
-
-	// <struct Vec mRotation, offset 0x2c>
-	struct Vec mRotation;
-
-	// <struct WGclNodeShapeMeshSpec* mpMesh, offset 0x38>
-	struct WGclNodeShapeMeshSpec* mpMesh = nullptr;
-
-	// <uint32_t mPad[0x5], offset 0x3c>
-	uint32_t mPad[5];
-
-	std::string ToString() const { std::stringstream stream; stream << "struct WGclNodeSpec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
-	int GetPtrAddr() const { return (int)this; }
-	void CopyFrom(WGclNodeSpec& InObject)
-	{
-		mFlag = InObject.mFlag;
-		mType = InObject.mType;
-		mpParent = InObject.mpParent;
-		mpChild = InObject.mpChild;
-		mpPrev = InObject.mpPrev;
-		mpNext = InObject.mpNext;
-		mPosition = InObject.mPosition;
-		mRotation = InObject.mRotation;
-		mpMesh = InObject.mpMesh;
-	}
-#ifdef WITH_LUA
-	static void BindLua(luabridge::Namespace& NS)
-	{
-		NS = NS.beginClass<WGclNodeSpec>("WGclNodeSpec")
-			.addFunction("__tostring", &WGclNodeSpec::ToString)
-			.addFunction("GetPtrAddr", &WGclNodeSpec::GetPtrAddr)
-			// static arrays are not supported in LuaBridge (only std::vector)
-			//.addProperty("mIDStr", &WGclNodeSpec::mIDStr)
-			.addProperty("mFlag", &WGclNodeSpec::mFlag)
-			.addProperty("mType", &WGclNodeSpec::mType)
-			.addProperty("mpParent", &WGclNodeSpec::mpParent)
-			.addProperty("mpChild", &WGclNodeSpec::mpChild)
-			.addProperty("mpPrev", &WGclNodeSpec::mpPrev)
-			.addProperty("mpNext", &WGclNodeSpec::mpNext)
-			.addProperty("mPosition", &WGclNodeSpec::mPosition)
-			.addProperty("mRotation", &WGclNodeSpec::mRotation)
-			.addProperty("mpMesh", &WGclNodeSpec::mpMesh)
-			// static arrays are not supported in LuaBridge (only std::vector)
-			//.addProperty("mPad", &WGclNodeSpec::mPad)
-		.endClass();
-	}
-#endif
-};
-static_assert(sizeof(WGclNodeSpec::mIDStr) == 8, "expected WGclNodeSpec::mIDStr to be size 8");
-static_assert(sizeof(WGclNodeSpec::mFlag) == 4, "expected WGclNodeSpec::mFlag to be size 4");
-static_assert(sizeof(WGclNodeSpec::mType) == 4, "expected WGclNodeSpec::mType to be size 4");
-static_assert(sizeof(WGclNodeSpec::mpParent) == 4, "expected WGclNodeSpec::mpParent to be size 4");
-static_assert(sizeof(WGclNodeSpec::mpChild) == 4, "expected WGclNodeSpec::mpChild to be size 4");
-static_assert(sizeof(WGclNodeSpec::mpPrev) == 4, "expected WGclNodeSpec::mpPrev to be size 4");
-static_assert(sizeof(WGclNodeSpec::mpNext) == 4, "expected WGclNodeSpec::mpNext to be size 4");
-static_assert(sizeof(WGclNodeSpec::mPosition) == 12, "expected WGclNodeSpec::mPosition to be size 12");
-static_assert(sizeof(WGclNodeSpec::mRotation) == 12, "expected WGclNodeSpec::mRotation to be size 12");
-static_assert(sizeof(WGclNodeSpec::mpMesh) == 4, "expected WGclNodeSpec::mpMesh to be size 4");
-static_assert(sizeof(WGclNodeSpec::mPad) == 20, "expected WGclNodeSpec::mPad to be size 20");
-static_assert(sizeof(WGclNodeSpec) == 80, "expected WGclNodeSpec to be size 80");
-
-// [Structure] struct WGclNodeShapeMeshSpec
-struct WGclNodeShapeMeshSpec
-{
-public:
-	/// Struct member variables
-
-	// <struct WGclNodeShapeMeshBspNodeSpec* mpBspTree, offset 0x0>
-	struct WGclNodeShapeMeshBspNodeSpec* mpBspTree = nullptr;
-
-	// <struct WGclNodeShapeTriangleSpec* mpTriangles, offset 0x4>
-	struct WGclNodeShapeTriangleSpec* mpTriangles = nullptr;
-
-	// <int32_t mNodeCount, offset 0x8>
-	int32_t mNodeCount = 0;
-
-	// <int32_t mTriangleCount, offset 0xc>
-	int32_t mTriangleCount = 0;
-
-	// <struct Vec mBoundingBoxCenter, offset 0x10>
-	struct Vec mBoundingBoxCenter;
-
-	// <struct Vec mBoundingBoxExtent, offset 0x1c>
-	struct Vec mBoundingBoxExtent;
-
-	std::string ToString() const { std::stringstream stream; stream << "struct WGclNodeShapeMeshSpec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
-	int GetPtrAddr() const { return (int)this; }
-	void CopyFrom(WGclNodeShapeMeshSpec& InObject)
-	{
-		mpBspTree = InObject.mpBspTree;
-		mpTriangles = InObject.mpTriangles;
-		mNodeCount = InObject.mNodeCount;
-		mTriangleCount = InObject.mTriangleCount;
-		mBoundingBoxCenter = InObject.mBoundingBoxCenter;
-		mBoundingBoxExtent = InObject.mBoundingBoxExtent;
-	}
-#ifdef WITH_LUA
-	static void BindLua(luabridge::Namespace& NS)
-	{
-		NS = NS.beginClass<WGclNodeShapeMeshSpec>("WGclNodeShapeMeshSpec")
-			.addFunction("__tostring", &WGclNodeShapeMeshSpec::ToString)
-			.addFunction("GetPtrAddr", &WGclNodeShapeMeshSpec::GetPtrAddr)
-			.addProperty("mpBspTree", &WGclNodeShapeMeshSpec::mpBspTree)
-			.addProperty("mpTriangles", &WGclNodeShapeMeshSpec::mpTriangles)
-			.addProperty("mNodeCount", &WGclNodeShapeMeshSpec::mNodeCount)
-			.addProperty("mTriangleCount", &WGclNodeShapeMeshSpec::mTriangleCount)
-			.addProperty("mBoundingBoxCenter", &WGclNodeShapeMeshSpec::mBoundingBoxCenter)
-			.addProperty("mBoundingBoxExtent", &WGclNodeShapeMeshSpec::mBoundingBoxExtent)
-		.endClass();
-	}
-#endif
-};
-static_assert(sizeof(WGclNodeShapeMeshSpec::mpBspTree) == 4, "expected WGclNodeShapeMeshSpec::mpBspTree to be size 4");
-static_assert(sizeof(WGclNodeShapeMeshSpec::mpTriangles) == 4, "expected WGclNodeShapeMeshSpec::mpTriangles to be size 4");
-static_assert(sizeof(WGclNodeShapeMeshSpec::mNodeCount) == 4, "expected WGclNodeShapeMeshSpec::mNodeCount to be size 4");
-static_assert(sizeof(WGclNodeShapeMeshSpec::mTriangleCount) == 4, "expected WGclNodeShapeMeshSpec::mTriangleCount to be size 4");
-static_assert(sizeof(WGclNodeShapeMeshSpec::mBoundingBoxCenter) == 12, "expected WGclNodeShapeMeshSpec::mBoundingBoxCenter to be size 12");
-static_assert(sizeof(WGclNodeShapeMeshSpec::mBoundingBoxExtent) == 12, "expected WGclNodeShapeMeshSpec::mBoundingBoxExtent to be size 12");
-static_assert(sizeof(WGclNodeShapeMeshSpec) == 40, "expected WGclNodeShapeMeshSpec to be size 40");
-
-// [Structure] struct WGclNodeShapeMeshBspNodeSpec
-struct WGclNodeShapeMeshBspNodeSpec
-{
-public:
-	/// Struct member variables
-
-	// <WGclNodeShapeMeshBspNodeSpec* mpFront, offset 0x0>
-	WGclNodeShapeMeshBspNodeSpec* mpFront = nullptr;
-
-	// <WGclNodeShapeMeshBspNodeSpec* mpBack, offset 0x4>
-	WGclNodeShapeMeshBspNodeSpec* mpBack = nullptr;
-
-	// <struct WGclNodeShapeTriangleSpec* mpTriangle, offset 0x8>
-	struct WGclNodeShapeTriangleSpec* mpTriangle = nullptr;
-
-	// <uint16_t mTriangleCount, offset 0xc>
-	uint16_t mTriangleCount = 0;
-
-	// <uint16_t mFlag, offset 0xe>
-	uint16_t mFlag = 0;
-
-	// <struct Vec mNormal, offset 0x10>
-	struct Vec mNormal;
-
-	// <float mDist, offset 0x1c>
-	float mDist = 0;
-
-	std::string ToString() const { std::stringstream stream; stream << "struct WGclNodeShapeMeshBspNodeSpec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
-	int GetPtrAddr() const { return (int)this; }
-	void CopyFrom(WGclNodeShapeMeshBspNodeSpec& InObject)
-	{
-		mpFront = InObject.mpFront;
-		mpBack = InObject.mpBack;
-		mpTriangle = InObject.mpTriangle;
-		mTriangleCount = InObject.mTriangleCount;
-		mFlag = InObject.mFlag;
-		mNormal = InObject.mNormal;
-		mDist = InObject.mDist;
-	}
-#ifdef WITH_LUA
-	static void BindLua(luabridge::Namespace& NS)
-	{
-		NS = NS.beginClass<WGclNodeShapeMeshBspNodeSpec>("WGclNodeShapeMeshBspNodeSpec")
-			.addFunction("__tostring", &WGclNodeShapeMeshBspNodeSpec::ToString)
-			.addFunction("GetPtrAddr", &WGclNodeShapeMeshBspNodeSpec::GetPtrAddr)
-			.addProperty("mpFront", &WGclNodeShapeMeshBspNodeSpec::mpFront)
-			.addProperty("mpBack", &WGclNodeShapeMeshBspNodeSpec::mpBack)
-			.addProperty("mpTriangle", &WGclNodeShapeMeshBspNodeSpec::mpTriangle)
-			.addProperty("mTriangleCount", &WGclNodeShapeMeshBspNodeSpec::mTriangleCount)
-			.addProperty("mFlag", &WGclNodeShapeMeshBspNodeSpec::mFlag)
-			.addProperty("mNormal", &WGclNodeShapeMeshBspNodeSpec::mNormal)
-			.addProperty("mDist", &WGclNodeShapeMeshBspNodeSpec::mDist)
-		.endClass();
-	}
-#endif
-};
-static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec::mpFront) == 4, "expected WGclNodeShapeMeshBspNodeSpec::mpFront to be size 4");
-static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec::mpBack) == 4, "expected WGclNodeShapeMeshBspNodeSpec::mpBack to be size 4");
-static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec::mpTriangle) == 4, "expected WGclNodeShapeMeshBspNodeSpec::mpTriangle to be size 4");
-static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec::mTriangleCount) == 2, "expected WGclNodeShapeMeshBspNodeSpec::mTriangleCount to be size 2");
-static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec::mFlag) == 2, "expected WGclNodeShapeMeshBspNodeSpec::mFlag to be size 2");
-static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec::mNormal) == 12, "expected WGclNodeShapeMeshBspNodeSpec::mNormal to be size 12");
-static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec::mDist) == 4, "expected WGclNodeShapeMeshBspNodeSpec::mDist to be size 4");
-static_assert(sizeof(WGclNodeShapeMeshBspNodeSpec) == 32, "expected WGclNodeShapeMeshBspNodeSpec to be size 32");
-
-// [Structure] struct WGclNodeShapeTriangleSpec
-struct WGclNodeShapeTriangleSpec
-{
-public:
-	/// Struct member variables
-
-	// <Unidentified data segment, offset 0x0>
-private:
-	char _UnidentifiedData_0[48];
-
-public:
-	std::string ToString() const { std::stringstream stream; stream << "struct WGclNodeShapeTriangleSpec [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
-	int GetPtrAddr() const { return (int)this; }
-	void CopyFrom(WGclNodeShapeTriangleSpec& InObject)
-	{
-	}
-#ifdef WITH_LUA
-	static void BindLua(luabridge::Namespace& NS)
-	{
-		NS = NS.beginClass<WGclNodeShapeTriangleSpec>("WGclNodeShapeTriangleSpec")
-			.addFunction("__tostring", &WGclNodeShapeTriangleSpec::ToString)
-			.addFunction("GetPtrAddr", &WGclNodeShapeTriangleSpec::GetPtrAddr)
-		.endClass();
-	}
-#endif
-};
-static_assert(sizeof(WGclNodeShapeTriangleSpec) == 48, "expected WGclNodeShapeTriangleSpec to be size 48");
-
-// [Structure] class ghmGcColl
-class ghmGcColl
-{
-public:
-	/// Struct member variables
-
-	// <void* (* field_0)[0x1], offset 0x0>
-	void* (* field_0)[0x1];
-
-	// <class ghmGcOctTree mOctTree, offset 0x4>
-	class ghmGcOctTree mOctTree;
-
-	std::string ToString() const { std::stringstream stream; stream << "class ghmGcColl [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
-	int GetPtrAddr() const { return (int)this; }
-	void CopyFrom(ghmGcColl& InObject)
-	{
-		mOctTree = InObject.mOctTree;
-	}
-#ifdef WITH_LUA
-	static void BindLua(luabridge::Namespace& NS)
-	{
-		NS = NS.beginClass<ghmGcColl>("ghmGcColl")
-			.addFunction("__tostring", &ghmGcColl::ToString)
-			.addFunction("GetPtrAddr", &ghmGcColl::GetPtrAddr)
-			// delegates are not supported in LuaBridge
-			//.addProperty("field_0", &ghmGcColl::field_0)
-			.addProperty("mOctTree", &ghmGcColl::mOctTree)
-		.endClass();
-	}
-#endif
-};
-static_assert(sizeof(ghmGcColl::field_0) == 4, "expected ghmGcColl::field_0 to be size 4");
-static_assert(sizeof(ghmGcColl::mOctTree) == 12, "expected ghmGcColl::mOctTree to be size 12");
-static_assert(sizeof(ghmGcColl) == 16, "expected ghmGcColl to be size 16");
-
-// [Structure] class WGclNode
-class WGclNode
-{
-public:
-	/// Struct member variables
-
-	// <void* (* field_0)[0x1], offset 0x0>
-	void* (* field_0)[0x1];
-
-	// <Unidentified data segment, offset 0x4>
-private:
-	char _UnidentifiedData_4[4];
-
-public:
-	// <char mIDStr[0x8], offset 0x8>
-	char mIDStr[8];
-
-	// <class WGcl* mpContainer, offset 0x10>
-	class WGcl* mpContainer = nullptr;
-
-	// <struct WGclNodeSpec* mpSpec, offset 0x14>
-	struct WGclNodeSpec* mpSpec = nullptr;
-
-	// <class ghmGcCollObj* mpCollObj, offset 0x18>
-	class ghmGcCollObj* mpCollObj = nullptr;
-
-	// <WGclNode* mpParent, offset 0x1c>
-	WGclNode* mpParent = nullptr;
-
-	// <WGclNode* mpChild, offset 0x20>
-	WGclNode* mpChild = nullptr;
-
-	// <WGclNode* mpNext, offset 0x24>
-	WGclNode* mpNext = nullptr;
-
-	// <WGclNode* mpPrev, offset 0x28>
-	WGclNode* mpPrev = nullptr;
-
-	// <struct Vec mPosition, offset 0x2c>
-	struct Vec mPosition;
-
-	// <struct Vec mRotation, offset 0x38>
-	struct Vec mRotation;
-
-	// <float mLocalWorldMatrix[0x3][0x4], offset 0x44>
-	float mLocalWorldMatrix[3][4];
-
-	// <float mWorldLocalMatrix[0x3][0x4], offset 0x74>
-	float mWorldLocalMatrix[3][4];
-
-	// <uint32_t mFlag, offset 0xa4>
-	uint32_t mFlag = 0;
-
-	std::string ToString() const { std::stringstream stream; stream << "class WGclNode [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
-	int GetPtrAddr() const { return (int)this; }
-	void CopyFrom(WGclNode& InObject)
-	{
-		mpContainer = InObject.mpContainer;
-		mpSpec = InObject.mpSpec;
-		mpCollObj = InObject.mpCollObj;
-		mpParent = InObject.mpParent;
-		mpChild = InObject.mpChild;
-		mpNext = InObject.mpNext;
-		mpPrev = InObject.mpPrev;
-		mPosition = InObject.mPosition;
-		mRotation = InObject.mRotation;
-		mFlag = InObject.mFlag;
-	}
-#ifdef WITH_LUA
-	static void BindLua(luabridge::Namespace& NS)
-	{
-		NS = NS.beginClass<WGclNode>("WGclNode")
-			.addFunction("__tostring", &WGclNode::ToString)
-			.addFunction("GetPtrAddr", &WGclNode::GetPtrAddr)
-			// delegates are not supported in LuaBridge
-			//.addProperty("field_0", &WGclNode::field_0)
-			// static arrays are not supported in LuaBridge (only std::vector)
-			//.addProperty("mIDStr", &WGclNode::mIDStr)
-			.addProperty("mpContainer", &WGclNode::mpContainer)
-			.addProperty("mpSpec", &WGclNode::mpSpec)
-			.addProperty("mpCollObj", &WGclNode::mpCollObj)
-			.addProperty("mpParent", &WGclNode::mpParent)
-			.addProperty("mpChild", &WGclNode::mpChild)
-			.addProperty("mpNext", &WGclNode::mpNext)
-			.addProperty("mpPrev", &WGclNode::mpPrev)
-			.addProperty("mPosition", &WGclNode::mPosition)
-			.addProperty("mRotation", &WGclNode::mRotation)
-			// static arrays are not supported in LuaBridge (only std::vector)
-			//.addProperty("mLocalWorldMatrix", &WGclNode::mLocalWorldMatrix)
-			// static arrays are not supported in LuaBridge (only std::vector)
-			//.addProperty("mWorldLocalMatrix", &WGclNode::mWorldLocalMatrix)
-			.addProperty("mFlag", &WGclNode::mFlag)
-		.endClass();
-	}
-#endif
-};
-static_assert(sizeof(WGclNode::field_0) == 4, "expected WGclNode::field_0 to be size 4");
-static_assert(sizeof(WGclNode::mIDStr) == 8, "expected WGclNode::mIDStr to be size 8");
-static_assert(sizeof(WGclNode::mpContainer) == 4, "expected WGclNode::mpContainer to be size 4");
-static_assert(sizeof(WGclNode::mpSpec) == 4, "expected WGclNode::mpSpec to be size 4");
-static_assert(sizeof(WGclNode::mpCollObj) == 4, "expected WGclNode::mpCollObj to be size 4");
-static_assert(sizeof(WGclNode::mpParent) == 4, "expected WGclNode::mpParent to be size 4");
-static_assert(sizeof(WGclNode::mpChild) == 4, "expected WGclNode::mpChild to be size 4");
-static_assert(sizeof(WGclNode::mpNext) == 4, "expected WGclNode::mpNext to be size 4");
-static_assert(sizeof(WGclNode::mpPrev) == 4, "expected WGclNode::mpPrev to be size 4");
-static_assert(sizeof(WGclNode::mPosition) == 12, "expected WGclNode::mPosition to be size 12");
-static_assert(sizeof(WGclNode::mRotation) == 12, "expected WGclNode::mRotation to be size 12");
-static_assert(sizeof(WGclNode::mLocalWorldMatrix) == 48, "expected WGclNode::mLocalWorldMatrix to be size 48");
-static_assert(sizeof(WGclNode::mWorldLocalMatrix) == 48, "expected WGclNode::mWorldLocalMatrix to be size 48");
-static_assert(sizeof(WGclNode::mFlag) == 4, "expected WGclNode::mFlag to be size 4");
-static_assert(sizeof(WGclNode) == 168, "expected WGclNode to be size 168");
 
 // [Structure] struct KPADEXStatus
 struct KPADEXStatus
@@ -26322,6 +30925,10 @@ public:
 
 		// <float acc_speed, offset 0x18>
 		float acc_speed = 0;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "struct unnamed_type_fs [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -26379,6 +30986,10 @@ public:
 		// <float rtrigger, offset 0x20>
 		float rtrigger = 0;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct unnamed_type_cl [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(KPADEXStatus::unnamed_type_cl& InObject)
@@ -26424,6 +31035,10 @@ public:
 
 	// <struct KPADEXStatus::<unnamed-type-cl> cl, offset 0x1c>
 	struct KPADEXStatus::unnamed_type_cl cl;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct KPADEXStatus [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -26486,6 +31101,10 @@ public:
 
 	// <struct KPADEXStatus ex_status, offset 0x24>
 	struct KPADEXStatus ex_status;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct KPADStatus [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -26610,6 +31229,15 @@ enum enControllerKind : uint32_t
 class mHRPad
 {
 public:
+	/// Struct member variables
+
+	// <Unidentified data segment, offset 0x0>
+private:
+	char _UnidentifiedData_0[1152];
+
+public:
+	/// 34 Functions
+
 	// [Function] enum enShakeDir __convention("thiscall") mHRPad::mGetShakeDirL(class mHRPad* const this) [?mGetShakeDirL@mHRPad@@QAE?AW4enShakeDir@@XZ]
 	/* enum enShakeDir */ uint32_t mGetShakeDirL()
 	{
@@ -26848,13 +31476,8 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x4f69e0);
 		return mFunc(this);
 	}
-	/// Struct member variables
+	/// Meta
 
-	// <Unidentified data segment, offset 0x0>
-private:
-	char _UnidentifiedData_0[1152];
-
-public:
 	Vec2 GetLStick() { return mGetPadStatusPtr(0)->ex_status.cl.lstick; }
 	Vec2 GetRStick() { return mGetPadStatusPtr(0)->ex_status.cl.rstick; }
 	bool IsPressingButton(uint32_t InButton) { return (mGetPadStatusPtr(0)->hold & InButton) != 0; }
@@ -26916,6 +31539,12 @@ public:
 };
 static_assert(sizeof(mHRPad) == 1152, "expected mHRPad to be size 1152");
 
+// Unsupported operator
+//void* __convention("thiscall") mHRPad::`scalar deleting destructor'(class mHRPad* const this, uint32_t arg2)
+// Unsupported operator
+//void __convention("thiscall") <lambda_13f4bc9bb35e6841b02e837fc4e2d08e>::operator()(class mHRBattle::mReleaseAllNpc::__l12::<lambda_13f4bc9bb35e6841b02e837fc4e2d08e>* const this, void* arg2)
+// Unsupported operator
+//void (*)(void*) __convention("thiscall") <lambda_13f4bc9bb35e6841b02e837fc4e2d08e>::operator void (__cdecl*)(void *)(class mHRBattle::mReleaseAllNpc::__l12::<lambda_13f4bc9bb35e6841b02e837fc4e2d08e>* const this)
 // [Structure] class CSpringInterpolate3D
 class CSpringInterpolate3D
 {
@@ -26952,6 +31581,10 @@ private:
 public:
 	// <class tiVector m_inValue, offset 0x20>
 	class tiVector m_inValue;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class CSpringInterpolate3D [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -27002,6 +31635,10 @@ public:
 
 	// <class CSpringInterpolate3D m_inCurInterp, offset 0x30>
 	class CSpringInterpolate3D m_inCurInterp;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class CDoubleSpringInterpolate3D [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -27087,13 +31724,6 @@ namespace mot
 
 		};
 
-		// [Function] void __convention("thiscall") mot::CBoneEffectDamageData::setup(class mot::CBoneEffectDamageData* const this, class mHRChara* arg2) [?setup@CBoneEffectDamageData@mot@@QAEXPBVmHRChara@@@Z]
-		void setup(class mHRChara* arg2)
-		{
-			typedef void(__thiscall* _Func)(class mot::CBoneEffectDamageData* const thisPtr, class mHRChara* arg2);
-			_Func mFunc = (_Func)(GameModule + 0xabfa0);
-			return mFunc(this, arg2);
-		}
 		/// Struct member variables
 
 		// <uint8_t m_bIsHit, offset 0x0>
@@ -27118,6 +31748,17 @@ namespace mot
 
 		// <enum mot::CBoneEffectDamageData::EAttackPart m_eAttackPart, offset 0xc>
 		enum CBoneEffectDamageData::EAttackPart m_eAttackPart;
+
+		/// 1 Functions
+
+		// [Function] void __convention("thiscall") mot::CBoneEffectDamageData::setup(class mot::CBoneEffectDamageData* const this, class mHRChara* arg2) [?setup@CBoneEffectDamageData@mot@@QAEXPBVmHRChara@@@Z]
+		void setup(class mHRChara* arg2)
+		{
+			typedef void(__thiscall* _Func)(class mot::CBoneEffectDamageData* const thisPtr, class mHRChara* arg2);
+			_Func mFunc = (_Func)(GameModule + 0xabfa0);
+			return mFunc(this, arg2);
+		}
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "class CBoneEffectDamageData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -27171,6 +31812,10 @@ public:
 	// <class CGameDataManager* m_pDataManager, offset 0x8>
 	class CGameDataManager* m_pDataManager = nullptr;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CGameDataLink [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CGameDataLink& InObject)
@@ -27217,6 +31862,10 @@ namespace mot
 		// <class mot::CYuremonoManager* m_pYuremono, offset 0x1c>
 		class CYuremonoManager* m_pYuremono = nullptr;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "class CBoneEffectManager [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(mot::CBoneEffectManager& InObject)
@@ -27253,13 +31902,6 @@ namespace mot
 	class CBoneEffectPJ : public mot::IBoneEffectPJ
 	{
 	public:
-		// [Function] enum mot::CBoneEffectDamageData::EAttackType __convention("thiscall") mot::CBoneEffectPJ::getAttackType(class mot::CBoneEffectPJ* const this, class mHRChara* arg2) [?getAttackType@CBoneEffectPJ@mot@@QAE?AW4EAttackType@CBoneEffectDamageData@2@PBVmHRChara@@@Z]
-		/* enum mot::CBoneEffectDamageData::EAttackType */ uint32_t getAttackType(class mHRChara* arg2)
-		{
-			typedef enum mot::CBoneEffectDamageData::EAttackType(__thiscall* _Func)(class mot::CBoneEffectPJ* const thisPtr, class mHRChara* arg2);
-			_Func mFunc = (_Func)(GameModule + 0xa77c0);
-			return (uint32_t)mFunc(this, arg2);
-		}
 		/// Struct member variables
 
 		// <class mot::IBoneEffectPJ field_0, offset 0x0>
@@ -27304,6 +31946,17 @@ namespace mot
 	public:
 		// <class CDoubleSpringInterpolate3D m_inInterpMove, offset 0xa0>
 		class CDoubleSpringInterpolate3D m_inInterpMove;
+
+		/// 1 Functions
+
+		// [Function] enum mot::CBoneEffectDamageData::EAttackType __convention("thiscall") mot::CBoneEffectPJ::getAttackType(class mot::CBoneEffectPJ* const this, class mHRChara* arg2) [?getAttackType@CBoneEffectPJ@mot@@QAE?AW4EAttackType@CBoneEffectDamageData@2@PBVmHRChara@@@Z]
+		/* enum mot::CBoneEffectDamageData::EAttackType */ uint32_t getAttackType(class mHRChara* arg2)
+		{
+			typedef enum mot::CBoneEffectDamageData::EAttackType(__thiscall* _Func)(class mot::CBoneEffectPJ* const thisPtr, class mHRChara* arg2);
+			_Func mFunc = (_Func)(GameModule + 0xa77c0);
+			return (uint32_t)mFunc(this, arg2);
+		}
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "class CBoneEffectPJ [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -27375,6 +32028,10 @@ public:
 	// <int32_t m_nTotalDataClass, offset 0x10>
 	int32_t m_nTotalDataClass = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CGameData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CGameData& InObject)
@@ -27430,6 +32087,10 @@ private:
 	char _UnidentifiedData_13[3];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CPackFileDataElement [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CPackFileDataElement& InObject)
@@ -27476,6 +32137,10 @@ public:
 	// <class CStlVector<unsigned char> m_abyData, offset 0x8>
 	class std::vector<unsigned char> m_abyData;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CFileData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CFileData& InObject)
@@ -27515,6 +32180,10 @@ public:
 	// <class CStlVector<CPackFileDataElement> m_ainElement, offset 0x14>
 	class std::vector<CPackFileDataElement> m_ainElement;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CPackFileData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CPackFileData& InObject)
@@ -27550,6 +32219,10 @@ public:
 	// <class CStlVector<CGameData> m_ainData, offset 0x20>
 	class std::vector<CGameData> m_ainData;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CGameDataManager [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CGameDataManager& InObject)
@@ -27583,6 +32256,10 @@ namespace mot
 
 		// <void* (* field_0)[0xa], offset 0x0>
 		void* (* field_0)[0xa];
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "class IBoneEffect [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -27619,6 +32296,10 @@ namespace mot
 		// <class CGameDataLink m_inDamagePartDataLink, offset 0x4>
 		class CGameDataLink m_inDamagePartDataLink;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "class CIKManager [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(mot::CIKManager& InObject)
@@ -27654,6 +32335,10 @@ namespace mot
 		// <class mot::CBoneEffectManager* m_pBoneEffectManager, offset 0x0>
 		class CBoneEffectManager* m_pBoneEffectManager = nullptr;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "class CYuremonoManager [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(mot::CYuremonoManager& InObject)
@@ -27675,10 +32360,56 @@ namespace mot
 static_assert(sizeof(mot::CYuremonoManager::m_pBoneEffectManager) == 4, "expected mot::CYuremonoManager::m_pBoneEffectManager to be size 4");
 static_assert(sizeof(mot::CYuremonoManager) == 4, "expected mot::CYuremonoManager to be size 4");
 
+// [Structure] class CLensFlare
+class CLensFlare
+{
+public:
+	/// Struct member variables
+
+	// <Unidentified data segment, offset 0x0>
+private:
+	char _UnidentifiedData_0[156];
+
+public:
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "class CLensFlare [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(CLensFlare& InObject)
+	{
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<CLensFlare>("CLensFlare")
+			.addFunction("__tostring", &CLensFlare::ToString)
+			.addFunction("GetPtrAddr", &CLensFlare::GetPtrAddr)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(CLensFlare) == 156, "expected CLensFlare to be size 156");
+
+// Unsupported constructor
+//void __convention("thiscall") HrStageDraw::MAIN::MAIN(struct HrStageDraw::MAIN* const this)
+// Unsupported destructor
+//void __convention("thiscall") HrStageDraw::MAIN::~MAIN(struct HrStageDraw::MAIN* const this)
 // [Structure] class mHRLockOnList
 class mHRLockOnList : public ghmListObj
 {
 public:
+	/// Struct member variables
+
+	// <class ghmListObj field_0, offset 0x0>
+	// class ghmListObj Super;
+
+	// <class mHRChara* mpChara, offset 0x10>
+	class mHRChara* mpChara = nullptr;
+
+	/// 5 Functions
+
 	// [Function] class mHRChara* __convention("thiscall") mHRLockOnList::mGetCharaPtr(class mHRLockOnList* const this) [?mGetCharaPtr@mHRLockOnList@@QAEPAVmHRChara@@XZ]
 	class mHRChara* mGetCharaPtr()
 	{
@@ -27714,13 +32445,7 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x567940);
 		return mFunc(arg1);
 	}
-	/// Struct member variables
-
-	// <class ghmListObj field_0, offset 0x0>
-	// class ghmListObj Super;
-
-	// <class mHRChara* mpChara, offset 0x10>
-	class mHRChara* mpChara = nullptr;
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class mHRLockOnList [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -27747,17 +32472,20 @@ public:
 static_assert(sizeof(mHRLockOnList::mpChara) == 4, "expected mHRLockOnList::mpChara to be size 4");
 static_assert(sizeof(mHRLockOnList) == 20, "expected mHRLockOnList to be size 20");
 
+// Unsupported operator
+//void* __convention("thiscall") mHRPc::`vector deleting destructor'(class mHRPc* const this, uint32_t arg2)
+// Unsupported operator
+//void __convention("thiscall") <lambda_2620a86d76e2132a2f45f183e9cb1e92>::operator()(class mHRPc::mTerm::__l2::<lambda_2620a86d76e2132a2f45f183e9cb1e92>* const this, void* arg2)
+// Unsupported operator
+//void (*)(void*) __convention("thiscall") <lambda_2620a86d76e2132a2f45f183e9cb1e92>::operator void (__cdecl*)(void *)(class mHRPc::mTerm::__l2::<lambda_2620a86d76e2132a2f45f183e9cb1e92>* const this)
+// Unsupported operator
+//void __convention("thiscall") <lambda_fd1a3423e64afe1ddc65f7a0b0333815>::operator()(class mHRPc::mEquipProc::__l87::<lambda_fd1a3423e64afe1ddc65f7a0b0333815>* const this, void* arg2)
+// Unsupported operator
+//void (*)(void*) __convention("thiscall") <lambda_fd1a3423e64afe1ddc65f7a0b0333815>::operator void (__cdecl*)(void *)(class mHRPc::mEquipProc::__l87::<lambda_fd1a3423e64afe1ddc65f7a0b0333815>* const this)
 // [Structure] class EffectEnemyDamage
 class EffectEnemyDamage : public HrTask
 {
 public:
-	// [Function] class EffectEnemyDamage* EffectEnemyDamage::Create(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4) [?Create@EffectEnemyDamage@@SAPAV1@PAVmHRChara@@PAVTGmf@@HI@Z]
-	static class EffectEnemyDamage* Create(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4)
-	{
-		typedef class EffectEnemyDamage*(__fastcall* _Func)(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4);
-		_Func mFunc = (_Func)(GameModule + 0x585710);
-		return mFunc(arg1, arg2, arg3, arg4);
-	}
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -27777,6 +32505,17 @@ public:
 
 	// <int32_t m_nBright, offset 0x60>
 	int32_t m_nBright = 0;
+
+	/// 1 Functions
+
+	// [Function] class EffectEnemyDamage* EffectEnemyDamage::Create(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4) [?Create@EffectEnemyDamage@@SAPAV1@PAVmHRChara@@PAVTGmf@@HI@Z]
+	static class EffectEnemyDamage* Create(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4)
+	{
+		typedef class EffectEnemyDamage*(__fastcall* _Func)(class mHRChara* arg1, class TGmf* arg2, int32_t arg3, uint32_t const arg4);
+		_Func mFunc = (_Func)(GameModule + 0x585710);
+		return mFunc(arg1, arg2, arg3, arg4);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class EffectEnemyDamage [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -27811,6 +32550,64 @@ static_assert(sizeof(EffectEnemyDamage::m_nColorMin) == 4, "expected EffectEnemy
 static_assert(sizeof(EffectEnemyDamage::m_nBright) == 4, "expected EffectEnemyDamage::m_nBright to be size 4");
 static_assert(sizeof(EffectEnemyDamage) == 100, "expected EffectEnemyDamage to be size 100");
 
+// Unsupported operator
+//uint32_t __convention("thiscall") <lambda_e7c594fcacbc0356b640f1b5f3a1a59f>::operator()(class HrMap::RenderProcess::__l2::<lambda_e7c594fcacbc0356b640f1b5f3a1a59f>* const this, float arg2)
+// Unsupported constructor
+//void __convention("thiscall") rSkyMapMenu::rSkyMapMenu(class rSkyMapMenu* const this)
+// Unsupported operator
+//void* __convention("thiscall") rSkyMap::`vector deleting destructor'(class rSkyMap* const this, uint32_t arg2)
+// Unsupported function
+//class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &> std::bind<void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>(void (__convention("thiscall")*&& arg1)(class rSkyMapMenu* const this, int32_t), class rSkyMapMenu*&& arg2, int32_t& arg3)
+// Unsupported function
+//void __convention("thiscall") std::function<void __cdecl(void)>::function<void __cdecl(void)><std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>,void>(class std::function<void __cdecl(void)>* const this, class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &> arg2)
+// Unsupported constructor
+//void __convention("thiscall") std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>(class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>* const this, void (__convention("thiscall")*&& arg2)(class rSkyMapMenu* const this, int32_t), class rSkyMapMenu*&& arg3, int32_t& arg4)
+// Unsupported function
+//void (__convention("thiscall")*&&)(class rSkyMapMenu* const this, int32_t) std::forward<void (__thiscall rSkyMapMenu::*)(int)>(void (__convention("thiscall")*& arg1)(class rSkyMapMenu* const this, int32_t))
+// Unsupported function
+//class rSkyMapMenu*&& std::forward<class rSkyMapMenu*>(class rSkyMapMenu*& arg1)
+// Unsupported function
+//class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>&& std::move<std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &> &>(class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>& arg1)
+// Unsupported function
+//void __convention("thiscall") std::_Func_class<void>::_Reset<std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &> >(class std::_Func_class<void>* const this, class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>&& arg2)
+// Unsupported function
+//uint8_t std::_Test_callable<std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &> >(class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>& arg1)
+// Unsupported function
+//class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>&& std::forward<std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &> >(class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>& arg1)
+// Unsupported function
+//class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>* std::addressof<std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &> const >(class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>& arg1)
+// Unsupported constructor
+//void __convention("thiscall") std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>(class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>* const this, class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>&& arg2)
+// Unsupported constructor
+//void __convention("thiscall") std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>(class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>* const this, class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>& arg2)
+// Unsupported function
+//uint8_t std::_Test_callable<std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &> >(class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>& arg1, struct std::integral_constant<bool,0> arg2)
+// Unsupported function
+//void std::_Invoker_ret<void,1>::_Call<std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &> &>(class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>& arg1)
+// Unsupported function
+//class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>& std::forward<std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &> const &>(class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>& arg1)
+// Unsupported function
+//class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>& std::forward<std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &> &>(class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>& arg1)
+// Unsupported function
+//void std::invoke<std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &> &>(class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>& arg1)
+// Unsupported function
+//void __convention("thiscall") std::_Tuple_val<rSkyMapMenu *>::_Tuple_val<rSkyMapMenu *><rSkyMapMenu *>(struct std::_Tuple_val<rSkyMapMenu *>* const this, class rSkyMapMenu*&& arg2)
+// Unsupported function
+//void std::_Invoker_functor::_Call<std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &> &>(class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>& arg1)
+// Unsupported function
+//void __convention("thiscall") std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>::operator()<>(class std::_Binder<std::_Unforced,void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu *,int &>* const this)
+// Unsupported function
+//void std::_Invoker_ret<std::_Unforced,0>::_Call<void (__thiscall rSkyMapMenu::*&)(int),rSkyMapMenu * &,int &>(void (__convention("thiscall")*& arg1)(class rSkyMapMenu* const this, int32_t), class rSkyMapMenu*& arg2, int32_t& arg3)
+// Unsupported function
+//void (__convention("thiscall")*&)(class rSkyMapMenu* const this, int32_t) std::forward<void (__thiscall rSkyMapMenu::*&)(int)>(void (__convention("thiscall")*& arg1)(class rSkyMapMenu* const this, int32_t))
+// Unsupported function
+//class rSkyMapMenu*& std::forward<class rSkyMapMenu*&>(class rSkyMapMenu*& arg1)
+// Unsupported function
+//void std::invoke<void (__thiscall rSkyMapMenu::*&)(int),rSkyMapMenu * &,int &>(void (__convention("thiscall")*& arg1)(class rSkyMapMenu* const this, int32_t), class rSkyMapMenu*& arg2, int32_t& arg3)
+// Unsupported function
+//void std::_Invoker_pmf_pointer::_Call<void (__thiscall rSkyMapMenu::*)(int),rSkyMapMenu * &,int &>(void (__convention("thiscall")* arg1)(class rSkyMapMenu* const this, int32_t), class rSkyMapMenu*& arg2, int32_t& arg3)
+// Unsupported destructor
+//void __convention("thiscall") HrMap::~HrMap(class HrMap* const this)
 // [Structure] struct stThrowInfo
 struct stThrowInfo
 {
@@ -27846,6 +32643,10 @@ private:
 	char _UnidentifiedData_61[3];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct stThrowInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(stThrowInfo& InObject)
@@ -27887,11 +32688,13 @@ static_assert(sizeof(stThrowInfo::slowTick) == 4, "expected stThrowInfo::slowTic
 static_assert(sizeof(stThrowInfo::setThrowDamage) == 1, "expected stThrowInfo::setThrowDamage to be size 1");
 static_assert(sizeof(stThrowInfo) == 64, "expected stThrowInfo to be size 64");
 
+// Unsupported operator
+//void* __convention("thiscall") mHRChara::`vector deleting destructor'(class mHRChara* const this, uint32_t arg2)
 // [Structure] class HrMessage
 /// <summary>
 /// Related to the top banner UI messages.
 /// </summary>
-class HrMessage
+class HrMessage : public ghmListObj
 {
 public:
 	// enum HrMessage::MESS_STATUS_ID
@@ -27913,6 +32716,37 @@ public:
 		MESS_STS_MAX = 4
 
 	};
+
+	/// Struct member variables
+
+	// <class ghmListObj Super, offset 0x0>
+	// class ghmListObj Super;
+
+	// <class ghmListObj m_Anchor, offset 0x10>
+	class ghmListObj m_Anchor;
+
+	// <uint32_t m_Handle, offset 0x20>
+	uint32_t m_Handle = 0;
+
+	// <enum HrMessage::MESS_STATUS_ID m_Status, offset 0x24>
+	enum HrMessage::MESS_STATUS_ID m_Status;
+
+	// <class ghmGcFont* mp_Font, offset 0x28>
+	class ghmGcFont* mp_Font = nullptr;
+
+	// <class ghmGcFont* m_pFont, offset 0x2c>
+	class ghmGcFont* m_pFont = nullptr;
+
+	// <class WGdl* mp_Gdl, offset 0x30>
+	class WGdl* mp_Gdl = nullptr;
+
+	// <uint32_t m_NowTick, offset 0x34>
+	uint32_t m_NowTick = 0;
+
+	// <struct GdlDialog* m_pCurrentDialog, offset 0x38>
+	struct GdlDialog* m_pCurrentDialog = nullptr;
+
+	/// 63 Functions
 
 	// [Function] class ghmGcFont* __convention("thiscall") HrMessage::_GetFont(class HrMessage* const this) [?_GetFont@HrMessage@@IAEPAVghmGcFont@@XZ]
 	class ghmGcFont* _GetFont()
@@ -28007,14 +32841,14 @@ public:
 		return mFunc(arg1, arg2_c_str, arg3, arg4, arg5, arg6);
 	}
 	// [Function] void HrMessage::GetStrLengthW(uint32_t arg1, int16_t const* arg2, float& arg3, float& arg4) [?GetStrLengthW@HrMessage@@SAXIPB_SAAM1@Z]
-	static void GetStrLengthW2(uint32_t arg1, int16_t const* arg2, float& arg3, float& arg4)
+	static void GetStrLengthW_2(uint32_t arg1, int16_t const* arg2, float& arg3, float& arg4)
 	{
 		typedef void(__fastcall* _Func)(uint32_t arg1, int16_t const* arg2, float& arg3, float& arg4);
 		_Func mFunc = (_Func)(GameModule + 0x489b20);
 		return mFunc(arg1, arg2, arg3, arg4);
 	}
 	// [Function] void HrMessage::GetStrLengthW(uint32_t _hnd, int32_t idx, int32_t Line, int32_t Sentence, float& _len, float& _dot) [?GetStrLengthW@HrMessage@@SAXIHHHAAM0@Z]
-	static void GetStrLengthW3(uint32_t _hnd, int32_t idx, int32_t Line, int32_t Sentence, float& _len, float& _dot)
+	static void GetStrLengthW_3(uint32_t _hnd, int32_t idx, int32_t Line, int32_t Sentence, float& _len, float& _dot)
 	{
 		typedef void(__fastcall* _Func)(uint32_t _hnd, int32_t idx, int32_t Line, int32_t Sentence, float& _len, float& _dot);
 		_Func mFunc = (_Func)(GameModule + 0x489bb0);
@@ -28029,7 +32863,7 @@ public:
 		return mFunc(arg1, arg2_c_str, arg3, arg4, arg5, arg6);
 	}
 	// [Function] void HrMessage::GetStrLength(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6) [?GetStrLength@HrMessage@@SAXIHHHAAM0@Z]
-	static void GetStrLength2(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6)
+	static void GetStrLength_2(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6)
 	{
 		typedef void(__fastcall* _Func)(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float& arg5, float& arg6);
 		_Func mFunc = (_Func)(GameModule + 0x489da0);
@@ -28044,7 +32878,7 @@ public:
 		return mFunc(arg1, arg2_c_str, arg3, arg4, arg5);
 	}
 	// [Function] void HrMessage::GetTick(uint32_t arg1, int32_t arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5) [?GetTick@HrMessage@@SAXIHHAAI0@Z]
-	static void GetTick2(uint32_t arg1, int32_t arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5)
+	static void GetTick_2(uint32_t arg1, int32_t arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5)
 	{
 		typedef void(__fastcall* _Func)(uint32_t arg1, int32_t arg2, int32_t arg3, uint32_t& arg4, uint32_t& arg5);
 		_Func mFunc = (_Func)(GameModule + 0x489f00);
@@ -28099,7 +32933,7 @@ public:
 		return result_str;
 	}
 	// [Function] wchar_t const* HrMessage::GetStringsW(uint32_t Handle, int32_t idx, int32_t Line, int32_t Sentence) [?GetStringsW@HrMessage@@SAPB_SIHHH@Z]
-	static std::string GetStringsW2(uint32_t Handle, int32_t idx, int32_t Line, int32_t Sentence)
+	static std::string GetStringsW_2(uint32_t Handle, int32_t idx, int32_t Line, int32_t Sentence)
 	{
 		typedef wchar_t const*(__fastcall* _Func)(uint32_t Handle, int32_t idx, int32_t Line, int32_t Sentence);
 		_Func mFunc = (_Func)(GameModule + 0x48a0f0);
@@ -28122,7 +32956,7 @@ public:
 		return result_str;
 	}
 	// [Function] char const* HrMessage::GetStrings(uint32_t Handle, int32_t idx, int32_t Line, int32_t Sentence) [?GetStrings@HrMessage@@SAPBDIHHH@Z]
-	static std::string GetStrings2(uint32_t Handle, int32_t idx, int32_t Line, int32_t Sentence)
+	static std::string GetStrings_2(uint32_t Handle, int32_t idx, int32_t Line, int32_t Sentence)
 	{
 		typedef char const*(__fastcall* _Func)(uint32_t Handle, int32_t idx, int32_t Line, int32_t Sentence);
 		_Func mFunc = (_Func)(GameModule + 0x48a170);
@@ -28162,7 +32996,7 @@ public:
 		return mFunc(arg1, arg2_c_str, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
 	}
 	// [Function] float HrMessage::DispMessage(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10) [?DispMessage@HrMessage@@SAMIHHHMMUGXColor@@HH_N@Z]
-	static float DispMessage2(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10)
+	static float DispMessage_2(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10)
 	{
 		typedef float(__fastcall* _Func)(uint32_t arg1, int32_t arg2, int32_t arg3, int32_t arg4, float arg5, float arg6, struct GXColor arg7, int32_t arg8, int32_t arg9, uint8_t arg10);
 		_Func mFunc = (_Func)(GameModule + 0x48a300);
@@ -28191,7 +33025,7 @@ public:
 		return mFunc(arg1, arg2_c_str, arg3);
 	}
 	// [Function] int32_t HrMessage::GetSentenceNum(uint32_t arg1, int32_t arg2, int32_t arg3) [?GetSentenceNum@HrMessage@@SAHIHH@Z]
-	static int32_t GetSentenceNum2(uint32_t arg1, int32_t arg2, int32_t arg3)
+	static int32_t GetSentenceNum_2(uint32_t arg1, int32_t arg2, int32_t arg3)
 	{
 		typedef int32_t(__fastcall* _Func)(uint32_t arg1, int32_t arg2, int32_t arg3);
 		_Func mFunc = (_Func)(GameModule + 0x48a420);
@@ -28206,7 +33040,7 @@ public:
 		return mFunc(arg1, arg2_c_str);
 	}
 	// [Function] int32_t HrMessage::GetLineNum(uint32_t arg1, int32_t arg2) [?GetLineNum@HrMessage@@SAHIH@Z]
-	static int32_t GetLineNum2(uint32_t arg1, int32_t arg2)
+	static int32_t GetLineNum_2(uint32_t arg1, int32_t arg2)
 	{
 		typedef int32_t(__fastcall* _Func)(uint32_t arg1, int32_t arg2);
 		_Func mFunc = (_Func)(GameModule + 0x48a4c0);
@@ -28256,7 +33090,7 @@ public:
 		return mFunc(this, arg2_c_str, arg3, arg4);
 	}
 	// [Function] uint8_t __convention("thiscall") HrMessage::SetMessage(class HrMessage* const this, int32_t DialogIndex, uint32_t arg3, uint8_t arg4) [?SetMessage@HrMessage@@QAE_NHI_N@Z]
-	uint8_t SetMessage2(int32_t DialogIndex, uint32_t arg3, uint8_t arg4)
+	uint8_t SetMessage_2(int32_t DialogIndex, uint32_t arg3, uint8_t arg4)
 	{
 		typedef uint8_t(__thiscall* _Func)(class HrMessage* const thisPtr, int32_t DialogIndex, uint32_t arg3, uint8_t arg4);
 		_Func mFunc = (_Func)(GameModule + 0x48ac00);
@@ -28347,14 +33181,14 @@ public:
 		return mFunc(arg1);
 	}
 	// [Function] uint8_t __convention("thiscall") HrMessage::SetFont(class HrMessage* const this, void* arg2) [?SetFont@HrMessage@@QAE_NPAX@Z]
-	uint8_t SetFont2(void* arg2)
+	uint8_t SetFont_2(void* arg2)
 	{
 		typedef uint8_t(__thiscall* _Func)(class HrMessage* const thisPtr, void* arg2);
 		_Func mFunc = (_Func)(GameModule + 0x48b240);
 		return mFunc(this, arg2);
 	}
 	// [Function] void HrMessage::StartMessage(uint32_t arg1, char const* arg2, uint32_t arg3, uint8_t arg4) [?StartMessage@HrMessage@@SAXIPBDI_N@Z]
-	static void StartMessage2(uint32_t arg1, std::string arg2, uint32_t arg3, uint8_t arg4)
+	static void StartMessage_2(uint32_t arg1, std::string arg2, uint32_t arg3, uint8_t arg4)
 	{
 		char const* arg2_c_str = arg2.c_str();
 		typedef void(__fastcall* _Func)(uint32_t arg1, char const* arg2, uint32_t arg3, uint8_t arg4);
@@ -28375,13 +33209,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x48b310);
 		return mFunc(arg1);
 	}
-	// [Function] int32_t HrMessage::FrameProcess(void (* arg1)(void*) @ esi, uint16_t arg2 @ x87control) [?FrameProcess@HrMessage@@SAXXZ]
-	static int32_t FrameProcess(void (* arg1)(void*), uint16_t arg2)
-	{
-		typedef int32_t(__fastcall* _Func)(void (* arg1)(void*), uint16_t arg2);
-		_Func mFunc = (_Func)(GameModule + 0x48b340);
-		return mFunc(arg1, arg2);
-	}
 	// [Function] class ghmResGroup* HrMessage::GetLangageGroup(class ghmResGroup* arg1) [?GetLangageGroup@HrMessage@@SAPAVghmResGroup@@PAV2@@Z]
 	static class ghmResGroup* GetLangageGroup(class ghmResGroup* arg1)
 	{
@@ -28389,40 +33216,12 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x48b490);
 		return mFunc(arg1);
 	}
-	/// Struct member variables
-
-	// <class ghmListObj Super, offset 0x0>
-	class ghmListObj Super;
-
-	// <class ghmListObj m_Anchor, offset 0x10>
-	class ghmListObj m_Anchor;
-
-	// <uint32_t m_Handle, offset 0x20>
-	uint32_t m_Handle = 0;
-
-	// <enum HrMessage::MESS_STATUS_ID m_Status, offset 0x24>
-	enum HrMessage::MESS_STATUS_ID m_Status;
-
-	// <class ghmGcFont* mp_Font, offset 0x28>
-	class ghmGcFont* mp_Font = nullptr;
-
-	// <class ghmGcFont* m_pFont, offset 0x2c>
-	class ghmGcFont* m_pFont = nullptr;
-
-	// <class WGdl* mp_Gdl, offset 0x30>
-	class WGdl* mp_Gdl = nullptr;
-
-	// <uint32_t m_NowTick, offset 0x34>
-	uint32_t m_NowTick = 0;
-
-	// <struct GdlDialog* m_pCurrentDialog, offset 0x38>
-	struct GdlDialog* m_pCurrentDialog = nullptr;
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class HrMessage [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(HrMessage& InObject)
 	{
-		Super = InObject.Super;
 		m_Anchor = InObject.m_Anchor;
 		m_Handle = InObject.m_Handle;
 		m_Status = InObject.m_Status;
@@ -28435,10 +33234,9 @@ public:
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
 	{
-		NS = NS.beginClass<HrMessage>("HrMessage")
+		NS = NS.deriveClass<HrMessage, ghmListObj>("HrMessage")
 			.addFunction("__tostring", &HrMessage::ToString)
 			.addFunction("GetPtrAddr", &HrMessage::GetPtrAddr)
-			.addProperty("Super", &HrMessage::Super)
 			.addProperty("m_Anchor", &HrMessage::m_Anchor)
 			.addProperty("m_Handle", &HrMessage::m_Handle)
 			.addProperty("m_Status", &HrMessage::m_Status)
@@ -28463,17 +33261,17 @@ public:
 			// Can't export pointer to native type 'float&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("GetStrLengthW", &HrMessage::GetStrLengthW)
 			// Can't export pointer to native type 'int16_t const*' [TypeClass.PointerTypeClass] in LuaBridge
-			//.addStaticFunction("GetStrLengthW2", &HrMessage::GetStrLengthW2)
+			//.addStaticFunction("GetStrLengthW_2", &HrMessage::GetStrLengthW_2)
 			// Can't export pointer to native type 'float&' [TypeClass.PointerTypeClass] in LuaBridge
-			//.addStaticFunction("GetStrLengthW3", &HrMessage::GetStrLengthW3)
+			//.addStaticFunction("GetStrLengthW_3", &HrMessage::GetStrLengthW_3)
 			// Can't export pointer to native type 'float&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("GetStrLength", &HrMessage::GetStrLength)
 			// Can't export pointer to native type 'float&' [TypeClass.PointerTypeClass] in LuaBridge
-			//.addStaticFunction("GetStrLength2", &HrMessage::GetStrLength2)
+			//.addStaticFunction("GetStrLength_2", &HrMessage::GetStrLength_2)
 			// Can't export pointer to native type 'uint32_t&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addStaticFunction("GetTick", &HrMessage::GetTick)
 			// Can't export pointer to native type 'uint32_t&' [TypeClass.PointerTypeClass] in LuaBridge
-			//.addStaticFunction("GetTick2", &HrMessage::GetTick2)
+			//.addStaticFunction("GetTick_2", &HrMessage::GetTick_2)
 			// Can't export pointer to native type 'uint32_t&' [TypeClass.PointerTypeClass] in LuaBridge
 			//.addFunction("_GetTick", &HrMessage::_GetTick)
 			.addStaticFunction("SetFontFuti", &HrMessage::SetFontFuti)
@@ -28481,26 +33279,26 @@ public:
 			.addStaticFunction("SetFontEx", &HrMessage::SetFontEx)
 			.addFunction("_SetFontEx", &HrMessage::_SetFontEx)
 			.addStaticFunction("GetStringsW", &HrMessage::GetStringsW)
-			.addStaticFunction("GetStringsW2", &HrMessage::GetStringsW2)
+			.addStaticFunction("GetStringsW_2", &HrMessage::GetStringsW_2)
 			.addStaticFunction("GetStrings", &HrMessage::GetStrings)
-			.addStaticFunction("GetStrings2", &HrMessage::GetStrings2)
+			.addStaticFunction("GetStrings_2", &HrMessage::GetStrings_2)
 			.addFunction("_GetStringsW", &HrMessage::_GetStringsW)
 			.addFunction("_GetStrings", &HrMessage::_GetStrings)
 			.addStaticFunction("DispMessage", &HrMessage::DispMessage)
-			.addStaticFunction("DispMessage2", &HrMessage::DispMessage2)
+			.addStaticFunction("DispMessage_2", &HrMessage::DispMessage_2)
 			.addStaticFunction("GetFont", &HrMessage::GetFont)
 			.addStaticFunction("GetGdl", &HrMessage::GetGdl)
 			.addStaticFunction("GetSentenceNum", &HrMessage::GetSentenceNum)
-			.addStaticFunction("GetSentenceNum2", &HrMessage::GetSentenceNum2)
+			.addStaticFunction("GetSentenceNum_2", &HrMessage::GetSentenceNum_2)
 			.addStaticFunction("GetLineNum", &HrMessage::GetLineNum)
-			.addStaticFunction("GetLineNum2", &HrMessage::GetLineNum2)
+			.addStaticFunction("GetLineNum_2", &HrMessage::GetLineNum_2)
 			.addFunction("_GetSentenceNum", &HrMessage::_GetSentenceNum)
 			.addFunction("_GetLineNum", &HrMessage::_GetLineNum)
 			.addFunction("_DispChar", &HrMessage::_DispChar)
 			.addFunction("_DispMessage", &HrMessage::_DispMessage)
 			.addFunction("_Stop", &HrMessage::_Stop)
 			.addFunction("SetMessage", &HrMessage::SetMessage)
-			.addFunction("SetMessage2", &HrMessage::SetMessage2)
+			.addFunction("SetMessage_2", &HrMessage::SetMessage_2)
 			.addFunction("_DePause", &HrMessage::_DePause)
 			.addFunction("_Pause", &HrMessage::_Pause)
 			.addFunction("SetFont", &HrMessage::SetFont)
@@ -28515,8 +33313,8 @@ public:
 			//.addStaticFunction("Create", &HrMessage::Create)
 			.addStaticFunction("GetObjectA", &HrMessage::GetObjectA)
 			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
-			//.addFunction("SetFont2", &HrMessage::SetFont2)
-			.addStaticFunction("StartMessage2", &HrMessage::StartMessage2)
+			//.addFunction("SetFont_2", &HrMessage::SetFont_2)
+			.addStaticFunction("StartMessage_2", &HrMessage::StartMessage_2)
 			.addStaticFunction("Stop", &HrMessage::Stop)
 			.addStaticFunction("Delete", &HrMessage::Delete)
 			// Can't export delegate 'void (*)(void*)' [TypeClass.PointerTypeClass] in LuaBridge
@@ -28526,7 +33324,6 @@ public:
 	}
 #endif
 };
-static_assert(sizeof(HrMessage::Super) == 16, "expected HrMessage::Super to be size 16");
 static_assert(sizeof(HrMessage::m_Anchor) == 16, "expected HrMessage::m_Anchor to be size 16");
 static_assert(sizeof(HrMessage::m_Handle) == 4, "expected HrMessage::m_Handle to be size 4");
 static_assert(sizeof(HrMessage::m_Status) == 4, "expected HrMessage::m_Status to be size 4");
@@ -28537,6 +33334,8 @@ static_assert(sizeof(HrMessage::m_NowTick) == 4, "expected HrMessage::m_NowTick 
 static_assert(sizeof(HrMessage::m_pCurrentDialog) == 4, "expected HrMessage::m_pCurrentDialog to be size 4");
 static_assert(sizeof(HrMessage) == 60, "expected HrMessage to be size 60");
 
+// Unsupported operator
+//void* __convention("thiscall") HrMessage::`vector deleting destructor'(class HrMessage* const this, uint32_t arg2)
 // [Structure] class ghmGcFont
 class ghmGcFont
 {
@@ -28558,6 +33357,10 @@ private:
 public:
 	// <class ghmGcFont* FontPtr, offset 0xa34>
 	class ghmGcFont* FontPtr = nullptr;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class ghmGcFont [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -28586,13 +33389,6 @@ static_assert(sizeof(ghmGcFont) == 2616, "expected ghmGcFont to be size 2616");
 struct GdlDialog
 {
 public:
-	// [Function] struct GdlLines* __convention("thiscall") GdlDialog::GetLines(struct GdlDialog* const this, int32_t arg2) [?GetLines@GdlDialog@@QAEPAUGdlLines@@H@Z]
-	struct GdlLines* GetLines(int32_t arg2)
-	{
-		typedef struct GdlLines*(__thiscall* _Func)(struct GdlDialog* const thisPtr, int32_t arg2);
-		_Func mFunc = (_Func)(GameModule + 0xb36e0);
-		return mFunc(this, arg2);
-	}
 	/// Struct member variables
 
 	// <char const* mpName, offset 0x0>
@@ -28612,6 +33408,17 @@ public:
 
 	// <uint32_t mPad[0x4], offset 0x10>
 	uint32_t mPad[4];
+
+	/// 1 Functions
+
+	// [Function] struct GdlLines* __convention("thiscall") GdlDialog::GetLines(struct GdlDialog* const this, int32_t arg2) [?GetLines@GdlDialog@@QAEPAUGdlLines@@H@Z]
+	struct GdlLines* GetLines(int32_t arg2)
+	{
+		typedef struct GdlLines*(__thiscall* _Func)(struct GdlDialog* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0xb36e0);
+		return mFunc(this, arg2);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct GdlDialog (" << mLinesCount << " lines) [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -28705,6 +33512,10 @@ public:
 	// <uint32_t mPad[0x3], offset 0x34>
 	uint32_t mPad[3];
 
+	/// 0 Functions
+
+	/// Meta
+
 	struct GdlDialog* GetDialog(int32_t idx) { return (idx >= 0 && idx < mDialogCount) ? mppDialogPtrTable[idx] : nullptr; }
 	std::string ToString() const { std::stringstream stream; stream << "struct GdlHeader (" << mDialogCount << " dialogues) [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -28780,238 +33591,6 @@ static_assert(sizeof(GdlHeader) == 64, "expected GdlHeader to be size 64");
 class WGdl : public ghmListObj
 {
 public:
-	// [Function] class WGdl* WGdl::GetTop() [?GetTop@WGdl@@KAPAV1@XZ]
-	static class WGdl* GetTop()
-	{
-		typedef class WGdl*(__fastcall* _Func)();
-		_Func mFunc = (_Func)(GameModule + 0xebc90);
-		return mFunc();
-	}
-	// [Function] class WGdl* __convention("thiscall") WGdl::GetNext(class WGdl* const this) [?GetNext@WGdl@@QAEPAV1@XZ]
-	class WGdl* GetNext()
-	{
-		typedef class WGdl*(__thiscall* _Func)(class WGdl* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0xebca0);
-		return mFunc(this);
-	}
-	// [Function] int32_t __convention("thiscall") WGdl::GetStringUcCount(class WGdl* const this) [?GetStringUcCount@WGdl@@QAEHXZ]
-	int32_t GetStringUcCount()
-	{
-		typedef int32_t(__thiscall* _Func)(class WGdl* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0x6e4ef0);
-		return mFunc(this);
-	}
-	// [Function] int32_t __convention("thiscall") WGdl::GetStringCount(class WGdl* const this) [?GetStringCount@WGdl@@QAEHXZ]
-	int32_t GetStringCount()
-	{
-		typedef int32_t(__thiscall* _Func)(class WGdl* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0x6e4f20);
-		return mFunc(this);
-	}
-	// [Function] int16_t const* __convention("thiscall") WGdl::GetStringUc(class WGdl* const this, int32_t arg2, struct GdlHeader* arg3) [?GetStringUc@WGdl@@IAEPB_SHPAUGdlHeader@@@Z]
-	// Can't export pointer to native type 'int16_t const*' [TypeClass.PointerTypeClass] in LuaBridge
-	void GetStringUc(int32_t arg2, struct GdlHeader* arg3)
-	{
-		typedef int16_t const*(__thiscall* _Func)(class WGdl* const thisPtr, int32_t arg2, struct GdlHeader* arg3);
-		_Func mFunc = (_Func)(GameModule + 0x6e4f40);
-		mFunc(this, arg2, arg3);
-	}
-	// [Function] char const* __convention("thiscall") WGdl::GetString(class WGdl* const this, int32_t arg2, struct GdlHeader* arg3) [?GetString@WGdl@@IAEPBDHPAUGdlHeader@@@Z]
-	std::string GetString(int32_t arg2, struct GdlHeader* arg3)
-	{
-		typedef char const*(__thiscall* _Func)(class WGdl* const thisPtr, int32_t arg2, struct GdlHeader* arg3);
-		_Func mFunc = (_Func)(GameModule + 0x6e4f70);
-		char const* OutResult = mFunc(this, arg2, arg3);
-		if (OutResult == nullptr) return std::string();
-		std::string result_str(OutResult);
-		return result_str;
-	}
-	// [Function] wchar_t const* __convention("thiscall") WGdl::GetStringUc(class WGdl* const this, int32_t arg2) [?GetStringUc@WGdl@@QAEPB_SH@Z]
-	std::string GetStringUc2(int32_t arg2)
-	{
-		typedef wchar_t const*(__thiscall* _Func)(class WGdl* const thisPtr, int32_t arg2);
-		_Func mFunc = (_Func)(GameModule + 0x6e4fa0);
-		wchar_t const* OutResult = mFunc(this, arg2);
-		if (OutResult == nullptr) return std::string();
-		std::wstring result_wstr(OutResult);
-		std::string result_str(result_wstr.length(), 0);
-		std::transform(result_wstr.begin(), result_wstr.end(), result_str.begin(), [](wchar_t c) { return (char)c; });
-		return result_str;
-	}
-	// [Function] char const* __convention("thiscall") WGdl::GetString(class WGdl* const this, int32_t arg2) [?GetString@WGdl@@QAEPBDH@Z]
-	std::string GetString2(int32_t arg2)
-	{
-		typedef char const*(__thiscall* _Func)(class WGdl* const thisPtr, int32_t arg2);
-		_Func mFunc = (_Func)(GameModule + 0x6e4fe0);
-		char const* OutResult = mFunc(this, arg2);
-		if (OutResult == nullptr) return std::string();
-		std::string result_str(OutResult);
-		return result_str;
-	}
-	// [Function] struct GdlHeader* __convention("thiscall") WGdl::GetHeader(class WGdl* const this) [?GetHeader@WGdl@@QAEPAUGdlHeader@@XZ]
-	struct GdlHeader* GetHeader()
-	{
-		typedef struct GdlHeader*(__thiscall* _Func)(class WGdl* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0x6e5010);
-		return mFunc(this);
-	}
-	// [Function] int32_t __convention("thiscall") WGdl::PreProcess(class WGdl* const this) [?PreProcess@WGdl@@IAEHXZ]
-	int32_t PreProcess()
-	{
-		typedef int32_t(__thiscall* _Func)(class WGdl* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0x6e5020);
-		return mFunc(this);
-	}
-	// [Function] int32_t __convention("thiscall") WGdl::PreProcess(class WGdl* const this, struct GdlDialog* arg2) [?PreProcess@WGdl@@IAEHPAUGdlDialog@@@Z]
-	int32_t PreProcess2(struct GdlDialog* arg2)
-	{
-		typedef int32_t(__thiscall* _Func)(class WGdl* const thisPtr, struct GdlDialog* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x6e5780);
-		return mFunc(this, arg2);
-	}
-	// [Function] int32_t __convention("thiscall") WGdl::PreProcess(class WGdl* const this, struct GdlLines* arg2) [?PreProcess@WGdl@@IAEHPAUGdlLines@@@Z]
-	int32_t PreProcess3(struct GdlLines* arg2)
-	{
-		typedef int32_t(__thiscall* _Func)(class WGdl* const thisPtr, struct GdlLines* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x6e59e0);
-		return mFunc(this, arg2);
-	}
-	// [Function] int32_t __convention("thiscall") WGdl::PreProcess(class WGdl* const this, struct GdlSentence* arg2) [?PreProcess@WGdl@@IAEHPAUGdlSentence@@@Z]
-	int32_t PreProcess4(struct GdlSentence* arg2)
-	{
-		typedef int32_t(__thiscall* _Func)(class WGdl* const thisPtr, struct GdlSentence* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x6e5ce0);
-		return mFunc(this, arg2);
-	}
-	// [Function] uint8_t __convention("thiscall") WGdl::FrameProcess(class WGdl* const this) [?FrameProcess@WGdl@@QAE_NXZ]
-	uint8_t FrameProcess()
-	{
-		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0x6e5ec0);
-		return mFunc(this);
-	}
-	// [Function] uint8_t __convention("thiscall") WGdl::FrameProcess(class WGdl* const this, struct GdlDialog* arg2) [?FrameProcess@WGdl@@IAE_NPAUGdlDialog@@@Z]
-	uint8_t FrameProcess2(struct GdlDialog* arg2)
-	{
-		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr, struct GdlDialog* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x6e6040);
-		return mFunc(this, arg2);
-	}
-	// [Function] uint8_t WGdl::FrameProcessAll() [?FrameProcessAll@WGdl@@SA_NXZ]
-	static uint8_t FrameProcessAll()
-	{
-		typedef uint8_t(__fastcall* _Func)();
-		_Func mFunc = (_Func)(GameModule + 0x6e60c0);
-		return mFunc();
-	}
-	// [Function] uint8_t __convention("thiscall") WGdl::IsRunning(class WGdl* const this) [?IsRunning@WGdl@@QAE_NXZ]
-	uint8_t IsRunning()
-	{
-		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0x6e6240);
-		return mFunc(this);
-	}
-	// [Function] uint8_t __convention("thiscall") WGdl::Stop(class WGdl* const this) [?Stop@WGdl@@QAE_NXZ]
-	uint8_t Stop()
-	{
-		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0x6e6260);
-		return mFunc(this);
-	}
-	// [Function] uint8_t __convention("thiscall") WGdl::Resume(class WGdl* const this) [?Resume@WGdl@@QAE_NXZ]
-	uint8_t Resume()
-	{
-		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0x6e6280);
-		return mFunc(this);
-	}
-	// [Function] uint8_t __convention("thiscall") WGdl::Pause(class WGdl* const this) [?Pause@WGdl@@QAE_NXZ]
-	uint8_t Pause()
-	{
-		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0x6e6290);
-		return mFunc(this);
-	}
-	// [Function] uint8_t __convention("thiscall") WGdl::Start(class WGdl* const this, int32_t arg2) [?Start@WGdl@@QAE_NH@Z]
-	uint8_t Start(int32_t arg2)
-	{
-		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr, int32_t arg2);
-		_Func mFunc = (_Func)(GameModule + 0x6e62a0);
-		return mFunc(this, arg2);
-	}
-	// [Function] uint8_t __convention("thiscall") WGdl::Start(class WGdl* const this, char const* arg2) [?Start@WGdl@@QAE_NPBD@Z]
-	uint8_t Start2(std::string arg2)
-	{
-		char const* arg2_c_str = arg2.c_str();
-		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr, char const* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x6e62f0);
-		return mFunc(this, arg2_c_str);
-	}
-	// [Function] uint8_t __convention("thiscall") WGdl::Release(class WGdl* const this) [?Release@WGdl@@QAE_NXZ]
-	uint8_t Release()
-	{
-		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0x6e63b0);
-		return mFunc(this);
-	}
-	// [Function] uint8_t __convention("thiscall") WGdl::Load(class WGdl* const this, class ghmGcFile* arg2, int32_t arg3) [?Load@WGdl@@QAE_NPAVghmGcFile@@H@Z]
-	uint8_t Load(class ghmGcFile* arg2, int32_t arg3)
-	{
-		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr, class ghmGcFile* arg2, int32_t arg3);
-		_Func mFunc = (_Func)(GameModule + 0x6e63f0);
-		return mFunc(this, arg2, arg3);
-	}
-	// [Function] uint8_t __convention("thiscall") WGdl::Terminate(class WGdl* const this) [?Terminate@WGdl@@UAE_NXZ]
-	uint8_t Terminate()
-	{
-		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0x6e6440);
-		return mFunc(this);
-	}
-	// [Function] uint8_t __convention("thiscall") WGdl::Initialize(class WGdl* const this) [?Initialize@WGdl@@UAE_NXZ]
-	uint8_t Initialize()
-	{
-		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0x6e6470);
-		return mFunc(this);
-	}
-	// [Function] uint8_t __convention("thiscall") WGdl::Load(class WGdl* const this, void* arg2) [?Load@WGdl@@QAE_NPAX@Z]
-	uint8_t Load2(void* arg2)
-	{
-		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr, void* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x6e65c0);
-		return mFunc(this, arg2);
-	}
-	// [Function] int32_t __convention("thiscall") WGdl::GetDialogCount(class WGdl* const this) [?GetDialogCount@WGdl@@QAEHXZ]
-	int32_t GetDialogCount()
-	{
-		typedef int32_t(__thiscall* _Func)(class WGdl* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0x6e6630);
-		return mFunc(this);
-	}
-	// [Function] struct GdlDialog* __convention("thiscall") WGdl::GetDialog(class WGdl* const this, int32_t arg2) [?GetDialog@WGdl@@QAEPAUGdlDialog@@H@Z]
-	struct GdlDialog* GetDialog(int32_t arg2)
-	{
-		typedef struct GdlDialog*(__thiscall* _Func)(class WGdl* const thisPtr, int32_t arg2);
-		_Func mFunc = (_Func)(GameModule + 0x6e6650);
-		return mFunc(this, arg2);
-	}
-	// [Function] struct GdlDialog* __convention("thiscall") WGdl::GetDialog(class WGdl* const this, char const* arg2) [?GetDialog@WGdl@@QAEPAUGdlDialog@@PBD@Z]
-	struct GdlDialog* GetDialog2(std::string arg2)
-	{
-		char const* arg2_c_str = arg2.c_str();
-		typedef struct GdlDialog*(__thiscall* _Func)(class WGdl* const thisPtr, char const* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x6e6680);
-		return mFunc(this, arg2_c_str);
-	}
-	// [Function] int32_t __convention("thiscall") WGdl::GetDialogIndex(class WGdl* const this, char const* StringToFind) [?GetDialogIndex@WGdl@@QAEHPBD@Z]
-	int32_t GetDialogIndex(std::string StringToFind)
-	{
-		char const* StringToFind_c_str = StringToFind.c_str();
-		typedef int32_t(__thiscall* _Func)(class WGdl* const thisPtr, char const* StringToFind);
-		_Func mFunc = (_Func)(GameModule + 0x6e6710);
-		return mFunc(this, StringToFind_c_str);
-	}
 	/// Struct member variables
 
 	// <class ghmListObj field_0, offset 0x0>
@@ -29060,6 +33639,242 @@ public:
 
 	// <struct GdlLines* mpLines, offset 0x40>
 	struct GdlLines* mpLines = nullptr;
+
+	/// 31 Functions
+
+	// [Function] class WGdl* WGdl::GetTop() [?GetTop@WGdl@@KAPAV1@XZ]
+	static class WGdl* GetTop()
+	{
+		typedef class WGdl*(__fastcall* _Func)();
+		_Func mFunc = (_Func)(GameModule + 0xebc90);
+		return mFunc();
+	}
+	// [Function] class WGdl* __convention("thiscall") WGdl::GetNext(class WGdl* const this) [?GetNext@WGdl@@QAEPAV1@XZ]
+	class WGdl* GetNext()
+	{
+		typedef class WGdl*(__thiscall* _Func)(class WGdl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xebca0);
+		return mFunc(this);
+	}
+	// [Function] int32_t __convention("thiscall") WGdl::GetStringUcCount(class WGdl* const this) [?GetStringUcCount@WGdl@@QAEHXZ]
+	int32_t GetStringUcCount()
+	{
+		typedef int32_t(__thiscall* _Func)(class WGdl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x6e4ef0);
+		return mFunc(this);
+	}
+	// [Function] int32_t __convention("thiscall") WGdl::GetStringCount(class WGdl* const this) [?GetStringCount@WGdl@@QAEHXZ]
+	int32_t GetStringCount()
+	{
+		typedef int32_t(__thiscall* _Func)(class WGdl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x6e4f20);
+		return mFunc(this);
+	}
+	// [Function] int16_t const* __convention("thiscall") WGdl::GetStringUc(class WGdl* const this, int32_t arg2, struct GdlHeader* arg3) [?GetStringUc@WGdl@@IAEPB_SHPAUGdlHeader@@@Z]
+	// Can't export pointer to native type 'int16_t const*' [TypeClass.PointerTypeClass] in LuaBridge
+	void GetStringUc(int32_t arg2, struct GdlHeader* arg3)
+	{
+		typedef int16_t const*(__thiscall* _Func)(class WGdl* const thisPtr, int32_t arg2, struct GdlHeader* arg3);
+		_Func mFunc = (_Func)(GameModule + 0x6e4f40);
+		mFunc(this, arg2, arg3);
+	}
+	// [Function] char const* __convention("thiscall") WGdl::GetString(class WGdl* const this, int32_t arg2, struct GdlHeader* arg3) [?GetString@WGdl@@IAEPBDHPAUGdlHeader@@@Z]
+	std::string GetString(int32_t arg2, struct GdlHeader* arg3)
+	{
+		typedef char const*(__thiscall* _Func)(class WGdl* const thisPtr, int32_t arg2, struct GdlHeader* arg3);
+		_Func mFunc = (_Func)(GameModule + 0x6e4f70);
+		char const* OutResult = mFunc(this, arg2, arg3);
+		if (OutResult == nullptr) return std::string();
+		std::string result_str(OutResult);
+		return result_str;
+	}
+	// [Function] wchar_t const* __convention("thiscall") WGdl::GetStringUc(class WGdl* const this, int32_t arg2) [?GetStringUc@WGdl@@QAEPB_SH@Z]
+	std::string GetStringUc_2(int32_t arg2)
+	{
+		typedef wchar_t const*(__thiscall* _Func)(class WGdl* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x6e4fa0);
+		wchar_t const* OutResult = mFunc(this, arg2);
+		if (OutResult == nullptr) return std::string();
+		std::wstring result_wstr(OutResult);
+		std::string result_str(result_wstr.length(), 0);
+		std::transform(result_wstr.begin(), result_wstr.end(), result_str.begin(), [](wchar_t c) { return (char)c; });
+		return result_str;
+	}
+	// [Function] char const* __convention("thiscall") WGdl::GetString(class WGdl* const this, int32_t arg2) [?GetString@WGdl@@QAEPBDH@Z]
+	std::string GetString_2(int32_t arg2)
+	{
+		typedef char const*(__thiscall* _Func)(class WGdl* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x6e4fe0);
+		char const* OutResult = mFunc(this, arg2);
+		if (OutResult == nullptr) return std::string();
+		std::string result_str(OutResult);
+		return result_str;
+	}
+	// [Function] struct GdlHeader* __convention("thiscall") WGdl::GetHeader(class WGdl* const this) [?GetHeader@WGdl@@QAEPAUGdlHeader@@XZ]
+	struct GdlHeader* GetHeader()
+	{
+		typedef struct GdlHeader*(__thiscall* _Func)(class WGdl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x6e5010);
+		return mFunc(this);
+	}
+	// [Function] int32_t __convention("thiscall") WGdl::PreProcess(class WGdl* const this) [?PreProcess@WGdl@@IAEHXZ]
+	int32_t PreProcess()
+	{
+		typedef int32_t(__thiscall* _Func)(class WGdl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x6e5020);
+		return mFunc(this);
+	}
+	// [Function] int32_t __convention("thiscall") WGdl::PreProcess(class WGdl* const this, struct GdlDialog* arg2) [?PreProcess@WGdl@@IAEHPAUGdlDialog@@@Z]
+	int32_t PreProcess_2(struct GdlDialog* arg2)
+	{
+		typedef int32_t(__thiscall* _Func)(class WGdl* const thisPtr, struct GdlDialog* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x6e5780);
+		return mFunc(this, arg2);
+	}
+	// [Function] int32_t __convention("thiscall") WGdl::PreProcess(class WGdl* const this, struct GdlLines* arg2) [?PreProcess@WGdl@@IAEHPAUGdlLines@@@Z]
+	int32_t PreProcess_3(struct GdlLines* arg2)
+	{
+		typedef int32_t(__thiscall* _Func)(class WGdl* const thisPtr, struct GdlLines* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x6e59e0);
+		return mFunc(this, arg2);
+	}
+	// [Function] int32_t __convention("thiscall") WGdl::PreProcess(class WGdl* const this, struct GdlSentence* arg2) [?PreProcess@WGdl@@IAEHPAUGdlSentence@@@Z]
+	int32_t PreProcess_4(struct GdlSentence* arg2)
+	{
+		typedef int32_t(__thiscall* _Func)(class WGdl* const thisPtr, struct GdlSentence* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x6e5ce0);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") WGdl::FrameProcess(class WGdl* const this) [?FrameProcess@WGdl@@QAE_NXZ]
+	uint8_t FrameProcess()
+	{
+		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x6e5ec0);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") WGdl::FrameProcess(class WGdl* const this, struct GdlDialog* arg2) [?FrameProcess@WGdl@@IAE_NPAUGdlDialog@@@Z]
+	uint8_t FrameProcess_2(struct GdlDialog* arg2)
+	{
+		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr, struct GdlDialog* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x6e6040);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t WGdl::FrameProcessAll() [?FrameProcessAll@WGdl@@SA_NXZ]
+	static uint8_t FrameProcessAll()
+	{
+		typedef uint8_t(__fastcall* _Func)();
+		_Func mFunc = (_Func)(GameModule + 0x6e60c0);
+		return mFunc();
+	}
+	// [Function] uint8_t __convention("thiscall") WGdl::IsRunning(class WGdl* const this) [?IsRunning@WGdl@@QAE_NXZ]
+	uint8_t IsRunning()
+	{
+		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x6e6240);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") WGdl::Stop(class WGdl* const this) [?Stop@WGdl@@QAE_NXZ]
+	uint8_t Stop()
+	{
+		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x6e6260);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") WGdl::Resume(class WGdl* const this) [?Resume@WGdl@@QAE_NXZ]
+	uint8_t Resume()
+	{
+		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x6e6280);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") WGdl::Pause(class WGdl* const this) [?Pause@WGdl@@QAE_NXZ]
+	uint8_t Pause()
+	{
+		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x6e6290);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") WGdl::Start(class WGdl* const this, int32_t arg2) [?Start@WGdl@@QAE_NH@Z]
+	uint8_t Start(int32_t arg2)
+	{
+		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x6e62a0);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") WGdl::Start(class WGdl* const this, char const* arg2) [?Start@WGdl@@QAE_NPBD@Z]
+	uint8_t Start_2(std::string arg2)
+	{
+		char const* arg2_c_str = arg2.c_str();
+		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr, char const* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x6e62f0);
+		return mFunc(this, arg2_c_str);
+	}
+	// [Function] uint8_t __convention("thiscall") WGdl::Release(class WGdl* const this) [?Release@WGdl@@QAE_NXZ]
+	uint8_t Release()
+	{
+		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x6e63b0);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") WGdl::Load(class WGdl* const this, class ghmGcFile* arg2, int32_t arg3) [?Load@WGdl@@QAE_NPAVghmGcFile@@H@Z]
+	uint8_t Load(class ghmGcFile* arg2, int32_t arg3)
+	{
+		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr, class ghmGcFile* arg2, int32_t arg3);
+		_Func mFunc = (_Func)(GameModule + 0x6e63f0);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] uint8_t __convention("thiscall") WGdl::Terminate(class WGdl* const this) [?Terminate@WGdl@@UAE_NXZ]
+	uint8_t Terminate()
+	{
+		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x6e6440);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") WGdl::Initialize(class WGdl* const this) [?Initialize@WGdl@@UAE_NXZ]
+	uint8_t Initialize()
+	{
+		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x6e6470);
+		return mFunc(this);
+	}
+	// [Function] uint8_t __convention("thiscall") WGdl::Load(class WGdl* const this, void* arg2) [?Load@WGdl@@QAE_NPAX@Z]
+	uint8_t Load_2(void* arg2)
+	{
+		typedef uint8_t(__thiscall* _Func)(class WGdl* const thisPtr, void* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x6e65c0);
+		return mFunc(this, arg2);
+	}
+	// [Function] int32_t __convention("thiscall") WGdl::GetDialogCount(class WGdl* const this) [?GetDialogCount@WGdl@@QAEHXZ]
+	int32_t GetDialogCount()
+	{
+		typedef int32_t(__thiscall* _Func)(class WGdl* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x6e6630);
+		return mFunc(this);
+	}
+	// [Function] struct GdlDialog* __convention("thiscall") WGdl::GetDialog(class WGdl* const this, int32_t arg2) [?GetDialog@WGdl@@QAEPAUGdlDialog@@H@Z]
+	struct GdlDialog* GetDialog(int32_t arg2)
+	{
+		typedef struct GdlDialog*(__thiscall* _Func)(class WGdl* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0x6e6650);
+		return mFunc(this, arg2);
+	}
+	// [Function] struct GdlDialog* __convention("thiscall") WGdl::GetDialog(class WGdl* const this, char const* arg2) [?GetDialog@WGdl@@QAEPAUGdlDialog@@PBD@Z]
+	struct GdlDialog* GetDialog_2(std::string arg2)
+	{
+		char const* arg2_c_str = arg2.c_str();
+		typedef struct GdlDialog*(__thiscall* _Func)(class WGdl* const thisPtr, char const* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x6e6680);
+		return mFunc(this, arg2_c_str);
+	}
+	// [Function] int32_t __convention("thiscall") WGdl::GetDialogIndex(class WGdl* const this, char const* StringToFind) [?GetDialogIndex@WGdl@@QAEHPBD@Z]
+	int32_t GetDialogIndex(std::string StringToFind)
+	{
+		char const* StringToFind_c_str = StringToFind.c_str();
+		typedef int32_t(__thiscall* _Func)(class WGdl* const thisPtr, char const* StringToFind);
+		_Func mFunc = (_Func)(GameModule + 0x6e6710);
+		return mFunc(this, StringToFind_c_str);
+	}
+	/// Meta
 
 	WGdl()
 	{
@@ -29114,31 +33929,31 @@ public:
 			.addFunction("GetStringCount", &WGdl::GetStringCount)
 			.addFunction("GetStringUc", &WGdl::GetStringUc)
 			.addFunction("GetString", &WGdl::GetString)
-			.addFunction("GetStringUc2", &WGdl::GetStringUc2)
-			.addFunction("GetString2", &WGdl::GetString2)
+			.addFunction("GetStringUc_2", &WGdl::GetStringUc_2)
+			.addFunction("GetString_2", &WGdl::GetString_2)
 			.addFunction("GetHeader", &WGdl::GetHeader)
 			.addFunction("PreProcess", &WGdl::PreProcess)
-			.addFunction("PreProcess2", &WGdl::PreProcess2)
-			.addFunction("PreProcess3", &WGdl::PreProcess3)
-			.addFunction("PreProcess4", &WGdl::PreProcess4)
+			.addFunction("PreProcess_2", &WGdl::PreProcess_2)
+			.addFunction("PreProcess_3", &WGdl::PreProcess_3)
+			.addFunction("PreProcess_4", &WGdl::PreProcess_4)
 			.addFunction("FrameProcess", &WGdl::FrameProcess)
-			.addFunction("FrameProcess2", &WGdl::FrameProcess2)
+			.addFunction("FrameProcess_2", &WGdl::FrameProcess_2)
 			.addStaticFunction("FrameProcessAll", &WGdl::FrameProcessAll)
 			.addFunction("IsRunning", &WGdl::IsRunning)
 			.addFunction("Stop", &WGdl::Stop)
 			.addFunction("Resume", &WGdl::Resume)
 			.addFunction("Pause", &WGdl::Pause)
 			.addFunction("Start", &WGdl::Start)
-			.addFunction("Start2", &WGdl::Start2)
+			.addFunction("Start_2", &WGdl::Start_2)
 			.addFunction("Release", &WGdl::Release)
 			.addFunction("Load", &WGdl::Load)
 			.addFunction("Terminate", &WGdl::Terminate)
 			.addFunction("Initialize", &WGdl::Initialize)
 			// Can't export void pointer 'void*' [TypeClass.PointerTypeClass] in LuaBridge
-			//.addFunction("Load2", &WGdl::Load2)
+			//.addFunction("Load_2", &WGdl::Load_2)
 			.addFunction("GetDialogCount", &WGdl::GetDialogCount)
 			.addFunction("GetDialog", &WGdl::GetDialog)
-			.addFunction("GetDialog2", &WGdl::GetDialog2)
+			.addFunction("GetDialog_2", &WGdl::GetDialog_2)
 			.addFunction("GetDialogIndex", &WGdl::GetDialogIndex)
 		.endClass();
 	}
@@ -29163,13 +33978,6 @@ static_assert(sizeof(WGdl) == 68, "expected WGdl to be size 68");
 struct GdlLines
 {
 public:
-	// [Function] struct GdlSentence* __convention("thiscall") GdlLines::GetSentence(struct GdlLines* const this, int32_t arg2) [?GetSentence@GdlLines@@QAEPAUGdlSentence@@H@Z]
-	struct GdlSentence* GetSentence(int32_t arg2)
-	{
-		typedef struct GdlSentence*(__thiscall* _Func)(struct GdlLines* const thisPtr, int32_t arg2);
-		_Func mFunc = (_Func)(GameModule + 0xb36b0);
-		return mFunc(this, arg2);
-	}
 	/// Struct member variables
 
 	// <int16_t mVoiceID, offset 0x0>
@@ -29198,6 +34006,17 @@ public:
 
 	// <uint32_t mPad[0x1], offset 0x1c>
 	uint32_t mPad[1];
+
+	/// 1 Functions
+
+	// [Function] struct GdlSentence* __convention("thiscall") GdlLines::GetSentence(struct GdlLines* const this, int32_t arg2) [?GetSentence@GdlLines@@QAEPAUGdlSentence@@H@Z]
+	struct GdlSentence* GetSentence(int32_t arg2)
+	{
+		typedef struct GdlSentence*(__thiscall* _Func)(struct GdlLines* const thisPtr, int32_t arg2);
+		_Func mFunc = (_Func)(GameModule + 0xb36b0);
+		return mFunc(this, arg2);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct GdlLines (" << mSentenceCount << " sentences) [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -29262,6 +34081,10 @@ public:
 	// <uint32_t mPad[0x2], offset 0x8>
 	uint32_t mPad[2];
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string GetLetters() const { if (mpLettersUc == nullptr) return std::string(); std::wstring result_wstr(mpLettersUc); std::string result_str(result_wstr.length(), 0); std::transform(result_wstr.begin(), result_wstr.end(), result_str.begin(), [](wchar_t c) { return (char)c; }); return result_str; }
 	std::string ToString() const { std::stringstream stream; stream << "struct GdlSentence (" << GetLetters() << ") [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -29315,6 +34138,28 @@ public:
 
 	};
 
+	/// Struct member variables
+
+	// <class ghmListObj field_0, offset 0x0>
+	// class ghmListObj Super;
+
+	// <enum MessLines::MLINE_STATUS_ID m_Status, offset 0x10>
+	enum MessLines::MLINE_STATUS_ID m_Status;
+
+	// <struct GdlLines* m_pLine, offset 0x14>
+	struct GdlLines* m_pLine = nullptr;
+
+	// <int32_t m_Alpha, offset 0x18>
+	int32_t m_Alpha = 0;
+
+	// <struct GXColor m_Color, offset 0x1c>
+	struct GXColor m_Color;
+
+	// <class ghmGcFont* m_pFont, offset 0x20>
+	class ghmGcFont* m_pFont = nullptr;
+
+	/// 3 Functions
+
 	// [Function] uint8_t __convention("thiscall") MessLines::RenderProcess(class MessLines* const this) [?RenderProcess@MessLines@@QAE_NXZ]
 	uint8_t RenderProcess()
 	{
@@ -29336,25 +34181,7 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x489640);
 		return mFunc(this, arg2);
 	}
-	/// Struct member variables
-
-	// <class ghmListObj field_0, offset 0x0>
-	// class ghmListObj Super;
-
-	// <enum MessLines::MLINE_STATUS_ID m_Status, offset 0x10>
-	enum MessLines::MLINE_STATUS_ID m_Status;
-
-	// <struct GdlLines* m_pLine, offset 0x14>
-	struct GdlLines* m_pLine = nullptr;
-
-	// <int32_t m_Alpha, offset 0x18>
-	int32_t m_Alpha = 0;
-
-	// <struct GXColor m_Color, offset 0x1c>
-	struct GXColor m_Color;
-
-	// <class ghmGcFont* m_pFont, offset 0x20>
-	class ghmGcFont* m_pFont = nullptr;
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class MessLines [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -29391,6 +34218,8 @@ static_assert(sizeof(MessLines::m_Color) == 4, "expected MessLines::m_Color to b
 static_assert(sizeof(MessLines::m_pFont) == 4, "expected MessLines::m_pFont to be size 4");
 static_assert(sizeof(MessLines) == 36, "expected MessLines to be size 36");
 
+// Unsupported operator
+//void* __convention("thiscall") MessLines::`vector deleting destructor'(class MessLines* const this, uint32_t arg2)
 // [Structure] class ACameraModeBase
 class ACameraModeBase
 {
@@ -29411,6 +34240,10 @@ private:
 	char _UnidentifiedData_17[3];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ACameraModeBase [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ACameraModeBase& InObject)
@@ -29441,13 +34274,6 @@ static_assert(sizeof(ACameraModeBase) == 20, "expected ACameraModeBase to be siz
 class CCameraModeLockOn : public ACameraModeBase
 {
 public:
-	// [Function] class mHRChara* __convention("thiscall") CCameraModeLockOn::getLockOnCharacter(class CCameraModeLockOn* const this) [?getLockOnCharacter@CCameraModeLockOn@@QBEPBVmHRChara@@XZ]
-	class mHRChara* getLockOnCharacter()
-	{
-		typedef class mHRChara*(__thiscall* _Func)(class CCameraModeLockOn* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0xb5050);
-		return mFunc(this);
-	}
 	/// Struct member variables
 
 	// <class ACameraModeBase field_0, offset 0x0>
@@ -29498,6 +34324,17 @@ private:
 	char _UnidentifiedData_161[15];
 
 public:
+	/// 1 Functions
+
+	// [Function] class mHRChara* __convention("thiscall") CCameraModeLockOn::getLockOnCharacter(class CCameraModeLockOn* const this) [?getLockOnCharacter@CCameraModeLockOn@@QBEPBVmHRChara@@XZ]
+	class mHRChara* getLockOnCharacter()
+	{
+		typedef class mHRChara*(__thiscall* _Func)(class CCameraModeLockOn* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xb5050);
+		return mFunc(this);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraModeLockOn [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraModeLockOn& InObject)
@@ -29550,6 +34387,15 @@ static_assert(sizeof(CCameraModeLockOn) == 176, "expected CCameraModeLockOn to b
 class HrTalk
 {
 public:
+	/// Struct member variables
+
+	// <Unidentified data segment, offset 0x0>
+private:
+	char _UnidentifiedData_0[484];
+
+public:
+	/// 19 Functions
+
 	// [Function] uint8_t HrTalk::IsTalkDie() [?IsTalkDie@HrTalk@@SA_NXZ]
 	static uint8_t IsTalkDie()
 	{
@@ -29684,13 +34530,8 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x4c0720);
 		return mFunc();
 	}
-	/// Struct member variables
+	/// Meta
 
-	// <Unidentified data segment, offset 0x0>
-private:
-	char _UnidentifiedData_0[484];
-
-public:
 	std::string ToString() const { std::stringstream stream; stream << "class HrTalk [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(HrTalk& InObject)
@@ -29728,6 +34569,8 @@ public:
 };
 static_assert(sizeof(HrTalk) == 484, "expected HrTalk to be size 484");
 
+// Unsupported constructor
+//void __convention("thiscall") HrTalk::HrTalk(class HrTalk* const this)
 // [Structure] class HrSysMessage
 /// <summary>
 /// Related to system messages.
@@ -29735,6 +34578,50 @@ static_assert(sizeof(HrTalk) == 484, "expected HrTalk to be size 484");
 class HrSysMessage
 {
 public:
+	// enum HrSysMessage::e_SYSMES_MODE
+	enum e_SYSMES_MODE : uint32_t
+	{
+		// <e_SYSMES_MODE_NORMAL = 0x0>
+		e_SYSMES_MODE_NORMAL = 0,
+
+		// <e_SYSMES_MODE_MAPOPEN = 0x1>
+		e_SYSMES_MODE_MAPOPEN = 1,
+
+		// <e_SYSMES_MODE_MASK = 0x2>
+		e_SYSMES_MODE_MASK = 2,
+
+		// <e_SYSMES_MODE_POWERUP = 0x3>
+		e_SYSMES_MODE_POWERUP = 3,
+
+		// <e_SYSMES_MODE_PAYMONEY = 0x4>
+		e_SYSMES_MODE_PAYMONEY = 4,
+
+		// <e_SYSMES_MODE_FUSOKU_MONEY = 0x5>
+		e_SYSMES_MODE_FUSOKU_MONEY = 5,
+
+		// <e_SYSMES_MODE_TAMARI_MONEY = 0x6>
+		e_SYSMES_MODE_TAMARI_MONEY = 6,
+
+		// <e_SYSMES_MODE_FREEFIGHT = 0x7>
+		e_SYSMES_MODE_FREEFIGHT = 7,
+
+		// <e_SYSMES_MODE_NUM = 0x8>
+		e_SYSMES_MODE_NUM = 8
+
+	};
+
+	/// Struct member variables
+
+	// <Unidentified data segment, offset 0x0>
+private:
+	char _UnidentifiedData_0[608];
+
+public:
+	// <class ghmResGroup ResGroup, offset 0x260>
+	class ghmResGroup ResGroup;
+
+	/// 18 Functions
+
 	// [Function] class HrTask* HrSysMessage::TestCreate() [?TestCreate@HrSysMessage@@SAPAVHrTask@@XZ]
 	static class HrTask* TestCreate()
 	{
@@ -29840,38 +34727,6 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x4c2600);
 		return mFunc();
 	}
-	// enum HrSysMessage::e_SYSMES_MODE
-	enum e_SYSMES_MODE : uint32_t
-	{
-		// <e_SYSMES_MODE_NORMAL = 0x0>
-		e_SYSMES_MODE_NORMAL = 0,
-
-		// <e_SYSMES_MODE_MAPOPEN = 0x1>
-		e_SYSMES_MODE_MAPOPEN = 1,
-
-		// <e_SYSMES_MODE_MASK = 0x2>
-		e_SYSMES_MODE_MASK = 2,
-
-		// <e_SYSMES_MODE_POWERUP = 0x3>
-		e_SYSMES_MODE_POWERUP = 3,
-
-		// <e_SYSMES_MODE_PAYMONEY = 0x4>
-		e_SYSMES_MODE_PAYMONEY = 4,
-
-		// <e_SYSMES_MODE_FUSOKU_MONEY = 0x5>
-		e_SYSMES_MODE_FUSOKU_MONEY = 5,
-
-		// <e_SYSMES_MODE_TAMARI_MONEY = 0x6>
-		e_SYSMES_MODE_TAMARI_MONEY = 6,
-
-		// <e_SYSMES_MODE_FREEFIGHT = 0x7>
-		e_SYSMES_MODE_FREEFIGHT = 7,
-
-		// <e_SYSMES_MODE_NUM = 0x8>
-		e_SYSMES_MODE_NUM = 8
-
-	};
-
 	// [Function] uint8_t __convention("thiscall") HrSysMessage::dAppear(class HrSysMessage* const this, char const* arg2, class ghmResGroup* resGroup, int32_t arg4, enum HrSysMessage::e_SYSMES_MODE arg5, uint8_t arg6) [?dAppear@HrSysMessage@@QAE_NPBDPAXHW4e_SYSMES_MODE@1@_N@Z]
 	uint8_t dAppear(std::string arg2, class ghmResGroup* resGroup, int32_t arg4, /* enum HrSysMessage::e_SYSMES_MODE */ uint32_t arg5, uint8_t arg6)
 	{
@@ -29894,15 +34749,7 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x4c2a10);
 		return mFunc();
 	}
-	/// Struct member variables
-
-	// <Unidentified data segment, offset 0x0>
-private:
-	char _UnidentifiedData_0[608];
-
-public:
-	// <class ghmResGroup ResGroup, offset 0x260>
-	class ghmResGroup ResGroup;
+	/// Meta
 
 	bool DoAppear(std::string arg2, int32_t arg4, enum HrSysMessage::e_SYSMES_MODE arg5, uint8_t arg6) { return dAppear(arg2, nullptr, arg4, arg5, arg6) != 0; }
 	std::string ToString() const { std::stringstream stream; stream << "class HrSysMessage [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
@@ -29944,6 +34791,8 @@ public:
 static_assert(sizeof(HrSysMessage::ResGroup) == 36, "expected HrSysMessage::ResGroup to be size 36");
 static_assert(sizeof(HrSysMessage) == 644, "expected HrSysMessage to be size 644");
 
+// Unsupported constructor
+//void __convention("thiscall") HrSysMessage::HrSysMessage(class HrSysMessage* const this)
 // [Structure] class CMotionPlayer
 class CMotionPlayer
 {
@@ -29959,6 +34808,10 @@ public:
 
 		// <enum HRCAMERA_MODE m_eCamMode, offset 0x4>
 		enum HRCAMERA_MODE m_eCamMode;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "class CElement [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -29983,13 +34836,6 @@ public:
 	static_assert(sizeof(CMotionPlayer::CElement::m_eCamMode) == 4, "expected CMotionPlayer::CElement::m_eCamMode to be size 4");
 	static_assert(sizeof(CMotionPlayer::CElement) == 8, "expected CMotionPlayer::CElement to be size 8");
 
-	// [Function] void __convention("thiscall") CMotionPlayer::begin(class CMotionPlayer* const this, class mHRChara* arg2) [?begin@CMotionPlayer@@QAEXPAVmHRChara@@@Z]
-	void begin(class mHRChara* arg2)
-	{
-		typedef void(__thiscall* _Func)(class CMotionPlayer* const thisPtr, class mHRChara* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x697c70);
-		return mFunc(this, arg2);
-	}
 	/// Struct member variables
 
 	// <class CStlVector<CMotionPlayer::CElement> m_ainElement, offset 0x0>
@@ -30000,6 +34846,17 @@ public:
 
 	// <int32_t m_nPlayIndex, offset 0x10>
 	int32_t m_nPlayIndex = 0;
+
+	/// 1 Functions
+
+	// [Function] void __convention("thiscall") CMotionPlayer::begin(class CMotionPlayer* const this, class mHRChara* arg2) [?begin@CMotionPlayer@@QAEXPAVmHRChara@@@Z]
+	void begin(class mHRChara* arg2)
+	{
+		typedef void(__thiscall* _Func)(class CMotionPlayer* const thisPtr, class mHRChara* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x697c70);
+		return mFunc(this, arg2);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class CMotionPlayer [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -30032,13 +34889,6 @@ static_assert(sizeof(CMotionPlayer) == 20, "expected CMotionPlayer to be size 20
 class CNYShopNPCTalkBase
 {
 public:
-	// [Function] class HrTalk* __convention("thiscall") CNYShopNPCTalkBase::GetHrTalk(class CNYShopNPCTalkBase* const this) [?GetHrTalk@CNYShopNPCTalkBase@@IAEPAVHrTalk@@XZ]
-	class HrTalk* GetHrTalk()
-	{
-		typedef class HrTalk*(__thiscall* _Func)(class CNYShopNPCTalkBase* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0xd02b0);
-		return mFunc(this);
-	}
 	// enum CNYShopNPCTalkBase::TALK_TYPE
 	enum TALK_TYPE : uint32_t
 	{
@@ -30117,13 +34967,6 @@ public:
 
 	};
 
-	// [Function] void __convention("thiscall") CNYShopNPCTalkBase::ResetHrTalk(class CNYShopNPCTalkBase* const this) [?ResetHrTalk@CNYShopNPCTalkBase@@IAEXXZ]
-	void ResetHrTalk()
-	{
-		typedef void(__thiscall* _Func)(class CNYShopNPCTalkBase* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0xe2cd0);
-		return mFunc(this);
-	}
 	/// Struct member variables
 
 	// <void* (* field_0)[0x8], offset 0x0>
@@ -30172,6 +35015,24 @@ public:
 
 	// <class HrTalk* m_pHrTalk, offset 0xc0>
 	class HrTalk* m_pHrTalk = nullptr;
+
+	/// 2 Functions
+
+	// [Function] class HrTalk* __convention("thiscall") CNYShopNPCTalkBase::GetHrTalk(class CNYShopNPCTalkBase* const this) [?GetHrTalk@CNYShopNPCTalkBase@@IAEPAVHrTalk@@XZ]
+	class HrTalk* GetHrTalk()
+	{
+		typedef class HrTalk*(__thiscall* _Func)(class CNYShopNPCTalkBase* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xd02b0);
+		return mFunc(this);
+	}
+	// [Function] void __convention("thiscall") CNYShopNPCTalkBase::ResetHrTalk(class CNYShopNPCTalkBase* const this) [?ResetHrTalk@CNYShopNPCTalkBase@@IAEXXZ]
+	void ResetHrTalk()
+	{
+		typedef void(__thiscall* _Func)(class CNYShopNPCTalkBase* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0xe2cd0);
+		return mFunc(this);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class CNYShopNPCTalkBase [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -30243,6 +35104,10 @@ public:
 	// <uint32_t m_checkedFlag[0xd], offset 0x0>
 	uint32_t m_checkedFlag[13];
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct HRSAVEDATA_SHOP [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(HRSAVEDATA_SHOP& InObject)
@@ -30263,6 +35128,581 @@ public:
 static_assert(sizeof(HRSAVEDATA_SHOP::m_checkedFlag) == 52, "expected HRSAVEDATA_SHOP::m_checkedFlag to be size 52");
 static_assert(sizeof(HRSAVEDATA_SHOP) == 52, "expected HRSAVEDATA_SHOP to be size 52");
 
+// Unsupported constructor
+//void __convention("thiscall") HrMissionResult::HrMissionResult(class HrMissionResult* const this)
+// Unsupported operator
+//void* __convention("thiscall") WGdl::`vector deleting destructor'(class WGdl* const this, uint32_t arg2)
+// [Structure] class HrScript
+class HrScript : public ghmListObj
+{
+public:
+	// enum HrScript::eRevengeMissionResult
+	enum eRevengeMissionResult : uint32_t
+	{
+		// <eRevengeMissionResult_Doing = 0xffffffffffffffff>
+		eRevengeMissionResult_Doing = UINT32_MAX,
+
+		// <eRevengeMissionResult_Cancel = 0x0>
+		eRevengeMissionResult_Cancel = 0,
+
+		// <eRevengeMissionResult_Success = 0x1>
+		eRevengeMissionResult_Success = 1,
+
+		// <eRevengeMissionResult_TimeOver = 0x2>
+		eRevengeMissionResult_TimeOver = 2
+
+	};
+
+	// enum HrScript::HRSCRIPT_CNTDISP
+	enum HRSCRIPT_CNTDISP : uint32_t
+	{
+		// <HRSCRIPT_CNTDISP_SLEEP = 0x0>
+		HRSCRIPT_CNTDISP_SLEEP = 0,
+
+		// <HRSCRIPT_CNTDISP_INIT = 0x1>
+		HRSCRIPT_CNTDISP_INIT = 1,
+
+		// <HRSCRIPT_CNTDISP_DISP = 0x2>
+		HRSCRIPT_CNTDISP_DISP = 2,
+
+		// <HRSCRIPT_CNTDISP_MAX = 0x3>
+		HRSCRIPT_CNTDISP_MAX = 3
+
+	};
+
+	// enum HrScript::HRSCRIPT_ID
+	enum HRSCRIPT_ID : uint32_t
+	{
+		// <HRSCRIPT_BOOT = 0x0>
+		HRSCRIPT_BOOT = 0,
+
+		// <HRSCRIPT_SET = 0x1>
+		HRSCRIPT_SET = 1,
+
+		// <HRSCRIPT_LOAD = 0x2>
+		HRSCRIPT_LOAD = 2,
+
+		// <HRSCRIPT_IDLE = 0x3>
+		HRSCRIPT_IDLE = 3,
+
+		// <HRSCRIPT_PROCESS = 0x4>
+		HRSCRIPT_PROCESS = 4,
+
+		// <HRSCRIPT_END = 0x5>
+		HRSCRIPT_END = 5,
+
+		// <HRSCRIPT_DELETE = 0x6>
+		HRSCRIPT_DELETE = 6,
+
+		// <HRSCRIPT_ID_MAX = 0x7>
+		HRSCRIPT_ID_MAX = 7
+
+	};
+
+	/// Struct member variables
+
+	// <class ghmListObj field_0, offset 0x0>
+	// class ghmListObj Super;
+
+	// <uint8_t mRunSubMission, offset 0x10>
+	uint8_t mRunSubMission = 0;
+
+	// <Unidentified data segment, offset 0x11>
+private:
+	char _UnidentifiedData_17[3];
+
+public:
+	// <enum HrScript::eRevengeMissionResult m_eRevengeMissionResult, offset 0x14>
+	enum HrScript::eRevengeMissionResult m_eRevengeMissionResult;
+
+	// <int64_t m_SubMissionTime, offset 0x18>
+	int64_t m_SubMissionTime;
+
+	// <int64_t m_SubMissionLimitTime, offset 0x20>
+	int64_t m_SubMissionLimitTime;
+
+	// <enum HrScript::HRSCRIPT_CNTDISP m_CntDispProc, offset 0x28>
+	enum HrScript::HRSCRIPT_CNTDISP m_CntDispProc;
+
+	// <int32_t m_RevengeMissionLastEnmKillPerformCnt, offset 0x2c>
+	int32_t m_RevengeMissionLastEnmKillPerformCnt = 0;
+
+	// <class EveObj* m_pEveObj, offset 0x30>
+	class EveObj* m_pEveObj = nullptr;
+
+	// <uint32_t m_GetNum, offset 0x34>
+	uint32_t m_GetNum = 0;
+
+	// <int32_t m_smkillcnt, offset 0x38>
+	int32_t m_smkillcnt = 0;
+
+	// <int32_t m_smkillupsoundtimer, offset 0x3c>
+	int32_t m_smkillupsoundtimer = 0;
+
+	// <int32_t m_killcntold, offset 0x40>
+	int32_t m_killcntold = 0;
+
+	// <class ghmScript* m_pGhmScript, offset 0x44>
+	class ghmScript* m_pGhmScript = nullptr;
+
+	// <class ghmScript* m_pEventScript, offset 0x48>
+	class ghmScript* m_pEventScript = nullptr;
+
+	// <class HrScriptFunc* m_pScriptFunc[0x14], offset 0x4c>
+	class HrScriptFunc* m_pScriptFunc[20];
+
+	// <class HrScriptFunc* m_pCurrentFunc, offset 0x9c>
+	class HrScriptFunc* m_pCurrentFunc = nullptr;
+
+	// <enum HrScript::HRSCRIPT_ID m_Process, offset 0xa0>
+	enum HrScript::HRSCRIPT_ID m_Process;
+
+	// <uint32_t m_Handle, offset 0xa4>
+	uint32_t m_Handle = 0;
+
+	// <uint32_t m_ParentHandle, offset 0xa8>
+	uint32_t m_ParentHandle = 0;
+
+	// <class TGan* m_pGan[0x20], offset 0xac>
+	class TGan* m_pGan[32];
+
+	// <class ghmResGroup* m_pNPCModlGmf, offset 0x12c>
+	class ghmResGroup* m_pNPCModlGmf = nullptr;
+
+	// <char m_SubName[0x10], offset 0x130>
+	char m_SubName[16];
+
+	// <uint8_t m_CountSeFlag, offset 0x140>
+	uint8_t m_CountSeFlag = 0;
+
+	// <Unidentified data segment, offset 0x141>
+private:
+	char _UnidentifiedData_321[3];
+
+public:
+	// <int32_t m_CountSeTmp, offset 0x144>
+	int32_t m_CountSeTmp = 0;
+
+	// <uint8_t m_IsSubMissionTitle, offset 0x148>
+	uint8_t m_IsSubMissionTitle = 0;
+
+	// <Unidentified data segment, offset 0x149>
+private:
+	char _UnidentifiedData_329[3];
+
+public:
+	// <struct tagGHMR_TEX m_SubMissionTitle, offset 0x14c>
+	struct tagGHMR_TEX m_SubMissionTitle;
+
+	// <struct Vec m_Position, offset 0x174>
+	struct Vec m_Position;
+
+	// <class HrMainMissionFax* m_pLetter, offset 0x180>
+	class HrMainMissionFax* m_pLetter = nullptr;
+
+	// <class ghmGcFile m_File, offset 0x184>
+	class ghmGcFile m_File;
+
+	// <char m_FileName[0x20], offset 0x240>
+	char m_FileName[32];
+
+	// <class ghmResGroup* m_pRsl, offset 0x260>
+	class ghmResGroup* m_pRsl = nullptr;
+
+	// <void* m_pRslData, offset 0x264>
+	void* m_pRslData = nullptr;
+
+	// <void* m_pScrData, offset 0x268>
+	void* m_pScrData = nullptr;
+
+	// <Unidentified data segment, offset 0x26c>
+private:
+	char _UnidentifiedData_620[4];
+
+public:
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "class HrScript [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(HrScript& InObject)
+	{
+		mRunSubMission = InObject.mRunSubMission;
+		m_eRevengeMissionResult = InObject.m_eRevengeMissionResult;
+		m_SubMissionTime = InObject.m_SubMissionTime;
+		m_SubMissionLimitTime = InObject.m_SubMissionLimitTime;
+		m_CntDispProc = InObject.m_CntDispProc;
+		m_RevengeMissionLastEnmKillPerformCnt = InObject.m_RevengeMissionLastEnmKillPerformCnt;
+		m_pEveObj = InObject.m_pEveObj;
+		m_GetNum = InObject.m_GetNum;
+		m_smkillcnt = InObject.m_smkillcnt;
+		m_smkillupsoundtimer = InObject.m_smkillupsoundtimer;
+		m_killcntold = InObject.m_killcntold;
+		m_pGhmScript = InObject.m_pGhmScript;
+		m_pEventScript = InObject.m_pEventScript;
+		m_pCurrentFunc = InObject.m_pCurrentFunc;
+		m_Process = InObject.m_Process;
+		m_Handle = InObject.m_Handle;
+		m_ParentHandle = InObject.m_ParentHandle;
+		m_pNPCModlGmf = InObject.m_pNPCModlGmf;
+		m_CountSeFlag = InObject.m_CountSeFlag;
+		m_CountSeTmp = InObject.m_CountSeTmp;
+		m_IsSubMissionTitle = InObject.m_IsSubMissionTitle;
+		m_SubMissionTitle = InObject.m_SubMissionTitle;
+		m_Position = InObject.m_Position;
+		m_pLetter = InObject.m_pLetter;
+		m_File = InObject.m_File;
+		m_pRsl = InObject.m_pRsl;
+		m_pRslData = InObject.m_pRslData;
+		m_pScrData = InObject.m_pScrData;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.deriveClass<HrScript, ghmListObj>("HrScript")
+			.addFunction("__tostring", &HrScript::ToString)
+			.addFunction("GetPtrAddr", &HrScript::GetPtrAddr)
+			.addProperty("mRunSubMission", &HrScript::mRunSubMission)
+			.addProperty("m_eRevengeMissionResult", &HrScript::m_eRevengeMissionResult)
+			.addProperty("m_SubMissionTime", &HrScript::m_SubMissionTime)
+			.addProperty("m_SubMissionLimitTime", &HrScript::m_SubMissionLimitTime)
+			.addProperty("m_CntDispProc", &HrScript::m_CntDispProc)
+			.addProperty("m_RevengeMissionLastEnmKillPerformCnt", &HrScript::m_RevengeMissionLastEnmKillPerformCnt)
+			.addProperty("m_pEveObj", &HrScript::m_pEveObj)
+			.addProperty("m_GetNum", &HrScript::m_GetNum)
+			.addProperty("m_smkillcnt", &HrScript::m_smkillcnt)
+			.addProperty("m_smkillupsoundtimer", &HrScript::m_smkillupsoundtimer)
+			.addProperty("m_killcntold", &HrScript::m_killcntold)
+			.addProperty("m_pGhmScript", &HrScript::m_pGhmScript)
+			.addProperty("m_pEventScript", &HrScript::m_pEventScript)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("m_pScriptFunc", &HrScript::m_pScriptFunc)
+			.addProperty("m_pCurrentFunc", &HrScript::m_pCurrentFunc)
+			.addProperty("m_Process", &HrScript::m_Process)
+			.addProperty("m_Handle", &HrScript::m_Handle)
+			.addProperty("m_ParentHandle", &HrScript::m_ParentHandle)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("m_pGan", &HrScript::m_pGan)
+			.addProperty("m_pNPCModlGmf", &HrScript::m_pNPCModlGmf)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("m_SubName", &HrScript::m_SubName)
+			.addProperty("m_CountSeFlag", &HrScript::m_CountSeFlag)
+			.addProperty("m_CountSeTmp", &HrScript::m_CountSeTmp)
+			.addProperty("m_IsSubMissionTitle", &HrScript::m_IsSubMissionTitle)
+			.addProperty("m_SubMissionTitle", &HrScript::m_SubMissionTitle)
+			.addProperty("m_Position", &HrScript::m_Position)
+			.addProperty("m_pLetter", &HrScript::m_pLetter)
+			.addProperty("m_File", &HrScript::m_File)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("m_FileName", &HrScript::m_FileName)
+			.addProperty("m_pRsl", &HrScript::m_pRsl)
+			// void type not supported in LuaBridge
+			//.addProperty("m_pRslData", &HrScript::m_pRslData)
+			// void type not supported in LuaBridge
+			//.addProperty("m_pScrData", &HrScript::m_pScrData)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(HrScript::mRunSubMission) == 1, "expected HrScript::mRunSubMission to be size 1");
+static_assert(sizeof(HrScript::m_eRevengeMissionResult) == 4, "expected HrScript::m_eRevengeMissionResult to be size 4");
+static_assert(sizeof(HrScript::m_SubMissionTime) == 8, "expected HrScript::m_SubMissionTime to be size 8");
+static_assert(sizeof(HrScript::m_SubMissionLimitTime) == 8, "expected HrScript::m_SubMissionLimitTime to be size 8");
+static_assert(sizeof(HrScript::m_CntDispProc) == 4, "expected HrScript::m_CntDispProc to be size 4");
+static_assert(sizeof(HrScript::m_RevengeMissionLastEnmKillPerformCnt) == 4, "expected HrScript::m_RevengeMissionLastEnmKillPerformCnt to be size 4");
+static_assert(sizeof(HrScript::m_pEveObj) == 4, "expected HrScript::m_pEveObj to be size 4");
+static_assert(sizeof(HrScript::m_GetNum) == 4, "expected HrScript::m_GetNum to be size 4");
+static_assert(sizeof(HrScript::m_smkillcnt) == 4, "expected HrScript::m_smkillcnt to be size 4");
+static_assert(sizeof(HrScript::m_smkillupsoundtimer) == 4, "expected HrScript::m_smkillupsoundtimer to be size 4");
+static_assert(sizeof(HrScript::m_killcntold) == 4, "expected HrScript::m_killcntold to be size 4");
+static_assert(sizeof(HrScript::m_pGhmScript) == 4, "expected HrScript::m_pGhmScript to be size 4");
+static_assert(sizeof(HrScript::m_pEventScript) == 4, "expected HrScript::m_pEventScript to be size 4");
+static_assert(sizeof(HrScript::m_pScriptFunc) == 80, "expected HrScript::m_pScriptFunc to be size 80");
+static_assert(sizeof(HrScript::m_pCurrentFunc) == 4, "expected HrScript::m_pCurrentFunc to be size 4");
+static_assert(sizeof(HrScript::m_Process) == 4, "expected HrScript::m_Process to be size 4");
+static_assert(sizeof(HrScript::m_Handle) == 4, "expected HrScript::m_Handle to be size 4");
+static_assert(sizeof(HrScript::m_ParentHandle) == 4, "expected HrScript::m_ParentHandle to be size 4");
+static_assert(sizeof(HrScript::m_pGan) == 128, "expected HrScript::m_pGan to be size 128");
+static_assert(sizeof(HrScript::m_pNPCModlGmf) == 4, "expected HrScript::m_pNPCModlGmf to be size 4");
+static_assert(sizeof(HrScript::m_SubName) == 16, "expected HrScript::m_SubName to be size 16");
+static_assert(sizeof(HrScript::m_CountSeFlag) == 1, "expected HrScript::m_CountSeFlag to be size 1");
+static_assert(sizeof(HrScript::m_CountSeTmp) == 4, "expected HrScript::m_CountSeTmp to be size 4");
+static_assert(sizeof(HrScript::m_IsSubMissionTitle) == 1, "expected HrScript::m_IsSubMissionTitle to be size 1");
+static_assert(sizeof(HrScript::m_SubMissionTitle) == 40, "expected HrScript::m_SubMissionTitle to be size 40");
+static_assert(sizeof(HrScript::m_Position) == 12, "expected HrScript::m_Position to be size 12");
+static_assert(sizeof(HrScript::m_pLetter) == 4, "expected HrScript::m_pLetter to be size 4");
+static_assert(sizeof(HrScript::m_File) == 188, "expected HrScript::m_File to be size 188");
+static_assert(sizeof(HrScript::m_FileName) == 32, "expected HrScript::m_FileName to be size 32");
+static_assert(sizeof(HrScript::m_pRsl) == 4, "expected HrScript::m_pRsl to be size 4");
+static_assert(sizeof(HrScript::m_pRslData) == 4, "expected HrScript::m_pRslData to be size 4");
+static_assert(sizeof(HrScript::m_pScrData) == 4, "expected HrScript::m_pScrData to be size 4");
+static_assert(sizeof(HrScript) == 624, "expected HrScript to be size 624");
+
+// [Structure] class EveObj
+class EveObj : public ghmListObj
+{
+public:
+	// enum EveObj::EVE_OBJ_KIND
+	enum EVE_OBJ_KIND : uint32_t
+	{
+		// <EVEN_OBJ_NONE = 0x0>
+		EVEN_OBJ_NONE = 0,
+
+		// <EVEN_OBJ_GARBAGE = 0x1>
+		EVEN_OBJ_GARBAGE = 1,
+
+		// <EVEN_OBJ_MODEL = 0x2>
+		EVEN_OBJ_MODEL = 2,
+
+		// <EVEN_OBJ_STGMODEL = 0x3>
+		EVEN_OBJ_STGMODEL = 3,
+
+		// <EVEN_OBJ_MAX = 0x4>
+		EVEN_OBJ_MAX = 4
+
+	};
+
+	/// Struct member variables
+
+	// <class ghmListObj field_0, offset 0x0>
+	// class ghmListObj Super;
+
+	// <class TGmf* m_pNPCModlGmf, offset 0x10>
+	class TGmf* m_pNPCModlGmf = nullptr;
+
+	// <enum EveObj::EVE_OBJ_KIND m_Kind, offset 0x14>
+	enum EveObj::EVE_OBJ_KIND m_Kind;
+
+	// <uint32_t m_handle, offset 0x18>
+	uint32_t m_handle = 0;
+
+	// <uint32_t m_ScrHandle, offset 0x1c>
+	uint32_t m_ScrHandle = 0;
+
+	// <uint8_t m_Visible, offset 0x20>
+	uint8_t m_Visible = 0;
+
+	// <Unidentified data segment, offset 0x21>
+private:
+	char _UnidentifiedData_33[3];
+
+public:
+	// <struct Vec m_Pos, offset 0x24>
+	struct Vec m_Pos;
+
+	// <struct Vec m_Dir, offset 0x30>
+	struct Vec m_Dir;
+
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "class EveObj [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(EveObj& InObject)
+	{
+		m_pNPCModlGmf = InObject.m_pNPCModlGmf;
+		m_Kind = InObject.m_Kind;
+		m_handle = InObject.m_handle;
+		m_ScrHandle = InObject.m_ScrHandle;
+		m_Visible = InObject.m_Visible;
+		m_Pos = InObject.m_Pos;
+		m_Dir = InObject.m_Dir;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.deriveClass<EveObj, ghmListObj>("EveObj")
+			.addFunction("__tostring", &EveObj::ToString)
+			.addFunction("GetPtrAddr", &EveObj::GetPtrAddr)
+			.addProperty("m_pNPCModlGmf", &EveObj::m_pNPCModlGmf)
+			.addProperty("m_Kind", &EveObj::m_Kind)
+			.addProperty("m_handle", &EveObj::m_handle)
+			.addProperty("m_ScrHandle", &EveObj::m_ScrHandle)
+			.addProperty("m_Visible", &EveObj::m_Visible)
+			.addProperty("m_Pos", &EveObj::m_Pos)
+			.addProperty("m_Dir", &EveObj::m_Dir)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(EveObj::m_pNPCModlGmf) == 4, "expected EveObj::m_pNPCModlGmf to be size 4");
+static_assert(sizeof(EveObj::m_Kind) == 4, "expected EveObj::m_Kind to be size 4");
+static_assert(sizeof(EveObj::m_handle) == 4, "expected EveObj::m_handle to be size 4");
+static_assert(sizeof(EveObj::m_ScrHandle) == 4, "expected EveObj::m_ScrHandle to be size 4");
+static_assert(sizeof(EveObj::m_Visible) == 1, "expected EveObj::m_Visible to be size 1");
+static_assert(sizeof(EveObj::m_Pos) == 12, "expected EveObj::m_Pos to be size 12");
+static_assert(sizeof(EveObj::m_Dir) == 12, "expected EveObj::m_Dir to be size 12");
+static_assert(sizeof(EveObj) == 60, "expected EveObj to be size 60");
+
+// [Structure] class HrMainMissionFax
+class HrMainMissionFax : public HrTask
+{
+public:
+	// enum HrMainMissionFax::D_FAX_STAT
+	enum D_FAX_STAT : uint32_t
+	{
+		// <D_FAX_NONE = 0x0>
+		D_FAX_NONE = 0,
+
+		// <D_FAX_INIT = 0x1>
+		D_FAX_INIT = 1,
+
+		// <D_FAX_FILEOPEN = 0x2>
+		D_FAX_FILEOPEN = 2,
+
+		// <D_FAX_LOADING = 0x3>
+		D_FAX_LOADING = 3,
+
+		// <D_FAX_READY = 0x4>
+		D_FAX_READY = 4,
+
+		// <D_FAX_END = 0x5>
+		D_FAX_END = 5,
+
+		// <D_FAX_DRAW = 0x6>
+		D_FAX_DRAW = 6
+
+	};
+
+	/// Struct member variables
+
+	// <class HrTask field_0, offset 0x0>
+	// class HrTask Super;
+
+	// <enum HrMainMissionFax::D_FAX_STAT m_Stat, offset 0x50>
+	enum HrMainMissionFax::D_FAX_STAT m_Stat;
+
+	// <uint8_t m_ClassType, offset 0x54>
+	uint8_t m_ClassType = 0;
+
+	// <Unidentified data segment, offset 0x55>
+private:
+	char _UnidentifiedData_85[3];
+
+public:
+	// <class ghmGcFile* m_pFile, offset 0x58>
+	class ghmGcFile* m_pFile = nullptr;
+
+	// <void* m_pRSL, offset 0x5c>
+	void* m_pRSL = nullptr;
+
+	// <struct tagGHMR_TEX* m_pObjectTex, offset 0x60>
+	struct tagGHMR_TEX* m_pObjectTex = nullptr;
+
+	// <int16_t m_ObjctNum, offset 0x64>
+	int16_t m_ObjctNum = 0;
+
+	// <int16_t m_Counter[0x5], offset 0x66>
+	int16_t m_Counter[5];
+
+	// <int16_t m_MekuriCounter, offset 0x70>
+	int16_t m_MekuriCounter = 0;
+
+	// <Unidentified data segment, offset 0x72>
+private:
+	char _UnidentifiedData_114[2];
+
+public:
+	// <uint32_t m_Handl, offset 0x74>
+	uint32_t m_Handl = 0;
+
+	// <int32_t m_Index, offset 0x78>
+	int32_t m_Index = 0;
+
+	// <int32_t m_NowLine[0x2], offset 0x7c>
+	int32_t m_NowLine[2];
+
+	// <int32_t m_NowSentence, offset 0x84>
+	int32_t m_NowSentence = 0;
+
+	// <int16_t m_NowWord, offset 0x88>
+	int16_t m_NowWord = 0;
+
+	// <uint8_t m_Fax_End_f, offset 0x8a>
+	uint8_t m_Fax_End_f = 0;
+
+	// <Unidentified data segment, offset 0x8b>
+private:
+	char _UnidentifiedData_139[1];
+
+public:
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "class HrMainMissionFax [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(HrMainMissionFax& InObject)
+	{
+		m_Stat = InObject.m_Stat;
+		m_ClassType = InObject.m_ClassType;
+		m_pFile = InObject.m_pFile;
+		m_pRSL = InObject.m_pRSL;
+		m_pObjectTex = InObject.m_pObjectTex;
+		m_ObjctNum = InObject.m_ObjctNum;
+		m_MekuriCounter = InObject.m_MekuriCounter;
+		m_Handl = InObject.m_Handl;
+		m_Index = InObject.m_Index;
+		m_NowSentence = InObject.m_NowSentence;
+		m_NowWord = InObject.m_NowWord;
+		m_Fax_End_f = InObject.m_Fax_End_f;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.deriveClass<HrMainMissionFax, HrTask>("HrMainMissionFax")
+			.addFunction("__tostring", &HrMainMissionFax::ToString)
+			.addFunction("GetPtrAddr", &HrMainMissionFax::GetPtrAddr)
+			.addProperty("m_Stat", &HrMainMissionFax::m_Stat)
+			.addProperty("m_ClassType", &HrMainMissionFax::m_ClassType)
+			.addProperty("m_pFile", &HrMainMissionFax::m_pFile)
+			// void type not supported in LuaBridge
+			//.addProperty("m_pRSL", &HrMainMissionFax::m_pRSL)
+			.addProperty("m_pObjectTex", &HrMainMissionFax::m_pObjectTex)
+			.addProperty("m_ObjctNum", &HrMainMissionFax::m_ObjctNum)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("m_Counter", &HrMainMissionFax::m_Counter)
+			.addProperty("m_MekuriCounter", &HrMainMissionFax::m_MekuriCounter)
+			.addProperty("m_Handl", &HrMainMissionFax::m_Handl)
+			.addProperty("m_Index", &HrMainMissionFax::m_Index)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("m_NowLine", &HrMainMissionFax::m_NowLine)
+			.addProperty("m_NowSentence", &HrMainMissionFax::m_NowSentence)
+			.addProperty("m_NowWord", &HrMainMissionFax::m_NowWord)
+			.addProperty("m_Fax_End_f", &HrMainMissionFax::m_Fax_End_f)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(HrMainMissionFax::m_Stat) == 4, "expected HrMainMissionFax::m_Stat to be size 4");
+static_assert(sizeof(HrMainMissionFax::m_ClassType) == 1, "expected HrMainMissionFax::m_ClassType to be size 1");
+static_assert(sizeof(HrMainMissionFax::m_pFile) == 4, "expected HrMainMissionFax::m_pFile to be size 4");
+static_assert(sizeof(HrMainMissionFax::m_pRSL) == 4, "expected HrMainMissionFax::m_pRSL to be size 4");
+static_assert(sizeof(HrMainMissionFax::m_pObjectTex) == 4, "expected HrMainMissionFax::m_pObjectTex to be size 4");
+static_assert(sizeof(HrMainMissionFax::m_ObjctNum) == 2, "expected HrMainMissionFax::m_ObjctNum to be size 2");
+static_assert(sizeof(HrMainMissionFax::m_Counter) == 10, "expected HrMainMissionFax::m_Counter to be size 10");
+static_assert(sizeof(HrMainMissionFax::m_MekuriCounter) == 2, "expected HrMainMissionFax::m_MekuriCounter to be size 2");
+static_assert(sizeof(HrMainMissionFax::m_Handl) == 4, "expected HrMainMissionFax::m_Handl to be size 4");
+static_assert(sizeof(HrMainMissionFax::m_Index) == 4, "expected HrMainMissionFax::m_Index to be size 4");
+static_assert(sizeof(HrMainMissionFax::m_NowLine) == 8, "expected HrMainMissionFax::m_NowLine to be size 8");
+static_assert(sizeof(HrMainMissionFax::m_NowSentence) == 4, "expected HrMainMissionFax::m_NowSentence to be size 4");
+static_assert(sizeof(HrMainMissionFax::m_NowWord) == 2, "expected HrMainMissionFax::m_NowWord to be size 2");
+static_assert(sizeof(HrMainMissionFax::m_Fax_End_f) == 1, "expected HrMainMissionFax::m_Fax_End_f to be size 1");
+static_assert(sizeof(HrMainMissionFax) == 140, "expected HrMainMissionFax to be size 140");
+
+// [Function] uint8_t __convention("thiscall") j_sub_792010(class CBgCtrl* const this) [j_sub_792010]
+uint8_t j_sub_792010(class CBgCtrl* const thisPtr)
+{
+	typedef uint8_t(__thiscall* _Func)(class CBgCtrl* const thisPtr);
+	_Func mFunc = (_Func)(GameModule + 0x392620);
+	return mFunc(thisPtr);
+}
+// Unsupported destructor
+//void __convention("thiscall") CBgCtrl::~CBgCtrl(class CBgCtrl* const this)
+// Unsupported constructor
+//void __convention("thiscall") CBgCtrl::CBgCtrl(class CBgCtrl* const this)
 // [Structure] class CCameraVibManager
 class CCameraVibManager
 {
@@ -30274,6 +35714,10 @@ private:
 	char _UnidentifiedData_0[576];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraVibManager [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraVibManager& InObject)
@@ -30299,6 +35743,10 @@ public:
 
 	// <class CDoubleSpringInterpolate m_inOfst, offset 0x0>
 	class CDoubleSpringInterpolate m_inOfst;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraBank [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -30366,6 +35814,10 @@ private:
 	char _UnidentifiedData_84[12];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraModeSubjective [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraModeSubjective& InObject)
@@ -30455,6 +35907,10 @@ private:
 	char _UnidentifiedData_152[8];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraModePetitMovie [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraModePetitMovie& InObject)
@@ -30513,6 +35969,10 @@ public:
 	// <float m_fRotVel, offset 0x18>
 	float m_fRotVel = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraModeCircle [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraModeCircle& InObject)
@@ -30564,6 +36024,10 @@ private:
 	char _UnidentifiedData_145[15];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraModeDefaultAngle [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraModeDefaultAngle& InObject)
@@ -30610,6 +36074,10 @@ public:
 
 	// <class CDoubleSpringInterpolate3D m_inAddYP, offset 0x20>
 	class CDoubleSpringInterpolate3D m_inAddYP;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraModeFree [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -30661,6 +36129,10 @@ public:
 	// <class CTimeRatioInterpolate m_inYawRatio, offset 0x78>
 	class CTimeRatioInterpolate m_inYawRatio;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraModeNormal [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraModeNormal& InObject)
@@ -30710,6 +36182,10 @@ public:
 	// <float m_fResetYaw, offset 0x18>
 	float m_fResetYaw = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraModeReset [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraModeReset& InObject)
@@ -30742,6 +36218,10 @@ public:
 	// <class CDoubleSpringInterpolate m_inDistToLookAt, offset 0x0>
 	class CDoubleSpringInterpolate m_inDistToLookAt;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraDistToLookAt [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraDistToLookAt& InObject)
@@ -30770,6 +36250,10 @@ public:
 
 	// <class CDoubleSpringInterpolate3D m_inMove, offset 0x0>
 	class CDoubleSpringInterpolate3D m_inMove;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraFollowRot [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -30837,6 +36321,10 @@ public:
 	// <class tiVector m_inCamAxisZ, offset 0xb0>
 	class tiVector m_inCamAxisZ;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraLookAtOffset [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraLookAtOffset& InObject)
@@ -30901,6 +36389,10 @@ public:
 
 	// <class CDoubleSpringInterpolate3D m_inSpringCoe, offset 0x30>
 	class CDoubleSpringInterpolate3D m_inSpringCoe;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraLookAtBase [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -30976,6 +36468,10 @@ public:
 
 	// <class tiVector m_inSlopeCheckTopPosi, offset 0x50>
 	class tiVector m_inSlopeCheckTopPosi;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraDefaultAngle [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -31060,6 +36556,10 @@ public:
 	// <float m_fDistToLookAtMax, offset 0x24>
 	float m_fDistToLookAtMax = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraLockOnModeData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraLockOnModeData& InObject)
@@ -31116,6 +36616,10 @@ public:
 	// <float m_fFollowRotCoe, offset 0x0>
 	float m_fFollowRotCoe = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraNormalModeData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraNormalModeData& InObject)
@@ -31165,6 +36669,10 @@ public:
 
 	// <float m_fDistToLookAt, offset 0x1c>
 	float m_fDistToLookAt = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraModeCommonData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -31237,6 +36745,10 @@ public:
 	// <class CCameraLockOnModeData m_inLockOnModeData, offset 0x58>
 	class CCameraLockOnModeData m_inLockOnModeData;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraDataManager [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraDataManager& InObject)
@@ -31289,6 +36801,10 @@ private:
 	char _UnidentifiedData_0[4336];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraAreaManager [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraAreaManager& InObject)
@@ -31325,6 +36841,10 @@ namespace gameUtil
 		char _UnidentifiedData_20[12];
 
 	public:
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "class CPositionControl [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(gameUtil::CPositionControl& InObject)
@@ -31400,6 +36920,10 @@ private:
 	char _UnidentifiedData_84[12];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraTarget [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraTarget& InObject)
@@ -31524,6 +37048,10 @@ namespace ti
 	public:
 		// <class tiMatrix m_inWorldMat, offset 0x60>
 		class tiMatrix m_inWorldMat;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "class CCamera [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -31682,6 +37210,10 @@ public:
 	// <class CCameraVibManager m_inVibManager, offset 0x18a0>
 	class CCameraVibManager m_inVibManager;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CGameCamera [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CGameCamera& InObject)
@@ -31795,13 +37327,6 @@ enum ECameraResetType : uint32_t
 class CCameraman
 {
 public:
-	// [Function] void __convention("thiscall") CCameraman::beginTsubazeriai(class CCameraman* const this, class mHRChara* arg2, float const arg3) [?beginTsubazeriai@CCameraman@@QAEXPBVmHRChara@@M@Z]
-	void beginTsubazeriai(class mHRChara* arg2, float const arg3)
-	{
-		typedef void(__thiscall* _Func)(class CCameraman* const thisPtr, class mHRChara* arg2, float const arg3);
-		_Func mFunc = (_Func)(GameModule + 0x398630);
-		return mFunc(this, arg2, arg3);
-	}
 	// enum CCameraman::ECameraMode
 	enum ECameraMode : uint32_t
 	{
@@ -31871,6 +37396,17 @@ private:
 	char _UnidentifiedData_7076[12];
 
 public:
+	/// 1 Functions
+
+	// [Function] void __convention("thiscall") CCameraman::beginTsubazeriai(class CCameraman* const this, class mHRChara* arg2, float const arg3) [?beginTsubazeriai@CCameraman@@QAEXPBVmHRChara@@M@Z]
+	void beginTsubazeriai(class mHRChara* arg2, float const arg3)
+	{
+		typedef void(__thiscall* _Func)(class CCameraman* const thisPtr, class mHRChara* arg2, float const arg3);
+		_Func mFunc = (_Func)(GameModule + 0x398630);
+		return mFunc(this, arg2, arg3);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CCameraman [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CCameraman& InObject)
@@ -31922,6 +37458,49 @@ static_assert(sizeof(CCameraman::m_bIsTsubaYawPlus) == 1, "expected CCameraman::
 static_assert(sizeof(CCameraman::m_nTsubaCamVibID) == 4, "expected CCameraman::m_nTsubaCamVibID to be size 4");
 static_assert(sizeof(CCameraman) == 7088, "expected CCameraman to be size 7088");
 
+// enum GHMR_VERTTYPE
+enum GHMR_VERTTYPE : uint32_t
+{
+	// <GHMR_VERTTYPE_NOTEX = 0x0>
+	GHMR_VERTTYPE_NOTEX = 0,
+
+	// <GHMR_VERTTYPE_USETEX = 0x1>
+	GHMR_VERTTYPE_USETEX = 1,
+
+	// <GHMR_VERTTYPE_USEMULTITEX = 0x2>
+	GHMR_VERTTYPE_USEMULTITEX = 2,
+
+	// <GHMR_VERTTYPE_GMF_SKIN_NOCOLOR = 0x3>
+	GHMR_VERTTYPE_GMF_SKIN_NOCOLOR = 3,
+
+	// <GHMR_VERTTYPE_GMF_SKIN_USECOLOR = 0x4>
+	GHMR_VERTTYPE_GMF_SKIN_USECOLOR = 4,
+
+	// <GHMR_VERTTYPE_GMF_NOCOLOR = 0x5>
+	GHMR_VERTTYPE_GMF_NOCOLOR = 5,
+
+	// <GHMR_VERTTYPE_GMF_USECOLOR = 0x6>
+	GHMR_VERTTYPE_GMF_USECOLOR = 6,
+
+	// <GHMR_VERTTYPE_USETEX_NOCLR = 0x7>
+	GHMR_VERTTYPE_USETEX_NOCLR = 7,
+
+	// <GHMR_VERTTYPE_NUM = 0x8>
+	GHMR_VERTTYPE_NUM = 8
+
+};
+
+// [Function] int32_t __convention("thiscall") sub_3e5549(class HrStageDraw* arg1, enum GHMR_VERTTYPE arg2 @ esi, float arg3 @ edi, void* arg4) [sub_3e5549]
+int32_t sub_3e5549(class HrStageDraw* arg1, /* enum GHMR_VERTTYPE */ uint32_t arg2, float arg3, void* arg4)
+{
+	typedef int32_t(__thiscall* _Func)(class HrStageDraw* arg1, enum GHMR_VERTTYPE arg2, float arg3, void* arg4);
+	_Func mFunc = (_Func)(GameModule + 0x3e5549);
+	return mFunc(arg1, (enum GHMR_VERTTYPE)arg2, arg3, arg4);
+}
+// Unsupported constructor
+//void __convention("thiscall") mHRBattle::mHRBattle(class mHRBattle* const this)
+// Unsupported destructor
+//void __convention("thiscall") mHRBattle::~mHRBattle(class mHRBattle* const this)
 // [Structure] class HrMiniDemoObj
 class HrMiniDemoObj : public ghmListObj
 {
@@ -32040,6 +37619,10 @@ private:
 	char _UnidentifiedData_74[6];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class HrMiniDemoObj [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(HrMiniDemoObj& InObject)
@@ -32128,6 +37711,10 @@ private:
 	char _UnidentifiedData_117[3];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class HrMiniDemoModel [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(HrMiniDemoModel& InObject)
@@ -32163,6 +37750,486 @@ static_assert(sizeof(HrMiniDemoModel::mRot) == 12, "expected HrMiniDemoModel::mR
 static_assert(sizeof(HrMiniDemoModel::mUseTexShadow) == 1, "expected HrMiniDemoModel::mUseTexShadow to be size 1");
 static_assert(sizeof(HrMiniDemoModel) == 120, "expected HrMiniDemoModel to be size 120");
 
+// Unsupported constructor
+//void __convention("thiscall") HrMiniDemoModel::HrMiniDemoModel(class HrMiniDemoModel* const this, class TGan* arg2, struct WGanNodeSpec* arg3, class mHRChara* arg4)
+// enum _GXSpotFn
+enum _GXSpotFn : uint32_t
+{
+	// <GX_SP_OFF = 0x0>
+	GX_SP_OFF = 0,
+
+	// <GX_SP_FLAT = 0x1>
+	GX_SP_FLAT = 1,
+
+	// <GX_SP_COS = 0x2>
+	GX_SP_COS = 2,
+
+	// <GX_SP_COS2 = 0x3>
+	GX_SP_COS2 = 3,
+
+	// <GX_SP_SHARP = 0x4>
+	GX_SP_SHARP = 4,
+
+	// <GX_SP_RING1 = 0x5>
+	GX_SP_RING1 = 5,
+
+	// <GX_SP_RING2 = 0x6>
+	GX_SP_RING2 = 6
+
+};
+
+// enum _GXDistAttnFn
+enum _GXDistAttnFn : uint32_t
+{
+	// <GX_DA_OFF = 0x0>
+	GX_DA_OFF = 0,
+
+	// <GX_DA_GENTLE = 0x1>
+	GX_DA_GENTLE = 1,
+
+	// <GX_DA_MEDIUM = 0x2>
+	GX_DA_MEDIUM = 2,
+
+	// <GX_DA_STEEP = 0x3>
+	GX_DA_STEEP = 3
+
+};
+
+// [Structure] struct TGMFLIGHT
+struct TGMFLIGHT
+{
+public:
+	/// Struct member variables
+
+	// <uint8_t Valid, offset 0x0>
+	uint8_t Valid = 0;
+
+	// <uint8_t CharCancel, offset 0x1>
+	uint8_t CharCancel = 0;
+
+	// <uint8_t StageCancel, offset 0x2>
+	uint8_t StageCancel = 0;
+
+	// <Unidentified data segment, offset 0x3>
+private:
+	char _UnidentifiedData_3[1];
+
+public:
+	// <struct GXColor Color, offset 0x4>
+	struct GXColor Color;
+
+	// <float Intensity, offset 0x8>
+	float Intensity = 0;
+
+	// <struct Vec Direction, offset 0xc>
+	struct Vec Direction;
+
+	// <struct Vec Position, offset 0x18>
+	struct Vec Position;
+
+	// <float Bright, offset 0x24>
+	float Bright = 0;
+
+	// <float Distance, offset 0x28>
+	float Distance = 0;
+
+	// <enum _GXDistAttnFn DistFunc, offset 0x2c>
+	enum _GXDistAttnFn DistFunc;
+
+	// <float ConeAngle, offset 0x30>
+	float ConeAngle = 0;
+
+	// <enum _GXSpotFn SpotFunc, offset 0x34>
+	enum _GXSpotFn SpotFunc;
+
+	// <float Shininess, offset 0x38>
+	float Shininess = 0;
+
+	// <uint8_t bCharLight, offset 0x3c>
+	uint8_t bCharLight = 0;
+
+	// <Unidentified data segment, offset 0x3d>
+private:
+	char _UnidentifiedData_61[3];
+
+public:
+	// <class TGmf* pPrivateGmf, offset 0x40>
+	class TGmf* pPrivateGmf = nullptr;
+
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "struct TGMFLIGHT [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(TGMFLIGHT& InObject)
+	{
+		Valid = InObject.Valid;
+		CharCancel = InObject.CharCancel;
+		StageCancel = InObject.StageCancel;
+		Color = InObject.Color;
+		Intensity = InObject.Intensity;
+		Direction = InObject.Direction;
+		Position = InObject.Position;
+		Bright = InObject.Bright;
+		Distance = InObject.Distance;
+		DistFunc = InObject.DistFunc;
+		ConeAngle = InObject.ConeAngle;
+		SpotFunc = InObject.SpotFunc;
+		Shininess = InObject.Shininess;
+		bCharLight = InObject.bCharLight;
+		pPrivateGmf = InObject.pPrivateGmf;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<TGMFLIGHT>("TGMFLIGHT")
+			.addFunction("__tostring", &TGMFLIGHT::ToString)
+			.addFunction("GetPtrAddr", &TGMFLIGHT::GetPtrAddr)
+			.addProperty("Valid", &TGMFLIGHT::Valid)
+			.addProperty("CharCancel", &TGMFLIGHT::CharCancel)
+			.addProperty("StageCancel", &TGMFLIGHT::StageCancel)
+			.addProperty("Color", &TGMFLIGHT::Color)
+			.addProperty("Intensity", &TGMFLIGHT::Intensity)
+			.addProperty("Direction", &TGMFLIGHT::Direction)
+			.addProperty("Position", &TGMFLIGHT::Position)
+			.addProperty("Bright", &TGMFLIGHT::Bright)
+			.addProperty("Distance", &TGMFLIGHT::Distance)
+			.addProperty("DistFunc", &TGMFLIGHT::DistFunc)
+			.addProperty("ConeAngle", &TGMFLIGHT::ConeAngle)
+			.addProperty("SpotFunc", &TGMFLIGHT::SpotFunc)
+			.addProperty("Shininess", &TGMFLIGHT::Shininess)
+			.addProperty("bCharLight", &TGMFLIGHT::bCharLight)
+			.addProperty("pPrivateGmf", &TGMFLIGHT::pPrivateGmf)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(TGMFLIGHT::Valid) == 1, "expected TGMFLIGHT::Valid to be size 1");
+static_assert(sizeof(TGMFLIGHT::CharCancel) == 1, "expected TGMFLIGHT::CharCancel to be size 1");
+static_assert(sizeof(TGMFLIGHT::StageCancel) == 1, "expected TGMFLIGHT::StageCancel to be size 1");
+static_assert(sizeof(TGMFLIGHT::Color) == 4, "expected TGMFLIGHT::Color to be size 4");
+static_assert(sizeof(TGMFLIGHT::Intensity) == 4, "expected TGMFLIGHT::Intensity to be size 4");
+static_assert(sizeof(TGMFLIGHT::Direction) == 12, "expected TGMFLIGHT::Direction to be size 12");
+static_assert(sizeof(TGMFLIGHT::Position) == 12, "expected TGMFLIGHT::Position to be size 12");
+static_assert(sizeof(TGMFLIGHT::Bright) == 4, "expected TGMFLIGHT::Bright to be size 4");
+static_assert(sizeof(TGMFLIGHT::Distance) == 4, "expected TGMFLIGHT::Distance to be size 4");
+static_assert(sizeof(TGMFLIGHT::DistFunc) == 4, "expected TGMFLIGHT::DistFunc to be size 4");
+static_assert(sizeof(TGMFLIGHT::ConeAngle) == 4, "expected TGMFLIGHT::ConeAngle to be size 4");
+static_assert(sizeof(TGMFLIGHT::SpotFunc) == 4, "expected TGMFLIGHT::SpotFunc to be size 4");
+static_assert(sizeof(TGMFLIGHT::Shininess) == 4, "expected TGMFLIGHT::Shininess to be size 4");
+static_assert(sizeof(TGMFLIGHT::bCharLight) == 1, "expected TGMFLIGHT::bCharLight to be size 1");
+static_assert(sizeof(TGMFLIGHT::pPrivateGmf) == 4, "expected TGMFLIGHT::pPrivateGmf to be size 4");
+static_assert(sizeof(TGMFLIGHT) == 68, "expected TGMFLIGHT to be size 68");
+
+// Unsupported constructor
+//void __convention("thiscall") HrStageDraw::HrStageDraw(class HrStageDraw* const this)
+// Unsupported destructor
+//void __convention("thiscall") HrStageDraw::~HrStageDraw(class HrStageDraw* const this)
+// [Structure] class Archive
+class Archive
+{
+public:
+	/// Struct member variables
+
+	// <uint8_t* FileImage, offset 0x0>
+	uint8_t* FileImage = nullptr;
+
+	// <int32_t FileImageSize, offset 0x4>
+	int32_t FileImageSize = 0;
+
+	// <struct tagDARC_HEAD* Head, offset 0x8>
+	struct tagDARC_HEAD* Head = nullptr;
+
+	// <struct tagDARC_FILEHEAD* FileTable, offset 0xc>
+	struct tagDARC_FILEHEAD* FileTable = nullptr;
+
+	// <struct tagDARC_DIRECTORY* DirTable, offset 0x10>
+	struct tagDARC_DIRECTORY* DirTable = nullptr;
+
+	// <uint8_t* NameTable, offset 0x14>
+	uint8_t* NameTable = nullptr;
+
+	// <struct tagDARC_DIRECTORY* CurrentDirectory, offset 0x18>
+	struct tagDARC_DIRECTORY* CurrentDirectory = nullptr;
+
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "class Archive [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(Archive& InObject)
+	{
+		FileImage = InObject.FileImage;
+		FileImageSize = InObject.FileImageSize;
+		Head = InObject.Head;
+		FileTable = InObject.FileTable;
+		DirTable = InObject.DirTable;
+		NameTable = InObject.NameTable;
+		CurrentDirectory = InObject.CurrentDirectory;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<Archive>("Archive")
+			.addFunction("__tostring", &Archive::ToString)
+			.addFunction("GetPtrAddr", &Archive::GetPtrAddr)
+			// native pointer type (uint8_t*) not supported in LuaBridge (needs wrapper function)
+			//.addProperty("FileImage", &Archive::FileImage)
+			.addProperty("FileImageSize", &Archive::FileImageSize)
+			.addProperty("Head", &Archive::Head)
+			.addProperty("FileTable", &Archive::FileTable)
+			.addProperty("DirTable", &Archive::DirTable)
+			// native pointer type (uint8_t*) not supported in LuaBridge (needs wrapper function)
+			//.addProperty("NameTable", &Archive::NameTable)
+			.addProperty("CurrentDirectory", &Archive::CurrentDirectory)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(Archive::FileImage) == 4, "expected Archive::FileImage to be size 4");
+static_assert(sizeof(Archive::FileImageSize) == 4, "expected Archive::FileImageSize to be size 4");
+static_assert(sizeof(Archive::Head) == 4, "expected Archive::Head to be size 4");
+static_assert(sizeof(Archive::FileTable) == 4, "expected Archive::FileTable to be size 4");
+static_assert(sizeof(Archive::DirTable) == 4, "expected Archive::DirTable to be size 4");
+static_assert(sizeof(Archive::NameTable) == 4, "expected Archive::NameTable to be size 4");
+static_assert(sizeof(Archive::CurrentDirectory) == 4, "expected Archive::CurrentDirectory to be size 4");
+static_assert(sizeof(Archive) == 28, "expected Archive to be size 28");
+
+// [Structure] struct tagDARC_HEAD
+struct tagDARC_HEAD
+{
+public:
+	/// Struct member variables
+
+	// <uint16_t Head, offset 0x0>
+	uint16_t Head = 0;
+
+	// <uint16_t Version, offset 0x2>
+	uint16_t Version = 0;
+
+	// <uint32_t HeadSize, offset 0x4>
+	uint32_t HeadSize = 0;
+
+	// <uint32_t DataStartAddress, offset 0x8>
+	uint32_t DataStartAddress = 0;
+
+	// <uint32_t FileNameTableStartAddress, offset 0xc>
+	uint32_t FileNameTableStartAddress = 0;
+
+	// <uint32_t FileTableStartAddress, offset 0x10>
+	uint32_t FileTableStartAddress = 0;
+
+	// <uint32_t DirectoryTableStartAddress, offset 0x14>
+	uint32_t DirectoryTableStartAddress = 0;
+
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "struct tagDARC_HEAD [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(tagDARC_HEAD& InObject)
+	{
+		Head = InObject.Head;
+		Version = InObject.Version;
+		HeadSize = InObject.HeadSize;
+		DataStartAddress = InObject.DataStartAddress;
+		FileNameTableStartAddress = InObject.FileNameTableStartAddress;
+		FileTableStartAddress = InObject.FileTableStartAddress;
+		DirectoryTableStartAddress = InObject.DirectoryTableStartAddress;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<tagDARC_HEAD>("tagDARC_HEAD")
+			.addFunction("__tostring", &tagDARC_HEAD::ToString)
+			.addFunction("GetPtrAddr", &tagDARC_HEAD::GetPtrAddr)
+			.addProperty("Head", &tagDARC_HEAD::Head)
+			.addProperty("Version", &tagDARC_HEAD::Version)
+			.addProperty("HeadSize", &tagDARC_HEAD::HeadSize)
+			.addProperty("DataStartAddress", &tagDARC_HEAD::DataStartAddress)
+			.addProperty("FileNameTableStartAddress", &tagDARC_HEAD::FileNameTableStartAddress)
+			.addProperty("FileTableStartAddress", &tagDARC_HEAD::FileTableStartAddress)
+			.addProperty("DirectoryTableStartAddress", &tagDARC_HEAD::DirectoryTableStartAddress)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(tagDARC_HEAD::Head) == 2, "expected tagDARC_HEAD::Head to be size 2");
+static_assert(sizeof(tagDARC_HEAD::Version) == 2, "expected tagDARC_HEAD::Version to be size 2");
+static_assert(sizeof(tagDARC_HEAD::HeadSize) == 4, "expected tagDARC_HEAD::HeadSize to be size 4");
+static_assert(sizeof(tagDARC_HEAD::DataStartAddress) == 4, "expected tagDARC_HEAD::DataStartAddress to be size 4");
+static_assert(sizeof(tagDARC_HEAD::FileNameTableStartAddress) == 4, "expected tagDARC_HEAD::FileNameTableStartAddress to be size 4");
+static_assert(sizeof(tagDARC_HEAD::FileTableStartAddress) == 4, "expected tagDARC_HEAD::FileTableStartAddress to be size 4");
+static_assert(sizeof(tagDARC_HEAD::DirectoryTableStartAddress) == 4, "expected tagDARC_HEAD::DirectoryTableStartAddress to be size 4");
+static_assert(sizeof(tagDARC_HEAD) == 24, "expected tagDARC_HEAD to be size 24");
+
+// [Structure] struct tagDARC_FILETIME
+struct tagDARC_FILETIME
+{
+public:
+	/// Struct member variables
+
+	// <uint64_t Create, offset 0x0>
+	uint64_t Create;
+
+	// <uint64_t LastAccess, offset 0x8>
+	uint64_t LastAccess;
+
+	// <uint64_t LastWrite, offset 0x10>
+	uint64_t LastWrite;
+
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "struct tagDARC_FILETIME [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(tagDARC_FILETIME& InObject)
+	{
+		Create = InObject.Create;
+		LastAccess = InObject.LastAccess;
+		LastWrite = InObject.LastWrite;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<tagDARC_FILETIME>("tagDARC_FILETIME")
+			.addFunction("__tostring", &tagDARC_FILETIME::ToString)
+			.addFunction("GetPtrAddr", &tagDARC_FILETIME::GetPtrAddr)
+			.addProperty("Create", &tagDARC_FILETIME::Create)
+			.addProperty("LastAccess", &tagDARC_FILETIME::LastAccess)
+			.addProperty("LastWrite", &tagDARC_FILETIME::LastWrite)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(tagDARC_FILETIME::Create) == 8, "expected tagDARC_FILETIME::Create to be size 8");
+static_assert(sizeof(tagDARC_FILETIME::LastAccess) == 8, "expected tagDARC_FILETIME::LastAccess to be size 8");
+static_assert(sizeof(tagDARC_FILETIME::LastWrite) == 8, "expected tagDARC_FILETIME::LastWrite to be size 8");
+static_assert(sizeof(tagDARC_FILETIME) == 24, "expected tagDARC_FILETIME to be size 24");
+
+// [Structure] struct tagDARC_FILEHEAD
+struct tagDARC_FILEHEAD
+{
+public:
+	/// Struct member variables
+
+	// <uint32_t NameAddress, offset 0x0>
+	uint32_t NameAddress = 0;
+
+	// <uint32_t Attributes, offset 0x4>
+	uint32_t Attributes = 0;
+
+	// <struct tagDARC_FILETIME Time, offset 0x8>
+	struct tagDARC_FILETIME Time;
+
+	// <uint32_t DataAddress, offset 0x20>
+	uint32_t DataAddress = 0;
+
+	// <uint32_t DataSize, offset 0x24>
+	uint32_t DataSize = 0;
+
+	// <uint32_t PressDataSize, offset 0x28>
+	uint32_t PressDataSize = 0;
+
+	// <Unidentified data segment, offset 0x2c>
+private:
+	char _UnidentifiedData_44[4];
+
+public:
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "struct tagDARC_FILEHEAD [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(tagDARC_FILEHEAD& InObject)
+	{
+		NameAddress = InObject.NameAddress;
+		Attributes = InObject.Attributes;
+		Time = InObject.Time;
+		DataAddress = InObject.DataAddress;
+		DataSize = InObject.DataSize;
+		PressDataSize = InObject.PressDataSize;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<tagDARC_FILEHEAD>("tagDARC_FILEHEAD")
+			.addFunction("__tostring", &tagDARC_FILEHEAD::ToString)
+			.addFunction("GetPtrAddr", &tagDARC_FILEHEAD::GetPtrAddr)
+			.addProperty("NameAddress", &tagDARC_FILEHEAD::NameAddress)
+			.addProperty("Attributes", &tagDARC_FILEHEAD::Attributes)
+			.addProperty("Time", &tagDARC_FILEHEAD::Time)
+			.addProperty("DataAddress", &tagDARC_FILEHEAD::DataAddress)
+			.addProperty("DataSize", &tagDARC_FILEHEAD::DataSize)
+			.addProperty("PressDataSize", &tagDARC_FILEHEAD::PressDataSize)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(tagDARC_FILEHEAD::NameAddress) == 4, "expected tagDARC_FILEHEAD::NameAddress to be size 4");
+static_assert(sizeof(tagDARC_FILEHEAD::Attributes) == 4, "expected tagDARC_FILEHEAD::Attributes to be size 4");
+static_assert(sizeof(tagDARC_FILEHEAD::Time) == 24, "expected tagDARC_FILEHEAD::Time to be size 24");
+static_assert(sizeof(tagDARC_FILEHEAD::DataAddress) == 4, "expected tagDARC_FILEHEAD::DataAddress to be size 4");
+static_assert(sizeof(tagDARC_FILEHEAD::DataSize) == 4, "expected tagDARC_FILEHEAD::DataSize to be size 4");
+static_assert(sizeof(tagDARC_FILEHEAD::PressDataSize) == 4, "expected tagDARC_FILEHEAD::PressDataSize to be size 4");
+static_assert(sizeof(tagDARC_FILEHEAD) == 48, "expected tagDARC_FILEHEAD to be size 48");
+
+// [Structure] struct tagDARC_DIRECTORY
+struct tagDARC_DIRECTORY
+{
+public:
+	/// Struct member variables
+
+	// <uint32_t DirectoryAddress, offset 0x0>
+	uint32_t DirectoryAddress = 0;
+
+	// <uint32_t ParentDirectoryAddress, offset 0x4>
+	uint32_t ParentDirectoryAddress = 0;
+
+	// <uint32_t FileHeadNum, offset 0x8>
+	uint32_t FileHeadNum = 0;
+
+	// <uint32_t FileHeadAddress, offset 0xc>
+	uint32_t FileHeadAddress = 0;
+
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "struct tagDARC_DIRECTORY [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(tagDARC_DIRECTORY& InObject)
+	{
+		DirectoryAddress = InObject.DirectoryAddress;
+		ParentDirectoryAddress = InObject.ParentDirectoryAddress;
+		FileHeadNum = InObject.FileHeadNum;
+		FileHeadAddress = InObject.FileHeadAddress;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<tagDARC_DIRECTORY>("tagDARC_DIRECTORY")
+			.addFunction("__tostring", &tagDARC_DIRECTORY::ToString)
+			.addFunction("GetPtrAddr", &tagDARC_DIRECTORY::GetPtrAddr)
+			.addProperty("DirectoryAddress", &tagDARC_DIRECTORY::DirectoryAddress)
+			.addProperty("ParentDirectoryAddress", &tagDARC_DIRECTORY::ParentDirectoryAddress)
+			.addProperty("FileHeadNum", &tagDARC_DIRECTORY::FileHeadNum)
+			.addProperty("FileHeadAddress", &tagDARC_DIRECTORY::FileHeadAddress)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(tagDARC_DIRECTORY::DirectoryAddress) == 4, "expected tagDARC_DIRECTORY::DirectoryAddress to be size 4");
+static_assert(sizeof(tagDARC_DIRECTORY::ParentDirectoryAddress) == 4, "expected tagDARC_DIRECTORY::ParentDirectoryAddress to be size 4");
+static_assert(sizeof(tagDARC_DIRECTORY::FileHeadNum) == 4, "expected tagDARC_DIRECTORY::FileHeadNum to be size 4");
+static_assert(sizeof(tagDARC_DIRECTORY::FileHeadAddress) == 4, "expected tagDARC_DIRECTORY::FileHeadAddress to be size 4");
+static_assert(sizeof(tagDARC_DIRECTORY) == 16, "expected tagDARC_DIRECTORY to be size 16");
+
 // [Function] int32_t __convention("thiscall") j_sub_849ca0(class mHRPc* const this) [j_sub_849ca0]
 int32_t j_sub_849ca0(class mHRPc* const thisPtr)
 {
@@ -32170,6 +38237,10 @@ int32_t j_sub_849ca0(class mHRPc* const thisPtr)
 	_Func mFunc = (_Func)(GameModule + 0x41efc0);
 	return mFunc(thisPtr);
 }
+// Unsupported destructor
+//void __convention("thiscall") mHRPc::~mHRPc(class mHRPc* const this)
+// Unsupported constructor
+//void __convention("thiscall") mHRPc::mHRPc(class mHRPc* const this)
 // [Function] int32_t sub_4467e6(int32_t* arg1 @ ebp, class mHRPc* arg2 @ esi, class mHRChara* arg3 @ edi) [sub_4467e6]
 int32_t sub_4467e6(int32_t* arg1, class mHRPc* arg2, class mHRChara* arg3)
 {
@@ -32184,17 +38255,12 @@ int32_t sub_446bbd(class mHRPad* arg1, int32_t* arg2, void* arg3, int32_t* arg4)
 	_Func mFunc = (_Func)(GameModule + 0x446bbd);
 	return mFunc(arg1, arg2, arg3, arg4);
 }
+// Unsupported constructor
+//void __convention("thiscall") HrMap::HrMap(class HrMap* const this)
 // [Structure] class STG0202
 class STG0202
 {
 public:
-	// [Function] void __convention("thiscall") STG0202::CharMoveByConbeyor(class STG0202* const this, class mHRChara* arg2) [?CharMoveByConbeyor@STG0202@@AAEXPAVmHRChara@@@Z]
-	void CharMoveByConbeyor(class mHRChara* arg2)
-	{
-		typedef void(__thiscall* _Func)(class STG0202* const thisPtr, class mHRChara* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x455920);
-		return mFunc(this, arg2);
-	}
 	/// Struct member variables
 
 	// <Unidentified data segment, offset 0x0>
@@ -32202,6 +38268,17 @@ private:
 	char _UnidentifiedData_0[96];
 
 public:
+	/// 1 Functions
+
+	// [Function] void __convention("thiscall") STG0202::CharMoveByConbeyor(class STG0202* const this, class mHRChara* arg2) [?CharMoveByConbeyor@STG0202@@AAEXPAVmHRChara@@@Z]
+	void CharMoveByConbeyor(class mHRChara* arg2)
+	{
+		typedef void(__thiscall* _Func)(class STG0202* const thisPtr, class mHRChara* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x455920);
+		return mFunc(this, arg2);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class STG0202 [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(STG0202& InObject)
@@ -32220,6 +38297,63 @@ public:
 };
 static_assert(sizeof(STG0202) == 96, "expected STG0202 to be size 96");
 
+// Unsupported destructor
+//void __convention("thiscall") rSkyMap::~rSkyMap(class rSkyMap* const this)
+// [Structure] struct GTEX_UVSET
+struct GTEX_UVSET
+{
+public:
+	/// Struct member variables
+
+	// <float gfTexU, offset 0x0>
+	float gfTexU = 0;
+
+	// <float gfTexV, offset 0x4>
+	float gfTexV = 0;
+
+	// <float gfSide, offset 0x8>
+	float gfSide = 0;
+
+	// <float gfLen, offset 0xc>
+	float gfLen = 0;
+
+	/// 0 Functions
+
+	/// Meta
+
+	std::string ToString() const { std::stringstream stream; stream << "struct GTEX_UVSET [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	int GetPtrAddr() const { return (int)this; }
+	void CopyFrom(GTEX_UVSET& InObject)
+	{
+		gfTexU = InObject.gfTexU;
+		gfTexV = InObject.gfTexV;
+		gfSide = InObject.gfSide;
+		gfLen = InObject.gfLen;
+	}
+#ifdef WITH_LUA
+	static void BindLua(luabridge::Namespace& NS)
+	{
+		NS = NS.beginClass<GTEX_UVSET>("GTEX_UVSET")
+			.addFunction("__tostring", &GTEX_UVSET::ToString)
+			.addFunction("GetPtrAddr", &GTEX_UVSET::GetPtrAddr)
+			.addProperty("gfTexU", &GTEX_UVSET::gfTexU)
+			.addProperty("gfTexV", &GTEX_UVSET::gfTexV)
+			.addProperty("gfSide", &GTEX_UVSET::gfSide)
+			.addProperty("gfLen", &GTEX_UVSET::gfLen)
+		.endClass();
+	}
+#endif
+};
+static_assert(sizeof(GTEX_UVSET::gfTexU) == 4, "expected GTEX_UVSET::gfTexU to be size 4");
+static_assert(sizeof(GTEX_UVSET::gfTexV) == 4, "expected GTEX_UVSET::gfTexV to be size 4");
+static_assert(sizeof(GTEX_UVSET::gfSide) == 4, "expected GTEX_UVSET::gfSide to be size 4");
+static_assert(sizeof(GTEX_UVSET::gfLen) == 4, "expected GTEX_UVSET::gfLen to be size 4");
+static_assert(sizeof(GTEX_UVSET) == 16, "expected GTEX_UVSET to be size 16");
+
+// Unsupported constructor
+//void __convention("thiscall") rSkyMap::rSkyMap(class rSkyMap* const this)
+// Unsupported constructor
+//void __convention("thiscall") HrScreenStatus::HrScreenStatus(class HrScreenStatus* const this)
 // [Structure] struct tagHRTASKCHECK
 struct tagHRTASKCHECK
 {
@@ -32231,6 +38365,10 @@ public:
 
 	// <uint32_t MagicNumber, offset 0x4>
 	uint32_t MagicNumber = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct tagHRTASKCHECK [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -32285,6 +38423,10 @@ public:
 	// <class mHRChara* m_pTargetChara, offset 0x70>
 	class mHRChara* m_pTargetChara = nullptr;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class EffectBoneElect [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EffectBoneElect& InObject)
@@ -32334,6 +38476,10 @@ private:
 	char _UnidentifiedData_0[220];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class BoneStreamObj [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(BoneStreamObj& InObject)
@@ -32362,6 +38508,10 @@ private:
 	char _UnidentifiedData_0[226464];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class EffectMetalElect [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EffectMetalElect& InObject)
@@ -32400,13 +38550,6 @@ public:
 
 	};
 
-	// [Function] class EffectCutMark* EffectCutMark::Create(class TGmf* arg1, class mHRChara* arg2, struct Vec* arg3, uint32_t const arg4, enum eEfDmgLevel& arg5, enum EffectCutMark::eCutMarkType& arg6, float const arg7) [?Create@EffectCutMark@@SAPAV1@PAVTGmf@@PAVmHRChara@@PBUVec@@IABW4eEfDmgLevel@@ABW4eCutMarkType@1@M@Z]
-	static class EffectCutMark* Create(class TGmf* arg1, class mHRChara* arg2, struct Vec* arg3, uint32_t const arg4, /* enum eEfDmgLevel& */ uint32_t arg5, /* enum EffectCutMark::eCutMarkType& */ uint32_t arg6, float const arg7)
-	{
-		typedef class EffectCutMark*(__fastcall* _Func)(class TGmf* arg1, class mHRChara* arg2, struct Vec* arg3, uint32_t const arg4, enum eEfDmgLevel& arg5, enum EffectCutMark::eCutMarkType& arg6, float const arg7);
-		_Func mFunc = (_Func)(GameModule + 0x56f2c0);
-		return mFunc(arg1, arg2, arg3, arg4, (enum eEfDmgLevel&)arg5, (enum EffectCutMark::eCutMarkType&)arg6, arg7);
-	}
 	/// Struct member variables
 
 	// <Unidentified data segment, offset 0x0>
@@ -32414,6 +38557,17 @@ private:
 	char _UnidentifiedData_0[21812];
 
 public:
+	/// 1 Functions
+
+	// [Function] class EffectCutMark* EffectCutMark::Create(class TGmf* arg1, class mHRChara* arg2, struct Vec* arg3, uint32_t const arg4, enum eEfDmgLevel& arg5, enum EffectCutMark::eCutMarkType& arg6, float const arg7) [?Create@EffectCutMark@@SAPAV1@PAVTGmf@@PAVmHRChara@@PBUVec@@IABW4eEfDmgLevel@@ABW4eCutMarkType@1@M@Z]
+	static class EffectCutMark* Create(class TGmf* arg1, class mHRChara* arg2, struct Vec* arg3, uint32_t const arg4, /* enum eEfDmgLevel& */ uint32_t arg5, /* enum EffectCutMark::eCutMarkType& */ uint32_t arg6, float const arg7)
+	{
+		typedef class EffectCutMark*(__fastcall* _Func)(class TGmf* arg1, class mHRChara* arg2, struct Vec* arg3, uint32_t const arg4, enum eEfDmgLevel& arg5, enum EffectCutMark::eCutMarkType& arg6, float const arg7);
+		_Func mFunc = (_Func)(GameModule + 0x56f2c0);
+		return mFunc(arg1, arg2, arg3, arg4, (enum eEfDmgLevel&)arg5, (enum EffectCutMark::eCutMarkType&)arg6, arg7);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class EffectCutMark [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EffectCutMark& InObject)
@@ -32433,10 +38587,31 @@ public:
 };
 static_assert(sizeof(EffectCutMark) == 21812, "expected EffectCutMark to be size 21812");
 
+// Unsupported destructor
+//void __convention("thiscall") mHRChara::~mHRChara(class mHRChara* const this)
+// Unsupported constructor
+//void __convention("thiscall") mHRChara::mHRChara(class mHRChara* const this)
+// Unsupported destructor
+//void __convention("thiscall") MessLines::~MessLines(class MessLines* const this)
+// Unsupported constructor
+//void __convention("thiscall") MessLines::MessLines(class MessLines* const this, struct GdlLines* arg2, class ghmListObj* arg3)
+// Unsupported destructor
+//void __convention("thiscall") HrMessage::~HrMessage(class HrMessage* const this)
+// Unsupported constructor
+//void __convention("thiscall") HrMessage::HrMessage(class HrMessage* const this, void* arg2)
 // [Structure] class PJTateshi
 class PJTateshi
 {
 public:
+	/// Struct member variables
+
+	// <Unidentified data segment, offset 0x0>
+private:
+	char _UnidentifiedData_0[492];
+
+public:
+	/// 2 Functions
+
 	// [Function] void __convention("thiscall") PJTateshi::SetZakoAllFuttobiFromPc(class PJTateshi* const this, class mHRChara* arg2) [?SetZakoAllFuttobiFromPc@PJTateshi@@QAEXPAVmHRChara@@@Z]
 	void SetZakoAllFuttobiFromPc(class mHRChara* arg2)
 	{
@@ -32451,13 +38626,8 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x4b1ea0);
 		return mFunc(this, arg2, arg3);
 	}
-	/// Struct member variables
+	/// Meta
 
-	// <Unidentified data segment, offset 0x0>
-private:
-	char _UnidentifiedData_0[492];
-
-public:
 	std::string ToString() const { std::stringstream stream; stream << "class PJTateshi [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(PJTateshi& InObject)
@@ -32485,6 +38655,10 @@ public:
 
 	// <void* (* field_0)[0x5], offset 0x0>
 	void* (* field_0)[0x5];
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class PJState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -32529,6 +38703,10 @@ public:
 	// <enum ZkState_DownAttack::eStat m_eStat, offset 0x4>
 	enum ZkState_DownAttack::eStat m_eStat;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ZkState_DownAttack [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ZkState_DownAttack& InObject)
@@ -32558,6 +38736,10 @@ public:
 	// <class PJState field_0, offset 0x0>
 	// class PJState Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_AwayAfterAttack [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_AwayAfterAttack& InObject)
@@ -32583,6 +38765,10 @@ public:
 
 	// <class PJState field_0, offset 0x0>
 	// class PJState Super;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class State_CloseBeforeAttack [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -32610,6 +38796,10 @@ public:
 	// <class PJState field_0, offset 0x0>
 	// class PJState Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_StepInAttack [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_StepInAttack& InObject)
@@ -32635,6 +38825,10 @@ public:
 
 	// <class PJState field_0, offset 0x0>
 	// class PJState Super;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class State_DownDamage [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -32662,6 +38856,10 @@ public:
 	// <class PJState field_0, offset 0x0>
 	// class PJState Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_TojoBaseState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_TojoBaseState& InObject)
@@ -32687,6 +38885,10 @@ public:
 
 	// <class PJState field_0, offset 0x0>
 	// class PJState Super;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class State_LeadPcWayPointMove [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -32714,6 +38916,10 @@ public:
 	// <class PJState field_0, offset 0x0>
 	// class PJState Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_FixTurret [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_FixTurret& InObject)
@@ -32739,6 +38945,10 @@ public:
 
 	// <class PJState field_0, offset 0x0>
 	// class PJState Super;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class State_WayPointMoveAfterPop [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -32779,6 +38989,10 @@ public:
 
 	// <enum State_Tojo_RoomRunner::eStat m_eStat, offset 0x4>
 	enum State_Tojo_RoomRunner::eStat m_eStat;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class State_Tojo_RoomRunner [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -32822,6 +39036,10 @@ public:
 
 	// <enum State_Tojo_AeroBike::eStat m_eStat, offset 0x4>
 	enum State_Tojo_AeroBike::eStat m_eStat;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class State_Tojo_AeroBike [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -32874,6 +39092,10 @@ private:
 	char _UnidentifiedData_9[3];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_Tojo_BreakCmnObj [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_Tojo_BreakCmnObj& InObject)
@@ -32908,6 +39130,10 @@ public:
 
 	// <float m_fSpdY, offset 0x4>
 	float m_fSpdY = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class State_Tojo_JumpOff [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -32952,6 +39178,10 @@ public:
 	// <enum State_Tojo_Car::eStat m_eStat, offset 0x4>
 	enum State_Tojo_Car::eStat m_eStat;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_Tojo_Car [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_Tojo_Car& InObject)
@@ -32981,6 +39211,10 @@ public:
 	// <class State_TojoBaseState field_0, offset 0x0>
 	// class State_TojoBaseState Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_Tojo_RunAndTurnPc [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_Tojo_RunAndTurnPc& InObject)
@@ -33006,6 +39240,10 @@ public:
 
 	// <class State_TojoBaseState field_0, offset 0x0>
 	// class State_TojoBaseState Super;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class State_Idle [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -33033,6 +39271,10 @@ public:
 	// <class State_TojoBaseState field_0, offset 0x0>
 	// class State_TojoBaseState Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_Tojo_AgainstWall [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_Tojo_AgainstWall& InObject)
@@ -33058,6 +39300,10 @@ public:
 
 	// <class State_TojoBaseState field_0, offset 0x0>
 	// class State_TojoBaseState Super;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class State_Tojo_LookAround [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -33085,6 +39331,10 @@ public:
 	// <class State_TojoBaseState field_0, offset 0x0>
 	// class State_TojoBaseState Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_Tojo_Stand [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_Tojo_Stand& InObject)
@@ -33110,6 +39360,10 @@ public:
 
 	// <class State_TojoBaseState field_0, offset 0x0>
 	// class State_TojoBaseState Super;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class State_Tojo_Bench [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -33137,6 +39391,10 @@ public:
 	// <class State_TojoBaseState field_0, offset 0x0>
 	// class State_TojoBaseState Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_Tojo_Sit [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_Tojo_Sit& InObject)
@@ -33163,6 +39421,10 @@ public:
 	// <class State_TojoBaseState field_0, offset 0x0>
 	// class State_TojoBaseState Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_Tojo_SuddenAttack [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_Tojo_SuddenAttack& InObject)
@@ -33188,6 +39450,10 @@ public:
 
 	// <class State_Idle field_0, offset 0x0>
 	// class State_Idle Super;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class State_ReleaseWaitIdle [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -33218,6 +39484,10 @@ public:
 	// <int32_t m_Cnt, offset 0x4>
 	int32_t m_Cnt = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_Scare_Base [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_Scare_Base& InObject)
@@ -33247,6 +39517,10 @@ public:
 	// <class State_Scare_Base field_0, offset 0x0>
 	// class State_Scare_Base Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_Scare_Kosinukasi [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_Scare_Kosinukasi& InObject)
@@ -33272,6 +39546,10 @@ public:
 
 	// <class State_Scare_Base field_0, offset 0x0>
 	// class State_Scare_Base Super;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class State_Scare_Run [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -33315,6 +39593,10 @@ public:
 
 	// <enum State_WayPointMove::eWaypointSbSt m_eStat, offset 0x4>
 	enum State_WayPointMove::eWaypointSbSt m_eStat;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class State_WayPointMove [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -33365,6 +39647,10 @@ public:
 	// <int32_t m_WaitCnt, offset 0x8>
 	int32_t m_WaitCnt = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_Pressure [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_Pressure& InObject)
@@ -33405,6 +39691,10 @@ private:
 	char _UnidentifiedData_5[3];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_ThroughDamage [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_ThroughDamage& InObject)
@@ -33460,6 +39750,10 @@ public:
 	// <enum eMoveDir m_eStateMovDir, offset 0x4>
 	enum eMoveDir m_eStateMovDir;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_Defence [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_Defence& InObject)
@@ -33491,6 +39785,10 @@ public:
 
 	// <int32_t m_nContinueEvacuate, offset 0x4>
 	int32_t m_nContinueEvacuate = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class State_Evacuate [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -33543,6 +39841,10 @@ private:
 	char _UnidentifiedData_9[3];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_ComboAttack [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_ComboAttack& InObject)
@@ -33610,6 +39912,10 @@ public:
 	// <enum State_Damage::eStat m_eStat, offset 0x8>
 	enum State_Damage::eStat m_eStat;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_Damage [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_Damage& InObject)
@@ -33647,6 +39953,10 @@ public:
 
 	// <float fDistBack, offset 0x8>
 	float fDistBack = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct CollInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -33918,6 +40228,10 @@ private:
 	char _UnidentifiedData_13[3];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct ZkGuardParam [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ZkGuardParam& InObject)
@@ -33958,6 +40272,10 @@ public:
 
 	// <int32_t nEvcCombo, offset 0x4>
 	int32_t nEvcCombo = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct ZkEvacuateParam [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -34034,6 +40352,10 @@ public:
 	// <int32_t MaxCnt, offset 0x4>
 	int32_t MaxCnt = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class FkCounter [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(FkCounter& InObject)
@@ -34100,6 +40422,10 @@ public:
 	// <uint8_t boGuard, offset 0x3>
 	uint8_t boGuard = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct ZkSetDamageInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ZkSetDamageInfo& InObject)
@@ -34164,6 +40490,10 @@ public:
 	// <class State_Scare_Base field_0, offset 0x0>
 	// class State_Scare_Base Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_Scare_Yotunbai [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_Scare_Yotunbai& InObject)
@@ -34189,6 +40519,10 @@ public:
 
 	// <class State_Scare_Base field_0, offset 0x0>
 	// class State_Scare_Base Super;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class State_Scare_Stand [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -34219,6 +40553,10 @@ public:
 	// <enum eMoveDir m_eStateMovDir, offset 0x4>
 	enum eMoveDir m_eStateMovDir;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_RandomMove [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_RandomMove& InObject)
@@ -34248,6 +40586,10 @@ public:
 	// <class State_Scare_Base field_0, offset 0x0>
 	// class State_Scare_Base Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_PerformIll [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_PerformIll& InObject)
@@ -34269,13 +40611,6 @@ static_assert(sizeof(State_PerformIll) == 8, "expected State_PerformIll to be si
 class PJZAKO : public mHRChara
 {
 public:
-	// [Function] uint8_t __convention("thiscall") PJZAKO::IsAtkObj(class PJZAKO* const this, class mHRChara* arg2) [?IsAtkObj@PJZAKO@@EAE_NPAVmHRChara@@@Z]
-	uint8_t IsAtkObj(class mHRChara* arg2)
-	{
-		typedef uint8_t(__thiscall* _Func)(class PJZAKO* const thisPtr, class mHRChara* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x4d51b0);
-		return mFunc(this, arg2);
-	}
 	// [Structure] struct PJZAKO::ZakoInfo
 	struct ZakoInfo
 	{
@@ -34357,6 +40692,10 @@ public:
 		char _UnidentifiedData_145[3];
 
 	public:
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct ZakoInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(PJZAKO::ZakoInfo& InObject)
@@ -34452,6 +40791,10 @@ public:
 		// <int32_t m_nMaxWepMot, offset 0xc>
 		int32_t m_nMaxWepMot = 0;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct MotionInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(PJZAKO::MotionInfo& InObject)
@@ -34517,6 +40860,10 @@ public:
 		char _UnidentifiedData_17[3];
 
 	public:
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct TojoInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(PJZAKO::TojoInfo& InObject)
@@ -34587,6 +40934,10 @@ public:
 		char _UnidentifiedData_62[2];
 
 	public:
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct PcInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(PJZAKO::PcInfo& InObject)
@@ -34692,6 +41043,10 @@ public:
 		char _UnidentifiedData_65[3];
 
 	public:
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct DmgInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(PJZAKO::DmgInfo& InObject)
@@ -34804,6 +41159,10 @@ public:
 		// <int32_t m_PathFindIntervalCnt, offset 0x48>
 		int32_t m_PathFindIntervalCnt = 0;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct AiInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(PJZAKO::AiInfo& InObject)
@@ -34872,6 +41231,10 @@ public:
 		// <struct tagHRTASKCHECK taskCheck, offset 0x4>
 		struct tagHRTASKCHECK taskCheck;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct EfDanmen [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(PJZAKO::EfDanmen& InObject)
@@ -34935,83 +41298,6 @@ public:
 
 	};
 
-	// [Function] uint8_t __convention("thiscall") PJZAKO::IsSetDamageFromPcThroughAttack(class PJZAKO* const this, class mHRChara* arg2) [?IsSetDamageFromPcThroughAttack@PJZAKO@@AAE_NPAVmHRChara@@@Z]
-	uint8_t IsSetDamageFromPcThroughAttack(class mHRChara* arg2)
-	{
-		typedef uint8_t(__thiscall* _Func)(class PJZAKO* const thisPtr, class mHRChara* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x4d5b50);
-		return mFunc(this, arg2);
-	}
-	// [Function] void __convention("thiscall") PJZAKO::mSetDamage_Dead(class PJZAKO* const this, int32_t const arg2, int32_t const arg3, class mHRChara* arg4) [?mSetDamage_Dead@PJZAKO@@AAEXHHPBVmHRChara@@@Z]
-	void mSetDamage_Dead(int32_t const arg2, int32_t const arg3, class mHRChara* arg4)
-	{
-		typedef void(__thiscall* _Func)(class PJZAKO* const thisPtr, int32_t const arg2, int32_t const arg3, class mHRChara* arg4);
-		_Func mFunc = (_Func)(GameModule + 0x4d5fd0);
-		return mFunc(this, arg2, arg3, arg4);
-	}
-	// [Function] void __convention("thiscall") PJZAKO::mSetDamage_CutDamage(class PJZAKO* const this, class mHRChara* arg2, int32_t arg3) [?mSetDamage_CutDamage@PJZAKO@@AAEXPAVmHRChara@@H@Z]
-	void mSetDamage_CutDamage(class mHRChara* arg2, int32_t arg3)
-	{
-		typedef void(__thiscall* _Func)(class PJZAKO* const thisPtr, class mHRChara* arg2, int32_t arg3);
-		_Func mFunc = (_Func)(GameModule + 0x4d63f0);
-		return mFunc(this, arg2, arg3);
-	}
-	// [Function] void __convention("thiscall") PJZAKO::mSetDamage_NoStateChangeDamage(class PJZAKO* const this, class mHRChara* arg2) [?mSetDamage_NoStateChangeDamage@PJZAKO@@AAEXPAVmHRChara@@@Z]
-	void mSetDamage_NoStateChangeDamage(class mHRChara* arg2)
-	{
-		typedef void(__thiscall* _Func)(class PJZAKO* const thisPtr, class mHRChara* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x4d6510);
-		return mFunc(this, arg2);
-	}
-	// [Function] void __convention("thiscall") PJZAKO::mSetDamage_DamageCounterProc(class PJZAKO* const this, int32_t* arg2, class mHRChara* arg3) [?mSetDamage_DamageCounterProc@PJZAKO@@AAEXPAHPAVmHRChara@@@Z]
-	void mSetDamage_DamageCounterProc(int32_t* arg2, class mHRChara* arg3)
-	{
-		typedef void(__thiscall* _Func)(class PJZAKO* const thisPtr, int32_t* arg2, class mHRChara* arg3);
-		_Func mFunc = (_Func)(GameModule + 0x4d65a0);
-		return mFunc(this, arg2, arg3);
-	}
-	// [Function] void __convention("thiscall") PJZAKO::mSetDamage_InitDamageReaction(class PJZAKO* const this, class mHRChara* arg2, int32_t const arg3) [?mSetDamage_InitDamageReaction@PJZAKO@@AAEXPBVmHRChara@@H@Z]
-	void mSetDamage_InitDamageReaction(class mHRChara* arg2, int32_t const arg3)
-	{
-		typedef void(__thiscall* _Func)(class PJZAKO* const thisPtr, class mHRChara* arg2, int32_t const arg3);
-		_Func mFunc = (_Func)(GameModule + 0x4d6720);
-		return mFunc(this, arg2, arg3);
-	}
-	// [Function] void __convention("thiscall") PJZAKO::mSetDamage_Initialize(class PJZAKO* const this, class mHRChara* arg2, int32_t const arg3) [?mSetDamage_Initialize@PJZAKO@@AAEXPBVmHRChara@@H@Z]
-	void mSetDamage_Initialize(class mHRChara* arg2, int32_t const arg3)
-	{
-		typedef void(__thiscall* _Func)(class PJZAKO* const thisPtr, class mHRChara* arg2, int32_t const arg3);
-		_Func mFunc = (_Func)(GameModule + 0x4d6780);
-		return mFunc(this, arg2, arg3);
-	}
-	// [Function] uint8_t __convention("thiscall") PJZAKO::mSetDamage(class PJZAKO* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJZAKO@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef uint8_t(__thiscall* _Func)(class PJZAKO* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x4d67f0);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
-	// [Function] void __convention("thiscall") PJZAKO::CheckSetDmgFuncGarbageInData(class PJZAKO* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?CheckSetDmgFuncGarbageInData@PJZAKO@@AAEXMHHHMHMMPAVmHRChara@@@Z]
-	void CheckSetDmgFuncGarbageInData(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef void(__thiscall* _Func)(class PJZAKO* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x4d75d0);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
-	// [Function] int32_t __convention("thiscall") PJZAKO::ConvertDmgMot(class PJZAKO* const this, int32_t const arg2, int32_t const arg3, class mHRChara* arg4) [?ConvertDmgMot@PJZAKO@@EAEHHHPAVmHRChara@@@Z]
-	int32_t ConvertDmgMot(int32_t const arg2, int32_t const arg3, class mHRChara* arg4)
-	{
-		typedef int32_t(__thiscall* _Func)(class PJZAKO* const thisPtr, int32_t const arg2, int32_t const arg3, class mHRChara* arg4);
-		_Func mFunc = (_Func)(GameModule + 0x4d7850);
-		return mFunc(this, arg2, arg3, arg4);
-	}
-	// [Function] int32_t __fastcall PJZAKO::StaticProc(class mHRBattle* arg1) [?StaticProc@PJZAKO@@CAXXZ]
-	static int32_t StaticProc(class mHRBattle* arg1)
-	{
-		typedef int32_t(__fastcall* _Func)(class mHRBattle* arg1);
-		_Func mFunc = (_Func)(GameModule + 0x4de320);
-		return mFunc(arg1);
-	}
 	/// Struct member variables
 
 	// <class mHRChara field_0, offset 0x0>
@@ -35335,6 +41621,94 @@ public:
 
 	// <class ZkState_DownAttack m_State_DownAttack, offset 0x9dc>
 	class ZkState_DownAttack m_State_DownAttack;
+
+	/// 12 Functions
+
+	// [Function] uint8_t __convention("thiscall") PJZAKO::IsAtkObj(class PJZAKO* const this, class mHRChara* arg2) [?IsAtkObj@PJZAKO@@EAE_NPAVmHRChara@@@Z]
+	uint8_t IsAtkObj(class mHRChara* arg2)
+	{
+		typedef uint8_t(__thiscall* _Func)(class PJZAKO* const thisPtr, class mHRChara* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x4d51b0);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") PJZAKO::IsSetDamageFromPcThroughAttack(class PJZAKO* const this, class mHRChara* arg2) [?IsSetDamageFromPcThroughAttack@PJZAKO@@AAE_NPAVmHRChara@@@Z]
+	uint8_t IsSetDamageFromPcThroughAttack(class mHRChara* arg2)
+	{
+		typedef uint8_t(__thiscall* _Func)(class PJZAKO* const thisPtr, class mHRChara* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x4d5b50);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") PJZAKO::mSetDamage_Dead(class PJZAKO* const this, int32_t const arg2, int32_t const arg3, class mHRChara* arg4) [?mSetDamage_Dead@PJZAKO@@AAEXHHPBVmHRChara@@@Z]
+	void mSetDamage_Dead(int32_t const arg2, int32_t const arg3, class mHRChara* arg4)
+	{
+		typedef void(__thiscall* _Func)(class PJZAKO* const thisPtr, int32_t const arg2, int32_t const arg3, class mHRChara* arg4);
+		_Func mFunc = (_Func)(GameModule + 0x4d5fd0);
+		return mFunc(this, arg2, arg3, arg4);
+	}
+	// [Function] void __convention("thiscall") PJZAKO::mSetDamage_CutDamage(class PJZAKO* const this, class mHRChara* arg2, int32_t arg3) [?mSetDamage_CutDamage@PJZAKO@@AAEXPAVmHRChara@@H@Z]
+	void mSetDamage_CutDamage(class mHRChara* arg2, int32_t arg3)
+	{
+		typedef void(__thiscall* _Func)(class PJZAKO* const thisPtr, class mHRChara* arg2, int32_t arg3);
+		_Func mFunc = (_Func)(GameModule + 0x4d63f0);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] void __convention("thiscall") PJZAKO::mSetDamage_NoStateChangeDamage(class PJZAKO* const this, class mHRChara* arg2) [?mSetDamage_NoStateChangeDamage@PJZAKO@@AAEXPAVmHRChara@@@Z]
+	void mSetDamage_NoStateChangeDamage(class mHRChara* arg2)
+	{
+		typedef void(__thiscall* _Func)(class PJZAKO* const thisPtr, class mHRChara* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x4d6510);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") PJZAKO::mSetDamage_DamageCounterProc(class PJZAKO* const this, int32_t* arg2, class mHRChara* arg3) [?mSetDamage_DamageCounterProc@PJZAKO@@AAEXPAHPAVmHRChara@@@Z]
+	void mSetDamage_DamageCounterProc(int32_t* arg2, class mHRChara* arg3)
+	{
+		typedef void(__thiscall* _Func)(class PJZAKO* const thisPtr, int32_t* arg2, class mHRChara* arg3);
+		_Func mFunc = (_Func)(GameModule + 0x4d65a0);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] void __convention("thiscall") PJZAKO::mSetDamage_InitDamageReaction(class PJZAKO* const this, class mHRChara* arg2, int32_t const arg3) [?mSetDamage_InitDamageReaction@PJZAKO@@AAEXPBVmHRChara@@H@Z]
+	void mSetDamage_InitDamageReaction(class mHRChara* arg2, int32_t const arg3)
+	{
+		typedef void(__thiscall* _Func)(class PJZAKO* const thisPtr, class mHRChara* arg2, int32_t const arg3);
+		_Func mFunc = (_Func)(GameModule + 0x4d6720);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] void __convention("thiscall") PJZAKO::mSetDamage_Initialize(class PJZAKO* const this, class mHRChara* arg2, int32_t const arg3) [?mSetDamage_Initialize@PJZAKO@@AAEXPBVmHRChara@@H@Z]
+	void mSetDamage_Initialize(class mHRChara* arg2, int32_t const arg3)
+	{
+		typedef void(__thiscall* _Func)(class PJZAKO* const thisPtr, class mHRChara* arg2, int32_t const arg3);
+		_Func mFunc = (_Func)(GameModule + 0x4d6780);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] uint8_t __convention("thiscall") PJZAKO::mSetDamage(class PJZAKO* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJZAKO@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class PJZAKO* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x4d67f0);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	// [Function] void __convention("thiscall") PJZAKO::CheckSetDmgFuncGarbageInData(class PJZAKO* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?CheckSetDmgFuncGarbageInData@PJZAKO@@AAEXMHHHMHMMPAVmHRChara@@@Z]
+	void CheckSetDmgFuncGarbageInData(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef void(__thiscall* _Func)(class PJZAKO* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x4d75d0);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	// [Function] int32_t __convention("thiscall") PJZAKO::ConvertDmgMot(class PJZAKO* const this, int32_t const arg2, int32_t const arg3, class mHRChara* arg4) [?ConvertDmgMot@PJZAKO@@EAEHHHPAVmHRChara@@@Z]
+	int32_t ConvertDmgMot(int32_t const arg2, int32_t const arg3, class mHRChara* arg4)
+	{
+		typedef int32_t(__thiscall* _Func)(class PJZAKO* const thisPtr, int32_t const arg2, int32_t const arg3, class mHRChara* arg4);
+		_Func mFunc = (_Func)(GameModule + 0x4d7850);
+		return mFunc(this, arg2, arg3, arg4);
+	}
+	// [Function] int32_t __fastcall PJZAKO::StaticProc(class mHRBattle* arg1) [?StaticProc@PJZAKO@@CAXXZ]
+	static int32_t StaticProc(class mHRBattle* arg1)
+	{
+		typedef int32_t(__fastcall* _Func)(class mHRBattle* arg1);
+		_Func mFunc = (_Func)(GameModule + 0x4de320);
+		return mFunc(arg1);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class PJZAKO [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -35666,6 +42040,10 @@ public:
 	// <class PJState* m_pGlobalState, offset 0x10>
 	class PJState* m_pGlobalState = nullptr;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class PJStateMachine [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(PJStateMachine& InObject)
@@ -35709,6 +42087,10 @@ private:
 	char _UnidentifiedData_0[604];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class EffectDanmenFlash [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EffectDanmenFlash& InObject)
@@ -35772,6 +42154,10 @@ public:
 
 	// <float m_TimeRate, offset 0x168>
 	float m_TimeRate = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class EffectQuestion [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -35885,6 +42271,10 @@ public:
 	// <enum eMoveDir m_MoveDir, offset 0x20>
 	enum eMoveDir m_MoveDir;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class PJZakoMotMng [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(PJZakoMotMng& InObject)
@@ -35934,6 +42324,10 @@ private:
 	char _UnidentifiedData_0[1220];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class PathPlanner [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(PathPlanner& InObject)
@@ -35966,6 +42360,10 @@ public:
 
 		// <float fParam, offset 0x4>
 		float fParam = 0;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "struct DynamicParam [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -36036,6 +42434,10 @@ private:
 	char _UnidentifiedData_305[3];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class FkDynamicParam [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(FkDynamicParam& InObject)
@@ -36093,6 +42495,10 @@ private:
 	char _UnidentifiedData_0[52];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class FkObstacleSensor [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(FkObstacleSensor& InObject)
@@ -36136,6 +42542,10 @@ public:
 
 		// <class EffectFkTobiDoguBase* pTobiDoguBase, offset 0x10>
 		class EffectFkTobiDoguBase* pTobiDoguBase = nullptr;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "struct stEfBullet [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -36198,6 +42608,10 @@ public:
 		// <int32_t CharaHitSeID, offset 0x18>
 		int32_t CharaHitSeID = 0;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct DmgInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(FkBulletManager::DmgInfo& InObject)
@@ -36236,13 +42650,6 @@ public:
 	static_assert(sizeof(FkBulletManager::DmgInfo::CharaHitSeID) == 4, "expected FkBulletManager::DmgInfo::CharaHitSeID to be size 4");
 	static_assert(sizeof(FkBulletManager::DmgInfo) == 28, "expected FkBulletManager::DmgInfo to be size 28");
 
-	// [Function] void __convention("thiscall") FkBulletManager::AddManageBullet(class FkBulletManager* const this, class HrTask* arg2, class EffectFkTobiDoguBase* arg3, class mHRChara* arg4, float arg5, float arg6, int32_t arg7, float arg8, uint8_t arg9, int32_t arg10) [?AddManageBullet@FkBulletManager@@QAEXPAVHrTask@@PAVEffectFkTobiDoguBase@@PAVmHRChara@@MMHM_NH@Z]
-	void AddManageBullet(class HrTask* arg2, class EffectFkTobiDoguBase* arg3, class mHRChara* arg4, float arg5, float arg6, int32_t arg7, float arg8, uint8_t arg9, int32_t arg10)
-	{
-		typedef void(__thiscall* _Func)(class FkBulletManager* const thisPtr, class HrTask* arg2, class EffectFkTobiDoguBase* arg3, class mHRChara* arg4, float arg5, float arg6, int32_t arg7, float arg8, uint8_t arg9, int32_t arg10);
-		_Func mFunc = (_Func)(GameModule + 0x5d03f0);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
 	/// Struct member variables
 
 	// <class FkStlVector<FkBulletManager::stEfBullet> mEfBulletArr, offset 0x0>
@@ -36253,6 +42660,17 @@ public:
 
 	// <struct FkBulletManager::DmgInfo m_DmgInfo, offset 0x18>
 	struct FkBulletManager::DmgInfo m_DmgInfo;
+
+	/// 1 Functions
+
+	// [Function] void __convention("thiscall") FkBulletManager::AddManageBullet(class FkBulletManager* const this, class HrTask* arg2, class EffectFkTobiDoguBase* arg3, class mHRChara* arg4, float arg5, float arg6, int32_t arg7, float arg8, uint8_t arg9, int32_t arg10) [?AddManageBullet@FkBulletManager@@QAEXPAVHrTask@@PAVEffectFkTobiDoguBase@@PAVmHRChara@@MMHM_NH@Z]
+	void AddManageBullet(class HrTask* arg2, class EffectFkTobiDoguBase* arg3, class mHRChara* arg4, float arg5, float arg6, int32_t arg7, float arg8, uint8_t arg9, int32_t arg10)
+	{
+		typedef void(__thiscall* _Func)(class FkBulletManager* const thisPtr, class HrTask* arg2, class EffectFkTobiDoguBase* arg3, class mHRChara* arg4, float arg5, float arg6, int32_t arg7, float arg8, uint8_t arg9, int32_t arg10);
+		_Func mFunc = (_Func)(GameModule + 0x5d03f0);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class FkBulletManager [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -36296,6 +42714,10 @@ public:
 
 		// <struct Vec* pTgtPos, offset 0x4>
 		struct Vec* pTgtPos = nullptr;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "struct strHitCheck [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -36356,6 +42778,10 @@ public:
 
 		// <float fSqDistFromLaunch, offset 0x14>
 		float fSqDistFromLaunch = 0;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "struct HitObjInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -36482,6 +42908,10 @@ public:
 	// <struct EffectFkTobiDoguBase::HitObjInfo m_HitInfo, offset 0xac>
 	struct EffectFkTobiDoguBase::HitObjInfo m_HitInfo;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class EffectFkTobiDoguBase [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EffectFkTobiDoguBase& InObject)
@@ -36594,6 +43024,10 @@ private:
 	char _UnidentifiedData_0[220];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class rQuadEx [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(rQuadEx& InObject)
@@ -36684,6 +43118,10 @@ public:
 
 	// <float m_TimeRate, offset 0x284>
 	float m_TimeRate = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class EffectGunTrack [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -36803,6 +43241,10 @@ public:
 	// <int32_t limitTick, offset 0xc>
 	int32_t limitTick = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct stRotDat [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(stRotDat& InObject)
@@ -36835,17 +43277,14 @@ static_assert(sizeof(stRotDat::accDir) == 4, "expected stRotDat::accDir to be si
 static_assert(sizeof(stRotDat::limitTick) == 4, "expected stRotDat::limitTick to be size 4");
 static_assert(sizeof(stRotDat) == 16, "expected stRotDat to be size 16");
 
+// Unsupported constructor
+//void __convention("thiscall") mHRPad::mHRPad(class mHRPad* const this)
+// Unsupported destructor
+//void __convention("thiscall") mHRPad::~mHRPad(class mHRPad* const this)
 // [Structure] class pcSNB
 class pcSNB
 {
 public:
-	// [Function] class mHRChara* __convention("thiscall") pcSNB::mGetSerchNearJumpAttackTarget(class pcSNB* const this) [?mGetSerchNearJumpAttackTarget@pcSNB@@QAEPAVmHRChara@@XZ]
-	class mHRChara* mGetSerchNearJumpAttackTarget()
-	{
-		typedef class mHRChara*(__thiscall* _Func)(class pcSNB* const thisPtr);
-		_Func mFunc = (_Func)(GameModule + 0x4f8fc0);
-		return mFunc(this);
-	}
 	/// Struct member variables
 
 	// <Unidentified data segment, offset 0x0>
@@ -36853,6 +43292,17 @@ private:
 	char _UnidentifiedData_0[8252];
 
 public:
+	/// 1 Functions
+
+	// [Function] class mHRChara* __convention("thiscall") pcSNB::mGetSerchNearJumpAttackTarget(class pcSNB* const this) [?mGetSerchNearJumpAttackTarget@pcSNB@@QAEPAVmHRChara@@XZ]
+	class mHRChara* mGetSerchNearJumpAttackTarget()
+	{
+		typedef class mHRChara*(__thiscall* _Func)(class pcSNB* const thisPtr);
+		_Func mFunc = (_Func)(GameModule + 0x4f8fc0);
+		return mFunc(this);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class pcSNB [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(pcSNB& InObject)
@@ -36900,6 +43350,10 @@ public:
 	// <struct Vec m_TrapPos, offset 0x8>
 	struct Vec m_TrapPos;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class State_Tojo_Knife_SuddenAttack [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(State_Tojo_Knife_SuddenAttack& InObject)
@@ -36940,6 +43394,10 @@ private:
 	char _UnidentifiedData_5[3];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class ZkKnifeState_ThroughKnife [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(ZkKnifeState_ThroughKnife& InObject)
@@ -36969,6 +43427,10 @@ public:
 	// <class PJZAKO field_0, offset 0x0>
 	// class PJZAKO Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class PJZAKOBoneB [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(PJZAKOBoneB& InObject)
@@ -36990,13 +43452,6 @@ static_assert(sizeof(PJZAKOBoneB) == 2532, "expected PJZAKOBoneB to be size 2532
 class PJZakoKnife : public PJZAKOBoneB
 {
 public:
-	// [Function] int32_t __convention("thiscall") PJZakoKnife::ConvertDmgMot(class PJZakoKnife* const this, int32_t const arg2, int32_t const arg3, class mHRChara* arg4) [?ConvertDmgMot@PJZakoKnife@@UAEHHHPAVmHRChara@@@Z]
-	int32_t ConvertDmgMot(int32_t const arg2, int32_t const arg3, class mHRChara* arg4)
-	{
-		typedef int32_t(__thiscall* _Func)(class PJZakoKnife* const thisPtr, int32_t const arg2, int32_t const arg3, class mHRChara* arg4);
-		_Func mFunc = (_Func)(GameModule + 0x4fd290);
-		return mFunc(this, arg2, arg3, arg4);
-	}
 	/// Struct member variables
 
 	// <class PJZAKOBoneB field_0, offset 0x0>
@@ -37007,6 +43462,17 @@ public:
 
 	// <class State_Tojo_Knife_SuddenAttack m_State_SdnAtk, offset 0x9ec>
 	class State_Tojo_Knife_SuddenAttack m_State_SdnAtk;
+
+	/// 1 Functions
+
+	// [Function] int32_t __convention("thiscall") PJZakoKnife::ConvertDmgMot(class PJZakoKnife* const this, int32_t const arg2, int32_t const arg3, class mHRChara* arg4) [?ConvertDmgMot@PJZakoKnife@@UAEHHHPAVmHRChara@@@Z]
+	int32_t ConvertDmgMot(int32_t const arg2, int32_t const arg3, class mHRChara* arg4)
+	{
+		typedef int32_t(__thiscall* _Func)(class PJZakoKnife* const thisPtr, int32_t const arg2, int32_t const arg3, class mHRChara* arg4);
+		_Func mFunc = (_Func)(GameModule + 0x4fd290);
+		return mFunc(this, arg2, arg3, arg4);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class PJZakoKnife [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -37036,13 +43502,6 @@ static_assert(sizeof(PJZakoKnife) == 2560, "expected PJZakoKnife to be size 2560
 class bsSKE
 {
 public:
-	// [Function] uint8_t __convention("thiscall") bsSKE::mSetDamage(class bsSKE* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsSKE@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef uint8_t(__thiscall* _Func)(class bsSKE* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x501450);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
 	/// Struct member variables
 
 	// <Unidentified data segment, offset 0x0>
@@ -37050,6 +43509,17 @@ private:
 	char _UnidentifiedData_0[3684];
 
 public:
+	/// 1 Functions
+
+	// [Function] uint8_t __convention("thiscall") bsSKE::mSetDamage(class bsSKE* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsSKE@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class bsSKE* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x501450);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class bsSKE [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(bsSKE& InObject)
@@ -37072,13 +43542,6 @@ static_assert(sizeof(bsSKE) == 3684, "expected bsSKE to be size 3684");
 class bsLEZ
 {
 public:
-	// [Function] uint8_t __convention("thiscall") bsLEZ::mSetDamage(class bsLEZ* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsLEZ@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef uint8_t(__thiscall* _Func)(class bsLEZ* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x52ed70);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
 	/// Struct member variables
 
 	// <Unidentified data segment, offset 0x0>
@@ -37086,6 +43549,17 @@ private:
 	char _UnidentifiedData_0[4412];
 
 public:
+	/// 1 Functions
+
+	// [Function] uint8_t __convention("thiscall") bsLEZ::mSetDamage(class bsLEZ* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsLEZ@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class bsLEZ* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x52ed70);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class bsLEZ [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(bsLEZ& InObject)
@@ -37108,13 +43582,6 @@ static_assert(sizeof(bsLEZ) == 4412, "expected bsLEZ to be size 4412");
 class bsCEW
 {
 public:
-	// [Function] uint8_t __convention("thiscall") bsCEW::mSetDamage(class bsCEW* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsCEW@@EAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef uint8_t(__thiscall* _Func)(class bsCEW* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x533080);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
 	/// Struct member variables
 
 	// <Unidentified data segment, offset 0x0>
@@ -37122,6 +43589,17 @@ private:
 	char _UnidentifiedData_0[4232];
 
 public:
+	/// 1 Functions
+
+	// [Function] uint8_t __convention("thiscall") bsCEW::mSetDamage(class bsCEW* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsCEW@@EAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class bsCEW* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x533080);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class bsCEW [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(bsCEW& InObject)
@@ -37144,13 +43622,6 @@ static_assert(sizeof(bsCEW) == 4232, "expected bsCEW to be size 4232");
 class bsAST
 {
 public:
-	// [Function] uint8_t __convention("thiscall") bsAST::mSetDamage(class bsAST* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsAST@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef uint8_t(__thiscall* _Func)(class bsAST* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x541b20);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
 	/// Struct member variables
 
 	// <Unidentified data segment, offset 0x0>
@@ -37158,6 +43629,17 @@ private:
 	char _UnidentifiedData_0[4352];
 
 public:
+	/// 1 Functions
+
+	// [Function] uint8_t __convention("thiscall") bsAST::mSetDamage(class bsAST* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsAST@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class bsAST* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x541b20);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class bsAST [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(bsAST& InObject)
@@ -37180,13 +43662,6 @@ static_assert(sizeof(bsAST) == 4352, "expected bsAST to be size 4352");
 class bsRKT
 {
 public:
-	// [Function] uint8_t __convention("thiscall") bsRKT::mSetDamage(class bsRKT* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsRKT@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef uint8_t(__thiscall* _Func)(class bsRKT* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x547690);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
 	/// Struct member variables
 
 	// <Unidentified data segment, offset 0x0>
@@ -37194,6 +43669,17 @@ private:
 	char _UnidentifiedData_0[4672];
 
 public:
+	/// 1 Functions
+
+	// [Function] uint8_t __convention("thiscall") bsRKT::mSetDamage(class bsRKT* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsRKT@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class bsRKT* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x547690);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class bsRKT [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(bsRKT& InObject)
@@ -37222,6 +43708,10 @@ public:
 	// <void* (* field_0)[0x7], offset 0x0>
 	void* (* field_0)[0x7];
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class KrBaseState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(KrBaseState<bsBasic>& InObject)
@@ -37244,6 +43734,10 @@ public:
 
 	// <int32_t mExpCnt, offset 0x4>
 	int32_t mExpCnt = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class GLBDeathState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -37273,6 +43767,10 @@ public:
 
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
 	// class KrBaseState<pcGLB> Super;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class GLBWalkState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -37308,6 +43806,10 @@ private:
 	char _UnidentifiedData_5[3];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class GLBComboState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(GLBComboState& InObject)
@@ -37337,6 +43839,10 @@ public:
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
 	// class KrBaseState<pcGLB> Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class GLBIdleState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(GLBIdleState& InObject)
@@ -37365,6 +43871,10 @@ public:
 
 	// <int32_t JumpTick, offset 0x4>
 	int32_t JumpTick = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class GLBJampState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -37407,6 +43917,10 @@ public:
 
 	// <class KrBaseState<pcGLB>* mpState[0x20], offset 0x10>
 	class KrBaseState<T1>* mpState[T2];
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class KrStateMachine [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -37474,6 +43988,10 @@ public:
 	// <struct Vec mZoomDirec, offset 0x3c>
 	struct Vec mZoomDirec;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class rSideScrollCamera [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(rSideScrollCamera& InObject)
@@ -37536,6 +44054,10 @@ public:
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
 	// class KrBaseState<pcGLB> Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class GLBDamageState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(GLBDamageState& InObject)
@@ -37561,6 +44083,10 @@ public:
 
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
 	// class KrBaseState<pcGLB> Super;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class GLBGuardState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -37588,6 +44114,10 @@ public:
 	// <class KrBaseState<pcGLB> field_0, offset 0x0>
 	// class KrBaseState<pcGLB> Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class GLBAirKickState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(GLBAirKickState& InObject)
@@ -37609,13 +44139,6 @@ static_assert(sizeof(GLBAirKickState) == 4, "expected GLBAirKickState to be size
 class pcGLB : public mHRChara
 {
 public:
-	// [Function] uint8_t __convention("thiscall") pcGLB::IsAtkObj(class pcGLB* const this, class mHRChara* arg2) [?IsAtkObj@pcGLB@@EAE_NPAVmHRChara@@@Z]
-	uint8_t IsAtkObj(class mHRChara* arg2)
-	{
-		typedef uint8_t(__thiscall* _Func)(class pcGLB* const thisPtr, class mHRChara* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x54ac90);
-		return mFunc(this, arg2);
-	}
 	// [Structure] struct pcGLB::DmgInfo
 	struct DmgInfo
 	{
@@ -37654,6 +44177,10 @@ public:
 
 		// <float GroggyRecovery, offset 0x28>
 		float GroggyRecovery = 0;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "struct DmgInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -37729,6 +44256,10 @@ public:
 		// <int32_t DmgPlayAccept, offset 0x14>
 		int32_t DmgPlayAccept = 0;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct TickCnt [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(pcGLB::TickCnt& InObject)
@@ -37781,20 +44312,6 @@ public:
 
 	};
 
-	// [Function] void __convention("thiscall") pcGLB::SetDamageIK(class pcGLB* const this, class mHRChara* arg2, uint8_t arg3) [?SetDamageIK@pcGLB@@AAEXPAVmHRChara@@_N@Z]
-	void SetDamageIK(class mHRChara* arg2, uint8_t arg3)
-	{
-		typedef void(__thiscall* _Func)(class pcGLB* const thisPtr, class mHRChara* arg2, uint8_t arg3);
-		_Func mFunc = (_Func)(GameModule + 0x54b5e0);
-		return mFunc(this, arg2, arg3);
-	}
-	// [Function] uint8_t __convention("thiscall") pcGLB::mSetDamage(class pcGLB* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@pcGLB@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef uint8_t(__thiscall* _Func)(class pcGLB* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x54bb60);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
 	/// Struct member variables
 
 	// <class mHRChara field_0, offset 0x0>
@@ -37909,6 +44426,31 @@ public:
 
 	// <int32_t mMDFlag, offset 0x710>
 	int32_t mMDFlag = 0;
+
+	/// 3 Functions
+
+	// [Function] uint8_t __convention("thiscall") pcGLB::IsAtkObj(class pcGLB* const this, class mHRChara* arg2) [?IsAtkObj@pcGLB@@EAE_NPAVmHRChara@@@Z]
+	uint8_t IsAtkObj(class mHRChara* arg2)
+	{
+		typedef uint8_t(__thiscall* _Func)(class pcGLB* const thisPtr, class mHRChara* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x54ac90);
+		return mFunc(this, arg2);
+	}
+	// [Function] void __convention("thiscall") pcGLB::SetDamageIK(class pcGLB* const this, class mHRChara* arg2, uint8_t arg3) [?SetDamageIK@pcGLB@@AAEXPAVmHRChara@@_N@Z]
+	void SetDamageIK(class mHRChara* arg2, uint8_t arg3)
+	{
+		typedef void(__thiscall* _Func)(class pcGLB* const thisPtr, class mHRChara* arg2, uint8_t arg3);
+		_Func mFunc = (_Func)(GameModule + 0x54b5e0);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] uint8_t __convention("thiscall") pcGLB::mSetDamage(class pcGLB* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@pcGLB@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class pcGLB* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x54bb60);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class pcGLB [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -38231,6 +44773,10 @@ private:
 	char _UnidentifiedData_961[3];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class EfRoboInterface [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EfRoboInterface& InObject)
@@ -38413,72 +44959,6 @@ static_assert(sizeof(EfRoboInterface::mBlurAlpha) == 4, "expected EfRoboInterfac
 static_assert(sizeof(EfRoboInterface::mBlurValid) == 1, "expected EfRoboInterface::mBlurValid to be size 1");
 static_assert(sizeof(EfRoboInterface) == 964, "expected EfRoboInterface to be size 964");
 
-// [Structure] class EffectSpeedBlur
-class EffectSpeedBlur : public HrTask
-{
-public:
-	/// Struct member variables
-
-	// <class HrTask field_0, offset 0x0>
-	// class HrTask Super;
-
-	// <uint8_t m_Flag, offset 0x50>
-	uint8_t m_Flag = 0;
-
-	// <Unidentified data segment, offset 0x51>
-private:
-	char _UnidentifiedData_81[3];
-
-public:
-	// <float m_BlurValue, offset 0x54>
-	float m_BlurValue = 0;
-
-	// <float m_Scale, offset 0x58>
-	float m_Scale = 0;
-
-	// <int32_t m_RepNum, offset 0x5c>
-	int32_t m_RepNum = 0;
-
-	// <uint8_t m_Wait, offset 0x60>
-	uint8_t m_Wait = 0;
-
-	// <Unidentified data segment, offset 0x61>
-private:
-	char _UnidentifiedData_97[3];
-
-public:
-	std::string ToString() const { std::stringstream stream; stream << "class EffectSpeedBlur [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
-	int GetPtrAddr() const { return (int)this; }
-	void CopyFrom(EffectSpeedBlur& InObject)
-	{
-		m_Flag = InObject.m_Flag;
-		m_BlurValue = InObject.m_BlurValue;
-		m_Scale = InObject.m_Scale;
-		m_RepNum = InObject.m_RepNum;
-		m_Wait = InObject.m_Wait;
-	}
-#ifdef WITH_LUA
-	static void BindLua(luabridge::Namespace& NS)
-	{
-		NS = NS.deriveClass<EffectSpeedBlur, HrTask>("EffectSpeedBlur")
-			.addFunction("__tostring", &EffectSpeedBlur::ToString)
-			.addFunction("GetPtrAddr", &EffectSpeedBlur::GetPtrAddr)
-			.addProperty("m_Flag", &EffectSpeedBlur::m_Flag)
-			.addProperty("m_BlurValue", &EffectSpeedBlur::m_BlurValue)
-			.addProperty("m_Scale", &EffectSpeedBlur::m_Scale)
-			.addProperty("m_RepNum", &EffectSpeedBlur::m_RepNum)
-			.addProperty("m_Wait", &EffectSpeedBlur::m_Wait)
-		.endClass();
-	}
-#endif
-};
-static_assert(sizeof(EffectSpeedBlur::m_Flag) == 1, "expected EffectSpeedBlur::m_Flag to be size 1");
-static_assert(sizeof(EffectSpeedBlur::m_BlurValue) == 4, "expected EffectSpeedBlur::m_BlurValue to be size 4");
-static_assert(sizeof(EffectSpeedBlur::m_Scale) == 4, "expected EffectSpeedBlur::m_Scale to be size 4");
-static_assert(sizeof(EffectSpeedBlur::m_RepNum) == 4, "expected EffectSpeedBlur::m_RepNum to be size 4");
-static_assert(sizeof(EffectSpeedBlur::m_Wait) == 1, "expected EffectSpeedBlur::m_Wait to be size 1");
-static_assert(sizeof(EffectSpeedBlur) == 100, "expected EffectSpeedBlur to be size 100");
-
 // [Structure] class CmDeathState
 class CmDeathState : public KrBaseState<bsBasic>
 {
@@ -38496,6 +44976,10 @@ private:
 	char _UnidentifiedData_5[3];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CmDeathState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CmDeathState& InObject)
@@ -38525,6 +45009,10 @@ public:
 	// <class CmDeathState field_0, offset 0x0>
 	// class CmDeathState Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class SDPDeathState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(SDPDeathState& InObject)
@@ -38550,6 +45038,10 @@ public:
 
 	// <class KrBaseState<bsBasic> field_0, offset 0x0>
 	// class KrBaseState<bsBasic> Super;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class SDPComboState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -38580,6 +45072,10 @@ public:
 	// <int32_t mDownTick, offset 0x4>
 	int32_t mDownTick = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CmDamageState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CmDamageState& InObject)
@@ -38609,6 +45105,10 @@ public:
 	// <class CmDamageState field_0, offset 0x0>
 	// class CmDamageState Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class SDPDamageState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(SDPDamageState& InObject)
@@ -38634,6 +45134,10 @@ public:
 
 	// <class KrBaseState<bsBasic> field_0, offset 0x0>
 	// class KrBaseState<bsBasic> Super;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class SDPBeamState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -38664,6 +45168,10 @@ public:
 	// <int32_t mContinuTick, offset 0x4>
 	int32_t mContinuTick = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class CmIdleState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(CmIdleState& InObject)
@@ -38692,6 +45200,10 @@ public:
 
 	// <class CmIdleState field_0, offset 0x0>
 	// class CmIdleState Super;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class SDPIdleState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -38749,6 +45261,10 @@ public:
 		char _UnidentifiedData_53[3];
 
 	public:
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct PcInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(bsBasic::PcInfo& InObject)
@@ -38874,6 +45390,10 @@ public:
 		// <float TargetDist, offset 0xc4>
 		float TargetDist = 0;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct SurroundInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(bsBasic::SurroundInfo& InObject)
@@ -38990,6 +45510,10 @@ public:
 		// <float Allowance, offset 0x10>
 		float Allowance = 0;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct DistSense [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(bsBasic::DistSense& InObject)
@@ -39051,6 +45575,10 @@ public:
 
 		// <int32_t Piyori, offset 0x1c>
 		int32_t Piyori = 0;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "struct TickCnt [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -39121,6 +45649,10 @@ public:
 	public:
 		// <int32_t HpPhase, offset 0x1c>
 		int32_t HpPhase = 0;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "struct BattleParam [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -39202,6 +45734,10 @@ public:
 		// <float DamagePower, offset 0x30>
 		float DamagePower = 0;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct DmgInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(bsBasic::DmgInfo& InObject)
@@ -39258,27 +45794,6 @@ public:
 	static_assert(sizeof(bsBasic::DmgInfo::DamagePower) == 4, "expected bsBasic::DmgInfo::DamagePower to be size 4");
 	static_assert(sizeof(bsBasic::DmgInfo) == 52, "expected bsBasic::DmgInfo to be size 52");
 
-	// [Function] void __convention("thiscall") bsBasic::SetDamageIK(class bsBasic* const this, class mHRChara* arg2, uint8_t arg3) [?SetDamageIK@bsBasic@@IAEXPAVmHRChara@@_N@Z]
-	void SetDamageIK(class mHRChara* arg2, uint8_t arg3)
-	{
-		typedef void(__thiscall* _Func)(class bsBasic* const thisPtr, class mHRChara* arg2, uint8_t arg3);
-		_Func mFunc = (_Func)(GameModule + 0x573a80);
-		return mFunc(this, arg2, arg3);
-	}
-	// [Function] uint8_t __convention("thiscall") bsBasic::mSetDamage(class bsBasic* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsBasic@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef uint8_t(__thiscall* _Func)(class bsBasic* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x575360);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
-	// [Function] uint8_t __convention("thiscall") bsBasic::IsAtkObj(class bsBasic* const this, class mHRChara* arg2) [?IsAtkObj@bsBasic@@MAE_NPAVmHRChara@@@Z]
-	uint8_t IsAtkObj(class mHRChara* arg2)
-	{
-		typedef uint8_t(__thiscall* _Func)(class bsBasic* const thisPtr, class mHRChara* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x5786a0);
-		return mFunc(this, arg2);
-	}
 	/// Struct member variables
 
 	// <class mHRChara field_0, offset 0x0>
@@ -39350,6 +45865,31 @@ public:
 
 	// <uint32_t mFlag, offset 0xc80>
 	uint32_t mFlag = 0;
+
+	/// 3 Functions
+
+	// [Function] void __convention("thiscall") bsBasic::SetDamageIK(class bsBasic* const this, class mHRChara* arg2, uint8_t arg3) [?SetDamageIK@bsBasic@@IAEXPAVmHRChara@@_N@Z]
+	void SetDamageIK(class mHRChara* arg2, uint8_t arg3)
+	{
+		typedef void(__thiscall* _Func)(class bsBasic* const thisPtr, class mHRChara* arg2, uint8_t arg3);
+		_Func mFunc = (_Func)(GameModule + 0x573a80);
+		return mFunc(this, arg2, arg3);
+	}
+	// [Function] uint8_t __convention("thiscall") bsBasic::mSetDamage(class bsBasic* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsBasic@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class bsBasic* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x575360);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	// [Function] uint8_t __convention("thiscall") bsBasic::IsAtkObj(class bsBasic* const this, class mHRChara* arg2) [?IsAtkObj@bsBasic@@MAE_NPAVmHRChara@@@Z]
+	uint8_t IsAtkObj(class mHRChara* arg2)
+	{
+		typedef uint8_t(__thiscall* _Func)(class bsBasic* const thisPtr, class mHRChara* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x5786a0);
+		return mFunc(this, arg2);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class bsBasic [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -39437,6 +45977,10 @@ public:
 	// <class KrBaseState<bsBasic> field_0, offset 0x0>
 	// class KrBaseState<bsBasic> Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class SDPMoveState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(SDPMoveState& InObject)
@@ -39463,6 +46007,10 @@ public:
 	// <class KrBaseState<bsBasic> field_0, offset 0x0>
 	// class KrBaseState<bsBasic> Super;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class SDPGuardState [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(SDPGuardState& InObject)
@@ -39484,20 +46032,6 @@ static_assert(sizeof(SDPGuardState) == 4, "expected SDPGuardState to be size 4")
 class bsSDP : public bsBasic
 {
 public:
-	// [Function] uint8_t __convention("thiscall") bsSDP::IsAtkObj(class bsSDP* const this, class mHRChara* arg2) [?IsAtkObj@bsSDP@@EAE_NPAVmHRChara@@@Z]
-	uint8_t IsAtkObj(class mHRChara* arg2)
-	{
-		typedef uint8_t(__thiscall* _Func)(class bsSDP* const thisPtr, class mHRChara* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x54e160);
-		return mFunc(this, arg2);
-	}
-	// [Function] uint8_t __convention("thiscall") bsSDP::mSetDamage(class bsSDP* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsSDP@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef uint8_t(__thiscall* _Func)(class bsSDP* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x54ebc0);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
 	/// Struct member variables
 
 	// <class bsBasic field_0, offset 0x0>
@@ -39556,6 +46090,24 @@ public:
 
 	// <uint8_t mbGLBSE, offset 0xcd3>
 	uint8_t mbGLBSE = 0;
+
+	/// 2 Functions
+
+	// [Function] uint8_t __convention("thiscall") bsSDP::IsAtkObj(class bsSDP* const this, class mHRChara* arg2) [?IsAtkObj@bsSDP@@EAE_NPAVmHRChara@@@Z]
+	uint8_t IsAtkObj(class mHRChara* arg2)
+	{
+		typedef uint8_t(__thiscall* _Func)(class bsSDP* const thisPtr, class mHRChara* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x54e160);
+		return mFunc(this, arg2);
+	}
+	// [Function] uint8_t __convention("thiscall") bsSDP::mSetDamage(class bsSDP* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@bsSDP@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class bsSDP* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x54ebc0);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class bsSDP [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -39639,6 +46191,10 @@ public:
 	// <class FkStlVector<FkVtx> m_VtxArr, offset 0x0>
 	class FkStlVector<FkVtx> m_VtxArr;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class FkTriangleList [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(FkTriangleList& InObject)
@@ -39691,6 +46247,10 @@ public:
 	// <float m_fScale, offset 0x74>
 	float m_fScale = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class EffectModelBeam [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EffectModelBeam& InObject)
@@ -39738,6 +46298,10 @@ public:
 	// <struct Vec Norm, offset 0xc>
 	struct Vec Norm;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct FkVtx [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(FkVtx& InObject)
@@ -39772,6 +46336,10 @@ private:
 	char _UnidentifiedData_0[54968];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class EfGeneralBeam [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EfGeneralBeam& InObject)
@@ -39793,13 +46361,6 @@ static_assert(sizeof(EfGeneralBeam) == 54968, "expected EfGeneralBeam to be size
 class PJOBJ0029 : public commonObj
 {
 public:
-	// [Function] uint8_t __convention("thiscall") PJOBJ0029::mSetDamage(class PJOBJ0029* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11) [?mSetDamage@PJOBJ0029@@UAE_NMHHHMHMMPAVmHRChara@@M@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11)
-	{
-		typedef uint8_t(__thiscall* _Func)(class PJOBJ0029* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11);
-		_Func mFunc = (_Func)(GameModule + 0x5541f0);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
-	}
 	/// Struct member variables
 
 	// <class commonObj field_0, offset 0x0>
@@ -39818,6 +46379,17 @@ private:
 public:
 	// <float mRadius, offset 0x654>
 	float mRadius = 0;
+
+	/// 1 Functions
+
+	// [Function] uint8_t __convention("thiscall") PJOBJ0029::mSetDamage(class PJOBJ0029* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11) [?mSetDamage@PJOBJ0029@@UAE_NMHHHMHMMPAVmHRChara@@M@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11)
+	{
+		typedef uint8_t(__thiscall* _Func)(class PJOBJ0029* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11);
+		_Func mFunc = (_Func)(GameModule + 0x5541f0);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class PJOBJ0029 [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -39850,13 +46422,6 @@ static_assert(sizeof(PJOBJ0029) == 1624, "expected PJOBJ0029 to be size 1624");
 class PJOBJ0033 : public commonObj
 {
 public:
-	// [Function] uint8_t __convention("thiscall") PJOBJ0033::mSetDamage(class PJOBJ0033* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11) [?mSetDamage@PJOBJ0033@@UAE_NMHHHMHMMPAVmHRChara@@M@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11)
-	{
-		typedef uint8_t(__thiscall* _Func)(class PJOBJ0033* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11);
-		_Func mFunc = (_Func)(GameModule + 0x554750);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
-	}
 	/// Struct member variables
 
 	// <class commonObj field_0, offset 0x0>
@@ -39918,6 +46483,17 @@ public:
 
 	// <int32_t m_SeHnd, offset 0x69c>
 	int32_t m_SeHnd = 0;
+
+	/// 1 Functions
+
+	// [Function] uint8_t __convention("thiscall") PJOBJ0033::mSetDamage(class PJOBJ0033* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11) [?mSetDamage@PJOBJ0033@@UAE_NMHHHMHMMPAVmHRChara@@M@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11)
+	{
+		typedef uint8_t(__thiscall* _Func)(class PJOBJ0033* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11);
+		_Func mFunc = (_Func)(GameModule + 0x554750);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class PJOBJ0033 [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -40045,6 +46621,10 @@ public:
 	// <int32_t TexDivY, offset 0x40>
 	int32_t TexDivY = 0;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct EFFECTSIMPLEOBJ3PARAM [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EFFECTSIMPLEOBJ3PARAM& InObject)
@@ -40137,6 +46717,10 @@ public:
 	// <struct EFFECTSIMPLEOBJ3PARAM Obj3Param, offset 0x8>
 	struct EFFECTSIMPLEOBJ3PARAM Obj3Param;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct EFFECTMODELFIREPARAM [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EFFECTMODELFIREPARAM& InObject)
@@ -40215,6 +46799,10 @@ public:
 		// <class EffectSimpleObj3* pObj3, offset 0x8c>
 		class EffectSimpleObj3* pObj3 = nullptr;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EffectModelFire::MAIN& InObject)
@@ -40282,6 +46870,10 @@ public:
 	// <struct EffectModelFire::MAIN dat, offset 0x50>
 	struct EffectModelFire::MAIN dat;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class EffectModelFire [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EffectModelFire& InObject)
@@ -40327,6 +46919,10 @@ public:
 		// <struct EFFECTSIMPLEOBJ3PARAM Param, offset 0x10>
 		struct EFFECTSIMPLEOBJ3PARAM Param;
 
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EffectSimpleObj3::MAIN& InObject)
@@ -40370,6 +46966,10 @@ public:
 		char _UnidentifiedData_0[68];
 
 	public:
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct OBJECT [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EffectSimpleObj3::OBJECT& InObject)
@@ -40394,6 +46994,10 @@ public:
 
 	// <struct EffectSimpleObj3::MAIN dat, offset 0x50>
 	struct EffectSimpleObj3::MAIN dat;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class EffectSimpleObj3 [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -40427,6 +47031,10 @@ public:
 	// <tagTLIST* Next, offset 0x4>
 	tagTLIST* Next = nullptr;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "struct tagTLIST [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(tagTLIST& InObject)
@@ -40454,13 +47062,6 @@ static_assert(sizeof(tagTLIST) == 8, "expected tagTLIST to be size 8");
 class PJOBJ0036 : public commonObj
 {
 public:
-	// [Function] uint8_t __convention("thiscall") PJOBJ0036::mSetDamage(class PJOBJ0036* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJOBJ0036@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef uint8_t(__thiscall* _Func)(class PJOBJ0036* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x556080);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
 	/// Struct member variables
 
 	// <class commonObj field_0, offset 0x0>
@@ -40505,6 +47106,17 @@ public:
 
 	// <class FkStlVector<TGmfNode const *> m_apNode, offset 0x694>
 	class FkStlVector<TGmfNode const *> m_apNode;
+
+	/// 1 Functions
+
+	// [Function] uint8_t __convention("thiscall") PJOBJ0036::mSetDamage(class PJOBJ0036* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJOBJ0036@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class PJOBJ0036* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x556080);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class PJOBJ0036 [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -40558,6 +47170,13 @@ static_assert(sizeof(PJOBJ0036) == 1704, "expected PJOBJ0036 to be size 1704");
 class PJOBJ0037 : public commonObj
 {
 public:
+	/// Struct member variables
+
+	// <class commonObj field_0, offset 0x0>
+	// class commonObj Super;
+
+	/// 2 Functions
+
 	// [Function] uint8_t __convention("thiscall") PJOBJ0037::mSetDamage(class PJOBJ0037* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJOBJ0037@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
 	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
 	{
@@ -40572,10 +47191,7 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x556590);
 		return mFunc(this, arg2);
 	}
-	/// Struct member variables
-
-	// <class commonObj field_0, offset 0x0>
-	// class commonObj Super;
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class PJOBJ0037 [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -40600,13 +47216,6 @@ static_assert(sizeof(PJOBJ0037) == 1612, "expected PJOBJ0037 to be size 1612");
 class PJOBJ0104 : public commonObj
 {
 public:
-	// [Function] uint8_t __convention("thiscall") PJOBJ0104::mSetDamage(class PJOBJ0104* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJOBJ0104@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef uint8_t(__thiscall* _Func)(class PJOBJ0104* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x556730);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
 	/// Struct member variables
 
 	// <class commonObj field_0, offset 0x0>
@@ -40640,6 +47249,17 @@ public:
 
 	// <float m_fMaxAccumDmg, offset 0x670>
 	float m_fMaxAccumDmg = 0;
+
+	/// 1 Functions
+
+	// [Function] uint8_t __convention("thiscall") PJOBJ0104::mSetDamage(class PJOBJ0104* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJOBJ0104@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class PJOBJ0104* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x556730);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class PJOBJ0104 [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -40687,13 +47307,6 @@ static_assert(sizeof(PJOBJ0104) == 1652, "expected PJOBJ0104 to be size 1652");
 class PJOBJ0155 : public commonObj
 {
 public:
-	// [Function] uint8_t __convention("thiscall") PJOBJ0155::mSetDamage(class PJOBJ0155* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJOBJ0155@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef uint8_t(__thiscall* _Func)(class PJOBJ0155* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x556c00);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
 	/// Struct member variables
 
 	// <class commonObj field_0, offset 0x0>
@@ -40730,6 +47343,17 @@ public:
 
 	// <struct tagGHMR_TEX m_Tex, offset 0x66c>
 	struct tagGHMR_TEX m_Tex;
+
+	/// 1 Functions
+
+	// [Function] uint8_t __convention("thiscall") PJOBJ0155::mSetDamage(class PJOBJ0155* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJOBJ0155@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class PJOBJ0155* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x556c00);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class PJOBJ0155 [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -40780,20 +47404,6 @@ static_assert(sizeof(PJOBJ0155) == 1684, "expected PJOBJ0155 to be size 1684");
 class PJOBJ0190 : public commonObj
 {
 public:
-	// [Function] uint8_t __convention("thiscall") PJOBJ0190::mSetDamage(class PJOBJ0190* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11) [?mSetDamage@PJOBJ0190@@UAE_NMHHHMHMMPAVmHRChara@@M@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11)
-	{
-		typedef uint8_t(__thiscall* _Func)(class PJOBJ0190* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11);
-		_Func mFunc = (_Func)(GameModule + 0x557250);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
-	}
-	// [Function] uint8_t __convention("thiscall") PJOBJ0190::mSetDamage(class PJOBJ0190* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJOBJ0190@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage2(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef uint8_t(__thiscall* _Func)(class PJOBJ0190* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x557320);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
 	/// Struct member variables
 
 	// <class commonObj field_0, offset 0x0>
@@ -40813,6 +47423,24 @@ public:
 	// <float mRadius, offset 0x654>
 	float mRadius = 0;
 
+	/// 2 Functions
+
+	// [Function] uint8_t __convention("thiscall") PJOBJ0190::mSetDamage(class PJOBJ0190* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11) [?mSetDamage@PJOBJ0190@@UAE_NMHHHMHMMPAVmHRChara@@M@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11)
+	{
+		typedef uint8_t(__thiscall* _Func)(class PJOBJ0190* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10, float arg11);
+		_Func mFunc = (_Func)(GameModule + 0x557250);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
+	}
+	// [Function] uint8_t __convention("thiscall") PJOBJ0190::mSetDamage(class PJOBJ0190* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJOBJ0190@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage_2(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class PJOBJ0190* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x557320);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class PJOBJ0190 [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(PJOBJ0190& InObject)
@@ -40831,7 +47459,7 @@ public:
 			.addProperty("mbBreak", &PJOBJ0190::mbBreak)
 			.addProperty("mRadius", &PJOBJ0190::mRadius)
 			.addFunction("mSetDamage", &PJOBJ0190::mSetDamage)
-			.addFunction("mSetDamage2", &PJOBJ0190::mSetDamage2)
+			.addFunction("mSetDamage_2", &PJOBJ0190::mSetDamage_2)
 		.endClass();
 	}
 #endif
@@ -40845,13 +47473,6 @@ static_assert(sizeof(PJOBJ0190) == 1624, "expected PJOBJ0190 to be size 1624");
 class PJPTR
 {
 public:
-	// [Function] uint8_t __convention("thiscall") PJPTR::mSetDamage(class PJPTR* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJPTR@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef uint8_t(__thiscall* _Func)(class PJPTR* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x557550);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
 	/// Struct member variables
 
 	// <Unidentified data segment, offset 0x0>
@@ -40859,6 +47480,17 @@ private:
 	char _UnidentifiedData_0[1668];
 
 public:
+	/// 1 Functions
+
+	// [Function] uint8_t __convention("thiscall") PJPTR::mSetDamage(class PJPTR* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@PJPTR@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class PJPTR* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x557550);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class PJPTR [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(PJPTR& InObject)
@@ -40877,6 +47509,12 @@ public:
 };
 static_assert(sizeof(PJPTR) == 1668, "expected PJPTR to be size 1668");
 
+// Unsupported constructor
+//void __convention("thiscall") HrScreenStatusSlot::HrScreenStatusSlot(class HrScreenStatusSlot* const this)
+// Unsupported destructor
+//void __convention("thiscall") HrScreenStatusSlot::~HrScreenStatusSlot(class HrScreenStatusSlot* const this)
+// Unsupported constructor
+//void __convention("thiscall") mHRLockOnList::mHRLockOnList(class mHRLockOnList* const this, class mHRChara* arg2)
 // [Structure] struct NYPictData
 struct NYPictData
 {
@@ -40909,6 +47547,10 @@ public:
 
 	// <float m_pixelOffsetY, offset 0x20>
 	float m_pixelOffsetY = 0;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct NYPictData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -40954,6 +47596,10 @@ static_assert(sizeof(NYPictData::m_pixelOffsetX) == 4, "expected NYPictData::m_p
 static_assert(sizeof(NYPictData::m_pixelOffsetY) == 4, "expected NYPictData::m_pixelOffsetY to be size 4");
 static_assert(sizeof(NYPictData) == 36, "expected NYPictData to be size 36");
 
+// Unsupported constructor
+//void __convention("thiscall") HrScreenStatusBalloon::HrScreenStatusBalloon(class HrScreenStatusBalloon* const this, struct tagGHMR_TEX* arg2)
+// Unsupported constructor
+//void __convention("thiscall") CharController::CharController(class CharController* const this, class mHRChara* arg2)
 // [Function] void mHRCharaVoiceTable_Initialize() [mHRCharaVoiceTable_Initialize]
 void mHRCharaVoiceTable_Initialize()
 {
@@ -40972,6 +47618,10 @@ public:
 
 	// <struct Vec CenterPos, offset 0x4>
 	struct Vec CenterPos;
+
+	/// 0 Functions
+
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "struct FkDbgInfo_EventArea [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -41000,13 +47650,6 @@ static_assert(sizeof(FkDbgInfo_EventArea) == 16, "expected FkDbgInfo_EventArea t
 class FkGlobalDBG
 {
 public:
-	// [Function] void __convention("thiscall") FkGlobalDBG::ReleaseCtrlChar(class FkGlobalDBG* const this, class mHRChara* arg2) [?ReleaseCtrlChar@FkGlobalDBG@@QAEXPAVmHRChara@@@Z]
-	void ReleaseCtrlChar(class mHRChara* arg2)
-	{
-		typedef void(__thiscall* _Func)(class FkGlobalDBG* const thisPtr, class mHRChara* arg2);
-		_Func mFunc = (_Func)(GameModule + 0x5b39a0);
-		return mFunc(this, arg2);
-	}
 	// [Structure] struct FkGlobalDBG::CommonObjSetInf
 	struct CommonObjSetInf
 	{
@@ -41021,6 +47664,10 @@ public:
 
 		// <struct Vec SetPos, offset 0x8>
 		struct Vec SetPos;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "struct CommonObjSetInf [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -41070,6 +47717,17 @@ public:
 	// <struct FkGlobalDBG::CommonObjSetInf m_CmnObjSetInf, offset 0x24>
 	struct FkGlobalDBG::CommonObjSetInf m_CmnObjSetInf;
 
+	/// 1 Functions
+
+	// [Function] void __convention("thiscall") FkGlobalDBG::ReleaseCtrlChar(class FkGlobalDBG* const this, class mHRChara* arg2) [?ReleaseCtrlChar@FkGlobalDBG@@QAEXPAVmHRChara@@@Z]
+	void ReleaseCtrlChar(class mHRChara* arg2)
+	{
+		typedef void(__thiscall* _Func)(class FkGlobalDBG* const thisPtr, class mHRChara* arg2);
+		_Func mFunc = (_Func)(GameModule + 0x5b39a0);
+		return mFunc(this, arg2);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class FkGlobalDBG [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(FkGlobalDBG& InObject)
@@ -41107,13 +47765,6 @@ static_assert(sizeof(FkGlobalDBG) == 56, "expected FkGlobalDBG to be size 56");
 class EffectBloodSplash : public HrTask
 {
 public:
-	// [Function] class EffectBloodSplash* EffectBloodSplash::Create(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30) [?Create@EffectBloodSplash@@SAPAV1@PAVTGmfNode@@HHMMMMMMMMMMMHMHMMMMMMMMMMI_NPAVmHRChara@@@Z]
-	static class EffectBloodSplash* Create(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30)
-	{
-		typedef class EffectBloodSplash*(__fastcall* _Func)(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30);
-		_Func mFunc = (_Func)(GameModule + 0x5b4ec0);
-		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16, arg17, arg18, arg19, arg20, arg21, arg22, arg23, arg24, arg25, arg26, arg27, arg28, arg29, arg30);
-	}
 	// [Structure] struct EffectBloodSplash::MAIN
 	struct MAIN
 	{
@@ -41235,6 +47886,10 @@ public:
 
 		// <class mHRChara* pOwner, offset 0x9c>
 		class mHRChara* pOwner = nullptr;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "struct MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -41365,13 +48020,6 @@ public:
 	static_assert(sizeof(EffectBloodSplash::MAIN::pOwner) == 4, "expected EffectBloodSplash::MAIN::pOwner to be size 4");
 	static_assert(sizeof(EffectBloodSplash::MAIN) == 160, "expected EffectBloodSplash::MAIN to be size 160");
 
-	// [Function] class EffectBloodSplash* EffectBloodSplash::Create2(class TGmfNode* arg1, float arg2, float arg3, float arg4, float arg5, int32_t arg6, uint8_t arg7, class mHRChara* arg8) [?Create2@EffectBloodSplash@@SAPAV1@PAVTGmfNode@@MMMMH_NPAVmHRChara@@@Z]
-	static class EffectBloodSplash* Create2(class TGmfNode* arg1, float arg2, float arg3, float arg4, float arg5, int32_t arg6, uint8_t arg7, class mHRChara* arg8)
-	{
-		typedef class EffectBloodSplash*(__fastcall* _Func)(class TGmfNode* arg1, float arg2, float arg3, float arg4, float arg5, int32_t arg6, uint8_t arg7, class mHRChara* arg8);
-		_Func mFunc = (_Func)(GameModule + 0x5b5410);
-		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
-	}
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -41382,6 +48030,24 @@ public:
 
 	// <struct EffectBloodSplash::MAIN dat, offset 0x54>
 	struct EffectBloodSplash::MAIN dat;
+
+	/// 2 Functions
+
+	// [Function] class EffectBloodSplash* EffectBloodSplash::Create(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30) [?Create@EffectBloodSplash@@SAPAV1@PAVTGmfNode@@HHMMMMMMMMMMMHMHMMMMMMMMMMI_NPAVmHRChara@@@Z]
+	static class EffectBloodSplash* Create(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30)
+	{
+		typedef class EffectBloodSplash*(__fastcall* _Func)(class TGmfNode* arg1, int32_t arg2, int32_t arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, int32_t arg15, float arg16, int32_t arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27, uint32_t arg28, uint8_t arg29, class mHRChara* arg30);
+		_Func mFunc = (_Func)(GameModule + 0x5b4ec0);
+		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16, arg17, arg18, arg19, arg20, arg21, arg22, arg23, arg24, arg25, arg26, arg27, arg28, arg29, arg30);
+	}
+	// [Function] class EffectBloodSplash* EffectBloodSplash::Create2(class TGmfNode* arg1, float arg2, float arg3, float arg4, float arg5, int32_t arg6, uint8_t arg7, class mHRChara* arg8) [?Create2@EffectBloodSplash@@SAPAV1@PAVTGmfNode@@MMMMH_NPAVmHRChara@@@Z]
+	static class EffectBloodSplash* Create2(class TGmfNode* arg1, float arg2, float arg3, float arg4, float arg5, int32_t arg6, uint8_t arg7, class mHRChara* arg8)
+	{
+		typedef class EffectBloodSplash*(__fastcall* _Func)(class TGmfNode* arg1, float arg2, float arg3, float arg4, float arg5, int32_t arg6, uint8_t arg7, class mHRChara* arg8);
+		_Func mFunc = (_Func)(GameModule + 0x5b5410);
+		return mFunc(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class EffectBloodSplash [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -41424,6 +48090,10 @@ public:
 		char _UnidentifiedData_0[176];
 
 	public:
+		/// 0 Functions
+
+		/// Meta
+
 		std::string ToString() const { std::stringstream stream; stream << "struct MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EffectSimpleObj2::MAIN& InObject)
@@ -41449,6 +48119,10 @@ public:
 	// <struct EffectSimpleObj2::MAIN dat, offset 0x50>
 	struct EffectSimpleObj2::MAIN dat;
 
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class EffectSimpleObj2 [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EffectSimpleObj2& InObject)
@@ -41469,17 +48143,12 @@ public:
 static_assert(sizeof(EffectSimpleObj2::dat) == 176, "expected EffectSimpleObj2::dat to be size 176");
 static_assert(sizeof(EffectSimpleObj2) == 256, "expected EffectSimpleObj2 to be size 256");
 
+// Unsupported constructor
+//void __convention("thiscall") FkObstacleSensor::FkObstacleSensor(class FkObstacleSensor* const this, class mHRChara* arg2)
 // [Structure] class EffectSlashHit
 class EffectSlashHit : public HrTask
 {
 public:
-	// [Function] class EffectSlashHit* EffectSlashHit::Create(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4) [?Create@EffectSlashHit@@SAPAV1@ABUVec@@0PBVmHRChara@@M@Z]
-	static class EffectSlashHit* Create(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4)
-	{
-		typedef class EffectSlashHit*(__fastcall* _Func)(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4);
-		_Func mFunc = (_Func)(GameModule + 0x61f210);
-		return mFunc(arg1, arg2, arg3, arg4);
-	}
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -41508,6 +48177,17 @@ public:
 
 	// <float m_fScale, offset 0x84>
 	float m_fScale = 0;
+
+	/// 1 Functions
+
+	// [Function] class EffectSlashHit* EffectSlashHit::Create(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4) [?Create@EffectSlashHit@@SAPAV1@ABUVec@@0PBVmHRChara@@M@Z]
+	static class EffectSlashHit* Create(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4)
+	{
+		typedef class EffectSlashHit*(__fastcall* _Func)(struct Vec& arg1, struct Vec& arg2, class mHRChara* arg3, float const arg4);
+		_Func mFunc = (_Func)(GameModule + 0x61f210);
+		return mFunc(arg1, arg2, arg3, arg4);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class EffectSlashHit [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -41556,13 +48236,6 @@ static_assert(sizeof(EffectSlashHit) == 136, "expected EffectSlashHit to be size
 class FkBoss : public bsBasic
 {
 public:
-	// [Function] uint8_t __convention("thiscall") FkBoss::mSetDamage(class FkBoss* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@FkBoss@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
-	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
-	{
-		typedef uint8_t(__thiscall* _Func)(class FkBoss* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
-		_Func mFunc = (_Func)(GameModule + 0x6392c0);
-		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
-	}
 	// [Structure] struct FkBoss::GuardParam
 	struct GuardParam
 	{
@@ -41574,6 +48247,10 @@ public:
 
 		// <int32_t GuardContinueCnt, offset 0x4>
 		int32_t GuardContinueCnt = 0;
+
+		/// 0 Functions
+
+		/// Meta
 
 		std::string ToString() const { std::stringstream stream; stream << "struct GuardParam [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
@@ -41673,6 +48350,17 @@ public:
 	// <class EffectSlashTrack* m_pEfSamasoTrack[0x2], offset 0xda4>
 	class EffectSlashTrack* m_pEfSamasoTrack[2];
 
+	/// 1 Functions
+
+	// [Function] uint8_t __convention("thiscall") FkBoss::mSetDamage(class FkBoss* const this, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10) [?mSetDamage@FkBoss@@UAE_NMHHHMHMMPAVmHRChara@@@Z]
+	uint8_t mSetDamage(float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10)
+	{
+		typedef uint8_t(__thiscall* _Func)(class FkBoss* const thisPtr, float arg2, int32_t arg3, int32_t arg4, int32_t arg5, float arg6, int32_t arg7, float arg8, float arg9, class mHRChara* arg10);
+		_Func mFunc = (_Func)(GameModule + 0x6392c0);
+		return mFunc(this, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class FkBoss [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(FkBoss& InObject)
@@ -41753,6 +48441,10 @@ private:
 	char _UnidentifiedData_0[944];
 
 public:
+	/// 0 Functions
+
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class EffectSlashTrack [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EffectSlashTrack& InObject)
@@ -41774,6 +48466,15 @@ static_assert(sizeof(EffectSlashTrack) == 944, "expected EffectSlashTrack to be 
 class EffectBeamDragon
 {
 public:
+	/// Struct member variables
+
+	// <Unidentified data segment, offset 0x0>
+private:
+	char _UnidentifiedData_0[520];
+
+public:
+	/// 2 Functions
+
 	// [Function] void __convention("thiscall") EffectBeamDragon::Set(class EffectBeamDragon* const this, struct Vec* arg2, class mHRChara* arg3) [?Set@EffectBeamDragon@@QAEXPAUVec@@PAVmHRChara@@@Z]
 	void Set(struct Vec* arg2, class mHRChara* arg3)
 	{
@@ -41788,13 +48489,8 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x644130);
 		return mFunc(arg1, arg2);
 	}
-	/// Struct member variables
+	/// Meta
 
-	// <Unidentified data segment, offset 0x0>
-private:
-	char _UnidentifiedData_0[520];
-
-public:
 	std::string ToString() const { std::stringstream stream; stream << "class EffectBeamDragon [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EffectBeamDragon& InObject)
@@ -41818,20 +48514,6 @@ static_assert(sizeof(EffectBeamDragon) == 520, "expected EffectBeamDragon to be 
 class EffectGYNMissile : public HrTask
 {
 public:
-	// [Function] void __convention("thiscall") EffectGYNMissile::Set(class EffectGYNMissile* const this, struct Vec& arg2, float const arg3, class mHRChara* arg4) [?Set@EffectGYNMissile@@AAEXABUVec@@MPAVmHRChara@@@Z]
-	void Set(struct Vec& arg2, float const arg3, class mHRChara* arg4)
-	{
-		typedef void(__thiscall* _Func)(class EffectGYNMissile* const thisPtr, struct Vec& arg2, float const arg3, class mHRChara* arg4);
-		_Func mFunc = (_Func)(GameModule + 0x646520);
-		return mFunc(this, arg2, arg3, arg4);
-	}
-	// [Function] class EffectGYNMissile* EffectGYNMissile::Create(struct Vec& arg1, float const arg2, class mHRChara* arg3) [?Create@EffectGYNMissile@@SAPAV1@ABUVec@@MPAVmHRChara@@@Z]
-	static class EffectGYNMissile* Create(struct Vec& arg1, float const arg2, class mHRChara* arg3)
-	{
-		typedef class EffectGYNMissile*(__fastcall* _Func)(struct Vec& arg1, float const arg2, class mHRChara* arg3);
-		_Func mFunc = (_Func)(GameModule + 0x6467a0);
-		return mFunc(arg1, arg2, arg3);
-	}
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -41878,6 +48560,24 @@ private:
 	char _UnidentifiedData_165[3];
 
 public:
+	/// 2 Functions
+
+	// [Function] void __convention("thiscall") EffectGYNMissile::Set(class EffectGYNMissile* const this, struct Vec& arg2, float const arg3, class mHRChara* arg4) [?Set@EffectGYNMissile@@AAEXABUVec@@MPAVmHRChara@@@Z]
+	void Set(struct Vec& arg2, float const arg3, class mHRChara* arg4)
+	{
+		typedef void(__thiscall* _Func)(class EffectGYNMissile* const thisPtr, struct Vec& arg2, float const arg3, class mHRChara* arg4);
+		_Func mFunc = (_Func)(GameModule + 0x646520);
+		return mFunc(this, arg2, arg3, arg4);
+	}
+	// [Function] class EffectGYNMissile* EffectGYNMissile::Create(struct Vec& arg1, float const arg2, class mHRChara* arg3) [?Create@EffectGYNMissile@@SAPAV1@ABUVec@@MPAVmHRChara@@@Z]
+	static class EffectGYNMissile* Create(struct Vec& arg1, float const arg2, class mHRChara* arg3)
+	{
+		typedef class EffectGYNMissile*(__fastcall* _Func)(struct Vec& arg1, float const arg2, class mHRChara* arg3);
+		_Func mFunc = (_Func)(GameModule + 0x6467a0);
+		return mFunc(arg1, arg2, arg3);
+	}
+	/// Meta
+
 	std::string ToString() const { std::stringstream stream; stream << "class EffectGYNMissile [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(EffectGYNMissile& InObject)
@@ -41939,20 +48639,6 @@ static_assert(sizeof(EffectGYNMissile) == 168, "expected EffectGYNMissile to be 
 class EffectMoeMissile : public HrTask
 {
 public:
-	// [Function] void __convention("thiscall") EffectMoeMissile::Set(class EffectMoeMissile* const this, struct Vec& arg2, float const arg3, class mHRChara* arg4) [?Set@EffectMoeMissile@@AAEXABUVec@@MPAVmHRChara@@@Z]
-	void Set(struct Vec& arg2, float const arg3, class mHRChara* arg4)
-	{
-		typedef void(__thiscall* _Func)(class EffectMoeMissile* const thisPtr, struct Vec& arg2, float const arg3, class mHRChara* arg4);
-		_Func mFunc = (_Func)(GameModule + 0x64a900);
-		return mFunc(this, arg2, arg3, arg4);
-	}
-	// [Function] class EffectMoeMissile* EffectMoeMissile::Create(struct Vec& arg1, float const arg2, class mHRChara* arg3) [?Create@EffectMoeMissile@@SAPAV1@ABUVec@@MPAVmHRChara@@@Z]
-	static class EffectMoeMissile* Create(struct Vec& arg1, float const arg2, class mHRChara* arg3)
-	{
-		typedef class EffectMoeMissile*(__fastcall* _Func)(struct Vec& arg1, float const arg2, class mHRChara* arg3);
-		_Func mFunc = (_Func)(GameModule + 0x64a930);
-		return mFunc(arg1, arg2, arg3);
-	}
 	/// Struct member variables
 
 	// <class HrTask field_0, offset 0x0>
@@ -41995,6 +48681,24 @@ public:
 
 	// <class TGmf* m_pMissileGmf, offset 0xcc>
 	class TGmf* m_pMissileGmf = nullptr;
+
+	/// 2 Functions
+
+	// [Function] void __convention("thiscall") EffectMoeMissile::Set(class EffectMoeMissile* const this, struct Vec& arg2, float const arg3, class mHRChara* arg4) [?Set@EffectMoeMissile@@AAEXABUVec@@MPAVmHRChara@@@Z]
+	void Set(struct Vec& arg2, float const arg3, class mHRChara* arg4)
+	{
+		typedef void(__thiscall* _Func)(class EffectMoeMissile* const thisPtr, struct Vec& arg2, float const arg3, class mHRChara* arg4);
+		_Func mFunc = (_Func)(GameModule + 0x64a900);
+		return mFunc(this, arg2, arg3, arg4);
+	}
+	// [Function] class EffectMoeMissile* EffectMoeMissile::Create(struct Vec& arg1, float const arg2, class mHRChara* arg3) [?Create@EffectMoeMissile@@SAPAV1@ABUVec@@MPAVmHRChara@@@Z]
+	static class EffectMoeMissile* Create(struct Vec& arg1, float const arg2, class mHRChara* arg3)
+	{
+		typedef class EffectMoeMissile*(__fastcall* _Func)(struct Vec& arg1, float const arg2, class mHRChara* arg3);
+		_Func mFunc = (_Func)(GameModule + 0x64a930);
+		return mFunc(arg1, arg2, arg3);
+	}
+	/// Meta
 
 	std::string ToString() const { std::stringstream stream; stream << "class EffectMoeMissile [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
@@ -42050,6 +48754,16 @@ static_assert(sizeof(EffectMoeMissile::m_fSpd) == 4, "expected EffectMoeMissile:
 static_assert(sizeof(EffectMoeMissile::m_pMissileGmf) == 4, "expected EffectMoeMissile::m_pMissileGmf to be size 4");
 static_assert(sizeof(EffectMoeMissile) == 208, "expected EffectMoeMissile to be size 208");
 
+// Unsupported destructor
+//void __convention("thiscall") WGdl::~WGdl(class WGdl* const this)
+// Unsupported constructor
+//void __convention("thiscall") WGdl::WGdl(class WGdl* const this)
+// Unsupported operator
+//void `dynamic atexit destructor for 'mHRChara::mCharaAnchor''()
+// Unsupported operator
+//void `dynamic atexit destructor for 'HrMessage::m_TopNode''()
+// Unsupported operator
+//void `dynamic atexit destructor for 'WGdl::mAnchor''()
 
 #ifdef WITH_LUA
 /// Lua binding
@@ -42093,6 +48807,26 @@ void BindLua_Exported(luabridge::Namespace& NS)
 #endif
 	HrScreenStatusSlot::BindLua(NS);
 #ifdef LOG_INIT
+	std::cout << "Binding 'struct Rectf'" << std::endl;
+#endif
+	Rectf::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct Vec2'" << std::endl;
+#endif
+	Vec2::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CNYDrawStringBase'" << std::endl;
+#endif
+	CNYDrawStringBase::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class NYDrawString'" << std::endl;
+#endif
+	NYDrawString::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct HrMap::DrawData'" << std::endl;
+#endif
+	HrMap::DrawData::BindLua(NS);
+#ifdef LOG_INIT
 	std::cout << "Binding 'class HrMap'" << std::endl;
 #endif
 	HrMap::BindLua(NS);
@@ -42100,10 +48834,6 @@ void BindLua_Exported(luabridge::Namespace& NS)
 	std::cout << "Binding 'class NYPhase'" << std::endl;
 #endif
 	NYPhase::BindLua(NS);
-#ifdef LOG_INIT
-	std::cout << "Binding 'struct Vec2'" << std::endl;
-#endif
-	Vec2::BindLua(NS);
 #ifdef LOG_INIT
 	std::cout << "Binding 'class CHrHUDBase'" << std::endl;
 #endif
@@ -42697,6 +49427,34 @@ void BindLua_Exported(luabridge::Namespace& NS)
 #endif
 	HrOverLap::BindLua(NS);
 #ifdef LOG_INIT
+	std::cout << "Binding 'class CBgCtrl'" << std::endl;
+#endif
+	CBgCtrl::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class rSkyMap'" << std::endl;
+#endif
+	rSkyMap::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EffectSpeedBlur'" << std::endl;
+#endif
+	EffectSpeedBlur::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class rSkyMapMenu'" << std::endl;
+#endif
+	rSkyMapMenu::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct HrStageDraw::MAIN'" << std::endl;
+#endif
+	HrStageDraw::MAIN::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct HrStageDraw::AREA'" << std::endl;
+#endif
+	HrStageDraw::AREA::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class HrStageDraw'" << std::endl;
+#endif
+	HrStageDraw::BindLua(NS);
+#ifdef LOG_INIT
 	std::cout << "Binding 'struct HRSAVEDATA_DEBUNEKO'" << std::endl;
 #endif
 	HRSAVEDATA_DEBUNEKO::BindLua(NS);
@@ -42704,14 +49462,6 @@ void BindLua_Exported(luabridge::Namespace& NS)
 	std::cout << "Binding 'class WGcl'" << std::endl;
 #endif
 	WGcl::BindLua(NS);
-#ifdef LOG_INIT
-	std::cout << "Binding 'class commonObj'" << std::endl;
-#endif
-	commonObj::BindLua(NS);
-#ifdef LOG_INIT
-	std::cout << "Binding 'class CustomColliderObj'" << std::endl;
-#endif
-	CustomColliderObj::BindLua(NS);
 #ifdef LOG_INIT
 	std::cout << "Binding 'struct WGclSpec'" << std::endl;
 #endif
@@ -42740,6 +49490,14 @@ void BindLua_Exported(luabridge::Namespace& NS)
 	std::cout << "Binding 'class WGclNode'" << std::endl;
 #endif
 	WGclNode::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class commonObj'" << std::endl;
+#endif
+	commonObj::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class CustomColliderObj'" << std::endl;
+#endif
+	CustomColliderObj::BindLua(NS);
 #ifdef LOG_INIT
 	std::cout << "Binding 'struct KPADEXStatus::unnamed_type_fs'" << std::endl;
 #endif
@@ -42817,6 +49575,10 @@ void BindLua_Exported(luabridge::Namespace& NS)
 #endif
 	mot::CYuremonoManager::BindLua(NS);
 #ifdef LOG_INIT
+	std::cout << "Binding 'class CLensFlare'" << std::endl;
+#endif
+	CLensFlare::BindLua(NS);
+#ifdef LOG_INIT
 	std::cout << "Binding 'class mHRLockOnList'" << std::endl;
 #endif
 	mHRLockOnList::BindLua(NS);
@@ -42892,6 +49654,18 @@ void BindLua_Exported(luabridge::Namespace& NS)
 	std::cout << "Binding 'struct HRSAVEDATA_SHOP'" << std::endl;
 #endif
 	HRSAVEDATA_SHOP::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class HrScript'" << std::endl;
+#endif
+	HrScript::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class EveObj'" << std::endl;
+#endif
+	EveObj::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class HrMainMissionFax'" << std::endl;
+#endif
+	HrMainMissionFax::BindLua(NS);
 #ifdef LOG_INIT
 	std::cout << "Binding 'class CCameraVibManager'" << std::endl;
 #endif
@@ -42997,9 +49771,37 @@ void BindLua_Exported(luabridge::Namespace& NS)
 #endif
 	HrMiniDemoModel::BindLua(NS);
 #ifdef LOG_INIT
+	std::cout << "Binding 'struct TGMFLIGHT'" << std::endl;
+#endif
+	TGMFLIGHT::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'class Archive'" << std::endl;
+#endif
+	Archive::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct tagDARC_HEAD'" << std::endl;
+#endif
+	tagDARC_HEAD::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct tagDARC_FILETIME'" << std::endl;
+#endif
+	tagDARC_FILETIME::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct tagDARC_FILEHEAD'" << std::endl;
+#endif
+	tagDARC_FILEHEAD::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct tagDARC_DIRECTORY'" << std::endl;
+#endif
+	tagDARC_DIRECTORY::BindLua(NS);
+#ifdef LOG_INIT
 	std::cout << "Binding 'class STG0202'" << std::endl;
 #endif
 	STG0202::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct GTEX_UVSET'" << std::endl;
+#endif
+	GTEX_UVSET::BindLua(NS);
 #ifdef LOG_INIT
 	std::cout << "Binding 'struct tagHRTASKCHECK'" << std::endl;
 #endif
@@ -43388,10 +50190,6 @@ void BindLua_Exported(luabridge::Namespace& NS)
 	std::cout << "Binding 'class EfRoboInterface'" << std::endl;
 #endif
 	EfRoboInterface::BindLua(NS);
-#ifdef LOG_INIT
-	std::cout << "Binding 'class EffectSpeedBlur'" << std::endl;
-#endif
-	EffectSpeedBlur::BindLua(NS);
 #ifdef LOG_INIT
 	std::cout << "Binding 'class CmDeathState'" << std::endl;
 #endif

@@ -11,6 +11,7 @@
 		"?mCheckExistEnemy@mHRBattle@@QAE_NXZ": "Returns true if any enemy is still alive.",
 		"?BalloonAppear@HrScreenStatus@@QAEXW4OBJ_ID@HrScreenStatusBalloon@@_N@Z": "Makes a bubble appear above Travis. Bubble is seen in normal play when swapping weapons.",
 		"?BattleSimplMessage@HrScreenStatus@@QAEXH_N@Z": "Displays a small center pop-up. Seen in normal play when picking up items, or standing on interaction circles.",
+		"?mChangeWeapon4Debug@mHRPc@@QAEXH@Z": "Swaps player weapon.",
 		"class mHRPc": "Player character (Travis)",
 		"class mHRChara": "Base character (Travis, enemies, etc)",
 		"struct Vec": "3D Vector (x, y, z). Y-up.",
