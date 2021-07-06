@@ -4020,7 +4020,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct DrawData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct HrMap::DrawData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(HrMap::DrawData& InObject)
 		{
@@ -4036,7 +4036,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<HrMap::DrawData>("HrMap_DrawData")
+			NS = NS.beginClass<DrawData>("HrMap_DrawData")
 				.addFunction("__tostring", &HrMap::DrawData::ToString)
 				.addFunction("GetPtrAddr", &HrMap::DrawData::GetPtrAddr)
 				.addProperty("m_iconType", &HrMap::DrawData::m_iconType)
@@ -5619,7 +5619,7 @@ namespace EE
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class SmartPtr [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class EE::SmartPtr [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EE::SmartPtr<ID3D11DepthStencilView>& InObject)
 		{
@@ -5683,7 +5683,7 @@ namespace EE
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class RefObject [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class EE::RefObject [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EE::RefObject& InObject)
 		{
@@ -5692,7 +5692,7 @@ namespace EE
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EE::RefObject>("EE_RefObject")
+			NS = NS.beginClass<RefObject>("EE_RefObject")
 				.addFunction("__tostring", &EE::RefObject::ToString)
 				.addFunction("GetPtrAddr", &EE::RefObject::GetPtrAddr)
 				// delegates are not supported in LuaBridge
@@ -5754,7 +5754,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct GXSpecs [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct GXTexture::GXSpecs [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(GXTexture::GXSpecs& InObject)
 		{
@@ -5771,7 +5771,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<GXTexture::GXSpecs>("GXTexture_GXSpecs")
+			NS = NS.beginClass<GXSpecs>("GXTexture_GXSpecs")
 				.addFunction("__tostring", &GXTexture::GXSpecs::ToString)
 				.addFunction("GetPtrAddr", &GXTexture::GXSpecs::GetPtrAddr)
 				.addProperty("width", &GXTexture::GXSpecs::width)
@@ -6202,7 +6202,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct ghmGcFileInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct ghmGcFile::ghmGcFileInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(ghmGcFile::ghmGcFileInfo& InObject)
 		{
@@ -6224,7 +6224,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<ghmGcFile::ghmGcFileInfo>("ghmGcFile_ghmGcFileInfo")
+			NS = NS.beginClass<ghmGcFileInfo>("ghmGcFile_ghmGcFileInfo")
 				.addFunction("__tostring", &ghmGcFile::ghmGcFileInfo::ToString)
 				.addFunction("GetPtrAddr", &ghmGcFile::ghmGcFileInfo::GetPtrAddr)
 				.addProperty("mFileInfo", &ghmGcFile::ghmGcFileInfo::mFileInfo)
@@ -6418,7 +6418,7 @@ namespace EE
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class IFile [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class EE::IFile [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EE::IFile& InObject)
 		{
@@ -6428,7 +6428,7 @@ namespace EE
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.deriveClass<EE::IFile, EE::RefObject>("EE_IFile")
+			NS = NS.deriveClass<IFile, EE::RefObject>("EE_IFile")
 				.addFunction("__tostring", &EE::IFile::ToString)
 				.addFunction("GetPtrAddr", &EE::IFile::GetPtrAddr)
 				.addProperty("name", &EE::IFile::name)
@@ -6753,7 +6753,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct SmokePrim [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct EfSmoke::SmokePrim [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EfSmoke::SmokePrim& InObject)
 		{
@@ -6776,7 +6776,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EfSmoke::SmokePrim>("EfSmoke_SmokePrim")
+			NS = NS.beginClass<SmokePrim>("EfSmoke_SmokePrim")
 				.addFunction("__tostring", &EfSmoke::SmokePrim::ToString)
 				.addFunction("GetPtrAddr", &EfSmoke::SmokePrim::GetPtrAddr)
 				.addProperty("Pos", &EfSmoke::SmokePrim::Pos)
@@ -9191,7 +9191,7 @@ namespace mot
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class IBoneEffectModel [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class mot::IBoneEffectModel [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(mot::IBoneEffectModel& InObject)
 		{
@@ -9199,7 +9199,7 @@ namespace mot
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<mot::IBoneEffectModel>("mot_IBoneEffectModel")
+			NS = NS.beginClass<IBoneEffectModel>("mot_IBoneEffectModel")
 				.addFunction("__tostring", &mot::IBoneEffectModel::ToString)
 				.addFunction("GetPtrAddr", &mot::IBoneEffectModel::GetPtrAddr)
 				// delegates are not supported in LuaBridge
@@ -9235,7 +9235,7 @@ namespace mot
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class IBoneEffectModelPJ [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class mot::IBoneEffectModelPJ [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(mot::IBoneEffectModelPJ& InObject)
 		{
@@ -9244,7 +9244,7 @@ namespace mot
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.deriveClass<mot::IBoneEffectModelPJ, mot::IBoneEffectModel>("mot_IBoneEffectModelPJ")
+			NS = NS.deriveClass<IBoneEffectModelPJ, mot::IBoneEffectModel>("mot_IBoneEffectModelPJ")
 				.addFunction("__tostring", &mot::IBoneEffectModelPJ::ToString)
 				.addFunction("GetPtrAddr", &mot::IBoneEffectModelPJ::GetPtrAddr)
 				.addProperty("m_inYureBonePosiOfst", &mot::IBoneEffectModelPJ::m_inYureBonePosiOfst)
@@ -9275,7 +9275,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct TGmf::tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TGmf::tagMAIN& InObject)
 		{
@@ -9283,7 +9283,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TGmf::tagMAIN>("TGmf_tagMAIN")
+			NS = NS.beginClass<tagMAIN>("TGmf_tagMAIN")
 				.addFunction("__tostring", &TGmf::tagMAIN::ToString)
 				.addFunction("GetPtrAddr", &TGmf::tagMAIN::GetPtrAddr)
 			.endClass();
@@ -9798,7 +9798,7 @@ public:
 		}
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class CHrHpGauge [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class HrBattleIcon::CHrHpGauge [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(HrBattleIcon::CHrHpGauge& InObject)
 		{
@@ -9816,7 +9816,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<HrBattleIcon::CHrHpGauge>("HrBattleIcon_CHrHpGauge")
+			NS = NS.beginClass<CHrHpGauge>("HrBattleIcon_CHrHpGauge")
 				.addFunction("__tostring", &HrBattleIcon::CHrHpGauge::ToString)
 				.addFunction("GetPtrAddr", &HrBattleIcon::CHrHpGauge::GetPtrAddr)
 				.addProperty("m_Phase", &HrBattleIcon::CHrHpGauge::m_Phase)
@@ -21327,7 +21327,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct TGanPlay::MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TGanPlay::MAIN& InObject)
 		{
@@ -21346,7 +21346,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TGanPlay::MAIN>("TGanPlay_MAIN")
+			NS = NS.beginClass<MAIN>("TGanPlay_MAIN")
 				.addFunction("__tostring", &TGanPlay::MAIN::ToString)
 				.addFunction("GetPtrAddr", &TGanPlay::MAIN::GetPtrAddr)
 				.addProperty("pGan", &TGanPlay::MAIN::pGan)
@@ -21454,7 +21454,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct TGan::tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TGan::tagMAIN& InObject)
 		{
@@ -21467,7 +21467,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TGan::tagMAIN>("TGan_tagMAIN")
+			NS = NS.beginClass<tagMAIN>("TGan_tagMAIN")
 				.addFunction("__tostring", &TGan::tagMAIN::ToString)
 				.addFunction("GetPtrAddr", &TGan::tagMAIN::GetPtrAddr)
 				.addProperty("ProcessBlock", &TGan::tagMAIN::ProcessBlock)
@@ -22017,7 +22017,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct TGanPlayNode::MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TGanPlayNode::MAIN& InObject)
 		{
@@ -22033,7 +22033,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TGanPlayNode::MAIN>("TGanPlayNode_MAIN")
+			NS = NS.beginClass<MAIN>("TGanPlayNode_MAIN")
 				.addFunction("__tostring", &TGanPlayNode::MAIN::ToString)
 				.addFunction("GetPtrAddr", &TGanPlayNode::MAIN::GetPtrAddr)
 				.addProperty("ValidAnm", &TGanPlayNode::MAIN::ValidAnm)
@@ -22131,7 +22131,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct TFAnm::tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TFAnm::tagMAIN& InObject)
 		{
@@ -22149,7 +22149,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TFAnm::tagMAIN>("TFAnm_tagMAIN")
+			NS = NS.beginClass<tagMAIN>("TFAnm_tagMAIN")
 				.addFunction("__tostring", &TFAnm::tagMAIN::ToString)
 				.addFunction("GetPtrAddr", &TFAnm::tagMAIN::GetPtrAddr)
 				.addProperty("pGmfNode", &TFAnm::tagMAIN::pGmfNode)
@@ -22226,7 +22226,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct TGmfNode::tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TGmfNode::tagMAIN& InObject)
 		{
@@ -22234,7 +22234,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TGmfNode::tagMAIN>("TGmfNode_tagMAIN")
+			NS = NS.beginClass<tagMAIN>("TGmfNode_tagMAIN")
 				.addFunction("__tostring", &TGmfNode::tagMAIN::ToString)
 				.addFunction("GetPtrAddr", &TGmfNode::tagMAIN::GetPtrAddr)
 			.endClass();
@@ -23058,7 +23058,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class CVertex [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class CVertexAnimation::CVertex [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(CVertexAnimation::CVertex& InObject)
 		{
@@ -23069,7 +23069,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<CVertexAnimation::CVertex>("CVertexAnimation_CVertex")
+			NS = NS.beginClass<CVertex>("CVertexAnimation_CVertex")
 				.addFunction("__tostring", &CVertexAnimation::CVertex::ToString)
 				.addFunction("GetPtrAddr", &CVertexAnimation::CVertex::GetPtrAddr)
 				.addProperty("m_nPosiIndex", &CVertexAnimation::CVertex::m_nPosiIndex)
@@ -23157,7 +23157,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct TFAnmObjF32_3::tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TFAnmObjF32_3::tagMAIN& InObject)
 		{
@@ -23165,7 +23165,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TFAnmObjF32_3::tagMAIN>("TFAnmObjF32_3_tagMAIN")
+			NS = NS.beginClass<tagMAIN>("TFAnmObjF32_3_tagMAIN")
 				.addFunction("__tostring", &TFAnmObjF32_3::tagMAIN::ToString)
 				.addFunction("GetPtrAddr", &TFAnmObjF32_3::tagMAIN::GetPtrAddr)
 			.endClass();
@@ -23297,7 +23297,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct tagGETA [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct TFAnmObj::tagGETA [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TFAnmObj::tagGETA& InObject)
 		{
@@ -23310,7 +23310,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TFAnmObj::tagGETA>("TFAnmObj_tagGETA")
+			NS = NS.beginClass<tagGETA>("TFAnmObj_tagGETA")
 				.addFunction("__tostring", &TFAnmObj::tagGETA::ToString)
 				.addFunction("GetPtrAddr", &TFAnmObj::tagGETA::GetPtrAddr)
 				.addProperty("Value", &TFAnmObj::tagGETA::Value)
@@ -23417,7 +23417,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct TFAnmObj::tagMAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(TFAnmObj::tagMAIN& InObject)
 		{
@@ -23450,7 +23450,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<TFAnmObj::tagMAIN>("TFAnmObj_tagMAIN")
+			NS = NS.beginClass<tagMAIN>("TFAnmObj_tagMAIN")
 				.addFunction("__tostring", &TFAnmObj::tagMAIN::ToString)
 				.addFunction("GetPtrAddr", &TFAnmObj::tagMAIN::GetPtrAddr)
 				.addProperty("pAnmData", &TFAnmObj::tagMAIN::pAnmData)
@@ -23560,7 +23560,7 @@ namespace mot
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class IBoneEffectPJ [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class mot::IBoneEffectPJ [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(mot::IBoneEffectPJ& InObject)
 		{
@@ -23568,7 +23568,7 @@ namespace mot
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<mot::IBoneEffectPJ>("mot_IBoneEffectPJ")
+			NS = NS.beginClass<IBoneEffectPJ>("mot_IBoneEffectPJ")
 				.addFunction("__tostring", &mot::IBoneEffectPJ::ToString)
 				.addFunction("GetPtrAddr", &mot::IBoneEffectPJ::GetPtrAddr)
 				// delegates are not supported in LuaBridge
@@ -23770,7 +23770,7 @@ namespace gameUtil
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class CPlane [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class gameUtil::CPlane [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(gameUtil::CPlane& InObject)
 		{
@@ -23779,7 +23779,7 @@ namespace gameUtil
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<gameUtil::CPlane>("gameUtil_CPlane")
+			NS = NS.beginClass<CPlane>("gameUtil_CPlane")
 				.addFunction("__tostring", &gameUtil::CPlane::ToString)
 				.addFunction("GetPtrAddr", &gameUtil::CPlane::GetPtrAddr)
 				.addProperty("m_inABCD", &gameUtil::CPlane::m_inABCD)
@@ -27175,7 +27175,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct Object [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct EffectFixFire::Object [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EffectFixFire::Object& InObject)
 		{
@@ -27192,7 +27192,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EffectFixFire::Object>("EffectFixFire_Object")
+			NS = NS.beginClass<Object>("EffectFixFire_Object")
 				.addFunction("__tostring", &EffectFixFire::Object::ToString)
 				.addFunction("GetPtrAddr", &EffectFixFire::Object::GetPtrAddr)
 				.addProperty("m_pNext", &EffectFixFire::Object::m_pNext)
@@ -29061,12 +29061,12 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x4667c0);
 		return mFunc(this, (enum rSkyMap::SkyMapState)arg2);
 	}
-	// [Function] void __convention("thiscall") rSkyMap::AreaSelect(class rSkyMap* const this, int32_t arg2) [?AreaSelect@rSkyMap@@QAEXH@Z]
-	void AreaSelect(int32_t arg2)
+	// [Function] void __convention("thiscall") rSkyMap::AreaSelect(class rSkyMap* const this, int32_t MapID) [?AreaSelect@rSkyMap@@QAEXH@Z]
+	void AreaSelect(int32_t MapID)
 	{
-		typedef void(__thiscall* _Func)(class rSkyMap* const thisPtr, int32_t arg2);
+		typedef void(__thiscall* _Func)(class rSkyMap* const thisPtr, int32_t MapID);
 		_Func mFunc = (_Func)(GameModule + 0x4667e0);
-		return mFunc(this, arg2);
+		return mFunc(this, MapID);
 	}
 	// [Function] uint8_t __convention("thiscall") rSkyMap::MoveSky(class rSkyMap* const this, int32_t arg2) [?MoveSky@rSkyMap@@QAE_NH@Z]
 	uint8_t MoveSky(int32_t arg2)
@@ -29369,6 +29369,61 @@ static_assert(sizeof(EffectSpeedBlur) == 100, "expected EffectSpeedBlur to be si
 class rSkyMapMenu
 {
 public:
+	// [Structure] struct rSkyMapMenu::ListParam
+	struct ListParam
+	{
+	public:
+		/// Struct member variables
+
+		// <class TGmfNode* pNode, offset 0x0>
+		class TGmfNode* pNode = nullptr;
+
+		// <class TGmfNode* pIconNode, offset 0x4>
+		class TGmfNode* pIconNode = nullptr;
+
+		// <char ListName[0x40], offset 0x8>
+		char ListName[64];
+
+		// <int32_t MapID, offset 0x48>
+		int32_t MapID = 0;
+
+		/// 0 Functions
+
+		/// Meta
+
+		std::string GetName() const { return std::string(ListName); }
+		void SetName(std::string InName) { strncpy_s(ListName, InName.c_str(), sizeof(ListName)); }
+		std::string ToString() const { std::stringstream stream; stream << "struct rSkyMapMenu::ListParam (MapID: " << MapID << ", Name: " << GetName() << ") [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		int GetPtrAddr() const { return (int)this; }
+		void CopyFrom(rSkyMapMenu::ListParam& InObject)
+		{
+			pNode = InObject.pNode;
+			pIconNode = InObject.pIconNode;
+			MapID = InObject.MapID;
+		}
+#ifdef WITH_LUA
+		static void BindLua(luabridge::Namespace& NS)
+		{
+			NS = NS.beginClass<ListParam>("rSkyMapMenu_ListParam")
+				.addFunction("__tostring", &rSkyMapMenu::ListParam::ToString)
+				.addFunction("GetPtrAddr", &rSkyMapMenu::ListParam::GetPtrAddr)
+				.addProperty("pNode", &rSkyMapMenu::ListParam::pNode)
+				.addProperty("pIconNode", &rSkyMapMenu::ListParam::pIconNode)
+				// static arrays are not supported in LuaBridge (only std::vector)
+				//.addProperty("ListName", &rSkyMapMenu::ListParam::ListName)
+				.addProperty("MapID", &rSkyMapMenu::ListParam::MapID)
+				.addFunction("GetName", &ListParam::GetName)
+				.addFunction("SetName", &ListParam::SetName)
+			.endClass();
+		}
+#endif
+	};
+	static_assert(sizeof(rSkyMapMenu::ListParam::pNode) == 4, "expected rSkyMapMenu::ListParam::pNode to be size 4");
+	static_assert(sizeof(rSkyMapMenu::ListParam::pIconNode) == 4, "expected rSkyMapMenu::ListParam::pIconNode to be size 4");
+	static_assert(sizeof(rSkyMapMenu::ListParam::ListName) == 64, "expected rSkyMapMenu::ListParam::ListName to be size 64");
+	static_assert(sizeof(rSkyMapMenu::ListParam::MapID) == 4, "expected rSkyMapMenu::ListParam::MapID to be size 4");
+	static_assert(sizeof(rSkyMapMenu::ListParam) == 76, "expected rSkyMapMenu::ListParam to be size 76");
+
 	// enum rSkyMapMenu::MenuState
 	enum MenuState : uint32_t
 	{
@@ -29390,17 +29445,71 @@ public:
 
 	// <Unidentified data segment, offset 0x0>
 private:
-	char _UnidentifiedData_0[8304];
+	char _UnidentifiedData_0[96];
+
+public:
+	// <uint32_t UnknownRenderConstant, offset 0x60>
+	uint32_t UnknownRenderConstant = 0;
+
+	// <Unidentified data segment, offset 0x64>
+private:
+	char _UnidentifiedData_100[1524];
+
+public:
+	// <uint32_t Initialized, offset 0x658>
+	uint32_t Initialized = 0;
+
+	// <Unidentified data segment, offset 0x65c>
+private:
+	char _UnidentifiedData_1628[2428];
+
+public:
+	// <class rSkyMap* SkyMap, offset 0xfd8>
+	class rSkyMap* SkyMap = nullptr;
+
+	// <uint32_t MenuState, offset 0xfdc>
+	uint32_t MenuState = 0;
+
+	// <Unidentified data segment, offset 0xfe0>
+private:
+	char _UnidentifiedData_4064[1200];
+
+public:
+	// <struct rSkyMapMenu::ListParam ListParameters[0x13], offset 0x1490>
+	struct rSkyMapMenu::ListParam ListParameters[19];
+
+	// <Unidentified data segment, offset 0x1a34>
+private:
+	char _UnidentifiedData_6708[1444];
+
+public:
+	// <int32_t ListItemNum, offset 0x1fd8>
+	int32_t ListItemNum = 0;
+
+	// <Unidentified data segment, offset 0x1fdc>
+private:
+	char _UnidentifiedData_8156[4];
+
+public:
+	// <int32_t UnknownHoverInt, offset 0x1fe0>
+	int32_t UnknownHoverInt = 0;
+
+	// <int32_t HoverID, offset 0x1fe4>
+	int32_t HoverID = 0;
+
+	// <Unidentified data segment, offset 0x1fe8>
+private:
+	char _UnidentifiedData_8168[136];
 
 public:
 	/// 17 Functions
 
-	// [Function] void __convention("thiscall") rSkyMapMenu::SetSkyMap(class rSkyMapMenu* const this, class rSkyMap* arg2) [?SetSkyMap@rSkyMapMenu@@QAEXPAVrSkyMap@@@Z]
-	void SetSkyMap(class rSkyMap* arg2)
+	// [Function] void __convention("thiscall") rSkyMapMenu::SetSkyMap(class rSkyMapMenu* const this, class rSkyMap* SkyMap) [?SetSkyMap@rSkyMapMenu@@QAEXPAVrSkyMap@@@Z]
+	void SetSkyMap(class rSkyMap* SkyMap)
 	{
-		typedef void(__thiscall* _Func)(class rSkyMapMenu* const thisPtr, class rSkyMap* arg2);
+		typedef void(__thiscall* _Func)(class rSkyMapMenu* const thisPtr, class rSkyMap* SkyMap);
 		_Func mFunc = (_Func)(GameModule + 0xaf2e0);
-		return mFunc(this, arg2);
+		return mFunc(this, SkyMap);
 	}
 	// [Function] void __convention("thiscall") rSkyMapMenu::onClickCallback(class rSkyMapMenu* const this, int32_t arg2) [?onClickCallback@rSkyMapMenu@@AAEXH@Z]
 	void onClickCallback(int32_t arg2)
@@ -29430,12 +29539,12 @@ public:
 		_Func mFunc = (_Func)(GameModule + 0x466dc0);
 		return mFunc(this, arg2, arg3, (enum GFONTTYPE_NUM)arg4);
 	}
-	// [Function] int32_t __convention("thiscall") rSkyMapMenu::DrawMes(class rSkyMapMenu* const this, float arg2, float arg3, char* arg4, enum GFONTTYPE_NUM arg5, uint32_t arg6, float arg7, uint8_t arg8, uint8_t arg9) [?DrawMes@rSkyMapMenu@@AAEHMMPADW4GFONTTYPE_NUM@@IM_N2@Z]
-	int32_t DrawMes(float arg2, float arg3, char* arg4, /* enum GFONTTYPE_NUM */ uint32_t arg5, uint32_t arg6, float arg7, uint8_t arg8, uint8_t arg9)
+	// [Function] int32_t __convention("thiscall") rSkyMapMenu::DrawMes(class rSkyMapMenu* const this, float PosX, float PosY, char* mes, enum GFONTTYPE_NUM FontType, uint32_t color, float rate, uint8_t arg8, uint8_t arg9) [?DrawMes@rSkyMapMenu@@AAEHMMPADW4GFONTTYPE_NUM@@IM_N2@Z]
+	int32_t DrawMes(float PosX, float PosY, char* mes, /* enum GFONTTYPE_NUM */ uint32_t FontType, uint32_t color, float rate, uint8_t arg8, uint8_t arg9)
 	{
-		typedef int32_t(__thiscall* _Func)(class rSkyMapMenu* const thisPtr, float arg2, float arg3, char* arg4, enum GFONTTYPE_NUM arg5, uint32_t arg6, float arg7, uint8_t arg8, uint8_t arg9);
+		typedef int32_t(__thiscall* _Func)(class rSkyMapMenu* const thisPtr, float PosX, float PosY, char* mes, enum GFONTTYPE_NUM FontType, uint32_t color, float rate, uint8_t arg8, uint8_t arg9);
 		_Func mFunc = (_Func)(GameModule + 0x466e60);
-		return mFunc(this, arg2, arg3, arg4, (enum GFONTTYPE_NUM)arg5, arg6, arg7, arg8, arg9);
+		return mFunc(this, PosX, PosY, mes, (enum GFONTTYPE_NUM)FontType, color, rate, arg8, arg9);
 	}
 	// [Function] void __convention("thiscall") rSkyMapMenu::SetPolaroid(class rSkyMapMenu* const this) [?SetPolaroid@rSkyMapMenu@@AAEXXZ]
 	void SetPolaroid()
@@ -29516,10 +29625,19 @@ public:
 	}
 	/// Meta
 
-	std::string ToString() const { std::stringstream stream; stream << "class rSkyMapMenu [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+	rSkyMapMenu::ListParam GetListParam(uint32_t Index) { return ListParameters[std::min<uint32_t>(Index, ListItemNum-1)]; }
+	void SetListParam(uint32_t Index, rSkyMapMenu::ListParam InParam) { ListParameters[Index] = InParam; }
+	std::string ToString() const { std::stringstream stream; stream << "class rSkyMapMenu (" << ListItemNum << " list items) [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 	int GetPtrAddr() const { return (int)this; }
 	void CopyFrom(rSkyMapMenu& InObject)
 	{
+		UnknownRenderConstant = InObject.UnknownRenderConstant;
+		Initialized = InObject.Initialized;
+		SkyMap = InObject.SkyMap;
+		MenuState = InObject.MenuState;
+		ListItemNum = InObject.ListItemNum;
+		UnknownHoverInt = InObject.UnknownHoverInt;
+		HoverID = InObject.HoverID;
 	}
 #ifdef WITH_LUA
 	static void BindLua(luabridge::Namespace& NS)
@@ -29527,6 +29645,15 @@ public:
 		NS = NS.beginClass<rSkyMapMenu>("rSkyMapMenu")
 			.addFunction("__tostring", &rSkyMapMenu::ToString)
 			.addFunction("GetPtrAddr", &rSkyMapMenu::GetPtrAddr)
+			.addProperty("UnknownRenderConstant", &rSkyMapMenu::UnknownRenderConstant)
+			.addProperty("Initialized", &rSkyMapMenu::Initialized)
+			.addProperty("SkyMap", &rSkyMapMenu::SkyMap)
+			.addProperty("MenuState", &rSkyMapMenu::MenuState)
+			// static arrays are not supported in LuaBridge (only std::vector)
+			//.addProperty("ListParameters", &rSkyMapMenu::ListParameters)
+			.addProperty("ListItemNum", &rSkyMapMenu::ListItemNum)
+			.addProperty("UnknownHoverInt", &rSkyMapMenu::UnknownHoverInt)
+			.addProperty("HoverID", &rSkyMapMenu::HoverID)
 			.addFunction("SetSkyMap", &rSkyMapMenu::SetSkyMap)
 			.addFunction("onClickCallback", &rSkyMapMenu::onClickCallback)
 			.addFunction("onHoverCallback", &rSkyMapMenu::onHoverCallback)
@@ -29546,10 +29673,20 @@ public:
 			.addFunction("Terminate", &rSkyMapMenu::Terminate)
 			.addFunction("Initialize", &rSkyMapMenu::Initialize)
 			.addStaticFunction("Create", &rSkyMapMenu::Create)
+			.addFunction("GetListParam", &rSkyMapMenu::GetListParam)
+			.addFunction("SetListParam", &rSkyMapMenu::SetListParam)
 		.endClass();
 	}
 #endif
 };
+static_assert(sizeof(rSkyMapMenu::UnknownRenderConstant) == 4, "expected rSkyMapMenu::UnknownRenderConstant to be size 4");
+static_assert(sizeof(rSkyMapMenu::Initialized) == 4, "expected rSkyMapMenu::Initialized to be size 4");
+static_assert(sizeof(rSkyMapMenu::SkyMap) == 4, "expected rSkyMapMenu::SkyMap to be size 4");
+static_assert(sizeof(rSkyMapMenu::MenuState) == 4, "expected rSkyMapMenu::MenuState to be size 4");
+static_assert(sizeof(rSkyMapMenu::ListParameters) == 1444, "expected rSkyMapMenu::ListParameters to be size 1444");
+static_assert(sizeof(rSkyMapMenu::ListItemNum) == 4, "expected rSkyMapMenu::ListItemNum to be size 4");
+static_assert(sizeof(rSkyMapMenu::UnknownHoverInt) == 4, "expected rSkyMapMenu::UnknownHoverInt to be size 4");
+static_assert(sizeof(rSkyMapMenu::HoverID) == 4, "expected rSkyMapMenu::HoverID to be size 4");
 static_assert(sizeof(rSkyMapMenu) == 8304, "expected rSkyMapMenu to be size 8304");
 
 // [Structure] class HrStageDraw
@@ -29571,7 +29708,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct HrStageDraw::MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(HrStageDraw::MAIN& InObject)
 		{
@@ -29579,7 +29716,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<HrStageDraw::MAIN>("HrStageDraw_MAIN")
+			NS = NS.beginClass<MAIN>("HrStageDraw_MAIN")
 				.addFunction("__tostring", &HrStageDraw::MAIN::ToString)
 				.addFunction("GetPtrAddr", &HrStageDraw::MAIN::GetPtrAddr)
 			.endClass();
@@ -29603,7 +29740,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct AREA [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct HrStageDraw::AREA [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(HrStageDraw::AREA& InObject)
 		{
@@ -29611,7 +29748,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<HrStageDraw::AREA>("HrStageDraw_AREA")
+			NS = NS.beginClass<AREA>("HrStageDraw_AREA")
 				.addFunction("__tostring", &HrStageDraw::AREA::ToString)
 				.addFunction("GetPtrAddr", &HrStageDraw::AREA::GetPtrAddr)
 			.endClass();
@@ -30930,7 +31067,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct unnamed_type_fs [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct KPADEXStatus::unnamed_type_fs [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(KPADEXStatus::unnamed_type_fs& InObject)
 		{
@@ -30942,7 +31079,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<KPADEXStatus::unnamed_type_fs>("KPADEXStatus_unnamed_type_fs")
+			NS = NS.beginClass<unnamed_type_fs>("KPADEXStatus_unnamed_type_fs")
 				.addFunction("__tostring", &KPADEXStatus::unnamed_type_fs::ToString)
 				.addFunction("GetPtrAddr", &KPADEXStatus::unnamed_type_fs::GetPtrAddr)
 				.addProperty("stick", &KPADEXStatus::unnamed_type_fs::stick)
@@ -30990,7 +31127,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct unnamed_type_cl [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct KPADEXStatus::unnamed_type_cl [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(KPADEXStatus::unnamed_type_cl& InObject)
 		{
@@ -31005,7 +31142,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<KPADEXStatus::unnamed_type_cl>("KPADEXStatus_unnamed_type_cl")
+			NS = NS.beginClass<unnamed_type_cl>("KPADEXStatus_unnamed_type_cl")
 				.addFunction("__tostring", &KPADEXStatus::unnamed_type_cl::ToString)
 				.addFunction("GetPtrAddr", &KPADEXStatus::unnamed_type_cl::GetPtrAddr)
 				.addProperty("hold", &KPADEXStatus::unnamed_type_cl::hold)
@@ -31760,7 +31897,7 @@ namespace mot
 		}
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class CBoneEffectDamageData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class mot::CBoneEffectDamageData [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(mot::CBoneEffectDamageData& InObject)
 		{
@@ -31774,7 +31911,7 @@ namespace mot
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<mot::CBoneEffectDamageData>("mot_CBoneEffectDamageData")
+			NS = NS.beginClass<CBoneEffectDamageData>("mot_CBoneEffectDamageData")
 				.addFunction("__tostring", &mot::CBoneEffectDamageData::ToString)
 				.addFunction("GetPtrAddr", &mot::CBoneEffectDamageData::GetPtrAddr)
 				.addProperty("m_bIsHit", &mot::CBoneEffectDamageData::m_bIsHit)
@@ -31866,7 +32003,7 @@ namespace mot
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class CBoneEffectManager [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class mot::CBoneEffectManager [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(mot::CBoneEffectManager& InObject)
 		{
@@ -31878,7 +32015,7 @@ namespace mot
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<mot::CBoneEffectManager>("mot_CBoneEffectManager")
+			NS = NS.beginClass<CBoneEffectManager>("mot_CBoneEffectManager")
 				.addFunction("__tostring", &mot::CBoneEffectManager::ToString)
 				.addFunction("GetPtrAddr", &mot::CBoneEffectManager::GetPtrAddr)
 				.addProperty("m_inDataLink", &mot::CBoneEffectManager::m_inDataLink)
@@ -31958,7 +32095,7 @@ namespace mot
 		}
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class CBoneEffectPJ [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class mot::CBoneEffectPJ [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(mot::CBoneEffectPJ& InObject)
 		{
@@ -31976,7 +32113,7 @@ namespace mot
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.deriveClass<mot::CBoneEffectPJ, mot::IBoneEffectPJ>("mot_CBoneEffectPJ")
+			NS = NS.deriveClass<CBoneEffectPJ, mot::IBoneEffectPJ>("mot_CBoneEffectPJ")
 				.addFunction("__tostring", &mot::CBoneEffectPJ::ToString)
 				.addFunction("GetPtrAddr", &mot::CBoneEffectPJ::GetPtrAddr)
 				.addProperty("m_inManager", &mot::CBoneEffectPJ::m_inManager)
@@ -32261,7 +32398,7 @@ namespace mot
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class IBoneEffect [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class mot::IBoneEffect [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(mot::IBoneEffect& InObject)
 		{
@@ -32269,7 +32406,7 @@ namespace mot
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<mot::IBoneEffect>("mot_IBoneEffect")
+			NS = NS.beginClass<IBoneEffect>("mot_IBoneEffect")
 				.addFunction("__tostring", &mot::IBoneEffect::ToString)
 				.addFunction("GetPtrAddr", &mot::IBoneEffect::GetPtrAddr)
 				// delegates are not supported in LuaBridge
@@ -32300,7 +32437,7 @@ namespace mot
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class CIKManager [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class mot::CIKManager [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(mot::CIKManager& InObject)
 		{
@@ -32310,7 +32447,7 @@ namespace mot
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<mot::CIKManager>("mot_CIKManager")
+			NS = NS.beginClass<CIKManager>("mot_CIKManager")
 				.addFunction("__tostring", &mot::CIKManager::ToString)
 				.addFunction("GetPtrAddr", &mot::CIKManager::GetPtrAddr)
 				.addProperty("m_pBoneEffectManager", &mot::CIKManager::m_pBoneEffectManager)
@@ -32339,7 +32476,7 @@ namespace mot
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class CYuremonoManager [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class mot::CYuremonoManager [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(mot::CYuremonoManager& InObject)
 		{
@@ -32348,7 +32485,7 @@ namespace mot
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<mot::CYuremonoManager>("mot_CYuremonoManager")
+			NS = NS.beginClass<CYuremonoManager>("mot_CYuremonoManager")
 				.addFunction("__tostring", &mot::CYuremonoManager::ToString)
 				.addFunction("GetPtrAddr", &mot::CYuremonoManager::GetPtrAddr)
 				.addProperty("m_pBoneEffectManager", &mot::CYuremonoManager::m_pBoneEffectManager)
@@ -34813,7 +34950,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class CElement [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class CMotionPlayer::CElement [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(CMotionPlayer::CElement& InObject)
 		{
@@ -34823,7 +34960,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<CMotionPlayer::CElement>("CMotionPlayer_CElement")
+			NS = NS.beginClass<CElement>("CMotionPlayer_CElement")
 				.addFunction("__tostring", &CMotionPlayer::CElement::ToString)
 				.addFunction("GetPtrAddr", &CMotionPlayer::CElement::GetPtrAddr)
 				.addProperty("m_nMotIndex", &CMotionPlayer::CElement::m_nMotIndex)
@@ -36845,7 +36982,7 @@ namespace gameUtil
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class CPositionControl [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class gameUtil::CPositionControl [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(gameUtil::CPositionControl& InObject)
 		{
@@ -36855,7 +36992,7 @@ namespace gameUtil
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<gameUtil::CPositionControl>("gameUtil_CPositionControl")
+			NS = NS.beginClass<CPositionControl>("gameUtil_CPositionControl")
 				.addFunction("__tostring", &gameUtil::CPositionControl::ToString)
 				.addFunction("GetPtrAddr", &gameUtil::CPositionControl::GetPtrAddr)
 				.addProperty("m_inPosi", &gameUtil::CPositionControl::m_inPosi)
@@ -37053,7 +37190,7 @@ namespace ti
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "class CCamera [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "class ti::CCamera [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(ti::CCamera& InObject)
 		{
@@ -37072,7 +37209,7 @@ namespace ti
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<ti::CCamera>("ti_CCamera")
+			NS = NS.beginClass<CCamera>("ti_CCamera")
 				.addFunction("__tostring", &ti::CCamera::ToString)
 				.addFunction("GetPtrAddr", &ti::CCamera::GetPtrAddr)
 				.addProperty("m_inPosi", &ti::CCamera::m_inPosi)
@@ -40696,7 +40833,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct ZakoInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct PJZAKO::ZakoInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(PJZAKO::ZakoInfo& InObject)
 		{
@@ -40721,7 +40858,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<PJZAKO::ZakoInfo>("PJZAKO_ZakoInfo")
+			NS = NS.beginClass<ZakoInfo>("PJZAKO_ZakoInfo")
 				.addFunction("__tostring", &PJZAKO::ZakoInfo::ToString)
 				.addFunction("GetPtrAddr", &PJZAKO::ZakoInfo::GetPtrAddr)
 				// static arrays are not supported in LuaBridge (only std::vector)
@@ -40795,7 +40932,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct MotionInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct PJZAKO::MotionInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(PJZAKO::MotionInfo& InObject)
 		{
@@ -40807,7 +40944,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<PJZAKO::MotionInfo>("PJZAKO_MotionInfo")
+			NS = NS.beginClass<MotionInfo>("PJZAKO_MotionInfo")
 				.addFunction("__tostring", &PJZAKO::MotionInfo::ToString)
 				.addFunction("GetPtrAddr", &PJZAKO::MotionInfo::GetPtrAddr)
 				.addProperty("m_MotionFrame", &PJZAKO::MotionInfo::m_MotionFrame)
@@ -40864,7 +41001,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct TojoInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct PJZAKO::TojoInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(PJZAKO::TojoInfo& InObject)
 		{
@@ -40877,7 +41014,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<PJZAKO::TojoInfo>("PJZAKO_TojoInfo")
+			NS = NS.beginClass<TojoInfo>("PJZAKO_TojoInfo")
 				.addFunction("__tostring", &PJZAKO::TojoInfo::ToString)
 				.addFunction("GetPtrAddr", &PJZAKO::TojoInfo::GetPtrAddr)
 				.addProperty("m_boWaitReleaseIdleState", &PJZAKO::TojoInfo::m_boWaitReleaseIdleState)
@@ -40938,7 +41075,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct PcInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct PJZAKO::PcInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(PJZAKO::PcInfo& InObject)
 		{
@@ -40955,7 +41092,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<PJZAKO::PcInfo>("PJZAKO_PcInfo")
+			NS = NS.beginClass<PcInfo>("PJZAKO_PcInfo")
 				.addFunction("__tostring", &PJZAKO::PcInfo::ToString)
 				.addFunction("GetPtrAddr", &PJZAKO::PcInfo::GetPtrAddr)
 				.addProperty("m_PcPosition", &PJZAKO::PcInfo::m_PcPosition)
@@ -41047,7 +41184,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct DmgInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct PJZAKO::DmgInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(PJZAKO::DmgInfo& InObject)
 		{
@@ -41070,7 +41207,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<PJZAKO::DmgInfo>("PJZAKO_DmgInfo")
+			NS = NS.beginClass<DmgInfo>("PJZAKO_DmgInfo")
 				.addFunction("__tostring", &PJZAKO::DmgInfo::ToString)
 				.addFunction("GetPtrAddr", &PJZAKO::DmgInfo::GetPtrAddr)
 				.addProperty("mLoseSightTick", &PJZAKO::DmgInfo::mLoseSightTick)
@@ -41163,7 +41300,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct AiInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct PJZAKO::AiInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(PJZAKO::AiInfo& InObject)
 		{
@@ -41184,7 +41321,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<PJZAKO::AiInfo>("PJZAKO_AiInfo")
+			NS = NS.beginClass<AiInfo>("PJZAKO_AiInfo")
 				.addFunction("__tostring", &PJZAKO::AiInfo::ToString)
 				.addFunction("GetPtrAddr", &PJZAKO::AiInfo::GetPtrAddr)
 				.addProperty("m_boCutAi", &PJZAKO::AiInfo::m_boCutAi)
@@ -41235,7 +41372,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct EfDanmen [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct PJZAKO::EfDanmen [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(PJZAKO::EfDanmen& InObject)
 		{
@@ -41245,7 +41382,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<PJZAKO::EfDanmen>("PJZAKO_EfDanmen")
+			NS = NS.beginClass<EfDanmen>("PJZAKO_EfDanmen")
 				.addFunction("__tostring", &PJZAKO::EfDanmen::ToString)
 				.addFunction("GetPtrAddr", &PJZAKO::EfDanmen::GetPtrAddr)
 				.addProperty("pEf", &PJZAKO::EfDanmen::pEf)
@@ -42365,7 +42502,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct DynamicParam [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct FkDynamicParam::DynamicParam [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(FkDynamicParam::DynamicParam& InObject)
 		{
@@ -42375,7 +42512,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<FkDynamicParam::DynamicParam>("FkDynamicParam_DynamicParam")
+			NS = NS.beginClass<DynamicParam>("FkDynamicParam_DynamicParam")
 				.addFunction("__tostring", &FkDynamicParam::DynamicParam::ToString)
 				.addFunction("GetPtrAddr", &FkDynamicParam::DynamicParam::GetPtrAddr)
 				// char* type not supported in LuaBridge
@@ -42547,7 +42684,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct stEfBullet [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct FkBulletManager::stEfBullet [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(FkBulletManager::stEfBullet& InObject)
 		{
@@ -42559,7 +42696,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<FkBulletManager::stEfBullet>("FkBulletManager_stEfBullet")
+			NS = NS.beginClass<stEfBullet>("FkBulletManager_stEfBullet")
 				.addFunction("__tostring", &FkBulletManager::stEfBullet::ToString)
 				.addFunction("GetPtrAddr", &FkBulletManager::stEfBullet::GetPtrAddr)
 				.addProperty("fireFlag", &FkBulletManager::stEfBullet::fireFlag)
@@ -42612,7 +42749,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct DmgInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct FkBulletManager::DmgInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(FkBulletManager::DmgInfo& InObject)
 		{
@@ -42627,7 +42764,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<FkBulletManager::DmgInfo>("FkBulletManager_DmgInfo")
+			NS = NS.beginClass<DmgInfo>("FkBulletManager_DmgInfo")
 				.addFunction("__tostring", &FkBulletManager::DmgInfo::ToString)
 				.addFunction("GetPtrAddr", &FkBulletManager::DmgInfo::GetPtrAddr)
 				.addProperty("fDmg", &FkBulletManager::DmgInfo::fDmg)
@@ -42719,7 +42856,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct strHitCheck [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct EffectFkTobiDoguBase::strHitCheck [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EffectFkTobiDoguBase::strHitCheck& InObject)
 		{
@@ -42729,7 +42866,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EffectFkTobiDoguBase::strHitCheck>("EffectFkTobiDoguBase_strHitCheck")
+			NS = NS.beginClass<strHitCheck>("EffectFkTobiDoguBase_strHitCheck")
 				.addFunction("__tostring", &EffectFkTobiDoguBase::strHitCheck::ToString)
 				.addFunction("GetPtrAddr", &EffectFkTobiDoguBase::strHitCheck::GetPtrAddr)
 				.addProperty("fTgtRadius", &EffectFkTobiDoguBase::strHitCheck::fTgtRadius)
@@ -42783,7 +42920,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct HitObjInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct EffectFkTobiDoguBase::HitObjInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EffectFkTobiDoguBase::HitObjInfo& InObject)
 		{
@@ -42795,7 +42932,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EffectFkTobiDoguBase::HitObjInfo>("EffectFkTobiDoguBase_HitObjInfo")
+			NS = NS.beginClass<HitObjInfo>("EffectFkTobiDoguBase_HitObjInfo")
 				.addFunction("__tostring", &EffectFkTobiDoguBase::HitObjInfo::ToString)
 				.addFunction("GetPtrAddr", &EffectFkTobiDoguBase::HitObjInfo::GetPtrAddr)
 				.addProperty("boHit", &EffectFkTobiDoguBase::HitObjInfo::boHit)
@@ -44182,7 +44319,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct DmgInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct pcGLB::DmgInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(pcGLB::DmgInfo& InObject)
 		{
@@ -44201,7 +44338,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<pcGLB::DmgInfo>("pcGLB_DmgInfo")
+			NS = NS.beginClass<DmgInfo>("pcGLB_DmgInfo")
 				.addFunction("__tostring", &pcGLB::DmgInfo::ToString)
 				.addFunction("GetPtrAddr", &pcGLB::DmgInfo::GetPtrAddr)
 				.addProperty("Kind", &pcGLB::DmgInfo::Kind)
@@ -44260,7 +44397,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct TickCnt [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct pcGLB::TickCnt [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(pcGLB::TickCnt& InObject)
 		{
@@ -44274,7 +44411,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<pcGLB::TickCnt>("pcGLB_TickCnt")
+			NS = NS.beginClass<TickCnt>("pcGLB_TickCnt")
 				.addFunction("__tostring", &pcGLB::TickCnt::ToString)
 				.addFunction("GetPtrAddr", &pcGLB::TickCnt::GetPtrAddr)
 				.addProperty("Motion", &pcGLB::TickCnt::Motion)
@@ -45265,7 +45402,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct PcInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct bsBasic::PcInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(bsBasic::PcInfo& InObject)
 		{
@@ -45281,7 +45418,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<bsBasic::PcInfo>("bsBasic_PcInfo")
+			NS = NS.beginClass<PcInfo>("bsBasic_PcInfo")
 				.addFunction("__tostring", &bsBasic::PcInfo::ToString)
 				.addFunction("GetPtrAddr", &bsBasic::PcInfo::GetPtrAddr)
 				.addProperty("Pos", &bsBasic::PcInfo::Pos)
@@ -45394,7 +45531,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct SurroundInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct bsBasic::SurroundInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(bsBasic::SurroundInfo& InObject)
 		{
@@ -45428,7 +45565,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<bsBasic::SurroundInfo>("bsBasic_SurroundInfo")
+			NS = NS.beginClass<SurroundInfo>("bsBasic_SurroundInfo")
 				.addFunction("__tostring", &bsBasic::SurroundInfo::ToString)
 				.addFunction("GetPtrAddr", &bsBasic::SurroundInfo::GetPtrAddr)
 				.addProperty("SearchDist", &bsBasic::SurroundInfo::SearchDist)
@@ -45514,7 +45651,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct DistSense [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct bsBasic::DistSense [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(bsBasic::DistSense& InObject)
 		{
@@ -45527,7 +45664,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<bsBasic::DistSense>("bsBasic_DistSense")
+			NS = NS.beginClass<DistSense>("bsBasic_DistSense")
 				.addFunction("__tostring", &bsBasic::DistSense::ToString)
 				.addFunction("GetPtrAddr", &bsBasic::DistSense::GetPtrAddr)
 				.addProperty("Base", &bsBasic::DistSense::Base)
@@ -45580,7 +45717,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct TickCnt [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct bsBasic::TickCnt [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(bsBasic::TickCnt& InObject)
 		{
@@ -45596,7 +45733,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<bsBasic::TickCnt>("bsBasic_TickCnt")
+			NS = NS.beginClass<TickCnt>("bsBasic_TickCnt")
 				.addFunction("__tostring", &bsBasic::TickCnt::ToString)
 				.addFunction("GetPtrAddr", &bsBasic::TickCnt::GetPtrAddr)
 				.addProperty("Motion", &bsBasic::TickCnt::Motion)
@@ -45654,7 +45791,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct BattleParam [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct bsBasic::BattleParam [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(bsBasic::BattleParam& InObject)
 		{
@@ -45668,7 +45805,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<bsBasic::BattleParam>("bsBasic_BattleParam")
+			NS = NS.beginClass<BattleParam>("bsBasic_BattleParam")
 				.addFunction("__tostring", &bsBasic::BattleParam::ToString)
 				.addFunction("GetPtrAddr", &bsBasic::BattleParam::GetPtrAddr)
 				.addProperty("TargetPos", &bsBasic::BattleParam::TargetPos)
@@ -45738,7 +45875,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct DmgInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct bsBasic::DmgInfo [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(bsBasic::DmgInfo& InObject)
 		{
@@ -45759,7 +45896,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<bsBasic::DmgInfo>("bsBasic_DmgInfo")
+			NS = NS.beginClass<DmgInfo>("bsBasic_DmgInfo")
 				.addFunction("__tostring", &bsBasic::DmgInfo::ToString)
 				.addFunction("GetPtrAddr", &bsBasic::DmgInfo::GetPtrAddr)
 				.addProperty("Kind", &bsBasic::DmgInfo::Kind)
@@ -46803,7 +46940,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct EffectModelFire::MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EffectModelFire::MAIN& InObject)
 		{
@@ -46823,7 +46960,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EffectModelFire::MAIN>("EffectModelFire_MAIN")
+			NS = NS.beginClass<MAIN>("EffectModelFire_MAIN")
 				.addFunction("__tostring", &EffectModelFire::MAIN::ToString)
 				.addFunction("GetPtrAddr", &EffectModelFire::MAIN::GetPtrAddr)
 				.addProperty("pGmf", &EffectModelFire::MAIN::pGmf)
@@ -46923,7 +47060,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct EffectSimpleObj3::MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EffectSimpleObj3::MAIN& InObject)
 		{
@@ -46936,7 +47073,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EffectSimpleObj3::MAIN>("EffectSimpleObj3_MAIN")
+			NS = NS.beginClass<MAIN>("EffectSimpleObj3_MAIN")
 				.addFunction("__tostring", &EffectSimpleObj3::MAIN::ToString)
 				.addFunction("GetPtrAddr", &EffectSimpleObj3::MAIN::GetPtrAddr)
 				.addProperty("ObjNum", &EffectSimpleObj3::MAIN::ObjNum)
@@ -46970,7 +47107,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct OBJECT [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct EffectSimpleObj3::OBJECT [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EffectSimpleObj3::OBJECT& InObject)
 		{
@@ -46978,7 +47115,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EffectSimpleObj3::OBJECT>("EffectSimpleObj3_OBJECT")
+			NS = NS.beginClass<OBJECT>("EffectSimpleObj3_OBJECT")
 				.addFunction("__tostring", &EffectSimpleObj3::OBJECT::ToString)
 				.addFunction("GetPtrAddr", &EffectSimpleObj3::OBJECT::GetPtrAddr)
 			.endClass();
@@ -47669,7 +47806,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct CommonObjSetInf [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct FkGlobalDBG::CommonObjSetInf [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(FkGlobalDBG::CommonObjSetInf& InObject)
 		{
@@ -47680,7 +47817,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<FkGlobalDBG::CommonObjSetInf>("FkGlobalDBG_CommonObjSetInf")
+			NS = NS.beginClass<CommonObjSetInf>("FkGlobalDBG_CommonObjSetInf")
 				.addFunction("__tostring", &FkGlobalDBG::CommonObjSetInf::ToString)
 				.addFunction("GetPtrAddr", &FkGlobalDBG::CommonObjSetInf::GetPtrAddr)
 				.addProperty("iNowCursor", &FkGlobalDBG::CommonObjSetInf::iNowCursor)
@@ -47891,7 +48028,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct EffectBloodSplash::MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EffectBloodSplash::MAIN& InObject)
 		{
@@ -47936,7 +48073,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EffectBloodSplash::MAIN>("EffectBloodSplash_MAIN")
+			NS = NS.beginClass<MAIN>("EffectBloodSplash_MAIN")
 				.addFunction("__tostring", &EffectBloodSplash::MAIN::ToString)
 				.addFunction("GetPtrAddr", &EffectBloodSplash::MAIN::GetPtrAddr)
 				.addProperty("Node", &EffectBloodSplash::MAIN::Node)
@@ -48094,7 +48231,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct EffectSimpleObj2::MAIN [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(EffectSimpleObj2::MAIN& InObject)
 		{
@@ -48102,7 +48239,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<EffectSimpleObj2::MAIN>("EffectSimpleObj2_MAIN")
+			NS = NS.beginClass<MAIN>("EffectSimpleObj2_MAIN")
 				.addFunction("__tostring", &EffectSimpleObj2::MAIN::ToString)
 				.addFunction("GetPtrAddr", &EffectSimpleObj2::MAIN::GetPtrAddr)
 			.endClass();
@@ -48252,7 +48389,7 @@ public:
 
 		/// Meta
 
-		std::string ToString() const { std::stringstream stream; stream << "struct GuardParam [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
+		std::string ToString() const { std::stringstream stream; stream << "struct FkBoss::GuardParam [0x" << std::hex << GetPtrAddr() << "]"; return stream.str(); }
 		int GetPtrAddr() const { return (int)this; }
 		void CopyFrom(FkBoss::GuardParam& InObject)
 		{
@@ -48262,7 +48399,7 @@ public:
 #ifdef WITH_LUA
 		static void BindLua(luabridge::Namespace& NS)
 		{
-			NS = NS.beginClass<FkBoss::GuardParam>("FkBoss_GuardParam")
+			NS = NS.beginClass<GuardParam>("FkBoss_GuardParam")
 				.addFunction("__tostring", &FkBoss::GuardParam::ToString)
 				.addFunction("GetPtrAddr", &FkBoss::GuardParam::GetPtrAddr)
 				.addProperty("GuardBeginCnt", &FkBoss::GuardParam::GuardBeginCnt)
@@ -49438,6 +49575,10 @@ void BindLua_Exported(luabridge::Namespace& NS)
 	std::cout << "Binding 'class EffectSpeedBlur'" << std::endl;
 #endif
 	EffectSpeedBlur::BindLua(NS);
+#ifdef LOG_INIT
+	std::cout << "Binding 'struct rSkyMapMenu::ListParam'" << std::endl;
+#endif
+	rSkyMapMenu::ListParam::BindLua(NS);
 #ifdef LOG_INIT
 	std::cout << "Binding 'class rSkyMapMenu'" << std::endl;
 #endif

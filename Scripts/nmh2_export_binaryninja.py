@@ -428,11 +428,14 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 					SuperClassType = FirstMember.type
 			CustomNameSpace = None
 			ParentNameSpace = GetParentNameSpaceFromType(InType)
+			TypeWithNameSpace = TypeStr
+			TypeStrNoPrefixNoNameSpace = TypeStrNoPrefix
 			if ParentNameSpace != None:
 				# HACK: Indent check is a hack to ensure we're the root
 				if not HasValidParentNameSpace(InType) and indent == 0:
 					CustomNameSpace = ParentNameSpace
 				TypeStr = TypeStr.replace(ParentNameSpace+"::", "")
+				TypeStrNoPrefixNoNameSpace = TypeStrNoPrefixNoNameSpace.replace(ParentNameSpace+"::", "")
 			# Raw
 			if not bFowardDeclare:
 				print("	"*indent + "// [Structure] " + str(InType), file=file)
@@ -576,17 +579,17 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 				# Allow json to extend
 				print("	"*indent + "/// Meta", file=file)
 				print("", file=file)
-				if "json" in SessionData and "Extend" in SessionData["json"] and TypeStr in SessionData["json"]["Extend"] and "Structure" in SessionData["json"]["Extend"][TypeStr]:
-					for Entry in SessionData["json"]["Extend"][TypeStr]["Structure"]:
+				if "json" in SessionData and "Extend" in SessionData["json"] and TypeWithNameSpace in SessionData["json"]["Extend"] and "Structure" in SessionData["json"]["Extend"][TypeWithNameSpace]:
+					for Entry in SessionData["json"]["Extend"][TypeWithNameSpace]["Structure"]:
 						print("	"*indent + Entry, file=file)
 				# Lua meta functions
 				HasLuaMetaFunctions = True
 				print("	"*indent + "std::string ToString() const", end="", file=file)
 				print(" { ", end = "", file=file)
-				if "json" in SessionData and "Extend" in SessionData["json"] and TypeStr in SessionData["json"]["Extend"] and "ToString" in SessionData["json"]["Extend"][TypeStr]:
-					print(SessionData["json"]["Extend"][TypeStr]["ToString"], end="", file=file)
+				if "json" in SessionData and "Extend" in SessionData["json"] and TypeWithNameSpace in SessionData["json"]["Extend"] and "ToString" in SessionData["json"]["Extend"][TypeWithNameSpace]:
+					print(SessionData["json"]["Extend"][TypeWithNameSpace]["ToString"], end="", file=file)
 				else:
-					print("std::stringstream stream; stream << \""+TypeStr + " [0x\" << std::hex << GetPtrAddr() << \"]\"; return stream.str();", end="", file=file)
+					print("std::stringstream stream; stream << \""+TypeWithNameSpace + " [0x\" << std::hex << GetPtrAddr() << \"]\"; return stream.str();", end="", file=file)
 				print(" }", file=file)
 				# HACK
 				print("	"*indent + "int GetPtrAddr() const", end="", file=file)
@@ -609,7 +612,7 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 					print("	"*indent + "{", file=file)
 					indent = indent+1
 					# Class
-					TempClassNameC = TypeStrNoPrefix
+					TempClassNameC = TypeStrNoPrefixNoNameSpace
 					TempClassNameLua = TypeStrNoPrefix
 					SuperClassName = None
 					if SuperClassType != None:
@@ -709,8 +712,8 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 							print(".addFunction", end="", file=file)
 						print("(\"" + str(FunctionName) + "\", &"+TypeStrNoPrefix+"::"+str(FunctionName) + ")", file=file)
 					# Json
-					if "json" in SessionData and "Extend" in SessionData["json"] and TypeStr in SessionData["json"]["Extend"] and "LuaBindings" in SessionData["json"]["Extend"][TypeStr]:
-						for Entry in SessionData["json"]["Extend"][TypeStr]["LuaBindings"]:
+					if "json" in SessionData and "Extend" in SessionData["json"] and TypeWithNameSpace in SessionData["json"]["Extend"] and "LuaBindings" in SessionData["json"]["Extend"][TypeWithNameSpace]:
+						for Entry in SessionData["json"]["Extend"][TypeWithNameSpace]["LuaBindings"]:
 							print("	"*indent + Entry, file=file)
 					# Lua end func
 					indent = indent-1
@@ -1234,6 +1237,7 @@ JsonData = None
 with open("E:/C++/NoMoreHeroesModLua/Games/gamecomments.json") as JsonFile:
 	JsonData = json.load(JsonFile)
 
+print("Collecting types.")
 AllRelevantTypes = []
 #CollectTypes(AllRelevantTypes, ["GdlSentence"])
 CollectTypes(AllRelevantTypes, ["mHRChara", "mHRBattle", "mHRPc", "HrMap", "mHRPad", "HrMessage", "HrSysMessage", "HrScreenStatus", "HrMissionResult", "HrTalk", "GdlLines", "WGdl", "GdlHeader", "GdlDialog", "GdlSentence", "MessLines", "CBgCtrl", "HrStageDraw", "rSkyMap", "rSkyMapMenu"])
@@ -1262,8 +1266,6 @@ for TypeIt in AllRelevantTypes:
 	#	print("[" + str(i) + " / " + str(len(AllRelevantTypes)) + "] " + str(TypeIt))
 	# Parent namespace type
 	ParentNameSpaceStr = GetParentNameSpaceFromType(TypeIt);
-	if "GetCharaNowPlayMotionTick" in str(TypeIt):
-		print("Parent namespace for '" + str(TypeIt) + "': '" + str(ParentNameSpaceStr) + "'")
 	if ParentNameSpaceStr == None:
 		setattr(TypeIt, 'calc_parentnamespace_str', None)
 		setattr(TypeIt, 'calc_parentnamespace_type', None)

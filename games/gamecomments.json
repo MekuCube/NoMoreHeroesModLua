@@ -196,6 +196,34 @@
 			[
 				".addFunction(\"GetLetters\", &GdlSentence::GetLetters)"
 			]
+		},
+		"struct rSkyMapMenu::ListParam":
+		{
+			"ToString": "std::stringstream stream; stream << \"struct rSkyMapMenu::ListParam (MapID: \" << MapID << \", Name: \" << GetName() << \") [0x\" << std::hex << GetPtrAddr() << \"]\"; return stream.str();",
+			"Structure":
+			[
+				"std::string GetName() const { return std::string(ListName); }",
+				"void SetName(std::string InName) { strncpy_s(ListName, InName.c_str(), sizeof(ListName)); }"
+			],
+			"LuaBindings":
+			[
+				".addFunction(\"GetName\", &ListParam::GetName)",
+				".addFunction(\"SetName\", &ListParam::SetName)"
+			]
+		},
+		"class rSkyMapMenu":
+		{
+			"ToString": "std::stringstream stream; stream << \"class rSkyMapMenu (\" << ListItemNum << \" list items) [0x\" << std::hex << GetPtrAddr() << \"]\"; return stream.str();",
+			"Structure":
+			[
+				"rSkyMapMenu::ListParam GetListParam(uint32_t Index) { return ListParameters[std::min<uint32_t>(Index, ListItemNum-1)]; }",
+				"void SetListParam(uint32_t Index, rSkyMapMenu::ListParam InParam) { ListParameters[std::min<uint32_t>(Index, 29)] = InParam; }"
+			],
+			"LuaBindings":
+			[
+				".addFunction(\"GetListParam\", &rSkyMapMenu::GetListParam)",
+				".addFunction(\"SetListParam\", &rSkyMapMenu::SetListParam)"
+			]
 		}
 	}
 }
