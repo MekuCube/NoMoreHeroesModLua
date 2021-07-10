@@ -6,6 +6,8 @@
 #include <fstream>
 #include <sstream>
 #include <filesystem>
+#include <unordered_set>
+#include <mutex>
 #include <d3d11.h>
 #include "mem.h"
 #include "Games/gamedefs.h"
@@ -26,17 +28,10 @@ extern "C"
 #endif
 
 uintptr_t GameModule = NULL;
-
-#ifdef GAME_NMH2
-    #include "Games/NMH2/exported_data_types.h"
-    #include "Games/NMH2/nmh2_gamedefs.h"
-#else
-    #error "No game specified."
-#endif
-
-#include "Games/localization.h"
-
 #if WITH_LUA
+lua_State* LuaState = nullptr;
+std::mutex LuaStateMutex;
+
 bool CheckLua(lua_State* L, int r)
 {
     if (r != LUA_OK)
@@ -47,6 +42,16 @@ bool CheckLua(lua_State* L, int r)
     return true;
 }
 #endif
+
+#ifdef GAME_NMH2
+    #include "Games/NMH2/exported_data_types.h"
+    #include "Games/NMH2/nmh2_gamedefs.h"
+#else
+    #error "No game specified."
+#endif
+
+#include "Games/localization.h"
+
 
 DWORD WINAPI HackThread(HMODULE hModule)
 {
@@ -66,6 +71,7 @@ DWORD WINAPI HackThread(HMODULE hModule)
 
 #if WITH_LUA
     lua_State* L = luaL_newstate();
+    LuaState = L;
     luaL_openlibs(L);
 
     std::filesystem::path LuaScriptPath = std::filesystem::current_path() / "Mods";
@@ -80,42 +86,6 @@ DWORD WINAPI HackThread(HMODULE hModule)
 
     while (true)
     {
-#if WITH_LUA
-        luabridge::push(L, GetAllCharacters());
-        lua_setglobal(L, "AllCharacters");
-
-        luabridge::push(L, GetTravis());
-        lua_setglobal(L, "Travis");
-
-        luabridge::push(L, GetBattle());
-        lua_setglobal(L, "Battle");
-
-        luabridge::push(L, GetSysMessage());
-        lua_setglobal(L, "SystemMessage");
-
-        luabridge::push(L, GetHrTalk());
-        lua_setglobal(L, "SystemTalk");
-
-        luabridge::push(L, GetScreenStatus());
-        lua_setglobal(L, "ScreenStatus");
-
-        luabridge::push(L, GetHrMessage());
-        lua_setglobal(L, "Message");
-
-        luabridge::push(L, GetGamepad());
-        lua_setglobal(L, "Gamepad");
-
-        luabridge::push(L, GetBackgroundControl());
-        lua_setglobal(L, "BackgroundControl");
-
-        luabridge::push(L, GetHrBattleIcon());
-        lua_setglobal(L, "BattleIcon");
-
-        double DeltaTime = 1.0 / 1000.0;
-        luabridge::push(L, DeltaTime);
-        lua_setglobal(L, "DeltaTime");
-#endif
-
         if (GetAsyncKeyState(VK_END) & 1)
         {
             bIsActive = !bIsActive;
@@ -124,11 +94,55 @@ DWORD WINAPI HackThread(HMODULE hModule)
                 std::cout << "Modding: ON" << std::endl;
             else
                 std::cout << "Modding: OFF" << std::endl;
-        }
+        } 
 
         if (bIsActive)
         {
 #if WITH_LUA
+            {
+                std::lock_guard<std::mutex> guard(LuaStateMutex);
+
+                luabridge::push(L, GetAllCharacters());
+                lua_setglobal(L, "AllCharacters");
+
+                luabridge::push(L, GetAllZako());
+                lua_setglobal(L, "AllZako");
+
+                luabridge::push(L, GetAllCommonObj());
+                lua_setglobal(L, "AllCommonObj");
+
+                luabridge::push(L, GetTravis());
+                lua_setglobal(L, "Travis");
+
+                luabridge::push(L, GetBattle());
+                lua_setglobal(L, "Battle");
+
+                luabridge::push(L, GetSysMessage());
+                lua_setglobal(L, "SystemMessage");
+
+                luabridge::push(L, GetHrTalk());
+                lua_setglobal(L, "SystemTalk");
+
+                luabridge::push(L, GetScreenStatus());
+                lua_setglobal(L, "ScreenStatus");
+
+                luabridge::push(L, GetHrMessage());
+                lua_setglobal(L, "Message");
+
+                luabridge::push(L, GetGamepad());
+                lua_setglobal(L, "Gamepad");
+
+                luabridge::push(L, GetBackgroundControl());
+                lua_setglobal(L, "BackgroundControl");
+
+                luabridge::push(L, GetHrBattleIcon());
+                lua_setglobal(L, "BattleIcon");
+
+                double DeltaTime = 1.0 / 1000.0;
+                luabridge::push(L, DeltaTime);
+                lua_setglobal(L, "DeltaTime");
+            }
+
             for (const std::filesystem::directory_entry &el : std::filesystem::recursive_directory_iterator(LuaScriptPath, std::filesystem::directory_options::skip_permission_denied))
             {
                 if (el.is_directory()) continue;
@@ -136,9 +150,16 @@ DWORD WINAPI HackThread(HMODULE hModule)
                 if (el.path().extension() != ".lua") continue;
                 std::string FilePath = el.path().string();
                 char const* FilePathC = FilePath.c_str();
-                if (!CheckLua(L, luaL_dofile(L, FilePathC)))
                 {
-                    Sleep(5000);
+                    bool bResult;
+                    {
+                        std::lock_guard<std::mutex> guard(LuaStateMutex);
+                        bResult = CheckLua(L, luaL_dofile(L, FilePathC));
+                    }
+                    if (!bResult)
+                    {
+                        Sleep(5000);
+                    }
                 }
             }
 #endif

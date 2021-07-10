@@ -27,6 +27,7 @@
 	{
 		"struct Vec":
 		{
+			"ToString": "std::stringstream stream; stream << \"Vec(X: \" << x << \", Y: \" << y << \", Z: \" << z << \") [0x\" << std::hex << GetPtrAddr() << \"]\"; return stream.str();",
 			"Structure":
 			[
 				"Vec() { x = 0; y = 0; z = 0; }",
@@ -86,19 +87,13 @@
 				"GXColor(int R, int G, int B) { PackedValue = (255<<24) + (int(R)<<16) + (int(G)<<8) + int(B); }"
 			]
 		},
-		"class ghmListObj":
+		"class ghmResGroup":
 		{
-			"LuaBindings":
-			[
-				".addFunction(\"AsHRChara\", &ghmListObj::AsHRChara)"
-			],
-			"Structure":
-			[
-				"mHRChara* AsHRChara() const { return (mHRChara*)this; }"
-			]
+			"ToString": "std::stringstream stream; stream << \"class ghmResGroup (MagicNo: \" << mMagicNo << \", Resources: \" << mResourceNum << \", Version: \" << mVersion << \") [0x\" << std::hex << GetPtrAddr() << \"]\"; return stream.str();"
 		},
 		"class HrSysMessage":
 		{
+			"ToString": "std::stringstream stream; stream << \"class HrSysMessage (MessageHandle: \" << MessageHandle << \") [0x\" << std::hex << GetPtrAddr() << \"]\"; return stream.str();",
 			"Structure":
 			[
 				"bool DoAppear(std::string arg2, int32_t arg4, enum HrSysMessage::e_SYSMES_MODE arg5, uint8_t arg6) { return dAppear(arg2, nullptr, arg4, arg5, arg6) != 0; }"
@@ -152,6 +147,54 @@
 		"struct GdlDialog":
 		{
 			"ToString": "std::stringstream stream; stream << \"struct GdlDialog (\" << mLinesCount << \" lines) [0x\" << std::hex << GetPtrAddr() << \"]\"; return stream.str();"
+		},
+		"class mHRChara":
+		{
+			"ToString": "std::stringstream stream; stream << \"class mHRChara (\" << mStatus.ToString() << \") [0x\" << std::hex << GetPtrAddr() << \"]\"; return stream.str();",
+			"Structure":
+			[
+				"PJZAKO* AsZako() { return mTestZako() ? (PJZAKO*)this : nullptr; }"
+			],
+			"LuaBindings":
+			[
+				".addFunction(\"AsZako\", &mHRChara::AsZako)"
+			]
+		},
+		"struct stCharaStatus":
+		{
+			"ToString": "std::stringstream stream; stream << \"struct stCharaStatus (charaType: \" << GetCharaTypeStr() << \", pos: \" << pos.ToString() << \") [0x\" << std::hex << GetPtrAddr() << \"]\"; return stream.str();",
+			"Structure":
+			[
+				"std::string GetCharaTypeStr() const",
+				"{",
+				"switch (charaType)",
+				"{",
+				"case enCharaType::eCharaTypePC: return \"PC\";",
+				"case enCharaType::eCharaTypeCommonNpc: return \"CommonNpc\";",
+				"case enCharaType::eCharaTypeCmnObj: return \"CmnObj\";",
+				"case enCharaType::eCharaTypeHelicopter: return \"Helicopter\";",
+				"case enCharaType::eCharaTypePatroller: return \"Patroller\";",
+				"case enCharaType::eCharaTypePlayerWeapon: return \"PlayerWeapon\";",
+				"case enCharaType::eCustomColliderObject: return \"CustomColliderObject\";",
+				"case enCharaType::eCharaTypeFCA: return \"FCA\";",
+				"case enCharaType::eCharaTypeCommonNpc_PIZZA: return \"Common NPC (Pizza)\";",
+				"case enCharaType::eCharaTypeZKPipe: return \"Zako (Pipe)\";",
+				"case enCharaType::eCharaTypeZKBat: return \"Zako (Bat)\";",
+				"case enCharaType::eCharaTypeNone: return \"None\";",
+				"}",
+				"if (charaType >= enCharaType::CHARACTER_TYPE_BOSS_BEGIN && charaType <= enCharaType::CHARACTER_TYPE_BOSS_END)",
+				"return \"Unknown Boss\";",
+				"if (charaType >= enCharaType::CHARACTER_TYPE_ZAKO_BEGIN && charaType <= enCharaType::CHARACTER_TYPE_ZAKO_END)",
+				"{ std::stringstream stream; stream << \"Unknown Zako \" << (int)charaType; return stream.str(); }",
+				"std::stringstream stream; stream << \"Unknown \" << (int)charaType; return stream.str();",
+				"}",
+				"bool IsZako() const { return charaType >= enCharaType::CHARACTER_TYPE_ZAKO_BEGIN && charaType <= enCharaType::CHARACTER_TYPE_ZAKO_END; }"
+			],
+			"LuaBindings":
+			[
+				".addFunction(\"GetCharaTypeStr\", &stCharaStatus::GetCharaTypeStr)",
+				".addFunction(\"IsZako\", &stCharaStatus::IsZako)"
+			]
 		},
 		"class WGdl":
 		{
@@ -224,6 +267,22 @@
 				".addFunction(\"GetListParam\", &rSkyMapMenu::GetListParam)",
 				".addFunction(\"SetListParam\", &rSkyMapMenu::SetListParam)"
 			]
+		},
+		"class mHRPc":
+		{
+			"Hooks":
+			{
+				"?mPostFrameProc@mHRPc@@UAE_NXZ": "0xb",
+				"?mRenderProc@mHRPc@@UAE_NXZ": "0x8",
+				"?mSetEquip@mHRPc@@QAE_NH_N0@Z": "0x6"
+			}
+		},
+		"class mHRBattle":
+		{
+			"Hooks":
+			{
+				"?mFrameProc@mHRBattle@@QAE_NXZ": "0x6"
+			}
 		}
 	}
 }

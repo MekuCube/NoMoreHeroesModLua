@@ -218,7 +218,7 @@ def CollectTypes(visited_types, AllowHeaders):
 		if not ShouldIgnore:
 			VisitType(TypeIt, visited_types, True, True)
 	# Filter (TODO: Doesn't seem to work)
-	TypesToIgnore = ["class CStlVector<", "class EE::StringBase<", "enum EE::StringBase<", "class EE::String", "struct D3D11", "struct ID3D11", "struct IUnknown", "struct EE::OptListNode<", "class FkStlVector<", "class FkStlList<", "class tiMatrix", "struct CONTAINER<", "::<lambda_", "class std::" ]
+	TypesToIgnore = ["class CStlVector<", "class EE::StringBase<", "enum EE::StringBase<", "class EE::String", "struct D3D11", "struct ID3D11", "struct IUnknown", "struct EE::OptListNode<", "class FkStlVector<", "class FkStlList<", "class tiMatrix", "struct CONTAINER<", "::<lambda_", "class std::", "class FkStlList<" ]
 	filtered_types = []
 	for TypeIt in visited_types:
 		if isinstance(TypeIt, binaryninja.types.Type):
@@ -299,7 +299,7 @@ def CanTypeExportInFunction(InType):
 		return None
 	TypeStr = str(InType)
 	# We convert this to std::string so its fine
-	if TypeStr == "char const*":
+	if TypeStr == "char const*" or TypeStr == "char*":
 		return None
 	# We convert this to std::string so its fine
 	if TypeStr == "char wchar_t*":
@@ -391,7 +391,7 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 			TypeStr = re.sub(r'<unnamed-type-(\w*)>', r'unnamed_type_\1', TypeStr)
 			TypeStrNoPrefix = TypeStr.replace("class ", "").replace("struct ", "").replace("union ", "")
 			# Check if we should export this struct/class
-			TypePrefixToIgnore = ["class CStlVector<", "class EE::StringBase<", "class EE::String", "struct D3D11", "struct ID3D11", "struct IUnknown", "struct EE::OptListNode<", "class FkStlVector<", "class FkStlList<", "class tiMatrix", "struct CONTAINER<" ]
+			TypePrefixToIgnore = ["class CStlVector<", "class EE::StringBase<", "class EE::String", "struct D3D11", "struct ID3D11", "struct IUnknown", "struct EE::OptListNode<", "class FkStlVector<", "class FkStlList<", "class tiMatrix", "struct CONTAINER<", "class FkStlList<" ]
 			TypeContainToIgnore = ["::<lambda_"]
 			for TypeToIgnore in TypePrefixToIgnore:
 				if TypeStr.startswith(TypeToIgnore):
@@ -715,6 +715,13 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 					if "json" in SessionData and "Extend" in SessionData["json"] and TypeWithNameSpace in SessionData["json"]["Extend"] and "LuaBindings" in SessionData["json"]["Extend"][TypeWithNameSpace]:
 						for Entry in SessionData["json"]["Extend"][TypeWithNameSpace]["LuaBindings"]:
 							print("	"*indent + Entry, file=file)
+					if "json" in SessionData and "Extend" in SessionData["json"] and TypeWithNameSpace in SessionData["json"]["Extend"] and "Hooks" in SessionData["json"]["Extend"][TypeWithNameSpace]:
+						#for FunctionStr,Bytes in SessionData["json"]["Extend"][TypeWithNameSpace]["Hooks"]:
+						for FunctionStr in SessionData["json"]["Extend"][TypeWithNameSpace]["Hooks"]:
+							for TypeIt in InType.calc_functionsinnamespace:
+								if FunctionStr == str(TypeIt.name):
+									FunctionNameWithoutNameSpace = GetFunctionNameWithoutNameSpace(TypeIt)
+									print("	"*indent + ".addStaticFunction(\"" + FunctionNameWithoutNameSpace + "_RegisterHook\", &"+TypeStrNoPrefixNoNameSpace+"::"+FunctionNameWithoutNameSpace+"_RegisterHook)", file=file)
 					# Lua end func
 					indent = indent-1
 					print("	"*indent + ".endClass();", file=file)
@@ -735,7 +742,7 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 				for MemberIt in GetFlattenedStructMembers(InType, SuperClassType):
 					print("	"*indent + "static_assert(sizeof("+TypeStrNoPrefix + "::" + str(MemberIt.name) +") == "+str(MemberIt.type.width)+", \"expected "+TypeStrNoPrefix + "::" + str(MemberIt.name) + " to be size " + str(MemberIt.type.width) + "\");", file=file)
 				# Static error checking - class
-				print("	"*indent + "static_assert(sizeof("+str(TypeStrNoPrefix)+") == "+str(InType.width)+", \"expected "+TypeStrNoPrefix + " to be size " + str(InType.width) + "\");", file=file)
+				print("	"*indent + "static_assert(sizeof("+str(TypeStrNoPrefix)+") == "+str(hex(InType.width))+", \"expected "+TypeStrNoPrefix + " to be size " + str(hex(InType.width)) + "\");", file=file)
 				print("", file=file)
 		# Enum data
 		if InType.enumeration != None and not bFowardDeclare:
@@ -811,6 +818,11 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 			print("	"*indent + "// Unsupported destructor", file=file)
 			print("	"*indent + "//" + str(InType), file=file)
 			return
+		# New operator not supported
+		if InType.name.startswith("??2"):
+			print("	"*indent + "// Unsupported new operator", file=file)
+			print("	"*indent + "//" + str(InType), file=file)
+			return
 		# Not supported
 		if InType.name.startswith("??$"):
 			print("	"*indent + "// Unsupported function", file=file)
@@ -822,16 +834,27 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 		ParentNameSpaceStr = GetParentNameSpaceFromType(InType)
 		FunctionName = GetFunctionNameWithoutNameSpace(InType)
 		FunctionNameWithNameSpace = FunctionName
+		FunctionNameRaw = str(InType.name)
 		# Don't export standard library
 		if FunctionNameWithNameSpace.startswith("std::") or (ParentNameSpaceStr != None and ParentNameSpaceStr.startswith("std")):
 			print("	"*indent + "// Can't export standard library", file=file)
 			print("	"*indent + "//" + str(InType), file=file)
 			return
+		if "@?$FkStlList@" in FunctionNameRaw:
+			print("	"*indent + "// Can't export standard library", file=file)
+			print("	"*indent + "//" + str(InType), file=file)
+			return
+		#if not HasValidParentNameSpace(InType) and "<" in ParentNameSpaceStr and ">" in ParentNameSpaceStr:
+		#	print("	"*indent + "// Can't export template functions as root.", file=file)
+		#	print("	"*indent + "//" + str(InType), file=file)
+		#	return
 		if ParentNameSpaceStr != None:
 			FunctionNameWithNameSpace = ParentNameSpaceStr + "::" + FunctionName
+		RedefinitionSuffix = ""
 		if FunctionNameWithNameSpace in SessionData["ExportedFunctions"]:
 			SessionData["ExportedFunctions"][FunctionNameWithNameSpace] = SessionData["ExportedFunctions"][FunctionNameWithNameSpace] + 1
-			FunctionName = FunctionName + "_" + str(SessionData["ExportedFunctions"][FunctionNameWithNameSpace])
+			RedefinitionSuffix = "_" + str(SessionData["ExportedFunctions"][FunctionNameWithNameSpace])
+			FunctionName = FunctionName + RedefinitionSuffix
 		else:
 			SessionData["ExportedFunctions"][FunctionNameWithNameSpace] = 1
 		# What we pass to the game's function call
@@ -844,6 +867,7 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 		AdditionalVariables = []
 		i = 0
 		IsObjectInstance = False
+		ObjectInstanceType = None
 		for VarIt in InType.parameter_vars:
 			VariableName = str(VarIt.name)
 			VariableTypeStr = str(VarIt.type)
@@ -864,15 +888,20 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 			if InnerTypeParameters != "":
 				InnerTypeParameters = InnerTypeParameters + ", "
 			InnerTypeParameters = InnerTypeParameters + VariableTypeStr + " " + AdjVariableName
+			OriginalVariableTypeStr = VariableTypeStr
 			if VariableTypeStr == "char const*":
 				AdditionalVariables.append("char const* " + VariableName + "_c_str = " + VariableName + ".c_str();")
 				VariableTypeStr = "std::string"
-			if VariableTypeStr == "wchar_t const*":
+			elif VariableTypeStr == "char*":
+				AdditionalVariables.append("std::vector<char> " + VariableName + "_c_str("+VariableName+".c_str(), + "+VariableName+".c_str() + "+VariableName+".size() + 1);")
+				VariableTypeStr = "std::string"
+			elif VariableTypeStr == "wchar_t const*":
 				AdditionalVariables.append("wchar_t const* " + VariableName + "_c_str = " + VariableName + ".c_str();")
 				VariableTypeStr = "std::string"
 			# Skip if class' "this" pointer
-			if ParentNameSpaceStr != None and VariableName == "this" and i == 0:
+			if HasValidParentNameSpace(InType) and VariableName == "this" and i == 0:
 				IsObjectInstance = True
+				ObjectInstanceType = VariableTypeStr
 			else:
 				if OuterParameters != "":
 					OuterParameters = OuterParameters + ", "
@@ -885,23 +914,34 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 				Inputs = Inputs + ", "
 			if VariableTypeStr.startswith("enum "):
 				Inputs = Inputs + "(" + VariableTypeStr + ")"
+			if VariableTypeStr == "std::string" and OriginalVariableTypeStr == "char*":
+				Inputs = Inputs + "&"
 			if IsObjectInstance:
 				Inputs = Inputs + VariableName
 			else:
 				Inputs = Inputs + AdjVariableName
 			if VariableTypeStr == "std::string":
 				Inputs = Inputs + "_c_str"
+				if OriginalVariableTypeStr == "char*":
+					Inputs = Inputs + "[0]"
 			i = i + 1
 		# Raw data as comment
-		print("	"*indent +"// [Function] " + str(InType) + " [" + str(InType.name) + "]", file=file)
+		print("	"*indent +"// [Function] " + str(InType) + " [" + FunctionNameRaw + "]", file=file)
 		# DEBUG: print dependencies
 		#if not bFowardDeclare:
 		#	DebugPrintDependencies(InType, AllTypes, "	"*indent + "// ", file)
 		# Comment
-		if not bFowardDeclare and "json" in SessionData and "Comments" in SessionData["json"] and str(InType.name) in SessionData["json"]["Comments"]:
+		if not bFowardDeclare and "json" in SessionData and "Comments" in SessionData["json"] and FunctionNameRaw in SessionData["json"]["Comments"]:
 			print("	"*indent + "/// <summary>", file=file)
-			print("	"*indent + "/// " + SessionData["json"]["Comments"][str(InType.name)], file=file)
+			print("	"*indent + "/// " + SessionData["json"]["Comments"][FunctionNameRaw], file=file)
 			print("	"*indent + "/// </summary>", file=file)
+		# Typedef
+		CallingConvention = str(InType.calling_convention)
+		if CallingConvention == "cdecl":
+			CallingConvention = "fastcall"
+		TypeDefName = "_" + FunctionNameRaw.replace("?", "").replace("@", "_").replace("$", "") + RedefinitionSuffix
+		print("	"*indent +"typedef " + str(InType.return_type) + "(__"+CallingConvention+"* "+TypeDefName+")" + "(", end="", file=file)
+		print(InnerTypeParameters+");", file=file)
 		# Function
 		ReturnTypeStr = str(InType.return_type)
 		ReturnTypeExportError = None
@@ -916,27 +956,20 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 		# Enum to uint32_t due to lack of LuaBridge support
 		if ReturnTypeStr.startswith("enum "):
 			print("/* "+ReturnTypeStr+" */ uint32_t", end="", file=file)
-		elif ReturnTypeStr == "wchar_t const*" or ReturnTypeStr == "char const*":
+		elif ReturnTypeStr == "wchar_t const*" or ReturnTypeStr == "char const*" or ReturnTypeStr == "char*":
 			print("std::string", end="", file=file)
 		else:
-			print(ReturnTypeStr, end="", file=file)
+			print(ReturnTypeStr.replace(" const", ""), end="", file=file)
 		print(" " + FunctionName + "("+OuterParameters+")", end="", file=file)
-		if InType.function_type.const:
-			print(" const", end="", file=file)
+		#if InType.function_type.const:
+		#	print(" const", end="", file=file)
 		print("", file=file)
 		print("	"*indent +"{", file=file)
 		indent = indent + 1
 		# AdditionalVariables
 		for AdditionalVariable in AdditionalVariables:
 			print("	"*indent + AdditionalVariable, file=file)
-		CallingConvention = str(InType.calling_convention)
-		if CallingConvention == "cdecl":
-			CallingConvention = "fastcall"
-		print("	"*indent +"typedef " + str(InType.return_type) + "(__"+CallingConvention+"* _Func)" + "(", end="", file=file)
-		#if IsConst and IsObjectInstance:
-		#	print("const ", end="", file=file)
-		print(InnerTypeParameters+");", file=file)
-		print("	"*indent +"_Func mFunc = (_Func)(GameModule + " + str(hex(InType.start)) + ");", file=file)
+		print("	"*indent +TypeDefName + " mFunc = ("+TypeDefName+")(GameModule + " + str(hex(InType.start)) + ");", file=file)
 		# std::string
 		if ReturnTypeStr == "wchar_t const*":
 			print("	"*indent + ReturnTypeStr + " OutResult = mFunc("+Inputs+");", file=file)
@@ -945,7 +978,7 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 			print("	"*indent + "std::string result_str(result_wstr.length(), 0);", file=file)
 			print("	"*indent + "std::transform(result_wstr.begin(), result_wstr.end(), result_str.begin(), [](wchar_t c) { return (char)c; });", file=file)
 			print("	"*indent + "return result_str;", file=file)
-		elif ReturnTypeStr == "char const*":
+		elif ReturnTypeStr == "char const*" or ReturnTypeStr == "char*":
 			print("	"*indent + ReturnTypeStr + " OutResult = mFunc("+Inputs+");", file=file)
 			print("	"*indent + "if (OutResult == nullptr) return std::string();", file=file)
 			print("	"*indent + "std::string result_str(OutResult);", file=file)
@@ -960,9 +993,70 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 			print("mFunc" + "("+Inputs+");", file=file)
 		indent = indent - 1
 		print("	"*indent +"}", file=file)
-	#else:
-	#	print("Unknown type: '" + str(InType) + "' (type: '" + str(type(InType)) + ")")
-		
+		# Function hook
+		if InType.calc_parentnamespace_type != None and "json" in SessionData and "Extend" in SessionData["json"] and str(InType.calc_parentnamespace_type) in SessionData["json"]["Extend"] and "Hooks" in SessionData["json"]["Extend"][str(InType.calc_parentnamespace_type)] and FunctionNameRaw in SessionData["json"]["Extend"][str(InType.calc_parentnamespace_type)]["Hooks"]:
+			Bytes = SessionData["json"]["Extend"][str(InType.calc_parentnamespace_type)]["Hooks"][FunctionNameRaw];
+			print("private:", file=file)
+			# Pre Hook
+			OriginalFunctionName = "_original_" + FunctionName
+			LuaFunctionReferences = "_callbacks_luaref_" + FunctionName
+			print("	"*indent + "// Hook: Pre", file=file)
+			print("	"*indent + "inline static " + TypeDefName + " " + OriginalFunctionName + " = nullptr;", file=file)
+			print("	"*indent + "inline static std::unordered_set<std::string> " + LuaFunctionReferences + ";", file=file)
+			print("	"*indent + "static " + str(InType.return_type) + " __"+"fastcall"+" " + FunctionName + "_PreHook(", end="", file=file)
+			if ObjectInstanceType != None:
+				print(ObjectInstanceType + " thisPtr, void* EDX", end="", file=file)
+				if OuterParameters != "":
+					print(", ", end="", file=file)
+			print(OuterParameters+")", file=file)
+			print("	"*indent + "{", file=file)
+			indent = indent + 1
+			print("#if WITH_LUA", file=file)
+			print("	"*indent + "std::unordered_set<std::string>::iterator it = " + LuaFunctionReferences + ".begin();", file=file)
+			print("	"*indent + "while (it != "+LuaFunctionReferences+".end())", file=file)
+			print("	"*indent + "{", file=file)
+			indent = indent + 1
+			print("	"*indent + "std::lock_guard<std::mutex> guard(LuaStateMutex);", file=file)
+			print("	"*indent + "lua_getglobal(LuaState, it->c_str());", file=file)
+			print("	"*indent + "if (!lua_isfunction(LuaState, -1))", file=file)
+			print("	"*indent + "{", file=file)
+			indent = indent + 1
+			print("	"*indent + "lua_pop(LuaState, 1);", file=file)
+			print("	"*indent + "it = "+LuaFunctionReferences+".erase(it);", file=file)
+			indent = indent - 1
+			print("	"*indent + "}", file=file)
+			print("	"*indent + "else", file=file)
+			print("	"*indent + "{", file=file)
+			indent = indent + 1
+			print("	"*indent + "if (!CheckLua(LuaState, lua_pcall(LuaState, 0, 0, 0)))", file=file)
+			print("	"*indent + "	lua_pop(LuaState, 1);", file=file)
+			print("	"*indent + "it++;", file=file)
+			indent = indent - 1
+			print("	"*indent + "}", file=file)
+			indent = indent - 1
+			print("	"*indent + "}", file=file)
+			print("#endif", file=file)
+			print("	"*indent + "return " + OriginalFunctionName + "("+Inputs.replace("this", "thisPtr")+");", file=file)
+			indent = indent - 1
+			print("	"*indent + "}", file=file)
+			print("public:", file=file)
+			# Register
+			print("	"*indent + "// Hook: Register", file=file)
+			print("#if WITH_LUA", file=file)
+			print("	"*indent + "static void " + FunctionName + "_RegisterHook(std::string InFunctionName)", file=file)
+			print("	"*indent + "{", file=file)
+			indent = indent + 1
+			print("	"*indent + LuaFunctionReferences + ".insert(InFunctionName);", file=file)
+			print("	"*indent + "if ("+OriginalFunctionName+ " == nullptr)", file=file)
+			print("	"*indent + "{", file=file)
+			indent = indent + 1
+			print("	"*indent + OriginalFunctionName+" = ("+TypeDefName+")mem::TrampHook((BYTE*)GameModule + "+str(hex(InType.start))+", (BYTE*)"+FunctionName+"_PreHook, "+Bytes+");", file=file)
+			print("	"*indent + "assert(" + OriginalFunctionName+");", file=file)
+			indent = indent - 1
+			print("	"*indent + "}", file=file)
+			indent = indent - 1
+			print("	"*indent + "}", file=file)
+			print("#endif", file=file)
 	if file != None:
 		file.flush()
 
@@ -1228,10 +1322,6 @@ def DoExport(OutPath, JsonData, AllRootTypes, AllRelevantTypes):
 				print("Failed to export: '" + str(TypeIt) + "'")
 
 
-#def UpdateReferences(InType, AllTypes, JsonData):
-#	setattr(InType, 'calc_typesinnamespace', GetTypesInNameSpace(InType, AllTypes))
-#	setattr(InType, 'calc_dependencies', GetDependencies(InType, AllTypes, JsonData))
-
 # Check that json is valid before we begin
 JsonData = None
 with open("E:/C++/NoMoreHeroesModLua/Games/gamecomments.json") as JsonFile:
@@ -1240,7 +1330,7 @@ with open("E:/C++/NoMoreHeroesModLua/Games/gamecomments.json") as JsonFile:
 print("Collecting types.")
 AllRelevantTypes = []
 #CollectTypes(AllRelevantTypes, ["GdlSentence"])
-CollectTypes(AllRelevantTypes, ["mHRChara", "mHRBattle", "mHRPc", "HrMap", "mHRPad", "HrMessage", "HrSysMessage", "HrScreenStatus", "HrMissionResult", "HrTalk", "GdlLines", "WGdl", "GdlHeader", "GdlDialog", "GdlSentence", "MessLines", "CBgCtrl", "HrStageDraw", "rSkyMap", "rSkyMapMenu"])
+CollectTypes(AllRelevantTypes, ["mHRChara", "mHRBattle", "mHRPc", "HrMap", "mHRPad", "HrMessage", "HrSysMessage", "HrScreenStatus", "HrMissionResult", "HrTalk", "GdlLines", "WGdl", "GdlHeader", "GdlDialog", "GdlSentence", "MessLines", "CBgCtrl", "HrStageDraw", "rSkyMap", "rSkyMapMenu", "ghmResGroup", "PJZAKO", "PJTateshi", "pcGLB", "pcSNB", "pcHEN", "mHRItem", "HrCamera", "stWepInfo", "stWeponInfo"])
 print("Collected " + str(len(AllRelevantTypes)) + " types.")
 
 # Only export roots
@@ -1259,12 +1349,7 @@ for TypeIt in AllRelevantTypes:
 	AllRootTypes.append(TypeIt)
 
 print("Calculating parent namespaces.")
-i = 0
 for TypeIt in AllRelevantTypes:
-	i = i + 1
-	#if i % 50 == 0:
-	#	print("[" + str(i) + " / " + str(len(AllRelevantTypes)) + "] " + str(TypeIt))
-	# Parent namespace type
 	ParentNameSpaceStr = GetParentNameSpaceFromType(TypeIt);
 	if ParentNameSpaceStr == None:
 		setattr(TypeIt, 'calc_parentnamespace_str', None)
@@ -1274,12 +1359,7 @@ for TypeIt in AllRelevantTypes:
 		setattr(TypeIt, 'calc_parentnamespace_type', GetTypeByName(ParentNameSpaceStr))
 
 print("Calculating types in namespace.")
-i = 0
 for TypeIt in AllRelevantTypes:
-	i = i + 1
-	#if i % 200 == 0:
-	#	print("[" + str(i) + " / " + str(len(AllRelevantTypes)) + "] " + str(TypeIt))
-	# Types in namespace
 	TypesInNameSpace = GetTypesInNameSpace(TypeIt, AllNonRootTypes);
 	FunctionsInNameSpace = []
 	NonFunctionsInNameSpace = []
@@ -1292,48 +1372,18 @@ for TypeIt in AllRelevantTypes:
 	setattr(TypeIt, 'calc_functionsinnamespace', FunctionsInNameSpace)
 
 print("Calculating dependencies.")
-i = 0
 for TypeIt in AllRelevantTypes:
-	i = i + 1
-	#if i % 200 == 0:
-	#	print("[" + str(i) + " / " + str(len(AllRelevantTypes)) + "] " + str(TypeIt))
-	#p = multiprocessing.Process(target = UpdateReferences, args=(TypeIt, AllRelevantTypes, JsonData))
-	#p.start()
-	#AllThreads.append(p)
-	
-	#multiprocessing.apply(UpdateReferences, args=(TypeIt, AllRelevantTypes, JsonData))
-	
-	#with PoolExecutor() as executor:
-	#	for timing, result in executor.map(UpdateReferences, (TypeIt, AllRelevantTypes, JsonData)):
-	#		# put results into correct output list:
-	#		timings.append(timing), results.append(result)
-	#UpdateReferences(TypeIt, AllRelevantTypes, JsonData)
 	setattr(TypeIt, 'calc_dependencies', GetDependencies(TypeIt, AllRelevantTypes, JsonData))
 
 print("Sorting types in namespace.")
-i = 0
 for TypeIt in AllRelevantTypes:
-	i = i + 1
-	#if i % 200 == 0:
-	#	print("[" + str(i) + " / " + str(len(AllRelevantTypes)) + "] " + str(TypeIt))
 	 # Sort em
 	SortTypesByDependency(TypeIt.calc_typesinnamespace, AllRelevantTypes, JsonData)
 	setattr(TypeIt, 'calc_typesinnamespace', TypeIt.calc_typesinnamespace)
 
-#for ThreadIt in AllThreads:
-#	ThreadIt.join()
-#profiler = cProfile.Profile()
-#profiler.enable()
 print("Sorting types.")
 SortTypesByDependency(AllRootTypes, AllRelevantTypes, JsonData)
-#profiler.disable()
-#stats = pstats.Stats(profiler).sort_stats('cumtime')
-#stats.print_stats()
 print("Root types: " + str(len(AllRootTypes)))
-#for TypeIt in AllRootTypes:
-#	print(TypeIt, end=", ")
-
-#print("")
 
 DoExport("E:/C++/NoMoreHeroesModLua/Games/NMH2/exported_data_types.h", JsonData, AllRootTypes, AllRelevantTypes)
 

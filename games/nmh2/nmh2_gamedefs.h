@@ -32,6 +32,7 @@ HrScreenStatus* GetScreenStatus()
     return GetBattle()->mGetBtEffect() ? GetBattle()->mGetBtEffect()->pScreenStatus : nullptr;
 }
 
+#if 0
 mHRChara* GetEnemy()
 {
     float* HP = (float*)mem::FindDMAAddy((uintptr_t)GetBattle(), { 0x1C8, 0x450, 0x20, 0x1DC, 0x24 });
@@ -42,6 +43,7 @@ mHRChara* GetEnemy()
         return nullptr;
     return (mHRChara*)((char*)EnemyStatus - 0x10);
 }
+#endif
 
 HrSysMessage* GetSysMessage()
 {
@@ -80,6 +82,33 @@ std::vector<mHRChara*> GetAllCharacters()
         PrevChara = (mHRChara*)PrevChara->mpPrev;
     }
     return Result;
+}
+
+
+std::vector<PJZAKO*> GetAllZako()
+{
+    std::vector<mHRChara*> AllCharacters = GetAllCharacters();
+    std::vector<PJZAKO*> Zako;
+    
+    for (auto CharacterIt : AllCharacters)
+    {
+        if (CharacterIt->mTestZako())
+            Zako.push_back(CharacterIt->AsZako());
+    }
+    return Zako;
+}
+
+std::vector<commonObj*> GetAllCommonObj()
+{
+    std::vector<mHRChara*> AllCharacters = GetAllCharacters();
+    std::vector<commonObj*> CommonObj;
+    
+    for (auto CharacterIt : AllCharacters)
+    {
+        if (CharacterIt->mStatus.charaType == enCharaType::eCharaTypeCmnObj)
+            CommonObj.push_back((commonObj*)CharacterIt);
+    }
+    return CommonObj;
 }
 
 unsigned int* GetMoneyPtr()

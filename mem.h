@@ -11,4 +11,6 @@ namespace mem
 	void Nop(BYTE* dst, unsigned int size);
 	DWORD HookFunc(BYTE* targetFunc, BYTE* OurFunc, unsigned int size);
 	uintptr_t FindDMAAddy(uintptr_t ptr, std::vector<unsigned int> offsets);
+	// Trampoline hook
+	BYTE* TrampHook(BYTE* targetFunc, BYTE* OurFunc, unsigned int size);
 }
