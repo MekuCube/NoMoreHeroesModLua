@@ -5,6 +5,11 @@
 
 A work-in-progress.
 
+## How to use
+* Build as .DLL then inject into NMH.exe / NMH2.exe
+* Currently injection has to be done manually, I use Cheat Engine
+* Afterwards, the game will load all .lua files in the /Mods/ folder of the game's install folder (so SteamApps/Common/No More Heroes/Mods/)
+
 ## Complete
 * Execute Lua in NMH2
 * Read/write to NMH2 variables
@@ -12,17 +17,17 @@ A work-in-progress.
 * Documentation via json
 * Extending classes via json
 * Loading multiple Lua scripts
+* Common iterators
+  * AllCharacters / AllZako / AllCommonObj global lists
+* Function hooks (pre-call hooks only)
 
 ## In progress:
-* Common iterators (mHRChara / items / etc)
-  * Currently has mHRChara iterator
+* Function hooks (post-call hooks)
 
 ## Not started:
 * Hook on game startup
 * Sharing C and Lua namespaces
-* Hook game events
 * Subclass game classes
 
 # Known issues
-* Some function calls are unstable and result in crashing.
-  * This is looks to be primarily an issue for functions taking parameters
+* Some function calls / hooks are unstable and result in crashing.
