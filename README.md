@@ -14,6 +14,7 @@ A work-in-progress.
 I've included some sample mods by default in the /Mods/ folder.
 * **VisitAnyMap.lua**: Press X on the map screen in No More Heroes 2 to expand the menu to include every map in the game.
 * **SprintOutOfCombat.lua**: Hold RB while moving to sprint (when not in combat).
+* **RainbowKatana.lua**: Makes Travis' beam katanas turn rainbow.
 
 ## Complete
 * Execute Lua in NMH2
