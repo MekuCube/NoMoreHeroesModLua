@@ -28,7 +28,8 @@ I've included some sample mods by default in the /Mods/ folder.
 * Function hooks (both pre/post hook, via ``FunctionName_RegisterHook(CallbackName, bPostHook)``)
 
 ## Not started:
-* Hook on game startup
+* Hook parameters
+* Launching on game startup
 * Sharing C and Lua namespaces
 * Subclass game classes
 
