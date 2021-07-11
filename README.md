@@ -23,11 +23,8 @@ I've included some sample mods by default in the /Mods/ folder.
 * Extending classes via json
 * Loading multiple Lua scripts
 * Common iterators
-  * AllCharacters / AllZako / AllCommonObj global lists
-* Function hooks (pre-call hooks only)
-
-## In progress:
-* Function hooks (post-call hooks)
+  * ``AllCharacters`` / ``AllZako`` / ``AllCommonObj`` global lists
+* Function hooks (both pre/post hook, via ``FunctionName_RegisterHook(CallbackName, bPostHook)``)
 
 ## Not started:
 * Hook on game startup
