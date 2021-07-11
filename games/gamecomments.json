@@ -273,7 +273,8 @@
 			"Hooks":
 			{
 				"?mPostFrameProc@mHRPc@@UAE_NXZ": "0xb",
-				"?mRenderProc@mHRPc@@UAE_NXZ": "0x8",
+				"?mFrameProc@mHRPc@@UAE_NXZ": "0x6",
+				"?mEffectProc@mHRPc@@UAEXXZ": "0x6",
 				"?mSetEquip@mHRPc@@QAE_NH_N0@Z": "0x6"
 			}
 		},

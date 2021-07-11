@@ -2058,19 +2058,20 @@ public:
 private:
 	// Hook: Pre
 	inline static _mFrameProc_mHRBattle__QAE_NXZ _original_mFrameProc = nullptr;
-	inline static std::unordered_set<std::string> _callbacks_luaref_mFrameProc;
-	static uint8_t __fastcall mFrameProc_PreHook(class mHRBattle* const thisPtr, void* EDX)
+	inline static std::unordered_set<std::string> _callbacks_mFrameProc_pre;
+	inline static std::unordered_set<std::string> _callbacks_mFrameProc_post;
+	static uint8_t __fastcall mFrameProc_OnHook(class mHRBattle* const thisPtr, void* EDX)
 	{
 #if WITH_LUA
-		std::unordered_set<std::string>::iterator it = _callbacks_luaref_mFrameProc.begin();
-		while (it != _callbacks_luaref_mFrameProc.end())
+		std::unordered_set<std::string>::iterator it = _callbacks_mFrameProc_pre.begin();
+		while (it != _callbacks_mFrameProc_pre.end())
 		{
 			std::lock_guard<std::mutex> guard(LuaStateMutex);
 			lua_getglobal(LuaState, it->c_str());
 			if (!lua_isfunction(LuaState, -1))
 			{
 				lua_pop(LuaState, 1);
-				it = _callbacks_luaref_mFrameProc.erase(it);
+				it = _callbacks_mFrameProc_pre.erase(it);
 			}
 			else
 			{
@@ -2080,17 +2081,38 @@ private:
 			}
 		}
 #endif
-		return _original_mFrameProc(thisPtr);
+		uint8_t Result = _original_mFrameProc(thisPtr);
+#if WITH_LUA
+		it = _callbacks_mFrameProc_post.begin();
+		while (it != _callbacks_mFrameProc_post.end())
+		{
+			std::lock_guard<std::mutex> guard(LuaStateMutex);
+			lua_getglobal(LuaState, it->c_str());
+			if (!lua_isfunction(LuaState, -1))
+			{
+				lua_pop(LuaState, 1);
+				it = _callbacks_mFrameProc_post.erase(it);
+			}
+			else
+			{
+				if (!CheckLua(LuaState, lua_pcall(LuaState, 0, 0, 0)))
+					lua_pop(LuaState, 1);
+				it++;
+			}
+		}
+#endif
+		return Result;
 	}
 public:
 	// Hook: Register
 #if WITH_LUA
-	static void mFrameProc_RegisterHook(std::string InFunctionName)
+	static void mFrameProc_RegisterHook(std::string HookName, bool bPostHook)
 	{
-		_callbacks_luaref_mFrameProc.insert(InFunctionName);
+		if (!HookName.empty() && !bPostHook) _callbacks_mFrameProc_pre.insert(HookName);
+		if (!HookName.empty() && bPostHook) _callbacks_mFrameProc_post.insert(HookName);
 		if (_original_mFrameProc == nullptr)
 		{
-			_original_mFrameProc = (_mFrameProc_mHRBattle__QAE_NXZ)mem::TrampHook((BYTE*)GameModule + 0x3fa0a0, (BYTE*)mFrameProc_PreHook, 0x6);
+			_original_mFrameProc = (_mFrameProc_mHRBattle__QAE_NXZ)mem::TrampHook((BYTE*)GameModule + 0x3fa0a0, (BYTE*)mFrameProc_OnHook, 0x6);
 			assert(_original_mFrameProc);
 		}
 	}
@@ -18362,6 +18384,67 @@ public:
 		_mEffectProc_mHRPc__UAEXXZ mFunc = (_mEffectProc_mHRPc__UAEXXZ)(GameModule + 0x425d20);
 		return mFunc(this);
 	}
+private:
+	// Hook: Pre
+	inline static _mEffectProc_mHRPc__UAEXXZ _original_mEffectProc = nullptr;
+	inline static std::unordered_set<std::string> _callbacks_mEffectProc_pre;
+	inline static std::unordered_set<std::string> _callbacks_mEffectProc_post;
+	static void __fastcall mEffectProc_OnHook(class mHRPc* const thisPtr, void* EDX)
+	{
+#if WITH_LUA
+		std::unordered_set<std::string>::iterator it = _callbacks_mEffectProc_pre.begin();
+		while (it != _callbacks_mEffectProc_pre.end())
+		{
+			std::lock_guard<std::mutex> guard(LuaStateMutex);
+			lua_getglobal(LuaState, it->c_str());
+			if (!lua_isfunction(LuaState, -1))
+			{
+				lua_pop(LuaState, 1);
+				it = _callbacks_mEffectProc_pre.erase(it);
+			}
+			else
+			{
+				if (!CheckLua(LuaState, lua_pcall(LuaState, 0, 0, 0)))
+					lua_pop(LuaState, 1);
+				it++;
+			}
+		}
+#endif
+		_original_mEffectProc(thisPtr);
+#if WITH_LUA
+		it = _callbacks_mEffectProc_post.begin();
+		while (it != _callbacks_mEffectProc_post.end())
+		{
+			std::lock_guard<std::mutex> guard(LuaStateMutex);
+			lua_getglobal(LuaState, it->c_str());
+			if (!lua_isfunction(LuaState, -1))
+			{
+				lua_pop(LuaState, 1);
+				it = _callbacks_mEffectProc_post.erase(it);
+			}
+			else
+			{
+				if (!CheckLua(LuaState, lua_pcall(LuaState, 0, 0, 0)))
+					lua_pop(LuaState, 1);
+				it++;
+			}
+		}
+#endif
+	}
+public:
+	// Hook: Register
+#if WITH_LUA
+	static void mEffectProc_RegisterHook(std::string HookName, bool bPostHook)
+	{
+		if (!HookName.empty() && !bPostHook) _callbacks_mEffectProc_pre.insert(HookName);
+		if (!HookName.empty() && bPostHook) _callbacks_mEffectProc_post.insert(HookName);
+		if (_original_mEffectProc == nullptr)
+		{
+			_original_mEffectProc = (_mEffectProc_mHRPc__UAEXXZ)mem::TrampHook((BYTE*)GameModule + 0x425d20, (BYTE*)mEffectProc_OnHook, 0x6);
+			assert(_original_mEffectProc);
+		}
+	}
+#endif
 	// [Function] uint8_t __convention("thiscall") mHRPc::mTestBeamKatanaShowyEffect(class mHRPc* const this) [?mTestBeamKatanaShowyEffect@mHRPc@@QAE_NXZ]
 	typedef uint8_t(__thiscall* _mTestBeamKatanaShowyEffect_mHRPc__QAE_NXZ)(class mHRPc* const thisPtr);
 	uint8_t mTestBeamKatanaShowyEffect()
@@ -19617,46 +19700,6 @@ public:
 		_mRenderProc_mHRPc__UAE_NXZ mFunc = (_mRenderProc_mHRPc__UAE_NXZ)(GameModule + 0x43ce90);
 		return mFunc(this);
 	}
-private:
-	// Hook: Pre
-	inline static _mRenderProc_mHRPc__UAE_NXZ _original_mRenderProc = nullptr;
-	inline static std::unordered_set<std::string> _callbacks_luaref_mRenderProc;
-	static uint8_t __fastcall mRenderProc_PreHook(class mHRPc* const thisPtr, void* EDX)
-	{
-#if WITH_LUA
-		std::unordered_set<std::string>::iterator it = _callbacks_luaref_mRenderProc.begin();
-		while (it != _callbacks_luaref_mRenderProc.end())
-		{
-			std::lock_guard<std::mutex> guard(LuaStateMutex);
-			lua_getglobal(LuaState, it->c_str());
-			if (!lua_isfunction(LuaState, -1))
-			{
-				lua_pop(LuaState, 1);
-				it = _callbacks_luaref_mRenderProc.erase(it);
-			}
-			else
-			{
-				if (!CheckLua(LuaState, lua_pcall(LuaState, 0, 0, 0)))
-					lua_pop(LuaState, 1);
-				it++;
-			}
-		}
-#endif
-		return _original_mRenderProc(thisPtr);
-	}
-public:
-	// Hook: Register
-#if WITH_LUA
-	static void mRenderProc_RegisterHook(std::string InFunctionName)
-	{
-		_callbacks_luaref_mRenderProc.insert(InFunctionName);
-		if (_original_mRenderProc == nullptr)
-		{
-			_original_mRenderProc = (_mRenderProc_mHRPc__UAE_NXZ)mem::TrampHook((BYTE*)GameModule + 0x43ce90, (BYTE*)mRenderProc_PreHook, 0x8);
-			assert(_original_mRenderProc);
-		}
-	}
-#endif
 	// [Function] void __convention("thiscall") mHRPc::mSemitransparentProcess(class mHRPc* const this) [?mSemitransparentProcess@mHRPc@@UAEXXZ]
 	typedef void(__thiscall* _mSemitransparentProcess_mHRPc__UAEXXZ)(class mHRPc* const thisPtr);
 	void mSemitransparentProcess()
@@ -19681,19 +19724,20 @@ public:
 private:
 	// Hook: Pre
 	inline static _mPostFrameProc_mHRPc__UAE_NXZ _original_mPostFrameProc = nullptr;
-	inline static std::unordered_set<std::string> _callbacks_luaref_mPostFrameProc;
-	static uint8_t __fastcall mPostFrameProc_PreHook(class mHRPc* const thisPtr, void* EDX)
+	inline static std::unordered_set<std::string> _callbacks_mPostFrameProc_pre;
+	inline static std::unordered_set<std::string> _callbacks_mPostFrameProc_post;
+	static uint8_t __fastcall mPostFrameProc_OnHook(class mHRPc* const thisPtr, void* EDX)
 	{
 #if WITH_LUA
-		std::unordered_set<std::string>::iterator it = _callbacks_luaref_mPostFrameProc.begin();
-		while (it != _callbacks_luaref_mPostFrameProc.end())
+		std::unordered_set<std::string>::iterator it = _callbacks_mPostFrameProc_pre.begin();
+		while (it != _callbacks_mPostFrameProc_pre.end())
 		{
 			std::lock_guard<std::mutex> guard(LuaStateMutex);
 			lua_getglobal(LuaState, it->c_str());
 			if (!lua_isfunction(LuaState, -1))
 			{
 				lua_pop(LuaState, 1);
-				it = _callbacks_luaref_mPostFrameProc.erase(it);
+				it = _callbacks_mPostFrameProc_pre.erase(it);
 			}
 			else
 			{
@@ -19703,17 +19747,38 @@ private:
 			}
 		}
 #endif
-		return _original_mPostFrameProc(thisPtr);
+		uint8_t Result = _original_mPostFrameProc(thisPtr);
+#if WITH_LUA
+		it = _callbacks_mPostFrameProc_post.begin();
+		while (it != _callbacks_mPostFrameProc_post.end())
+		{
+			std::lock_guard<std::mutex> guard(LuaStateMutex);
+			lua_getglobal(LuaState, it->c_str());
+			if (!lua_isfunction(LuaState, -1))
+			{
+				lua_pop(LuaState, 1);
+				it = _callbacks_mPostFrameProc_post.erase(it);
+			}
+			else
+			{
+				if (!CheckLua(LuaState, lua_pcall(LuaState, 0, 0, 0)))
+					lua_pop(LuaState, 1);
+				it++;
+			}
+		}
+#endif
+		return Result;
 	}
 public:
 	// Hook: Register
 #if WITH_LUA
-	static void mPostFrameProc_RegisterHook(std::string InFunctionName)
+	static void mPostFrameProc_RegisterHook(std::string HookName, bool bPostHook)
 	{
-		_callbacks_luaref_mPostFrameProc.insert(InFunctionName);
+		if (!HookName.empty() && !bPostHook) _callbacks_mPostFrameProc_pre.insert(HookName);
+		if (!HookName.empty() && bPostHook) _callbacks_mPostFrameProc_post.insert(HookName);
 		if (_original_mPostFrameProc == nullptr)
 		{
-			_original_mPostFrameProc = (_mPostFrameProc_mHRPc__UAE_NXZ)mem::TrampHook((BYTE*)GameModule + 0x43d5c0, (BYTE*)mPostFrameProc_PreHook, 0xb);
+			_original_mPostFrameProc = (_mPostFrameProc_mHRPc__UAE_NXZ)mem::TrampHook((BYTE*)GameModule + 0x43d5c0, (BYTE*)mPostFrameProc_OnHook, 0xb);
 			assert(_original_mPostFrameProc);
 		}
 	}
@@ -19805,6 +19870,68 @@ public:
 		_mFrameProc_mHRPc__UAE_NXZ mFunc = (_mFrameProc_mHRPc__UAE_NXZ)(GameModule + 0x43f290);
 		return mFunc(this);
 	}
+private:
+	// Hook: Pre
+	inline static _mFrameProc_mHRPc__UAE_NXZ _original_mFrameProc = nullptr;
+	inline static std::unordered_set<std::string> _callbacks_mFrameProc_pre;
+	inline static std::unordered_set<std::string> _callbacks_mFrameProc_post;
+	static uint8_t __fastcall mFrameProc_OnHook(class mHRPc* const thisPtr, void* EDX)
+	{
+#if WITH_LUA
+		std::unordered_set<std::string>::iterator it = _callbacks_mFrameProc_pre.begin();
+		while (it != _callbacks_mFrameProc_pre.end())
+		{
+			std::lock_guard<std::mutex> guard(LuaStateMutex);
+			lua_getglobal(LuaState, it->c_str());
+			if (!lua_isfunction(LuaState, -1))
+			{
+				lua_pop(LuaState, 1);
+				it = _callbacks_mFrameProc_pre.erase(it);
+			}
+			else
+			{
+				if (!CheckLua(LuaState, lua_pcall(LuaState, 0, 0, 0)))
+					lua_pop(LuaState, 1);
+				it++;
+			}
+		}
+#endif
+		uint8_t Result = _original_mFrameProc(thisPtr);
+#if WITH_LUA
+		it = _callbacks_mFrameProc_post.begin();
+		while (it != _callbacks_mFrameProc_post.end())
+		{
+			std::lock_guard<std::mutex> guard(LuaStateMutex);
+			lua_getglobal(LuaState, it->c_str());
+			if (!lua_isfunction(LuaState, -1))
+			{
+				lua_pop(LuaState, 1);
+				it = _callbacks_mFrameProc_post.erase(it);
+			}
+			else
+			{
+				if (!CheckLua(LuaState, lua_pcall(LuaState, 0, 0, 0)))
+					lua_pop(LuaState, 1);
+				it++;
+			}
+		}
+#endif
+		return Result;
+	}
+public:
+	// Hook: Register
+#if WITH_LUA
+	static void mFrameProc_RegisterHook(std::string HookName, bool bPostHook)
+	{
+		if (!HookName.empty() && !bPostHook) _callbacks_mFrameProc_pre.insert(HookName);
+		if (!HookName.empty() && bPostHook) _callbacks_mFrameProc_post.insert(HookName);
+		if (_original_mFrameProc == nullptr)
+		{
+			_original_mFrameProc = (_mFrameProc_mHRPc__UAE_NXZ)mem::TrampHook((BYTE*)GameModule + 0x43f290, (BYTE*)mFrameProc_OnHook, 0x6);
+			assert(_original_mFrameProc);
+		}
+	}
+#endif
 	// [Function] void __convention("thiscall") mHRPc::mSetOffGroundIk(class mHRPc* const this) [?mSetOffGroundIk@mHRPc@@QAEXXZ]
 	typedef void(__thiscall* _mSetOffGroundIk_mHRPc__QAEXXZ)(class mHRPc* const thisPtr);
 	void mSetOffGroundIk()
@@ -20161,19 +20288,20 @@ public:
 private:
 	// Hook: Pre
 	inline static _mSetEquip_mHRPc__QAE_NH_N0_Z _original_mSetEquip = nullptr;
-	inline static std::unordered_set<std::string> _callbacks_luaref_mSetEquip;
-	static uint8_t __fastcall mSetEquip_PreHook(class mHRPc* const thisPtr, void* EDX, uint32_t WeaponID, uint8_t arg3, uint8_t arg4)
+	inline static std::unordered_set<std::string> _callbacks_mSetEquip_pre;
+	inline static std::unordered_set<std::string> _callbacks_mSetEquip_post;
+	static uint8_t __fastcall mSetEquip_OnHook(class mHRPc* const thisPtr, void* EDX, uint32_t WeaponID, uint8_t arg3, uint8_t arg4)
 	{
 #if WITH_LUA
-		std::unordered_set<std::string>::iterator it = _callbacks_luaref_mSetEquip.begin();
-		while (it != _callbacks_luaref_mSetEquip.end())
+		std::unordered_set<std::string>::iterator it = _callbacks_mSetEquip_pre.begin();
+		while (it != _callbacks_mSetEquip_pre.end())
 		{
 			std::lock_guard<std::mutex> guard(LuaStateMutex);
 			lua_getglobal(LuaState, it->c_str());
 			if (!lua_isfunction(LuaState, -1))
 			{
 				lua_pop(LuaState, 1);
-				it = _callbacks_luaref_mSetEquip.erase(it);
+				it = _callbacks_mSetEquip_pre.erase(it);
 			}
 			else
 			{
@@ -20183,17 +20311,38 @@ private:
 			}
 		}
 #endif
-		return _original_mSetEquip(thisPtr, WeaponID, arg3, arg4);
+		uint8_t Result = _original_mSetEquip(thisPtr, WeaponID, arg3, arg4);
+#if WITH_LUA
+		it = _callbacks_mSetEquip_post.begin();
+		while (it != _callbacks_mSetEquip_post.end())
+		{
+			std::lock_guard<std::mutex> guard(LuaStateMutex);
+			lua_getglobal(LuaState, it->c_str());
+			if (!lua_isfunction(LuaState, -1))
+			{
+				lua_pop(LuaState, 1);
+				it = _callbacks_mSetEquip_post.erase(it);
+			}
+			else
+			{
+				if (!CheckLua(LuaState, lua_pcall(LuaState, 0, 0, 0)))
+					lua_pop(LuaState, 1);
+				it++;
+			}
+		}
+#endif
+		return Result;
 	}
 public:
 	// Hook: Register
 #if WITH_LUA
-	static void mSetEquip_RegisterHook(std::string InFunctionName)
+	static void mSetEquip_RegisterHook(std::string HookName, bool bPostHook)
 	{
-		_callbacks_luaref_mSetEquip.insert(InFunctionName);
+		if (!HookName.empty() && !bPostHook) _callbacks_mSetEquip_pre.insert(HookName);
+		if (!HookName.empty() && bPostHook) _callbacks_mSetEquip_post.insert(HookName);
 		if (_original_mSetEquip == nullptr)
 		{
-			_original_mSetEquip = (_mSetEquip_mHRPc__QAE_NH_N0_Z)mem::TrampHook((BYTE*)GameModule + 0x448c20, (BYTE*)mSetEquip_PreHook, 0x6);
+			_original_mSetEquip = (_mSetEquip_mHRPc__QAE_NH_N0_Z)mem::TrampHook((BYTE*)GameModule + 0x448c20, (BYTE*)mSetEquip_OnHook, 0x6);
 			assert(_original_mSetEquip);
 		}
 	}
@@ -21439,7 +21588,8 @@ public:
 			.addFunction("mInitStageChange", &mHRPc::mInitStageChange)
 			.addFunction("mClearGameFlag", &mHRPc::mClearGameFlag)
 			.addStaticFunction("mPostFrameProc_RegisterHook", &mHRPc::mPostFrameProc_RegisterHook)
-			.addStaticFunction("mRenderProc_RegisterHook", &mHRPc::mRenderProc_RegisterHook)
+			.addStaticFunction("mFrameProc_RegisterHook", &mHRPc::mFrameProc_RegisterHook)
+			.addStaticFunction("mEffectProc_RegisterHook", &mHRPc::mEffectProc_RegisterHook)
 			.addStaticFunction("mSetEquip_RegisterHook", &mHRPc::mSetEquip_RegisterHook)
 		.endClass();
 	}

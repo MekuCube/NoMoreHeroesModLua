@@ -6,13 +6,14 @@ if Travis:mCheckAttack() > 0 then
 else
 	TimeWithoutAttacking = TimeWithoutAttacking + DeltaTime
 end
-	
-TimeToSprint = 1.0
+
+local TimeToSprint = 0.2
 WasSprinting = IsSprinting
-IsSprinting = TimeWithoutAttacking >= TimeToSprint
+IsSprinting = TimeWithoutAttacking >= TimeToSprint and (Gamepad:GetLStick():SizeSquared() > 0 or Gamepad:GetRStick():SizeSquared() > 0) and Gamepad:IsPressingRB()
 
 if IsSprinting == true and WasSprinting == false then
 	print("Sprint start")
+	ShowMessage("Sprinting!", true)
 	Travis:CreateGuardBreakEffect()
 	Travis.mStatus.motSpd = 2
 end

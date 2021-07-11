@@ -997,13 +997,14 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 		if InType.calc_parentnamespace_type != None and "json" in SessionData and "Extend" in SessionData["json"] and str(InType.calc_parentnamespace_type) in SessionData["json"]["Extend"] and "Hooks" in SessionData["json"]["Extend"][str(InType.calc_parentnamespace_type)] and FunctionNameRaw in SessionData["json"]["Extend"][str(InType.calc_parentnamespace_type)]["Hooks"]:
 			Bytes = SessionData["json"]["Extend"][str(InType.calc_parentnamespace_type)]["Hooks"][FunctionNameRaw];
 			print("private:", file=file)
-			# Pre Hook
+			# Hook function
 			OriginalFunctionName = "_original_" + FunctionName
-			LuaFunctionReferences = "_callbacks_luaref_" + FunctionName
+			LuaFunctionReferences = "_callbacks_" + FunctionName
 			print("	"*indent + "// Hook: Pre", file=file)
 			print("	"*indent + "inline static " + TypeDefName + " " + OriginalFunctionName + " = nullptr;", file=file)
-			print("	"*indent + "inline static std::unordered_set<std::string> " + LuaFunctionReferences + ";", file=file)
-			print("	"*indent + "static " + str(InType.return_type) + " __"+"fastcall"+" " + FunctionName + "_PreHook(", end="", file=file)
+			print("	"*indent + "inline static std::unordered_set<std::string> " + LuaFunctionReferences + "_pre;", file=file)
+			print("	"*indent + "inline static std::unordered_set<std::string> " + LuaFunctionReferences + "_post;", file=file)
+			print("	"*indent + "static " + str(InType.return_type) + " __"+"fastcall"+" " + FunctionName + "_OnHook(", end="", file=file)
 			if ObjectInstanceType != None:
 				print(ObjectInstanceType + " thisPtr, void* EDX", end="", file=file)
 				if OuterParameters != "":
@@ -1011,9 +1012,10 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 			print(OuterParameters+")", file=file)
 			print("	"*indent + "{", file=file)
 			indent = indent + 1
+			# Pre Hook
 			print("#if WITH_LUA", file=file)
-			print("	"*indent + "std::unordered_set<std::string>::iterator it = " + LuaFunctionReferences + ".begin();", file=file)
-			print("	"*indent + "while (it != "+LuaFunctionReferences+".end())", file=file)
+			print("	"*indent + "std::unordered_set<std::string>::iterator it = " + LuaFunctionReferences + "_pre.begin();", file=file)
+			print("	"*indent + "while (it != "+LuaFunctionReferences+"_pre.end())", file=file)
 			print("	"*indent + "{", file=file)
 			indent = indent + 1
 			print("	"*indent + "std::lock_guard<std::mutex> guard(LuaStateMutex);", file=file)
@@ -1022,7 +1024,7 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 			print("	"*indent + "{", file=file)
 			indent = indent + 1
 			print("	"*indent + "lua_pop(LuaState, 1);", file=file)
-			print("	"*indent + "it = "+LuaFunctionReferences+".erase(it);", file=file)
+			print("	"*indent + "it = "+LuaFunctionReferences+"_pre.erase(it);", file=file)
 			indent = indent - 1
 			print("	"*indent + "}", file=file)
 			print("	"*indent + "else", file=file)
@@ -1036,21 +1038,55 @@ def ExportType(InType, AllTypes, ExportedTypes, SessionData, ExportedLuaBindings
 			indent = indent - 1
 			print("	"*indent + "}", file=file)
 			print("#endif", file=file)
-			print("	"*indent + "return " + OriginalFunctionName + "("+Inputs.replace("this", "thisPtr")+");", file=file)
+			# Call
+			print("	"*indent, end="", file=file)
+			if str(InType.return_type) != "void":
+				print(str(InType.return_type) + " Result = ", end="", file=file)
+			print(OriginalFunctionName + "("+Inputs.replace("this", "thisPtr")+");", file=file)
+			# Post hook
+			print("#if WITH_LUA", file=file)
+			print("	"*indent + "it = " + LuaFunctionReferences + "_post.begin();", file=file)
+			print("	"*indent + "while (it != "+LuaFunctionReferences+"_post.end())", file=file)
+			print("	"*indent + "{", file=file)
+			indent = indent + 1
+			print("	"*indent + "std::lock_guard<std::mutex> guard(LuaStateMutex);", file=file)
+			print("	"*indent + "lua_getglobal(LuaState, it->c_str());", file=file)
+			print("	"*indent + "if (!lua_isfunction(LuaState, -1))", file=file)
+			print("	"*indent + "{", file=file)
+			indent = indent + 1
+			print("	"*indent + "lua_pop(LuaState, 1);", file=file)
+			print("	"*indent + "it = "+LuaFunctionReferences+"_post.erase(it);", file=file)
+			indent = indent - 1
+			print("	"*indent + "}", file=file)
+			print("	"*indent + "else", file=file)
+			print("	"*indent + "{", file=file)
+			indent = indent + 1
+			print("	"*indent + "if (!CheckLua(LuaState, lua_pcall(LuaState, 0, 0, 0)))", file=file)
+			print("	"*indent + "	lua_pop(LuaState, 1);", file=file)
+			print("	"*indent + "it++;", file=file)
+			indent = indent - 1
+			print("	"*indent + "}", file=file)
+			indent = indent - 1
+			print("	"*indent + "}", file=file)
+			print("#endif", file=file)
+			# Return
+			if str(InType.return_type) != "void":
+				print("	"*indent + "return Result;", file=file)
 			indent = indent - 1
 			print("	"*indent + "}", file=file)
 			print("public:", file=file)
 			# Register
 			print("	"*indent + "// Hook: Register", file=file)
 			print("#if WITH_LUA", file=file)
-			print("	"*indent + "static void " + FunctionName + "_RegisterHook(std::string InFunctionName)", file=file)
+			print("	"*indent + "static void " + FunctionName + "_RegisterHook(std::string HookName, bool bPostHook)", file=file)
 			print("	"*indent + "{", file=file)
 			indent = indent + 1
-			print("	"*indent + LuaFunctionReferences + ".insert(InFunctionName);", file=file)
+			print("	"*indent + "if (!HookName.empty() && !bPostHook) " + LuaFunctionReferences + "_pre.insert(HookName);", file=file)
+			print("	"*indent + "if (!HookName.empty() && bPostHook) " + LuaFunctionReferences + "_post.insert(HookName);", file=file)
 			print("	"*indent + "if ("+OriginalFunctionName+ " == nullptr)", file=file)
 			print("	"*indent + "{", file=file)
 			indent = indent + 1
-			print("	"*indent + OriginalFunctionName+" = ("+TypeDefName+")mem::TrampHook((BYTE*)GameModule + "+str(hex(InType.start))+", (BYTE*)"+FunctionName+"_PreHook, "+Bytes+");", file=file)
+			print("	"*indent + OriginalFunctionName+" = ("+TypeDefName+")mem::TrampHook((BYTE*)GameModule + "+str(hex(InType.start))+", (BYTE*)"+FunctionName+"_OnHook, "+Bytes+");", file=file)
 			print("	"*indent + "assert(" + OriginalFunctionName+");", file=file)
 			indent = indent - 1
 			print("	"*indent + "}", file=file)
