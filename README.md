@@ -10,6 +10,11 @@ A work-in-progress.
 * Currently injection has to be done manually, I use Cheat Engine
 * Afterwards, the game will load all .lua files in the /Mods/ folder of the game's install folder (so SteamApps/Common/No More Heroes/Mods/)
 
+## Included mods
+I've included some sample mods by default in the /Mods/ folder.
+**VisitAnyMap.lua**: Press X on the map screen in No More Heroes 2 to expand the menu to include every map in the game.
+**SprintOutOfCombat.lua**: Hold RB while moving to sprint (when not in combat).
+
 ## Complete
 * Execute Lua in NMH2
 * Read/write to NMH2 variables
